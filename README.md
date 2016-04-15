@@ -49,16 +49,16 @@ print line : { operation : 1 plus 2 }
 
 ## Status
 
-Deliverable                            | Version | Date         | Description
----------------------------------------|---------|--------------|-----------------------------------------------------------------------------|
-C++ compiler                           | 0.1     | May 2015     | Command-line GLS prototype, written in C++.
-TypeScript compiler draft              | 0.2     | July 2015    | GLS compiler as a website, written in TypeScript.
-TypeScript compiler + C# output        | 0.3     | March 2016   | GLS compiler re-written in TypeScript, with correct TypeScript and C# output.
-Dogfood                                | 0.4     | April 2016   | Compiler written in GLS code, working in C# and TypeScript.
-Ruby, Python, and Java                 | 0.5     | May 2016     | Ruby, Python, and Java support.
-PowerShell, PHP, ES6 JavaScript, misc. | 0.6     | June 2016    | Dogfood or reject those languages and other possibilities.
-Language specification finalized       | 0.7     | July 2016    | Finalized language spec & cleaned internals of code.
-General release                        | 1.0     | August 2016  | Public announcement, glory to everyone.
+Deliverable                                | Version | Date         | Description
+-------------------------------------------|---------|--------------|-----------------------------------------------------------------------------|
+C++ compiler                               | 0.1     | May 2015     | Command-line GLS prototype, written in C++.
+TypeScript compiler draft                  | 0.2     | July 2015    | GLS compiler as a website, written in TypeScript.
+TypeScript compiler + C# output            | 0.3     | March 2016   | GLS compiler re-written in TypeScript, with correct TypeScript and C# output.
+Dogfood                                    | 0.4     | April 2016   | Compiler written in GLS code, working in C# and TypeScript.
+Ruby, Python, Java, Objective C and Swift  | 0.5     | May 2016     | Ruby, Python, Java, Objective C and Swift support.
+PowerShell, PHP, ES6 JavaScript, misc.     | 0.6     | June 2016    | Dogfood or reject those languages and other possibilities.
+Language specification finalized           | 0.7     | July 2016    | Finalized language spec & cleaned internals of code.
+General release                            | 1.0     | August 2016  | Public announcement, glory to everyone.
 
 
 ## Intentionally Missing Items
