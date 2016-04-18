@@ -1,8 +1,3 @@
-console.log("CommandStringsTests.js");
-console.log("this", this);
-console.log("dirname", __dirname);
-console.log("process", process);
-
 var expect = require("chai").expect,
     mocks = require("../../mocks.js"),
     GLS = require("../../../Distribution/GLS.js");
