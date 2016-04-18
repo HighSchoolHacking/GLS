@@ -15,6 +15,8 @@
 /// <reference path="ContinueCommand.ts" />
 /// <reference path="ConcatenateCommand.ts" />
 /// <reference path="DictionaryContainsKeyCommand.ts" />
+/// <reference path="DictionaryKeysCommand.ts" />
+/// <reference path="DictionaryNewCommand.ts" />
 /// <reference path="DictionaryNewEndCommand.ts" />
 /// <reference path="DictionaryNewStartCommand.ts" />
 /// <reference path="DictionaryPairCommand.ts" />
@@ -88,6 +90,7 @@ namespace GLS.Commands {
                 "concatenate": new ConcatenateCommand(context),
                 "continue": new ContinueCommand(context),
                 "dictionary contains key": new DictionaryContainsKeyCommand(context),
+                "dictionary keys": new DictionaryKeysCommand(context),
                 "dictionary new": new DictionaryNewCommand(context),
                 "dictionary new end": new DictionaryNewEndCommand(context),
                 "dictionary new start": new DictionaryNewStartCommand(context),

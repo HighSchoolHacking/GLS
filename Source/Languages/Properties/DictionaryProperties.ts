@@ -18,6 +18,11 @@ namespace GLS.Languages.Properties {
         public className: string;
 
         /**
+         * How to retrieve all keys from a dictionary as an array.
+         */
+        public keys: NativeCallProperties;
+
+        /**
          * Whether dictionaries are initialized as class instances using "new".
          */
         public initializeAsNew: boolean;

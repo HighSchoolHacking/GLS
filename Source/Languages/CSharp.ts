@@ -111,6 +111,7 @@ namespace GLS.Languages {
         protected generateDictionaryProperties(dictionaries: Properties.DictionaryProperties): void {
             dictionaries.className = "Dictionary";
             dictionaries.containsKey = Properties.NativeCallProperties.NewMemberFunction("ContainsKey");
+            dictionaries.keys = Properties.NativeCallProperties.NewMemberProperty("Keys");
             dictionaries.initializeAsNew = true;
             dictionaries.initializeEnd = "}";
             dictionaries.initializePairComma = ",";

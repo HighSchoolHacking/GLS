@@ -114,6 +114,7 @@ namespace GLS.Languages {
             super.generateDictionaryProperties(dictionaries);
 
             dictionaries.className = "dict";
+            dictionaries.keys = Properties.NativeCallProperties.NewMemberFunction("keys");
         }
 
         /**

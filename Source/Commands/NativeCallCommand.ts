@@ -95,7 +95,7 @@ namespace GLS.Commands {
             if (this.nativeCallProperties.asFunction) {
                 result += "(";
 
-                if (parameters.length >= 2) {
+                if (parameters.length > 2) {
                     result += parameters[2];
 
                     for (let i: number = 3; i < parameters.length; i += 1) {

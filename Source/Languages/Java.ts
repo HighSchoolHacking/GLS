@@ -114,6 +114,7 @@ namespace GLS.Languages {
         protected generateDictionaryProperties(dictionaries: Properties.DictionaryProperties): void {
             dictionaries.className = "HashMap";
             dictionaries.containsKey = Properties.NativeCallProperties.NewMemberFunction("containsKey");
+            dictionaries.keys = Properties.NativeCallProperties.NewMemberFunction("keySet");
             dictionaries.initializeAsNew = true;
             dictionaries.initializeEnd = "}}";
             dictionaries.initializePairComma = "";
