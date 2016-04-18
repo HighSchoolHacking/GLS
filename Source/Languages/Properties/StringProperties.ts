@@ -1,4 +1,4 @@
-/// <reference path="NativeCallProperties" />
+/// <reference path="NativeCallProperties.ts" />
 
 namespace GLS.Languages.Properties {
     "use strict";

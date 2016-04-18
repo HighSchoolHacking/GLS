@@ -110,6 +110,7 @@ namespace GLS.Languages {
          */
         protected generateDictionaryProperties(dictionaries: Properties.DictionaryProperties): void {
             dictionaries.className = "Dictionary";
+            dictionaries.containsKey = Properties.NativeCallProperties.NewMemberFunction("ContainsKey");
             dictionaries.initializeAsNew = true;
             dictionaries.initializeEnd = "}";
             dictionaries.initializePairComma = ",";
@@ -117,7 +118,6 @@ namespace GLS.Languages {
             dictionaries.initializePairMiddle = ", ";
             dictionaries.initializePairRight = " }";
             dictionaries.initializeStart = "\n{";
-            dictionaries.keyChecker = "ContainsKey";
             dictionaries.typeLeft = "<";
             dictionaries.typeMiddle = ", ";
             dictionaries.typeRight = ">";

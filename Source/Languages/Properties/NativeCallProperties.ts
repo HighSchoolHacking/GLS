@@ -16,6 +16,11 @@ namespace GLS.Languages.Properties {
         public asStatic: boolean;
 
         /**
+         * Whether this works as an operator, rather than a function.
+         */
+        public asOperator: boolean;
+
+        /**
          * How this is called in the language.
          */
         public name: string;
@@ -54,6 +59,19 @@ namespace GLS.Languages.Properties {
 
             properties.name = name;
             properties.asStatic = true;
+
+            return properties;
+        }
+
+        /**
+         * @param name   What the native call is called.
+         * @returns A new NativeCallProperties describing an operator.
+         */
+        public static NewOperator(name: string): NativeCallProperties {
+            let properties: NativeCallProperties = new NativeCallProperties();
+
+            properties.name = name;
+            properties.asOperator = true;
 
             return properties;
         }
