@@ -1,5 +1,5 @@
 var expect = require("chai").expect,
-    mocks = require("../../Mocks.js"),
+    mocks = require("../../mocks.js"),
     GLS = require("../../../Distribution/GLS.js");
 
 (() => {
