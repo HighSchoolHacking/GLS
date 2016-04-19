@@ -27,7 +27,9 @@ lambda x: math.sqrt(x)
 ### Ruby:
 ```Ruby
 lambda { |x| puts x }
+->(x) { puts x }
 ```
+Both of the above constructs are valid for Ruby. GLS generates the top one for no reason at all.
 
 ### TypeScript
 ```TypeScript
@@ -48,12 +50,12 @@ lambda(Left|Right) were chosen over lambda(Start|End) because of the convention 
 * Left and Right refer to the beginning and end of an individual line.
 
 ### Language Specific Properties:
-|              | lambdaLeft   | lambdaMiddle | lambdaRight |
-|--------------|--------------|--------------|-------------|
-| *Python*     |  lambda      |  :           |             |  
-| *C#*         |  (           |  ) =>        |             |
-| *Java*       |  (           |  ) ->        |             |
-| *Ruby*       |  lambda { \| |  \|          |  }          |
-| *TypeScript* |  (           |  )  =>       |             |
+|              | lambdaLeft     | lambdaMiddle   | lambdaRight |
+|--------------|----------------|----------------|-------------|
+| *Python*     |  `lambda`      |  `:`           |             |  
+| *C#*         |  `(`           |  `) =>`        |             |
+| *Java*       |  `(`           |  `) ->`        |             |
+| *Ruby*       |  `lambda { |`  |  `|`           |  `}`        |
+| *TypeScript* |  `(`           |  `)  =>`       |             |
 
 Each langauge will need to store property values for lambda(Left|Right|Middle) its language file. The values for each currently supported language are listed above. An empty box indicates empty string, "", is the value.
