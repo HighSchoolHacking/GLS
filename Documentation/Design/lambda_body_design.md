@@ -9,9 +9,7 @@ Some languages support multi-line lambdas, or lambdas that consist of multiple c
 ## Language Examples
 ### Java:  
 ```Java
-(p) -> p.getGender() == Person.Sex.MALE
-        && p.getAge() >= 18
-        && p.getAge() <= 25
+(p) -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25
 ```
 
 ### Python:
@@ -40,19 +38,32 @@ Both of the above constructs are valid for Ruby. GLS generates the top one for n
 ## Design
 ### GLS Syntax:
 ```
-lambdaLeft <parameter name list> lambdaMiddle <expression> lambdaRight semicolon
+lambda : <parameter 1 name> <parameter 1 type> <parameter 2 name> <parameter 2 type> ... { <GLS command> }
 ```
 
-The gls commands for a lambda body will be as above. The body starts with lambdaLeft. A list of parameter names follows, comma separated. Types are not included in the parameter name list. After the parameter name list comes the lambdaMiddle, followed by the actual code for the lambda. It must be a single line of code and may or may not return a value. After the expression, a lambdaRight and semicolon end the lambda body. 
+The gls commands for a lambda body will be as above. The command starts with "lambda :", which is followed with 0 or more parameter names and types. The last part of the command is a GLS command enclosed within the { }. 
+
+#### Examples:
+```
+lambda : x number y number { operation : x (equal to) y }
+lambda : y string { print : y }
+```
+
+
+### Language Specific Properties:
+```
+lambdaLeft <parameter name list> lambdaMiddle <expression> lambdaRight semicolon
+```
+The output of the command will be as above. The body starts with lambdaLeft. A list of parameter names follows, comma separated. Types are not included in the parameter name list. After the parameter name list comes the lambdaMiddle, followed by the actual code for the lambda. It must be a single line of code and may or may not return a value. After the expression, a lambdaRight and semicolon end the lambda body. 
 
 lambda(Left|Right) were chosen over lambda(Start|End) because of the convention noted in "Naming Conventions.md":
 * Start and End refer to entire lines.
 * Left and Right refer to the beginning and end of an individual line.
 
-### Language Specific Properties:
+
 |              | lambdaLeft     | lambdaMiddle   | lambdaRight |
 |--------------|----------------|----------------|-------------|
-| *Python*     |  `lambda`      |  `:`           |             |  
+| *Python*     |  `lambda`      |  `:`           |             |
 | *C#*         |  `(`           |  `) =>`        |             |
 | *Java*       |  `(`           |  `) ->`        |             |
 | *Ruby*       |  `lambda { |`  |  `|`           |  `}`        |
