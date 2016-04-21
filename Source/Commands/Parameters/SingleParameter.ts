@@ -1,5 +1,4 @@
 /// <reference path="Parameter.ts" />
-/// <reference path="RepeatingParameters.ts" />
 
 namespace GLS.Commands.Parameters {
     "use strict";
@@ -19,10 +18,11 @@ namespace GLS.Commands.Parameters {
         public required: boolean;
 
         /**
-         * Initializes a new instance of the Parameter class.
+         * Initializes a new instance of the SingleParameter class.
          * 
-         * @param descriptor   A plain-text description of the parameter.
-         * @param parameters   Parameters contained inside.
+         * @param name   The name of this parameter.
+         * @param description   A plain-text description of the parameter.
+         * @param required   Whether this is required.
          */
         constructor(name: string, description: string, required: boolean) {
             super(description);
