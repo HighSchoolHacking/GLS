@@ -48,7 +48,7 @@ class Measurements<T>
 {
 }
 
-class Shape : Measurements<int>
+class Shape : Measurements<Point>
 {
 }
 ```
@@ -76,7 +76,7 @@ class Point {
 class Measurements<T> {
 }
 
-class Shape extends Measurements<number> {
+class Shape extends Measurements<Point> {
 }
 ```
 
@@ -108,7 +108,7 @@ class end
 class start : Measurements<T> 
 class end
 
-class start : Shape Measurements<int>
+class start : Shape Measurements<Point>
 class end
 ```
 
