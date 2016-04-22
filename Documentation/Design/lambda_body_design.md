@@ -25,9 +25,7 @@ lambda x, y: x == y
 ### Ruby:
 ```Ruby
 lambda { |x, y|  x == y }
-->(x, y) { x == y }
 ```
-Both of the above constructs are valid for Ruby. GLS generates the top one for no reason at all.
 
 ### TypeScript
 ```TypeScript
@@ -56,7 +54,7 @@ lambda : x number y number { operation : x (equal to) y }
 | lambdaRight                 | string  | Language's syntax for the end of the lambda body.                                     |
 | lambdaParameterTypeRequired | boolean | True if the language requires parameter types in the argument list, false otherwise.  |
 
-Output:
+Command Format:
 ```
 lambdaLeft parameterType, parameterName, ... lambdaMiddle commandString lambdaRight semicolon
 ```
@@ -64,10 +62,10 @@ lambdaLeft parameterType, parameterName, ... lambdaMiddle commandString lambdaRi
 The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` and `semicolon` end the output of the lambda command. 
 
 
-|              | lambdaLeft     | lambdaMiddle   | lambdaRight | lambdaParameterTypeRequired   |
-|--------------|----------------|----------------|-------------|-------------------------------|
-| *Python*     |  `lambda`      |  `:`           |  ""         | `false`                       |
-| *C#*         |  `(`           |  `) =>`        |  ""         | `false`                       |
-| *Java*       |  `(`           |  `) ->`        |  ""         | `false`                       |
-| *Ruby*       |  `lambda { \|` |  `\|`          |  `}`        | `false`                       |
-| *TypeScript* |  `(`           |  `)  =>`       |  ""         | `false`                       |
+|              | lambdaLeft       | lambdaMiddle     | lambdaRight   | lambdaParameterTypeRequired   |
+|--------------|------------------|------------------|---------------|-------------------------------|
+| *Python*     |  `"lambda"`      |  `":"`           |  `""`         | `false`                       |
+| *C#*         |  `"("`           |  `") =>"`        |  `""`         | `false`                       |
+| *Java*       |  `"("`           |  `") ->"`        |  `""`         | `false`                       |
+| *Ruby*       |  `"lambda { \|"` |  `"\|"`          |  `"}"`        | `false`                       |
+| *TypeScript* |  `"("`           |  `")  =>"`       |  `""`         | `false`                       |
