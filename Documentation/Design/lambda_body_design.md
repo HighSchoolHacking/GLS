@@ -1,20 +1,19 @@
-# GLS Improvement: Lambda Support
-Engineer: faulda
+# GLS Language: Lambda Bodies
 
-## Feature Overview
-This improvement adds support for lambda function bodies to GLS. Sometimes called closures or anonymous functions, lambdas are unnamed, single or multi-line functions that are declared in an expression. They can be assigned to variables and passed as parameters, which makes them versatile and useful.
+## Overview
+This design is for lambda function bodies in GLS. Sometimes called closures or anonymous functions, lambdas are unnamed, single or multi-line functions that are declared in an expression. They can be assigned to variables and passed as parameters.
 
-Some languages support multi-line lambdas, or lambdas that consist of multiple code statements. Because Python does not support multi-line lambdas, GLS is not able to support them. 
+Some languages support multi-line lambdas - lambdas that consist of multiple code statements. Because Python does not support multi-line lambdas, GLS is not able to support them either.
 
 ## Language Examples
 ### Java:  
 ```Java
-(p) -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25
+(p, q) -> p.equals(q)
 ```
 
 ### Python:
 ```Python
-lambda x: math.sqrt(x) 
+lambda x, y: x == y 
 ```
 
 ### C#:
@@ -24,49 +23,55 @@ lambda x: math.sqrt(x)
 
 ### Ruby:
 ```Ruby
-lambda { |x| puts x }
-->(x) { puts x }
+lambda { |x, y|  x == y}
+->(x, y) { x == y }
 ```
 Both of the above constructs are valid for Ruby. GLS generates the top one for no reason at all.
 
 ### TypeScript
 ```TypeScript
-(amount, interestRate, duration) => amount * interestRate * duration / 12
+(x, y) => x == y
 ```
 
 
 ## Design
 ### GLS Syntax:
-```
-lambda : <parameter 1 name> <parameter 1 type> <parameter 2 name> <parameter 2 type> ... { <GLS command> }
-```
+`lambda : `*`[parameterName, parameterType, ...]`* `command`
 
-The gls commands for a lambda body will be as above. The command starts with "lambda :", which is followed with 0 or more parameter names and types. The last part of the command is a GLS command enclosed within the { }. 
+
+The GLS syntax for a lambda body will be as above. The command starts with `lambda :`, which is followed with zero or more parameter names, each one followed by its type. The final part is a GLS command. Any variables used in the GLS command must be passed in the parameter list that precedes the command.
 
 #### Examples:
 ```
 lambda : x number y number { operation : x (equal to) y }
-lambda : y string { print : y }
 ```
 
 
 ### Language Specific Properties:
+
+| Property Name               | Type    | Description                                                                           |
+|-----------------------------|---------|---------------------------------------------------------------------------------------|
+| lambdaLeft                  | string  | Language's syntax for the start of a lambda parmater list.                            |
+| lambdaMiddle                | string  | Language's syntax for the end of the lambda parameter list and the start of the body. |
+| lambdaRight                 | string  | Language's syntax for the end of the lambda body.                                     |
+| lambdaParameterTypeRequired | boolean | True if the language requires parameter types in the argument list, false otherwise.  |
+
+Output:
 ```
-lambdaLeft <parameter name list> lambdaMiddle <expression> lambdaRight semicolon
+lambdaLeft parameterType, parameterName, ... lambdaMiddle commandString lambdaRight semicolon
 ```
-The output of the command will be as above. The body starts with lambdaLeft. A list of parameter names follows, comma separated. Types are not included in the parameter name list. After the parameter name list comes the lambdaMiddle, followed by the actual code for the lambda. It must be a single line of code and may or may not return a value. After the expression, a lambdaRight and semicolon end the lambda body. 
-
-lambda(Left|Right) were chosen over lambda(Start|End) because of the convention noted in "Naming Conventions.md":
-* Start and End refer to entire lines.
-* Left and Right refer to the beginning and end of an individual line.
 
 
-|              | lambdaLeft     | lambdaMiddle   | lambdaRight |
-|--------------|----------------|----------------|-------------|
-| *Python*     |  `lambda`      |  `:`           |             |
-| *C#*         |  `(`           |  `) =>`        |             |
-| *Java*       |  `(`           |  `) ->`        |             |
-| *Ruby*       |  `lambda { |`  |  `|`           |  `}`        |
-| *TypeScript* |  `(`           |  `)  =>`       |             |
 
-Each langauge will need to store property values for lambda(Left|Right|Middle) its language file. The values for each currently supported language are listed above. An empty box indicates empty string, "", is the value.
+The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` and `semicolon` end the output of the lambda command. 
+
+
+|              | lambdaLeft     | lambdaMiddle   | lambdaRight | lambdaParameterTypeRequired |
+|--------------|----------------|----------------|-------------|-----------------------------|
+| *Python*     |  `lambda`      |  `:`           |             | false                       |
+| *C#*         |  `(`           |  `) =>`        |             | false                       |
+| *Java*       |  `(`           |  `) ->`        |             | false                       |
+| *Ruby*       |  `lambda { \|` |  `\|`          |  `}`        | false                       |
+| *TypeScript* |  `(`           |  `)  =>`       |             | false                       |
+
+An empty box indicates empty string, "", is the value.
