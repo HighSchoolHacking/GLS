@@ -6,9 +6,10 @@ This design is for lambda function bodies in GLS. Sometimes called closures or a
 Some languages support multi-line lambdas - lambdas that consist of multiple code statements. Because Python does not support multi-line lambdas, GLS is not able to support them either.
 
 ## Language Examples
+
 ### Java:  
 ```Java
-(p, q) -> p.equals(q)
+(p, q) -> p == q
 ```
 
 ### Python:
@@ -23,21 +24,21 @@ lambda x, y: x == y
 
 ### Ruby:
 ```Ruby
-lambda { |x, y|  x == y}
+lambda { |x, y|  x == y }
 ->(x, y) { x == y }
 ```
 Both of the above constructs are valid for Ruby. GLS generates the top one for no reason at all.
 
 ### TypeScript
 ```TypeScript
-(x, y) => x == y
+(x, y) => x === y
 ```
 
 
 ## Design
+
 ### GLS Syntax:
 `lambda : `*`[parameterName, parameterType, ...]`* `command`
-
 
 The GLS syntax for a lambda body will be as above. The command starts with `lambda :`, which is followed with zero or more parameter names, each one followed by its type. The final part is a GLS command. Any variables used in the GLS command must be passed in the parameter list that precedes the command.
 
@@ -45,7 +46,6 @@ The GLS syntax for a lambda body will be as above. The command starts with `lamb
 ```
 lambda : x number y number { operation : x (equal to) y }
 ```
-
 
 ### Language Specific Properties:
 
@@ -61,17 +61,13 @@ Output:
 lambdaLeft parameterType, parameterName, ... lambdaMiddle commandString lambdaRight semicolon
 ```
 
-
-
 The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` and `semicolon` end the output of the lambda command. 
 
 
-|              | lambdaLeft     | lambdaMiddle   | lambdaRight | lambdaParameterTypeRequired |
-|--------------|----------------|----------------|-------------|-----------------------------|
-| *Python*     |  `lambda`      |  `:`           |             | false                       |
-| *C#*         |  `(`           |  `) =>`        |             | false                       |
-| *Java*       |  `(`           |  `) ->`        |             | false                       |
-| *Ruby*       |  `lambda { \|` |  `\|`          |  `}`        | false                       |
-| *TypeScript* |  `(`           |  `)  =>`       |             | false                       |
-
-An empty box indicates empty string, "", is the value.
+|              | lambdaLeft     | lambdaMiddle   | lambdaRight | lambdaParameterTypeRequired   |
+|--------------|----------------|----------------|-------------|-------------------------------|
+| *Python*     |  `lambda`      |  `:`           |  ""         | `false`                       |
+| *C#*         |  `(`           |  `) =>`        |  ""         | `false`                       |
+| *Java*       |  `(`           |  `) ->`        |  ""         | `false`                       |
+| *Ruby*       |  `lambda { \|` |  `\|`          |  `}`        | `false`                       |
+| *TypeScript* |  `(`           |  `)  =>`       |  ""         | `false`                       |
