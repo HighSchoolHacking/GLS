@@ -9,79 +9,7 @@ This improvement adds support for class declarations to GLS, including:
 * Declaring a class to extend *(optional)*
 
 
-## Language Examples
-
-### Java  
-```java
-class Point
-{
-}
-
-class Measurements<T>
-{
-}
-
-class Shape extends Measurements<Point>
-{
-}
-```
-
-### Python
-
-```python
-class Point:
-
-class Measurements:
-
-class Shape(Measurements):
-
-```
-
-### CSharp
-
-```csharp
-class Point
-{
-}
-
-class Measurements<T>
-{
-}
-
-class Shape : Measurements<Point>
-{
-}
-```
-
-### Ruby
-
-```ruby
-class Point
-end
-
-class Measurements
-end
-
-class Shape
-    extends Measurements
-end
-```
-
-### TypeScript
-
-```typescript
-class Point {
-}
-
-class Measurements<T> {
-}
-
-class Shape extends Measurements<Point> {
-}
-```
-
-
-## Design
+## Commands
 
 ### `class start`
 
@@ -113,9 +41,82 @@ class end
 ```
 
 
+## Language Examples
+
+### CSharp
+
+```csharp
+class Point
+{
+}
+
+class Measurements<T>
+{
+}
+
+class Shape : Measurements<Point>
+{
+}
+```
+
+### Java
+
+```java
+class Point
+{
+}
+
+class Measurements<T>
+{
+}
+
+class Shape extends Measurements<Point>
+{
+}
+```
+
+### Python
+
+```python
+class Point:
+
+class Measurements:
+
+class Shape(Measurements):
+
+```
+
+### Ruby
+
+```ruby
+class Point
+end
+
+class Measurements
+end
+
+class Shape
+    extends Measurements
+end
+```
+
+### TypeScript
+
+```typescript
+class Point {
+}
+
+class Measurements<T> {
+}
+
+class Shape extends Measurements<Point> {
+}
+```
+
+
 ## Errata
 
-* JavaScript and TypeScript do not support multiple inheritance, so GLS will not.
+* Some languages such as Java and TypeScript do not support multiple inheritance, so GLS will not.
 * Interfaces do not exist in Python, so marking a class as implementing one is currently out of scope.
-* Adding modifiers such as "extends" to generics is currently out of scope.
-* Loosely typed languages such as Ruby and Python don't explicitly generics because they don't need to. Duck typing is sufficient.
+* Adding modifiers such as `"extends"` to generics is currently out of scope.
+* Duck-typed languages such as Ruby and Python have no need for generics, so GLS will skip printing generic information in them.
