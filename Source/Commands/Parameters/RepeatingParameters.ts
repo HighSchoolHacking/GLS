@@ -1,4 +1,5 @@
 /// <reference path="Parameter.ts" />
+/// <reference path="SingleParameter.ts" />
 
 namespace GLS.Commands.Parameters {
     "use strict";
@@ -13,9 +14,9 @@ namespace GLS.Commands.Parameters {
         public parameters: Parameter[];
 
         /**
-         * Initializes a new instance of the RepeatingParameter class.
+         * Initializes a new instance of the Parameter class.
          * 
-         * @param descriptor   A plain-text description of the parameters.
+         * @param descriptor   A plain-text description of the parameter.
          * @param parameters   Parameters contained inside.
          */
         constructor(description: string, parameters: Parameter[]) {
