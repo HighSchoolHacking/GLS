@@ -69,3 +69,5 @@ The output starts with `lambdaLeft`. A list of parameters follows, comma separat
 | *Java*       |  `"("`           |  `") ->"`        |  `""`         | `false`                       |
 | *Ruby*       |  `"lambda { \|"` |  `"\|"`          |  `"}"`        | `false`                       |
 | *TypeScript* |  `"("`           |  `")  =>"`       |  `""`         | `false`                       |
+
+[//]: # "Note: if viewing in text editor, the backslashes before | in Ruby are required so that markdown does not think they're part of the table. There is no \\ in the real GLS syntax"
