@@ -36,7 +36,7 @@ lambda { |x, y|  x == y }
 ## Design
 
 ### GLS Syntax:
-`lambda : `*`[parameterName, parameterType, ...]`* `command`
+`lambda : returnType`*`[parameterName, parameterType, ...]`* `command`
 
 The GLS syntax for a lambda body will be as above. The command starts with `lambda :`, which is followed with zero or more parameter names, each one followed by its type. The final part is a GLS command. Any variables used in the GLS command must be passed in the parameter list that precedes the command.
 
@@ -47,12 +47,15 @@ lambda : x number y number { operation : x (equal to) y }
 
 ### Language Specific Properties:
 
-| Property Name               | Type    | Description                                                                           |
-|-----------------------------|---------|---------------------------------------------------------------------------------------|
-| lambdaLeft                  | string  | Language's syntax for the start of a lambda parmater list.                            |
-| lambdaMiddle                | string  | Language's syntax for the end of the lambda parameter list and the start of the body. |
-| lambdaRight                 | string  | Language's syntax for the end of the lambda body.                                     |
-| lambdaParameterTypeRequired | boolean | True if the language requires parameter types in the argument list, false otherwise.  |
+Properties will be stored in a LambdaProperties file in langauge.properties.lambdas. The following properties will be added.
+
+| Property Name                 | Type    | Description                                                                           |
+|-------------------------------|---------|---------------------------------------------------------------------------------------|
+| functionLeft                  | string  | Language's syntax for the start of a lambda parameter list.                            |
+| functionMiddle                | string  | Language's syntax for the end of the lambda parameter list and the start of the body. |
+| functionRight                 | string  | Language's syntax for the end of the lambda body.                                     |
+| parameterTypeRequired         | boolean | True if the language requires parameter types in the argument list, false otherwise.  |
+| returnTypeRequired            | boolean | True if the language requires a return type in the argument list, false otherwise.  |
 
 Command Format:
 ```
@@ -62,12 +65,12 @@ lambdaLeft parameterType, parameterName, ... lambdaMiddle commandString lambdaRi
 The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` and `semicolon` end the output of the lambda command. 
 
 
-|              | lambdaLeft       | lambdaMiddle     | lambdaRight   | lambdaParameterTypeRequired   |
-|--------------|------------------|------------------|---------------|-------------------------------|
-| *Python*     |  `"lambda"`      |  `":"`           |  `""`         | `false`                       |
-| *C#*         |  `"("`           |  `") =>"`        |  `""`         | `false`                       |
-| *Java*       |  `"("`           |  `") ->"`        |  `""`         | `false`                       |
-| *Ruby*       |  `"lambda { \|"` |  `"\|"`          |  `"}"`        | `false`                       |
-| *TypeScript* |  `"("`           |  `")  =>"`       |  `""`         | `false`                       |
+|              | functionLeft       | functionMiddle     | functionRight   | parameterTypeRequired | returnTypeRequired |
+|--------------|--------------------|--------------------|-----------------|-----------------------|--------------------|
+| *Python*     |  `"lambda"`        |  `":"`             |  `""`           | `false`               | `false`            |
+| *Java*       |  `"("`             |  `") ->"`          |  `""`           | `false`               | `false`            |
+| *Ruby*       |  `"lambda { \|"`   |  `"\|"`            |  `"}"`          | `false`               | `false`            |
+| *C#*         |  `"("`             |  `") =>"`          |  `""`           | `false`               | `false`            |
+| *TypeScript* |  `"("`             |  `")  =>"`         |  `""`           | `false`               | `false`            |
 
 [//]: # "Note: if viewing in text editor, the backslashes before | in Ruby are required so that markdown does not think they're part of the table. There is no \\ in the real GLS syntax"
