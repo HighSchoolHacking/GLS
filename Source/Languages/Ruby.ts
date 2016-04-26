@@ -86,7 +86,7 @@ namespace GLS.Languages {
             comments.blockLineRight = "";
             comments.blockStart = "=begin";
 
-            comments.docEnd = "";
+            comments.docEnd = "##";
             comments.docLineEnd = "";
             comments.docLineStart = "";
             comments.docStart = "##";
@@ -100,8 +100,8 @@ namespace GLS.Languages {
             comments.docTagsWithParameters = {
                 "parameter": ""
             };
-            comments.docTagEnd = "]";
-            comments.docTagSpaceAfter = "   ";
+            comments.docTagEnd = "] ";
+            comments.docTagSpaceAfter = "  ";
             comments.docTagStart = "[";
 
             comments.lineLeft = "# ";

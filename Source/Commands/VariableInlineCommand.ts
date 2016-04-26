@@ -18,7 +18,7 @@ namespace GLS.Commands {
         private static parameters: Parameters.Parameter[] = [
             new Parameters.SingleParameter("name", "The name of the variable.", true),
             new Parameters.SingleParameter("type", "The type of the variable.", true),
-            new Parameters.SingleParameter("value", "The starting value of the variable.", true)
+            new Parameters.SingleParameter("value", "The starting value of the variable.", false)
         ];
 
         /**
@@ -36,8 +36,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name, type[, value]).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthRange(parameters, 2, 3);
-
             if (parameters.length === 3 && !this.language.properties.variables.declarationRequired) {
                 return LineResults.newSingleLine("\0", false);
             }

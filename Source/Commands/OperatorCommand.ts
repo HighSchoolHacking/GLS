@@ -31,8 +31,6 @@ namespace GLS.Commands {
          * @remarks Usage: (operator).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 1);
-
             return LineResults.newSingleLine(this.convertOperator(parameters[1]), false);
         }
 

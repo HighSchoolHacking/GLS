@@ -1,30 +1,31 @@
 var expect = require("chai").expect,
+    mocha = require("mocha"),
     mocks = require("../mocks.js"),
     GLS = require("../../Distribution/GLS.js");
 
-(() => {
+(function () {
     "use strict";
-    
-    describe("ConversionContext", () => {
-        describe("getLanguage", () => {
-            it("returns the language", () => {
+
+    mocha.describe("ConversionContext", () => {
+        mocha.describe("getLanguage", () => {
+            mocha.it("returns the language", () => {
                 let language = mocks.mockLanguage(),
                     context = mocks.mockConversionContext(language);
                 
                 expect(context.getLanguage()).to.be.equal(language);
             });
         });
-        
-        describe("generateTabs", () => {
-            it("generates 0 tabs", () => {
+
+        mocha.describe("generateTabs", () => {
+            mocha.it("generates 0 tabs", () => {
                 expect(mocks.mockConversionContext().generateTabs(0)).to.be.equal("");
             });
-            
-            it("generates 1 tab", () => {
+
+            mocha.it("generates 1 tab", () => {
                 expect(mocks.mockConversionContext().generateTabs(1)).to.be.equal("    ");
             });
-            
-            it("generates 2 tabs", () => {
+
+            mocha.it("generates 2 tabs", () => {
                 expect(mocks.mockConversionContext().generateTabs(2)).to.be.equal("        ");
             });
         });

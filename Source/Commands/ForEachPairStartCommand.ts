@@ -39,8 +39,6 @@ namespace GLS.Commands {
          * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 6);
-
             if (this.language.properties.loops.forEachAsMethod) {
                 return this.renderForEachAsMethod(parameters);
             } else {

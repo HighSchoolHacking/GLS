@@ -36,8 +36,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name, type, value).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 3);
-
             // Languages like C# will give the last value in parameters including a "\n"
             let newParameters: string[] = ["variable"];
             for (let i: number = 1; i < parameters.length; i += 1) {

@@ -40,8 +40,6 @@ namespace GLS.Commands {
          * @remarks Usage: (type[, item, ...]).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 1);
-
             let typeName: string = this.context.convertCommon("type", parameters[1]),
                 output: string = "";
 

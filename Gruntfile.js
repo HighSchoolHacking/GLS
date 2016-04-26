@@ -22,10 +22,10 @@ module.exports = function (grunt) {
                 "src": ["Tests/Unit/**/*.js"]
             },
             "integration": {
-                "src": ["Tests/Integration.js"]
+                "src": ["Tests/IntegrationTests.js"]
             },
             "end-to-end": {
-                "src": ["Tests/EndToEnd.js"]
+                "src": ["Tests/EndToEndTests.js"]
             }
         },
         "tslint": {

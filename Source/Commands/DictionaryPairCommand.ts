@@ -19,6 +19,13 @@ namespace GLS.Commands {
         ];
 
         /**
+         * @returns Information on parameters this command takes in.
+         */
+        public getParameters(): Parameters.Parameter[] {
+            return DictionaryPairCommand.parameters;
+        }
+
+        /**
          * Renders the command for a language with the given parameters.
          * 
          * @param parameters   The command's name, followed by any parameters.
@@ -26,8 +33,6 @@ namespace GLS.Commands {
          * @remarks Usage: (keyType, valueType[, comma]).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthRange(parameters, 2, 3);
-
             let results: string = "";
 
             results += this.language.properties.dictionaries.initializePairLeft;

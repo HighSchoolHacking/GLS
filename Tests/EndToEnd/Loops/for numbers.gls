@@ -1,0 +1,13 @@
+-
+for numbers start : aaa int 0 10
+    comment line: ...
+for numbers end
+
+for numbers start : bbb float 0.0 10.0
+    comment line: ...
+for numbers end
+
+for numbers start : ccc double 0.0 10.0
+    comment line : ...
+for numbers end
+-

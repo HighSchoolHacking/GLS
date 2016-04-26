@@ -41,9 +41,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name, returnType[, parameterName, parameterType, ...]).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 2);
-            this.requireParametersLengthEven(parameters);
-
             let returnType: string = this.context.convertCommon("type", parameters[2]),
                 declaration: string = "",
                 output: CommandResult[];

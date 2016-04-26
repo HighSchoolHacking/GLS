@@ -17,8 +17,6 @@ namespace GLS.Commands {
          * @remarks Usage: ().
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 0);
-
             let ender: string = this.language.properties.loops.forEachEnd;
 
             return new LineResults([new CommandResult(ender, -1)], false);

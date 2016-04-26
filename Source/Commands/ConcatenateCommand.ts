@@ -40,8 +40,6 @@ namespace GLS.Commands {
          * @remarks Usage: (string, string[, string, ...])
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 2);
-
             let result = parameters[1];
 
             for (let i: number = 2; i < parameters.length; i += 1) {

@@ -1,5 +1,6 @@
 Distribution
 Source/**/*.js
 !Source/exports.js
+coverage/
 node_modules/
 npm-debug.log

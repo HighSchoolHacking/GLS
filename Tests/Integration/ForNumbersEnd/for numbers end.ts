@@ -1,4 +1,4 @@
 -
-for (aaa: number = 5; aaa < 10; aaa += 1) {
+for (let aaa: number = 5; aaa < 10; aaa += 1) {
 }
 -

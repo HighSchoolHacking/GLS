@@ -64,8 +64,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name[, parameters, ...]).
          */
         private renderAsMember(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 1);
-
             let result: string = "";
 
             result += parameters[1] + ".";
@@ -97,8 +95,6 @@ namespace GLS.Commands {
          * @remarks Usage: (container, operand)
          */
         private renderAsOperator(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 2);
-
             let result: string = "";
 
             if (this.nativeCallProperties.type === Languages.Properties.NativeCallType.FloatingLeft) {
@@ -123,8 +119,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name[, parameters, ...]).
          */
         private renderAsStatic(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 1);
-
             let result: string = "";
 
             result += this.nativeCallProperties.name;

@@ -34,8 +34,6 @@ namespace GLS.Commands {
          * @remarks Usage: (fileName).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 1);
-
             let output: CommandResult[] = [],
                 source: string[] = this.language.properties.style.fileEndLines;
 
