@@ -1,7 +1,5 @@
 # Enum Values
 
-## Feature Overview
-
 Enums values may be retrieved from their container enums by name.
 
 
@@ -53,16 +51,16 @@ Direction.Horizontal
 
 ## Implementation
 
-Retrieving an enum value consists of `EnumValueLeft`, the name of the container enum, `EnumValueMiddle`, the name of the value, and `EnumValueRight`. 
+Retrieving an enum value consists of `ValueLeft`, the name of the container enum, `ValueMiddle`, the name of the value, and `ValueRight`. 
 
 ### Language Values
 
 <table>
     <thead>
         <th></th>
-        <th>EnumValueLeft</th>
-        <th>EnumValueMiddle</th>
-        <th>EnumValueRight</th>
+        <th>ValueLeft</th>
+        <th>ValueMiddle</th>
+        <th>ValueRight</th>
     </thead>
     <tbody>
         <tr>

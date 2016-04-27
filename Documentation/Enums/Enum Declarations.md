@@ -1,7 +1,5 @@
 # Enum Declarations
 
-## Feature Overview
-
 An enumeration, or enum for short, is a static listing of named values.
 Enums are a quick and efficient method of storing a limited range of possibilities as integers.
 
@@ -12,29 +10,30 @@ Enums are a quick and efficient method of storing a limited range of possibiliti
 
 `enum end`
 
-The `enum end` command ends declaring an enum type.
+Ends declaring an enum type.
 
 ### `enum start`
 
 `enum start` `:` `name`
 
-The `enum start` command starts declaring an enum type.
+Starts declaring an enum type.
 
-### `enum value`
+### `enum member`
 
-`enum value` `:` `name`*`[, value]`*
+`enum member` `:` `name value`*`[, ","]`*
 
-The `enum value` command declares a value of an enum inside its declaration.
-If provided, the value must be an integer.
+Declares a value of an enum inside its declaration. The value must be a numeric.
+
+A comma may end the line to indicate this is not the last enum member in its declaration. 
 
 
 ## Usage
 
 ```
 enum start : Direction
-enum value : Unknown 0
-enum value : Horizontal
-enum value : Vertical
+enum member : Unknown 0 ,
+enum member : Horizontal 1 ,
+enum member : Vertical 2
 enum end
 ```
 
@@ -42,9 +41,9 @@ enum end
 
 ```
 enum Direction {
-    Unknown = 0;
-    Horizontal;
-    Vertical;
+    Unknown = 0,
+    Horizontal = 1,
+    Vertical = 2
 }
 ```
 
@@ -52,29 +51,31 @@ enum Direction {
 
 ```
 enum Direction {
-    Unknown = 0;
-    Horizontal;
-    Vertical;
+    Unknown (0),
+    Horizontal (1),
+    Vertical (2)
 }
 ```
 
 ### Python
 
 ```
-enum Direction {
-    Unknown = 0;
-    Horizontal;
-    Vertical;
+from enum import Enum
+
+class Direction(Enum) {
+    Unknown = 0
+    Horizontal = 1
+    Vertical = 2
 }
 ```
 
 ### Ruby
 
 ```
-enum Direction {
-    Unknown = 0;
-    Horizontal;
-    Vertical;
+class Direction {
+    Unknown = 0
+    Horizontal = 1
+    Vertical = 2
 }
 ```
 
@@ -82,9 +83,9 @@ enum Direction {
 
 ```
 enum Direction {
-    Unknown = 0;
-    Horizontal;
-    Vertical;
+    Unknown = 0,
+    Horizontal = 1,
+    Vertical = 2
 }
 ```
 
@@ -92,24 +93,27 @@ enum Direction {
 
 An enum declaration consists of a starting line, any number of values, and an endling line.
 
-The starting line consists of `EnumDeclareStartLeft`, the provided name, then `EnumDeclareStartRight`.
+The starting line consists of `DeclareStartLeft`, the provided name, then `DeclareStartRight`.
 
-Each value consists of `EnumDeclareValueLeft`, the provided name, then `EnumDeclareValueRight`.
-If a value is provided, `EnumDeclareValueMiddle` and the value are added between the provided name and `EnumDeclareValueRight`.
+Each value line starts with `DeclareLeft` and the provided name.
+If a value is provided, `DeclareValueLeft`, the value, and `DeclareValueRight` are added.
+Value lines with a comma appended end in `DeclareCommaRight`; value lines without end in `DeclareLastRight`.
 
-The ending line consists solely of `EnumDeclareEnd`.
+The ending line consists solely of `DeclareEnd`.
 
 ### Language Values
 
 <table>
     <thead>
         <th></th>
-        <th>EnumDeclareStartLeft</th>
-        <th>EnumDeclareStartRight</th>
-        <th>EnumDeclareValueLeft</th>
-        <th>EnumDeclareValueMiddle</th>
-        <th>EnumDeclareValueRight</th>
-        <th>EnumDeclareEnd</th>
+        <th>DeclareStartLeft</th>
+        <th>DeclareStartRight</th>
+        <th>DeclareLeft</th>
+        <th>DeclareValueLeft</th>
+        <th>DeclareValueRight</th>
+        <th>DeclareCommaRight</th>
+        <th>DeclareLastRight</th>
+        <th>DeclareEnd</th>
     </thead>
     <tbody>
         <tr>
@@ -118,6 +122,8 @@ The ending line consists solely of `EnumDeclareEnd`.
             <td>`"\n{"`</td>
             <td>`""`</td>
             <td>`" = "`</td>
+            <td>`""`</td>
+            <td>`","`</td>
             <td>`";"`</td>
             <td>`"}"`</td>
         </tr>
@@ -126,27 +132,33 @@ The ending line consists solely of `EnumDeclareEnd`.
             <td>`"enum "`</td>
             <td>`" {"`</td>
             <td>`""`</td>
-            <td>`" = "`</td>
+            <td>`" ("`</td>
+            <td>`")"`</td>
+            <td>`","`</td>
             <td>`";"`</td>
             <td>`"}"`</td>
         </tr>
         <tr>
             <th>Python</th>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
+            <td>`"class "`</td>
+            <td>`"(Enum):"`</td>
+            <td>`""`</td>
+            <td>`" = "`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`""`</td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
+            <td>`"class "`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`"="`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`""`</td>
         </tr>
         <tr>
             <th>TypeScript</th>
@@ -154,8 +166,14 @@ The ending line consists solely of `EnumDeclareEnd`.
             <td>`" {"`</td>
             <td>`""`</td>
             <td>`" = "`</td>
-            <td>`";"`</td>
+            <td>`""`</td>
+            <td>`","`</td>
+            <td>`""`</td>
             <td>`"}"`</td>
         </tr>
     <tbody>
 </table>
+
+### Errata
+
+* Ruby does not appear to directly support enums. Thus, values must be provided for all enum members.
