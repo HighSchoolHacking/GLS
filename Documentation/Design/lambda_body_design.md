@@ -59,10 +59,10 @@ Properties will be stored in a LambdaProperties file in langauge.properties.lamb
 
 Command Format:
 ```
-lambdaLeft parameterType parameterName, ... lambdaMiddle commandString lambdaRight semicolon
+lambdaLeft parameterType parameterName, ... lambdaMiddle commandString lambdaRight
 ```
 
-The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` and `semicolon` end the output of the lambda command. 
+The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` ends the output of the lambda command. 
 
 
 |              | functionLeft       | functionMiddle     | functionRight   | parameterTypeRequired | returnTypeRequired |
@@ -71,6 +71,6 @@ The output starts with `lambdaLeft`. A list of parameters follows, comma separat
 | *Java*       |  `"("`             |  `") ->"`          |  `""`           | `false`               | `false`            |
 | *Ruby*       |  `"lambda { \|"`   |  `"\|"`            |  `"}"`          | `false`               | `false`            |
 | *C#*         |  `"("`             |  `") =>"`          |  `""`           | `false`               | `false`            |
-| *TypeScript* |  `"("`             |  `")  =>"`         |  `""`           | `false`               | `false`            |
+| *TypeScript* |  `"("`             |  `") =>"`         |  `""`           | `false`               | `false`            |
  
 [//]: # "Note: if viewing in text editor, the backslashes before | in Ruby are required so that markdown does not think they're part of the table. There is no \\ in the real GLS syntax"
