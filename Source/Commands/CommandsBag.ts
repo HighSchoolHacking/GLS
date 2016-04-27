@@ -35,6 +35,7 @@
 /// <reference path="IfEndCommand.ts" />
 /// <reference path="IfStartCommand.ts" />
 /// <reference path="IndexCommand.ts" />
+/// <reference path="LambdaBodyCommand.ts" />
 /// <reference path="ListInitializeCommand.ts" />
 /// <reference path="ListLengthCommand.ts" />
 /// <reference path="ListPushCommand.ts" />
@@ -110,6 +111,7 @@ namespace GLS.Commands {
                 "if end": new IfEndCommand(context),
                 "if start": new IfStartCommand(context),
                 "index": new IndexCommand(context),
+                "lambda": new LambdaBodyCommand(context),
                 "list initialize": new ListInitializeCommand(context),
                 "list length": new ListLengthCommand(context),
                 "list push": new ListPushCommand(context),

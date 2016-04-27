@@ -125,9 +125,9 @@ namespace GLS.Languages {
          * @param lambdas   A property container for metadata on lambdas.
          */
         protected generateLambdaProperties(lambdas: Properties.LambdaProperties): void {
-            lambdas.startLeft = "(";
-            lambdas.startMiddle = ") => ";
-            lambdas.startRight = "";
+            // lambdas.startLeft = "(";
+            // lambdas.startMiddle = ") => ";
+            // lambdas.startRight = "";
         }
 
         /**

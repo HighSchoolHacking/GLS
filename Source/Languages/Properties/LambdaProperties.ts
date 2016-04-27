@@ -8,56 +8,66 @@ namespace GLS.Languages.Properties {
         /**
          * How to start a lambda.
          */
-        startLeft: string;
+        functionLeft: string;
 
         /**
          * A string between the lambda arguments and body.
          */
-        startMiddle: string;
+        functionMiddle: string;
 
         /**
          * How to end a lambda.
          */
-        startRight: string;
+        functionRight: string;
+
+        /**
+         * Whether parameter types must be included in the argument list.
+         */
+        parameterTypeRequired: boolean;
+        
+        /**
+         * Whether a return type must be included in the argument list.
+         */
+        returnTypeRequired: boolean;
 
         /**
          * Whether type declarations should be in interface form.
          */
-        typeAsInterface: boolean;
+        // typeAsInterface: boolean;
 
         /**
          * Whether lambda interfaces must be declared before usage.
          */
-        typeRequired: boolean;
+        // typeRequired: boolean;
 
         /**
          * How to start the first line of a type declaration.
          */
-        typeStartLeft: string;
+        // typeStartLeft: string;
 
         /**
          * How to end the first line of a type declaration.
          */
-        typeStartRight: string;
+        // typeStartRight: string;
 
         /**
          * How to start the middle line of a type declaration.
          */
-        typeMiddleLeft: string;
+        // typeMiddleLeft: string;
 
         /**
          * How to end the middle line of a type declaration.
          */
-        typeMiddleRight: string;
+        // typeMiddleRight: string;
 
         /**
          * How to start the last line of a type declaration.
          */
-        typeEndLeft: string;
+        // typeEndLeft: string;
 
         /**
          * How to end the last line of a type declaration.
          */
-        typeEndRight: string;
+        // typeEndRight: string;
     }
 }
