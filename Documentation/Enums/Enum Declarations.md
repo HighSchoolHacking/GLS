@@ -95,11 +95,62 @@ An enum declaration consists of a starting line, any number of values, and an en
 
 The starting line consists of `DeclareStartLeft`, the provided name, then `DeclareStartRight`.
 
-Each value line starts with `DeclareLeft` and the provided name.
-If a value is provided, `DeclareValueLeft`, the value, and `DeclareValueRight` are added.
+Each value line consists of a member name, `DeclareValueLeft`, the value, and `DeclareValueRight`.
 Value lines with a comma appended end in `DeclareCommaRight`; value lines without end in `DeclareLastRight`.
 
 The ending line consists solely of `DeclareEnd`.
+
+### Properties
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DeclareStartLeft</td>
+            <td>string</td>
+            <td>Start of the first line of an enum declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareStartRight</td>
+            <td>string</td>
+            <td>End of the first line of an enum declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareValueLeft</td>
+            <td>string</td>
+            <td>Start of a line declaring an enum member and value.</td>
+        </tr>
+        <tr>
+            <td>DeclareValueMiddle</td>
+            <td>string</td>
+            <td>Middle of a line declaring an enum member and value.</td>
+        </tr>
+        <tr>
+            <td>DeclareValueRight</td>
+            <td>string</td>
+            <td>End of a line declaring an enum member and value.</td>
+        </tr>
+        <tr>
+            <td>DeclareCommaRight</td>
+            <td>string</td>
+            <td>Comma after a member and value declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareLastRight</td>
+            <td>string</td>
+            <td>Comma after the last member and value declaration in an enum.</td>
+        </tr>
+        <tr>
+            <td>DeclareEnd</td>
+            <td>string</td>
+            <td>End line of an enum declaration.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Language Values
 
@@ -108,7 +159,6 @@ The ending line consists solely of `DeclareEnd`.
         <th></th>
         <th>DeclareStartLeft</th>
         <th>DeclareStartRight</th>
-        <th>DeclareLeft</th>
         <th>DeclareValueLeft</th>
         <th>DeclareValueRight</th>
         <th>DeclareCommaRight</th>
@@ -120,7 +170,6 @@ The ending line consists solely of `DeclareEnd`.
             <th>CSharp</th>
             <td>`"enum "`</td>
             <td>`"\n{"`</td>
-            <td>`""`</td>
             <td>`" = "`</td>
             <td>`""`</td>
             <td>`","`</td>
@@ -131,7 +180,6 @@ The ending line consists solely of `DeclareEnd`.
             <th>Java</th>
             <td>`"enum "`</td>
             <td>`" {"`</td>
-            <td>`""`</td>
             <td>`" ("`</td>
             <td>`")"`</td>
             <td>`","`</td>
@@ -142,7 +190,6 @@ The ending line consists solely of `DeclareEnd`.
             <th>Python</th>
             <td>`"class "`</td>
             <td>`"(Enum):"`</td>
-            <td>`""`</td>
             <td>`" = "`</td>
             <td>`""`</td>
             <td>`""`</td>
@@ -152,7 +199,6 @@ The ending line consists solely of `DeclareEnd`.
         <tr>
             <th>Ruby</th>
             <td>`"class "`</td>
-            <td>`""`</td>
             <td>`""`</td>
             <td>`"="`</td>
             <td>`""`</td>
@@ -164,7 +210,6 @@ The ending line consists solely of `DeclareEnd`.
             <th>TypeScript</th>
             <td>`"enum "`</td>
             <td>`" {"`</td>
-            <td>`""`</td>
             <td>`" = "`</td>
             <td>`""`</td>
             <td>`","`</td>

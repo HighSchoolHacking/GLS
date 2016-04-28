@@ -51,16 +51,43 @@ Direction.Horizontal
 
 ## Implementation
 
-Retrieving an enum value consists of `ValueLeft`, the name of the container enum, `ValueMiddle`, the name of the value, and `ValueRight`. 
+Retrieving an enum value consists of `MemberLeft`, the name of the container enum, `MemberMiddle`, the name of the value, and `MemberRight`. 
+
+### Properties
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>MemberLeft</td>
+            <td>string</td>
+            <td>Start of a line declaring an enum member.</td>
+        </tr>
+        <tr>
+            <td>MemberMiddle</td>
+            <td>string</td>
+            <td>Middle of a line declaring an enum member.</td>
+        </tr>
+        <tr>
+            <td>MemberRight</td>
+            <td>string</td>
+            <td>End of a line declaring an enum member.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Language Values
 
 <table>
     <thead>
-        <th></th>
-        <th>ValueLeft</th>
-        <th>ValueMiddle</th>
-        <th>ValueRight</th>
+        <th>Language</th>
+        <th>MemberLeft</th>
+        <th>MemberMiddle</th>
+        <th>MemberRight</th>
     </thead>
     <tbody>
         <tr>
