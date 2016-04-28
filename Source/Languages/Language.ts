@@ -45,6 +45,7 @@ namespace GLS.Languages {
             this.generateCommentProperties(this.properties.comments);
             this.generateConditionalProperties(this.properties.conditionals);
             this.generateDictionaryProperties(this.properties.dictionaries);
+            this.generateEnumProperties(this.properties.enums);
             this.generateExceptionProperties(this.properties.exceptions);
             this.generateFunctionProperties(this.properties.functions);
             this.generateGeneralProperties(this.properties.general);
@@ -116,6 +117,13 @@ namespace GLS.Languages {
          * @param dictionaries   A property container for metadata on dictionaries.
          */
         protected abstract generateDictionaryProperties(dictionaries: Properties.DictionaryProperties): void;
+
+        /**
+         * Generates metadata on enums.
+         * 
+         * @param enums   A property container for metadata on enums.
+         */
+        protected abstract generateEnumProperties(enums: Properties.EnumProperties): void;
 
         /**
          * Generates metadata on exceptions.

@@ -4,6 +4,7 @@
 /// <reference path="CommentProperties.ts" />
 /// <reference path="ConditionalProperties.ts" />
 /// <reference path="DictionaryProperties.ts" />
+/// <reference path="EnumProperties.ts" />
 /// <reference path="ExceptionProperties.ts" />
 /// <reference path="FunctionProperties.ts" />
 /// <reference path="GeneralProperties.ts" />
@@ -53,6 +54,11 @@ namespace GLS.Languages.Properties {
          * Metadata on dictionaries.
          */
         public dictionaries: DictionaryProperties;
+
+        /**
+         * Metadata on enums.
+         */
+        public enums: EnumProperties;
 
         /**
          * Metadata on exceptions.
@@ -124,6 +130,7 @@ namespace GLS.Languages.Properties {
             this.comments = new CommentProperties();
             this.conditionals = new ConditionalProperties();
             this.dictionaries = new DictionaryProperties();
+            this.enums = new EnumProperties();
             this.exceptions = new ExceptionProperties();
             this.functions = new FunctionProperties();
             this.general = new GeneralProperties();

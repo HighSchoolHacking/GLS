@@ -31,9 +31,9 @@ A comma may end the line to indicate this is not the last enum member in its dec
 
 ```
 enum start : Direction
-enum member : Unknown 0 ,
-enum member : Horizontal 1 ,
-enum member : Vertical 2
+    enum member : Unknown 0 ,
+    enum member : Horizontal 1 ,
+    enum member : Vertical 2
 enum end
 ```
 
@@ -137,12 +137,12 @@ The ending line consists solely of `DeclareEnd`.
         <tr>
             <td>DeclareCommaRight</td>
             <td>string</td>
-            <td>Comma after a member and value declaration.</td>
+            <td>Suffix after a member and value declaration.</td>
         </tr>
         <tr>
             <td>DeclareLastRight</td>
             <td>string</td>
-            <td>Comma after the last member and value declaration in an enum.</td>
+            <td>Suffix after the last member and value declaration in an enum.</td>
         </tr>
         <tr>
             <td>DeclareEnd</td>
