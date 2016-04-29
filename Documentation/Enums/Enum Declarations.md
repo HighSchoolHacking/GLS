@@ -172,7 +172,7 @@ The ending line consists solely of `DeclareEnd`.
             <td>`" = "`</td>
             <td>`""`</td>
             <td>`","`</td>
-            <td>`";"`</td>
+            <td>`""`</td>
             <td>`"}"`</td>
         </tr>
         <tr>
@@ -182,7 +182,7 @@ The ending line consists solely of `DeclareEnd`.
             <td>`" ("`</td>
             <td>`")"`</td>
             <td>`","`</td>
-            <td>`";"`</td>
+            <td>`""`</td>
             <td>`"}"`</td>
         </tr>
         <tr>

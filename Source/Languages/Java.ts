@@ -145,9 +145,9 @@ namespace GLS.Languages {
             super.generateEnumProperties(enums);
 
             enums.declareStartRight = " {";
-            enums.declareValueLeft = " (";
+            enums.declareValueLeft = "(";
             enums.declareValueRight = ")";
-            enums.declareLastRight = ";";
+            enums.declareLastRight = "";
         }
 
         /**

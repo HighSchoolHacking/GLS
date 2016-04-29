@@ -25,6 +25,7 @@
 /// <reference path="ElseStartCommand.ts" />
 /// <reference path="EnumCommand.ts" />
 /// <reference path="EnumEndCommand.ts" />
+/// <reference path="EnumMemberCommand.ts" />
 /// <reference path="EnumStartCommand.ts" />
 /// <reference path="FileEndCommand.ts" />
 /// <reference path="FileStartCommand.ts" />
@@ -103,6 +104,7 @@ namespace GLS.Commands {
                 "else start": new ElseStartCommand(context),
                 "enum": new EnumCommand(context),
                 "enum end": new EnumEndCommand(context),
+                "enum member": new EnumMemberCommand(context),
                 "enum start": new EnumStartCommand(context),
                 "file end": new FileEndCommand(context),
                 "file start": new FileStartCommand(context),

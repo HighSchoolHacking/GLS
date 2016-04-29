@@ -142,7 +142,7 @@ namespace GLS.Languages {
             super.generateEnumProperties(enums);
 
             enums.declareStartRight = "\n{";
-            enums.declareLastRight = ";";
+            enums.declareLastRight = "";
         }
 
         /**

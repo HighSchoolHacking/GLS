@@ -143,7 +143,7 @@ namespace GLS.Languages {
 
             enums.declareEnd = "}";
             enums.declareStartRight = " {";
-            enums.declareValueLeft = "=";
+            enums.declareValueLeft = " = ";
         }
 
         /**
