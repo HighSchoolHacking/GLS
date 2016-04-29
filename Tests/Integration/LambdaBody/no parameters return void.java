@@ -1,0 +1,3 @@
+-
+() -> System.out.println("test")
+-
