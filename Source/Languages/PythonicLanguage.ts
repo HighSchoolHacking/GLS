@@ -102,6 +102,9 @@ namespace GLS.Languages {
             enums.declareValueRight = "";
             enums.declareCommaRight = "";
             enums.declareLastRight = "";
+            enums.valueLeft = "";
+            enums.valueMiddle = ".";
+            enums.valueRight = "";
         }
 
         /**

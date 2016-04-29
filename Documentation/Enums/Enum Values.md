@@ -7,9 +7,9 @@ Enums values may be retrieved from their container enums by name.
 
 ### `enum`
 
-`enum` `:` `enumName` `valueName`
+`enum` `:` `enumName` `memberName`
 
-The `enum` command retrieves an enum value by name.
+The `enum` command retrieves an enum member value by name.
 
 
 ## Usage

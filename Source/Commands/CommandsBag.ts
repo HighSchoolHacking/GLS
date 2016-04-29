@@ -23,6 +23,7 @@
 /// <reference path="DictionaryTypeCommand.ts" />
 /// <reference path="ElseIfStartCommand.ts" />
 /// <reference path="ElseStartCommand.ts" />
+/// <reference path="EnumCommand.ts" />
 /// <reference path="FileEndCommand.ts" />
 /// <reference path="FileStartCommand.ts" />
 /// <reference path="ForEachEndCommand.ts" />
@@ -98,6 +99,7 @@ namespace GLS.Commands {
                 "dictionary type": new DictionaryTypeCommand(context),
                 "else if start": new ElseIfStartCommand(context),
                 "else start": new ElseStartCommand(context),
+                "enum": new EnumCommand(context),
                 "file end": new FileEndCommand(context),
                 "file start": new FileStartCommand(context),
                 "for each end": new ForEachEndCommand(context),
