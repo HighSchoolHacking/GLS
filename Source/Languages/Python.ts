@@ -60,6 +60,10 @@ namespace GLS.Languages {
                 "dictionary": "dict",
                 "number": "float"
             };
+            classes.declareExtendsLeft = "(";
+            classes.declareExtendsRight = ")";
+            classes.declareStartLeft = "def ";
+            classes.declareStartRight = ":";
         }
 
         /**

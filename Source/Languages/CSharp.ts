@@ -65,7 +65,8 @@ namespace GLS.Languages {
                 "number": "float"
             };
             classes.constructorAsClassName = true;
-            classes.defineInheritanceLeft = " : ";
+            classes.declareExtendsLeft = " : ";
+            classes.declareStartRight = "\n{";
         }
 
         /**

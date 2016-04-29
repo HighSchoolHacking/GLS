@@ -93,8 +93,7 @@ end
 class Measurements
 end
 
-class Shape
-    extends Measurements
+class Shape < Measurements
 end
 ```
 

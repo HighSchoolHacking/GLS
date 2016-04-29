@@ -32,29 +32,29 @@ namespace GLS.Languages.Properties {
         public constructorName: string;
 
         /**
-         * Characters before an inherited class definition.
+         * Characters before an inherited class declaration.
          */
-        public defineInheritanceLeft: string;
+        public declareExtendsLeft: string;
 
         /**
-         * Characters after an inherited class definition.
+         * Characters after an inherited class declaration.
          */
-        public defineInheritanceRight: string;
+        public declareExtendsRight: string;
 
         /**
-         * The last line of a class definition.
+         * The last line of a class declaration.
          */
         public defineEnd: string;
 
         /**
-         * How to start the first line of a class definition.
+         * How to start the first line of a class declaration.
          */
-        public defineStartLeft: string;
+        public declareStartLeft: string;
 
         /**
-         * How to end the first line of a class definition.
+         * How to end the first line of a class declaration.
          */
-        public defineStartRight: string;
+        public declareStartRight: string;
 
         /**
          * Metadata on generic (templated) types.

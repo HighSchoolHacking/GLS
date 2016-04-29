@@ -87,7 +87,7 @@ namespace GLS.Commands {
             let bracketStartIndex: number = typeNameRaw.indexOf("<"),
                 containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
 
-            if (!this.language.properties.classes.generics) {
+            if (!this.language.properties.classes.generics.used) {
                 return this.convertType(containerTypeName);
             }
 

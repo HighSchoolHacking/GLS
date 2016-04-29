@@ -5,6 +5,7 @@
 /// <reference path="ArrayInitializeCommand.ts" />
 /// <reference path="ArrayLengthCommand.ts" />
 /// <reference path="BreakCommand.ts" />
+/// <reference path="ClassStartCommand.ts" />
 /// <reference path="CommentBlockCommand.ts" />
 /// <reference path="CommentBlockEndCommand.ts" />
 /// <reference path="CommentBlockStartCommand.ts" />
@@ -80,6 +81,7 @@ namespace GLS.Commands {
                 "array initialize": new ArrayInitializeCommand(context),
                 "array length": new ArrayLengthCommand(context),
                 "break": new BreakCommand(context),
+                "class start": new ClassStartCommand(context),
                 "comment block": new CommentBlockCommand(context),
                 "comment block end": new CommentBlockEndCommand(context),
                 "comment block start": new CommentBlockStartCommand(context),

@@ -63,7 +63,8 @@ namespace GLS.Languages {
                 "int": "number"
             };
             classes.constructorName = "constructor";
-            classes.defineInheritanceLeft = " extends ";
+            classes.declareExtendsLeft = " extends ";
+            classes.declareStartRight = " {";
         }
 
         /**
