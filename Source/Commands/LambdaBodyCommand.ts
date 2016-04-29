@@ -38,8 +38,7 @@ namespace GLS.Commands {
             new Parameters.SingleParameter(
                 "functionBody",
                 "The actual body of the lambda function",
-                true
-            )
+                true)
         ];
 
         /**
@@ -69,16 +68,8 @@ namespace GLS.Commands {
                 throw Error("returnTypeRequired=true not implemented");
             }
 
-            // Minimum set of parameters:
-            // [lambda, returnType, command]
-            //     0        1          2     (length = 3)
-            // Extended with variables:
-            // [lambda, returnType, parameterName, parameterType, command]
-            //     0         1            2              3           4      (length = 5) 
-
             // If we have at least 1 set of parameters, need to handle them.
             if (parameters.length > 3) {
-                // console.log("asdfasdfasdfasdfasdfasd                    f             " + parameters.length);
                 lambdaBody += this.generateParameterVariable(parameters, 2);
 
                 // Condition (i + 1) < parameters.length to ensure we don't accidentally
