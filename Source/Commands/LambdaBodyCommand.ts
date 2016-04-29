@@ -50,8 +50,9 @@ namespace GLS.Commands {
         }
 
         /**
-         * Renders the command for a language with the given parameters.
-         * 
+         * Renders the lambda for a language with the given parameters.
+         *     GLS syntax (order of parameters) lambda returnType [parameterName, parameterType, ...] command
+         *     Render format: lambdaLeft parameterType parameterName, ... lambdaMiddle commandString lambdaRight
          * @param parameters   The command's name, followed by any parameters.
          * @returns Line(s) of code in the language.
          * @remarks Usage: ([parameterName, parameterType, ...]).
@@ -68,9 +69,21 @@ namespace GLS.Commands {
                 throw Error("returnTypeRequired=true not implemented");
             }
 
-            if (parameters.length > 2) {
+            // Minimum set of parameters:
+            // [lambda, returnType, command]
+            //     0        1          2     (length = 3)
+            // Extended with variables:
+            // [lambda, returnType, parameterName, parameterType, command]
+            //     0         1            2              3           4      (length = 5) 
+
+            // If we have at least 1 set of parameters, need to handle them.
+            if (parameters.length > 3) {
+                // console.log("asdfasdfasdfasdfasdfasd                    f             " + parameters.length);
                 lambdaBody += this.generateParameterVariable(parameters, 2);
-                for (let i: number = 4; i < parameters.length; i += 2) {
+
+                // Condition (i + 1) < parameters.length to ensure we don't accidentally
+                // render the command as a variable.
+                for (let i: number = 4; (i + 1) < parameters.length; i += 2) {
                     lambdaBody += ", ";
                     lambdaBody += this.generateParameterVariable(parameters, i);
                 }
