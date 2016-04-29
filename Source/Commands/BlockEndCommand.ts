@@ -17,7 +17,7 @@ namespace GLS.Commands {
          * @remarks Usage: ().
          */
         public render(parameters: string[]): LineResults {
-            let ender: string = this.language.properties.conditionals.end;
+            let ender: string = this.renderBlockEnd();
 
             if (ender === "\0") {
                 return LineResults.newBlockLine("\0", -1);
