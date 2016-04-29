@@ -127,7 +127,7 @@ namespace GLS.Languages {
             lambdas.functionMiddle = ": ";
             lambdas.functionRight = "";
         }
-        
+
         /**
          * Generates general metadata.
          * 
