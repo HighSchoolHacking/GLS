@@ -60,6 +60,7 @@ namespace GLS.Languages {
                 "dictionary": "Hash",
                 "number": "Float"
             };
+            classes.declareEnd = "end";
             classes.declareExtendsLeft = " < ";
             classes.declareExtendsRight = "";
             classes.declareStartLeft = "class ";

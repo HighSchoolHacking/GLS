@@ -31,9 +31,9 @@ namespace GLS.Languages {
          * @param classes   A property container for metadata on classes.
          */
         protected generateClassProperties(classes: Properties.ClassProperties): void {
+            classes.declareEnd = "}";
             classes.declareExtendsRight = "";
             classes.declareStartLeft = "class ";
-            classes.defineEnd = "}";
             classes.newStart = "new ";
             classes.staticLabel = "static ";
             classes.this = "this";

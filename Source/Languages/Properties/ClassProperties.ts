@@ -44,7 +44,7 @@ namespace GLS.Languages.Properties {
         /**
          * The last line of a class declaration.
          */
-        public defineEnd: string;
+        public declareEnd: string;
 
         /**
          * How to start the first line of a class declaration.

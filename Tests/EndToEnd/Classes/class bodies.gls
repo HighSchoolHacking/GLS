@@ -1,0 +1,10 @@
+-
+class start : Point
+class end
+
+class start : Measurements<T> 
+class end
+
+class start : Shape Measurements<Point>
+class end
+-
