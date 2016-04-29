@@ -1,4 +1,4 @@
-var ComparisonTestsRunner = (() => {
+var ComparisonTestsRunner = (function () {
     "use strict";
 
     const expect = require("chai").expect;

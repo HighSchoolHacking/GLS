@@ -1,0 +1,10 @@
+-
+comment line : If/ElseIf/Else
+if start : aaa
+    comment line : ...
+else if start : { operation : 2 plus 2 (equal to) 4 }
+    comment line : ...
+else start
+    comment line : ...
+if end
+-

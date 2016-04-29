@@ -18,7 +18,7 @@ namespace GLS.Commands {
         private static parameters: Parameters.Parameter[] = [
             new Parameters.SingleParameter("tag", "The name of the tag.", true),
             new Parameters.SingleParameter("parameter", "An optional descriptor for the tag.", false),
-            new Parameters.SingleParameter("comments", "Comments regarding the tag.", false)
+            new Parameters.RepeatingParameters("Comments regarding the tag", [])
         ];
 
         /**
@@ -58,8 +58,6 @@ namespace GLS.Commands {
          * @returns Line(s) of code in the language.
          */
         private renderXmlDoc(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 2);
-
             let lineStart: string = this.language.properties.comments.docLineStart,
                 tagRaw: string = parameters[1],
                 tag: string = this.parseTag(tagRaw),
@@ -102,8 +100,6 @@ namespace GLS.Commands {
          * @returns Line(s) of code in the language.
          */
         private renderJsDoc(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 2);
-
             let tagRaw: string = parameters[1],
                 tagParsed: string = this.parseTag(tagRaw),
                 tag: string = tagParsed + this.language.properties.comments.docTagEnd,

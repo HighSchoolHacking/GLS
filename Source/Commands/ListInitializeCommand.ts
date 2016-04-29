@@ -45,8 +45,6 @@ namespace GLS.Commands {
                 return this.context.convertParsed(parameters);
             }
 
-            this.requireParametersLengthMinimum(parameters, 1);
-
             let typeNameRaw: string = "list<" + parameters[1] + ">",
                 typeName: string = this.context.convertCommon("type", typeNameRaw),
                 output: string = "new " + typeName;

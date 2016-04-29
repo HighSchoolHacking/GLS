@@ -34,8 +34,6 @@ namespace GLS.Commands {
          * @remarks Usage: (value).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 1);
-
             let not = this.language.properties.operators.not;
 
             return LineResults.newSingleLine(not + parameters[1], false);

@@ -39,9 +39,6 @@ namespace GLS.Commands {
          * @remarks Usage: (value, operator, value[, operator, value, ...]).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLengthMinimum(parameters, 3);
-            this.requireParametersLengthOdd(parameters);
-
             let result = this.context.convertCommon("value", parameters[1]);
 
             for (let i: number = 2; i < parameters.length; i += 2) {

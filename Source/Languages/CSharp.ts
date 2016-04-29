@@ -78,10 +78,10 @@ namespace GLS.Languages {
             super.generateCommentProperties(comments);
 
             comments.docAsXml = true;
-            comments.docEnd = "";
+            comments.docEnd = "\0";
             comments.docLineEnd = "";
             comments.docLineStart = "/// ";
-            comments.docStart = "";
+            comments.docStart = "\0";
             comments.docTagAliases = {
                 "note": "remarks",
                 "parameter": "param",

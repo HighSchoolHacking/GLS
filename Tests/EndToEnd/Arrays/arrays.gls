@@ -1,0 +1,13 @@
+-
+comment line : Initialization
+variable : aaa string[] { array initialize : string }
+variable : bbb int[] { array initialize : int 1 2 3 }
+variable : ccc string[][] { array initialize : string[] aaa { array initialize : string "eee" "fff" } }
+
+comment line : Members
+index : aaa 0
+index : aaa { operation : 1 plus 1 }
+
+comment line : Length
+array length : aaa
+-

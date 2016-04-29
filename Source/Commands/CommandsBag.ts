@@ -168,7 +168,11 @@ namespace GLS.Commands {
          * @returns Line(s) of code in the language.
          */
         public renderCommand(parameters: string[]): Commands.LineResults {
-            return this.getCommand(parameters[0]).render(parameters);
+            let command: Command = this.getCommand(parameters[0]);
+
+            command.checkParameterValidity(parameters);
+
+            return command.render(parameters);
         }
     }
 }

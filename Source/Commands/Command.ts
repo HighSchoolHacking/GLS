@@ -2,6 +2,7 @@
 /// <reference path="../ConversionContext.ts" />
 /// <reference path="LineResults.ts" />
 /// <reference path="Parameters/Parameter.ts" />
+/// <reference path="Parameters/Restrictions.ts" />
 
 namespace GLS.Commands {
     "use strict";
@@ -31,6 +32,11 @@ namespace GLS.Commands {
         protected addsSemicolon: boolean;
 
         /**
+         * Validity checker for provided parameters.
+         */
+        private parameterRestrictions: Parameters.Restrictions;
+
+        /**
          * Initializes a new instance of the Command class.
          * 
          * @param context   The driving context for converting the command.
@@ -38,6 +44,7 @@ namespace GLS.Commands {
         constructor(context: ConversionContext) {
             this.context = context;
             this.language = context.getLanguage();
+            this.parameterRestrictions = new Parameters.Restrictions(this.getParameters());
         }
 
         /**
@@ -52,6 +59,15 @@ namespace GLS.Commands {
          */
         public getParameters(): Parameters.Parameter[] {
             return Command.defaultParameters;
+        }
+
+        /**
+         * Checks if parameters are valid, throwing an error if not.
+         * 
+         * @param parameters   The command's name, followed by any parameters.
+         */
+        public checkParameterValidity(parameters: string[]): void {
+            this.parameterRestrictions.checkValidity(parameters);
         }
 
         /**
@@ -98,76 +114,6 @@ namespace GLS.Commands {
             }
 
             lines[lines.length - 1].indentation = indentation;
-        }
-
-        /**
-         * Throws an error if an incorrect number of parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         * @param minimum   The allowed number of parameters.
-         */
-        protected requireParametersLength(parameters: string[], amount: number): void {
-            if (parameters.length - 1 !== amount) {
-                throw new Error(`Not the right amount of parameters: expected ${amount} but got ${parameters.length - 1}.`);
-            }
-        }
-
-        /**
-         * Throws an error if not enough parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         * @param minimum   The minimum allowed number of parameters.
-         */
-        protected requireParametersLengthMinimum(parameters: string[], minimum: number): void {
-            if (parameters.length - 1 < minimum) {
-                throw new Error(`Not enough arguments: expected at least ${minimum} but got ${parameters.length - 1}.`);
-            }
-        }
-
-        /**
-         * Throws an error if too many parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         * @param minimum   The minimum allowed number of parameters.
-         */
-        protected requireParametersLengthMaximum(parameters: string[], maximum: number): void {
-            if (parameters.length - 1 > maximum) {
-                throw new Error(`Too many arguments: expected fewer than ${maximum} but got ${parameters.length - 1}.`);
-            }
-        }
-
-        /**
-         * Throws an error if not enough or too many parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         * @param maximum   The maximum allowed number of parameters.
-         * @param minimum   The minimum allowed number of parameters.
-         */
-        protected requireParametersLengthRange(parameters: string[], minimum: number, maximum: number): void {
-            this.requireParametersLengthMinimum(parameters, minimum);
-            this.requireParametersLengthMaximum(parameters, maximum);
-        }
-
-        /**
-         * Throws an error if an odd number of parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         */
-        protected requireParametersLengthEven(parameters: string[]): void {
-            if ((parameters.length % 2 - 1) !== 0) {
-                throw new Error(`Expected parameters to be even, but got ${parameters.length - 1}.`);
-            }
-        }
-
-        /**
-         * Throws an error if an even number of parameters are passed.
-         * 
-         * @param parameters   Parameters passed to a command.
-         */
-        protected requireParametersLengthOdd(parameters: string[]): void {
-            if ((parameters.length - 1) % 2 === 0) {
-                throw new Error(`Expected parameters to be odd, but got ${parameters.length - 1}.`);
-            }
         }
     }
 }

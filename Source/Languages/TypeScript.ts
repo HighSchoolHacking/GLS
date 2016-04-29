@@ -59,6 +59,7 @@ namespace GLS.Languages {
 
             classes.aliases = {
                 "dictionary": "object",
+                "double": "number",
                 "float": "number",
                 "int": "number"
             };

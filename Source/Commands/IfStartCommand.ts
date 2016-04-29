@@ -34,8 +34,6 @@ namespace GLS.Commands {
          * @remarks Usage: (conditional).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 1);
-
             let line: string = this.language.properties.conditionals.if;
             line += this.language.properties.conditionals.startLeft;
             line += parameters[1];

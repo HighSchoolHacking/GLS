@@ -17,8 +17,6 @@ namespace GLS.Commands {
          * @remarks Usage: ().
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 0);
-
             let lines = [new CommandResult("", -1)],
                 indentation: number;
 

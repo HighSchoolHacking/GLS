@@ -37,8 +37,6 @@ namespace GLS.Commands {
          * @remarks Usage: (name, type, start, end).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 4);
-
             let starter: string;
 
             if (this.language.properties.loops.rangedForLoops) {
@@ -85,7 +83,7 @@ namespace GLS.Commands {
             let output: string = this.language.properties.loops.for;
 
             output += this.language.properties.conditionals.startLeft;
-            output += this.context.convertParsed(["variable inline", parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
+            output += this.context.convertParsed(["variable", parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
             output += this.language.properties.style.semicolon + " ";
             output += this.context.convertParsed(["operation", parameters[1], "less than", parameters[4]]).commandResults[0].text;
             output += this.language.properties.style.semicolon + " ";

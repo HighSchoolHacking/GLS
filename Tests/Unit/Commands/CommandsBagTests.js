@@ -1,13 +1,14 @@
 var expect = require("chai").expect,
+    mocha = require("mocha"),
     mocks = require("../../mocks.js"),
     GLS = require("../../../Distribution/GLS.js");
 
-(() => {
+(function () {
     "use strict";
 
-    describe("CommandsBag", () => {
-        describe("renderCommand", () => {
-            it("renders a command by name", () => {
+    mocha.describe("CommandsBag", () => {
+        mocha.describe("renderCommand", () => {
+            mocha.it("renders a command by name", () => {
                 let commandsBag = mocks.mockCommandsBag(),
                     language = mocks.mockLanguage(),
                     lines = commandsBag.renderCommand([GLS.Commands.CommandStrings.LiteralCommandName]),
@@ -16,7 +17,7 @@ var expect = require("chai").expect,
                 expect(result.length).to.be.equal(1);
             });
 
-            it("throws an error for an unknown command", () => {
+            mocha.it("throws an error for an unknown command", () => {
                 let commandsBag = mocks.mockCommandsBag(),
                     language = mocks.mockLanguage(),
                     action = () => commandsBag.renderCommand(["definitely not a command"]);

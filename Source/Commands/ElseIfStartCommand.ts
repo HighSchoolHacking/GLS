@@ -34,8 +34,6 @@ namespace GLS.Commands {
          * @remarks Usage: (conditional).
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 1);
-
             let lines = [new CommandResult("", -1)],
                 line: CommandResult;
 

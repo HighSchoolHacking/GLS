@@ -17,8 +17,6 @@ namespace GLS.Commands {
          * @remarks Usage: ().
          */
         public render(parameters: string[]): LineResults {
-            this.requireParametersLength(parameters, 0);
-
             return LineResults.newSingleLine(this.language.properties.classes.this, false);
         }
     }
