@@ -103,7 +103,6 @@ namespace GLS.Languages {
             enums.declareCommaRight = "";
             enums.declareLastRight = "";
             enums.valueLeft = "";
-            enums.valueMiddle = ".";
             enums.valueRight = "";
         }
 

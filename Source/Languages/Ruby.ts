@@ -141,9 +141,10 @@ namespace GLS.Languages {
         protected generateEnumProperties(enums: Properties.EnumProperties): void {
             super.generateEnumProperties(enums);
 
-            enums.declareEnd = "}";
-            enums.declareStartRight = " {";
+            enums.declareEnd = "end";
+            enums.declareStartRight = "";
             enums.declareValueLeft = " = ";
+            enums.valueMiddle = "::";
         }
 
         /**

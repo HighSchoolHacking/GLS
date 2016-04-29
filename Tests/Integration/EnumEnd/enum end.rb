@@ -1,4 +1,4 @@
 -
-class Direction {
-}
+class Direction
+end
 -

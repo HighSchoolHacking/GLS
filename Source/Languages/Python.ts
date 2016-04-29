@@ -134,6 +134,7 @@ namespace GLS.Languages {
             enums.declareEnd = "\0";
             enums.declareStartRight = "(Enum):";
             enums.declareValueLeft = " = ";
+            enums.valueMiddle = ".";
         }
 
         /**

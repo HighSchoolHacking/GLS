@@ -39,7 +39,7 @@ Direction.Horizontal
 ### Ruby
 
 ```ruby
-Direction.Horizontal
+Direction::Horizontal
 ```
 
 ### TypeScript
@@ -111,7 +111,7 @@ Retrieving an enum value consists of `ValueLeft`, the name of the container enum
         <tr>
             <th>Ruby</th>
             <td>`""`</td>
-            <td>`"."`</td>
+            <td>`"::"`</td>
             <td>`""`</td>
         </tr>
         <tr>

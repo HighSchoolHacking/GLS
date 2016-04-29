@@ -1,3 +1,3 @@
 -
-Direction.Horizontal
+Direction::Horizontal
 -

@@ -71,11 +71,11 @@ class Direction(Enum):
 ### Ruby
 
 ```
-class Direction {
+class Direction
     Unknown = 0
     Horizontal = 1
     Vertical = 2
-}
+end
 ```
 
 ### TypeScript
@@ -208,12 +208,12 @@ The ending line consists solely of `DeclareEnd`.
         <tr>
             <th>TypeScript</th>
             <td>`"enum "`</td>
-            <td>`" {"`</td>
+            <td>`""`</td>
             <td>`" = "`</td>
             <td>`""`</td>
             <td>`","`</td>
             <td>`""`</td>
-            <td>`"}"`</td>
+            <td>`"end"`</td>
         </tr>
     <tbody>
 </table>
