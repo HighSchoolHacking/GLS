@@ -27,7 +27,8 @@ A class descriptor is a class name and, optionally, any number of names of gener
 
 Ending a class declaration will be done with the `class end` command.
 
-### Usage
+
+## Usage
 
 ```
 class start : Point
@@ -39,9 +40,6 @@ class end
 class start : Shape Measurements<Point>
 class end
 ```
-
-
-## Language Examples
 
 ### CSharp
 
@@ -114,7 +112,101 @@ class Shape extends Measurements<Point> {
 ```
 
 
-## Errata
+## Implementation
+
+### Properties
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DeclareStartLeft</td>
+            <td>string</td>
+            <td>Start of the first line of a class declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareExtendsLeft</td>
+            <td>string</td>
+            <td>Start of a parent class declaration within a class declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareExtendsRight</td>
+            <td>string</td>
+            <td>End of a parent class declaration within a class declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareStartRight</td>
+            <td>string</td>
+            <td>End of the first line of a class declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareEnd</td>
+            <td>string</td>
+            <td>End line of a class declaration.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Language Values
+
+<table>
+    <thead>
+        <th>Language</th>
+        <th>DeclareStartLeft</th>
+        <th>DeclareExtendsLeft</th>
+        <th>DeclareExtendsRight</th>
+        <th>DeclareStartRight</th>
+        <th>DeclareEnd</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>CSharp</th>
+            <td>`"class "`</td>
+            <td>`" : "`</td>
+            <td>`""`</td>
+            <td>`"\n{"`</td>
+            <td>`"}"`</td>
+        </tr>
+        <tr>
+            <th>Java</th>
+            <td>`"class "`</td>
+            <td>`" extends "`</td>
+            <td>`""`</td>
+            <td>`"{"`</td>
+            <td>`"}"`</td>
+        </tr>
+        <tr>
+            <th>Python</th>
+            <td>`"def "`</td>
+            <td>`"("`</td>
+            <td>`")"`</td>
+            <td>`":"`</td>
+            <td>`""`</td>
+        </tr>
+        <tr>
+            <th>Ruby</th>
+            <td>`"class "`</td>
+            <td>`" < "`</td>
+            <td>`""`</td>
+            <td>`""`</td>
+            <td>`"end"`</td>
+        </tr>
+        <tr>
+            <th>TypeScript</th>
+            <td>`"class "`</td>
+            <td>`" extends"`</td>
+            <td>`""`</td>
+            <td>`"{"`</td>
+            <td>`"}"`</td>
+        </tr>
+    </tbody>
+</table>
+
+### Errata
 
 * Some languages such as Java and TypeScript do not support multiple inheritance, so GLS will not.
 * Interfaces do not exist in Python, so marking a class as implementing one is currently out of scope.
