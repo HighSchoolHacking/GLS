@@ -1,0 +1,10 @@
+-
+enum start : Direction
+    enum member : Unknown 0 ,
+    enum member : Horizontal 1 ,
+    enum member : Vertical 2
+enum end
+
+variable : direction Direction
+variable : unknown Direction { enum : Direction Unknown }
+-
