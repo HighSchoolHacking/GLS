@@ -43,9 +43,9 @@ namespace GLS.Commands {
             output += "(";
 
             if (parameters.length > 1) {
-                output += parameters[2];
+                output += parameters[1];
 
-                for (let i: number = 3; i < parameters.length; i += 1) {
+                for (let i: number = 2; i < parameters.length; i += 1) {
                     output += ", " + parameters[i];
                 }
             }

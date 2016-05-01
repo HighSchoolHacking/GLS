@@ -1,3 +1,3 @@
 -
-def aaa(bbb):
+class aaa(bbb):
 -

@@ -1,0 +1,19 @@
+-
+class start : Point
+    constructor start : Point x int y int
+        comment line : ...
+    constructor end
+class end
+
+class start : Measurements<T>
+    constructor start : Measurements items T[]
+        comment line : ...
+    constructor end
+class end
+
+class start : Shape Measurements<Point>
+    constructor start : Shape points Point[]
+        comment line : ...
+    constructor end
+class end
+-
