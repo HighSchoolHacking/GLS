@@ -1,4 +1,5 @@
 /// <reference path="CLikeLanguage.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
@@ -77,8 +78,8 @@ namespace GLS.Languages {
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
             super.generateClassMemberVariableProperties(variables);
 
-            variables.protectedCase = Properties.CaseStyle.CamelCase;
-            variables.publicCase = Properties.CaseStyle.CamelCase;
+            variables.protectedCase = Casing.CaseStyle.CamelCase;
+            variables.publicCase = Casing.CaseStyle.CamelCase;
         }
 
         /**

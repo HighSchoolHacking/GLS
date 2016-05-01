@@ -1,4 +1,5 @@
 /// <reference path="PythonicLanguage.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
@@ -78,11 +79,11 @@ namespace GLS.Languages {
             super.generateClassMemberVariableProperties(variables);
 
             variables.private = "__";
-            variables.privateCase = Properties.CaseStyle.SnakeCase;
+            variables.privateCase = Casing.CaseStyle.SnakeCase;
             variables.protected = "_";
-            variables.protectedCase = Properties.CaseStyle.SnakeCase;
+            variables.protectedCase = Casing.CaseStyle.SnakeCase;
             variables.public = "";
-            variables.publicCase = Properties.CaseStyle.CamelCase;
+            variables.publicCase = Casing.CaseStyle.CamelCase;
         }
 
         /**

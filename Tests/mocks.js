@@ -5,11 +5,21 @@ var GLS = require("../Distribution/GLS.js");
  */
 var mocks = {
     /**
+     * @returns A mocked CaseStyleConverterBag.
+     */
+    mockCaseStyleConverter: () => new GLS.Languages.Casing.CaseStyleConverter(),
+
+    /**
+     * @returns A mocked CaseStyleConverterBag.
+     */
+    mockCaseStyleConverterBag: () => new GLS.Languages.Casing.CaseStyleConverterBag(),
+
+    /**
      * @param language   A Language for the context (by default, a mocked Language).
      * @returns A mocked ConversionContext.
      */
     mockConversionContext: language => new GLS.ConversionContext(language || mocks.mockLanguage()),
-    
+
     /**
      * @param language   A Language for the context (by default, a mocked Language).
      * @returns A mocked CommandsBag.

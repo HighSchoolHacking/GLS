@@ -1,7 +1,7 @@
 /// <reference path="Language.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
-/// <reference path="Properties/CaseStyle.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
 /// <reference path="Properties/ClassGenericProperties.ts" />
 /// <reference path="Properties/ClassMemberProperties.ts" />
@@ -59,7 +59,7 @@ namespace GLS.Languages {
          */
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
             variables.private = "private ";
-            variables.privateCase = Properties.CaseStyle.CamelCase;
+            variables.privateCase = Casing.CaseStyle.CamelCase;
             variables.protected = "protected ";
             variables.public = "public ";
         }

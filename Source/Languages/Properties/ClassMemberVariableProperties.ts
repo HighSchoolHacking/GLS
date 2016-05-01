@@ -1,4 +1,4 @@
-/// <reference path="CaseStyle.ts" />
+/// <reference path="../Casing/CaseStyle.ts" />
 
 namespace GLS.Languages.Properties {
     "use strict";
@@ -15,7 +15,7 @@ namespace GLS.Languages.Properties {
         /**
          * Casing modifier for public member variables.
          */
-        publicCase: CaseStyle;
+        publicCase: Casing.CaseStyle;
 
         /**
          * Prefix for protected members.
@@ -25,7 +25,7 @@ namespace GLS.Languages.Properties {
         /**
          * Casing modifier for protected member variables.
          */
-        protectedCase: CaseStyle;
+        protectedCase: Casing.CaseStyle;
 
         /**
          * Prefix for private members.
@@ -35,7 +35,7 @@ namespace GLS.Languages.Properties {
         /**
          * Casing modifier for private member variables.
          */
-        privateCase: CaseStyle;
+        privateCase: Casing.CaseStyle;
 
         /**
          * Whether member variables shouldn't be declared.
