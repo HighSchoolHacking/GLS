@@ -58,13 +58,13 @@ print line : { operation : 1 plus 2 }
     </thead>
     <tbody>
         <tr>
-            <th>C++ Compiler</th>
+            <td>C++ Compiler</td>
             <td>0.1</td>
             <td>May 2015</td>
             <td>Command-line GLS prototype, written in C++.</td>
         </tr>
         <tr>
-            <th>TypeScript Compiler Draft</th>
+            <td>TypeScript Compiler draft</td>
             <td>0.2</td>
             <td>July 2015</td>
             <td>GLS compiler as a website, written in TypeScript.</td>
@@ -205,22 +205,22 @@ Not all languages work similarly to the supported ones. These will likely never 
     <tbody>
         <tr>
             <th>C</th>
-            <td>*✓*</td>
-            <td>*✓*</td>
+            <td>✓</td>
+            <td>✓</td>
         </tr>
         <tr>
             <th>C++</th>
-            <td>*✓*</td>
+            <td>✓</td>
             <td></td>
         </tr>
         <tr>
-            <th>JavaScript (<ES6)</th>
+            <th>JavaScript (&lt;ES6)</th>
             <td></td>
-            <td>*✓*</td>
+            <td>✓</td>
         </tr>
         <tr>
             <th>Rust</th>
-            <td>*✓*</td>
+            <td>✓</td>
             <td></td>
         </tr>
     </tbody>

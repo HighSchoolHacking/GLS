@@ -1,0 +1,3 @@
+-
+lambda { |aaa| puts aaa }
+-
