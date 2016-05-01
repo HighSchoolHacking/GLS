@@ -64,11 +64,9 @@ namespace GLS.Commands {
             lambdaBody += this.language.properties.lambdas.functionLeft;
 
             if (this.language.properties.lambdas.returnTypeRequired) {
-                // No language requires this yet, so format is unknown.
                 throw Error("returnTypeRequired=true not implemented");
             }
 
-            // If we have at least 1 set of parameters, need to handle them.
             if (parameters.length > 3) {
                 lambdaBody += this.generateParameterVariable(parameters, 2);
 
