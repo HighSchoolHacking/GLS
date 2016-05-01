@@ -33,10 +33,6 @@ namespace GLS.Languages.Casing {
          * 
          */
         public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
-            if (caseStyle === undefined) {
-                throw new Error("No case style provided.");
-            }
-
             let caseStyleAlias = caseStyle.toString();
 
             if (!this.converters.hasOwnProperty(caseStyleAlias)) {

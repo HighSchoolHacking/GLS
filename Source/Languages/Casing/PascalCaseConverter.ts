@@ -8,10 +8,13 @@ namespace GLS.Languages.Casing {
      */
     export class PascalCaseConverter extends CaseStyleConverter {
         /**
+         * Transforms a word within a name to PascalCase.
          * 
+         * @param word   A word within a name.
+         * @returns The word transformed to PascalCase.
          */
-        public applyTransformationToWord(name: string, start: number, nextWordStart: number) {
-            return name.substring(0, start) + name[start].toUpperCase() + name.substring(start + 1);
+        public applyTransformationToWord(word: string) {
+            return word[0].toUpperCase() + word.substring(1).toLowerCase();
         }
     }
 }
