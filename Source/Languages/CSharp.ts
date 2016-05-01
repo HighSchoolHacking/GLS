@@ -67,6 +67,7 @@ namespace GLS.Languages {
             };
             classes.declareExtendsLeft = " : ";
             classes.declareStartRight = "\n{";
+            classes.superConstructor = "base";
         }
 
         /**

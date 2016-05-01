@@ -1,3 +1,3 @@
 -
-def aaa:
+class aaa:
 -

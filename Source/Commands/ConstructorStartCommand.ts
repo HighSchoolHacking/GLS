@@ -59,9 +59,9 @@ namespace GLS.Commands {
             }
 
             if (parameters.length > 3) {
-                declaration += this.generateParameterVariable(parameters, 3);
+                declaration += this.generateParameterVariable(parameters, 2);
 
-                for (let i: number = 5; i < parameters.length; i += 2) {
+                for (let i: number = 4; i < parameters.length; i += 2) {
                     declaration += ", ";
                     declaration += this.generateParameterVariable(parameters, i);
                 }

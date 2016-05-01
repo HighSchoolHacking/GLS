@@ -59,6 +59,7 @@
 /// <reference path="ReturnCommand.ts" />
 /// <reference path="StringIndexCommand.ts" />
 /// <reference path="StringLengthCommand.ts" />
+/// <reference path="SuperConstructorCommand.ts" />
 /// <reference path="ThisCommand.ts" />
 /// <reference path="TypeCommand.ts" />
 /// <reference path="ValueCommand.ts" />
@@ -144,6 +145,7 @@ namespace GLS.Commands {
                 "return": new ReturnCommand(context),
                 "string index": new StringIndexCommand(context),
                 "string length": new StringLengthCommand(context),
+                "super constructor": new SuperConstructorCommand(context),
                 "this": new ThisCommand(context),
                 "type": new TypeCommand(context),
                 "value": new ValueCommand(context),
