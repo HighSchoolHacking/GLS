@@ -60,8 +60,11 @@ namespace GLS.Languages {
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
             variables.private = "private ";
             variables.privateCase = Casing.CaseStyle.CamelCase;
+            variables.privatePrefix = "";
             variables.protected = "protected ";
+            variables.protectedPrefix = "";
             variables.public = "public ";
+            variables.publicPrefix = "";
         }
 
         /**

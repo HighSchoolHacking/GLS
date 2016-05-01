@@ -133,7 +133,7 @@ this.gender;
     <tbody>
         <tr>
             <td>MemberVariablePublic</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Decorator for public member variables.</td>
         </tr>
         <tr>
@@ -143,12 +143,12 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariablePublicPrefix</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Prefix for public member variables.</td>
         </tr>
         <tr>
             <td>MemberVariableProtected</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Decorator for protected member variables.</td>
         </tr>
         <tr>
@@ -158,12 +158,12 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariableProtectedPrefix</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Prefix for protected member variables.</td>
         </tr>
         <tr>
             <td>MemberVariablePrivate</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Decorator for private member variables.</td>
         </tr>
         <tr>
@@ -173,12 +173,12 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariablePrivatePrefix</td>
-            <td>`string`</td>
+            <td><code>string</code></td>
             <td>Prefix for private member variables.</td>
         </tr>
         <tr>
             <td>SkipMemberVariables</td>
-            <td>`boolean`</td>
+            <td><code>boolean</code></td>
             <td>Whether member variables should skip declaration.</td>
         </tr>
     </tbody>

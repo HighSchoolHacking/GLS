@@ -8,7 +8,7 @@ namespace GLS.Languages.Properties {
      */
     export class ClassMemberVariableProperties {
         /**
-         * Prefix for public members.
+         * Decorator for public members.
          */
         public: string;
 
@@ -18,7 +18,12 @@ namespace GLS.Languages.Properties {
         publicCase: Casing.CaseStyle;
 
         /**
-         * Prefix for protected members.
+         * Prefix for public members.
+         */
+        publicPrefix: string;
+
+        /**
+         * Decorator for protected members.
          */
         protected: string;
 
@@ -28,7 +33,12 @@ namespace GLS.Languages.Properties {
         protectedCase: Casing.CaseStyle;
 
         /**
-         * Prefix for private members.
+         * Prefix for protected members.
+         */
+        protectedPrefix: string;
+
+        /**
+         * Decorator for private members.
          */
         private: string;
 
@@ -36,6 +46,11 @@ namespace GLS.Languages.Properties {
          * Casing modifier for private member variables.
          */
         privateCase: Casing.CaseStyle;
+
+        /**
+         * Prefix for private members.
+         */
+        privatePrefix: string;
 
         /**
          * Whether member variables shouldn't be declared.

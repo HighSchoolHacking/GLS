@@ -53,6 +53,7 @@ namespace GLS.Languages {
          */
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
             variables.skipMemberVariables = true;
+            variables.publicPrefix = "";
         }
 
         /**
