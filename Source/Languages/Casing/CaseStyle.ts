@@ -1,4 +1,4 @@
-namespace GLS.Languages.Properties {
+namespace GLS.Languages.Casing {
     "use strict";
 
     /**

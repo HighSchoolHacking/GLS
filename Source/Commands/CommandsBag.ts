@@ -168,7 +168,7 @@ namespace GLS.Commands {
          */
         public getCommand(alias: string): Command {
             if (!this.commands.hasOwnProperty(alias)) {
-                throw new Error(`Unknown command requested: ${alias}`);
+                throw new Error(`Unknown command requested: '${alias}'.`);
             }
 
             return this.commands[alias];

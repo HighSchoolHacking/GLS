@@ -3,6 +3,7 @@
 /// <reference path="Commands/CommandResult.ts" />
 /// <reference path="Commands/LineResults.ts" />
 /// <reference path="Languages/Language.ts" />
+/// <reference path="Languages/Casing/CaseStyleConverterBag.ts" />
 
 namespace GLS {
     "use strict";
@@ -14,8 +15,13 @@ namespace GLS {
         /**
          * A bag for globally known commands.
          */
+        private caseConverter: Languages.Casing.CaseStyleConverterBag;
+
+        /**
+         * A bag for globally known commands.
+         */
         private commandsBag: Commands.CommandsBag;
-        
+
         /**
          * The driving context for converting commands.
          */
@@ -27,6 +33,7 @@ namespace GLS {
          * @param context   A driving context for converting commands.
          */
         constructor(context: ConversionContext) {
+            this.caseConverter = new Languages.Casing.CaseStyleConverterBag();
             this.context = context;
             this.commandsBag = new Commands.CommandsBag(context);
         }
@@ -57,6 +64,13 @@ namespace GLS {
          */
         public renderParsedCommand(lineParsed: string[]): Commands.LineResults {
             return this.commandsBag.renderCommand(lineParsed);
+        }
+
+        /**
+         * 
+         */
+        public convertToCase(name: string, casingStyle: Languages.Casing.CaseStyle): string {
+            return this.caseConverter.convert(name, casingStyle);
         }
 
         /**

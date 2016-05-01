@@ -1,5 +1,5 @@
 /// <reference path="../Languages/Language.ts" />
-/// <reference path="../Languages/Properties/CaseStyle.ts" />
+/// <reference path="../Languages/Casing/CaseStyle.ts" />
 /// <reference path="Command.ts" />
 /// <reference path="LineResults.ts" />
 /// <reference path="Parameters/Parameter.ts" />
@@ -44,7 +44,7 @@ namespace GLS.Commands {
 
             let output: string = "",
                 privacy: string = parameters[1],
-                privacyCase: Languages.Properties.CaseStyle;
+                privacyCase: Languages.Casing.CaseStyle;
 
             if (privacy === "public") {
                 output += this.language.properties.classes.members.variables.public;
@@ -59,7 +59,8 @@ namespace GLS.Commands {
                 throw new Error(`Unknown privacy: '${parameters[1]}'.`);
             }
 
-            output += this.context.convertParsed(["variable inline", parameters[2], parameters[3]]).commandResults[0].text;
+            let name: string = this.context.convertToCase(parameters[2], privacyCase);
+            output += this.context.convertParsed(["variable inline", name, parameters[3]]).commandResults[0].text;
 
             return LineResults.newSingleLine(output, true);
         }
