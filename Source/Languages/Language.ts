@@ -50,6 +50,7 @@ namespace GLS.Languages {
             this.generateExceptionProperties(this.properties.exceptions);
             this.generateFunctionProperties(this.properties.functions);
             this.generateGeneralProperties(this.properties.general);
+            this.generateImportProperties(this.properties.imports);
             this.generateLambdaProperties(this.properties.lambdas);
             this.generateListProperties(this.properties.lists);
             this.generateLoopProperties(this.properties.loops);
@@ -144,6 +145,13 @@ namespace GLS.Languages {
          * Fills out metadata on general properties.
          */
         protected abstract generateGeneralProperties(general: Properties.GeneralProperties): void;
+
+        /**
+         * Generates metadata on imports.
+         * 
+         * @param imports   A property container for metadata on imports.
+         */
+        protected abstract generateImportProperties(lambdas: Properties.ImportProperties): void;
 
         /**
          * Generates metadata on lambdas.

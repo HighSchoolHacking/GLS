@@ -198,6 +198,14 @@ namespace GLS.Languages {
         }
 
         /**
+         * Generates metadata on imports.
+         * 
+         * @param imports   A property container for metadata on imports.
+         */
+        protected generateImportProperties(imports: Properties.ImportProperties): void {
+        }
+
+        /**
          * Generates metadata on lambdas.
          * 
          * @param lambdas   A property container for metadata on lambdas.
