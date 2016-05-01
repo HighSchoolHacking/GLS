@@ -16,9 +16,6 @@ namespace GLS.Commands {
          * Information on parameters this command takes in.
          */
         private static parameters: Parameters.Parameter[] = [
-            /*
-            new Parameters.SingleParameter("returnType", "The return type of the function.", true),
-            */
             new Parameters.SingleParameter(
                 "returnType",
                 "Return type of the lambda function",
@@ -50,8 +47,7 @@ namespace GLS.Commands {
 
         /**
          * Renders the lambda for a language with the given parameters.
-         *     GLS syntax (order of parameters) lambda returnType [parameterName, parameterType, ...] command
-         *     Render format: lambdaLeft parameterType parameterName, ... lambdaMiddle commandString lambdaRight
+         *
          * @param parameters   The command's name, followed by any parameters.
          * @returns Line(s) of code in the language.
          * @remarks Usage: ([parameterName, parameterType, ...]).
@@ -70,8 +66,6 @@ namespace GLS.Commands {
             if (parameters.length > 3) {
                 lambdaBody += this.generateParameterVariable(parameters, 2);
 
-                // Condition (i + 1) < parameters.length to ensure we don't accidentally
-                // render the command as a variable.
                 for (let i: number = 4; (i + 1) < parameters.length; i += 2) {
                     lambdaBody += ", ";
                     lambdaBody += this.generateParameterVariable(parameters, i);
@@ -80,7 +74,6 @@ namespace GLS.Commands {
 
             lambdaBody += this.language.properties.lambdas.functionMiddle;
 
-            // Lambda function body is passed to us as 1 string, so just append.
             lambdaBody += parameters[parameters.length - 1];
 
             lambdaBody += this.language.properties.lambdas.functionRight;
