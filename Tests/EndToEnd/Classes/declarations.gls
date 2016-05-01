@@ -1,7 +1,15 @@
 -
 class start : Point
+    member variable declare : x int
+    member variable declare : public y int
+    member variable declare : protected square int
+    member variable declare : private name string
+
     constructor start : Point x int y int
-        comment line : ...
+        operation : { member variable : { this } x } equals x
+        operation : { member variable : public { this } y } equals y
+        operation : { member variable : protected { this } square } equals { operation : x times y }
+        operation : { member variable : private { this } name } equals ""
     constructor end
 class end
 
