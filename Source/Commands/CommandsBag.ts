@@ -49,6 +49,7 @@
 /// <reference path="LiteralCommand.ts" />
 /// <reference path="MainEndCommand.ts" />
 /// <reference path="MainStartCommand.ts" />
+/// <reference path="MemberVariableDeclareCommand.ts" />
 /// <reference path="NotCommand.ts" />
 /// <reference path="OperationCommand.ts" />
 /// <reference path="OperatorCommand.ts" />
@@ -132,6 +133,7 @@ namespace GLS.Commands {
                 "literal": new LiteralCommand(context),
                 "main end": new MainEndCommand(context),
                 "main start": new MainStartCommand(context),
+                "member variable declare": new MemberVariableDeclareCommand(context),
                 "not": new NotCommand(context),
                 "operation": new OperationCommand(context),
                 "operator": new OperatorCommand(context),

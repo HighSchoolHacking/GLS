@@ -70,16 +70,15 @@ namespace GLS.Languages {
         }
 
         /**
-         * Generates metadata on class members.
+         * Generates metadata on class member variables.
          * 
-         * @param members   A property container for metadata on class members.
+         * @param members   A property container for metadata on class member variables.
          */
-        protected generateClassMemberProperties(members: Properties.ClassMemberProperties): void {
-            super.generateClassMemberProperties(members);
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            super.generateClassMemberVariableProperties(variables);
 
-            members.functionGetBound = true;
-            members.functionGetLeft = ".bind(";
-            members.functionGetRight = ")";
+            variables.protectedCase = Properties.CaseStyle.CamelCase;
+            variables.publicCase = Properties.CaseStyle.CamelCase;
         }
 
         /**

@@ -1,0 +1,73 @@
+/// <reference path="../Languages/Language.ts" />
+/// <reference path="../Languages/Properties/CaseStyle.ts" />
+/// <reference path="Command.ts" />
+/// <reference path="LineResults.ts" />
+/// <reference path="Parameters/Parameter.ts" />
+/// <reference path="Parameters/SingleParameter.ts" />
+/// <reference path="Parameters/RepeatingParameters.ts" />
+
+namespace GLS.Commands {
+    "use strict";
+
+    /**
+     * A command for declaring a member variable.
+     */
+    export class MemberVariableDeclareCommand extends Command {
+        /**
+         * Information on parameters this command takes in.
+         * 
+         * @todo Use a value restriction on privacy (once it's implemented).
+         */
+        private static parameters: Parameters.Parameter[] = [
+            new Parameters.SingleParameter("privacy", "The privacy of the member variable.", true),
+            new Parameters.SingleParameter("name", "The name of the member variable.", true),
+            new Parameters.SingleParameter("type", "The type of the variable.", true),
+            new Parameters.SingleParameter("defaultValue", "An optional default initial value for the variable.", false)
+        ];
+
+        /**
+         * @returns Information on parameters this command takes in.
+         */
+        public getParameters(): Parameters.Parameter[] {
+            return MemberVariableDeclareCommand.parameters;
+        }
+
+        /**
+         * Renders the command for a language with the given parameters.
+         * 
+         * @param parameters   The command's name, followed by any parameters.
+         * @returns Line(s) of code in the language.
+         */
+        public render(parameters: string[]): LineResults {
+            if (this.language.properties.classes.members.variables.skipBlankMemberVariables && parameters.length !== 5) {
+                return LineResults.newSingleLine("\0", false);
+            }
+
+            let output: string = "",
+                privacy: string = parameters[1],
+                privacyCase: Languages.Properties.CaseStyle;
+
+            if (privacy === "public") {
+                output += this.language.properties.classes.members.variables.public;
+                privacyCase = this.language.properties.classes.members.variables.publicCase;
+            } else if (privacy === "protected") {
+                output += this.language.properties.classes.members.variables.protected;
+                privacyCase = this.language.properties.classes.members.variables.protectedCase;
+            } else if (privacy === "private") {
+                output += this.language.properties.classes.members.variables.private;
+                privacyCase = this.language.properties.classes.members.variables.privateCase;
+            } else {
+                throw new Error(`Unknown privacy: '${parameters[1]}'.`);
+            }
+
+
+            if (parameters.length === 4) {
+                output += this.context.convertParsed(["variable inline", parameters[2], parameters[3]]).commandResults[0].text;
+            } else {
+                output += this.context.convertParsed(["variable inline", parameters[2], parameters[3], parameters[4]]).commandResults[0].text;
+            }
+
+            return LineResults.newSingleLine(output, true);
+        }
+    }
+}

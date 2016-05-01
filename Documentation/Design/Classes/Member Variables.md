@@ -123,7 +123,7 @@ public sizes: { [i: string]: number } = {
         <tr>
             <td>MemberVariablePublic</td>
             <td>`string`</td>
-            <td>Prefix for public members.</td>
+            <td>Prefix for public member variables.</td>
         </tr>
         <tr>
             <td>MemberVariablePublicCase</td>
@@ -133,7 +133,7 @@ public sizes: { [i: string]: number } = {
         <tr>
             <td>MemberVariableProtected</td>
             <td>`string`</td>
-            <td>Prefix for protected members.</td>
+            <td>Prefix for protected member variables.</td>
         </tr>
         <tr>
             <td>MemberVariableProtectedCase</td>
@@ -143,7 +143,7 @@ public sizes: { [i: string]: number } = {
         <tr>
             <td>MemberVariablePrivate</td>
             <td>`string`</td>
-            <td>Prefix for private members.</td>
+            <td>Prefix for private member variables.</td>
         </tr>
         <tr>
             <td>MemberVariablePrivateCase</td>
