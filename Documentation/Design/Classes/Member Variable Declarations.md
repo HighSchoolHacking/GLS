@@ -28,7 +28,7 @@ Some languages don't declare member variables in some or all circumstances. Thes
 
 ```
 member variable declare : public name string
-member variable declare : protected age int 0 
+member variable declare : protected age int
 member variable declare : private gender string
 ```
 
@@ -36,7 +36,7 @@ member variable declare : private gender string
 
 ```csharp
 public string Name;
-protected int Age = 0;
+protected int Age;
 private string gender;
 ```
 
@@ -44,7 +44,7 @@ private string gender;
 
 ```java
 public string name;
-protected int age = 0;
+protected int age;
 private string gender;
 ```
 
@@ -63,7 +63,7 @@ who the hell knows?
 
 ```typescript
 public name: string;
-protected age: number = 0;
+protected age: number;
 private gender: string;
 ```
 
@@ -127,6 +127,7 @@ private gender: string;
         <th>MemberVariableProtectedCase</th>
         <th>MemberVariablePrivate</th>
         <th>MemberVariablePrivateCase</th>
+        <th>SkipMemberVariables</th>
     </thead>
     <tbody>
         <tr>
