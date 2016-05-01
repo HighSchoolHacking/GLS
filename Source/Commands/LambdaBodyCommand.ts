@@ -53,15 +53,15 @@ namespace GLS.Commands {
          * @remarks Usage: ([parameterName, parameterType, ...]).
          */
         public render(parameters: string[]): LineResults {
+            if (this.language.properties.lambdas.returnTypeRequired) {
+                throw Error("returnTypeRequired=true not implemented");
+            }
+            
             let returnType: string = this.context.convertCommon("type", parameters[2]),
                 lambdaBody: string = "",
                 output: CommandResult[];
 
             lambdaBody += this.language.properties.lambdas.functionLeft;
-
-            if (this.language.properties.lambdas.returnTypeRequired) {
-                throw Error("returnTypeRequired=true not implemented");
-            }
 
             if (parameters.length > 3) {
                 lambdaBody += this.generateParameterVariable(parameters, 2);
