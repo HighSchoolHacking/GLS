@@ -67,7 +67,11 @@ namespace GLS {
         }
 
         /**
+         * Converts a name to a casing style.
          * 
+         * @param name   A name to convert.
+         * @param casingStyle   A casing style.
+         * @returns The name under the casing style.
          */
         public convertToCase(name: string, casingStyle: Languages.Casing.CaseStyle): string {
             return this.caseConverter.convert(name, casingStyle);

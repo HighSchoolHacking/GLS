@@ -30,7 +30,10 @@ namespace GLS.Languages.Casing {
         }
 
         /**
+         * Retrieves the case converter for the given casing style.
          * 
+         * @param caseStyle   A casing style.
+         * @returns The case converter under the given asing style.
          */
         public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
             let caseStyleAlias = caseStyle.toString();
@@ -43,7 +46,11 @@ namespace GLS.Languages.Casing {
         }
         
         /**
+         * Converts a name to a casing style.
          * 
+         * @param name   A name to convert.
+         * @param casingStyle   A casing style.
+         * @returns The name under the casing style.
          */
         public convert(name: string, caseStyle: CaseStyle): string {
             return this.getConverter(caseStyle).convert(name);

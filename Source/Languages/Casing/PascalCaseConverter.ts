@@ -14,7 +14,7 @@ namespace GLS.Languages.Casing {
          * @returns The word transformed to PascalCase.
          */
         public applyTransformationToWord(word: string) {
-            return word[0].toUpperCase() + word.substring(1).toLowerCase();
+            return word[0].toUpperCase() + word.substring(1);
         }
     }
 }
