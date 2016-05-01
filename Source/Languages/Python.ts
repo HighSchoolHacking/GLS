@@ -67,6 +67,7 @@ namespace GLS.Languages {
             classes.declareExtendsRight = ")";
             classes.declareStartLeft = "def ";
             classes.declareStartRight = ":";
+            classes.superConstructor = "super().__init__";
         }
 
         /**
