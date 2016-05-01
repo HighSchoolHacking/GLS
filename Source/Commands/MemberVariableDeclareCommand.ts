@@ -44,17 +44,17 @@ namespace GLS.Commands {
 
             let output: string = "",
                 privacy: string = parameters[1],
-                privacyCase: Languages.Casing.CaseStyle;
+                casingStyle: Languages.Casing.CaseStyle;
 
             if (privacy === "public") {
                 output += this.language.properties.classes.members.variables.public;
-                privacyCase = this.language.properties.classes.members.variables.publicCase;
+                casingStyle = this.language.properties.classes.members.variables.publicCase;
             } else if (privacy === "protected") {
                 output += this.language.properties.classes.members.variables.protected;
-                privacyCase = this.language.properties.classes.members.variables.protectedCase;
+                casingStyle = this.language.properties.classes.members.variables.protectedCase;
             } else if (privacy === "private") {
                 output += this.language.properties.classes.members.variables.private;
-                privacyCase = this.language.properties.classes.members.variables.privateCase;
+                casingStyle = this.language.properties.classes.members.variables.privateCase;
             } else {
                 throw new Error(`Unknown privacy: '${parameters[1]}'.`);
             }
