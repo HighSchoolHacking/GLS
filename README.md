@@ -49,31 +49,137 @@ print line : { operation : 1 plus 2 }
 
 ## Status
 
-Deliverable                                                 | Version | Date         | Description
-------------------------------------------------------------|---------|--------------|------------------------------------------------------------------------------------------------|
-C++ compiler                                                | 0.1     | May 2015     | Command-line GLS prototype, written in C++.
-TypeScript compiler draft                                   | 0.2     | July 2015    | GLS compiler as a website, written in TypeScript.
-TypeScript compiler + C# output                             | 0.3     | March 2016   | GLS compiler re-written in TypeScript, with correct TypeScript and C# output.
-Dogfood feature complete                                    | 0.4     | April 2016   | All features expected to be required for dogfooding implemented. Ruby, Python, and Java support.
-Dogfood                                                     | 0.5     | May 2016     | Compiler written in GLS code, working in C#, Java, Ruby, Python, and TypeScript.
-PowerShell, PHP, ES6 JavaScript, Objective-C, Swift, misc.  | 0.6     | June 2016    | Dogfood or reject those languages and other possibilities.
-Language specification finalized                            | 0.7     | July 2016    | Finalized language spec & cleaned internals of code.
-General release                                             | 1.0     | August 2016  | Public announcement, glory to everyone.
-
+<table>
+    <thead>
+        <th>Deliverable</th>
+        <th>Version</th>
+        <th>Date</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C++ compiler</td>
+            <td>0.1</td>
+            <td>May 2015</td>
+            <td>Command-line GLS prototype, written in C++.</td>
+        </tr>
+        <tr>
+            <td>TypeScript compiler draft</td>
+            <td>0.2</td>
+            <td>July 2015</td>
+            <td>GLS compiler as a website, written in TypeScript.</td>
+        </tr>
+        <tr>
+            <td>TypeScript compiler + C# output</td>
+            <td>0.3</td>
+            <td>March 2016</td>
+            <td>GLS compiler re-written in TypeScript, with correct TypeScript and C# output.</td>
+        </tr>
+        <tr>
+            <td>Dogfood feature complete</td>
+            <td>0.4</td>
+            <td>April 2016</td>
+            <td>All features expected to be required for dogfooding implemented. Ruby, Python, and Java support.</td>
+        </tr>
+        <tr>
+            <td>Dogfood</td>
+            <td>0.5</td>
+            <td>May 2016</td>
+            <td>Compiler written in GLS code, working in C#, Java, Ruby, Python, and TypeScript.</td>
+        </tr>
+        <tr>
+            <td>PowerShell, PHP, ES6 JavaScript, Objective-C, Swift, misc.</td>
+            <td>0.6</td>
+            <td>June 2016</td>
+            <td>Dogfood or reject those languages and other possibilities.</td>
+        </tr>
+        <tr>
+            <td>Language specification finalized</td>
+            <td>0.7</td>
+            <td>July 2016</td>
+            <td>Finalized language spec & cleaned internals of code.</td>
+        </tr>
+        <tr>
+            <td>General release</td>
+            <td>1.0</td>
+            <td>August 2016</td>
+            <td>Public announcement, glory to everyone.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Intentionally Missing Items
 
 No language is perfect. The following are some seemingly obvious omissions in GLS that are due to languages not supporting them:
 
-| Feature               | C# | Java      | Python    | Ruby      | TypeScript  |
-|-----------------------|----|-----------|-----------|-----------|-------------|
-| Enums Without Values  |    |           |           | *Missing* |             |
-| Foreach Over Values   |    |           |           |           |  *Missing*  |
-| Multiline Lambdas     |    |           | *Missing* |           |             |
-| Optional Parameters   |    | *Missing* |           |           |             |
-| Overloaded Functions  |    |           | *Missing* | *Missing* |  *Missing*  |
-| String.Replace        |    |           |           |           |  *Abnormal* |
-| Switch Statements     |    |           | *Missing* |           |             |
+<table>
+    <thead>
+        <th>Feature</th>
+        <th>C#</th>
+        <th>Java</th>
+        <th>Python</th>
+        <th>Ruby</th>
+        <th>TypeScript</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Enums Without Values </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>*Missing*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Foreach Over Values</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>*Missing*</td>
+        </tr>
+        <tr>
+            <td>Multiline Lambdas</td>
+            <td></td>
+            <td></td>
+            <td>*Missing*</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Optional Parameters</td>
+            <td></td>
+            <td>*Missing*</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Overloaded Functions</td>
+            <td></td>
+            <td></td>
+            <td>*Missing*</td>
+            <td>*Missing*</td>
+            <td>*Missing*</td>
+        </tr>
+        <tr>
+            <td>String.Replace</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>*Abnormal*</td>
+        </tr>
+        <tr>
+            <td>Switch Statements</td>
+            <td></td>
+            <td></td>
+            <td>*Missing*</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 This list will grow as features are requested.
 
@@ -82,12 +188,35 @@ This list will grow as features are requested.
 
 Not all languages work similarly to the supported ones. These will likely never receive GLS support, for the following common reasons (among others):
 
-| Language             | Manual Pointers | Unusual Classes  |
-| ---------------------|-----------------|------------------|
-| C                    | *✓*             | *✓*              |
-| C++                  | *✓*             |                  |
-| JavaScript (<ES6)    |                 | *✓*              |
-| Rust                 | *✓*             |                  |
+<table>
+    <thead>
+        <th>Language</th>
+        <th>Manual Pointers</th>
+        <th>Unusual Classes</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C</td>
+            <td>*✓*</td>
+            <td>*✓*</td>
+        </tr>
+        <tr>
+            <td>C++</td>
+            <td>*✓*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>JavaScript (&lt;ES6) </td>
+            <td></td>
+            <td>*✓*</td>
+        </tr>
+        <tr>
+            <td>Rust</td>
+            <td>*✓*</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 This list will grow as languages are requested.
 
