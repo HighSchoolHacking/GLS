@@ -1,4 +1,5 @@
 /// <reference path="PythonicLanguage.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
@@ -68,6 +69,22 @@ namespace GLS.Languages {
             classes.declareStartLeft = "def ";
             classes.declareStartRight = ":";
             classes.superConstructor = "super().__init__";
+        }
+
+        /**
+         * Generates metadata on class member variables.
+         * 
+         * @param members   A property container for metadata on class member variables.
+         */
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            super.generateClassMemberVariableProperties(variables);
+
+            variables.private = "__";
+            variables.privateCase = Casing.CaseStyle.SnakeCase;
+            variables.protected = "_";
+            variables.protectedCase = Casing.CaseStyle.SnakeCase;
+            variables.public = "";
+            variables.publicCase = Casing.CaseStyle.CamelCase;
         }
 
         /**
@@ -142,6 +159,19 @@ namespace GLS.Languages {
             enums.declareStartRight = "(Enum):";
             enums.declareValueLeft = " = ";
             enums.valueMiddle = ".";
+        }
+
+        /**
+         * Generates metadata on lambdas.
+         * 
+         * @param lambdas   A property container for metadata on lambdas.
+         */
+        protected generateLambdaProperties(lambdas: Properties.LambdaProperties): void {
+            super.generateLambdaProperties(lambdas);
+
+            lambdas.functionLeft = "lambda ";
+            lambdas.functionMiddle = ": ";
+            lambdas.functionRight = "";
         }
 
         /**

@@ -3,6 +3,7 @@
 /// <reference path="Commands/CommandStrings.ts" />
 /// <reference path="Commands/LineResults.ts" />
 /// <reference path="Languages/Language.ts" />
+/// <reference path="Languages/Casing/CaseStyleConverter.ts" />
 /// <reference path="GlsParser.ts" />
 
 namespace GLS {
@@ -103,6 +104,17 @@ namespace GLS {
          */
         public convertParsed(parameters: string[]): Commands.LineResults {
             return this.parser.renderParsedCommand(parameters);
+        }
+
+        /**
+         * Converts a name to a casing style.
+         * 
+         * @param name   A name to convert.
+         * @param casingStyle   A casing style.
+         * @returns The name under the casing style.
+         */
+        public convertToCase(name: string, casingStyle: Languages.Casing.CaseStyle): string {
+            return this.parser.convertToCase(name, casingStyle);
         }
 
         /**

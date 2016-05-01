@@ -3,6 +3,7 @@
 /// <reference path="Properties/ClassProperties.ts" />
 /// <reference path="Properties/ClassGenericProperties.ts" />
 /// <reference path="Properties/ClassMemberProperties.ts" />
+/// <reference path="Properties/ClassMemberVariableProperties.ts" />
 /// <reference path="Properties/CommentProperties.ts" />
 /// <reference path="Properties/ConditionalProperties.ts" />
 /// <reference path="Properties/DictionaryProperties.ts" />
@@ -41,7 +42,7 @@ namespace GLS.Languages {
             this.generateBooleanProperties(this.properties.booleans);
             this.generateClassProperties(this.properties.classes);
             this.generateClassGenericProperties(this.properties.classes.generics);
-            this.generateClassMemberProperties(this.properties.classes.members);
+            this.generateClassMemberVariableProperties(this.properties.classes.members.variables);
             this.generateCommentProperties(this.properties.comments);
             this.generateConditionalProperties(this.properties.conditionals);
             this.generateDictionaryProperties(this.properties.dictionaries);
@@ -91,11 +92,11 @@ namespace GLS.Languages {
         protected abstract generateClassGenericProperties(generics: Properties.ClassGenericProperties): void;
 
         /**
-         * Generates metadata on classmembers.
+         * Generates metadata on class member variables.
          * 
-         * @param members   A property container for metadata on class members.
+         * @param members   A property container for metadata on class member variables.
          */
-        protected abstract generateClassMemberProperties(members: Properties.ClassMemberProperties): void;
+        protected abstract generateClassMemberVariableProperties(members: Properties.ClassMemberVariableProperties): void;
 
         /**
          * Generates metadata on comments.

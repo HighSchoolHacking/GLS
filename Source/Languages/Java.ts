@@ -70,6 +70,18 @@ namespace GLS.Languages {
         }
 
         /**
+         * Generates metadata on class member variables.
+         * 
+         * @param members   A property container for metadata on class member variables.
+         */
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            super.generateClassMemberVariableProperties(variables);
+
+            variables.protectedCase = Casing.CaseStyle.CamelCase;
+            variables.publicCase = Casing.CaseStyle.CamelCase;
+        }
+
+        /**
          * Generates metadata on comments.
          * 
          * @param comments   A property container for metadata on comments.
@@ -183,6 +195,17 @@ namespace GLS.Languages {
         }
 
         /**
+         * Generates metadata on lambdas.
+         * 
+         * @param lambdas   A property container for metadata on lambdas.
+         */
+        protected generateLambdaProperties(lambdas: Properties.LambdaProperties): void {
+            super.generateLambdaProperties(lambdas);
+
+            lambdas.functionMiddle = ") -> ";
+        }
+
+        /**
          * Generates metadata on lists.
          * 
          * @param lists   A property container for metadata on lists.
@@ -262,10 +285,9 @@ namespace GLS.Languages {
             style.fileEndLines = [];
             style.fileIndentation = 0;
             style.fileStartLines = [
-                "import java.lang.System;",
-                "import java.util.*;",
-                "",
                 "package {0};",
+                "",
+                "import java.util.*;",
                 "",
             ];
 
@@ -276,7 +298,7 @@ namespace GLS.Languages {
             style.mainIndentation = 2;
             style.mainStartLines = [
                 "class Program {",
-                "    public static void Main() {",
+                "    public static void main(String[] args) {",
             ];
 
             style.printEnd = ")";

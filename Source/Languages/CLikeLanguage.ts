@@ -1,4 +1,5 @@
 /// <reference path="Language.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
@@ -52,19 +53,15 @@ namespace GLS.Languages {
         }
 
         /**
-         * Generates metadata on classmembers.
+         * Generates metadata on class member variables.
          * 
-         * @param members   A property container for metadata on class members.
+         * @param members   A property container for metadata on class member variables.
          */
-        protected generateClassMemberProperties(members: Properties.ClassMemberProperties): void {
-            members.functionStart = "";
-            members.privacy = true;
-            members.private = "private ";
-            members.protected = "protected ";
-            members.public = "public ";
-            members.staticDecorator = "static ";
-            members.variableStart = "";
-            members.variableDefault = "";
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            variables.private = "private ";
+            variables.privateCase = Casing.CaseStyle.CamelCase;
+            variables.protected = "protected ";
+            variables.public = "public ";
         }
 
         /**
@@ -139,9 +136,10 @@ namespace GLS.Languages {
          * @param lambdas   A property container for metadata on lambdas.
          */
         protected generateLambdaProperties(lambdas: Properties.LambdaProperties): void {
-            lambdas.startLeft = "(";
-            lambdas.startMiddle = ") => ";
-            lambdas.startRight = "";
+            lambdas.functionLeft = "(";
+            lambdas.functionRight = "";
+            lambdas.parameterTypeRequired = false;
+            lambdas.returnTypeRequired = false;
         }
 
         /**

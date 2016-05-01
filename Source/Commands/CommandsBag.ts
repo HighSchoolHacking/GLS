@@ -43,12 +43,14 @@
 /// <reference path="IfEndCommand.ts" />
 /// <reference path="IfStartCommand.ts" />
 /// <reference path="IndexCommand.ts" />
+/// <reference path="LambdaBodyCommand.ts" />
 /// <reference path="ListInitializeCommand.ts" />
 /// <reference path="ListLengthCommand.ts" />
 /// <reference path="ListPushCommand.ts" />
 /// <reference path="LiteralCommand.ts" />
 /// <reference path="MainEndCommand.ts" />
 /// <reference path="MainStartCommand.ts" />
+/// <reference path="MemberVariableDeclareCommand.ts" />
 /// <reference path="NotCommand.ts" />
 /// <reference path="OperationCommand.ts" />
 /// <reference path="OperatorCommand.ts" />
@@ -127,12 +129,14 @@ namespace GLS.Commands {
                 "if end": new IfEndCommand(context),
                 "if start": new IfStartCommand(context),
                 "index": new IndexCommand(context),
+                "lambda": new LambdaBodyCommand(context),
                 "list initialize": new ListInitializeCommand(context),
                 "list length": new ListLengthCommand(context),
                 "list push": new ListPushCommand(context),
                 "literal": new LiteralCommand(context),
                 "main end": new MainEndCommand(context),
                 "main start": new MainStartCommand(context),
+                "member variable declare": new MemberVariableDeclareCommand(context),
                 "not": new NotCommand(context),
                 "operation": new OperationCommand(context),
                 "operator": new OperatorCommand(context),
@@ -168,7 +172,7 @@ namespace GLS.Commands {
          */
         public getCommand(alias: string): Command {
             if (!this.commands.hasOwnProperty(alias)) {
-                throw new Error(`Unknown command requested: ${alias}`);
+                throw new Error(`Unknown command requested: '${alias}'.`);
             }
 
             return this.commands[alias];

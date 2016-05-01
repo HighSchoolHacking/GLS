@@ -1,4 +1,5 @@
 /// <reference path="CLikeLanguage.ts" />
+/// <reference path="Casing/CaseStyle.ts" />
 /// <reference path="Properties/ArrayProperties.ts" />
 /// <reference path="Properties/BooleanProperties.ts" />
 /// <reference path="Properties/ClassProperties.ts" />
@@ -67,6 +68,18 @@ namespace GLS.Languages {
             classes.declareExtendsLeft = " : ";
             classes.declareStartRight = "\n{";
             classes.superConstructor = "base";
+        }
+
+        /**
+         * Generates metadata on class member variables.
+         * 
+         * @param members   A property container for metadata on class member variables.
+         */
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            super.generateClassMemberVariableProperties(variables);
+
+            variables.protectedCase = Casing.CaseStyle.PascalCase;
+            variables.publicCase = Casing.CaseStyle.PascalCase;
         }
 
         /**
@@ -175,6 +188,17 @@ namespace GLS.Languages {
 
             functions.defineStartLeft = " ";
             functions.defineStartRight = "\n{";
+        }
+
+        /**
+         * Generates metadata on lambdas.
+         * 
+         * @param lambdas   A property container for metadata on lambdas.
+         */
+        protected generateLambdaProperties(lambdas: Properties.LambdaProperties): void {
+            super.generateLambdaProperties(lambdas);
+
+            lambdas.functionMiddle = ") => ";
         }
 
         /**
