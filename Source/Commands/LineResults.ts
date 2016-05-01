@@ -18,6 +18,11 @@ namespace GLS.Commands {
         public addSemicolon: boolean;
 
         /**
+         * Any imports that must be in a file to use this.
+         */
+        public addedImports: { [i: string]: string[] };
+
+        /**
          * Initializes a new instance of the LineResults class.
          * 
          * @param commandResults   Lines of code converted fromthe GLS syntax.
@@ -26,6 +31,14 @@ namespace GLS.Commands {
         constructor(commandResults: CommandResult[], addSemicolon: boolean) {
             this.commandResults = commandResults;
             this.addSemicolon = addSemicolon;
+            this.addedImports = {};
+        }
+
+        /**
+         * 
+         */
+        public setPackageImports(packageName: string, members: string[]): void {
+            this.addedImports[packageName] = members;
         }
 
         /**

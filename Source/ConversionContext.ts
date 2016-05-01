@@ -47,16 +47,39 @@ namespace GLS {
          * @returns Equivalent lines of code in the context language.
          */
         public convert(lines: string[]): string[] {
-            let indentation: number = 0,
-                output: string[] = [];
+            let output: string[] = [];
+            let allLineResults: Commands.LineResults[] = [];
+            let indentation: number = 0;
+            let imports: { [i: string]: string[] } = {};
 
             for (let i: number = 0; i < lines.length; i += 1) {
                 if (lines[i].trim() === "") {
-                    output.push(this.generateTabs(indentation));
+                    allLineResults.push(Commands.LineResults.newSingleLine("", false));
                     continue;
                 }
 
                 let lineResults: Commands.LineResults = this.parser.parseCommand(lines[i]);
+                allLineResults.push(lineResults);
+
+                if (lineResults.addedImports !== undefined) {
+                    let addedImports = lineResults.addedImports;
+
+                    for (let packageName in addedImports) {
+                        if (!imports.hasOwnProperty(packageName)) {
+                            imports[packageName] = addedImports[packageName];
+                        } else {
+                            for (let j: number = 0; j < addedImports[packageName].length; i += 1) {
+                                if (imports[packageName].indexOf(addedImports[packageName][j]) === -1) {
+                                    imports[packageName].push(addedImports[packageName][j]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (let i: number = 0; i < allLineResults.length; i += 1) {
+                let lineResults: Commands.LineResults = allLineResults[i];
                 let commandResults: Commands.CommandResult[] = lineResults.commandResults;
 
                 for (let j: number = 0; j < commandResults.length; j += 1) {
