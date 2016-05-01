@@ -185,4 +185,5 @@ private gender: string;
 ### Errata
 
 * Ruby does not support default member values, so GLS does not.
-* Python does not support declaring member variables without a default value. Because of Ruby's restrictions, there is no situation for which Python will declare a member variable via GLS. 
+* Python does not support declaring member variables without a default value. Because of Ruby's restrictions, there is no situation for which Python will declare a member variable via GLS.
+* Ruby uses a different set of privacy modifiers and concepts than most other languages. Emulating them is currently out of scope.

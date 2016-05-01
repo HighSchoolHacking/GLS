@@ -47,6 +47,15 @@ namespace GLS.Languages {
         }
 
         /**
+         * Generates metadata on class member variables.
+         * 
+         * @param members   A property container for metadata on class member variables.
+         */
+        protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            variables.skipMemberVariables = true;
+        }
+
+        /**
          * Generates metadata on conditionals.
          * 
          * @param conditionals   The property container for metadata on conditionals. 

@@ -75,13 +75,14 @@ namespace GLS.Languages {
          * @param members   A property container for metadata on class member variables.
          */
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
+            super.generateClassMemberVariableProperties(variables);
+
             variables.private = "__";
             variables.privateCase = Properties.CaseStyle.SnakeCase;
             variables.protected = "_";
             variables.protectedCase = Properties.CaseStyle.SnakeCase;
             variables.public = "";
             variables.publicCase = Properties.CaseStyle.CamelCase;
-            variables.skipBlankMemberVariables = true;
         }
 
         /**
