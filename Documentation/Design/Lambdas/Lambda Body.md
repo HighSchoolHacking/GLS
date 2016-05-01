@@ -49,13 +49,41 @@ lambda : x number y number { operation : x (equal to) y }
 
 Properties will be stored in a LambdaProperties file in langauge.properties.lambdas. The following properties will be added.
 
-| Property Name                 | Type    | Description                                                                           |
-|-------------------------------|---------|---------------------------------------------------------------------------------------|
-| functionLeft                  | string  | Language's syntax for the start of a lambda parameter list.                            |
-| functionMiddle                | string  | Language's syntax for the end of the lambda parameter list and the start of the body. |
-| functionRight                 | string  | Language's syntax for the end of the lambda body.                                     |
-| parameterTypeRequired         | boolean | True if the language requires parameter types in the argument list, false otherwise.  |
-| returnTypeRequired            | boolean | True if the language requires a return type in the argument list, false otherwise.  |
+<table>
+    <thead>
+        <th>Property Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>functionLeft</td>
+            <td>string</td>
+            <td>The start of a lambda parameter list.</td>
+        </tr>
+        <tr>
+            <td>functionMiddle</td>
+            <td>string</td>
+            <td>End of the lambda parameter list and the start of the body.</td>
+        </tr>
+        <tr>
+            <td>functionRight</td>
+            <td>string</td>
+            <td>End of the lambda body.</td>
+        </tr>
+        <tr>
+            <td>parameterTypeRequired</td>
+            <td>boolean</td>
+            <td>True if the language requires parameter types in the argument list, false otherwise.</td>
+        </tr>
+        <tr>
+            <td>returnTypeRequired</td>
+            <td>boolean</td>
+            <td>True if the language requires a return type in the argument list, false otherwise.</td>
+        </tr>
+    </tbody>
+</table>
+
 
 Command Format:
 ```
@@ -64,13 +92,55 @@ lambdaLeft parameterType parameterName, ... lambdaMiddle commandString lambdaRig
 
 The output starts with `lambdaLeft`. A list of parameters follows, comma separated. If the language property `lambdaParameterTypeRequired` is set to `false`, then all `parameterType`s are ommitted. `lambdaMiddle` follows the parameter list, followed by the actual code for the lambda. It is passed to this implmentation as a string which contains the output of another `command`. After the command string, a `lambdaRight` ends the output of the lambda command. 
 
-
-|              | functionLeft       | functionMiddle     | functionRight    | parameterTypeRequired | returnTypeRequired |
-|--------------|--------------------|--------------------|------------------|-----------------------|--------------------|
-| *Python*     |  `"lambda "`       |  `": "`             |  `""`           | `false`               | `false`            |
-| *Java*       |  `"("`             |  `") -> "`          |  `""`           | `false`               | `false`            |
-| *Ruby*       |  `"lambda { \|"`   |  `"\| "`            |  `" }"`         | `false`               | `false`            |
-| *C#*         |  `"("`             |  `") => "`          |  `""`           | `false`               | `false`            |
-| *TypeScript* |  `"("`             |  `") => "`          |  `""`           | `false`               | `false`            |
- 
-[//]: # "Note: if viewing in text editor, the backslashes before | in Ruby are required so that markdown does not think they're part of the table. There is no \\ in the real GLS syntax"
+<table>
+    <thead>
+        <th></th>
+        <th>functionLeft</th>
+        <th>functionMiddle</th>
+        <th>functionRight</th>
+        <th>parameterTypeRequired</th>
+        <th>returnTypeRequired</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Python</th>
+            <td>`"lambda "`</td>
+            <td>`": "`</td>
+            <td>`""`</td>
+            <td>`false`</td>
+            <td>`false`</td>
+        </tr>
+        <tr>
+            <th>Java</th>
+            <td>`"("`</td>
+            <td>`") -> "`</td>
+            <td>`""`</td>
+            <td>`false`</td>
+            <td>`false`</td>
+        </tr>
+        <tr>
+            <th>Ruby</th>
+            <td>`"lambda { |"`</td>
+            <td>`"\| "`</td>
+            <td>`" }"`</td>
+            <td>`false`</td>
+            <td>`false`</td>
+        </tr>
+        <tr>
+            <th>CSharp</th>
+            <td>`"("`</td>
+            <td>`") => "`</td>
+            <td>`""`</td>
+            <td>`false`</td>
+            <td>`false`</td>
+        </tr>
+        <tr>
+            <th>TypeScript</th>
+            <td>`"("`</td>
+            <td>`") => "`</td>
+            <td>`""`</td>
+            <td>`false`</td>
+            <td>`false`</td>
+        </tr>
+    <tbody>
+</table>
