@@ -56,7 +56,7 @@ namespace GLS.Commands {
             if (this.language.properties.lambdas.returnTypeRequired) {
                 throw Error("returnTypeRequired=true not implemented");
             }
-            
+
             let returnType: string = this.context.convertCommon("type", parameters[2]),
                 lambdaBody: string = "",
                 output: CommandResult[];
