@@ -4,9 +4,9 @@
 
 Classes may define member variables that each instance of that class contains.
 
-Many languages (e.g. C# and Java) guarantee class instances are created with space for each member.
+Many languages, such as C# and Java, guarantee class instances are created with space for each member.
 More dynamic languages may declare members without guaranteeing their existence (TypeScript).
-Others forgo declaring them altogether (Python, Ruby) unless a default initial value is specified.
+Others such as Python and Ruby forgo declaring them altogether under certain conditions.
 
 
 
@@ -14,29 +14,15 @@ Others forgo declaring them altogether (Python, Ruby) unless a default initial v
 
 ### `member variable declare`
 
-`member variable declare` `:` `privacy` `name` `type`*`[, defaultValue]`*
+`member variable declare` `:` `privacy` `name` `type`
 
 Declaring a member variable will generally be done with the `member variable declare` command.
-This takes in the variable's privacy, name, type, and optionally a default initial value.
+This takes in the variable's privacy, name, and type.
 
 Privacy may be `"public"`, `"protected"`, or `"private"`.
-For languages such as Python that don't support privacy, the privacy keyword may prepend to the name as per the language's convention.
+For languages that don't support privacy, the privacy keyword may prepend to the name as per the language's convention.
 
-### `member variable declare start`
-
-`member variable declare start` `:` `privacy` `name` `type` `defaultValueStart`
-
-Declaring a member variable across lines, such as for large in-place dictionary or array initializations, is done with the `member variable declare start` command.
-This takes in the variable's privacy, name, type, and a start of its default value.
-
-Privacy is the same as in `member variable declare`.
-
-### `member variable declare end`
-
-`member variable declare end` `:` `defaultValueEnd`
-
-Completing a member variable declaration across lines is done with the `member variable declare end` command.
-
+Some languages don't declare member variables in some or all circumstances. These will consider the `member variable declare` command a no-op.
 
 ## Usage
 
@@ -44,11 +30,6 @@ Completing a member variable declaration across lines is done with the `member v
 member variable declare : public name string
 member variable declare : protected age int 0 
 member variable declare : private gender string
-
-member variable declare start : public sizes { dictionary type : string int } { dictionary new start : string { dictionary type : string int } }
-    dictionary pair : "shirt" 0 ,
-    dictionary pair : "shoes" 0
-member variable declare end 
 ```
 
 ### CSharp
@@ -57,12 +38,6 @@ member variable declare end
 public string Name;
 protected int Age = 0;
 private string gender;
-
-public Dictionary<string, int> Sizes = new Dictionary<string, int>
-{
-    { "shirt", 0 },
-    { "shoes", 0 }
-};
 ```
 
 ### Java
@@ -71,24 +46,12 @@ public Dictionary<string, int> Sizes = new Dictionary<string, int>
 public string name;
 protected int age = 0;
 private string gender;
-
-public HashMap<string, int> sizes = new HashMap<string, int>() {{
-    put("shirt", 0);
-    put("shoes", 0);
-}};
 ```
 
 ### Python
 
 ```python
-age = 0
-
-sizes = {
-    "shirt": 0,
-    "shoes": 0
-}
 ```
-*(something like that)*
 
 ### Ruby
 
@@ -102,11 +65,6 @@ who the hell knows?
 public name: string;
 protected age: number = 0;
 private gender: string;
-
-public sizes: { [i: string]: number } = {
-    "shirt": 0,
-    "shoes": 0
-};
 ```
 
 ## Implementation
@@ -127,7 +85,7 @@ public sizes: { [i: string]: number } = {
         </tr>
         <tr>
             <td>MemberVariablePublicCase</td>
-            <td>`PascalCase` | `CamelCase` | `Underline`</td>
+            <td>`PascalCase` | `CamelCase` | `SnakeCase`</td>
             <td>Casing modifier for public member variables.</td>
         </tr>
         <tr>
@@ -137,7 +95,7 @@ public sizes: { [i: string]: number } = {
         </tr>
         <tr>
             <td>MemberVariableProtectedCase</td>
-            <td>`PascalCase` | `CamelCase` | `Underline`</td>
+            <td>`PascalCase` | `CamelCase` | `SnakeCase`</td>
             <td>Casing modifier for protected member variables.</td>
         </tr>
         <tr>
@@ -147,13 +105,13 @@ public sizes: { [i: string]: number } = {
         </tr>
         <tr>
             <td>MemberVariablePrivateCase</td>
-            <td>`PascalCase` | `CamelCase` | `Underline`</td>
+            <td>`PascalCase` | `CamelCase` | `SnakeCase`</td>
             <td>Casing modifier for private member variables.</td>
         </tr>
         <tr>
-            <td>SkipBlankMemberVariables</td>
+            <td>SkipMemberVariables</td>
             <td>`boolean`</td>
-            <td>Whether member variables without values should be skipped.</td>
+            <td>Whether member variables should skip declaration.</td>
         </tr>
     </tbody>
 </table>
@@ -163,9 +121,12 @@ public sizes: { [i: string]: number } = {
 <table>
     <thead>
         <th>Language</th>
-        <th>Public</th>
-        <th>Protected</th>
-        <th>Private</th>
+        <th>MemberVariablePublic</th>
+        <th>MemberVariablePublicCase</th>
+        <th>MemberVariableProtected</th>
+        <th>MemberVariableProtectedCase</th>
+        <th>MemberVariablePrivate</th>
+        <th>MemberVariablePrivateCase</th>
     </thead>
     <tbody>
         <tr>
@@ -176,6 +137,7 @@ public sizes: { [i: string]: number } = {
             <td>`PascalCase`</td>
             <td>`"private "`</td>
             <td>`CamelCase`</td>
+            <td>`false`</td>
         </tr>
         <tr>
             <th>Java</th>
@@ -185,24 +147,27 @@ public sizes: { [i: string]: number } = {
             <td>`CamelCase`</td>
             <td>`"private "`</td>
             <td>`CamelCase`</td>
+            <td>`false`</td>
         </tr>
         <tr>
             <th>Ruby</th>
             <td>???</td>
+            <td>`CamelCase`</td>
             <td>???</td>
+            <td>`SnakeCase`</td>
             <td>???</td>
-            <td>???</td>
-            <td>???</td>
-            <td>???</td>
+            <td>`SnakeCase`</td>
+            <td>`false`</td>
         </tr>
         <tr>
             <th>Python</th>
             <td>`""`</td>
-            <td>`?Underline?`</td>
+            <td>`CamelCase`</td>
             <td>`"_"`</td>
-            <td>`?Underline?`</td>
+            <td>`SnakeCase`</td>
             <td>`"__"`</td>
-            <td>`?Underline?`</td>
+            <td>`SnakeCase`</td>
+            <td>`true`</td>
         </tr>
         <tr>
             <th>TypeScript</th>
@@ -212,11 +177,12 @@ public sizes: { [i: string]: number } = {
             <td>`CamelCase`</td>
             <td>`"private "`</td>
             <td>`CamelCase`</td>
+            <td>`false`</td>
         </tr>
     </tbody>
 </table>
 
 ### Errata
 
-* Python is a little unusual. More research required.
-* Ruby is weird and scary. More research required.
+* Ruby does not support default member values, so GLS does not.
+* Python does not support declaring member variables without a default value. Because of Ruby's restrictions, there is no situation for which Python will declare a member variable via GLS. 

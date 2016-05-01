@@ -38,8 +38,8 @@ namespace GLS.Languages.Properties {
         privateCase: CaseStyle;
 
         /**
-         * Whether member variables without an initial value shouldn't be declared.
+         * Whether member variables shouldn't be declared.
          */
-        skipBlankMemberVariables: boolean;
+        skipMemberVariables: boolean;
     }
 }

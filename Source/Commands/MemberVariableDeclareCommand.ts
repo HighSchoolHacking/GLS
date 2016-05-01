@@ -21,8 +21,7 @@ namespace GLS.Commands {
         private static parameters: Parameters.Parameter[] = [
             new Parameters.SingleParameter("privacy", "The privacy of the member variable.", true),
             new Parameters.SingleParameter("name", "The name of the member variable.", true),
-            new Parameters.SingleParameter("type", "The type of the variable.", true),
-            new Parameters.SingleParameter("defaultValue", "An optional default initial value for the variable.", false)
+            new Parameters.SingleParameter("type", "The type of the variable.", true)
         ];
 
         /**
@@ -39,7 +38,7 @@ namespace GLS.Commands {
          * @returns Line(s) of code in the language.
          */
         public render(parameters: string[]): LineResults {
-            if (this.language.properties.classes.members.variables.skipBlankMemberVariables && parameters.length !== 5) {
+            if (this.language.properties.classes.members.variables.skipMemberVariables) {
                 return LineResults.newSingleLine("\0", false);
             }
 
@@ -60,12 +59,7 @@ namespace GLS.Commands {
                 throw new Error(`Unknown privacy: '${parameters[1]}'.`);
             }
 
-
-            if (parameters.length === 4) {
-                output += this.context.convertParsed(["variable inline", parameters[2], parameters[3]]).commandResults[0].text;
-            } else {
-                output += this.context.convertParsed(["variable inline", parameters[2], parameters[3], parameters[4]]).commandResults[0].text;
-            }
+            output += this.context.convertParsed(["variable inline", parameters[2], parameters[3]]).commandResults[0].text;
 
             return LineResults.newSingleLine(output, true);
         }
