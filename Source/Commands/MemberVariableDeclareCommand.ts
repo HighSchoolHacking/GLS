@@ -59,7 +59,7 @@ namespace GLS.Commands {
                 throw new Error(`Unknown privacy: '${parameters[1]}'.`);
             }
 
-            let name: string = this.context.convertToCase(parameters[2], privacyCase);
+            let name: string = this.context.convertToCase(parameters[2], casingStyle);
             output += this.context.convertParsed(["variable inline", name, parameters[3]]).commandResults[0].text;
 
             return LineResults.newSingleLine(output, true);
