@@ -78,12 +78,12 @@ namespace GLS.Languages {
         protected generateClassMemberVariableProperties(variables: Properties.ClassMemberVariableProperties): void {
             super.generateClassMemberVariableProperties(variables);
 
-            variables.private = "";
             variables.privateCase = Casing.CaseStyle.CamelCase;
-            variables.protected = "";
+            variables.privatePrefix = "";
             variables.protectedCase = Casing.CaseStyle.CamelCase;
-            variables.public = "";
+            variables.protectedPrefix = "";
             variables.publicCase = Casing.CaseStyle.CamelCase;
+            variables.publicPrefix = "";
         }
 
         /**

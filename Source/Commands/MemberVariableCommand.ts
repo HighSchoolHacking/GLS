@@ -38,32 +38,41 @@ namespace GLS.Commands {
          * @returns Line(s) of code in the language.
          */
         public render(parameters: string[]): LineResults {
-            if (this.language.properties.classes.members.variables.skipMemberVariables) {
-                return LineResults.newSingleLine("\0", false);
-            }
-
-            let output: string = "",
-                privacy: string = parameters[1],
+            let privacy: string = parameters[1],
+                instanceName: string,
+                variableName: string,
+                variablePrefix: string,
                 casingStyle: Languages.Casing.CaseStyle;
 
-            if (privacy === "public") {
-                output += this.language.properties.classes.members.variables.public;
-                output += this.language.properties.classes.members.variables.publicPrefix;
-                casingStyle = this.language.properties.classes.members.variables.publicCase;
-            } else if (privacy === "protected") {
-                output += this.language.properties.classes.members.variables.protected;
-                output += this.language.properties.classes.members.variables.protectedPrefix;
+            if (privacy === "protected") {
+                instanceName = parameters[2];
+                variableName = parameters[3];
+                variablePrefix = this.language.properties.classes.members.variables.protectedPrefix;
                 casingStyle = this.language.properties.classes.members.variables.protectedCase;
             } else if (privacy === "private") {
-                output += this.language.properties.classes.members.variables.private;
-                output += this.language.properties.classes.members.variables.privatePrefix;
+                instanceName = parameters[2];
+                variableName = parameters[3];
+                variablePrefix = this.language.properties.classes.members.variables.privatePrefix;
                 casingStyle = this.language.properties.classes.members.variables.privateCase;
             } else {
-                throw new Error(`Unknown privacy: '${parameters[1]}'.`);
+                if (privacy === "public") {
+                    instanceName = parameters[2];
+                    variableName = parameters[3];
+                } else {
+                    instanceName = privacy;
+                    variableName = parameters[2];
+                }
+
+                variablePrefix = this.language.properties.classes.members.variables.publicPrefix;
+                casingStyle = this.language.properties.classes.members.variables.publicCase;
             }
 
-            let name: string = this.context.convertToCase(parameters[2], casingStyle);
-            output += this.context.convertParsed(["variable inline", name, parameters[3]]).commandResults[0].text;
+            variableName = this.context.convertToCase(variableName, casingStyle);
+
+            let output: string = "";
+            output += instanceName + ".";
+            output += variablePrefix;
+            output += variableName;
 
             return LineResults.newSingleLine(output, true);
         }
