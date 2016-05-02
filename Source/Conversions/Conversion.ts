@@ -9,22 +9,22 @@ namespace GLS.Conversions {
      */
     export class Conversion {
         /**
-         * 
+         * The driving context for this conversion.Z
          */
         private context: ConversionContext;
 
         /**
-         * 
+         * Raw lines of GLS syntax being converted.
          */
         private glsLines: string[];
 
         /**
-         * 
+         * Accumulated clusters of code converted fromthe raw GLS syntax.
          */
         private allLineResults: Commands.LineResults[];
 
         /**
-         * 
+         * Accumulated imports retrieved fromfunctions.
          */
         private imports: { [i: string]: string[] };
 
@@ -37,10 +37,13 @@ namespace GLS.Conversions {
         }
 
         /**
+         * Converts the stored lines of GLS syntax to language code.
          * 
+         * @returns Converted lines of language code.
          */
-        public convert() {
-            this.resetState();
+        public convert(): string[] {
+            this.allLineResults = [];
+            this.imports = {};
 
             this.generateAllLineResults();
             this.convertImportsToLineResults();
@@ -77,7 +80,7 @@ namespace GLS.Conversions {
         }
 
         /**
-         * 
+         * Generates line results from raw GLS syntax.
          */
         private generateAllLineResults(): void {
             for (let i: number = 0; i < this.glsLines.length; i += 1) {
@@ -96,32 +99,9 @@ namespace GLS.Conversions {
         }
 
         /**
+         * Adds new imports to the stored imports.
          * 
-         */
-        private convertImportsToLineResults(): void {
-            for (let packageName in this.imports) {
-                this.convertImportToLineResults(packageName, this.imports[packageName]);
-            }
-        }
-
-        /**
-         * 
-         */
-        private convertImportToLineResults(packageName: string, items: string[]): void {
-            let parameters: string[] = ["import", packageName, ...items];
-            this.allLineResults.unshift(this.context.convertParsed(parameters));
-        }
-
-        /**
-         * 
-         */
-        private resetState(): void {
-            this.allLineResults = [];
-            this.imports = {};
-        }
-
-        /**
-         * 
+         * @param addedImports   New imports to store.
          */
         private addImports(addedImports: { [i: string]: string[] } ): void {
             for (let packageName in addedImports) {
@@ -130,7 +110,10 @@ namespace GLS.Conversions {
         }
 
         /**
+         * Adds items to a package's stored imports.
          * 
+         * @param packageName   The name of a package.
+         * @param items   Items to import from the package.
          */
         private addImportItems(packageName: string, items: string[]): void {
             if (!this.imports.hasOwnProperty(packageName)) {
@@ -143,6 +126,26 @@ namespace GLS.Conversions {
                     this.imports[packageName].push(items[i]);
                 }
             }
+        }
+
+        /**
+         * Transfers captured import statements from commands to line results.
+         */
+        private convertImportsToLineResults(): void {
+            for (let packageName in this.imports) {
+                this.convertImportToLineResults(packageName, this.imports[packageName]);
+            }
+        }
+
+        /**
+         * Converts a captured import statement to line results.
+         * 
+         * @param packageName   The package name importing from.
+         * @param items   Items being imported from the package.
+         */
+        private convertImportToLineResults(packageName: string, items: string[]): void {
+            let parameters: string[] = ["import", packageName, ...items];
+            this.allLineResults.unshift(this.context.convertParsed(parameters));
         }
 
         /**
