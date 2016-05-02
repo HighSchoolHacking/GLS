@@ -1,3 +1,4 @@
+/// <reference path="../Conversions/ConversionContext.ts" />
 /// <reference path="../Languages/Language.ts" />
 /// <reference path="../Languages/Properties/NativeCallProperties.ts" />
 /// <reference path="Command.ts" />
@@ -25,7 +26,7 @@ namespace GLS.Commands {
          * 
          * @param context   The driving context for converting the command.
          */
-        constructor(context: ConversionContext) {
+        constructor(context: Conversions.ConversionContext) {
             super(context);
 
             this.nativeCallProperties = this.retrieveNativeCallProperties();

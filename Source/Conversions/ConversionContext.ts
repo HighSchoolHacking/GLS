@@ -1,10 +1,7 @@
-/// <reference path="../Commands/Command.ts" />
-/// <reference path="../Commands/CommandResult.ts" />
-/// <reference path="../Commands/CommandStrings.ts" />
 /// <reference path="../Commands/LineResults.ts" />
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="../Languages/Casing/CaseStyleConverter.ts" />
 /// <reference path="../GlsParser.ts" />
+/// <reference path="../Languages/Language.ts" />
+/// <reference path="../Languages/Casing/CaseStyle.ts" />
 
 namespace GLS.Conversions {
     "use strict";
@@ -54,7 +51,7 @@ namespace GLS.Conversions {
          * @returns Equivalent lines of code in the context language.
          */
         public convert(lines: string[]): string[] {
-            let converter: Conversion = new Conversion(this, lines);
+            let converter: Conversion = new Conversion(lines, this);
 
             return converter.convert();
         }
@@ -71,7 +68,7 @@ namespace GLS.Conversions {
 
             return lineResults.commandResults[0].text;
         }
-        
+
         /**
          * Converts a command with pre-parsed arguments.
          * 

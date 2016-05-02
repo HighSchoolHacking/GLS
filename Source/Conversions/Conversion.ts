@@ -31,7 +31,7 @@ namespace GLS.Conversions {
         /**
          * Initializes a new instance of the Conversion class.
          */
-        constructor(context: ConversionContext, glsLines: string[]) {
+        constructor(glsLines: string[], context: ConversionContext) {
             this.context = context;
             this.glsLines = glsLines;
         }

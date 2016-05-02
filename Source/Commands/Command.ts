@@ -1,5 +1,5 @@
 /// <reference path="../Languages/Language.ts" />
-/// <reference path="../ConversionContext.ts" />
+/// <reference path="../Conversions/ConversionContext.ts" />
 /// <reference path="LineResults.ts" />
 /// <reference path="Parameters/Parameter.ts" />
 /// <reference path="Parameters/Restrictions.ts" />
@@ -19,7 +19,7 @@ namespace GLS.Commands {
         /**
          * The driving context for converting the command.
          */
-        protected context: ConversionContext;
+        protected context: Conversions.ConversionContext;
 
         /**
          * A language to convert raw code into.
@@ -41,7 +41,7 @@ namespace GLS.Commands {
          * 
          * @param context   The driving context for converting the command.
          */
-        constructor(context: ConversionContext) {
+        constructor(context: Conversions.ConversionContext) {
             this.context = context;
             this.language = context.getLanguage();
             this.parameterRestrictions = new Parameters.Restrictions(this.getParameters());
