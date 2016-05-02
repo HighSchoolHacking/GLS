@@ -78,6 +78,10 @@ namespace GLS {
                 }
             }
 
+            for (let packageName in imports) {
+                allLineResults.unshift(this.convertParsed(["import"].concat(imports[packageName])));
+            }
+
             for (let i: number = 0; i < allLineResults.length; i += 1) {
                 let lineResults: Commands.LineResults = allLineResults[i];
                 let commandResults: Commands.CommandResult[] = lineResults.commandResults;
