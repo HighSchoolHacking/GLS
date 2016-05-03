@@ -2,6 +2,7 @@
 /// <reference path="../GlsParser.ts" />
 /// <reference path="../Languages/Language.ts" />
 /// <reference path="../Languages/Casing/CaseStyle.ts" />
+/// <reference path="Conversion.ts" />
 
 namespace GLS.Conversions {
     "use strict";
