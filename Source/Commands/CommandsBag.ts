@@ -1,3 +1,4 @@
+/// <reference path="../Conversions/ConversionContext.ts" />
 /// <reference path="../Languages/Language.ts" />
 /// <reference path="Command.ts" />
 /// <reference path="CommandResult.ts" />
@@ -86,7 +87,7 @@ namespace GLS.Commands {
          * 
          * @param context   The driving context for conversions.
          */
-        constructor(context: ConversionContext) {
+        constructor(context: Conversions.ConversionContext) {
             this.commands = {
                 "array initialize": new ArrayInitializeCommand(context),
                 "array length": new ArrayLengthCommand(context),
