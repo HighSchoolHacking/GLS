@@ -1,7 +1,5 @@
 # Imports
 
-## Feature Overview
-
 Including items from other files or libraries/packages/modules is done with importing.
 
 Import commands are the only ones in GLS that change based on other commands in the file.
