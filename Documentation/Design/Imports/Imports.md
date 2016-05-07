@@ -178,8 +178,8 @@ Others allow items to be separated by `", "`.
             <td><code>true</code></td>
             <td><code>false</code></td>
             <td><code>true</code></td>
-            <td><code>"import {"</code></td>
-            <td><code>" from \""</code></td>
+            <td><code>"import { "</code></td>
+            <td><code>" } from \""</code></td>
             <td><code>"\";"</code></td>
         </tr>
     </tbody>
