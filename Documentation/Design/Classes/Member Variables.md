@@ -20,7 +20,7 @@ Retrieving a member variable will be done with the `member variable` command.
 This takes in the variable's privacy optionally, then the instance name and variable name.
 
 Privacy may be `"public"`, `"protected"`, or `"private"`, and defaults to `public"` if not provided.
-For languages that don't support privacy, variable name name may receive a prefix as per the language's convention.
+For languages that don't support privacy, variable name may receive a prefix as per the language's convention.
 
 ### `member variable declare`
 
@@ -30,7 +30,7 @@ Declaring a member variable will be done with the `member variable declare` comm
 This takes in the variable's privacy, name, and type.
 
 Privacy may be `"public"`, `"protected"`, or `"private"`, and defaults to `public"` if not provided.
-For languages that don't support privacy, variable name name may receive a prefix as per the language's convention.
+For languages that don't support privacy, variable name may receive a prefix as per the language's convention.
 
 Some languages don't declare member variables in some or all circumstances. These will consider the `member variable declare` command a no-op.
 
@@ -44,10 +44,10 @@ member variable declare : private gender string
 ```
 
 ```gls
-member variable : name person
-member variable : public name person
-member variable : protected age { this }
-member variable : private gender { this }
+member variable : person name
+member variable : public person name
+member variable : protected { this } age
+member variable : private { this } gender
 ```
 
 ### CSharp
