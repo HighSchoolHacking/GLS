@@ -130,6 +130,7 @@ namespace GLS.Commands {
                 "function end": new FunctionEndCommand(context),
                 "if end": new IfEndCommand(context),
                 "if start": new IfStartCommand(context),
+                "import": new ImportCommand(context),
                 "index": new IndexCommand(context),
                 "lambda": new LambdaBodyCommand(context),
                 "list initialize": new ListInitializeCommand(context),

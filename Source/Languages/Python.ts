@@ -202,6 +202,11 @@ namespace GLS.Languages {
          * @param imports   A property container for metadata on imports.
          */
         protected generateImportProperties(imports: Properties.ImportProperties): void {
+            imports.case = Casing.CaseStyle.FileSystem;
+            imports.explicit = true;
+            imports.left = "from \"";
+            imports.middle = "\" import ";
+            imports.right = "";
         }
 
         /**

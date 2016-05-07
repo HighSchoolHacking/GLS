@@ -1,7 +1,10 @@
 /// <reference path="CamelCaseConverter.ts" />
 /// <reference path="CaseStyle.ts" />
 /// <reference path="CaseStyleConverter.ts" />
+/// <reference path="FileSystemCaseConverter.ts" />
 /// <reference path="NoneConverter.ts" />
+/// <reference path="PackageLowerCaseConverter.ts" />
+/// <reference path="PackageUpperCaseConverter.ts" />
 /// <reference path="PascalCaseConverter.ts" />
 /// <reference path="SnakeCaseConverter.ts" />
 
@@ -22,8 +25,11 @@ namespace GLS.Languages.Casing {
          */
         constructor() {
             this.converters = {
-                [CaseStyle.CamelCase.toString()]: new CamelCaseConverter(),
                 [CaseStyle.None.toString()]: new NoneConverter(),
+                [CaseStyle.CamelCase.toString()]: new CamelCaseConverter(),
+                [CaseStyle.FileSystem.toString()]: new FileSystemCaseConverter(),
+                [CaseStyle.PackageLowerCase.toString()]: new PackageLowerCaseConverter(),
+                [CaseStyle.PackageUpperCase.toString()]: new PackageUpperCaseConverter(),
                 [CaseStyle.PascalCase.toString()]: new PascalCaseConverter(),
                 [CaseStyle.SnakeCase.toString()]: new SnakeCaseConverter()
             };

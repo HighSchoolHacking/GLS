@@ -1,3 +1,4 @@
+/// <reference path="../Languages/Casing/CaseStyle.ts" />
 /// <reference path="../Languages/Language.ts" />
 /// <reference path="Command.ts" />
 /// <reference path="LineResults.ts" />
@@ -87,13 +88,19 @@ namespace GLS.Commands {
             let line: string = this.language.properties.imports.left;
 
             if (this.language.properties.imports.itemsBeforePackage) {
-                line += item;
-                line += this.language.properties.imports.middle;
-                line += packageName;
+                if (this.language.properties.imports.explicit) {
+                    line += item;
+                    line += this.language.properties.imports.middle;
+                }
+
+                line += this.context.convertToCase(packageName, this.language.properties.imports.case);
             } else {
-                line += packageName;
-                line += this.language.properties.imports.middle;
-                line += item;
+                line += this.context.convertToCase(packageName, this.language.properties.imports.case);
+
+                if (this.language.properties.imports.explicit) {
+                    line += this.language.properties.imports.middle;
+                    line += item;
+                }
             }
 
             line += this.language.properties.imports.right;
