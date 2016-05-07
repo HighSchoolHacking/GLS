@@ -136,10 +136,10 @@ Others allow items to be separated by `", "`.
             <th>CSharp</th>
             <td><code>PackageUpperCase</code></td>
             <td><code>false</code></td>
-            <td><code></code></td>
-            <td><code></code></td>
+            <td></td>
+            <td></td>
             <td><code>"using "</code></td>
-            <td><code></code></td>
+            <td></td>
             <td><code>";"</code></td>
         </tr>
         <tr>
@@ -166,10 +166,10 @@ Others allow items to be separated by `", "`.
             <th>Ruby</th>
             <td><code>FileSystem</code></td>
             <td><code>false</code></td>
-            <td><code></code></td>
-            <td><code></code></td>
+            <td></td>
+            <td></td>
             <td><code>"require \""</code></td>
-            <td><code></code></td>
+            <td></td>
             <td><code>"\""</code></td>
         </tr>
         <tr>
