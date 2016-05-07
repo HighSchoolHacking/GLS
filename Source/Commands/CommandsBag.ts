@@ -43,6 +43,7 @@
 /// <reference path="FunctionStartCommand.ts" />
 /// <reference path="IfEndCommand.ts" />
 /// <reference path="IfStartCommand.ts" />
+/// <reference path="ImportCommand.ts" />
 /// <reference path="IndexCommand.ts" />
 /// <reference path="LambdaBodyCommand.ts" />
 /// <reference path="ListInitializeCommand.ts" />

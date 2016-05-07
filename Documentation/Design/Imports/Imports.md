@@ -65,15 +65,15 @@ import { ItemOne, ItemTwo } from "package/section";
 
 ## Implementation
 
+Each import line starts with `ImportLeft` and ends with `ImportRight`.
+
+Languages that specify individual items will add after `ImportLeft` either put the package name, `ImportMiddle`, and items, or the reverse order.
+
+Some languages allow one item per package import line, so multiple items from one package must be on their own line.
+Others allow items to be separated by `", "`.
 
 
 ### Properties
-
-* ImportExplicit
-* ImportItemsBeforePackage
-* ImportLeft
-* ImportMiddle
-* ImportRight
 
 <table>
     <thead>
@@ -85,7 +85,7 @@ import { ItemOne, ItemTwo } from "package/section";
         <tr>
             <td>ImportCase</td>
             <td><code>FileSystem</code> | <code>PackageUpperCase</code> | <code>PackageLowerCase</code></td>
-            <td>Whether individual items should be named.</td>
+            <td>Casing modifier for package names.</td>
         </tr>
         <tr>
             <td>ImportExplicit</td>
@@ -100,7 +100,7 @@ import { ItemOne, ItemTwo } from "package/section";
         <tr>
             <td>ImportItemsBeforePackage</td>
             <td>boolean</td>
-            <td>Whether items should come before package name.</td>
+            <td>Whether items should come before package names.</td>
         </tr>
         <tr>
             <td>ImportLeft</td>
