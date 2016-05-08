@@ -14,7 +14,7 @@ namespace GLS.Commands {
          */
         private static parameters: Parameters.Parameter[] = [
             new Parameters.SingleParameter("keyType", "The type of the keys.", true),
-            new Parameters.SingleParameter("valueType", "Tye type of the values", true)
+            new Parameters.SingleParameter("valueType", "The type of the values", true)
         ];
 
         /**
