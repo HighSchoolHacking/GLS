@@ -4,6 +4,7 @@ module.exports = grunt => {
         meta: {
             paths: {
                 coverage: {
+                    base: "Coverage",
                     instrument: "Coverage/Instrument",
                     reports: "Coverage/Reports"
                 },
@@ -11,7 +12,10 @@ module.exports = grunt => {
                 source: "Source"
             }
         },
-        clean: ["<%= meta.paths.dist %>/**"],
+        clean: [
+            "<%= meta.paths.coverage.base %>",
+            "<%= meta.paths.dist %>/**"
+        ],
         env: {
             coverage: {
                 INSTRUMENTED_SOURCE: "/<%= meta.paths.coverage.instrument %>/<%= meta.paths.source %>/"
