@@ -27,12 +27,11 @@ var ComparisonTestsRunner = (function () {
          * Runs tests under the directory path.
          */
         run() {
-            // describe(this.section, () => {
-            //     for (const command in this.commandTests) {
-            //         describe(command, () => this.runCommandTests(command));
-            //     }
-            // });
-            describe("CommentBlock", () => this.runCommandTests("CommentBlock"));
+            describe(this.section, () => {
+                for (const command in this.commandTests) {
+                    describe(command, () => this.runCommandTests(command));
+                }
+            });
         }
 
         /**
