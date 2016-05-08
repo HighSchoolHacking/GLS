@@ -1,43 +1,42 @@
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="Command.ts" />
-/// <reference path="LineResults.ts" />
+import { Language } from "../Languages/Language";
+import { Command } from "./Command";
+import { LineResults } from "./LineResults";
 
-namespace GLS.Commands {
-    "use strict";
+import { Parameter } from "./Parameters/Parameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
+
+/**
+ * A command for returning in a function.
+ */
+export class ReturnCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static parameters: Parameter[] = [
+        new SingleParameter("value", "A value to return.", false)
+    ];
 
     /**
-     * A command for returning in a function.
+     * @returns Information on parameters this command takes in.
      */
-    export class ReturnCommand extends Command {
-        /**
-         * Information on parameters this command takes in.
-         */
-        private static parameters: Parameters.Parameter[] = [
-            new Parameters.SingleParameter("value", "A value to return.", false)
-        ];
+    public getParameters(): Parameter[] {
+        return ReturnCommand.parameters;
+    }
 
-        /**
-         * @returns Information on parameters this command takes in.
-         */
-        public getParameters(): Parameters.Parameter[] {
-            return ReturnCommand.parameters;
+    /**
+     * Renders the command for a language with the given parameters.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: ([value]).
+     */
+    public render(parameters: string[]): LineResults {
+        let output: string = "return";
+
+        if (parameters.length > 1) {
+            output += " " + parameters[1];
         }
 
-        /**
-         * Renders the command for a language with the given parameters.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: ([value]).
-         */
-        public render(parameters: string[]): LineResults {
-            let output: string = "return";
-
-            if (parameters.length > 1) {
-                output += " " + parameters[1];
-            }
-
-            return LineResults.newSingleLine(output, true);
-        }
+        return LineResults.newSingleLine(output, true);
     }
 }

@@ -1,31 +1,27 @@
-namespace GLS.Commands {
-    "use strict";
+/**
+ * A single line of code converted from raw GLS syntax.
+ */
+export class CommandResult {
+    /**
+     * How much indentation will change from the result.
+     */
+    public indentation: number;
 
     /**
-     * A single line of code converted from raw GLS syntax.
+     * Text contents of the result.
+     * 
+     * @remarks If "\0", this isn't added.
      */
-    export class CommandResult {
-        /**
-         * How much indentation will change from the result.
-         */
-        public indentation: number;
+    public text: string;
 
-        /**
-         * Text contents of the result.
-         * 
-         * @remarks If "\0", this isn't added.
-         */
-        public text: string;
-
-        /**
-         * Initializes a new instance of the CommandResult class.
-         * 
-         * @param text   Text contents of the result.
-         * @param indentation   How much indentation will change from the result.
-         */
-        constructor(text: string, indentation: number) {
-            this.text = text;
-            this.indentation = indentation;
-        }
+    /**
+     * Initializes a new instance of the CommandResult class.
+     * 
+     * @param text   Text contents of the result.
+     * @param indentation   How much indentation will change from the result.
+     */
+    constructor(text: string, indentation: number) {
+        this.text = text;
+        this.indentation = indentation;
     }
 }

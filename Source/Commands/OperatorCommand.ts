@@ -1,51 +1,49 @@
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="Command.ts" />
-/// <reference path="LineResults.ts" />
+import { Language } from "../Languages/Language";
+import { Command } from "./Command";
+import { LineResults } from "./LineResults";
+import { Parameter } from "./Parameters/Parameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
-namespace GLS.Commands {
-    "use strict";
+/**
+ * A command for printing an operator.
+ */
+export class OperatorCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static parameters: Parameter[] = [
+        new SingleParameter("operator", "An operator to alias.", true)
+    ];
 
     /**
-     * A command for printing an operator.
+     * @returns Information on parameters this command takes in.
      */
-    export class OperatorCommand extends Command {
-        /**
-         * Information on parameters this command takes in.
-         */
-        private static parameters: Parameters.Parameter[] = [
-            new Parameters.SingleParameter("operator", "An operator to alias.", true)
-        ];
+    public getParameters(): Parameter[] {
+        return OperatorCommand.parameters;
+    }
 
-        /**
-         * @returns Information on parameters this command takes in.
-         */
-        public getParameters(): Parameters.Parameter[] {
-            return OperatorCommand.parameters;
+    /**
+     * Renders the command for a language with the given parameters.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: (operator).
+     */
+    public render(parameters: string[]): LineResults {
+        return LineResults.newSingleLine(this.convertOperator(parameters[1]), false);
+    }
+
+    /**
+     * Converts a raw operator into the language's equivalent.
+     * 
+     * @param typeNameRaw   A raw operator to convert.
+     * @returns The equivalent converted operator.
+     */
+    private convertOperator(operatorRaw: string): string {
+        if (!this.language.properties.operators.aliases.hasOwnProperty(operatorRaw)) {
+            return operatorRaw;
         }
 
-        /**
-         * Renders the command for a language with the given parameters.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: (operator).
-         */
-        public render(parameters: string[]): LineResults {
-            return LineResults.newSingleLine(this.convertOperator(parameters[1]), false);
-        }
-
-        /**
-         * Converts a raw operator into the language's equivalent.
-         * 
-         * @param typeNameRaw   A raw operator to convert.
-         * @returns The equivalent converted operator.
-         */
-        private convertOperator(operatorRaw: string): string {
-            if (!this.language.properties.operators.aliases.hasOwnProperty(operatorRaw)) {
-                return operatorRaw;
-            }
-
-            return this.language.properties.operators.aliases[operatorRaw];
-        }
+        return this.language.properties.operators.aliases[operatorRaw];
     }
 }

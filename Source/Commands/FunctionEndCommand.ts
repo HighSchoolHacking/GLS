@@ -1,10 +1,6 @@
-/// <reference path="BlockEndCommand.ts" />
+import { BlockEndCommand } from "./BlockEndCommand";
 
-namespace GLS.Commands {
-    "use strict";
-
-    /**
-     * A command for the end of a function.
-     */
-    export class FunctionEndCommand extends BlockEndCommand { }
-}
+/**
+ * A command for the end of a function.
+ */
+export class FunctionEndCommand extends BlockEndCommand { }

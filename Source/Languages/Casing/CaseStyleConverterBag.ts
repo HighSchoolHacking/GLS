@@ -1,65 +1,61 @@
-/// <reference path="CamelCaseConverter.ts" />
-/// <reference path="CaseStyle.ts" />
-/// <reference path="CaseStyleConverter.ts" />
-/// <reference path="FileSystemCaseConverter.ts" />
-/// <reference path="NoneConverter.ts" />
-/// <reference path="PackageLowerCaseConverter.ts" />
-/// <reference path="PackageUpperCaseConverter.ts" />
-/// <reference path="PascalCaseConverter.ts" />
-/// <reference path="SnakeCaseConverter.ts" />
+import { CamelCaseConverter } from "./CamelCaseConverter";
+import { CaseStyle } from "./CaseStyle";
+import { CaseStyleConverter } from "./CaseStyleConverter";
+import { FileSystemCaseConverter } from "./FileSystemCaseConverter";
+import { NoneConverter } from "./NoneConverter";
+import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
+import { PackageUpperCaseConverter } from "./PackageUpperCaseConverter";
+import { PascalCaseConverter } from "./PascalCaseConverter";
+import { SnakeCaseConverter } from "./SnakeCaseConverter";
 
-namespace GLS.Languages.Casing {
-    "use strict";
+/**
+ * A container for case style converters.
+ */
+export class CaseStyleConverterBag {
+    /**
+     * Casing converters, keyed by their case style.
+     */
+    private converters: { [i: string]: CaseStyleConverter };
 
     /**
-     * A container for case style converters.
+     * Initializes a new instance of the CaseStyleConverter class.
      */
-    export class CaseStyleConverterBag {
-        /**
-         * Casing converters, keyed by their case style.
-         */
-        private converters: { [i: string]: CaseStyleConverter };
+    constructor() {
+        this.converters = {
+            [CaseStyle.None.toString()]: new NoneConverter(),
+            [CaseStyle.CamelCase.toString()]: new CamelCaseConverter(),
+            [CaseStyle.FileSystem.toString()]: new FileSystemCaseConverter(),
+            [CaseStyle.PackageLowerCase.toString()]: new PackageLowerCaseConverter(),
+            [CaseStyle.PackageUpperCase.toString()]: new PackageUpperCaseConverter(),
+            [CaseStyle.PascalCase.toString()]: new PascalCaseConverter(),
+            [CaseStyle.SnakeCase.toString()]: new SnakeCaseConverter()
+        };
+    }
 
-        /**
-         * Initializes a new instance of the CaseStyleConverter class.
-         */
-        constructor() {
-            this.converters = {
-                [CaseStyle.None.toString()]: new NoneConverter(),
-                [CaseStyle.CamelCase.toString()]: new CamelCaseConverter(),
-                [CaseStyle.FileSystem.toString()]: new FileSystemCaseConverter(),
-                [CaseStyle.PackageLowerCase.toString()]: new PackageLowerCaseConverter(),
-                [CaseStyle.PackageUpperCase.toString()]: new PackageUpperCaseConverter(),
-                [CaseStyle.PascalCase.toString()]: new PascalCaseConverter(),
-                [CaseStyle.SnakeCase.toString()]: new SnakeCaseConverter()
-            };
+    /**
+     * Retrieves the case converter for the given casing style.
+     * 
+     * @param caseStyle   A casing style.
+     * @returns The case converter under the given asing style.
+     */
+    public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
+        let caseStyleAlias = caseStyle.toString();
+
+        if (!this.converters.hasOwnProperty(caseStyleAlias)) {
+            throw new Error(`Unknown case style requested: '${caseStyle}'.`);
         }
 
-        /**
-         * Retrieves the case converter for the given casing style.
-         * 
-         * @param caseStyle   A casing style.
-         * @returns The case converter under the given asing style.
-         */
-        public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
-            let caseStyleAlias = caseStyle.toString();
-
-            if (!this.converters.hasOwnProperty(caseStyleAlias)) {
-                throw new Error(`Unknown case style requested: '${caseStyle}'.`);
-            }
-
-            return this.converters[caseStyleAlias];
-        }
-        
-        /**
-         * Converts a name to a casing style.
-         * 
-         * @param name   A name to convert.
-         * @param casingStyle   A casing style.
-         * @returns The name under the casing style.
-         */
-        public convert(name: string, caseStyle: CaseStyle): string {
-            return this.getConverter(caseStyle).convert(name);
-        }
+        return this.converters[caseStyleAlias];
+    }
+    
+    /**
+     * Converts a name to a casing style.
+     * 
+     * @param name   A name to convert.
+     * @param casingStyle   A casing style.
+     * @returns The name under the casing style.
+     */
+    public convert(name: string, caseStyle: CaseStyle): string {
+        return this.getConverter(caseStyle).convert(name);
     }
 }

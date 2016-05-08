@@ -1,18 +1,14 @@
-/// <reference path="CaseStyleConverter.ts" />
+import { CaseStyleConverter } from "./CaseStyleConverter";
 
-namespace GLS.Languages.Casing {
-    "use strict";
-
+/**
+ * Does nothing to a name.
+ */
+export class NoneConverter extends CaseStyleConverter {
     /**
-     * Does nothing to a name.
+     * @param name   A name.
+     * @returns The original name with no changes.
      */
-    export class NoneConverter extends CaseStyleConverter {
-        /**
-         * @param name   A name.
-         * @returns The original name with no changes.
-         */
-        public convert(name: string): string {
-            return name;
-        }
+    public convert(name: string): string {
+        return name;
     }
 }

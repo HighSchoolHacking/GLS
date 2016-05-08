@@ -1,50 +1,46 @@
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="Command.ts" />
-/// <reference path="LineResults.ts" />
-/// <reference path="Parameters/Parameter.ts" />
-/// <reference path="Parameters/SingleParameter.ts" />
-/// <reference path="Parameters/RepeatingParameters.ts" />
+import { Language } from "../Languages/Language";
+import { Command } from "./Command";
+import { LineResults } from "./LineResults";
+import { Parameter } from "./Parameters/Parameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
+import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
-namespace GLS.Commands {
-    "use strict";
+/**
+ * A command for wrapping with parenthesis.
+ */
+export class ParenthesisCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static parameters: Parameter[] = [
+        new RepeatingParameters(
+            "Contents within the parenthesis.",
+            [
+                new SingleParameter("contents", "Contents within the parenthesis.", false)
+            ])
+    ];
 
     /**
-     * A command for wrapping with parenthesis.
+     * @returns Information on parameters this command takes in.
      */
-    export class ParenthesisCommand extends Command {
-        /**
-         * Information on parameters this command takes in.
-         */
-        private static parameters: Parameters.Parameter[] = [
-            new Parameters.RepeatingParameters(
-                "Contents within the parenthesis.",
-                [
-                    new Parameters.SingleParameter("contents", "Contents within the parenthesis.", false)
-                ])
-        ];
+    public getParameters(): Parameter[] {
+        return ParenthesisCommand.parameters;
+    }
 
-        /**
-         * @returns Information on parameters this command takes in.
-         */
-        public getParameters(): Parameters.Parameter[] {
-            return ParenthesisCommand.parameters;
-        }
+    /**
+     * Renders the command for a language with the given parameters.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: (contents, ...).
+     */
+    public render(parameters: string[]): LineResults {
+        let result: string = "";
 
-        /**
-         * Renders the command for a language with the given parameters.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: (contents, ...).
-         */
-        public render(parameters: string[]): LineResults {
-            let result: string = "";
+        result += "(";
+        result += parameters.slice(1).join(" ");
+        result += ")";
 
-            result += "(";
-            result += parameters.slice(1).join(" ");
-            result += ")";
-
-            return LineResults.newSingleLine(result, false);
-        }
+        return LineResults.newSingleLine(result, false);
     }
 }

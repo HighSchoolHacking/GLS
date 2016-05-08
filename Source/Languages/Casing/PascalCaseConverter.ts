@@ -1,20 +1,16 @@
-/// <reference path="CaseStyleConverter.ts" />
+import { CaseStyleConverter } from "./CaseStyleConverter";
 
-namespace GLS.Languages.Casing {
-    "use strict";
-
+/**
+ * Converts a name to PascalCase.
+ */
+export class PascalCaseConverter extends CaseStyleConverter {
     /**
-     * Converts a name to PascalCase.
+     * Transforms a word within a name to PascalCase.
+     * 
+     * @param word   A word within a name.
+     * @returns The word transformed to PascalCase.
      */
-    export class PascalCaseConverter extends CaseStyleConverter {
-        /**
-         * Transforms a word within a name to PascalCase.
-         * 
-         * @param word   A word within a name.
-         * @returns The word transformed to PascalCase.
-         */
-        public applyTransformationToWord(word: string) {
-            return word[0].toUpperCase() + word.substring(1);
-        }
+    public applyTransformationToWord(word: string) {
+        return word[0].toUpperCase() + word.substring(1);
     }
 }

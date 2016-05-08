@@ -1,30 +1,26 @@
-/// <reference path="NativeCallProperties.ts" />
+import { NativeCallProperties } from "./NativeCallProperties";
 
-namespace GLS.Languages.Properties {
-    "use strict";
+/**
+ * Metadata on a language's Strings.
+ */
+export class StringProperties {
+    /**
+     * The name of the string class.
+     */
+    public className: string;
 
     /**
-     * Metadata on a language's Strings.
+     * The name of the concatenation operator.
      */
-    export class StringProperties {
-        /**
-         * The name of the string class.
-         */
-        public className: string;
+    public concatenate: string;
 
-        /**
-         * The name of the concatenation operator.
-         */
-        public concatenate: string;
+    /**
+     * How to determine the index of a substring.
+     */
+    public index: NativeCallProperties;
 
-        /**
-         * How to determine the index of a substring.
-         */
-        public index: NativeCallProperties;
-
-        /**
-         * How to retrieve a string's length.
-         */
-        public length: NativeCallProperties;
-    }
+    /**
+     * How to retrieve a string's length.
+     */
+    public length: NativeCallProperties;
 }

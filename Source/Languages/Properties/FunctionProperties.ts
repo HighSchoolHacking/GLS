@@ -1,38 +1,34 @@
-namespace GLS.Languages.Properties {
-    "use strict";
+/**
+ * Metadata on a language's functions.
+ */
+export class FunctionProperties {
+    /**
+     * A prefix before defining a function, such as "def " or "function ".
+     */
+    defineStartLeft: string;
 
     /**
-     * Metadata on a language's functions.
+     * A suffix after defining a function, such as " {" or ":".
      */
-    export class FunctionProperties {
-        /**
-         * A prefix before defining a function, such as "def " or "function ".
-         */
-        defineStartLeft: string;
+    defineStartRight: string;
 
-        /**
-         * A suffix after defining a function, such as " {" or ":".
-         */
-        defineStartRight: string;
+    /**
+     * A line for after a function's definition.
+     */
+    defineEnd: string;
 
-        /**
-         * A line for after a function's definition.
-         */
-        defineEnd: string;
+    /**
+     * Whether return types should be explicitly stated.
+     */
+    explicitReturns: boolean;
 
-        /**
-         * Whether return types should be explicitly stated.
-         */
-        explicitReturns: boolean;
+    /**
+     * Whether return types should be after the name, rather than before.
+     */
+    returnTypeAfterName: boolean;
 
-        /**
-         * Whether return types should be after the name, rather than before.
-         */
-        returnTypeAfterName: boolean;
-
-        /**
-         * A label between function name and its type, if type is after the name.
-         */
-        returnTypeMarker: string;
-    }
+    /**
+     * A label between function name and its type, if type is after the name.
+     */
+    returnTypeMarker: string;
 }

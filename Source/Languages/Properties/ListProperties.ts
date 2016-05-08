@@ -1,33 +1,31 @@
-namespace GLS.Languages.Properties {
-    "use strict";
+import { NativeCallProperties } from "./NativeCallProperties";
+
+/**
+ * Metadata on a language's lists.
+ */
+export class ListProperties {
+    /**
+     * Whether the language uses flexible arrays.
+     */
+    public asArray: boolean;
 
     /**
-     * Metadata on a language's lists.
+     * The name of the list class.
      */
-    export class ListProperties {
-        /**
-         * Whether the language uses flexible arrays.
-         */
-        public asArray: boolean;
+    public className: string;
 
-        /**
-         * The name of the list class.
-         */
-        public className: string;
+    /**
+     * How to retrieve the length of a list.
+     */
+    public length: NativeCallProperties;
 
-        /**
-         * How to retrieve the length of a list.
-         */
-        public length: NativeCallProperties;
+    /**
+     * How to add an element to the end of a list.
+     */
+    public push: NativeCallProperties;
 
-        /**
-         * How to add an element to the end of a list.
-         */
-        public push: NativeCallProperties;
-
-        /**
-         * Required imports to be able to use lists.
-         */
-        public requiredImports: { [i: string]: string[] };
-    }
+    /**
+     * Required imports to be able to use lists.
+     */
+    public requiredImports: { [i: string]: string[] };
 }

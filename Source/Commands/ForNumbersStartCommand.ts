@@ -1,95 +1,92 @@
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="Command.ts" />
-/// <reference path="LineResults.ts" />
-/// <reference path="Parameters/Parameter.ts" />
-/// <reference path="Parameters/SingleParameter.ts" />
-/// <reference path="Parameters/RepeatingParameters.ts" />
+import { Language } from "../Languages/Language";
+import { Command } from "./Command";
+import { CommandResult } from "./CommandResult";
+import { LineResults } from "./LineResults";
+import { Parameter } from "./Parameters/Parameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
+import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
-namespace GLS.Commands {
-    "use strict";
+/**
+ * A command for the beginning of a for loop over numbers.
+ */
+export class ForNumbersStartCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static parameters: Parameter[] = [
+        new SingleParameter("name", "The name of the loop variable.", true),
+        new SingleParameter("type", "The type of the loop variable", true),
+        new SingleParameter("start", "What the loop variable starts at.", true),
+        new SingleParameter("end", "What the loop variable ends at.", true)
+    ];
 
     /**
-     * A command for the beginning of a for loop over numbers.
+     * @returns Information on parameters this command takes in.
      */
-    export class ForNumbersStartCommand extends Command {
-        /**
-         * Information on parameters this command takes in.
-         */
-        private static parameters: Parameters.Parameter[] = [
-            new Parameters.SingleParameter("name", "The name of the loop variable.", true),
-            new Parameters.SingleParameter("type", "The type of the loop variable", true),
-            new Parameters.SingleParameter("start", "What the loop variable starts at.", true),
-            new Parameters.SingleParameter("end", "What the loop variable ends at.", true)
-        ];
+    public getParameters(): Parameter[] {
+        return ForNumbersStartCommand.parameters;
+    }
 
-        /**
-         * @returns Information on parameters this command takes in.
-         */
-        public getParameters(): Parameters.Parameter[] {
-            return ForNumbersStartCommand.parameters;
+    /**
+     * Renders the command for a language with the given parameters.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: (name, type, start, end).
+     */
+    public render(parameters: string[]): LineResults {
+        let starter: string;
+
+        if (this.language.properties.loops.rangedForLoops) {
+            starter = this.renderStartRanged(parameters);
+        } else {
+            starter = this.renderStartLoop(parameters);
         }
 
-        /**
-         * Renders the command for a language with the given parameters.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: (name, type, start, end).
-         */
-        public render(parameters: string[]): LineResults {
-            let starter: string;
+        let lines: CommandResult[] = [new CommandResult(starter, 0)];
+        this.addLineEnder(lines, this.language.properties.conditionals.startRight, 1);
 
-            if (this.language.properties.loops.rangedForLoops) {
-                starter = this.renderStartRanged(parameters);
-            } else {
-                starter = this.renderStartLoop(parameters);
-            }
+        return new LineResults(lines, false);
+    }
 
-            let lines: CommandResult[] = [new CommandResult(starter, 0)];
-            this.addLineEnder(lines, this.language.properties.conditionals.startRight, 1);
+    /**
+     * Renders a Pythonic ranged loop.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: (name, type, start, end).
+     */
+    private renderStartRanged(parameters: string[]): string {
+        let output: string = this.language.properties.loops.for;
 
-            return new LineResults(lines, false);
-        }
+        output += this.language.properties.conditionals.startLeft;
+        output += parameters[1];
+        output += this.language.properties.loops.rangedForLoopsLeft;
+        output += parameters[3];
+        output += this.language.properties.loops.rangedForLoopsMiddle;
+        output += parameters[4];
+        output += this.language.properties.loops.rangedForLoopsRight;
 
-        /**
-         * Renders a Pythonic ranged loop.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: (name, type, start, end).
-         */
-        private renderStartRanged(parameters: string[]): string {
-            let output: string = this.language.properties.loops.for;
+        return output;
+    }
 
-            output += this.language.properties.conditionals.startLeft;
-            output += parameters[1];
-            output += this.language.properties.loops.rangedForLoopsLeft;
-            output += parameters[3];
-            output += this.language.properties.loops.rangedForLoopsMiddle;
-            output += parameters[4];
-            output += this.language.properties.loops.rangedForLoopsRight;
+    /**
+     * Renders a traditional loop.
+     * 
+     * @param parameters   The command's name, followed by any parameters.
+     * @returns Line(s) of code in the language.
+     * @remarks Usage: (name, type, start, end).
+     */
+    private renderStartLoop(parameters: string[]): string {
+        let output: string = this.language.properties.loops.for;
 
-            return output;
-        }
+        output += this.language.properties.conditionals.startLeft;
+        output += this.context.convertParsed(["variable", parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
+        output += this.language.properties.style.semicolon + " ";
+        output += this.context.convertParsed(["operation", parameters[1], "less than", parameters[4]]).commandResults[0].text;
+        output += this.language.properties.style.semicolon + " ";
+        output += this.context.convertParsed(["operation", parameters[1], "increase by", "1"]).commandResults[0].text;
 
-        /**
-         * Renders a traditional loop.
-         * 
-         * @param parameters   The command's name, followed by any parameters.
-         * @returns Line(s) of code in the language.
-         * @remarks Usage: (name, type, start, end).
-         */
-        private renderStartLoop(parameters: string[]): string {
-            let output: string = this.language.properties.loops.for;
-
-            output += this.language.properties.conditionals.startLeft;
-            output += this.context.convertParsed(["variable", parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
-            output += this.language.properties.style.semicolon + " ";
-            output += this.context.convertParsed(["operation", parameters[1], "less than", parameters[4]]).commandResults[0].text;
-            output += this.language.properties.style.semicolon + " ";
-            output += this.context.convertParsed(["operation", parameters[1], "increase by", "1"]).commandResults[0].text;
-
-            return output;
-        }
+        return output;
     }
 }

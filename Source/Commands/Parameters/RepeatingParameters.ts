@@ -1,28 +1,24 @@
-/// <reference path="Parameter.ts" />
-/// <reference path="SingleParameter.ts" />
+import { Parameter } from "./Parameter";
+import { SingleParameter } from "./SingleParameter";
 
-namespace GLS.Commands.Parameters {
-    "use strict";
+/**
+ * Some number of repeating parameters.
+ */
+export class RepeatingParameters extends Parameter {
+    /**
+     * Parameters contained inside.
+     */
+    public parameters: Parameter[];
 
     /**
-     * Some number of repeating parameters.
+     * Initializes a new instance of the Parameter class.
+     * 
+     * @param descriptor   A plain-text description of the parameter.
+     * @param parameters   Parameters contained inside.
      */
-    export class RepeatingParameters extends Parameter {
-        /**
-         * Parameters contained inside.
-         */
-        public parameters: Parameter[];
+    constructor(description: string, parameters: Parameter[]) {
+        super(description);
 
-        /**
-         * Initializes a new instance of the Parameter class.
-         * 
-         * @param descriptor   A plain-text description of the parameter.
-         * @param parameters   Parameters contained inside.
-         */
-        constructor(description: string, parameters: Parameter[]) {
-            super(description);
-
-            this.parameters = parameters;
-        }
+        this.parameters = parameters;
     }
 }

@@ -8,15 +8,6 @@ module.exports = function (grunt) {
             }
         },
         "clean": ["<%= meta.paths.dist %>"],
-        "concat": {
-            "base": {
-                "src": [
-                    "<%= meta.paths.dist %>/<%= pkg.name %>.js",
-                    "<%= meta.paths.source %>/exports.js"
-                ],
-                "dest": "<%= meta.paths.dist %>/<%= pkg.name %>.js"
-            }
-        },
         "mochaTest": {
             "unit": {
                 "src": ["Tests/Unit/**/*.js"]
@@ -34,28 +25,19 @@ module.exports = function (grunt) {
             },
             "files": "<%= meta.paths.source %>/*/**.ts"
         },
-        "typescript": {
-            "base": {
-                "src": [
-                    "<%= meta.paths.source %>/Languages/*.ts",
-                    "<%= meta.paths.source %>/*.ts",
-                    "<%= meta.paths.source %>/**/*.ts"
-                ],
-                "dest": "<%= meta.paths.dist %>/<%= pkg.name %>.js",
-                "options": {
-                    "declaration": true
-                }
+        "ts": {
+            default: {
+                tsconfig: true
             }
         },
     });
 
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-mocha-test");
     grunt.loadNpmTasks("grunt-tslint");
-    grunt.loadNpmTasks("grunt-typescript");
+    grunt.loadNpmTasks("grunt-ts");
     grunt.registerTask("default", [
-        "clean", "tslint", "typescript", "concat", "mochaTest"
+        "clean", "tslint", "ts", "mochaTest"
     ]);
 };

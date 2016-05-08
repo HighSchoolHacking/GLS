@@ -1,13 +1,9 @@
-namespace GLS.Languages.Properties {
-    "use strict";
-
+/**
+ * Metadata on a language's numbers.
+ */
+export class NumberProperties {
     /**
-     * Metadata on a language's numbers.
+     * The name of the number class.
      */
-    export class NumberProperties {
-        /**
-         * The name of the number class.
-         */
-        public className: string;
-    }
+    public className: string;
 }

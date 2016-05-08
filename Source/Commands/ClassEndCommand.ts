@@ -1,19 +1,15 @@
-/// <reference path="BlockEndCommand.ts" />
+import { BlockEndCommand } from "./BlockEndCommand";
 
-namespace GLS.Commands {
-    "use strict";
-
+/**
+ * A command for the end of a class declaration.
+ */
+export class ClassEndCommand extends BlockEndCommand {
     /**
-     * A command for the end of a class declaration.
+     * Renders the end block for class declarations.
+     * 
+     * @returns The end block for class declarations.
      */
-    export class ClassEndCommand extends BlockEndCommand {
-        /**
-         * Renders the end block for class declarations.
-         * 
-         * @returns The end block for class declarations.
-         */
-        protected renderBlockEnd(): string {
-            return this.language.properties.classes.declareEnd;
-        }
-     }
-}
+    protected renderBlockEnd(): string {
+        return this.language.properties.classes.declareEnd;
+    }
+    }

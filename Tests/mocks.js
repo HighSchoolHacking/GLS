@@ -1,4 +1,10 @@
-var GLS = require("../Distribution/GLS.js");
+const CommandsBag = require("../Source/Commands/CommandsBag");
+const Conversion = require("../Source/Conversions/Conversion");
+const ConversionContext = require("../Source/Conversions/ConversionContext");
+const GlsParser = require("../Source/GlsParser");
+const CaseStyleConverter = require("../Source/Languages/Casing/CaseStyleConverter");
+const CaseStyleConverterBag = require("../Source/Languages/Casing/CaseStyleConverterBag");
+const TypeScript = require("../Source/Languages/TypeScript");
 
 /**
  * Generators for (stub? mock?) class instances.
@@ -7,42 +13,42 @@ var mocks = {
     /**
      * @returns A mocked CaseStyleConverterBag.
      */
-    mockCaseStyleConverter: () => new GLS.Languages.Casing.CaseStyleConverter(),
+    mockCaseStyleConverter: () => new CaseStyleConverter(),
 
     /**
      * @returns A mocked CaseStyleConverterBag.
      */
-    mockCaseStyleConverterBag: () => new GLS.Languages.Casing.CaseStyleConverterBag(),
+    mockCaseStyleConverterBag: () => new CaseStyleConverterBag(),
 
     /**
      * @param glsLines   Raw lines of GLS syntax.
      * @param context   A ConversionContext converting the code.
      * @returns A mocked Conversion.
      */
-    mockConversion: (glsLines, context) => new GLS.Conversions.Conversion(glsLines, context || mocks.mockConversionContext()),
+    mockConversion: (glsLines, context) => new Conversion(glsLines, context || mocks.mockConversionContext()),
 
     /**
      * @param language   A Language for the context (by default, a mocked Language).
      * @returns A mocked ConversionContext.
      */
-    mockConversionContext: language => new GLS.Conversions.ConversionContext(language || mocks.mockLanguage()),
+    mockConversionContext: language => new ConversionContext(language || mocks.mockLanguage()),
 
     /**
      * @param language   A Language for the context (by default, a mocked Language).
      * @returns A mocked CommandsBag.
      */
-    mockCommandsBag: context => new GLS.Commands.CommandsBag(context || mocks.mockConversionContext()),
+    mockCommandsBag: context => new CommandsBag(context || mocks.mockConversionContext()),
 
     /**
      * @param language   A ConversionContext for the parser (by default, a mocked ConversionContext).
      * @returns A mocked GlsParser.
      */
-    mockGlsParser: context => new GLS.GlsParser(context || mocks.mockConversionContext()),
+    mockGlsParser: context => new GlsParser(context || mocks.mockConversionContext()),
 
     /**
      * @returns A mocked Language.
      */
-    mockLanguage: () => new GLS.Languages.TypeScript()
+    mockLanguage: () => new TypeScript()
 };
 
 module.exports = mocks;

@@ -1,15 +1,11 @@
-/// <reference path="ClassMemberVariableProperties.ts" />
+import { ClassMemberVariableProperties } from "./ClassMemberVariableProperties";
 
-namespace GLS.Languages.Properties {
-    "use strict";
-
+/**
+ * Metadata on a language's class member variables.
+ */
+export class ClassMemberProperties {
     /**
-     * Metadata on a language's class member variables.
+     * Metadata on class member variables.
      */
-    export class ClassMemberProperties {
-        /**
-         * Metadata on class member variables.
-         */
-        public variables: ClassMemberVariableProperties = new ClassMemberVariableProperties();
-    }
+    public variables: ClassMemberVariableProperties = new ClassMemberVariableProperties();
 }

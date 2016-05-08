@@ -1,45 +1,41 @@
-/// <reference path="../Casing/CaseStyle.ts" />
+import { CaseStyle } from "../Casing/CaseStyle";
 
-namespace GLS.Languages.Properties {
-    "use strict";
+/**
+ * Metadata on a language's imports.
+ */
+export class ImportProperties {
+    /**
+     * Casing modifier for package names.
+     */
+    public case: CaseStyle;
 
     /**
-     * Metadata on a language's imports.
+     * Whether individual items should be named.
      */
-    export class ImportProperties {
-        /**
-         * Casing modifier for package names.
-         */
-        public case: Casing.CaseStyle;
+    public explicit: boolean;
 
-        /**
-         * Whether individual items should be named.
-         */
-        public explicit: boolean;
+    /**
+     * Whether individual items should be on separate lines.
+     */
+    public explicitLines: boolean;
 
-        /**
-         * Whether individual items should be on separate lines.
-         */
-        public explicitLines: boolean;
+    /**
+     * Whether items should come before package names.
+     */
+    public itemsBeforePackage: boolean;
 
-        /**
-         * Whether items should come before package names.
-         */
-        public itemsBeforePackage: boolean;
+    /**
+     * Start of an import line.
+     */
+    public left: string;
 
-        /**
-         * Start of an import line.
-         */
-        public left: string;
+    /**
+     * Middle of an import line, between items and package.
+     */
+    public middle: string;
 
-        /**
-         * Middle of an import line, between items and package.
-         */
-        public middle: string;
-
-        /**
-         * End of an import line.
-         */
-        public right: string;
-    }
+    /**
+     * End of an import line.
+     */
+    public right: string;
 }

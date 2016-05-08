@@ -1,10 +1,6 @@
-/// <reference path="BlockEndCommand" />
+import { BlockEndCommand } from "./BlockEndCommand";
 
-namespace GLS.Commands {
-    "use strict";
-
-    /**
-     * A command for ending an enum declaration.
-     */
-    export class EnumEndCommand extends BlockEndCommand { }
-}
+/**
+ * A command for ending an enum declaration.
+ */
+export class EnumEndCommand extends BlockEndCommand { }

@@ -1,13 +1,9 @@
-namespace GLS.Languages.Properties {
-    "use strict";
-
+/**
+ * Metadata on a language's output.
+ */
+export class OutputProperties {
     /**
-     * Metadata on a language's output.
+     * The function used for printing.
      */
-    export class OutputProperties {
-        /**
-         * The function used for printing.
-         */
-        public print: string;
-    }
+    public print: string;
 }

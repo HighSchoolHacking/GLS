@@ -1,37 +1,35 @@
-/// <reference path="../Languages/Language.ts" />
-/// <reference path="../Languages/Properties/NativeCallProperties.ts" />
-/// <reference path="Command.ts" />
-/// <reference path="NativeCallCommand.ts" />
-/// <reference path="Parameters/Parameter.ts" />
-/// <reference path="Parameters/SingleParameter.ts" />
-/// <reference path="Parameters/RepeatingParameters.ts" />
+import { Language } from "../Languages/Language";
+import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
+import { Command } from "./Command";
+import { LineResults } from "./LineResults";
+import { NativeCallCommand } from "./NativeCallCommand";
+import { Parameter } from "./Parameters/Parameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
+import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
-namespace GLS.Commands {
-    "use strict";
+/**
+ * A command for a retrieving the length of an array.
+ */
+export class ArrayLengthCommand extends NativeCallCommand {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static parameters: Parameter[] = [
+        new SingleParameter("name", "The name of the variable.", true)
+    ];
 
     /**
-     * A command for a retrieving the length of an array.
+     * @returns Information on parameters this command takes in.
      */
-    export class ArrayLengthCommand extends NativeCallCommand {
-        /**
-         * Information on parameters this command takes in.
-         */
-        private static parameters: Parameters.Parameter[] = [
-            new Parameters.SingleParameter("name", "The name of the variable.", true)
-        ];
+    public getParameters(): Parameter[] {
+        return ArrayLengthCommand.parameters;
+    }
 
-        /**
-         * @returns Information on parameters this command takes in.
-         */
-        public getParameters(): Parameters.Parameter[] {
-            return ArrayLengthCommand.parameters;
-        }
-
-        /**
-         * @returns Metadata on how to perform the native call. 
-         */
-        protected retrieveNativeCallProperties(): Languages.Properties.NativeCallProperties {
-            return this.language.properties.arrays.length;
-        }
+    /**
+     * @returns Metadata on how to perform the native call. 
+     */
+    protected retrieveNativeCallProperties(): NativeCallProperties {
+        return this.language.properties.arrays.length;
     }
 }
+

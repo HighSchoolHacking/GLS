@@ -1,6 +1,10 @@
 Distribution
 Source/**/*.js
+Source/**/*.js.map
+Source/**/*.js.min.map
 !Source/exports.js
 coverage/
 node_modules/
+.tscache/
 npm-debug.log
+

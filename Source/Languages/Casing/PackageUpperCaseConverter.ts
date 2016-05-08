@@ -1,7 +1,4 @@
-/// <reference path="CaseStyleConverter.ts" />
-
-namespace GLS.Languages.Casing {
-    "use strict";
+import { CaseStyleConverter } from "./CaseStyleConverter";
 
     /**
      * Converts a name to "Package.Upper.Case".
@@ -29,4 +26,3 @@ namespace GLS.Languages.Casing {
             return "." + word[0].toUpperCase() + word.substring(1).toLowerCase();
         }
     }
-}
