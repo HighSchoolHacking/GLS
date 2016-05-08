@@ -31,5 +31,5 @@
     "type": "git",
     "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
   },
-  "version": "0.0.0"
+  "version": "0.3.8"
 }
