@@ -50,6 +50,7 @@
 /// <reference path="ListLengthCommand.ts" />
 /// <reference path="ListPushCommand.ts" />
 /// <reference path="LiteralCommand.ts" />
+/// <reference path="ListTypeCommand.ts" />
 /// <reference path="MainEndCommand.ts" />
 /// <reference path="MainStartCommand.ts" />
 /// <reference path="MemberVariableDeclareCommand.ts" />
@@ -137,6 +138,7 @@ namespace GLS.Commands {
                 "list length": new ListLengthCommand(context),
                 "list push": new ListPushCommand(context),
                 "literal": new LiteralCommand(context),
+                "list type": new ListTypeCommand(context),
                 "main end": new MainEndCommand(context),
                 "main start": new MainStartCommand(context),
                 "member variable declare": new MemberVariableDeclareCommand(context),

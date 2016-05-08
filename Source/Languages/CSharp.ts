@@ -143,7 +143,7 @@ namespace GLS.Languages {
             dictionaries.initializePairRight = " }";
             dictionaries.initializeStart = "\n{";
             dictionaries.requiredImports = {
-                "SystemCollectionsGeneric": ["Dictionary"]
+                "System/Collections/Generic": ["Dictionary"]
             };
             dictionaries.typeLeft = "<";
             dictionaries.typeMiddle = ", ";
@@ -228,7 +228,7 @@ namespace GLS.Languages {
                 Properties.NativeCallScope.Member,
                 Properties.NativeCallType.Function);
             lists.requiredImports = {
-                "System.Collections.Generic": ["List"]
+                "System/Collections/Generic": ["List"]
             };
         }
 
