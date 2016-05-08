@@ -194,7 +194,7 @@ export class TypeScript extends CLikeLanguage {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        general.extension = "";
+        general.extension = ".ts";
         general.name = "TypeScript";
     }
 

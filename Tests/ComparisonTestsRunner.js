@@ -4,7 +4,8 @@ var ComparisonTestsRunner = (function () {
     const expect = require("chai").expect;
     const fs = require("fs");
     const path = require("path");
-    const GLS = require("../Distribution/GLS.js");
+    const LanguagesBag = require("../Source/Languages/LanguagesBag").LanguagesBag;
+    const ConversionContext = require("../Source/Conversions/ConversionContext").ConversionContext;
 
     /**
      * Test runner for comparing converted .gls files and expected output.
@@ -19,18 +20,19 @@ var ComparisonTestsRunner = (function () {
             this.section = section;
             this.rootPath = path.resolve(section);
             this.commandTests = this.readTestsUnderPath(this.rootPath);
-            this.languagesBag = new GLS.Languages.LanguagesBag();
+            this.languagesBag = new LanguagesBag();
         }
 
         /**
          * Runs tests under the directory path.
          */
         run() {
-            describe(this.section, () => {
-                for (const command in this.commandTests) {
-                    describe(command, () => this.runCommandTests(command));
-                }
-            });
+            // describe(this.section, () => {
+            //     for (const command in this.commandTests) {
+            //         describe(command, () => this.runCommandTests(command));
+            //     }
+            // });
+            describe("CommentBlock", () => this.runCommandTests("CommentBlock"));
         }
 
         /**
@@ -61,7 +63,7 @@ var ComparisonTestsRunner = (function () {
          * @param {Language} language   The language the test is running as.
          */
         runCommandTest(command, test, language) {
-            const context = new GLS.Conversions.ConversionContext(language);
+            const context = new ConversionContext(language);
             const extension = language.properties.general.extension;
 
             const source = this.readCommandFile(command, test + ".gls");
