@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
-        "sourceMap": false
+        "sourceMap": false,
+        "removeComments": false,
+        "target": "es5"
     },
     "exclude": [
         "Coverage", "Documentation", "node_modules", "Tests"

@@ -8,13 +8,13 @@ module.exports = grunt => {
                     instrument: "Coverage/Instrument",
                     reports: "Coverage/Reports"
                 },
-                dist: "Distribution",
+                distribution: "Distribution",
                 source: "Source"
             }
         },
         clean: [
             "<%= meta.paths.coverage.base %>",
-            "<%= meta.paths.dist %>/**",
+            "<%= meta.paths.distribution %>/**",
             "<%= meta.paths.source %>/**/*.js.*"
         ],
         env: {
@@ -68,17 +68,24 @@ module.exports = grunt => {
             },
             distribution: {
                 options: {
+                    declaration: true,
                     module: "amd",
-                    sourceMap: false
+                    removeComments: false,
+                    sourceMap: true
                 },
-                out: "<%= meta.paths.dist %>/GLS.js",
+                out: "<%= meta.paths.distribution %>/GLS.js",
                 src: ["<%= meta.paths.source %>/**/*.ts"]
             }
         },
         uglify: {
             distribution: {
+                options: {
+                    sourceMapIn: "<%= meta.paths.distribution %>/GLS.js.map",
+                    sourceMap: "<%= meta.paths.distribution %>/GLS.min.map",
+                    sourceMapRoot: "<%= meta.paths.source %>"
+                },
                 files: {
-                    "<%= meta.paths.dist %>/GLS.min.js": ["<%= meta.paths.dist %>/GLS.js"]
+                    "<%= meta.paths.distribution %>/GLS.min.js": ["<%= meta.paths.distribution %>/GLS.js"]
                 }
             }
         }
