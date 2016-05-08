@@ -8,6 +8,7 @@
 /// <reference path="ExceptionProperties.ts" />
 /// <reference path="FunctionProperties.ts" />
 /// <reference path="GeneralProperties.ts" />
+/// <reference path="ImportProperties.ts" />
 /// <reference path="LambdaProperties.ts" />
 /// <reference path="ListProperties.ts" />
 /// <reference path="LoopProperties.ts" />
@@ -76,6 +77,11 @@ namespace GLS.Languages.Properties {
         public general: GeneralProperties;
 
         /**
+         * Metadata on imports.
+         */
+        public imports: ImportProperties;
+
+        /**
          * Metadata on lambdas.
          */
         public lambdas: LambdaProperties;
@@ -134,6 +140,7 @@ namespace GLS.Languages.Properties {
             this.exceptions = new ExceptionProperties();
             this.functions = new FunctionProperties();
             this.general = new GeneralProperties();
+            this.imports = new ImportProperties();
             this.lambdas = new LambdaProperties();
             this.lists = new ListProperties();
             this.loops = new LoopProperties();

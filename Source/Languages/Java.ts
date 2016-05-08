@@ -173,6 +173,18 @@ namespace GLS.Languages {
         }
 
         /**
+         * Generates metadata on functions.
+         * 
+         * @param functions   A property container for metadata on functions.
+         */
+        protected generateFunctionProperties(functions: Properties.FunctionProperties): void {
+            super.generateFunctionProperties(functions);
+
+            functions.defineStartLeft = " ";
+            functions.defineStartRight = " {";
+        }
+
+        /**
          * Generates general metadata.
          * 
          * @param general   A property container for general metadata.
@@ -183,15 +195,17 @@ namespace GLS.Languages {
         }
 
         /**
-         * Generates metadata on functions.
+         * Generates metadata on imports.
          * 
-         * @param functions   A property container for metadata on functions.
+         * @param imports   A property container for metadata on imports.
          */
-        protected generateFunctionProperties(functions: Properties.FunctionProperties): void {
-            super.generateFunctionProperties(functions);
-
-            functions.defineStartLeft = " ";
-            functions.defineStartRight = " {";
+        protected generateImportProperties(imports: Properties.ImportProperties): void {
+            imports.case = Casing.CaseStyle.PackageLowerCase;
+            imports.explicit = true;
+            imports.explicitLines = true;
+            imports.left = "import ";
+            imports.middle = ".";
+            imports.right = ";";
         }
 
         /**

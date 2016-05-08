@@ -1,7 +1,6 @@
-/// <reference path="Commands/Command.ts" />
 /// <reference path="Commands/CommandsBag.ts" />
-/// <reference path="Commands/CommandResult.ts" />
 /// <reference path="Commands/LineResults.ts" />
+/// <reference path="Conversions/ConversionContext.ts" />
 /// <reference path="Languages/Language.ts" />
 /// <reference path="Languages/Casing/CaseStyleConverterBag.ts" />
 
@@ -25,14 +24,14 @@ namespace GLS {
         /**
          * The driving context for converting commands.
          */
-        private context: ConversionContext;
+        private context: Conversions.ConversionContext;
 
         /**
          * Initializes a new instance of the GlsParser class.
          * 
          * @param context   A driving context for converting commands.
          */
-        constructor(context: ConversionContext) {
+        constructor(context: Conversions.ConversionContext) {
             this.caseConverter = new Languages.Casing.CaseStyleConverterBag();
             this.context = context;
             this.commandsBag = new Commands.CommandsBag(context);

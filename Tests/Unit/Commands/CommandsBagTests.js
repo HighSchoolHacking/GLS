@@ -11,7 +11,7 @@ var expect = require("chai").expect,
             mocha.it("renders a command by name", () => {
                 let commandsBag = mocks.mockCommandsBag(),
                     language = mocks.mockLanguage(),
-                    lines = commandsBag.renderCommand([GLS.Commands.CommandStrings.LiteralCommandName]),
+                    lines = commandsBag.renderCommand(["literal"]),
                     result = lines.commandResults;
 
                 expect(result.length).to.be.equal(1);

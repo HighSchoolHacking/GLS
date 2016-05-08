@@ -17,6 +17,8 @@ namespace GLS.Languages.Casing {
             let position: number = 0;
             let nameConverted: string = "";
 
+            name = name.replace(/\//g, "");
+
             while (position < name.length) {
                 let nextWordStart = this.findNextWordStart(name, position);
                 let nextWord = name.substring(position, nextWordStart);

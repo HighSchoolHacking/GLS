@@ -1,3 +1,4 @@
+/// <reference path="../Conversions/ConversionContext.ts" />
 /// <reference path="../Languages/Language.ts" />
 /// <reference path="Command.ts" />
 /// <reference path="CommandResult.ts" />
@@ -42,6 +43,7 @@
 /// <reference path="FunctionStartCommand.ts" />
 /// <reference path="IfEndCommand.ts" />
 /// <reference path="IfStartCommand.ts" />
+/// <reference path="ImportCommand.ts" />
 /// <reference path="IndexCommand.ts" />
 /// <reference path="LambdaBodyCommand.ts" />
 /// <reference path="ListInitializeCommand.ts" />
@@ -86,7 +88,7 @@ namespace GLS.Commands {
          * 
          * @param context   The driving context for conversions.
          */
-        constructor(context: ConversionContext) {
+        constructor(context: Conversions.ConversionContext) {
             this.commands = {
                 "array initialize": new ArrayInitializeCommand(context),
                 "array length": new ArrayLengthCommand(context),
@@ -128,6 +130,7 @@ namespace GLS.Commands {
                 "function end": new FunctionEndCommand(context),
                 "if end": new IfEndCommand(context),
                 "if start": new IfStartCommand(context),
+                "import": new ImportCommand(context),
                 "index": new IndexCommand(context),
                 "lambda": new LambdaBodyCommand(context),
                 "list initialize": new ListInitializeCommand(context),

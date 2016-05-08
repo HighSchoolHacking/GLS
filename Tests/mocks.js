@@ -15,10 +15,17 @@ var mocks = {
     mockCaseStyleConverterBag: () => new GLS.Languages.Casing.CaseStyleConverterBag(),
 
     /**
+     * @param glsLines   Raw lines of GLS syntax.
+     * @param context   A ConversionContext converting the code.
+     * @returns A mocked Conversion.
+     */
+    mockConversion: (glsLines, context) => new GLS.Conversions.Conversion(glsLines, context || mocks.mockConversionContext()),
+
+    /**
      * @param language   A Language for the context (by default, a mocked Language).
      * @returns A mocked ConversionContext.
      */
-    mockConversionContext: language => new GLS.ConversionContext(language || mocks.mockLanguage()),
+    mockConversionContext: language => new GLS.Conversions.ConversionContext(language || mocks.mockLanguage()),
 
     /**
      * @param language   A Language for the context (by default, a mocked Language).

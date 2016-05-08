@@ -61,7 +61,7 @@ var ComparisonTestsRunner = (function () {
          * @param {Language} language   The language the test is running as.
          */
         runCommandTest(command, test, language) {
-            const context = new GLS.ConversionContext(language);
+            const context = new GLS.Conversions.ConversionContext(language);
             const extension = language.properties.general.extension;
 
             const source = this.readCommandFile(command, test + ".gls");

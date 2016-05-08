@@ -1,12 +1,10 @@
-/// <reference path="Commands/Command.ts" />
-/// <reference path="Commands/CommandResult.ts" />
-/// <reference path="Commands/CommandStrings.ts" />
-/// <reference path="Commands/LineResults.ts" />
-/// <reference path="Languages/Language.ts" />
-/// <reference path="Languages/Casing/CaseStyleConverter.ts" />
-/// <reference path="GlsParser.ts" />
+/// <reference path="../Commands/LineResults.ts" />
+/// <reference path="../GlsParser.ts" />
+/// <reference path="../Languages/Language.ts" />
+/// <reference path="../Languages/Casing/CaseStyle.ts" />
+/// <reference path="Conversion.ts" />
 
-namespace GLS {
+namespace GLS.Conversions {
     "use strict";
 
     /**
@@ -36,51 +34,27 @@ namespace GLS {
         /**
          * @returns The language this context is converting GLS code into.
          */
-        public /* readonly */ getLanguage(): Languages.Language {
+        public getLanguage(): Languages.Language {
             return this.language;
         }
 
         /**
-         * Converts raw GLS syntax to the context language. 
+         * @returns The converter for transforming raw GLS syntax into language code.
+         */
+        public getParser(): GlsParser {
+            return this.parser;
+        }
+
+        /**
+         * Converts raw GLS syntax to the context language.
          * 
          * @param lines   Lines of raw GLS syntax.
          * @returns Equivalent lines of code in the context language.
          */
         public convert(lines: string[]): string[] {
-            let indentation: number = 0,
-                output: string[] = [];
+            let converter: Conversion = new Conversion(lines, this);
 
-            for (let i: number = 0; i < lines.length; i += 1) {
-                if (lines[i].trim() === "") {
-                    output.push(this.generateTabs(indentation));
-                    continue;
-                }
-
-                let lineResults: Commands.LineResults = this.parser.parseCommand(lines[i]);
-                let commandResults: Commands.CommandResult[] = lineResults.commandResults;
-
-                for (let j: number = 0; j < commandResults.length; j += 1) {
-                    let result: Commands.CommandResult = commandResults[j];
-
-                    if (result.indentation < 0) {
-                        indentation += result.indentation;
-                    }
-
-                    if (result.text !== "\0") {
-                        output.push(this.generateTabs(indentation) + result.text);
-                    }
-
-                    if (result.indentation > 0) {
-                        indentation += result.indentation;
-                    }
-                }
-
-                if (lineResults.addSemicolon) {
-                    output[output.length - 1] += this.language.properties.style.semicolon;
-                }
-            }
-
-            return output;
+            return converter.convert();
         }
 
         /**
@@ -95,7 +69,7 @@ namespace GLS {
 
             return lineResults.commandResults[0].text;
         }
-        
+
         /**
          * Converts a command with pre-parsed arguments.
          * 
@@ -115,22 +89,6 @@ namespace GLS {
          */
         public convertToCase(name: string, casingStyle: Languages.Casing.CaseStyle): string {
             return this.parser.convertToCase(name, casingStyle);
-        }
-
-        /**
-         * Generates spaces equivalent to 4-space code tabbing.
-         * 
-         * @param amount   How many tabs should be added.
-         * @returns An all-spaces String of length = amount * 4.
-         */
-        private generateTabs(amount: number): string {
-            let output: string = "";
-
-            for (let i: number = 0; i < amount; i += 1) {
-                output += "    ";
-            }
-
-            return output;
         }
     }
 }
