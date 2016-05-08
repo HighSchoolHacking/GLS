@@ -74,11 +74,19 @@ module.exports = grunt => {
                 out: "<%= meta.paths.dist %>/GLS.js",
                 src: ["<%= meta.paths.source %>/**/*.ts"]
             }
+        },
+        uglify: {
+            distribution: {
+                files: {
+                    "<%= meta.paths.dist %>/GLS.min.js": ["<%= meta.paths.dist %>/GLS.js"]
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-env");
     grunt.loadNpmTasks("grunt-istanbul");
     grunt.loadNpmTasks("grunt-mocha-test");
