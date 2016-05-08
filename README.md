@@ -1,5 +1,8 @@
 # GLS - General Language Syntax
 
+[![Build Status](https://travis-ci.org/HighSchoolHacking/GLS.svg?)](https://travis-ci.org/HighSchoolHacking/GLS)
+[![Codecov](https://codecov.io/github/HighSchoolHacking/GLS/coverage.svg?branch=master)](https://codecov.io/github/HighSchoolHacking/GLS)
+
 A unified syntax that compiles into a number of OOP languages.
 
 
