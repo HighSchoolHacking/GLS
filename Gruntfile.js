@@ -4,6 +4,7 @@ module.exports = grunt => {
         meta: {
             paths: {
                 coverage: {
+                    base: "Coverage",
                     instrument: "Coverage/Instrument",
                     reports: "Coverage/Reports"
                 },
@@ -11,7 +12,11 @@ module.exports = grunt => {
                 source: "Source"
             }
         },
-        clean: ["<%= meta.paths.dist %>/**"],
+        clean: [
+            "<%= meta.paths.coverage.base %>",
+            "<%= meta.paths.dist %>/**",
+            "<%= meta.paths.source %>/**/*.js.*"
+        ],
         env: {
             coverage: {
                 INSTRUMENTED_SOURCE: "/<%= meta.paths.coverage.instrument %>/<%= meta.paths.source %>/"
@@ -33,22 +38,16 @@ module.exports = grunt => {
             }
         },
         mochaTest: {
+            options: {
+                reporter: "Nyan"
+            },
             unit: {
-                options: {
-                    reporter: "spec"
-                },
                 src: ["Tests/Unit/**/*.js"]
             },
             integration: {
-                options: {
-                    reporter: "spec"
-                },
                 src: ["Tests/IntegrationTests.js"]
             },
             "end-to-end": {
-                options: {
-                    reporter: "spec"
-                },
                 src: ["Tests/EndToEndTests.js"]
             }
         },
@@ -66,8 +65,16 @@ module.exports = grunt => {
         ts: {
             default: {
                 tsconfig: true
+            },
+            distribution: {
+                options: {
+                    module: "amd",
+                    sourceMap: false
+                },
+                out: "<%= meta.paths.dist %>/GLS.js",
+                src: ["<%= meta.paths.source %>/**/*.ts"]
             }
-        },
+        }
     });
 
     grunt.loadNpmTasks("grunt-contrib-clean");
