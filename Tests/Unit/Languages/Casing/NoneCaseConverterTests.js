@@ -1,7 +1,7 @@
-var expect = require("chai").expect,
-    mocha = require("mocha"),
-    mocks = require("../../../mocks.js"),
-    GLS = require("../../../../Distribution/GLS.js");
+const expect = require("chai").expect;
+const mocha = require("mocha");
+const mocks = require("../../../mocks.js");
+const CaseStyle = require("../../../../Source/Languages/Casing/CaseStyle").CaseStyle;
 
 (function () {
     "use strict";
@@ -10,7 +10,7 @@ var expect = require("chai").expect,
         mocha.describe("convert", () => {
             mocha.it("parses a camelCase name", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.convert("aaaBbbCcc", caseStyle)).to.be.equal("aaaBbbCcc");
@@ -18,7 +18,7 @@ var expect = require("chai").expect,
 
             mocha.it("parses a PascalCase name", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.convert("AaaBbbCcc", caseStyle)).to.be.equal("AaaBbbCcc");
@@ -26,7 +26,7 @@ var expect = require("chai").expect,
 
             mocha.it("parses a snake_case name", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.convert("aaa_bbb_ccc", caseStyle)).to.be.equal("aaa_bbb_ccc");
@@ -36,7 +36,7 @@ var expect = require("chai").expect,
         mocha.describe("applyTransformationToWord", () => {
             mocha.it("parses a camelCase word", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.applyTransformationToWord("aaa")).to.be.equal("aaa");
@@ -44,7 +44,7 @@ var expect = require("chai").expect,
 
             mocha.it("parses a PascalCase word", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.applyTransformationToWord("Aaa")).to.be.equal("Aaa");
@@ -52,7 +52,7 @@ var expect = require("chai").expect,
 
             mocha.it("parses a snake_case word", () => {
                 let converterBag = mocks.mockCaseStyleConverterBag(),
-                    caseStyle = GLS.Languages.Casing.CaseStyle.None,
+                    caseStyle = CaseStyle.None,
                     converter = converterBag.getConverter(caseStyle);
 
                 expect(converter.applyTransformationToWord("aaa")).to.be.equal("aaa");

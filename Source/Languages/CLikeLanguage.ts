@@ -1,25 +1,25 @@
-import { Language } from "./Language.ts";
-import { CaseStyle } from "./Casing/CaseStyle.ts";
-import { ArrayProperties } from "./Properties/ArrayProperties.ts";
-import { BooleanProperties } from "./Properties/BooleanProperties.ts";
-import { ClassProperties } from "./Properties/ClassProperties.ts";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties.ts";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties.ts";
-import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties.ts";
-import { CommentProperties } from "./Properties/CommentProperties.ts";
-import { ConditionalProperties } from "./Properties/ConditionalProperties.ts";
-import { DictionaryProperties } from "./Properties/DictionaryProperties.ts";
-import { EnumProperties } from "./Properties/EnumProperties.ts";
-import { ExceptionProperties } from "./Properties/ExceptionProperties.ts";
-import { FunctionProperties } from "./Properties/FunctionProperties.ts";
-import { GeneralProperties } from "./Properties/GeneralProperties.ts";
-import { LambdaProperties } from "./Properties/LambdaProperties.ts";
-import { LoopProperties } from "./Properties/LoopProperties.ts";
-import { NumberProperties } from "./Properties/NumberProperties.ts";
-import { OperatorProperties } from "./Properties/OperatorProperties.ts";
-import { StringProperties } from "./Properties/StringProperties.ts";
-import { StyleProperties } from "./Properties/StyleProperties.ts";
-import { VariableProperties } from "./Properties/VariableProperties.ts";
+import { Language } from "./Language";
+import { CaseStyle } from "./Casing/CaseStyle";
+import { ArrayProperties } from "./Properties/ArrayProperties";
+import { BooleanProperties } from "./Properties/BooleanProperties";
+import { ClassProperties } from "./Properties/ClassProperties";
+import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
+import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
+import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
+import { CommentProperties } from "./Properties/CommentProperties";
+import { ConditionalProperties } from "./Properties/ConditionalProperties";
+import { DictionaryProperties } from "./Properties/DictionaryProperties";
+import { EnumProperties } from "./Properties/EnumProperties";
+import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FunctionProperties } from "./Properties/FunctionProperties";
+import { GeneralProperties } from "./Properties/GeneralProperties";
+import { LambdaProperties } from "./Properties/LambdaProperties";
+import { LoopProperties } from "./Properties/LoopProperties";
+import { NumberProperties } from "./Properties/NumberProperties";
+import { OperatorProperties } from "./Properties/OperatorProperties";
+import { StringProperties } from "./Properties/StringProperties";
+import { StyleProperties } from "./Properties/StyleProperties";
+import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
  * A summary of information for a C-like language.

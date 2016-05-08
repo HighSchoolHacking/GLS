@@ -1,7 +1,6 @@
 var expect = require("chai").expect,
     mocha = require("mocha"),
-    mocks = require("../../mocks.js"),
-    GLS = require("../../../Distribution/GLS.js");
+    mocks = require("../../mocks.js");
 
 (function () {
     "use strict";

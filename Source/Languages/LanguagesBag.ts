@@ -1,10 +1,3 @@
-/// <reference path="CSharp.ts" />
-/// <reference path="Java.ts" />
-/// <reference path="Language.ts" />
-/// <reference path="Python.ts" />
-/// <reference path="Ruby.ts" />
-/// <reference path="TypeScript.ts" />
-
 import { CSharp } from "./CSharp";
 import { Java } from "./Java";
 import { Language } from "./Language";
