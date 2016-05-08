@@ -233,6 +233,9 @@ namespace GLS.Languages {
                 "add",
                 Properties.NativeCallScope.Member,
                 Properties.NativeCallType.Function);
+            lists.requiredImports = {
+                "java.util": ["ArrayList"]
+            };
         }
 
         /**

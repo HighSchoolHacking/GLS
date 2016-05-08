@@ -227,6 +227,9 @@ namespace GLS.Languages {
                 "Add",
                 Properties.NativeCallScope.Member,
                 Properties.NativeCallType.Function);
+            lists.requiredImports = {
+                "System.Collections.Generic": ["List"]
+            };
         }
 
         /**
