@@ -1,31 +1,69 @@
-module.exports = function (grunt) {
+module.exports = grunt => {
     grunt.initConfig({
-        "pkg": grunt.file.readJSON("package.json"),
-        "meta": {
-            "paths": {
-                "source": "Source",
-                "dist": "Distribution"
+        pkg: grunt.file.readJSON("package.json"),
+        meta: {
+            paths: {
+                coverage: {
+                    instrument: "Coverage/Instrument",
+                    reports: "Coverage/Reports"
+                },
+                dist: "Distribution",
+                source: "Source"
             }
         },
-        "clean": ["<%= meta.paths.dist %>"],
-        "mochaTest": {
-            "unit": {
-                "src": ["Tests/Unit/**/*.js"]
+        clean: ["<%= meta.paths.dist %>/**"],
+        env: {
+            coverage: {
+                INSTRUMENTED_SOURCE: "/<%= meta.paths.coverage.instrument %>/<%= meta.paths.source %>/"
+            }
+        },
+        instrument: {
+            files: "Source/**/*.js",
+            options: {
+                lazy: true,
+                basePath: "<%= meta.paths.coverage.instrument %>"
+            }
+        },
+        makeReport: {
+            src: "<%= meta.paths.coverage.reports %>/**/*.json",
+            options: {
+                type: "lcov",
+                dir: "<%= meta.paths.coverage.reports %>",
+                print: "detail"
+            }
+        },
+        mochaTest: {
+            unit: {
+                options: {
+                    reporter: "spec"
+                },
+                src: ["Tests/Unit/**/*.js"]
             },
-            "integration": {
-                "src": ["Tests/IntegrationTests.js"]
+            integration: {
+                options: {
+                    reporter: "spec"
+                },
+                src: ["Tests/IntegrationTests.js"]
             },
             "end-to-end": {
-                "src": ["Tests/EndToEndTests.js"]
+                options: {
+                    reporter: "spec"
+                },
+                src: ["Tests/EndToEndTests.js"]
             }
         },
-        "tslint": {
-            "options": {
-                "configuration": grunt.file.readJSON("tslint.json")
-            },
-            "files": "<%= meta.paths.source %>/*/**.ts"
+        storeCoverage: {
+            options: {
+                dir: "<%= meta.paths.coverage.reports %>"
+            }
         },
-        "ts": {
+        tslint: {
+            options: {
+                configuration: grunt.file.readJSON("tslint.json")
+            },
+            files: "<%= meta.paths.source %>/*/**.ts"
+        },
+        ts: {
             default: {
                 tsconfig: true
             }
@@ -34,10 +72,17 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-env");
+    grunt.loadNpmTasks("grunt-istanbul");
     grunt.loadNpmTasks("grunt-mocha-test");
     grunt.loadNpmTasks("grunt-tslint");
     grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", [
-        "clean", "tslint", "ts", "mochaTest"
-    ]);
+
+    grunt.registerTask(
+        "default",
+        ["clean", "tslint", "ts", "coverage"]);
+
+    grunt.registerTask(
+        "coverage",
+        ["env:coverage", "instrument", "mochaTest", "storeCoverage", "makeReport"]);
 };

@@ -1,12 +1,12 @@
 {
   "author": {
     "name": "Josh Goldberg",
-    "email": "josh@fullscreenmario.com"
+    "email": "jogol@microsoft.com"
   },
   "bugs": {
-    "url": "https://github.com/FullScreenShenanigans/FullScreenPokemon/issues"
+    "url": "https://github.com/HighSchoolHacking/GLS/issues"
   },
-  "description": "Draft fancy implementation of GLS",
+  "description": "General Language Syntax - A unified syntax that compiles into a number of OOP languages.",
   "devDependencies": {
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
@@ -15,6 +15,7 @@
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
+    "grunt-istanbul": "^0.7.0",
     "grunt-mocha-test": "^0.12.7",
     "grunt-ts": "^5.5.0-beta.2",
     "grunt-tslint": "^3.1.0",
@@ -24,10 +25,10 @@
     "typescript": "^1.8.10"
   },
   "license": "MIT",
-  "name": "GLS",
+  "name": "gls",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:FullScreenShenanigans/FullScreenPokemon.git"
+    "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
   },
   "version": "0.0.0"
 }
