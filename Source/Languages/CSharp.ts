@@ -142,6 +142,9 @@ namespace GLS.Languages {
             dictionaries.initializePairMiddle = ", ";
             dictionaries.initializePairRight = " }";
             dictionaries.initializeStart = "\n{";
+            dictionaries.requiredImports = {
+                "SystemCollectionsGeneric": ["Dictionary"]
+            };
             dictionaries.typeLeft = "<";
             dictionaries.typeMiddle = ", ";
             dictionaries.typeRight = ">";

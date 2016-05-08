@@ -37,8 +37,15 @@ namespace GLS.Commands {
         /**
          * 
          */
-        public setPackageImports(packageName: string, members: string[]): void {
-            this.addedImports[packageName] = members;
+        public addImports(imports: { [i: string]: string[] }): void {
+            if (this.addedImports === undefined) {
+                this.addedImports = imports;
+                return;
+            }
+
+            for (let packageName in imports) {
+                this.addedImports[packageName] = imports[packageName];
+            }
         }
 
         /**

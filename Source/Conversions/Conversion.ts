@@ -24,7 +24,7 @@ namespace GLS.Conversions {
         private allLineResults: Commands.LineResults[];
 
         /**
-         * Accumulated imports retrieved fromfunctions.
+         * Accumulated imports retrieved from functions.
          */
         private imports: { [i: string]: string[] };
 
@@ -132,6 +132,10 @@ namespace GLS.Conversions {
          * Transfers captured import statements from commands to line results.
          */
         private convertImportsToLineResults(): void {
+            if (Object.keys(this.imports).length !== 0) {
+                this.allLineResults.unshift(Commands.LineResults.newSingleLine("", false));
+            }
+
             for (let packageName in this.imports) {
                 this.convertImportToLineResults(packageName, this.imports[packageName]);
             }

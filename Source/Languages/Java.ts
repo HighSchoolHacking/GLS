@@ -144,6 +144,9 @@ namespace GLS.Languages {
             dictionaries.initializePairLeft = "put(";
             dictionaries.initializePairMiddle = ", ";
             dictionaries.initializePairRight = ");";
+            dictionaries.requiredImports = {
+                "java.util": ["HashMap"]
+            };
             dictionaries.typeLeft = "<";
             dictionaries.typeMiddle = ", ";
             dictionaries.typeRight = ">";

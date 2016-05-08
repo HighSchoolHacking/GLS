@@ -58,6 +58,11 @@ namespace GLS.Languages.Properties {
         public initializeStart: string;
 
         /**
+         * Required imports to be able to use dictionaries.
+         */
+        public requiredImports: { [i: string]: string[] };
+
+        /**
          * How to start displaying types in a dictionary type.
          */
         public typeLeft: string;

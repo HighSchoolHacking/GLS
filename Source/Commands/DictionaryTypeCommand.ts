@@ -46,7 +46,13 @@ namespace GLS.Commands {
                 output += this.language.properties.dictionaries.typeRight;
             }
 
-            return LineResults.newSingleLine(output, false);
+            let results = LineResults.newSingleLine(output, false);
+
+            if (this.language.properties.dictionaries.requiredImports) {
+                results.addImports(this.language.properties.dictionaries.requiredImports);
+            }
+
+            return results;
         }
     }
 }
