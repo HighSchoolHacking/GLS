@@ -102,7 +102,7 @@ module.exports = grunt => {
 
     grunt.registerTask(
         "build",
-        ["tslint", "ts"]);
+        ["tslint", "ts", "uglify"]);
 
     grunt.registerTask(
         "coverage",
