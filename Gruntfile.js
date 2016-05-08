@@ -79,10 +79,14 @@ module.exports = grunt => {
     grunt.loadNpmTasks("grunt-ts");
 
     grunt.registerTask(
-        "default",
-        ["clean", "tslint", "ts", "coverage"]);
+        "build",
+        ["tslint", "ts"]);
 
     grunt.registerTask(
         "coverage",
         ["env:coverage", "instrument", "mochaTest", "storeCoverage", "makeReport"]);
+
+    grunt.registerTask(
+        "default",
+        ["clean", "build", "coverage"]);
 };
