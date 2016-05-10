@@ -1,27 +1,26 @@
-# Lambda Declare
+# Lambda Declarations
 
-## Overview
-GLS will support declaring lambda functions. In order to declare a function that takes a lambda function as a parameter, the lambda must first be declared.
+GLS will support declaring lambda functions. In some languages, in order to declare a function that takes a lambda function as a parameter, the lambda must first be declared. This typically involves declaring the return type as well as the parameter names and types, which allow for compile-time type checking when the lambda is used.
 
 ## Commands
 
 ### `lambda declare`
-`lambda declare : lambdaTypeName lambdaFunctionName returnType *`[parameterName parameterType ...]`*
+`lambda declare : typeName functionName returnType *`[parameterName parameterType ...]`*
 
 ## Usage:
 
 ```gls
-lambda declare : over21 check boolean age int
+lambda declare : overMinimum check boolean age int
 ```
 
 ### CSharp:
 ```CSharp
-delegate bool Over21(int age);
+delegate bool overMinimum(int age);
 ```
 
 ### Java:  
 ```Java
-interface Over21 {
+interface overMinimum {
     boolean check(int age);
 }
 ```
@@ -34,8 +33,8 @@ Ruby does not require declaring lambdas.
 
 ### TypeScript
 ```TypeScript
-interface IOver21 {
-    (int age) : bool;
+interface IOverMinimum {
+    (age: number): boolean;
 }
 ```
 
@@ -43,7 +42,7 @@ interface IOver21 {
 
 ### Properties
 
-Properties will be stored in langauge.properties.lambdas. The following properties will be added.
+Properties will be stored in the LambdaProperties object. The following properties will be added.
 
 <table>
     <thead>
@@ -55,7 +54,7 @@ Properties will be stored in langauge.properties.lambdas. The following properti
         <tr>
             <td>requiresDeclaration</td>
             <td>boolean</td>
-            <td>True if the language requires lambda declarations.</td>
+            <td>Whether the language requires lambda declarations.</td>
         </tr>
         <tr>
             <td>declareStart</td>
@@ -75,12 +74,12 @@ Properties will be stored in langauge.properties.lambdas. The following properti
         <tr>
             <td>lambdaDeclareAsInterface</td>
             <td>boolean</td>
-            <td>True if the language requires declaring lambdas with an enclosing interface, false otherwise.</td>
+            <td>Whether the language requires declaring lambdas with an enclosing interface.</td>
         </tr>
         <tr>
             <td>requiresFunctionName</td>
             <td>boolean</td>
-            <td>True if the language requires a lambda function name within the declaration, false otherwise.</td>
+            <td>Whether the language requires a lambda function name within the declaration.</td>
         </tr>
     </tbody>
 </table>
@@ -101,11 +100,11 @@ Properties will be stored in langauge.properties.lambdas. The following properti
         <tr>
             <th>Python</th>
             <td>`false`</td>
-            <td>`""`</td>
-            <td>`""`</td>
-            <td>`""`</td>
-            <td>`false`</td>
-            <td>`false`</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <th>Java</th>
@@ -119,11 +118,11 @@ Properties will be stored in langauge.properties.lambdas. The following properti
         <tr>
             <th>Ruby</th>
             <td>`false`</td>
-            <td>`""`</td>
-            <td>`""`</td>
-            <td>`""`</td>
-            <td>`false`</td>
-            <td>`false`</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <th>CSharp</th>
@@ -159,4 +158,4 @@ Dimensions:
 
 ### Errata
 
-* Python and Ruby do not require lambdas to be declared; in those languages `lambda declare` will be equivalent to a no-op
+* Python and Ruby do not require lambdas to be declared; in those languages `lambda declare` will be equivalent to a no-op.
