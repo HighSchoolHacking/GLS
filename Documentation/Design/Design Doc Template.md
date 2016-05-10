@@ -1,21 +1,19 @@
 # Feature Name
 
-## Feature Overview
-
-A description of the feature.
+A description of the feature. This should a 1 or 2 sentence description of what the feature is and what it is used for in other languages. 
 
 
 ## Commands
 
-### `command 1`
+### `command1 name`
 
-`command 1 syntax`
+`command1 name : parameter list`
 
 A brief description of the command, including any optional parameters or parameters with default values.
 
-### `command 2`
+### `command2 name`
 
-`command 2 syntax`
+`command2 name : parameter list`
 
 A brief description of the command, including any optional parameters or parameters with default values.
 
@@ -147,5 +145,5 @@ Any relevant notes about test coverage.
 
 ### Errata
 
-* Extra stuff about languages that do or do not support certain features
-* Other items that are out of scope
+* Extra stuff about languages that do or do not support certain features.
+* Other items that are out of scope.
