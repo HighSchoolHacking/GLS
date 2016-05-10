@@ -5,23 +5,23 @@ GLS will support declaring lambda functions. In some languages, in order to decl
 ## Commands
 
 ### `lambda declare`
-`lambda declare : typeName functionName returnType *`[parameterName parameterType ...]`*
+`lambda declare : typeName functionName returnType` *`[parameterName parameterType ...]`*
 
 ## Usage:
 
 ```gls
-lambda declare : overMinimum check boolean age int
+lambda declare : overMinimum check boolean amount int
 ```
 
 ### CSharp:
 ```CSharp
-delegate bool overMinimum(int age);
+delegate bool overMinimum(int amount);
 ```
 
 ### Java:  
 ```Java
 interface overMinimum {
-    boolean check(int age);
+    boolean check(int amount);
 }
 ```
 
@@ -34,7 +34,7 @@ Ruby does not require declaring lambdas.
 ### TypeScript
 ```TypeScript
 interface IOverMinimum {
-    (age: number): boolean;
+    (amount: number): boolean;
 }
 ```
 
@@ -98,13 +98,13 @@ Properties will be stored in the LambdaProperties object. The following properti
     </thead>
     <tbody>
         <tr>
-            <th>Python</th>
-            <td>`false`</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th>CSharp</th>
+            <td>`true`</td>
+            <td>`true`</td>
+            <td>`true`</td>
+            <td>`"delegate "`</td>
+            <td>`""`</td>
+            <td>`""`</td>
         </tr>
         <tr>
             <th>Java</th>
@@ -116,7 +116,7 @@ Properties will be stored in the LambdaProperties object. The following properti
             <td>`"\n}"`</td>
         </tr>
         <tr>
-            <th>Ruby</th>
+            <th>Python</th>
             <td>`false`</td>
             <td></td>
             <td></td>
@@ -125,13 +125,13 @@ Properties will be stored in the LambdaProperties object. The following properti
             <td></td>
         </tr>
         <tr>
-            <th>CSharp</th>
-            <td>`true`</td>
-            <td>`true`</td>
-            <td>`true`</td>
-            <td>`"delegate "`</td>
-            <td>`""`</td>
-            <td>`""`</td>
+            <th>Ruby</th>
+            <td>`false`</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <th>TypeScript</th>
