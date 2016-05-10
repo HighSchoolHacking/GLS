@@ -57,6 +57,16 @@ Properties will be stored in the LambdaProperties object. The following properti
             <td>Whether the language requires lambda declarations.</td>
         </tr>
         <tr>
+            <td>lambdaDeclareAsInterface</td>
+            <td>boolean</td>
+            <td>Whether the language requires declaring lambdas with an enclosing interface.</td>
+        </tr>
+        <tr>
+            <td>requiresFunctionName</td>
+            <td>boolean</td>
+            <td>Whether the language requires a lambda function name within the declaration.</td>
+        </tr>
+        <tr>
             <td>declareStart</td>
             <td>string</td>
             <td>The start of a lambda declaration.</td>
@@ -71,16 +81,6 @@ Properties will be stored in the LambdaProperties object. The following properti
             <td>string</td>
             <td>The end of a lambda declaration.</td>
         </tr>
-        <tr>
-            <td>lambdaDeclareAsInterface</td>
-            <td>boolean</td>
-            <td>Whether the language requires declaring lambdas with an enclosing interface.</td>
-        </tr>
-        <tr>
-            <td>requiresFunctionName</td>
-            <td>boolean</td>
-            <td>Whether the language requires a lambda function name within the declaration.</td>
-        </tr>
     </tbody>
 </table>
 
@@ -90,11 +90,11 @@ Properties will be stored in the LambdaProperties object. The following properti
     <thead>
         <th></th>
         <th>requiresDeclaration</th>
+        <th>lambdaDeclareAsInterface</th>
+        <th>requiresFunctionName</th>
         <th>declareStart</th>
         <th>declareMiddle</th>
         <th>declareEnd</th>
-        <th>lambdaDeclareAsInterface</th>
-        <th>requiresFunctionName</th>
     </thead>
     <tbody>
         <tr>
@@ -109,11 +109,11 @@ Properties will be stored in the LambdaProperties object. The following properti
         <tr>
             <th>Java</th>
             <td>`true`</td>
+            <td>`true`</td>
+            <td>`true`</td>
             <td>`"interface "`</td>
             <td>`" {\n"`</td>
             <td>`"\n}"`</td>
-            <td>`true`</td>
-            <td>`true`</td>
         </tr>
         <tr>
             <th>Ruby</th>
@@ -127,34 +127,23 @@ Properties will be stored in the LambdaProperties object. The following properti
         <tr>
             <th>CSharp</th>
             <td>`true`</td>
-            <td>`delegate `</td>
-            <td>`""`</td>
-            <td>`""`</td>
             <td>`true`</td>
             <td>`true`</td>
+            <td>`"delegate "`</td>
+            <td>`""`</td>
+            <td>`""`</td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td>``</td>
-            <td>``</td>
-            <td>``</td>
-            <td>``</td>
-            <td>``</td>
+            <td>`true`</td>
+            <td>`true`</td>
+            <td>`false`</td>
+            <td>`"interface "`</td>
+            <td>`" {\n"`</td>
+            <td>`"\n}"`</td>
         </tr>
     <tbody>
 </table>
-
-### Tests
-
-Dimensions:
-* Return type
-    * void
-    * int
-    * string
-* Number of parameters
-    * none
-    * one
-    * two
 
 ### Errata
 
