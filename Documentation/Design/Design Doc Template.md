@@ -139,10 +139,6 @@ command 1 TypeScript output
     </tbody>
 </table>
 
-### Tests
-
-Any relevant notes about test coverage. 
-
 ### Errata
 
 * Extra stuff about languages that do or do not support certain features.
