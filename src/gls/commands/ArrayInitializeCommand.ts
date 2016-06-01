@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
@@ -36,8 +35,8 @@ export class ArrayInitializeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let typeName: string = this.context.convertCommon("type", parameters[1]),
-            output: string = "";
+        let typeName: string = this.context.convertCommon("type", parameters[1]);
+        let output: string = "";
 
         if (this.language.properties.arrays.initializeAsNew) {
             output += "new ";

@@ -1,8 +1,8 @@
-Distribution
-Source/**/*.js
-Source/**/*.js.map
-Source/**/*.js.min.map
-!Source/exports.js
+dist
+src/**/*.js
+src/**/*.js.map
+src/**/*.js.min.map
+!src/exports.js
 coverage/
 node_modules/
 .tscache/

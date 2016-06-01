@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "sourceMap": false,
-        "removeComments": false,
-        "target": "es5"
+        "module": "amd",
+        "target": "es3",
+        "noImplicitAny": true,
+        "declaration": true,
+        "outDir": "dist"
     },
     "exclude": [
-        "Coverage", "Documentation", "node_modules", "Tests"
+        "coverage", "docs", "node_modules", "test"
     ]
 }

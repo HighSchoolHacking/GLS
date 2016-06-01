@@ -2,7 +2,6 @@ import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";

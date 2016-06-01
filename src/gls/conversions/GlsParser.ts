@@ -1,7 +1,6 @@
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
 import { ConversionContext } from "./ConversionContext";
-import { Language } from "../Languages/Language";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
 
@@ -109,8 +108,8 @@ export class GlsParser {
         let output: string[] = [line.substring(0, colonIndex).trim()];
 
         for (let i: number = colonIndex + 2; i < line.length; i += 1) {
-            let end: number,
-                nextStart: number;
+            let end: number;
+            let nextStart: number;
 
             switch (line[i]) {
                 case "{":

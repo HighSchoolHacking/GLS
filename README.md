@@ -217,14 +217,13 @@ This list will grow as languages are requested.
 
 ## Development
 
-This requires [NodeJS](https://nodejs.org). To initialize your build environment, run:
+ObjectMakr uses [Gulp](http://gulpjs.com/) to automate building, which requires [Node.js](http://node.js.org).
 
-```shell
+To build from scratch, install Node.js and run the following commands:
+
+```
 npm install
+gulp
 ```
 
-Building is done via [Grunt](http://gruntjs.com):
-
-```shell
-grunt
-```
+To build, run `gulp`.

@@ -52,7 +52,7 @@ export class Gls {
         this.languagesBag.addLanguage(name, language);
         return this;
     }
-    
+
     /**
      * Converts raw GLS syntax into language code.
      * 

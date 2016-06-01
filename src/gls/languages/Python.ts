@@ -1,16 +1,13 @@
-import { CLikeLanguage } from "./CLikeLanguage";
+import { PythonicLanguage } from "./PythonicLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
-import { ExceptionProperties } from "./Properties/ExceptionProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -19,27 +16,26 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
- * A summary of information for the TypeScript language.
+ * A summary of information for the Python language.
  */
-export class TypeScript extends CLikeLanguage {
+export class Python extends PythonicLanguage {
     /**
      * Generates metadata on arrays.
      * 
-     * @param arrays   A property container for metadata on arrays.
+     * @param arrays   A property container for metadata on arrays. 
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
-        arrays.className = "Array";
+        arrays.className = "list";
         arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+            "len",
+            NativeCallScope.Static,
+            NativeCallType.Function);
     }
 
     /**
@@ -48,28 +44,28 @@ export class TypeScript extends CLikeLanguage {
      * @param booleans   A property container for metadata on booleans.
      */
     protected generateBooleanProperties(booleans: BooleanProperties): void {
-        booleans.className = "boolean";
+        booleans.className = "bool";
     }
-
     /**
      * Generates metadata on classes.
      * 
-     * @param classes   A property container for metadata on classes.
+     * @param classes   A property container for metadata on classes. 
      */
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
         classes.aliases = {
-            "dictionary": "object",
-            "double": "number",
-            "float": "number",
-            "int": "number"
+            "dictionary": "dict",
+            "number": "float"
         };
-        classes.constructorKeyword = "constructor";
-        classes.constructorUsesKeyword = true;
-        classes.declareExtendsLeft = " extends ";
-        classes.declareStartRight = " {";
-        classes.superConstructor = "super";
+        classes.constructorKeyword = "def __init__";
+        classes.constructorTakesThis = true;
+        classes.declareEnd = "\0";
+        classes.declareExtendsLeft = "(";
+        classes.declareExtendsRight = ")";
+        classes.declareStartLeft = "class ";
+        classes.declareStartRight = ":";
+        classes.superConstructor = "super().__init__";
     }
 
     /**
@@ -80,21 +76,41 @@ export class TypeScript extends CLikeLanguage {
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
         super.generateClassMemberVariableProperties(variables);
 
-        variables.protectedCase = CaseStyle.CamelCase;
+        variables.privateCase = CaseStyle.SnakeCase;
+        variables.privatePrefix = "__";
+        variables.protectedCase = CaseStyle.SnakeCase;
+        variables.protectedPrefix = "_";
         variables.publicCase = CaseStyle.CamelCase;
+    }
+
+    /**
+     * Generates metadata on conditionals.
+     * 
+     * @param conditionals   A property container for metadata on conditionals. 
+     */
+    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+        super.generateConditionalProperties(conditionals);
+
+        conditionals.continueRight = ":";
+        conditionals.elif = "elif";
+        conditionals.startRight = ":";
     }
 
     /**
      * Generates metadata on comments.
      * 
-     * @param comments   A property container for metadata on comments.
+     * @param comments   A property container for metadata on comments. 
      */
     protected generateCommentProperties(comments: CommentProperties): void {
-        super.generateCommentProperties(comments);
+        comments.blockEnd = "\"\"\"";
+        comments.blockLineLeft = "";
+        comments.blockLineRight = "";
+        comments.blockStart = "\"\"\"";
 
-        comments.docEnd = " */";
+        comments.docEnd = "\"\"\"";
         comments.docLineEnd = "";
-        comments.docLineStart = " * ";
+        comments.docLineStart = "";
+        comments.docStart = "\"\"\"";
         comments.docTagAliases = {
             "note": "remarks",
             "parameter": "param",
@@ -103,52 +119,29 @@ export class TypeScript extends CLikeLanguage {
             "todo": "todo"
         };
         comments.docTagsWithParameters = {
-            "summary": "\0",
             "parameter": ""
         };
         comments.docTagEnd = " ";
         comments.docTagSpaceAfter = "  ";
-        comments.docTagStart = "@";
-        comments.docStart = "/**";
+        comments.docTagStart = ":";
+
+        comments.lineLeft = "# ";
+        comments.lineRight = "";
     }
 
     /**
-     * Generates metadata on conditionals.
+     * Generates properties on dictionaries.
      * 
-     * @param conditionals   A property container for metadata on conditionals.
-     */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
-        super.generateConditionalProperties(conditionals);
-
-        conditionals.continueLeft = "} ";
-        conditionals.continueRight = " {";
-        conditionals.startRight = ") {";
-    }
-
-    /**
-     * Generates metadata on dictionaries.
-     * 
-     * @param dictionaries   A property container for metadata on dictionaries.
+     * @param dictionaries   The property container for metadata on dictionaries. 
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.className = "Object";
-        dictionaries.containsKey = new NativeCallProperties(
-            "hasOwnProperty",
+        super.generateDictionaryProperties(dictionaries);
+
+        dictionaries.className = "dict";
+        dictionaries.keys = new NativeCallProperties(
+            "keys",
             NativeCallScope.Member,
             NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties(
-            "Object.keys",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        dictionaries.initializeEnd = "}";
-        dictionaries.initializePairComma = ",";
-        dictionaries.initializePairLeft = "";
-        dictionaries.initializePairMiddle = ": ";
-        dictionaries.initializePairRight = "";
-        dictionaries.initializeStart = "{";
-        dictionaries.typeLeft = "{ [i: ";
-        dictionaries.typeMiddle = "]: ";
-        dictionaries.typeRight = " }";
     }
 
     /**
@@ -159,57 +152,9 @@ export class TypeScript extends CLikeLanguage {
     protected generateEnumProperties(enums: EnumProperties): void {
         super.generateEnumProperties(enums);
 
-        enums.declareStartRight = " {";
-        enums.declareLastRight = "";
-    }
-
-    /**
-     * Generates metadata on exceptions.
-     * 
-     * @param exceptions   A property container for metadata on exceptions.
-     */
-    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
-        super.generateExceptionProperties(exceptions);
-
-        exceptions.className = "Error";
-    }
-
-    /**
-     * Generates metadata on functions.
-     * 
-     * @param functions   A property container for metadata on functions.
-     */
-    protected generateFunctionProperties(functions: FunctionProperties): void {
-        super.generateFunctionProperties(functions);
-
-        functions.defineStartLeft = "function ";
-        functions.defineStartRight = " {";
-        functions.returnTypeAfterName = true;
-        functions.returnTypeMarker = ": ";
-    }
-
-    /**
-     * Generates general metadata.
-     * 
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.extension = ".ts";
-        general.name = "TypeScript";
-    }
-
-    /**
-     * Generates metadata on imports.
-     * 
-     * @param imports   A property container for metadata on imports.
-     */
-    protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
-        imports.explicit = true;
-        imports.itemsBeforePackage = true;
-        imports.left = "import { ";
-        imports.middle = " } from \"";
-        imports.right = "\";";
+        enums.declareStartRight = "(Enum):";
+        enums.declareValueLeft = " = ";
+        enums.valueMiddle = ".";
     }
 
     /**
@@ -220,18 +165,56 @@ export class TypeScript extends CLikeLanguage {
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
 
-        lambdas.functionMiddle = ") => ";
+        lambdas.functionLeft = "lambda ";
+        lambdas.functionMiddle = ": ";
+        lambdas.functionRight = "";
+    }
+
+    /**
+     * Generates metadata on functions.
+     * 
+     * @param functions   The property container for metadata on functions. 
+     */
+    protected generateFunctionProperties(functions: FunctionProperties): void {
+        super.generateFunctionProperties(functions);
+
+        functions.defineStartRight = ":";
+        functions.defineEnd = "\0";
+    }
+
+    /**
+     * Generates general metadata.
+     * 
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.extension = ".py";
+        general.name = "Python";
+    }
+
+    /**
+     * Generates metadata on imports.
+     * 
+     * @param imports   A property container for metadata on imports.
+     */
+    protected generateImportProperties(imports: ImportProperties): void {
+        imports.case = CaseStyle.FileSystem;
+        imports.explicit = true;
+        imports.left = "from \"";
+        imports.middle = "\" import ";
+        imports.right = "";
     }
 
     /**
      * Generates metadata on lists.
      * 
-     * @param lists   A property container for metadata on lists.
+     * @param lists   A property container for metadata on loops. 
      */
     protected generateListProperties(lists: ListProperties): void {
-        lists.asArray = true;
+        super.generateListProperties(lists);
+
         lists.push = new NativeCallProperties(
-            "push",
+            "append",
             NativeCallScope.Member,
             NativeCallType.Function);
     }
@@ -239,17 +222,20 @@ export class TypeScript extends CLikeLanguage {
     /**
      * Generates metadata on loops.
      * 
-     * @param loops   A property container for metadata on loops.
+     * @param loops   A property container for metadata on loops. 
      */
     protected generateLoopProperties(loops: LoopProperties): void {
         super.generateLoopProperties(loops);
 
-        loops.foreach = "for";
+        loops.forEachEnd = "\0";
         loops.forEachGetKeys = "";
-        loops.forEachGetPairs = "";
-        loops.forEachMiddle = " in ";
-        loops.forEachPairsAsKeys = true;
+        loops.forEachGetPairs = ".iteritems()";
+        loops.forEachPairsAsPair = true;
         loops.forEachRight = "";
+
+        loops.rangedForLoopsLeft = " in range(";
+        loops.rangedForLoopsMiddle = ", ";
+        loops.rangedForLoopsRight = ")";
     }
 
     /**
@@ -258,28 +244,16 @@ export class TypeScript extends CLikeLanguage {
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "Number";
+        numbers.className = "float";
     }
 
     /**
-     * Generates metadata on operators.
+     * Generates metadata on numbers.
      * 
-     * @param operators   A property container for metadata on operators.
-     */
-    protected generateOperatorProperties(operators: OperatorProperties): void {
-        super.generateOperatorProperties(operators);
-
-        operators.equalTo = "===";
-        operators.notEqualTo = "!==";
-    }
-
-    /**
-     * Generates metadata on output.
-     * 
-     * @param output   A property container for metadata on output.
+     * @param numbers   A property container for metadata on numbers.
      */
     protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "console.log";
+        output.print = "print";
     }
 
     /**
@@ -290,18 +264,11 @@ export class TypeScript extends CLikeLanguage {
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
 
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
-        style.fileStartLines = ["namespace {0} {"];
-
-        style.mainEndLines = ["})();"];
+        style.mainEndLines = [""];
         style.mainIndentation = 1;
-        style.mainStartLines = [
-            "(() => {"
-        ];
-
+        style.mainStartLines = ["if __name__ == \"__main__\":"];
         style.printEnd = ")";
-        style.printStart = "console.log(";
+        style.printStart = "print(";
     }
 
     /**
@@ -312,34 +279,30 @@ export class TypeScript extends CLikeLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
-        strings.className = "String";
+        strings.className = "string";
         strings.index = new NativeCallProperties(
-            "indexOf",
+            "index",
             NativeCallScope.Member,
             NativeCallType.Function);
         strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+            "len",
+            NativeCallScope.Static,
+            NativeCallType.Function);
     }
 
     /**
      * Generates metadata on variables.
      * 
-     * @param variables   A property container for metadata on variables.
+     * @param variables   A property container for metadata on variables. 
      */
     protected generateVariableProperties(variables: VariableProperties): void {
         super.generateVariableProperties(variables);
 
         variables.aliases = {
-            "infinity": "Infinity"
+            "false": "False",
+            "infinity": "inf",
+            "true": "True"
         };
-        variables.castLeft = "<";
-        variables.castRight = ">";
-        variables.declaration = "let ";
-        variables.explicitTypes = true;
-        variables.null = "undefined";
-        variables.typesAfterName = true;
-        variables.typeLeft = ": ";
+        variables.null = "None";
     }
 }

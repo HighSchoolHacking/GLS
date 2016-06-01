@@ -1,10 +1,8 @@
-import { PythonicLanguage } from "./PythonicLanguage";
+import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
@@ -19,27 +17,28 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
- * A summary of information for the Python language.
+ * A summary of information for the C# language.
  */
-export class Python extends PythonicLanguage {
+export class CSharp extends CLikeLanguage {
     /**
      * Generates metadata on arrays.
      * 
-     * @param arrays   A property container for metadata on arrays. 
+     * @param arrays   A property container for metadata on arrays.
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
-        arrays.className = "list";
+        arrays.className = "Array";
+        arrays.initializeAsNew = true;
+        arrays.initializeByType = true;
         arrays.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+            "Length",
+            NativeCallScope.Member,
+            NativeCallType.Property);
     }
 
     /**
@@ -50,26 +49,24 @@ export class Python extends PythonicLanguage {
     protected generateBooleanProperties(booleans: BooleanProperties): void {
         booleans.className = "bool";
     }
+
     /**
      * Generates metadata on classes.
      * 
-     * @param classes   A property container for metadata on classes. 
+     * @param classes   A property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
         classes.aliases = {
-            "dictionary": "dict",
+            "boolean": "bool",
+            "dictionary": "Dictionary",
+            "list": "List",
             "number": "float"
         };
-        classes.constructorKeyword = "def __init__";
-        classes.constructorTakesThis = true;
-        classes.declareEnd = "\0";
-        classes.declareExtendsLeft = "(";
-        classes.declareExtendsRight = ")";
-        classes.declareStartLeft = "class ";
-        classes.declareStartRight = ":";
-        classes.superConstructor = "super().__init__";
+        classes.declareExtendsLeft = " : ";
+        classes.declareStartRight = "\n{";
+        classes.superConstructor = "base";
     }
 
     /**
@@ -80,72 +77,76 @@ export class Python extends PythonicLanguage {
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
         super.generateClassMemberVariableProperties(variables);
 
-        variables.privateCase = CaseStyle.SnakeCase;
-        variables.privatePrefix = "__";
-        variables.protectedCase = CaseStyle.SnakeCase;
-        variables.protectedPrefix = "_";
-        variables.publicCase = CaseStyle.CamelCase;
-    }
-
-    /**
-     * Generates metadata on conditionals.
-     * 
-     * @param conditionals   A property container for metadata on conditionals. 
-     */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
-        super.generateConditionalProperties(conditionals);
-
-        conditionals.continueRight = ":";
-        conditionals.elif = "elif";
-        conditionals.startRight = ":";
+        variables.protectedCase = CaseStyle.PascalCase;
+        variables.publicCase = CaseStyle.PascalCase;
     }
 
     /**
      * Generates metadata on comments.
      * 
-     * @param comments   A property container for metadata on comments. 
+     * @param comments   A property container for metadata on comments.
      */
     protected generateCommentProperties(comments: CommentProperties): void {
-        comments.blockEnd = "\"\"\"";
-        comments.blockLineLeft = "";
-        comments.blockLineRight = "";
-        comments.blockStart = "\"\"\"";
+        super.generateCommentProperties(comments);
 
-        comments.docEnd = "\"\"\"";
+        comments.docAsXml = true;
+        comments.docEnd = "\0";
         comments.docLineEnd = "";
-        comments.docLineStart = "";
-        comments.docStart = "\"\"\"";
+        comments.docLineStart = "/// ";
+        comments.docStart = "\0";
         comments.docTagAliases = {
             "note": "remarks",
             "parameter": "param",
             "returns": "returns",
-            "summary": "",
+            "summary": "summary",
             "todo": "todo"
         };
         comments.docTagsWithParameters = {
-            "parameter": ""
+            "parameter": "name"
         };
-        comments.docTagEnd = " ";
-        comments.docTagSpaceAfter = "  ";
-        comments.docTagStart = ":";
-
-        comments.lineLeft = "# ";
-        comments.lineRight = "";
     }
 
     /**
-     * Generates properties on dictionaries.
+     * Generates metadata on conditionals.
      * 
-     * @param dictionaries   The property container for metadata on dictionaries. 
+     * @param conditionals   A property container for metadata on conditionals.
+     */
+    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+        super.generateConditionalProperties(conditionals);
+
+        conditionals.continueLeft = "}\n";
+        conditionals.continueRight = "{";
+        conditionals.startRight = ")\n{";
+    }
+
+    /**
+     * Generates metadata on dictionaries.
+     * 
+     * @param dictionaries   A property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        super.generateDictionaryProperties(dictionaries);
-
-        dictionaries.className = "dict";
-        dictionaries.keys = new NativeCallProperties(
-            "keys",
+        dictionaries.className = "Dictionary";
+        dictionaries.containsKey = new NativeCallProperties(
+            "ContainsKey",
             NativeCallScope.Member,
             NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties(
+            "Keys",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+        dictionaries.initializeAsNew = true;
+        dictionaries.initializeEnd = "}";
+        dictionaries.initializePairComma = ",";
+        dictionaries.initializePairLeft = "{ ";
+        dictionaries.initializePairMiddle = ", ";
+        dictionaries.initializePairRight = " }";
+        dictionaries.initializeStart = "\n{";
+        dictionaries.requiredImports = {
+            "System/Collections/Generic": ["Dictionary"]
+        };
+        dictionaries.typeLeft = "<";
+        dictionaries.typeMiddle = ", ";
+        dictionaries.typeRight = ">";
     }
 
     /**
@@ -156,9 +157,51 @@ export class Python extends PythonicLanguage {
     protected generateEnumProperties(enums: EnumProperties): void {
         super.generateEnumProperties(enums);
 
-        enums.declareStartRight = "(Enum):";
-        enums.declareValueLeft = " = ";
-        enums.valueMiddle = ".";
+        enums.declareStartRight = "\n{";
+        enums.declareLastRight = "";
+    }
+
+    /**
+     * Generates metadata on exceptions.
+     * 
+     * @param exceptions   A property container for metadata on exceptions.
+     */
+    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+        exceptions.className = "Error";
+    }
+
+    /**
+     * Generates metadata on functions.
+     * 
+     * @param functions   A property container for metadata on functions.
+     */
+    protected generateFunctionProperties(functions: FunctionProperties): void {
+        super.generateFunctionProperties(functions);
+
+        functions.defineStartLeft = " ";
+        functions.defineStartRight = "\n{";
+    }
+
+    /**
+     * Generates general metadata.
+     * 
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.name = "C#";
+        general.extension = ".cs";
+    }
+
+    /**
+     * Generates metadata on imports.
+     * 
+     * @param imports   A property container for metadata on imports.
+     */
+    protected generateImportProperties(imports: ImportProperties): void {
+        imports.case = CaseStyle.PackageUpperCase;
+        imports.explicit = false;
+        imports.left = "using ";
+        imports.right = ";";
     }
 
     /**
@@ -169,77 +212,42 @@ export class Python extends PythonicLanguage {
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
 
-        lambdas.functionLeft = "lambda ";
-        lambdas.functionMiddle = ": ";
-        lambdas.functionRight = "";
-    }
-
-    /**
-     * Generates metadata on functions.
-     * 
-     * @param functions   The property container for metadata on functions. 
-     */
-    protected generateFunctionProperties(functions: FunctionProperties): void {
-        super.generateFunctionProperties(functions);
-
-        functions.defineStartRight = ":";
-        functions.defineEnd = "\0";
-    }
-
-    /**
-     * Generates general metadata.
-     * 
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.extension = ".py";
-        general.name = "Python";
-    }
-
-    /**
-     * Generates metadata on imports.
-     * 
-     * @param imports   A property container for metadata on imports.
-     */
-    protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
-        imports.explicit = true;
-        imports.left = "from \"";
-        imports.middle = "\" import ";
-        imports.right = "";
+        lambdas.functionMiddle = ") => ";
     }
 
     /**
      * Generates metadata on lists.
      * 
-     * @param lists   A property container for metadata on loops. 
+     * @param lists   A property container for metadata on lists.
      */
     protected generateListProperties(lists: ListProperties): void {
-        super.generateListProperties(lists);
-
+        lists.className = "List";
         lists.push = new NativeCallProperties(
-            "append",
+            "Add",
             NativeCallScope.Member,
             NativeCallType.Function);
+        lists.requiredImports = {
+            "System/Collections/Generic": ["List"]
+        };
     }
 
     /**
      * Generates metadata on loops.
      * 
-     * @param loops   A property container for metadata on loops. 
+     * @param loops   A property container for metadata on loops.
      */
     protected generateLoopProperties(loops: LoopProperties): void {
         super.generateLoopProperties(loops);
 
-        loops.forEachEnd = "\0";
-        loops.forEachGetKeys = "";
-        loops.forEachGetPairs = ".iteritems()";
+        loops.foreach = "foreach";
+        loops.forEachGetKeys = ".Keys";
+        loops.forEachGetPairs = "";
+        loops.forEachMiddle = " in ";
         loops.forEachPairsAsPair = true;
+        loops.forEachPairsPairClass = "KeyValuePair";
+        loops.forEachPairsRetrieveKey = ".Key";
+        loops.forEachPairsRetrieveValue = ".Value";
         loops.forEachRight = "";
-
-        loops.rangedForLoopsLeft = " in range(";
-        loops.rangedForLoopsMiddle = ", ";
-        loops.rangedForLoopsRight = ")";
     }
 
     /**
@@ -252,27 +260,12 @@ export class Python extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on numbers.
+     * Generates metadata on output.
      * 
-     * @param numbers   A property container for metadata on numbers.
+     * @param output   A property container for metadata on output.
      */
     protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "print";
-    }
-
-    /**
-     * Generates metadata on style.
-     * 
-     * @param style   The property container for metadata on style. 
-     */
-    protected generateStyleProperties(style: StyleProperties): void {
-        super.generateStyleProperties(style);
-
-        style.mainEndLines = [""];
-        style.mainIndentation = 1;
-        style.mainStartLines = ["if __name__ == \"__main__\":"];
-        style.printEnd = ")";
-        style.printStart = "print(";
+        output.print = "Console.WriteLine";
     }
 
     /**
@@ -285,28 +278,65 @@ export class Python extends PythonicLanguage {
 
         strings.className = "string";
         strings.index = new NativeCallProperties(
-            "index",
+            "IndexOf",
             NativeCallScope.Member,
             NativeCallType.Function);
         strings.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+            "Length",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+    }
+
+    /**
+     * Generates metadata on style.
+     * 
+     * @param style   A property container for metadata on style.
+     */
+    protected generateStyleProperties(style: StyleProperties): void {
+        super.generateStyleProperties(style);
+
+        style.fileEndLines = ["}"];
+        style.fileIndentation = 1;
+        style.fileStartLines = [
+            "using System;",
+            "using System.Collections.Generic;",
+            "",
+            "namespace {0}",
+            "{",
+        ];
+
+        style.mainEndLines = [
+            "    }",
+            "}"
+        ];
+        style.mainIndentation = 2;
+        style.mainStartLines = [
+            "class Program",
+            "{",
+            "    public static void Main()",
+            "    {"
+        ];
+
+        style.printEnd = ")";
+        style.printStart = "Console.WriteLine(";
+        style.separateBraceLines = true;
     }
 
     /**
      * Generates metadata on variables.
      * 
-     * @param variables   A property container for metadata on variables. 
+     * @param variables   A property container for metadata on variables.
      */
     protected generateVariableProperties(variables: VariableProperties): void {
         super.generateVariableProperties(variables);
 
         variables.aliases = {
-            "false": "False",
-            "infinity": "inf",
-            "true": "True"
+            "infinity": "float.PositiveInfinity"
         };
-        variables.null = "None";
+        variables.castLeft = "(";
+        variables.castRight = ")";
+        variables.declaration = "";
+        variables.explicitTypes = true;
+        variables.null = "null";
     }
 }

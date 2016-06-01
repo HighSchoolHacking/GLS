@@ -3,8 +3,6 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
@@ -26,9 +24,9 @@ import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
- * A summary of information for the Java language.
+ * A summary of information for the TypeScript language.
  */
-export class Java extends CLikeLanguage {
+export class TypeScript extends CLikeLanguage {
     /**
      * Generates metadata on arrays.
      * 
@@ -36,12 +34,10 @@ export class Java extends CLikeLanguage {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "Array";
-        arrays.initializeAsNew = true;
-        arrays.initializeByType = true;
         arrays.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
-            NativeCallType.Function);
+            NativeCallType.Property);
     }
 
     /**
@@ -62,11 +58,13 @@ export class Java extends CLikeLanguage {
         super.generateClassProperties(classes);
 
         classes.aliases = {
-            "boolean": "boolean",
-            "dictionary": "HashMap",
-            "list": "ArrayList",
-            "number": "double"
+            "dictionary": "object",
+            "double": "number",
+            "float": "number",
+            "int": "number"
         };
+        classes.constructorKeyword = "constructor";
+        classes.constructorUsesKeyword = true;
         classes.declareExtendsLeft = " extends ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
@@ -131,28 +129,24 @@ export class Java extends CLikeLanguage {
      * @param dictionaries   A property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.className = "HashMap";
+        dictionaries.className = "Object";
         dictionaries.containsKey = new NativeCallProperties(
-            "containsKey",
+            "hasOwnProperty",
             NativeCallScope.Member,
             NativeCallType.Function);
         dictionaries.keys = new NativeCallProperties(
-            "keySet",
-            NativeCallScope.Member,
+            "Object.keys",
+            NativeCallScope.Static,
             NativeCallType.Function);
-        dictionaries.initializeAsNew = true;
-        dictionaries.initializeEnd = "}}";
-        dictionaries.initializePairComma = "";
-        dictionaries.initializeStart = "() {{";
-        dictionaries.initializePairLeft = "put(";
-        dictionaries.initializePairMiddle = ", ";
-        dictionaries.initializePairRight = ");";
-        dictionaries.requiredImports = {
-            "java.util": ["HashMap"]
-        };
-        dictionaries.typeLeft = "<";
-        dictionaries.typeMiddle = ", ";
-        dictionaries.typeRight = ">";
+        dictionaries.initializeEnd = "}";
+        dictionaries.initializePairComma = ",";
+        dictionaries.initializePairLeft = "";
+        dictionaries.initializePairMiddle = ": ";
+        dictionaries.initializePairRight = "";
+        dictionaries.initializeStart = "{";
+        dictionaries.typeLeft = "{ [i: ";
+        dictionaries.typeMiddle = "]: ";
+        dictionaries.typeRight = " }";
     }
 
     /**
@@ -164,8 +158,6 @@ export class Java extends CLikeLanguage {
         super.generateEnumProperties(enums);
 
         enums.declareStartRight = " {";
-        enums.declareValueLeft = "(";
-        enums.declareValueRight = ")";
         enums.declareLastRight = "";
     }
 
@@ -175,7 +167,9 @@ export class Java extends CLikeLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
-        exceptions.className = "Exception";
+        super.generateExceptionProperties(exceptions);
+
+        exceptions.className = "Error";
     }
 
     /**
@@ -186,8 +180,10 @@ export class Java extends CLikeLanguage {
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
 
-        functions.defineStartLeft = " ";
+        functions.defineStartLeft = "function ";
         functions.defineStartRight = " {";
+        functions.returnTypeAfterName = true;
+        functions.returnTypeMarker = ": ";
     }
 
     /**
@@ -196,8 +192,8 @@ export class Java extends CLikeLanguage {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "Java";
-        general.extension = ".java";
+        general.extension = ".ts";
+        general.name = "TypeScript";
     }
 
     /**
@@ -206,12 +202,12 @@ export class Java extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.PackageLowerCase;
+        imports.case = CaseStyle.FileSystem;
         imports.explicit = true;
-        imports.explicitLines = true;
-        imports.left = "import ";
-        imports.middle = ".";
-        imports.right = ";";
+        imports.itemsBeforePackage = true;
+        imports.left = "import { ";
+        imports.middle = " } from \"";
+        imports.right = "\";";
     }
 
     /**
@@ -222,7 +218,7 @@ export class Java extends CLikeLanguage {
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
 
-        lambdas.functionMiddle = ") -> ";
+        lambdas.functionMiddle = ") => ";
     }
 
     /**
@@ -231,14 +227,11 @@ export class Java extends CLikeLanguage {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListProperties(lists: ListProperties): void {
-        lists.className = "ArrayList";
+        lists.asArray = true;
         lists.push = new NativeCallProperties(
-            "add",
+            "push",
             NativeCallScope.Member,
             NativeCallType.Function);
-        lists.requiredImports = {
-            "java.util": ["ArrayList"]
-        };
     }
 
     /**
@@ -250,13 +243,10 @@ export class Java extends CLikeLanguage {
         super.generateLoopProperties(loops);
 
         loops.foreach = "for";
-        loops.forEachGetKeys = ".keySet()";
-        loops.forEachGetPairs = ".entrySet()";
-        loops.forEachMiddle = " : ";
-        loops.forEachPairsAsPair = true;
-        loops.forEachPairsPairClass = "Map.Entry";
-        loops.forEachPairsRetrieveKey = ".getKey()";
-        loops.forEachPairsRetrieveValue = ".getValue()";
+        loops.forEachGetKeys = "";
+        loops.forEachGetPairs = "";
+        loops.forEachMiddle = " in ";
+        loops.forEachPairsAsKeys = true;
         loops.forEachRight = "";
     }
 
@@ -266,7 +256,19 @@ export class Java extends CLikeLanguage {
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "double";
+        numbers.className = "Number";
+    }
+
+    /**
+     * Generates metadata on operators.
+     * 
+     * @param operators   A property container for metadata on operators.
+     */
+    protected generateOperatorProperties(operators: OperatorProperties): void {
+        super.generateOperatorProperties(operators);
+
+        operators.equalTo = "===";
+        operators.notEqualTo = "!==";
     }
 
     /**
@@ -275,7 +277,29 @@ export class Java extends CLikeLanguage {
      * @param output   A property container for metadata on output.
      */
     protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "System.out.println";
+        output.print = "console.log";
+    }
+
+    /**
+     * Generates metadata on style.
+     * 
+     * @param style   The property container for metadata on style. 
+     */
+    protected generateStyleProperties(style: StyleProperties): void {
+        super.generateStyleProperties(style);
+
+        style.fileEndLines = ["}"];
+        style.fileIndentation = 1;
+        style.fileStartLines = ["namespace {0} {"];
+
+        style.mainEndLines = ["})();"];
+        style.mainIndentation = 1;
+        style.mainStartLines = [
+            "(() => {"
+        ];
+
+        style.printEnd = ")";
+        style.printStart = "console.log(";
     }
 
     /**
@@ -286,7 +310,7 @@ export class Java extends CLikeLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
-        strings.className = "string";
+        strings.className = "String";
         strings.index = new NativeCallProperties(
             "indexOf",
             NativeCallScope.Member,
@@ -294,38 +318,7 @@ export class Java extends CLikeLanguage {
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
-            NativeCallType.Function);
-    }
-
-    /**
-     * Generates metadata on style.
-     * 
-     * @param style   A property container for metadata on style.
-     */
-    protected generateStyleProperties(style: StyleProperties): void {
-        super.generateStyleProperties(style);
-
-        style.fileEndLines = [];
-        style.fileIndentation = 0;
-        style.fileStartLines = [
-            "package {0};",
-            "",
-            "import java.util.*;",
-            "",
-        ];
-
-        style.mainEndLines = [
-            "    }",
-            "}"
-        ];
-        style.mainIndentation = 2;
-        style.mainStartLines = [
-            "class Program {",
-            "    public static void main(String[] args) {",
-        ];
-
-        style.printEnd = ")";
-        style.printStart = "System.out.println(";
+            NativeCallType.Property);
     }
 
     /**
@@ -337,12 +330,14 @@ export class Java extends CLikeLanguage {
         super.generateVariableProperties(variables);
 
         variables.aliases = {
-            "infinity": "double.POSITIVE_INFINITY"
+            "infinity": "Infinity"
         };
-        variables.castLeft = "(";
-        variables.castRight = ")";
-        variables.declaration = "";
+        variables.castLeft = "<";
+        variables.castRight = ">";
+        variables.declaration = "let ";
         variables.explicitTypes = true;
-        variables.null = "null";
+        variables.null = "undefined";
+        variables.typesAfterName = true;
+        variables.typeLeft = ": ";
     }
 }

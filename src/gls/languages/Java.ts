@@ -3,8 +3,6 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberProperties } from "./Properties/ClassMemberProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
@@ -19,16 +17,15 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
- * A summary of information for the C# language.
+ * A summary of information for the Java language.
  */
-export class CSharp extends CLikeLanguage {
+export class Java extends CLikeLanguage {
     /**
      * Generates metadata on arrays.
      * 
@@ -39,9 +36,9 @@ export class CSharp extends CLikeLanguage {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallProperties(
-            "Length",
+            "length",
             NativeCallScope.Member,
-            NativeCallType.Property);
+            NativeCallType.Function);
     }
 
     /**
@@ -50,7 +47,7 @@ export class CSharp extends CLikeLanguage {
      * @param booleans   A property container for metadata on booleans.
      */
     protected generateBooleanProperties(booleans: BooleanProperties): void {
-        booleans.className = "bool";
+        booleans.className = "boolean";
     }
 
     /**
@@ -62,14 +59,14 @@ export class CSharp extends CLikeLanguage {
         super.generateClassProperties(classes);
 
         classes.aliases = {
-            "boolean": "bool",
-            "dictionary": "Dictionary",
-            "list": "List",
-            "number": "float"
+            "boolean": "boolean",
+            "dictionary": "HashMap",
+            "list": "ArrayList",
+            "number": "double"
         };
-        classes.declareExtendsLeft = " : ";
-        classes.declareStartRight = "\n{";
-        classes.superConstructor = "base";
+        classes.declareExtendsLeft = " extends ";
+        classes.declareStartRight = " {";
+        classes.superConstructor = "super";
     }
 
     /**
@@ -80,8 +77,8 @@ export class CSharp extends CLikeLanguage {
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
         super.generateClassMemberVariableProperties(variables);
 
-        variables.protectedCase = CaseStyle.PascalCase;
-        variables.publicCase = CaseStyle.PascalCase;
+        variables.protectedCase = CaseStyle.CamelCase;
+        variables.publicCase = CaseStyle.CamelCase;
     }
 
     /**
@@ -92,21 +89,24 @@ export class CSharp extends CLikeLanguage {
     protected generateCommentProperties(comments: CommentProperties): void {
         super.generateCommentProperties(comments);
 
-        comments.docAsXml = true;
-        comments.docEnd = "\0";
+        comments.docEnd = " */";
         comments.docLineEnd = "";
-        comments.docLineStart = "/// ";
-        comments.docStart = "\0";
+        comments.docLineStart = " * ";
         comments.docTagAliases = {
             "note": "remarks",
             "parameter": "param",
             "returns": "returns",
-            "summary": "summary",
+            "summary": "",
             "todo": "todo"
         };
         comments.docTagsWithParameters = {
-            "parameter": "name"
+            "summary": "\0",
+            "parameter": ""
         };
+        comments.docTagEnd = " ";
+        comments.docTagSpaceAfter = "  ";
+        comments.docTagStart = "@";
+        comments.docStart = "/**";
     }
 
     /**
@@ -117,9 +117,9 @@ export class CSharp extends CLikeLanguage {
     protected generateConditionalProperties(conditionals: ConditionalProperties): void {
         super.generateConditionalProperties(conditionals);
 
-        conditionals.continueLeft = "}\n";
-        conditionals.continueRight = "{";
-        conditionals.startRight = ")\n{";
+        conditionals.continueLeft = "} ";
+        conditionals.continueRight = " {";
+        conditionals.startRight = ") {";
     }
 
     /**
@@ -128,24 +128,24 @@ export class CSharp extends CLikeLanguage {
      * @param dictionaries   A property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.className = "Dictionary";
+        dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallProperties(
-            "ContainsKey",
+            "containsKey",
             NativeCallScope.Member,
             NativeCallType.Function);
         dictionaries.keys = new NativeCallProperties(
-            "Keys",
+            "keySet",
             NativeCallScope.Member,
-            NativeCallType.Property);
+            NativeCallType.Function);
         dictionaries.initializeAsNew = true;
-        dictionaries.initializeEnd = "}";
-        dictionaries.initializePairComma = ",";
-        dictionaries.initializePairLeft = "{ ";
+        dictionaries.initializeEnd = "}}";
+        dictionaries.initializePairComma = "";
+        dictionaries.initializeStart = "() {{";
+        dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
-        dictionaries.initializePairRight = " }";
-        dictionaries.initializeStart = "\n{";
+        dictionaries.initializePairRight = ");";
         dictionaries.requiredImports = {
-            "System/Collections/Generic": ["Dictionary"]
+            "java.util": ["HashMap"]
         };
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
@@ -160,7 +160,9 @@ export class CSharp extends CLikeLanguage {
     protected generateEnumProperties(enums: EnumProperties): void {
         super.generateEnumProperties(enums);
 
-        enums.declareStartRight = "\n{";
+        enums.declareStartRight = " {";
+        enums.declareValueLeft = "(";
+        enums.declareValueRight = ")";
         enums.declareLastRight = "";
     }
 
@@ -170,7 +172,7 @@ export class CSharp extends CLikeLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
-        exceptions.className = "Error";
+        exceptions.className = "Exception";
     }
 
     /**
@@ -182,7 +184,7 @@ export class CSharp extends CLikeLanguage {
         super.generateFunctionProperties(functions);
 
         functions.defineStartLeft = " ";
-        functions.defineStartRight = "\n{";
+        functions.defineStartRight = " {";
     }
 
     /**
@@ -191,8 +193,8 @@ export class CSharp extends CLikeLanguage {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "C#";
-        general.extension = ".cs";
+        general.name = "Java";
+        general.extension = ".java";
     }
 
     /**
@@ -201,9 +203,11 @@ export class CSharp extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.PackageUpperCase;
-        imports.explicit = false;
-        imports.left = "using ";
+        imports.case = CaseStyle.PackageLowerCase;
+        imports.explicit = true;
+        imports.explicitLines = true;
+        imports.left = "import ";
+        imports.middle = ".";
         imports.right = ";";
     }
 
@@ -215,7 +219,7 @@ export class CSharp extends CLikeLanguage {
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
 
-        lambdas.functionMiddle = ") => ";
+        lambdas.functionMiddle = ") -> ";
     }
 
     /**
@@ -224,13 +228,13 @@ export class CSharp extends CLikeLanguage {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListProperties(lists: ListProperties): void {
-        lists.className = "List";
+        lists.className = "ArrayList";
         lists.push = new NativeCallProperties(
-            "Add",
+            "add",
             NativeCallScope.Member,
             NativeCallType.Function);
         lists.requiredImports = {
-            "System/Collections/Generic": ["List"]
+            "java.util": ["ArrayList"]
         };
     }
 
@@ -242,14 +246,14 @@ export class CSharp extends CLikeLanguage {
     protected generateLoopProperties(loops: LoopProperties): void {
         super.generateLoopProperties(loops);
 
-        loops.foreach = "foreach";
-        loops.forEachGetKeys = ".Keys";
-        loops.forEachGetPairs = "";
-        loops.forEachMiddle = " in ";
+        loops.foreach = "for";
+        loops.forEachGetKeys = ".keySet()";
+        loops.forEachGetPairs = ".entrySet()";
+        loops.forEachMiddle = " : ";
         loops.forEachPairsAsPair = true;
-        loops.forEachPairsPairClass = "KeyValuePair";
-        loops.forEachPairsRetrieveKey = ".Key";
-        loops.forEachPairsRetrieveValue = ".Value";
+        loops.forEachPairsPairClass = "Map.Entry";
+        loops.forEachPairsRetrieveKey = ".getKey()";
+        loops.forEachPairsRetrieveValue = ".getValue()";
         loops.forEachRight = "";
     }
 
@@ -259,7 +263,7 @@ export class CSharp extends CLikeLanguage {
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "float";
+        numbers.className = "double";
     }
 
     /**
@@ -268,7 +272,7 @@ export class CSharp extends CLikeLanguage {
      * @param output   A property container for metadata on output.
      */
     protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "Console.WriteLine";
+        output.print = "System.out.println";
     }
 
     /**
@@ -281,13 +285,13 @@ export class CSharp extends CLikeLanguage {
 
         strings.className = "string";
         strings.index = new NativeCallProperties(
-            "IndexOf",
+            "indexOf",
             NativeCallScope.Member,
             NativeCallType.Function);
         strings.length = new NativeCallProperties(
-            "Length",
+            "length",
             NativeCallScope.Member,
-            NativeCallType.Property);
+            NativeCallType.Function);
     }
 
     /**
@@ -298,14 +302,13 @@ export class CSharp extends CLikeLanguage {
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
 
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
+        style.fileEndLines = [];
+        style.fileIndentation = 0;
         style.fileStartLines = [
-            "using System;",
-            "using System.Collections.Generic;",
+            "package {0};",
             "",
-            "namespace {0}",
-            "{",
+            "import java.util.*;",
+            "",
         ];
 
         style.mainEndLines = [
@@ -314,15 +317,12 @@ export class CSharp extends CLikeLanguage {
         ];
         style.mainIndentation = 2;
         style.mainStartLines = [
-            "class Program",
-            "{",
-            "    public static void Main()",
-            "    {"
+            "class Program {",
+            "    public static void main(String[] args) {",
         ];
 
         style.printEnd = ")";
-        style.printStart = "Console.WriteLine(";
-        style.separateBraceLines = true;
+        style.printStart = "System.out.println(";
     }
 
     /**
@@ -334,7 +334,7 @@ export class CSharp extends CLikeLanguage {
         super.generateVariableProperties(variables);
 
         variables.aliases = {
-            "infinity": "float.PositiveInfinity"
+            "infinity": "double.POSITIVE_INFINITY"
         };
         variables.castLeft = "(";
         variables.castRight = ")";

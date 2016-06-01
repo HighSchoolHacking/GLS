@@ -1,11 +1,7 @@
-import { Language } from "../Languages/Language";
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
-import { Command } from "./Command";
-import { LineResults } from "./LineResults";
 import { NativeCallCommand } from "./NativeCallCommand";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for a retrieving the length of an array.
