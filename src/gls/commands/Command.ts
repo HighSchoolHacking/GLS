@@ -85,7 +85,7 @@ export abstract class Command {
      * @param extra   Raw syntax to add to the lines.
      * @param indentation   How much indentation the last line should be.
      */
-    protected addLineEnder(lines: CommandResult[], extra: string, indentation): void {
+    protected addLineEnder(lines: CommandResult[], extra: string, indentation: number): void {
         let currentLine: CommandResult = lines[lines.length - 1];
         let endlineIndex: number = extra.indexOf("\n");
 
