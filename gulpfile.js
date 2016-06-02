@@ -21,25 +21,27 @@ gulp.task("tsc", () => {
 });
 
 gulp.task("dist", () => {
-    const pipes = ["amd", "commonjs", "es2015", "system", "umd"]
-        .map(moduleType => {
+    const pipes = {};
+    
+    ["amd", "commonjs", "es2015", "system", "umd"]
+        .forEach(moduleType => {
             const tsProject = ts.createProject(
                 "tsconfig.json",
                 {
                     module: moduleType
                 });
 
-            return tsProject
+            pipes[moduleType] = tsProject
                 .src()
                 .pipe(ts(tsProject))
                 .js.pipe(gulp.dest(`dist/${moduleType}`));
         });
 
-    return eventStream.merge(pipes);
+    return eventStream.merge(Object.keys(pipes).map(moduleType => pipes[moduleType]));
 });
 
 gulp.task("watch", ["default"], () => {
     gulp.watch("src/**/*.ts", ["default"]);
 });
 
-gulp.task("default", ["tsc", "tslint"]);
+gulp.task("default", ["tsc", "tslint", "dist"]);
