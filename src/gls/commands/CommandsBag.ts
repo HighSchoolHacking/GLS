@@ -1,7 +1,5 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
-import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";

@@ -1,10 +1,8 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for retrieving a member variable.
@@ -35,11 +33,11 @@ export class MemberVariableCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let privacy: string = parameters[1],
-            instanceName: string,
-            variableName: string,
-            variablePrefix: string,
-            casingStyle: CaseStyle;
+        let privacy: string = parameters[1];
+        let instanceName: string;
+        let variableName: string;
+        let variablePrefix: string;
+        let casingStyle: CaseStyle;
 
         if (privacy === "protected") {
             instanceName = parameters[2];

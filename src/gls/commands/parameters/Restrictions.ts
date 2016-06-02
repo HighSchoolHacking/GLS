@@ -45,7 +45,7 @@ export class Restrictions {
      */
     public checkValidity(inputs: string[]): void {
         this.checkBasicRange(inputs);
-        
+
         if (this.intervals.length === 1) {
             this.checkIntervalRange(inputs);
         }
@@ -78,7 +78,7 @@ export class Restrictions {
         } else {
             descriptor += "s";
         }
-        
+
         throw new Error(`'${inputs[0]}' expects ${descriptor} but got ${inputsLength}.`);
     }
 
@@ -94,17 +94,17 @@ export class Restrictions {
             throw new Error(`'${inputs[0]}' expects extra parameters to be a multiple of ${this.intervals[0]}, not ${inputs.length}.`);
         }
     }
-    
+
     /**
-     * @param number   A number of parameters.
+     * @param value   A number value to stringify.
      * @returns A sentence-ready description of the number.
      */
-    private stringifyNumber(number: number): string {
-        if (number === Infinity) {
+    private stringifyNumber(value: number): string {
+        if (value === Infinity) {
             return "infinite";
         }
 
-        return number.toString();
+        return value.toString();
     }
 
     /**

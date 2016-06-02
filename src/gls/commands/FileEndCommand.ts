@@ -1,10 +1,8 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for ending a file.
@@ -31,8 +29,8 @@ export class FileEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: CommandResult[] = [],
-            source: string[] = this.language.properties.style.fileEndLines;
+        let output: CommandResult[] = [];
+        let source: string[] = this.language.properties.style.fileEndLines;
 
         for (let i: number = 0; i < source.length; i += 1) {
             output.push(new CommandResult(source[i].replace("{0}", parameters[1]), 0));

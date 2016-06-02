@@ -1,9 +1,7 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for parsing a language's name for a type.
@@ -64,8 +62,8 @@ export class TypeCommand extends Command {
      * @returns The equivalent converted type name.
      */
     private convertArrayType(typeNameRaw: string): string {
-        let bracketIndex: number = typeNameRaw.indexOf("["),
-            typeName: string = this.convertType(typeNameRaw.substring(0, bracketIndex));
+        let bracketIndex: number = typeNameRaw.indexOf("[");
+        let typeName: string = this.convertType(typeNameRaw.substring(0, bracketIndex));
 
         return typeName + typeNameRaw.substring(bracketIndex);
     }
@@ -78,16 +76,16 @@ export class TypeCommand extends Command {
      * @todo Support multiple generics (commas inside the <>s).
      */
     private convertGenericType(typeNameRaw: string): string {
-        let bracketStartIndex: number = typeNameRaw.indexOf("<"),
-            containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
+        let bracketStartIndex: number = typeNameRaw.indexOf("<");
+        let containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
 
         if (!this.language.properties.classes.generics.used) {
             return this.convertType(containerTypeName);
         }
 
-        let bracketEndIndex: number = typeNameRaw.lastIndexOf(">"),
-            genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex)),
-            output: string = containerTypeName;
+        let bracketEndIndex: number = typeNameRaw.lastIndexOf(">");
+        let genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
+        let output: string = containerTypeName;
 
         output += this.language.properties.classes.generics.left;
         output += genericTypeName;

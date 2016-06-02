@@ -34,8 +34,8 @@ export class CommentLineCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let language: Language = this.language,
-            result: string = "";
+        let language: Language = this.language;
+        let result: string = "";
 
         result += language.properties.comments.lineLeft;
         result += parameters.slice(1).join(" ");

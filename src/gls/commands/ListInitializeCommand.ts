@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
@@ -41,9 +40,9 @@ export class ListInitializeCommand extends Command {
             return this.context.convertParsed(parameters);
         }
 
-        let typeNameRaw: string = "list<" + parameters[1] + ">",
-            typeName: string = this.context.convertCommon("type", typeNameRaw),
-            output: string = "new " + typeName;
+        let typeNameRaw: string = "list<" + parameters[1] + ">";
+        let typeName: string = this.context.convertCommon("type", typeNameRaw);
+        let output: string = "new " + typeName;
 
         if (parameters.length > 2) {
             output += " { ";

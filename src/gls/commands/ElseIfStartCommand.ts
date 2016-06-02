@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -30,8 +29,8 @@ export class ElseIfStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let lines = [new CommandResult("", -1)],
-            line: CommandResult;
+        let lines = [new CommandResult("", -1)];
+        let line: CommandResult;
 
         if (!this.language.properties.style.separateBraceLines) {
             lines[0].text = "\0";

@@ -3,9 +3,7 @@ import { Language } from "../Languages/Language";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 import { Restrictions } from "./Parameters/Restrictions";
-import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * Abstract base class for commands that may be rendered into language code.

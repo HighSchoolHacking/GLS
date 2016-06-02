@@ -7,50 +7,50 @@ export class ClassMemberVariableProperties {
     /**
      * Decorator for public members.
      */
-    public: string;
+    public public: string;
 
     /**
      * Casing modifier for public member variables.
      */
-    publicCase: CaseStyle;
+    public publicCase: CaseStyle;
 
     /**
      * Prefix for public members.
      */
-    publicPrefix: string;
+    public publicPrefix: string;
 
     /**
      * Decorator for protected members.
      */
-    protected: string;
+    public protected: string;
 
     /**
      * Casing modifier for protected member variables.
      */
-    protectedCase: CaseStyle;
+    public protectedCase: CaseStyle;
 
     /**
      * Prefix for protected members.
      */
-    protectedPrefix: string;
+    public protectedPrefix: string;
 
     /**
      * Decorator for private members.
      */
-    private: string;
+    public private: string;
 
     /**
      * Casing modifier for private member variables.
      */
-    privateCase: CaseStyle;
+    public privateCase: CaseStyle;
 
     /**
      * Prefix for private members.
      */
-    privatePrefix: string;
+    public privatePrefix: string;
 
     /**
      * Whether member variables shouldn't be declared.
      */
-    skipMemberVariables: boolean;
+    public skipMemberVariables: boolean;
 }

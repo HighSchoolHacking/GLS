@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "module": "amd",
-        "target": "es3",
+        "rootDir": "src",
+        "module": "es2015",
+        "target": "es2015",
         "noImplicitAny": true,
-        "declaration": true,
-        "outDir": "dist"
+        "declaration": false
     },
     "exclude": [
         "coverage", "docs", "node_modules", "test"

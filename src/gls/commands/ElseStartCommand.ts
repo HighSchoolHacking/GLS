@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -14,8 +13,7 @@ export class ElseStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let lines = [new CommandResult("", -1)],
-            indentation: number;
+        let lines = [new CommandResult("", -1)];
 
         if (!this.language.properties.style.separateBraceLines) {
             lines[0].text = "\0";

@@ -20,26 +20,8 @@ gulp.task("tsc", () => {
         .js.pipe(gulp.dest("src"));
 });
 
-gulp.task("dist", () => {
-    const tsProject = ts.createProject(
-        "tsconfig.json",
-        {
-            outFile: "dist/GLS.js",
-            removeComments: true
-        });
-
-    const tsResult = tsProject
-        .src()
-        .pipe(ts(tsProject));
-
-    return merge([
-        tsResult.dts.pipe(gulp.dest("dist")),
-        tsResult.js.pipe(gulp.dest("dist"))
-    ]);
-});
-
 gulp.task("watch", ["default"], () => {
     gulp.watch("src/**/*.ts", ["default"]);
 });
 
-gulp.task("default", ["tsc", "tslint", "dist"]);
+gulp.task("default", ["tsc", "tslint"]);

@@ -1,10 +1,8 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for declaring a member variable.
@@ -39,11 +37,11 @@ export class MemberVariableDeclareCommand extends Command {
             return LineResults.newSingleLine("\0", false);
         }
 
-        let output: string = "",
-            privacy: string = parameters[1],
-            name: string,
-            type: string,
-            casingStyle: CaseStyle;
+        let output: string = "";
+        let privacy: string = parameters[1];
+        let name: string;
+        let type: string;
+        let casingStyle: CaseStyle;
 
         if (privacy === "protected") {
             output += this.language.properties.classes.members.variables.protected;

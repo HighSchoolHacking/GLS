@@ -1,5 +1,3 @@
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";

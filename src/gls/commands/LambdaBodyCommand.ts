@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -54,9 +53,7 @@ export class LambdaBodyCommand extends Command {
             throw Error("returnTypeRequired=true not implemented");
         }
 
-        let returnType: string = this.context.convertCommon("type", parameters[2]),
-            lambdaBody: string = "",
-            output: CommandResult[];
+        let lambdaBody: string = "";
 
         lambdaBody += this.language.properties.lambdas.functionLeft;
 
@@ -73,7 +70,7 @@ export class LambdaBodyCommand extends Command {
         lambdaBody += parameters[parameters.length - 1];
         lambdaBody += this.language.properties.lambdas.functionRight;
 
-        output = [new CommandResult(lambdaBody, 0)];
+        let output = [new CommandResult(lambdaBody, 0)];
         return new LineResults(output, false);
     }
 

@@ -1,8 +1,5 @@
-import { ArrayProperties } from "./ArrayProperties";
 import { ClassGenericProperties } from "./ClassGenericProperties";
 import { ClassMemberProperties } from "./ClassMemberProperties";
-import { ListProperties } from "./ListProperties";
-import { StringProperties } from "./StringProperties";
 
 /**
  * Metadata on a language's classes.
@@ -17,7 +14,7 @@ export class ClassProperties {
      * The keyword used for constructors, if not the class name.
      */
     public constructorKeyword: string;
-    
+
     /**
      * Whether constructors take in the class instance as a first parameter.
      */

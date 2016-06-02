@@ -5,25 +5,25 @@ export class LambdaProperties {
     /**
      * How to start a lambda.
      */
-    functionLeft: string;
+    public functionLeft: string;
 
     /**
      * A string between the lambda arguments and body.
      */
-    functionMiddle: string;
+    public functionMiddle: string;
 
     /**
      * How to end a lambda.
      */
-    functionRight: string;
+    public functionRight: string;
 
     /**
      * Whether parameter types must be included in the argument list.
      */
-    parameterTypeRequired: boolean;
-    
+    public parameterTypeRequired: boolean;
+
     /**
      * Whether a return type must be included in the argument list.
      */
-    returnTypeRequired: boolean;
+    public returnTypeRequired: boolean;
 }

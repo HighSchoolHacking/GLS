@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -68,8 +67,8 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     public renderForEachAsLoop(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.foreach,
-            output: CommandResult[];
+        let line: string = this.language.properties.loops.foreach;
+        let output: CommandResult[];
 
         line += this.language.properties.conditionals.startLeft;
 

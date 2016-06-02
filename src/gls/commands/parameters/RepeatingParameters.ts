@@ -1,5 +1,4 @@
 import { Parameter } from "./Parameter";
-import { SingleParameter } from "./SingleParameter";
 
 /**
  * Some number of repeating parameters.

@@ -36,9 +36,9 @@ export class FunctionStartCommand extends Command {
      * @param parameters   The command's name, followed by any parameters.
      */
     public render(parameters: string[]): LineResults {
-        let returnType: string = this.context.convertCommon("type", parameters[2]),
-            declaration: string = "",
-            output: CommandResult[];
+        let returnType: string = this.context.convertCommon("type", parameters[2]);
+        let declaration: string = "";
+        let output: CommandResult[];
 
         if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
             declaration += returnType;

@@ -1,4 +1,3 @@
-import { CaseStyle } from "./CaseStyle";
 
 /**
  * Allowed casing preferences.

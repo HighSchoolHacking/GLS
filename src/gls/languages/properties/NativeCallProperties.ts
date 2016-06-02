@@ -61,7 +61,7 @@ export class NativeCallProperties {
      * How this is called.
      */
     public type: NativeCallType;
-    
+
     /**
      * Initializes a new instance of the NativeCallProperties class.
      * 

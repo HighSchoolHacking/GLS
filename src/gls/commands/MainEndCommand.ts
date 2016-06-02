@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -14,8 +13,8 @@ export class MainEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: CommandResult[] = [],
-            source: string[] = this.language.properties.style.mainEndLines;
+        let output: CommandResult[] = [];
+        let source: string[] = this.language.properties.style.mainEndLines;
 
         for (let i: number = 0; i < source.length; i += 1) {
             output.push(new CommandResult(source[i], 0));

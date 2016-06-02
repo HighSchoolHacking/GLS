@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -55,11 +54,11 @@ export class CommentDocTagCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderXmlDoc(parameters: string[]): LineResults {
-        let lineStart: string = this.language.properties.comments.docLineStart,
-            tagRaw: string = parameters[1],
-            tag: string = this.parseTag(tagRaw),
-            commandResults: CommandResult[] = [],
-            contentsRaw: string;
+        let lineStart: string = this.language.properties.comments.docLineStart;
+        let tagRaw: string = parameters[1];
+        let tag: string = this.parseTag(tagRaw);
+        let commandResults: CommandResult[] = [];
+        let contentsRaw: string;
 
         let starter: string = lineStart + "<" + tag;
 
@@ -76,8 +75,8 @@ export class CommentDocTagCommand extends Command {
 
         commandResults.push(new CommandResult(starter, 0));
 
-        let contents: string[] = this.wrapTagContents(lineStart, contentsRaw),
-            contentsPadded: string[] = this.padContentsWithTag("", contents);
+        let contents: string[] = this.wrapTagContents(lineStart, contentsRaw);
+        let contentsPadded: string[] = this.padContentsWithTag("", contents);
 
         for (let i: number = 0; i < contentsPadded.length; i += 1) {
             commandResults.push(new CommandResult(contentsPadded[i], 0));
@@ -97,10 +96,10 @@ export class CommentDocTagCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderJsDoc(parameters: string[]): LineResults {
-        let tagRaw: string = parameters[1],
-            tagParsed: string = this.parseTag(tagRaw),
-            tag: string = tagParsed + this.language.properties.comments.docTagEnd,
-            contentsRaw: string;
+        let tagRaw: string = parameters[1];
+        let tagParsed: string = this.parseTag(tagRaw);
+        let tag: string = tagParsed + this.language.properties.comments.docTagEnd;
+        let contentsRaw: string;
 
         if (tagParsed === "\0") {
             tag = this.language.properties.comments.docTagStart;
@@ -128,9 +127,9 @@ export class CommentDocTagCommand extends Command {
             tag = "";
         }
 
-        let contents: string[] = this.wrapTagContents(tag, contentsRaw),
-            contentsPadded: string[] = this.padContentsWithTag(tag, contents),
-            commandResults: CommandResult[] = [];
+        let contents: string[] = this.wrapTagContents(tag, contentsRaw);
+        let contentsPadded: string[] = this.padContentsWithTag(tag, contents);
+        let commandResults: CommandResult[] = [];
 
         for (let i: number = 0; i < contentsPadded.length; i += 1) {
             commandResults.push(new CommandResult(contentsPadded[i], 0));
@@ -170,9 +169,9 @@ export class CommentDocTagCommand extends Command {
      * @returns Lines of the original text.
      */
     private splitTextToLength(text: string, length: number) {
-        let textSplit: string[] = text.split(" "),
-            lines: string[] = [],
-            line: string = "";
+        let textSplit: string[] = text.split(" ");
+        let lines: string[] = [];
+        let line: string = "";
 
         for (let i: number = 0; i < textSplit.length; i += 1) {
             if (line.length + 1 + textSplit[i].length > length) {
@@ -201,8 +200,8 @@ export class CommentDocTagCommand extends Command {
      * @returns The contents, with the tag and padding in front.
      */
     private padContentsWithTag(tag: string, contents: string[]): string[] {
-        let results: string[] = [],
-            starter: string = this.language.properties.comments.docLineStart;
+        let results: string[] = [];
+        let starter: string = this.language.properties.comments.docLineStart;
 
         results.push(starter + tag + contents[0]);
 

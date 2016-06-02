@@ -1,5 +1,4 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
-import { Language } from "../Languages/Language";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "../Languages/Properties/NativeCallProperties";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";

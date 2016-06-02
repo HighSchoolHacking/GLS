@@ -1,10 +1,8 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 
 /**
  * A command for the beginning of a foreach loop over a container's keys.
@@ -64,8 +62,8 @@ export class ForEachKeyStartCommand extends Command {
      * @remarks Usage: (container, keyName, keyType).
      */
     public renderForEachAsLoop(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.foreach,
-            output: CommandResult[];
+        let line: string = this.language.properties.loops.foreach;
+        let output: CommandResult[];
 
         line += this.language.properties.conditionals.startLeft;
 

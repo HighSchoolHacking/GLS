@@ -47,7 +47,7 @@ export class CaseStyleConverterBag {
 
         return this.converters[caseStyleAlias];
     }
-    
+
     /**
      * Converts a name to a casing style.
      * 

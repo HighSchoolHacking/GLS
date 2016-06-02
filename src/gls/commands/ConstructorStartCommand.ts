@@ -1,4 +1,3 @@
-import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
@@ -37,8 +36,8 @@ export class ConstructorStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let declaration: string = "",
-            output: CommandResult[];
+        let declaration: string = "";
+        let output: CommandResult[];
 
         if (this.language.properties.classes.constructorUsesKeyword) {
             declaration += this.language.properties.classes.constructorKeyword;

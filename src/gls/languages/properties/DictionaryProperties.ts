@@ -8,7 +8,7 @@ export class DictionaryProperties {
      * How to determine if a key exists in a dictionary.
      */
     public containsKey: NativeCallProperties;
-    
+
     /**
      * The name of the dictionary class.
      */

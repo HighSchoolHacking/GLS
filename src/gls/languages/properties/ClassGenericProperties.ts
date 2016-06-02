@@ -5,20 +5,20 @@ export class ClassGenericProperties {
     /**
      * How to start declaring a class' generics.
      */
-    left: string;
+    public left: string;
 
     /**
      * Characters between a class' generic names.
      */
-    middle: string;
+    public middle: string;
 
     /**
      * How to end declaring a class' generics.
      */
-    right: string;
+    public right: string;
 
     /**
      * Whether the class uses generics.
      */
-    used: boolean;
+    public used: boolean;
 }
