@@ -1,13 +1,10 @@
 language: node_js
 
 node_js:
-  - "5.1"
+  - "6.0"
 
-before_script: 
-  npm install 
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+before_script:
+  npm install
 
 script:
-  grunt
+  gulp
