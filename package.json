@@ -10,11 +10,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
+    "event-stream": "^3.3.2",
     "gulp": "^3.9.1",
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.5",
     "install": "^0.8.1",
-    "merge2": "^1.0.2",
     "mocha": "^2.4.5",
     "run-sequence": "^1.2.1",
     "tslint": "^3.9.0",
