@@ -14,6 +14,7 @@
     "gulp": "^3.9.1",
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.5",
+    "gulp-webpack": "^1.5.0",
     "install": "^0.8.1",
     "mocha": "^2.4.5",
     "run-sequence": "^1.2.1",

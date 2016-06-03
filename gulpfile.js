@@ -3,6 +3,9 @@ const gulp = require("gulp");
 const runSequence = require("run-sequence");
 const ts = require("gulp-typescript");
 const tslint = require("gulp-tslint");
+const webpack = require("gulp-webpack");
+
+const distTypes = ["amd", "commonjs", "es2015", "none", "system", "umd"]
 
 gulp.task("tslint", () => {
     return gulp
@@ -22,20 +25,26 @@ gulp.task("tsc", () => {
 
 gulp.task("dist", () => {
     const pipes = {};
-    
-    ["amd", "commonjs", "es2015", "system", "umd"]
-        .forEach(moduleType => {
-            const tsProject = ts.createProject(
-                "tsconfig.json",
-                {
-                    module: moduleType
-                });
 
-            pipes[moduleType] = tsProject
-                .src()
-                .pipe(ts(tsProject))
-                .js.pipe(gulp.dest(`dist/${moduleType}`));
-        });
+    distTypes.forEach(moduleType => {
+        const tsProject = ts.createProject(
+            "tsconfig.json",
+            {
+                module: moduleType
+            });
+
+        pipes[moduleType] = tsProject
+            .src()
+            .pipe(ts(tsProject))
+            .js.pipe(gulp.dest(`dist/${moduleType}`))
+            .pipe(webpack({
+                output: {
+                    filename: `gls-${moduleType}.js`,
+                },
+                warn: false
+            }))
+            .pipe(gulp.dest("dist/"));
+    });
 
     return eventStream.merge(Object.keys(pipes).map(moduleType => pipes[moduleType]));
 });
