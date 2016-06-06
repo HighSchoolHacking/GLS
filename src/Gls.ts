@@ -29,6 +29,13 @@ export class Gls {
     }
 
     /**
+     * @returns A lookup for known languages.
+     */
+    public getLanguagesBag(): LanguagesBag {
+        return this.languagesBag;
+    }
+
+    /**
      * Sets a new language to be used for conversion.
      * 
      * @param name   The name of the language.

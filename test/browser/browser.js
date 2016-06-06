@@ -2,7 +2,7 @@ var sources = (function () {
     var config = {
         paths: {
             // Source code
-            "GLS": "../../dist/gls-browser",
+            "GLS": "../../dist/global/gls",
             // External libraries
             "chai": "../../node_modules/chai/chai"
         }

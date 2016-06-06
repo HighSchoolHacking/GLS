@@ -45,14 +45,10 @@ gulp.task("dist-modules", () => {
 
 gulp.task("dist-pack", () => {
     return gulp.src("dist/none/**/*.js")
-        .pipe(webpack({
-            entry: "./src/gls",
-            output: {
-                filename: "gls-browser.js",
-            }
-        }))
-        .pipe(insert.prepend(`var GLS = `))
-        .pipe(gulp.dest("dist/"));
+        .pipe(webpack(require("./webpack.config.js")))
+        .pipe(insert.prepend("var Gls = "))
+        .pipe(insert.append("\nGls = Gls.Gls;"))
+        .pipe(gulp.dest("dist/global"));
 });
 
 gulp.task("dist", callback => {

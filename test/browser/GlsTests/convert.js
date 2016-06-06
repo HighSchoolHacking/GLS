@@ -4,7 +4,7 @@ define(function () {
 
         it("compiles a hello world comment", function () {
             // Arrange
-            var gls = new GLS.Gls().setLanguage("TypeScript");
+            var gls = new Gls().setLanguage("TypeScript");
 
             // Act
             var converted = gls.convert(["comment line : Hello world!"])
