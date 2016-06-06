@@ -1,5 +1,6 @@
 const eventStream = require("event-stream");
 const gulp = require("gulp");
+const insert = require("gulp-insert");
 const runSequence = require("run-sequence");
 const ts = require("gulp-typescript");
 const tslint = require("gulp-tslint");
@@ -23,7 +24,7 @@ gulp.task("tsc", () => {
         .js.pipe(gulp.dest("src"));
 });
 
-gulp.task("dist", () => {
+gulp.task("dist-modules", () => {
     const pipes = {};
 
     distTypes.forEach(moduleType => {
@@ -36,21 +37,38 @@ gulp.task("dist", () => {
         pipes[moduleType] = tsProject
             .src()
             .pipe(ts(tsProject))
-            .js.pipe(gulp.dest(`dist/${moduleType}`))
-            .pipe(webpack({
-                output: {
-                    filename: `gls-${moduleType}.js`,
-                },
-                warn: false
-            }))
-            .pipe(gulp.dest("dist/"));
+            .js.pipe(gulp.dest(`dist/${moduleType}`));
     });
 
     return eventStream.merge(Object.keys(pipes).map(moduleType => pipes[moduleType]));
+});
+
+gulp.task("dist-pack", () => {
+    return gulp.src("dist/none/**/*.js")
+        .pipe(webpack({
+            entry: "./src/gls",
+            output: {
+                filename: "gls-browser.js",
+            }
+        }))
+        .pipe(insert.prepend(`var GLS = `))
+        .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("dist", callback => {
+    runSequence(
+        "dist-modules",
+        "dist-pack",
+        callback);
 });
 
 gulp.task("watch", ["default"], () => {
     gulp.watch("src/**/*.ts", ["default"]);
 });
 
-gulp.task("default", ["tsc", "tslint", "dist"]);
+gulp.task("default", callback => {
+    runSequence(
+        ["tsc", "tslint"],
+        "dist",
+        callback);
+});
