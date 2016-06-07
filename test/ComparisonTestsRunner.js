@@ -4,8 +4,8 @@ var ComparisonTestsRunner = (function () {
     const expect = require("chai").expect;
     const fs = require("fs");
     const path = require("path");
-    const LanguagesBag = require("../src/languages/languagesbag").LanguagesBag;
-    const Gls = require("../src/gls").Gls;
+    const LanguagesBag = require("../src/Languages/LanguagesBag").LanguagesBag;
+    const Gls = require("../src/Gls").Gls;
 
     /**
      * Test runner for comparing converted .gls files and expected output.

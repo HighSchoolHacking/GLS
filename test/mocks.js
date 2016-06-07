@@ -1,12 +1,12 @@
 const testRequire = require("./testRequire");
 
-const CommandsBag = testRequire("../src/commands/commandsbag").CommandsBag;
-const Conversion = testRequire("../src/conversions/conversion").Conversion;
-const ConversionContext = testRequire("../src/conversions/conversioncontext").ConversionContext;
-const GlsParser = testRequire("../src/conversions/glsparser").GlsParser;
-const CaseStyleConverter = testRequire("../src/languages/casing/casestyleconverter").CaseStyleConverter;
-const CaseStyleConverterBag = testRequire("../src/languages/casing/casestyleconverterbag").CaseStyleConverterBag;
-const TypeScript = testRequire("../src/languages/typescript").TypeScript;
+const CommandsBag = testRequire("../src/Commands/CommandsBag").CommandsBag;
+const Conversion = testRequire("../src/Conversions/Conversion").Conversion;
+const ConversionContext = testRequire("../src/Conversions/ConversionContext").ConversionContext;
+const GlsParser = testRequire("../src/Conversions/GlsParser").GlsParser;
+const CaseStyleConverter = testRequire("../src/Languages/Casing/CaseStyleConverter").CaseStyleConverter;
+const CaseStyleConverterBag = testRequire("../src/Languages/Casing/CaseStyleConverterBag").CaseStyleConverterBag;
+const TypeScript = testRequire("../src/Languages/TypeScript").TypeScript;
 
 /**
  * Generators for (stub? mock?) class instances.

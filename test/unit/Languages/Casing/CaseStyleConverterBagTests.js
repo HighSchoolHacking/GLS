@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const mocha = require("mocha");
 const mocks = require("../../../mocks.js");
-const CaseStyle = require("../../../../src/languages/casing/casestyle").CaseStyle;
+const CaseStyle = require("../../../../src/Languages/Casing/CaseStyle").CaseStyle;
 
 (function () {
     "use strict";
