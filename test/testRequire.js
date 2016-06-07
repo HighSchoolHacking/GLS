@@ -1,6 +1,6 @@
 const path = require("path");
 
-const originalSourcePath = "/Source/";
+const originalSourcePath = "/src/";
 const sourcePath = path
     .normalize(process.env.INSTRUMENTED_SOURCE || originalSourcePath)
     .replace(/\\/g, "/");
