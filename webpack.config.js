@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./src/gls",
+    entry: "./src/Gls",
     output: {
         filename: "Gls.js"
     },
