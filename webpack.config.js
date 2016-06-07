@@ -1,7 +1,7 @@
 module.exports = {
     entry: "./src/gls",
     output: {
-        filename: "gls.js"
+        filename: "Gls.js"
     },
     stats: {
         reasons: true,
