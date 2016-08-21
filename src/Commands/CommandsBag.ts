@@ -60,6 +60,7 @@ import { OperatorCommand } from "./OperatorCommand";
 import { ParenthesisCommand } from "./ParenthesisCommand";
 import { PrintCommand } from "./PrintCommand";
 import { ReturnCommand } from "./ReturnCommand";
+import { StringFormatCommand } from "./StringFormatCommand";
 import { StringIndexCommand } from "./StringIndexCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { SuperConstructorCommand } from "./SuperConstructorCommand";
@@ -146,6 +147,7 @@ export class CommandsBag {
             "parenthesis": new ParenthesisCommand(context),
             "print": new PrintCommand(context),
             "return": new ReturnCommand(context),
+            "string format": new StringFormatCommand(context),
             "string index": new StringIndexCommand(context),
             "string length": new StringLengthCommand(context),
             "super constructor": new SuperConstructorCommand(context),
