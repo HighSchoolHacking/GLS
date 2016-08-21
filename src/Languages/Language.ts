@@ -19,6 +19,7 @@ import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -56,6 +57,7 @@ export abstract class Language {
         this.generateOperatorProperties(this.properties.operators);
         this.generateOutputProperties(this.properties.output);
         this.generateStringProperties(this.properties.strings);
+        this.generateStringFormatProperties(this.properties.strings.formatting);
         this.generateStyleProperties(this.properties.style);
         this.generateVariableProperties(this.properties.variables);
 
@@ -197,6 +199,13 @@ export abstract class Language {
      * @param strings   A property container for metadata on strings.
      */
     protected abstract generateStringProperties(strings: StringProperties): void;
+
+    /**
+     * Generates metadata on string formatting.
+     * 
+     * @param strings   A property container for metadata on string formatting.
+     */
+    protected abstract generateStringFormatProperties(formatting: StringFormatProperties): void;
 
     /**
      * Generates metadata on style.

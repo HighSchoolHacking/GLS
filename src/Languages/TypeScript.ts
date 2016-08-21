@@ -20,6 +20,7 @@ import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -319,6 +320,21 @@ export class TypeScript extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+    }
+
+    /**
+     * Generates metadata on string formatting.
+     * 
+     * @param strings   A property container for metadata on string formatting.
+     */
+    public generateStringFormatProperties(formatting: StringFormatProperties): void {
+        formatting.formatLeft = "`";
+        formatting.formatRight = "`";
+        formatting.formatInputLeft = "${";
+        formatting.formatInputNumbers = false;
+        formatting.formatInputRight = "}";
+        formatting.inputTypes = false;
+        formatting.useInterpolation = true;
     }
 
     /**

@@ -19,6 +19,7 @@ import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Propert
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -292,6 +293,25 @@ export class Java extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
+    }
+
+    /**
+     * Generates metadata on string formatting.
+     * 
+     * @param strings   A property container for metadata on string formatting.
+     */
+    public generateStringFormatProperties(formatting: StringFormatProperties): void {
+        formatting.formatLeft = "String.format(";
+        formatting.formatMiddle = "";
+        formatting.formatRight = ")";
+        formatting.formatInputLeft = "%";
+        formatting.formatInputNumbers = true;
+        formatting.formatInputRight = "";
+        formatting.inputTypes = true;
+        formatting.typeCodes = {
+            // ...
+        };
+        formatting.useInterpolation = false;
     }
 
     /**
