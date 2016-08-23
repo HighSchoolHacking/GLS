@@ -41,8 +41,9 @@ export class StringFormatCommand extends Command {
         }
 
         let output: string = parameters[1].substring(1, parameters[1].length - 1);
-        let inputsLength: number = parameters.length / 2 - 1;
+        output = this.language.properties.strings.formatting.formatLeft + output;
 
+        let inputsLength: number = parameters.length / 2 - 1;
         for (let i: number = 0; i < inputsLength; i += 1) {
             let replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
 
@@ -50,16 +51,19 @@ export class StringFormatCommand extends Command {
         }
 
         if (!this.language.properties.strings.formatting.useInterpolation) {
-            output += this.language.properties.strings.formatting.formatMiddle;
+            if (parameters.length > 2) {
+                output += this.language.properties.strings.formatting.formatMiddle;
 
-            for (let i: number = 2; i < parameters.length - 3; i += 2) {
-                output += parameters[i] += ", ";
+                for (let i: number = 2; i < parameters.length - 3; i += 2) {
+                    output += parameters[i] += ", ";
+                }
+
+                output += parameters[parameters.length - 2];
+            } else {
+                output += this.language.properties.strings.formatting.formatAbbreviated;
             }
-
-            output += parameters[parameters.length - 2];
         }
 
-        output = this.language.properties.strings.formatting.formatLeft + output;
         output += this.language.properties.strings.formatting.formatRight;
 
         return new LineResults([new CommandResult(output, 0)], true);

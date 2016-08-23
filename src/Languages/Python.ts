@@ -299,6 +299,7 @@ export class Python extends PythonicLanguage {
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
         formatting.formatLeft = "\"";
         formatting.formatMiddle = "\".format(";
+        formatting.formatAbbreviated = "\".format(";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";

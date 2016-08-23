@@ -284,6 +284,7 @@ export class Ruby extends PythonicLanguage {
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
         formatting.formatLeft = "\"";
         formatting.formatMiddle = "\" % [";
+        formatting.formatAbbreviated = "\" % [";
         formatting.formatRight = "]";
         formatting.formatInputLeft = "$";
         formatting.formatInputRight = "";

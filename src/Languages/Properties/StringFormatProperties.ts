@@ -13,6 +13,11 @@ export class StringFormatProperties {
     public formatMiddle: string;
 
     /**
+     * Abbreviated middle of a format string if no inputs are provided.
+     */
+    public formatAbbreviated: string;
+
+    /**
      * End of a format string.
      */
     public formatRight: string;

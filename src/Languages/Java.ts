@@ -303,6 +303,7 @@ export class Java extends CLikeLanguage {
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
         formatting.formatLeft = "String.format(\"";
         formatting.formatMiddle = "\", ";
+        formatting.formatAbbreviated = "\"";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "%";
         formatting.formatInputRight = "";

@@ -106,6 +106,11 @@ let bar: number = 7;
             <td>Middle of a format string (between the template and inputs).</td>
         </tr>
         <tr>
+            <td>FormatAbbreviated</td>
+            <td>string</td>
+            <td>Abbreviated middle of a format string if no inputs are provided.</td>
+        </tr>
+        <tr>
             <td>FormatRight</td>
             <td>string</td>
             <td>End of a format string.</td>
@@ -145,6 +150,7 @@ let bar: number = 7;
         <th>Language</th>
         <th>FormatLeft</th>
         <th>FormatMiddle</th>
+        <th>FormatAbbreviated</th>
         <th>FormatRight</th>
         <th>FormatInputLeft</th>
         <th>FormatInputRight</th>
@@ -155,6 +161,7 @@ let bar: number = 7;
         <tr>
             <th>CSharp</th>
             <td>`"string.Format(\""`</td>
+            <td>`"\", "`</td>
             <td>`"\""`</td>
             <td>`")"`</td>
             <td>`"{"`</td>
@@ -165,6 +172,7 @@ let bar: number = 7;
         <tr>
             <th>Java</th>
             <td>`"String.format(\""`</td>
+            <td>`"\", "`</td>
             <td>`"\""`</td>
             <td>`")"`</td>
             <td>`"%"`</td>
@@ -176,6 +184,7 @@ let bar: number = 7;
             <th>Python</th>
             <td>`"\""`</td>
             <td>`"\".format("`</td>
+            <td>`"\".format("`</td>
             <td>`")"`</td>
             <td>`"{"`</td>
             <td>`"}"`</td>
@@ -186,6 +195,7 @@ let bar: number = 7;
             <th>Ruby</th>
             <td>`"\""`</td>
             <td>`"\" % ["`</td>
+            <td>`"\" % ["`</td>
             <td>`"]"`</td>
             <td>`""`</td>
             <td>`""`</td>
@@ -195,6 +205,7 @@ let bar: number = 7;
         <tr>
             <th>TypeScript</th>
             <td><code>"`"</code></td>
+            <td></td>
             <td></td>
             <td><code>"`"</code></td>
             <td>`"${"`</td>

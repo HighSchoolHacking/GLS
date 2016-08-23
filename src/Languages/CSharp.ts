@@ -296,6 +296,7 @@ export class CSharp extends CLikeLanguage {
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
         formatting.formatLeft = "string.Format(\"";
         formatting.formatMiddle = "\", ";
+        formatting.formatAbbreviated = "\"";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";
