@@ -297,11 +297,10 @@ export class Python extends PythonicLanguage {
      * @param strings   A property container for metadata on string formatting.
      */
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "";
-        formatting.formatMiddle = ".format(";
+        formatting.formatLeft = "\"";
+        formatting.formatMiddle = "\".format(";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
-        formatting.formatInputNumbers = false;
         formatting.formatInputRight = "}";
         formatting.inputTypes = false;
         formatting.useInterpolation = false;

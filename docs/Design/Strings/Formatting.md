@@ -116,11 +116,6 @@ let bar: number = 7;
             <td>Start of a format string input.</td>
         </tr>
         <tr>
-            <td>FormatInputNumbers</td>
-            <td>boolean</td>
-            <td>Whether to include numbers in format string inputs.</td>
-        </tr>
-        <tr>
             <td>FormatInputRight</td>
             <td>string</td>
             <td>End of a format string input.</td>
@@ -152,7 +147,6 @@ let bar: number = 7;
         <th>FormatMiddle</th>
         <th>FormatRight</th>
         <th>FormatInputLeft</th>
-        <th>FormatInputNumbers</th>
         <th>FormatInputRight</th>
         <th>IncludeTypes</th>
         <th>UseInterpolation</th>
@@ -160,44 +154,40 @@ let bar: number = 7;
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td>`"string.Format("`</td>
-            <td>`""`</td>
+            <td>`"string.Format(\""`</td>
+            <td>`"\""`</td>
             <td>`")"`</td>
             <td>`"{"`</td>
-            <td>`true`</td>
             <td>`"}"`</td>
             <td>`false`</td>
             <td>`false`</td>
         </tr>
         <tr>
             <th>Java</th>
-            <td>`"String.format("`</td>
-            <td>`""`</td>
+            <td>`"String.format(\""`</td>
+            <td>`"\""`</td>
             <td>`")"`</td>
             <td>`"%"`</td>
-            <td>`true`</td>
             <td>`""`</td>
             <td>`true`</td>
             <td>`false`</td>
         </tr>
         <tr>
             <th>Python</th>
-            <td>`""`</td>
-            <td>`".format("`</td>
+            <td>`"\""`</td>
+            <td>`"\".format("`</td>
             <td>`")"`</td>
             <td>`"{"`</td>
-            <td>`true`</td>
             <td>`"}"`</td>
             <td>`true`</td>
             <td>`false`</td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td>`""`</td>
-            <td>`" % ["`</td>
+            <td>`"\""`</td>
+            <td>`"\" % ["`</td>
             <td>`"]"`</td>
             <td>`""`</td>
-            <td>`false`</td>
             <td>`""`</td>
             <td>`false`</td>
             <td>`false`</td>
@@ -208,7 +198,6 @@ let bar: number = 7;
             <td></td>
             <td><code>"`"</code></td>
             <td>`"${"`</td>
-            <td>`false`</td>
             <td>`"}"`</td>
             <td>`false`</td>
             <td>`true`</td>

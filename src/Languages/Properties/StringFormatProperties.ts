@@ -23,11 +23,6 @@ export class StringFormatProperties {
     public formatInputLeft: string;
 
     /**
-     * Whether to include numbers in format string inputs.
-     */
-    public formatInputNumbers: boolean;
-
-    /**
      * End of a format string input.
      */
     public formatInputRight: string;

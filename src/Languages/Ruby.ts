@@ -282,14 +282,19 @@ export class Ruby extends PythonicLanguage {
      * @param strings   A property container for metadata on string formatting.
      */
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "";
-        formatting.formatMiddle = " % [";
+        formatting.formatLeft = "\"";
+        formatting.formatMiddle = "\" % [";
         formatting.formatRight = "]";
-        formatting.formatInputLeft = "";
-        formatting.formatInputNumbers = false;
+        formatting.formatInputLeft = "$";
         formatting.formatInputRight = "";
-        formatting.inputTypes = false;
+        formatting.inputTypes = true;
         formatting.useInterpolation = false;
+
+        formatting.typeCodes = {
+            int: "%d",
+            float: "%f",
+            string: "%s",
+        };
     }
 
     /**

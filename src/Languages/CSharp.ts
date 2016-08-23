@@ -294,11 +294,10 @@ export class CSharp extends CLikeLanguage {
      * @param strings   A property container for metadata on string formatting.
      */
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "string.Format(";
-        formatting.formatMiddle = "";
+        formatting.formatLeft = "string.Format(\"";
+        formatting.formatMiddle = "\", ";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
-        formatting.formatInputNumbers = true;
         formatting.formatInputRight = "}";
         formatting.inputTypes = false;
         formatting.useInterpolation = false;

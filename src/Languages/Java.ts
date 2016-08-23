@@ -301,17 +301,19 @@ export class Java extends CLikeLanguage {
      * @param strings   A property container for metadata on string formatting.
      */
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "String.format(";
-        formatting.formatMiddle = "";
+        formatting.formatLeft = "String.format(\"";
+        formatting.formatMiddle = "\", ";
         formatting.formatRight = ")";
         formatting.formatInputLeft = "%";
-        formatting.formatInputNumbers = true;
         formatting.formatInputRight = "";
         formatting.inputTypes = true;
-        formatting.typeCodes = {
-            // ...
-        };
         formatting.useInterpolation = false;
+
+        formatting.typeCodes = {
+            int: "$d",
+            float: "$f",
+            string: "$s",
+        };
     }
 
     /**

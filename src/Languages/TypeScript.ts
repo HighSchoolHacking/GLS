@@ -331,7 +331,6 @@ export class TypeScript extends CLikeLanguage {
         formatting.formatLeft = "`";
         formatting.formatRight = "`";
         formatting.formatInputLeft = "${";
-        formatting.formatInputNumbers = false;
         formatting.formatInputRight = "}";
         formatting.inputTypes = false;
         formatting.useInterpolation = true;

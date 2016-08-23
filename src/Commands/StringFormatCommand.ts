@@ -36,17 +36,27 @@ export class StringFormatCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.strings.formatting.useInterpolation) {
-            return this.renderInterpolation(parameters);
+        if (parameters[1][0] !== "\"") {
+            throw new Error("String formatting must be done with primitives.");
         }
 
-        let output: string = parameters[0];
-        let inputsLength: number = this.getParameters.length / 2 - 1;
+        let output: string = parameters[1].substring(1, parameters[1].length - 1);
+        let inputsLength: number = parameters.length / 2 - 1;
 
         for (let i: number = 0; i < inputsLength; i += 1) {
-            let replacement: string = this.formatReplacement(i, parameters[i + 3]);
+            let replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
 
-            output = this.replaceFormatInput(output, i, replacement);
+            output = output.replace(new RegExp("\\{" + i + "\\}", "gi"), replacement);
+        }
+
+        if (!this.language.properties.strings.formatting.useInterpolation) {
+            output += this.language.properties.strings.formatting.formatMiddle;
+
+            for (let i: number = 2; i < parameters.length - 3; i += 2) {
+                output += parameters[i] += ", ";
+            }
+
+            output += parameters[parameters.length - 2];
         }
 
         output = this.language.properties.strings.formatting.formatLeft + output;
@@ -56,12 +66,17 @@ export class StringFormatCommand extends Command {
     }
 
     /**
+     * Creates a replacement string for a format string input.
      * 
+     * @param i   What number replacement this is within the format string.
+     * @param inputName   The input replacement name.
+     * @param inputType   The input replacement type.
+     * @returns A replacement string wrapping the input.
      */
-    private formatReplacement(i: number, inputType: string): string {
+    private formatReplacement(i: number, inputName: string, inputType: string): string {
         let output: string = this.language.properties.strings.formatting.formatInputLeft;
 
-        if (this.language.properties.strings.formatting.formatInputNumbers) {
+        if (!this.language.properties.strings.formatting.useInterpolation) {
             output += i;
         }
 
@@ -73,21 +88,11 @@ export class StringFormatCommand extends Command {
             }
         }
 
+        if (this.language.properties.strings.formatting.useInterpolation) {
+            output += inputName;
+        }
+
         output += this.language.properties.strings.formatting.formatInputRight;
         return output;
-    }
-
-    /**
-     * 
-     */
-    private replaceFormatInput(output: string, i: number, replacement: string): string {
-        return output.replace(new RegExp("\\{" + i + "\\}", "gi"), replacement);
-    }
-
-    /**
-     * 
-     */
-    private renderInterpolation(...args: any[]): LineResults {
-        return new LineResults([new CommandResult("", 0)], true);
     }
 }
