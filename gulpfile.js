@@ -8,6 +8,7 @@ const mochaPhantomJS = require("gulp-mocha-phantomjs");
 const runSequence = require("run-sequence");
 const ts = require("gulp-typescript");
 const tslint = require("gulp-tslint");
+const typespace = require("gulp-typespace");
 const webpack = require("gulp-webpack");
 
 const distTypes = ["amd", "commonjs", "es2015", "system", "umd"];
@@ -105,6 +106,18 @@ gulp.task("test", callback => {
         "test:integration",
         "test:end-to-end",
         "test:browser");
+});
+
+gulp.task("typespace", () => {
+    const settings = {
+        config: "./tsconfig.json",
+        namespace: "GLS.",
+        pathPrefix: "src/",
+        root: "."
+    };
+
+    typespace(settings)
+        .pipe(gulp.dest("dist/typespace"));
 });
 
 gulp.task("watch", ["default"], () => {
