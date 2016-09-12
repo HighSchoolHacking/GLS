@@ -2,6 +2,7 @@ const del = require("del");
 const eventStream = require("event-stream");
 const gulp = require("gulp");
 const insert = require("gulp-insert");
+const merge = require("merge2");
 const mocha = require("gulp-mocha");
 const mochaPhantomJS = require("gulp-mocha-phantomjs");
 const runSequence = require("run-sequence");
@@ -44,10 +45,14 @@ gulp.task("dist:modules", () => {
                 module: moduleType
             });
 
-        pipes[moduleType] = tsProject
+        const result = tsProject
             .src()
-            .pipe(ts(tsProject))
-            .js.pipe(gulp.dest(`dist/${moduleType}`));
+            .pipe(ts(tsProject));
+
+        pipes[moduleType] = merge([
+            result.dts.pipe(gulp.dest(`dist/${moduleType}`)),
+            result.js.pipe(gulp.dest(`dist/${moduleType}`))
+        ]);
     });
 
     return eventStream.merge(Object.keys(pipes).map(moduleType => pipes[moduleType]));
@@ -106,11 +111,14 @@ gulp.task("watch", ["default"], () => {
     gulp.watch("src/**/*.ts", ["default"]);
 });
 
-gulp.task("default", callback => {
+gulp.task("build", callback => {
     runSequence(
         "clean",
         ["tsc", "tslint"],
         "dist",
-        "test",
-        callback);
+        "test");
+})
+
+gulp.task("default", callback => {
+    runSequence("build", "test", callback);
 });

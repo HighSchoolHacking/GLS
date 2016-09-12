@@ -229,3 +229,4 @@ gulp
 ```
 
 To build, run `gulp`.
+You can build without running tests using `gulp build`, or just run tests using `gulp test`.

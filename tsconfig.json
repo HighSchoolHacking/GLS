@@ -4,7 +4,7 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": true,
-        "declaration": false
+        "declaration": true
     },
     "exclude": [
         "coverage", "docs", "node_modules", "test"
