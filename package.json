@@ -9,7 +9,6 @@
   "description": "General Language Syntax - A unified syntax that compiles into a number of OOP languages.",
   "devDependencies": {
     "chai": "^3.5.0",
-    "codecov": "^1.0.1",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

@@ -3,7 +3,6 @@ src/**/*.js
 src/**/*.js.map
 src/**/*.js.min.map
 !src/exports.js
-coverage/
 node_modules/
 .tscache/
 npm-debug.log
