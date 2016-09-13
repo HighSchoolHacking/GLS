@@ -1,6 +1,6 @@
 # Lambda Declarations
 
-GLS will support declaring lambda functions. In some languages, in order to declare a function that takes a lambda function as a parameter, the lambda must first be declared. This typically involves declaring the return type as well as the parameter names and types, which allow for compile-time type checking when the lambda is used.
+In some languages, in order to declare a function that takes a lambda function as a parameter, the lambda must first be declared. This typically involves declaring the return type as well as the parameter names and types, which allow for compile-time type checking when the lambda is used.
 
 ## Commands
 

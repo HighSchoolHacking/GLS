@@ -224,6 +224,7 @@ ObjectMakr uses [Gulp](http://gulpjs.com/) to automate building, which requires 
 To build from scratch, install Node.js and run the following commands:
 
 ```
+npm install -g gulp
 npm install
 gulp
 ```
