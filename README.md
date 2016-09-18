@@ -1,9 +1,24 @@
 # GLS - General Language Syntax
 
 [![Build Status](https://travis-ci.org/HighSchoolHacking/GLS.svg?)](https://travis-ci.org/HighSchoolHacking/GLS)
-[![Codecov](https://codecov.io/github/HighSchoolHacking/GLS/coverage.svg?branch=master)](https://codecov.io/github/HighSchoolHacking/GLS)
+[![NPM version](https://badge.fury.io/js/general-language-syntax.svg)](http://badge.fury.io/js/general-language-syntax)
 
 A unified syntax that compiles into a number of OOP languages.
+
+
+## Usage
+
+`npm install general-language-syntax`
+
+```javascript
+const Gls = require("general-language-syntax").Gls;
+
+const gls = new Gls();
+gls.setLanguage("CSharp");
+
+// System.Console.WriteLine("Hello world!");
+console.log(gls.convert[`print : ("Hello world!")`]);
+```
 
 
 ## Theory
@@ -18,20 +33,20 @@ GLS provides a common syntax to describe programming functionality in these comm
 Each line in GLS consists of a function, a colon, and any number of arguments, all separated by spaces.
 
 ```gls
-print line : "GLS!"
+print : "GLS!"
 ```
 
 * Function: `print`
 * Argument: `"GLS!"`
 
-`print line : GLS` will compile to `System.Console.WriteLine("GLS!");` in C#, `console.log("GLS!");` in TypeScript, and so on.
+`print : GLS` will compile to `System.Console.WriteLine("GLS!");` in C#, `console.log("GLS!");` in TypeScript, and so on.
 
 ### Parenthesis
 
 You can keep spaces inside your arguments by wrapping characters in parenthesis. This tells the compiler to treat the space as part of the argument instead of a separator.
 
 ```gls
-print line : ("Hello world!")
+print : ("Hello world!")
 ```
 
 * Function: `print`
@@ -42,7 +57,7 @@ print line : ("Hello world!")
 To pipe the output of one command into another, wrap the inner command with `{}` brackets.
 
 ```gls
-print line : { operation : 1 plus 2 }
+print : { operation : 1 plus 2 }
 ```
 
 ### Tidbits
