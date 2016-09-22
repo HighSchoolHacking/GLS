@@ -1,5 +1,10 @@
-# Null Check
-Creates checks for if the passed variable has value null and/or undefined (see errata). Can be used to check positvly for null or negetivly for null
+# Null Checking
+
+Creates checks for if the passed variable has value null. 
+
+A null variable is one that has no other value stored in it.
+
+Can be used to check whether the value is or is not null. 
 
 ## Commands
 
@@ -7,19 +12,20 @@ Creates checks for if the passed variable has value null and/or undefined (see e
 
 `is null : variable`
 
-Creates a test that will return true if the variable is NULL
+Creates a test that will return true if the variable is `null`.
 
 ### `not null`
 
 `not null : variable`
 
-Creates a test that will return false if the variable is NULL
+Creates a test that will return false if the variable is `null`.
 
 ## Usage
 
 ```
 is null : foo
 ```
+
 ```
 not null : bar
 ```
@@ -29,6 +35,7 @@ not null : bar
 ```csharp
 foo == null
 ```
+
 ```csharp
 bar != null
 ```
@@ -38,6 +45,7 @@ bar != null
 ```java
 foo == null
 ```
+
 ```java
 bar != null
 ```
@@ -47,6 +55,7 @@ bar != null
 ```python
 foo is None
 ```
+
 ```python
 bar is not None
 ```
@@ -56,24 +65,24 @@ bar is not None
 ```ruby
 foo.nil?
 ```
+
 ```ruby
 !bar.nil?
 ```
 
-### Typescript
+### TypeScript
 
-```javascript
-foo == null
+```typescript
+typeof foo === undefined
 ```
-```javascript
-foo != null
+
+```typescript
+typeof foo !== undefined
 ```
 
 ## Implementation
 
-A null check can either test for a variable being null, or test for a variable not being null.
-
-A null check consists of a variable to be checked, some equivalence operator
+A null check consists of a variable to be checked, and some logical equivalence operator.
 
 ### Properties
 
@@ -87,11 +96,11 @@ A null check consists of a variable to be checked, some equivalence operator
         <tr>
             <td>Operator</td>
             <td><code>boolean</code></td>
-            <td>Logical equivelence operator</td>
+            <td>Logical equivalence operator</td>
         </tr>
         <tr>
             <td>Explicit null</td>
-            <td><code>`null`</code></td>
+            <td><code>null</code></td>
             <td>Used as a placeholder for data</td>
         </tr>
     </tbody>
@@ -108,33 +117,32 @@ A null check consists of a variable to be checked, some equivalence operator
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>`==`</code></td>
-            <td><code>`null`</code></td>
+            <td><code>==</code></td>
+            <td><code>null</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>`==`</code></td>
+            <td><code>==</code></td>
             <td><code>null</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>`?`</code></td>
-            <td><code>`.nil`</code></td>
+            <td><code>?</code></td>
+            <td><code>.nil</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>`is`</code></td>
-            <td><code>`None`</code></td>
+            <td><code>is</code></td>
+            <td><code>None</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>`==`</code></td>
-            <td><code>`null`</code></td>
+            <td><code>===</code></td>
+            <td><code>undefined</code></td>
         </tr>
     </tbody>
 </table>
 
 ### Errata
-- Python uses a NONE instead of a NULL. `is` keyword cannot be overloaded, so it is prefered over `==`
-- Typescript has both a NULL and an undefined type, lucky for us, both can be captured with `var == NULL`
-- Ruby has a significantly different syntx for null checking that the other langauges
+- Python uses a `None` instead of a `null`. Additionally, the `is` keyword cannot be overloaded, so it is prefered over the `==` operator.
+- TypeScript has both a `null` and an `undefined` type. We want to check for `undefined`, as it is more in line with other languages `null`.
