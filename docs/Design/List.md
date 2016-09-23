@@ -64,8 +64,8 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <td>""</td>
-            <td><code>""</code></td>
-            <td>""</td>
+            <td><code>String</code></td>
+            <td>Language specific implementation of list container</td>
         </tr>
         <tr>
             <td>Pop</td>
@@ -86,27 +86,27 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>C# Property1 value</code></td>
+            <td><code>"List"</code></td>
             <td><code>C# Property2 value</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>Java Property1 value</code></td>
+            <td><code>"Array List"</code></td>
             <td><code>Java Property2 value</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>Ruby Property1 value</code></td>
+            <td><code>"lists"</code></td>
             <td><code>Ruby Property2 value</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>Python Property1 value</code></td>
+            <td><code>"lists"</code></td>
             <td><code>Python Property2 value</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>TypeScript Property1 value</code></td>
+            <td><code>"asArray"</code></td>
             <td><code>TypeScript Property2 value</code></td>
         </tr>
     </tbody>
