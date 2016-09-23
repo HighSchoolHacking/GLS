@@ -1,10 +1,8 @@
 # Null Checking
 
-Creates checks for if the passed variable has value null. 
-
-A null variable is one that has no other value stored in it.
-
-Can be used to check whether the value is or is not null. 
+A "null" variable is a variable without a stored value. 
+Commonly, uninitialized variables have a null value.
+These commands check whether a passed variable has a null value. 
 
 ## Commands
 
@@ -12,13 +10,13 @@ Can be used to check whether the value is or is not null.
 
 `is null : variable`
 
-Creates a test that will return true if the variable is `null`.
+Creates a test that will return whether variable is null.
 
-### `not null`
+### `is not null`
 
-`not null : variable`
+`is not null : variable`
 
-Creates a test that will return false if the variable is `null`.
+Creates a test that will return false if the variable is null.
 
 ## Usage
 
@@ -27,7 +25,7 @@ is null : foo
 ```
 
 ```
-not null : bar
+is not null : bar
 ```
 
 ### CSharp
@@ -73,16 +71,17 @@ foo.nil?
 ### TypeScript
 
 ```typescript
-typeof foo === undefined
+typeof foo === "undefined"
 ```
 
 ```typescript
-typeof foo !== undefined
+typeof bar !== "undefined"
 ```
 
 ## Implementation
 
-A null check consists of a variable to be checked, and some logical equivalence operator.
+A null check consists of a variable to be checked,
+an explicit null value to check against and some operator to test equality/inequality.
 
 ### Properties
 
@@ -94,9 +93,14 @@ A null check consists of a variable to be checked, and some logical equivalence 
     </thead>
     <tbody>
         <tr>
-            <td>Operator</td>
+            <td>Equality Operator</td>
             <td><code>boolean</code></td>
-            <td>Logical equivalence operator</td>
+            <td>Logical operator for equality</td>
+        </tr>
+         <tr>
+            <td>Inequality Operator</td>
+            <td><code>boolean</code></td>
+            <td>Logical operator for inequality</td>
         </tr>
         <tr>
             <td>Explicit null</td>
@@ -111,38 +115,44 @@ A null check consists of a variable to be checked, and some logical equivalence 
 <table>
     <thead>
         <th>Language</th>
-        <th>Operator</th>
+        <th>Equality Operator</th>
+        <th>Inequality Operator</th>
         <th>Explicit null</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
             <td><code>==</code></td>
+            <td><code>!=</code></td>
             <td><code>null</code></td>
         </tr>
         <tr>
             <th>Java</th>
             <td><code>==</code></td>
+            <td><code>!=</code></td>
             <td><code>null</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>?</code></td>
+            <td><code>"?"</code></td>
+            <td><code>"!"</code></td>
             <td><code>.nil</code></td>
         </tr>
         <tr>
             <th>Python</th>
             <td><code>is</code></td>
+            <td><code>is not</code></td>
             <td><code>None</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>===</code></td>
-            <td><code>undefined</code></td>
+            <td><code>!==</code></td>
+            <td><code>"undefined"</code></td>
         </tr>
     </tbody>
 </table>
 
 ### Errata
-- Python uses a `None` instead of a `null`. Additionally, the `is` keyword cannot be overloaded, so it is prefered over the `==` operator.
-- TypeScript has both a `null` and an `undefined` type. We want to check for `undefined`, as it is more in line with other languages `null`.
+- TypeScript has both a `null` and an `undefined` type. We check against `"undefined"` due to `undefined` being semi-mutable in TypeScript.
+- Additionally, TypeScript requires a `typeof` to proceed the variable being tested.
