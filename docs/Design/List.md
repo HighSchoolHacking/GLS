@@ -91,7 +91,7 @@ These commands will be implemented as native calls.
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"Array List"</code></td>
+            <td><code>"ArrayList"</code></td>
             <td><code>Java Property2 value</code></td>
         </tr>
         <tr>
