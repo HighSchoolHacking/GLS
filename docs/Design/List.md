@@ -2,7 +2,7 @@
 
 ## Feature Overview
 
-All supported languages provide some amount of built-in list support, either explicitly with lists or with an array equivalent.
+All supported languages provide some amount of built-in list support.
 
 
 ## Commands
@@ -65,7 +65,7 @@ These commands will be implemented as native calls.
         <tr>
             <td>Pop</td>
             <td><code>(native call properties)</code></td>
-            <td>Method properties to remove the last element of a list..</td>
+            <td>Method properties to remove the last element of a list.</td>
         </tr>
     </tbody>
 </table>
