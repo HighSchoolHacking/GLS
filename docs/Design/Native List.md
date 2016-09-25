@@ -1,4 +1,4 @@
-# List
+# Native List Commands
 
 ## Feature Overview
 
@@ -64,7 +64,7 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <td>Pop</td>
-            <td><code>(native call properties)</code></td>
+            <td><em>(native call properties)</em></td>
             <td>Method properties to remove the last element of a list.</td>
         </tr>
     </tbody>
