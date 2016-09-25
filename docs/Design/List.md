@@ -80,23 +80,23 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>Function</code></td>
+            <td><code>Static / Function</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>Function</code></td>
-        </tr>
-        <tr>
-            <th>Ruby</th>
-            <td><code>Function</code></td>
+            <td><code>Static / Function</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>Function</code></td>
+            <td><code>Static / Function</code></td>
+        </tr>
+        <tr>
+            <th>Ruby</th>
+            <td><code>Static / Function</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>Function</code></td>
+            <td><code>Static / Function</code></td>
         </tr>
     </tbody>
 </table>
