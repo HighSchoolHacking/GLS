@@ -75,28 +75,28 @@ These commands will be implemented as native calls.
 <table>
     <thead>
         <th>Language</th>
-        <th>Property2</th>
+        <th>Pop</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>C# Property2 value</code></td>
+            <td><code>`Function`</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>Java Property2 value</code></td>
+            <td><code>`Function</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>Ruby Property2 value</code></td>
+            <td><code>`Function`</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>Python Property2 value</code></td>
+            <td><code>`Function`</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>TypeScript Property2 value</code></td>
+            <td><code>`Function`</code></td>
         </tr>
     </tbody>
 </table>
