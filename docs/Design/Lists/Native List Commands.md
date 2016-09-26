@@ -2,7 +2,7 @@
 
 ## Feature Overview
 
-All supported languages provide some amount of built-in list support to interact with the contents of a list.
+All supported languages provide some amount of built-in support to interact with the contents of a list.
 
 
 ## Commands
@@ -22,13 +22,13 @@ list pop : foo
 ### CSharp
 
 ```csharp
-foo.RemoveAt(foo.Count - 1)
+foo.RemoveAt(foo.Count - 1);
 ```
 
 ### Java
 
 ```java
-foo.remove(foo.size() - 1)
+foo.remove(foo.size() - 1);
 ```
 
 ### Python
@@ -46,7 +46,7 @@ foo.pop
 ### TypeScript
 
 ```typescript
-foo.pop()
+foo.pop();
 ```
 
 ## Implementation
@@ -80,15 +80,15 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>"RemoveAt(index)"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"RemoveAt"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"remove(index)"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"remove"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>"pop()"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
@@ -96,7 +96,7 @@ These commands will be implemented as native calls.
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>"pop()"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
     </tbody>
 </table>
