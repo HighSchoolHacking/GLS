@@ -2,7 +2,7 @@
 
 ## Feature Overview
 
-All supported languages provide some amount of built-in list support.
+All supported languages provide some amount of built-in list support to interact with the contents of a list.
 
 
 ## Commands
@@ -80,27 +80,24 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>Static / Function</code></td>
+            <td><code>"RemoveAt(index)"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>Static / Function</code></td>
+            <td><code>"remove(index)"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>Static / Function</code></td>
+            <td><code>"pop()"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>Static / Function</code></td>
+            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>Static / Function</code></td>
+            <td><code>"pop()"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
     </tbody>
 </table>
 
-### Errata
-
-*
