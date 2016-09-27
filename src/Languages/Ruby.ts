@@ -213,6 +213,11 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateListProperties(lists: ListProperties): void {
         super.generateListProperties(lists);
+        
+        lists.pop = new NativeCallProperties(
+            "pop",
+            NativeCallScope.Member,
+            NativeCallType.Property);
 
         lists.push = new NativeCallProperties(
             "push",
