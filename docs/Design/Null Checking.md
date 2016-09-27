@@ -164,5 +164,5 @@ A null check consists of a start variable to be checked, an explicit null value 
 </table>
 
 ### Errata
-- TypeScript has both a `null` and an `undefined` type. We check against `"undefined"` due to `undefined` being semi-mutable in TypeScript.
+- TypeScript has both a `null` and an `undefined` type. We check against `"undefined"`, as this is the prefered method.
 - Additionally, TypeScript requires a `typeof` to proceed the variable being tested.
