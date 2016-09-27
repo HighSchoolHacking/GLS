@@ -16,7 +16,7 @@ Creates a test that will return whether variable is null.
 
 `is not null : variable`
 
-Creates a test that will return false if the variable is null.
+Creates a test that will return whether the variable is not null.
 
 ## Usage
 
@@ -92,24 +92,29 @@ A null check consists of a start variable to be checked, an explicit null value 
     </thead>
     <tbody>
         <tr>
-            <td>NullLeft</td>
+            <td>IsNullLeft</td>
             <td><code>string</code></td>
-            <td>Beginning of expression</td>
+            <td>Beginning of Is Null expression</td>
+        </tr>
+        <tr>
+            <td>IsNotNullLeft</td>
+            <td><code>string</code></td>
+            <td>Beginning of Is Not Null expression</td>
         </tr>
         <tr>
             <td>IsNullMiddle</td>
             <td><code>string</code></td>
-            <td>Logical operator for equality</td>
+            <td>Middle of Is Null expression</td>
         </tr>
         <tr>
             <td>IsNotNullMiddle</td>
             <td><code>string</code></td>
-            <td>Logical operator for inequality</td>
+            <td>Middle of Is Not Null expression</td>
         </tr>        
         <tr>
             <td>NullRight</td>
             <td><code>string</code></td>
-            <td>Used as a placeholder for data</td>
+            <td>End of Is Null and Is Not Null expression</td>
         </tr>
     </tbody>
 </table>
@@ -119,7 +124,8 @@ A null check consists of a start variable to be checked, an explicit null value 
 <table>
     <thead>
         <th>Language</th>
-        <th>NullLeft</th>
+        <th>IsNullLeft</th>
+        <th>IsNotNullLeft</th>
         <th>IsNullMiddle</th>
         <th>IsNotNullMiddle</th>
         <th>NullRight</th>
@@ -128,12 +134,14 @@ A null check consists of a start variable to be checked, an explicit null value 
         <tr>
             <th>CSharp</th>
             <td><code>""</code></td>
+            <td><code>""</code></td>
             <td><code>"=="</code></td>
             <td><code>"!="</code></td>
             <td><code>"null"</code></td>
         </tr>
         <tr>
             <th>Java</th>
+            <td><code>""</code></td>
             <td><code>""</code></td>
             <td><code>"=="</code></td>
             <td><code>"!="</code></td>
@@ -142,12 +150,14 @@ A null check consists of a start variable to be checked, an explicit null value 
         <tr>
             <th>Ruby</th>
             <td><code>""</code></td>
-            <td><code>"?"</code></td>
             <td><code>"!"</code></td>
-            <td><code>".nil"</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>".nil?"</code></td>
         </tr>
         <tr>
             <th>Python</th>
+            <td><code>""</code></td>
             <td><code>""</code></td>
             <td><code>"is"</code></td>
             <td><code>"is not"</code></td>
@@ -155,6 +165,7 @@ A null check consists of a start variable to be checked, an explicit null value 
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"typeof"</code></td>
             <td><code>"typeof"</code></td>
             <td><code>"==="</code></td>
             <td><code>"!=="</code></td>
