@@ -28,9 +28,9 @@ export class IsNullCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let left = this.language.properties.variables.typecheck;
-        let middle = this.language.properties.operators.equals;
-        let right = this.language.properties.variables.null;
+        let left: string = this.language.properties.variables.isNullLeft;
+        let middle: string = this.language.properties.variables.isNullMiddle;
+        let right: string = this.language.properties.variables.nullRight;
 
         return LineResults.newSingleLine(left + parameters[1] + middle + right, false);
     }

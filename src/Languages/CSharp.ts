@@ -372,5 +372,8 @@ export class CSharp extends CLikeLanguage {
         variables.declaration = "";
         variables.explicitTypes = true;
         variables.null = "null";
+        variables.isNotNullMiddle = "!=";
+        variables.isNullMiddle = "==";
+        variables.nullRight = "null";
     }
 }
