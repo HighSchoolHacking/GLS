@@ -1,3 +1,3 @@
 -
-aaa.remove();
+aaa.remove(aaa.size() - 1);
 -
