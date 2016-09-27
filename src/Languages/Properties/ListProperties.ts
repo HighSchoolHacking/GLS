@@ -25,6 +25,11 @@ export class ListProperties {
     public pop: NativeCallProperties;
 
     /**
+     * How to add an element to the end of a list.
+     */
+    public push: NativeCallProperties;
+
+    /**
      * Required imports to be able to use lists.
      */
     public requiredImports: { [i: string]: string[] };
