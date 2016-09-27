@@ -44,6 +44,8 @@ import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
 import { ImportCommand } from "./ImportCommand";
 import { IndexCommand } from "./IndexCommand";
+import { IsNotNullCommand } from "./IsNotNullCommand.ts";
+import { IsNullCommand } from "./IsNullCommand.ts";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
 import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
@@ -132,6 +134,8 @@ export class CommandsBag {
             "if start": new IfStartCommand(context),
             "import": new ImportCommand(context),
             "index": new IndexCommand(context),
+            "is not null": new IsNotNullCommand(context),
+            "is null": new IsNullCommand(context),
             "lambda": new LambdaBodyCommand(context),
             "list initialize": new ListInitializeCommand(context),
             "list length": new ListLengthCommand(context),

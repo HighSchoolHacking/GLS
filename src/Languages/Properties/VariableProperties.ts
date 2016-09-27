@@ -46,4 +46,9 @@ export class VariableProperties {
      * How to start a variable's type name.
      */
     public typeLeft: string;
+
+    /**
+     * Precedes variable when type is checked
+     */
+    public typecheck: string;
 }

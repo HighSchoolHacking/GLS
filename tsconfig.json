@@ -54,6 +54,8 @@
         "src/Commands/IfStartCommand.ts",
         "src/Commands/ImportCommand.ts",
         "src/Commands/IndexCommand.ts",
+        "src/Commands/IsNotNullCommand.ts",
+        "src/Commands/IsNullCommand.ts",
         "src/Commands/LambdaBodyCommand.ts",
         "src/Commands/LineResults.ts",
         "src/Commands/ListInitializeCommand.ts",
