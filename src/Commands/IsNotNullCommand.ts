@@ -28,7 +28,7 @@ export class IsNotNullCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let left: string = this.language.properties.variables.nullLeft;
+        let left: string = this.language.properties.variables.isNotNullLeft;
         let middle: string = this.language.properties.variables.isNotNullMiddle;
         let right: string = this.language.properties.variables.nullRight;
 
