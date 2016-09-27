@@ -214,7 +214,10 @@ export class Python extends PythonicLanguage {
      */
     protected generateListProperties(lists: ListProperties): void {
         super.generateListProperties(lists);
-
+        lists.pop = new NativeCallProperties(
+            "pop",
+            NativeCallScope.Member,
+            NativeCallType.Function);
         lists.push = new NativeCallProperties(
             "append",
             NativeCallScope.Member,
