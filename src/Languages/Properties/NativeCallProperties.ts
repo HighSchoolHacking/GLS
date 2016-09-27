@@ -63,6 +63,11 @@ export class NativeCallProperties {
     public type: NativeCallType;
 
     /**
+     * Any arguments this may add as a function or static.
+     */
+    public arguments: string[];
+
+    /**
      * Initializes a new instance of the NativeCallProperties class.
      * 
      * @param name   What this is called.
@@ -73,5 +78,15 @@ export class NativeCallProperties {
         this.name = name;
         this.scope = scope;
         this.type = type;
+        this.arguments = [];
+    }
+
+    /**
+     * Adds an argument this may add as a function or static.
+     * 
+     * @param argument   A new argument.
+     */
+    public addArgument(argument: string): void {
+        this.arguments.push(argument);
     }
 }

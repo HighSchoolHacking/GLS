@@ -80,23 +80,106 @@ These commands will be implemented as native calls.
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>"RemoveAt"</code> / <code>Static</code> / <code>Function</code></td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"RemoveAt"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
+                        <td><code>["{0}.Count - 1"]</code></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"remove"</code> / <code>Static</code> / <code>Function</code></td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"remove"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
+                        <td><code>["{0}.size() - 1"]</code></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>"pop"</code> / <code>Static</code> / <code>Function</code></td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </tbody>
 </table>
