@@ -13,8 +13,8 @@
     "type": "git",
     "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
   },
-  "version": "0.3.9",
-  "main": "./dist/commonjs/GLS.js",
+  "version": "0.3.10",
+  "main": "./dist/commonjs/Gls.js",
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",

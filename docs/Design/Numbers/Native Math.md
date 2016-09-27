@@ -44,7 +44,7 @@ These commands will be implemented as native calls.
         </tr>
         <tr>
             <td>Absolute</td>
-            <td>(native call properties)</td>
+            <td><em>(native call properties)</em></td>
             <td>Method properties to compute the absolute value of a number.</td>
         </tr>
     </tbody>
