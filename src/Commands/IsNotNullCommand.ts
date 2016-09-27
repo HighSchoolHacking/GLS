@@ -28,6 +28,7 @@ export class IsNotNullCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        let left = this.language.properties.variables.typecheck;
         let middle = this.language.properties.operators.notEqualTo;
         let right = this.language.properties.variables.null;
 
