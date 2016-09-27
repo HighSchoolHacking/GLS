@@ -16,7 +16,7 @@ Creates a test that will return whether variable is null.
 
 `is not null : variable`
 
-Creates a test that will return false if the variable is null.
+Creates a test that will return whether the variable is not null.
 
 ## Usage
 
@@ -80,8 +80,7 @@ typeof bar !== "undefined"
 
 ## Implementation
 
-A null check consists of a variable to be checked,
-an explicit null value to check against and some operator to test equality/inequality.
+A null check consists of a start variable to be checked, an explicit null value to check against and some operator to test equality or inequality.
 
 ### Properties
 
@@ -93,19 +92,29 @@ an explicit null value to check against and some operator to test equality/inequ
     </thead>
     <tbody>
         <tr>
-            <td>Equality Operator</td>
-            <td><code>boolean</code></td>
-            <td>Logical operator for equality</td>
-        </tr>
-         <tr>
-            <td>Inequality Operator</td>
-            <td><code>boolean</code></td>
-            <td>Logical operator for inequality</td>
+            <td>IsNullLeft</td>
+            <td><code>string</code></td>
+            <td>Beginning of Is Null expression</td>
         </tr>
         <tr>
-            <td>Explicit null</td>
-            <td><code>null</code></td>
-            <td>Used as a placeholder for data</td>
+            <td>IsNotNullLeft</td>
+            <td><code>string</code></td>
+            <td>Beginning of Is Not Null expression</td>
+        </tr>
+        <tr>
+            <td>IsNullMiddle</td>
+            <td><code>string</code></td>
+            <td>Middle of Is Null expression</td>
+        </tr>
+        <tr>
+            <td>IsNotNullMiddle</td>
+            <td><code>string</code></td>
+            <td>Middle of Is Not Null expression</td>
+        </tr>        
+        <tr>
+            <td>NullRight</td>
+            <td><code>string</code></td>
+            <td>End of Is Null and Is Not Null expression</td>
         </tr>
     </tbody>
 </table>
@@ -115,44 +124,56 @@ an explicit null value to check against and some operator to test equality/inequ
 <table>
     <thead>
         <th>Language</th>
-        <th>Equality Operator</th>
-        <th>Inequality Operator</th>
-        <th>Explicit null</th>
+        <th>IsNullLeft</th>
+        <th>IsNotNullLeft</th>
+        <th>IsNullMiddle</th>
+        <th>IsNotNullMiddle</th>
+        <th>NullRight</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>==</code></td>
-            <td><code>!=</code></td>
-            <td><code>null</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>"=="</code></td>
+            <td><code>"!="</code></td>
+            <td><code>"null"</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>==</code></td>
-            <td><code>!=</code></td>
-            <td><code>null</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>"=="</code></td>
+            <td><code>"!="</code></td>
+            <td><code>"null"</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>"?"</code></td>
+            <td><code>""</code></td>
             <td><code>"!"</code></td>
-            <td><code>.nil</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>".nil?"</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>is</code></td>
-            <td><code>is not</code></td>
-            <td><code>None</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>"is"</code></td>
+            <td><code>"is not"</code></td>
+            <td><code>"None"</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>===</code></td>
-            <td><code>!==</code></td>
-            <td><code>"undefined"</code></td>
+            <td><code>"typeof"</code></td>
+            <td><code>"typeof"</code></td>
+            <td><code>"==="</code></td>
+            <td><code>"!=="</code></td>
+            <td><code>""undefined""</code></td>
         </tr>
     </tbody>
 </table>
 
 ### Errata
-- TypeScript has both a `null` and an `undefined` type. We check against `"undefined"` due to `undefined` being semi-mutable in TypeScript.
+- TypeScript has both a `null` and an `undefined` type. We check against `"undefined"`, as this is the prefered method.
 - Additionally, TypeScript requires a `typeof` to proceed the variable being tested.
