@@ -58,6 +58,7 @@
         "src/Commands/LineResults.ts",
         "src/Commands/ListInitializeCommand.ts",
         "src/Commands/ListLengthCommand.ts",
+        "src/Commands/ListPopCommand.ts",
         "src/Commands/ListPushCommand.ts",
         "src/Commands/ListTypeCommand.ts",
         "src/Commands/LiteralCommand.ts",

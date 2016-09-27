@@ -47,6 +47,7 @@ import { IndexCommand } from "./IndexCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
 import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
+import { ListPopCommand } from "./ListPopCommand";
 import { ListPushCommand } from "./ListPushCommand";
 import { LiteralCommand } from "./LiteralCommand";
 import { ListTypeCommand } from "./ListTypeCommand";
@@ -135,6 +136,7 @@ export class CommandsBag {
             "lambda": new LambdaBodyCommand(context),
             "list initialize": new ListInitializeCommand(context),
             "list length": new ListLengthCommand(context),
+            "list pop": new ListPopCommand(context),
             "list push": new ListPushCommand(context),
             "literal": new LiteralCommand(context),
             "list type": new ListTypeCommand(context),
