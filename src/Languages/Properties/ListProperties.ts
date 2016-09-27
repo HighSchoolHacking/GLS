@@ -20,9 +20,9 @@ export class ListProperties {
     public length: NativeCallProperties;
 
     /**
-     * How to add an element to the end of a list.
+     * How to remove an element from the end of a list.
      */
-    public push: NativeCallProperties;
+    public pop: NativeCallProperties;
 
     /**
      * Required imports to be able to use lists.
