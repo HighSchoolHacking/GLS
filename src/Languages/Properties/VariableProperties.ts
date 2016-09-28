@@ -48,22 +48,22 @@ export class VariableProperties {
     public typeLeft: string;
 
     /**
-     * Precedes variable when type is checked negetivly for null.
+     * Precedes variable when negatively checking for null.
      */
     public isNotNullLeft: string;
 
     /**
-     * Precedes variable when type is checked positivly for null.
+     * Precedes variable when positively checking for null.
      */
     public isNullLeft: string;
 
     /**
-     * Equality operator.
+     * Middle portion of expression when positively checking for null.
      */
     public isNullMiddle: string;
 
     /**
-     * Inequality operator.
+     * Middle portion of expression when negatively checking for null.
      */
     public isNotNullMiddle: string;
 
