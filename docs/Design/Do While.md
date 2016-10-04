@@ -81,17 +81,17 @@ do
         </tr>
         <tr>
             <td>DoWhileLeft</td>
-            <td>string</td>
+            <td><code>string</code></td>
             <td>Closes the do block, and ends the do call.</td>
         </tr>
         <tr>
             <td>DoWhileMiddle</td>
-            <td>string</td>
+            <td><code>string</code></td>
             <td>Begins while function</td>
         </tr>
         <tr>
             <td>DoWhileRight</td>
-            <td>string</td>
+            <td><code>string</code></td>
             <td>Ends while function</td>
         </tr>
     </tbody>
@@ -131,7 +131,6 @@ do
             <td><code>""</code></td>
             <td><code>"end while"</code></td>
             <td><code>" "</code></td>
-            <td><code>""</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
