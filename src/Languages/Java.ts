@@ -267,8 +267,8 @@ export class Java extends CLikeLanguage {
         loops.forEachPairsRetrieveValue = ".getValue()";
         loops.forEachRight = "";
 
-        loops.forEachStartItteration = "(";
-        loops.forEachStartSeparator = ":";
+        loops.forEachStartItteration = " (";
+        loops.forEachStartSeparator = " : ";
         loops.forEachStartRight = ") {";
     }
 

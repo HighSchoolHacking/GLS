@@ -37,13 +37,15 @@ export class ForEachStartCommand extends Command {
         line += this.language.properties.loops.forEachStartItteration;
 
         if (this.language.properties.variables.declarationRequired) {
-            let variableInline = this.context.convertParsed(["variable inline", parameters[2], parameters[3]]);
-
             line += this.language.properties.variables.declaration;
-            line += variableInline.commandResults[0].text;
-        } else {
-            line += parameters[2];
         }
+        if (this.language.properties.variables.explicitTypes) {
+            if (!this.language.properties.variables.typesAfterName) {
+                line += parameters[2] + " ";
+            }
+        }
+
+        line += parameters[3];
 
         line += this.language.properties.loops.forEachStartSeparator;
         line += parameters[1];
