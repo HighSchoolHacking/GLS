@@ -39,10 +39,8 @@ export class ForEachStartCommand extends Command {
         if (this.language.properties.variables.declarationRequired) {
             line += this.language.properties.variables.declaration;
         }
-        if (this.language.properties.variables.explicitTypes) {
-            if (!this.language.properties.variables.typesAfterName) {
+        if (this.language.properties.variables.explicitTypes && !this.language.properties.variables.typesAfterName) {
                 line += parameters[2] + " ";
-            }
         }
 
         line += parameters[3];
