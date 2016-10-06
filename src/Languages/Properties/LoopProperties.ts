@@ -83,6 +83,11 @@ export class LoopProperties {
     public forEachStartItteration: string;
 
     /**
+     * Begins a for each start statement
+     */
+    public forEachStartLeft: string;
+
+    /**
      * Separates itteration variable and array in a foreach loop's initial line.
      */
     public forEachStartSeparator: string;

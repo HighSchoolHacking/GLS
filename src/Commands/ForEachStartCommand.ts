@@ -31,7 +31,7 @@ export class ForEachStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.foreach;
+        let line: string = this.language.properties.loops.forEachStartLeft;
         let output: CommandResult[];
 
         line += this.language.properties.loops.forEachStartItteration;
