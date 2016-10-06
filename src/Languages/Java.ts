@@ -232,6 +232,11 @@ export class Java extends CLikeLanguage {
     protected generateListProperties(lists: ListProperties): void {
         lists.className = "ArrayList";
 
+        lists.length = new NativeCallProperties(
+            "size",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         lists.pop = new NativeCallProperties(
             "remove",
             NativeCallScope.Member,

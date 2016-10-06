@@ -230,6 +230,10 @@ export class TypeScript extends CLikeLanguage {
      */
     protected generateListProperties(lists: ListProperties): void {
         lists.asArray = true;
+        lists.length = new NativeCallProperties(
+            "length",
+            NativeCallScope.Member,
+            NativeCallType.Property);
         lists.pop = new NativeCallProperties(
             "pop",
             NativeCallScope.Member,
