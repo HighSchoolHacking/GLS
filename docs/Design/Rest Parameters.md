@@ -60,9 +60,19 @@ string... foo
     </thead>
     <tbody>
         <tr>
-            <td>RestParam</td>
+            <td>RestParamLeft</td>
+            <td><code>string</code></td>
+            <td>Necessary language-specific type definitions before keyword.</td>
+        </tr>
+        <tr>
+            <td>RestParamKeyword</td>
             <td><code>string</code></td>
             <td>Language-specific "Rest Parameters" call.</td>
+        </tr>
+        <tr>
+            <td>RestParamRight</td>
+            <td><code>string</code></td>
+            <td>Necessary language-specific type definitions after keyword.</td>
         </tr>
     </tbody>
 </table>
@@ -72,32 +82,42 @@ string... foo
 <table>
     <thead>
         <th>Language</th>
-        <th>RestParam</th>
+        <th>RestParamKeyword</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
+            <td><code>""</code></td>
             <td><code>"params"</code></td>
+            <td><code>"Object[]"</code></td>
         </tr>
         <tr>
             <th>Java</th>
+            <td><code>"Object"</code></td>
             <td><code>"..."</code></td>
+            <td><code>""</code></td>
         </tr>
         <tr>
             <th>Python</th>
+            <td><code>""</code></td>
             <td><code>"*"</code></td>
+            <td><code>""</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
+            <td><code>""</code></td>
             <td><code>"*"</code></td>
+            <td><code>""</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>""</code></td>
             <td><code>"..."</code></td>
+            <td><code>""</code></td>
         </tr>
     </tbody>
 </table>
 
 ### Errata
 
-* Specifying an argument type is trivial in Python and Ruby.
+* Python and Ruby can accept any argument regardless of type specified.
