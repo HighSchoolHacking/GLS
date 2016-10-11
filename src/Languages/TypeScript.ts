@@ -20,7 +20,6 @@ import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Propert
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
@@ -308,19 +307,6 @@ export class TypeScript extends CLikeLanguage {
      */
     protected generateOutputProperties(output: OutputProperties): void {
         output.print = "console.log";
-    }
-
-    /**
-     * Generates metadata on parameters
-     * 
-     * @param parameters    A property container for metadata on parameters
-     */
-    protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.RestParamLeft = "...";
-        parameters.RestParamRight = ": ";
-        parameters.RestParamDeclarationLeft = false;
-        parameters.RestParamDeclarationMiddle = false;
-        parameters.RestParamDeclarationRight = true;
     }
 
     /**

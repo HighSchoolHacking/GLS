@@ -19,7 +19,6 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
@@ -309,19 +308,6 @@ export class Java extends CLikeLanguage {
      */
     protected generateOutputProperties(output: OutputProperties): void {
         output.print = "System.out.println";
-    }
-
-    /**
-     * Generates metadata on parameters
-     * 
-     * @param parameters    A property container for metadata on parameters
-     */
-    protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.RestParamLeft = "... ";
-        parameters.RestParamRight = "";
-        parameters.RestParamDeclarationLeft = true;
-        parameters.RestParamDeclarationMiddle = false;
-        parameters.RestParamDeclarationRight = false;
     }
 
     /**
