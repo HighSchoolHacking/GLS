@@ -7,15 +7,15 @@ A parameter that creates an array for all unassigned arguments.
 
 ### `rest parameters`
 
-`rest parameters : type name`
+`rest parameters : name type`
 
 Creates a rest parameter.
-Type and name refer to the type and name of the array created to hold unassigned arguments.
+Name and type are used to create the array of unassigned arguments.
 
 ## Usage
 
 ```gls
-rest parameters : string foo
+rest parameters : foo string
 ```
 
 ### CSharp
