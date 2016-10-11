@@ -67,7 +67,22 @@ string... foo
         <tr>
             <td>RestParamRight</td>
             <td><code>string</code></td>
-            <td>Type definitions after keyword.</td>
+            <td>Syntax for type definitions after keyword.</td>
+        </tr>
+        <tr>
+            <td>RestParamDeclarationLeft</td>
+            <td><code>boolean</code></td>
+            <td>Boolean to hold if the type declaration occurs before the keyword.</td>
+        </tr>
+        <tr>
+            <td>RestParamDeclarationMiddle</td>
+            <td><code>boolean</code></td>
+            <td>Boolean to hold if the type declaration occurs after keyword, but before array name.</td>
+        </tr>
+        <tr>
+            <td>RestParamDeclarationRight</td>
+            <td><code>boolean</code></td>
+            <td>Boolean to hold if the type declaration occurs after array name.</td>
         </tr>
     </tbody>
 </table>
@@ -79,32 +94,51 @@ string... foo
         <th>Language</th>
         <th>RestParamLeft</th>
         <th>RestParamRight</th>
+        <th>RestParamDeclarationLeft</th>
+        <th>RestParamDeclarationMiddle</th>
+        <th>RestParamDeclarationRight</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
             <td><code>"params"</code></td>
             <td><code>""</code></td>
+            <td><code>false</code></td>
+            <td><code>true</code></td>
+            <td><code>false</code></td>
+
         </tr>
         <tr>
             <th>Java</th>
             <td><code>"..."</code></td>
             <td><code>""</code></td>
+            <td><code>true</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Python</th>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>"..."</code></td>
             <td><code>": "</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
+            <td><code>true</code></td>
         </tr>
     </tbody>
 </table>

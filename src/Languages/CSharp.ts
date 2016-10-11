@@ -19,6 +19,7 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
+import { ParameterProperties } from "./Properties/ParameterProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
@@ -303,6 +304,19 @@ export class CSharp extends CLikeLanguage {
      */
     protected generateOutputProperties(output: OutputProperties): void {
         output.print = "Console.WriteLine";
+    }
+
+    /**
+     * Generates metadata on parameters
+     * 
+     * @param parameters    A property container for metadata on parameters
+     */
+    protected generateParameterProperties(parameters: ParameterProperties): void {
+        parameters.RestParamLeft = "params ";
+        parameters.RestParamRight = "";
+        parameters.RestParamDeclarationLeft = false;
+        parameters.RestParamDeclarationMiddle = true;
+        parameters.RestParamDeclarationRight = false;
     }
 
     /**
