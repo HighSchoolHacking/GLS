@@ -72,17 +72,17 @@ string... foo
         <tr>
             <td>RestParamDeclarationLeft</td>
             <td><code>boolean</code></td>
-            <td>Boolean to hold if the type declaration occurs before the keyword.</td>
+            <td>Whether the type declaration occurs before the keyword.</td>
         </tr>
         <tr>
             <td>RestParamDeclarationMiddle</td>
             <td><code>boolean</code></td>
-            <td>Boolean to hold if the type declaration occurs after keyword, but before array name.</td>
+            <td>Whether the type declaration occurs after keyword, but before array name.</td>
         </tr>
         <tr>
             <td>RestParamDeclarationRight</td>
             <td><code>boolean</code></td>
-            <td>Boolean to hold if the type declaration occurs after array name.</td>
+            <td>Whether the type declaration occurs after array name.</td>
         </tr>
     </tbody>
 </table>
