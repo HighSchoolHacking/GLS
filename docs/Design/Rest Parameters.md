@@ -7,7 +7,7 @@ A parameter that creates an array for all unassigned arguments.
 
 ### `rest parameters`
 
-`rest parameters : type, name`
+`rest parameters : type name`
 
 Creates a rest parameter.
 The name is the name of the array created for the unassigned arguments.
@@ -15,7 +15,7 @@ The name is the name of the array created for the unassigned arguments.
 ## Usage
 
 ```gls
-rest parameters : string, foo
+rest parameters : string foo
 ```
 
 ### CSharp
@@ -44,7 +44,7 @@ string... foo
 ### TypeScript
 
 ```typescript
-...foo
+...foo: string[]
 ```
 
 
@@ -62,17 +62,12 @@ string... foo
         <tr>
             <td>RestParamLeft</td>
             <td><code>string</code></td>
-            <td>Necessary language-specific type definitions before keyword.</td>
-        </tr>
-        <tr>
-            <td>RestParamKeyword</td>
-            <td><code>string</code></td>
-            <td>Language-specific "Rest Parameters" call.</td>
+            <td>Keyword to create rest parameter array.</td>
         </tr>
         <tr>
             <td>RestParamRight</td>
             <td><code>string</code></td>
-            <td>Necessary language-specific type definitions after keyword.</td>
+            <td>Type definitions after keyword.</td>
         </tr>
     </tbody>
 </table>
@@ -83,43 +78,33 @@ string... foo
     <thead>
         <th>Language</th>
         <th>RestParamLeft</th>
-        <th>RestParamKeyword</th>
         <th>RestParamRight</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>""</code></td>
             <td><code>"params"</code></td>
-            <td><code>"Object[]"</code></td>
+            <td><code>""</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"Object"</code></td>
             <td><code>"..."</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>""</code></td>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>""</code></td>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>""</code></td>
             <td><code>"..."</code></td>
-            <td><code>""</code></td>
+            <td><code>": "</code></td>
         </tr>
     </tbody>
 </table>
-
-### Errata
-
-* Python and Ruby can accept any argument regardless of type specified.
