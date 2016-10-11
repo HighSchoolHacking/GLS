@@ -10,7 +10,7 @@ A parameter that creates an array for all unassigned arguments.
 `rest parameters : type name`
 
 Creates a rest parameter.
-Name of the array created for the unassigned arguments.
+Type and name refer to the type and name of the array created to hold unassigned arguments.
 
 ## Usage
 
