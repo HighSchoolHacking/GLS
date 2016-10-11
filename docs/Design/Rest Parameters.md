@@ -106,7 +106,6 @@ string... foo
             <td><code>false</code></td>
             <td><code>true</code></td>
             <td><code>false</code></td>
-
         </tr>
         <tr>
             <th>Java</th>
