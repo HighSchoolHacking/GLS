@@ -82,7 +82,9 @@ string... foo
 <table>
     <thead>
         <th>Language</th>
+        <th>RestParamLeft</th>
         <th>RestParamKeyword</th>
+        <th>RestParamRight</th>
     </thead>
     <tbody>
         <tr>
