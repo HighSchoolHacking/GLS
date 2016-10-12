@@ -76,6 +76,7 @@
         "src/Commands/OperatorCommand.ts",
         "src/Commands/ParenthesisCommand.ts",
         "src/Commands/PrintCommand.ts",
+        "src/Commands/RestParametersCommand.ts",
         "src/Commands/ReturnCommand.ts",
         "src/Commands/StringFormatCommand.ts",
         "src/Commands/StringIndexCommand.ts",
