@@ -32,17 +32,15 @@ export class RestParametersCommand extends Command {
         let left: string = this.language.properties.parameters.restParamLeft;
         let right: string = this.language.properties.parameters.restParamRight;
 
-        if (this.language.properties.parameters.restParamDeclarationLeft) {
+        if (this.language.properties.parameters.restDeclarationLeft) {
             return LineResults.newSingleLine(parameters[2] + left + parameters[1] + right, false);
         }
-        else if (this.language.properties.parameters.restParamDeclarationMiddle) {
+        if (this.language.properties.parameters.restDeclarationMiddle) {
             return LineResults.newSingleLine(left + parameters[2] + "[] " + parameters[1] + right, false);
         }
-        else if (this.language.properties.parameters.restParamDeclarationRight) {
+        if (this.language.properties.parameters.restDeclarationRight) {
             return LineResults.newSingleLine(left + parameters[1] + right + parameters[2] + "[]", false);
         }
-        else {
-            return LineResults.newSingleLine(left + parameters[1] + right, false);
-        }
+        return LineResults.newSingleLine(left + parameters[1] + right, false);
     }
 }

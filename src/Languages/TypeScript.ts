@@ -318,9 +318,9 @@ export class TypeScript extends CLikeLanguage {
     protected generateParameterProperties(parameters: ParameterProperties): void {
         parameters.restParamLeft = "...";
         parameters.restParamRight = ": ";
-        parameters.restParamDeclarationLeft = false;
-        parameters.restParamDeclarationMiddle = false;
-        parameters.restParamDeclarationRight = true;
+        parameters.restDeclarationLeft = false;
+        parameters.restDeclarationMiddle = false;
+        parameters.restDeclarationRight = true;
     }
 
     /**

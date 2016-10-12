@@ -292,9 +292,9 @@ export class Ruby extends PythonicLanguage {
     protected generateParameterProperties(parameters: ParameterProperties): void {
         parameters.restParamLeft = "*";
         parameters.restParamRight = "";
-        parameters.restParamDeclarationLeft = false;
-        parameters.restParamDeclarationMiddle = false;
-        parameters.restParamDeclarationRight = false;
+        parameters.restDeclarationLeft = false;
+        parameters.restDeclarationMiddle = false;
+        parameters.restDeclarationRight = false;
     }
 
     /**

@@ -314,9 +314,9 @@ export class CSharp extends CLikeLanguage {
     protected generateParameterProperties(parameters: ParameterProperties): void {
         parameters.restParamLeft = "params ";
         parameters.restParamRight = "";
-        parameters.restParamDeclarationLeft = false;
-        parameters.restParamDeclarationMiddle = true;
-        parameters.restParamDeclarationRight = false;
+        parameters.restDeclarationLeft = false;
+        parameters.restDeclarationMiddle = true;
+        parameters.restDeclarationRight = false;
     }
 
     /**

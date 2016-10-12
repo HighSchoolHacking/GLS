@@ -319,9 +319,9 @@ export class Java extends CLikeLanguage {
     protected generateParameterProperties(parameters: ParameterProperties): void {
         parameters.restParamLeft = "... ";
         parameters.restParamRight = "";
-        parameters.restParamDeclarationLeft = true;
-        parameters.restParamDeclarationMiddle = false;
-        parameters.restParamDeclarationRight = false;
+        parameters.restDeclarationLeft = true;
+        parameters.restDeclarationMiddle = false;
+        parameters.restDeclarationRight = false;
     }
 
     /**

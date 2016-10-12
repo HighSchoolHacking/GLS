@@ -2,24 +2,29 @@
  * Metadata on a language's in depth parameter properties.
  */
 export class ParameterProperties {
+
     /**
      * Explicit rest parameter keyword.
      */
     public restParamLeft: string;
+
     /**
      * Follows rest parameter keyword to check type.
      */
     public restParamRight: string;
+
     /**
-     * Declaration in the beginning.
+     * Whether type declaration occurs before the keyword.
      */
-    public restParamDeclarationLeft: boolean;
+    public restDeclarationLeft: boolean;
+
     /**
-     * Declaration in the middle.
+     * Whether type declaration occurs after the keyword but before array name.
      */
-    public restParamDeclarationMiddle: boolean;
+    public restDeclarationMiddle: boolean;
+
     /**
-     * Declaration at the end.
+     * Whether type declaration occurs after array name.
      */
-    public restParamDeclarationRight: boolean;
+    public restDeclarationRight: boolean;
 }
