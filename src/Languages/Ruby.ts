@@ -18,6 +18,7 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
+import { ParameterProperties } from "./Properties/ParameterProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
@@ -281,6 +282,19 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateOutputProperties(output: OutputProperties): void {
         output.print = "puts";
+    }
+
+    /**
+     * Generates metadata on parameters
+     * 
+     * @param parameters    A property container for metadata on parameters
+     */
+    protected generateParameterProperties(parameters: ParameterProperties): void {
+        parameters.restParamLeft = "*";
+        parameters.restParamRight = "";
+        parameters.restParamDeclarationLeft = false;
+        parameters.restParamDeclarationMiddle = false;
+        parameters.restParamDeclarationRight = false;
     }
 
     /**
