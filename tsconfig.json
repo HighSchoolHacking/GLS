@@ -130,6 +130,7 @@
         "src/Languages/Properties/NumberProperties.ts",
         "src/Languages/Properties/OperatorProperties.ts",
         "src/Languages/Properties/OutputProperties.ts",
+        "src/Languages/Properties/ParameterProperties.ts",
         "src/Languages/Properties/StringFormatProperties.ts",
         "src/Languages/Properties/StringProperties.ts",
         "src/Languages/Properties/StyleProperties.ts",
