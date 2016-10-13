@@ -30,17 +30,20 @@ export class RestParametersCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let left: string = this.language.properties.parameters.restKeywordLeft;
-        let middle: string = this.language.properties.parameters.restKeywordMiddle;
+        let middle: string = "";
         let right: string = this.language.properties.parameters.restKeywordRight;
 
         if (this.language.properties.parameters.restDeclarationType) {
             if (!this.language.properties.parameters.restDeclarationAfter) {
-                return LineResults.newSingleLine(left + parameters[2] + middle + parameters[1] + right, false);
+                middle = parameters[2] + this.language.properties.parameters.restKeywordMiddle + parameters[1];
             }
             if (this.language.properties.parameters.restDeclarationAfter) {
-                return LineResults.newSingleLine(left + parameters[1] + middle + parameters[2] + right, false);
+                middle = parameters[1] + this.language.properties.parameters.restKeywordMiddle + parameters[2];
             }
         }
-        return LineResults.newSingleLine(left + middle + parameters[1] + right, false);
+        else {
+            middle = this.language.properties.parameters.restKeywordMiddle + parameters[1];
+        }
+        return LineResults.newSingleLine(left + middle + right, false);
     }
 }
