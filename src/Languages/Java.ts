@@ -317,11 +317,11 @@ export class Java extends CLikeLanguage {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.restParamLeft = "... ";
-        parameters.restParamRight = "";
-        parameters.restDeclarationLeft = true;
-        parameters.restDeclarationMiddle = false;
-        parameters.restDeclarationRight = false;
+        parameters.restDeclarationAfter = false;
+        parameters.restDeclarationType = true;
+        parameters.restKeywordLeft = "";
+        parameters.restKeywordMiddle = "... ";
+        parameters.restKeywordRight = "";
     }
 
     /**

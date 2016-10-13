@@ -316,11 +316,11 @@ export class TypeScript extends CLikeLanguage {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.restParamLeft = "...";
-        parameters.restParamRight = ": ";
-        parameters.restDeclarationLeft = false;
-        parameters.restDeclarationMiddle = false;
-        parameters.restDeclarationRight = true;
+        parameters.restDeclarationAfter = true;
+        parameters.restDeclarationType = true;
+        parameters.restKeywordLeft = "...";
+        parameters.restKeywordMiddle = ": ";
+        parameters.restKeywordRight = "[]";
     }
 
     /**

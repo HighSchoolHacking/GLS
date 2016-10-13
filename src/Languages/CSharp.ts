@@ -312,11 +312,11 @@ export class CSharp extends CLikeLanguage {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.restParamLeft = "params ";
-        parameters.restParamRight = "";
-        parameters.restDeclarationLeft = false;
-        parameters.restDeclarationMiddle = true;
-        parameters.restDeclarationRight = false;
+        parameters.restDeclarationAfter = false;
+        parameters.restDeclarationType = true;
+        parameters.restKeywordLeft = "params ";
+        parameters.restKeywordMiddle = "[] ";
+        parameters.restKeywordRight = "";
     }
 
     /**

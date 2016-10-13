@@ -29,18 +29,18 @@ export class RestParametersCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let left: string = this.language.properties.parameters.restParamLeft;
-        let right: string = this.language.properties.parameters.restParamRight;
+        let left: string = this.language.properties.parameters.restKeywordLeft;
+        let middle: string = this.language.properties.parameters.restKeywordMiddle;
+        let right: string = this.language.properties.parameters.restKeywordRight;
 
-        if (this.language.properties.parameters.restDeclarationLeft) {
-            return LineResults.newSingleLine(parameters[2] + left + parameters[1] + right, false);
+        if (this.language.properties.parameters.restDeclarationType) {
+            if (!this.language.properties.parameters.restDeclarationAfter) {
+                return LineResults.newSingleLine(left + parameters[2] + middle + parameters[1] + right, false);
+            }
+            if (this.language.properties.parameters.restDeclarationAfter) {
+                return LineResults.newSingleLine(left + parameters[1] + middle + parameters[2] + right, false);
+            }
         }
-        if (this.language.properties.parameters.restDeclarationMiddle) {
-            return LineResults.newSingleLine(left + parameters[2] + "[] " + parameters[1] + right, false);
-        }
-        if (this.language.properties.parameters.restDeclarationRight) {
-            return LineResults.newSingleLine(left + parameters[1] + right + parameters[2] + "[]", false);
-        }
-        return LineResults.newSingleLine(left + parameters[1] + right, false);
+        return LineResults.newSingleLine(left + middle + parameters[1] + right, false);
     }
 }

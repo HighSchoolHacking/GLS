@@ -290,11 +290,11 @@ export class Ruby extends PythonicLanguage {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.restParamLeft = "*";
-        parameters.restParamRight = "";
-        parameters.restDeclarationLeft = false;
-        parameters.restDeclarationMiddle = false;
-        parameters.restDeclarationRight = false;
+        parameters.restDeclarationAfter = false;
+        parameters.restDeclarationType = false;
+        parameters.restKeywordLeft = "*";
+        parameters.restKeywordMiddle = "";
+        parameters.restKeywordRight = "";
     }
 
     /**

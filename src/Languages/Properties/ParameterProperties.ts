@@ -4,27 +4,27 @@
 export class ParameterProperties {
 
     /**
-     * Explicit rest parameter keyword.
+     * Whether type declaration occurs after the array name.
      */
-    public restParamLeft: string;
+    public restDeclarationAfter: boolean;
 
     /**
-     * Follows rest parameter keyword to check type.
+     * Whether type declaration is necessary.
      */
-    public restParamRight: string;
+    public restDeclarationType: boolean;
 
     /**
-     * Whether type declaration occurs before the keyword.
+     * The rest parameter keyword before type declaration.
      */
-    public restDeclarationLeft: boolean;
+    public restKeywordLeft: string;
 
     /**
-     * Whether type declaration occurs after the keyword but before array name.
+     * The rest parameter keyword after type declaration but before the array name.
      */
-    public restDeclarationMiddle: boolean;
+    public restKeywordMiddle: string;
 
     /**
-     * Whether type declaration occurs after array name.
+     * The rest parameter keyword after the array name.
      */
-    public restDeclarationRight: boolean;
+    public restKeywordRight: string;
 }

@@ -60,29 +60,28 @@ string... foo
     </thead>
     <tbody>
         <tr>
-            <td>RestParamLeft</td>
+            <td>RestKeywordLeft</td>
             <td><code>string</code></td>
-            <td>Keyword to create rest parameter array.</td>
+            <td>Rest parameter keyword before type declaration.</td>
         </tr>
         <tr>
-            <td>RestParamRight</td>
+            <td>RestKeywordMiddle</td>
             <td><code>string</code></td>
-            <td>Syntax for type definitions after keyword.</td>
+            <td>Rest parameter keyword after type declaration but before the array name</td>
+        <tr>
+            <td>RestKeywordRight</td>
+            <td><code>string</code></td>
+            <td>Rest parameter keyword after the array name.</td>
         </tr>
         <tr>
-            <td>RestParamDeclarationLeft</td>
+            <td>RestDeclarationAfter</td>
             <td><code>boolean</code></td>
-            <td>Whether the type declaration occurs before the keyword.</td>
+            <td>Whether the type declaration occurs before the array name.</td>
         </tr>
         <tr>
-            <td>RestParamDeclarationMiddle</td>
+            <td>RestDeclarationTypes</td>
             <td><code>boolean</code></td>
-            <td>Whether the type declaration occurs after keyword, but before array name.</td>
-        </tr>
-        <tr>
-            <td>RestParamDeclarationRight</td>
-            <td><code>boolean</code></td>
-            <td>Whether the type declaration occurs after array name.</td>
+            <td>Whether type declaration is necessary.</td>
         </tr>
     </tbody>
 </table>
@@ -92,34 +91,34 @@ string... foo
 <table>
     <thead>
         <th>Language</th>
-        <th>RestParamLeft</th>
-        <th>RestParamRight</th>
-        <th>RestParamDeclarationLeft</th>
-        <th>RestParamDeclarationMiddle</th>
-        <th>RestParamDeclarationRight</th>
+        <th>RestKeywordLeft</th>
+        <th>RestKeywordMiddle</th>
+        <th>RestKeywordRight</th>
+        <th>RestDeclarationAfter</th>
+        <th>RestDeclarationTypes</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>"params"</code></td>
+            <td><code>"params "</code></td>
+            <td><code>"[] "</code></td>
             <td><code>""</code></td>
             <td><code>false</code></td>
             <td><code>true</code></td>
-            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"..."</code></td>
             <td><code>""</code></td>
+            <td><code>"... "</code></td>
+            <td><code>""</code></td>
+            <td><code>false</code></td>
             <td><code>true</code></td>
-            <td><code>false</code></td>
-            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Python</th>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
-            <td><code>false</code></td>
+            <td><code>""</code></td>
             <td><code>false</code></td>
             <td><code>false</code></td>
         </tr>
@@ -127,7 +126,7 @@ string... foo
             <th>Ruby</th>
             <td><code>"*"</code></td>
             <td><code>""</code></td>
-            <td><code>false</code></td>
+            <td><code>""</code></td>
             <td><code>false</code></td>
             <td><code>false</code></td>
         </tr>
@@ -135,8 +134,8 @@ string... foo
             <th>TypeScript</th>
             <td><code>"..."</code></td>
             <td><code>": "</code></td>
-            <td><code>false</code></td>
-            <td><code>false</code></td>
+            <td><code>"[]"</code></td>
+            <td><code>true</code></td>
             <td><code>true</code></td>
         </tr>
     </tbody>
