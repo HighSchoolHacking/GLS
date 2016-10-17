@@ -4,7 +4,6 @@ This doc will cover both try/catch/finally logic.
 Try blocks contain code that might throw exceptions.
 Catch blocks detect these exceptions, and run the code contained if the exception is present.
 Finally blocks always run.
-A manual exception throw merely calls the declared exception class, and is treated like a normally generated exception of the same type.
 
 ## Commands
 
@@ -24,7 +23,7 @@ Ends a try block.
 
 `catch start : exceptionType *alias`
 
-Starts a catch block, requires an exception type as an argument. Optional argument (*) is an alias for the exception.
+Starts a catch block. This command requires an exception type as an argument. Optional argument (*) is an alias for the exception.
 
 ### `catch end`
 
@@ -44,12 +43,6 @@ Starts a finally block.
 
 Ends a finally block.
 
-### `throw exception`
-
-`throw exception : exceptionType message`
-
-Throws a new exception of type exceptionType. The message parameter attacthes a message to the thrown exception.
-
 ## Usage
 
 ```
@@ -62,10 +55,6 @@ catch end
 finally start
     comment : Always do stuff
 finally end
-```
-
-```
-throw exception : exceptionType foo
 ```
 
 ### CSharp
@@ -85,10 +74,6 @@ finally
 }
 ```
 
-```csharp
-throw new exceptionType("foo")
-```
-
 ### Java
 
 ```java
@@ -99,10 +84,6 @@ try {
 } finally {
     // Always do stuff
 }
-```
-
-```java
-throw new exceptionType("foo")
 ```
 
 ### Python
@@ -116,10 +97,6 @@ finally:
     ## Always do stuff
 ```
 
-```python
-raise excpetionType("foo")
-```
-
 ### Ruby
 
 ```ruby
@@ -129,10 +106,6 @@ rescue exceptionType => foo
     ## Sometimes do stuff
 ensure
     ## Always do stuff
-```
-
-```ruby
-raise exceptionType.new("foo")
 ```
 
 ### TypeScript
@@ -145,10 +118,6 @@ try {
 } finally {
     // Always do stuff
 }
-```
-
-```typescript
-throw new exceptionType("foo")
 ```
 
 ## Implementation
@@ -206,21 +175,6 @@ throw new exceptionType("foo")
             <td>BlockEnd</td>
             <td><code>string</code></td>
             <td>The end of try, catch, and finally blocks</td>
-        </tr>
-         <tr>
-            <td>ThrowExceptionLeft</td>
-            <td><code>string</code></td>
-            <td>The beginning of a throw exception statement</td>
-        </tr>
-        <tr>
-            <td>ThrowExceptionMiddle</td>
-            <td><code>string</code></td>
-            <td>The middle of a throw exception statement</td>
-        </tr>
-        <tr>
-            <td>ThrowExceptionRight</td>
-            <td><code>string</code></td>
-            <td>The end of a throw exception statement</td>
         </tr>
     </tbody>
 </table>
@@ -296,9 +250,6 @@ throw new exceptionType("foo")
         <th>FinallyStartLeft</th>
         <th>FinallyStartRight</th>
         <th>BlockEnd</th>
-        <th>ThrowExceptionLeft</th>
-        <th>ThrowExceptionMiddle</th>
-        <th>ThrowExceptionRight</th>
     </thead>
     <tbody>
         <tr>
@@ -306,50 +257,30 @@ throw new exceptionType("foo")
             <td><code>"finally"</code></td>
             <td><code>"\n{"</code></td>
             <td><code>"\n}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>Java</th>
             <td><code>"finally"</code></td>
             <td><code>"{"</code></td>
             <td><code>"\n}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
             <td><code>"ensure"</code></td>
             <td><code>"\n"</code></td>
             <td><code>""</code></td>
-            <td><code>"raise"</code></td>
-            <td><code>".new("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>Python</th>
             <td><code>"finally"</code></td>
             <td><code>":\n"</code></td>
             <td><code>""</code></td>
-            <td><code>"raise"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>"finally"</code></td>
             <td><code>"{"</code></td>
             <td><code>"}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
     </tbody>
 </table>
-
-## Errata
-- Java requires that a function declare all errors it might throw. This is supported.
-- Ruby's `raise` keyword can be used on its own. It defaults to a RunTime error.
-- Python's `raise` keyword can be used to reraise the caught exception in an `except` block.
