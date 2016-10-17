@@ -1,10 +1,9 @@
 # Exception Handling
 
-This doc will cover both try/catch/finally logic and exception throwing.
+This doc will cover both try/catch/finally logic.
 Try blocks contain code that might throw exceptions.
 Catch blocks detect these exceptions, and run the code contained if the exception is present.
 Finally blocks always run.
-A manual exception throw merely calls the declared exception class, and is treated like a normally generated exception.
 
 ## Commands
 
@@ -44,12 +43,6 @@ Starts a finally block.
 
 Ends a finally block.
 
-### `throw exception`
-
-`throw exception : exceptionType [optional arguments]`
-
-Throws a new exception of type exceptionType. Args?
-
 ## Usage
 
 ```
@@ -62,10 +55,6 @@ catch end
 finally start
     comment : Always do stuff
 finally end
-```
-
-```
-throw exception : exceptionType ...
 ```
 
 ### CSharp
@@ -85,10 +74,6 @@ finally
 }
 ```
 
-```charp
-throw new exceptionType()
-```
-
 ### Java
 
 ```java
@@ -99,10 +84,6 @@ try {
 } finally {
     // Always do stuff
 }
-```
-
-```java
-throw new exceptionType()
 ```
 
 ### Python
@@ -116,10 +97,6 @@ finally:
     ## Always do stuff
 ```
 
-```python
-raise excpetionType()
-```
-
 ### Ruby
 
 ```ruby
@@ -129,10 +106,6 @@ rescue exceptionType => foo
     ## Sometimes do stuff
 ensure
     ## Always do stuff
-```
-
-```ruby
-raise
 ```
 
 ### TypeScript
@@ -145,10 +118,6 @@ try {
 } finally {
     // Always do stuff
 }
-```
-
-```typescript
-throw new exceptionType()
 ```
 
 ## Implementation
@@ -206,21 +175,6 @@ throw new exceptionType()
             <td>BlockEnd</td>
             <td><code>string</code></td>
             <td>The end of try, catch, and finally blocks</td>
-        </tr>
-        <tr>
-            <td>ThrowExceptionLeft</td>
-            <td><code>string</code></td>
-            <td>The beginning of a throw exception statement</td>
-        </tr>
-        <tr>
-            <td>ThrowExceptionMiddle</td>
-            <td><code>string</code></td>
-            <td>The middle of a throw exception statement</td>
-        </tr>
-        <tr>
-            <td>ThrowExceptionRight</td>
-            <td><code>string</code></td>
-            <td>The end of a throw exception statement</td>
         </tr>
     </tbody>
 </table>
@@ -296,9 +250,6 @@ throw new exceptionType()
         <th>FinallyStartLeft</th>
         <th>FinallyStartRight</th>
         <th>BlockEnd</th>
-        <th>ThrowExceptionLeft</th>
-        <th>ThrowExceptionMiddle</th>
-        <th>ThrowExceptionRight</th>
     </thead>
     <tbody>
         <tr>
@@ -306,26 +257,17 @@ throw new exceptionType()
             <td><code>"finally"</code></td>
             <td><code>"\n{"</code></td>
             <td><code>"\n}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>Java</th>
             <td><code>"finally"</code></td>
             <td><code>"{"</code></td>
             <td><code>"\n}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
             <td><code>"ensure"</code></td>
             <td><code>"\n"</code></td>
-            <td><code>""</code></td>
-            <td><code>"raise"</code></td>
-            <td><code>""</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
@@ -333,18 +275,12 @@ throw new exceptionType()
             <td><code>"finally"</code></td>
             <td><code>":\n"</code></td>
             <td><code>""</code></td>
-            <td><code>"raise"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>"finally"</code></td>
             <td><code>"{"</code></td>
             <td><code>"}"</code></td>
-            <td><code>"throw new"</code></td>
-            <td><code>"("</code></td>
-            <td><code>")"</code></td>
         </tr>
     </tbody>
 </table>
