@@ -3,7 +3,7 @@
 ## Feature Overview
 
 Interface methods are used as outlines for classes that implement the interface. 
-Interface methods only contain declaration and not implementation.
+Interfaces only contain method declarations.
 
 
 ## Commands
