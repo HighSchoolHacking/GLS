@@ -2,7 +2,8 @@
 
 ## Feature Overview
 
-Method declarations within interfaces, as well as variable declarations within interfaces.
+Interface methods are used as outlines for classes that implement the interface. 
+Only method declaration is included in the interface declaration.
 
 
 ## Commands
@@ -15,32 +16,33 @@ A command to declare a method within an interface.
 ## Usage
 
 ```gls
-interface start : Point
-interface method : method1 int x int
+interface start : IPoint
+interface method : setPoint int x int
 interface end
 ```
 
 ### CSharp
 
 ```csharp
-interface Point {
-    int method1(int x);
+interface IPoint
+{
+    int setPoint(int x);
 }
 ```
 
 ### Java
 
 ```java
-interface Point {
-    public int method1(int x);
+interface IPoint {
+    public int setPoint(int x);
 }
 ```
 
 ### TypeScript
 
 ```typescript
-interface Point {
-    method1(x: number): number;
+interface IPoint {
+    setPoint(x: number): number;
 }
 ```
 
@@ -95,21 +97,21 @@ interface Point {
             <td><code>""</code></td>
             <td><code>" ("</code></td>
             <td><code>")"</code></td>
-            <td><code>"false"</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Java</th>
             <td><code>"public "</code></td>
             <td><code>" ("</code></td>
             <td><code>")"</code></td>
-            <td><code>"false"</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>""</code></td>
             <td><code>" ("</code></td>
             <td><code>")"</code></td>
-            <td><code>"true"</code></td>
+            <td><code>true</code></td>
         </tr>
     </tbody>
 </table>
