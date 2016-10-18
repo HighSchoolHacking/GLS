@@ -2,7 +2,9 @@
 
 ## Feature Overview
 
-Declarations for interfaces and how to extend them from other interfaces.
+Interfaces are used as outlines for classes that implement them.
+They contain methods that a child class will need to implement.
+This doc contains interface declaration as well as ways for interfaces to extend from other interfaces.
 
 
 ## Commands
