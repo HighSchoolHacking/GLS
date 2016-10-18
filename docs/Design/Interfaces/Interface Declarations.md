@@ -30,7 +30,7 @@ A command to end an interface declaration.
 interface start : IPoint
 interface end
 
-interface start : InewCar ICar IVehicle
+interface start : INewCar ICar IVehicle
 interface end
 ```
 
@@ -41,7 +41,7 @@ interface IPoint
 {
 }
 
-interface InewCar : ICar, IVehicle
+interface INewCar : ICar, IVehicle
 {
 }
 ```
@@ -52,7 +52,7 @@ interface InewCar : ICar, IVehicle
 interface IPoint {
 }
 
-interface InewCar extends ICar, IVehicle {
+interface INewCar extends ICar, IVehicle {
 }
 ```
 
@@ -62,7 +62,7 @@ interface InewCar extends ICar, IVehicle {
 interface IPoint {
 }
 
-interface InewCar extends ICar, IVehicle {
+interface INewCar extends ICar, IVehicle {
 }
 ```
 
