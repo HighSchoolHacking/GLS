@@ -101,7 +101,7 @@ interface InewCar extends ICar, IVehicle {
         <tr>
             <td>DeclareEnd</td>
             <td><code>string</code></td>
-            <td>End interface declaration.</td>
+            <td>Ends interface declaration.</td>
         </tr>
     </tbody>
 </table>
