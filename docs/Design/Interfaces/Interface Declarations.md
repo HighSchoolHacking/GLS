@@ -147,5 +147,4 @@ interface INewCar extends ICar, IVehicle {
 
 ### Errata
 
-* Java interfaces cannot extend classes so neither will GLS interfaces.
-* Explicit interfaces do not exist in Ruby and Python.
+* Explicit interfaces do not exist in Ruby and Python, so these commands will not print anything in Ruby or Python.
