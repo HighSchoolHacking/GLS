@@ -2,7 +2,7 @@
 
 ## Feature Overview
 
-Declarations for interfaces.
+Declarations for interfaces and how to extend them from other interfaces.
 
 
 ## Commands
@@ -25,40 +25,42 @@ A command to end an interface declaration.
 ## Usage
 
 ```gls
-interface start : Point
+interface start : IPoint
 interface end
 
-interface start : newCar Car Vehicle
+interface start : InewCar ICar IVehicle
 interface end
 ```
 
 ### CSharp
 
 ```csharp
-interface Point {
+interface IPoint
+{
 }
 
-interface newCar : Car, Vehicle {
+interface InewCar : ICar, IVehicle
+{
 }
 ```
 
 ### Java
 
 ```java
-interface Point {
+interface IPoint {
 }
 
-interface newCar extends Car, Vehicle {
+interface InewCar extends ICar, IVehicle {
 }
 ```
 
 ### TypeScript
 
 ```typescript
-interface Point {
+interface IPoint {
 }
 
-interface newCar extends Car, Vehicle {
+interface InewCar extends ICar, IVehicle {
 }
 ```
 
@@ -82,7 +84,7 @@ interface newCar extends Car, Vehicle {
         <tr>
             <td>DeclareStartRight</td>
             <td><code>string</code></td>
-            <td>Starts interface block.</td>
+            <td>Starts interface declaration.</td>
         </tr>
         <tr>
             <td>DeclareExtendsLeft</td>
@@ -117,7 +119,7 @@ interface newCar extends Car, Vehicle {
         <tr>
             <th>CSharp</th>
             <td><code>"interface "</code></td>
-            <td><code>" {\n"</code></td>
+            <td><code>"\n{"</code></td>
             <td><code>" : "</code></td>
             <td><code>", "</code></td>
             <td><code>"}"</code></td>
