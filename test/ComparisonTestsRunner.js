@@ -1,4 +1,4 @@
-var ComparisonTestsRunner = (function () {
+const ComparisonTestsRunner = (function () {
     "use strict";
 
     const expect = require("chai").expect;
@@ -15,11 +15,13 @@ var ComparisonTestsRunner = (function () {
          * Initializes a new instance of the ComparisonTestsRunner class.
          * 
          * @param {string} section   A directory path to read tests under.
+         * @param {Set} commandsToRun   Command groups to run, if not all.
          */
-        constructor(section) {
+        constructor(section, commandsToRun) {
             this.section = section;
+            this.commandsToRun = commandsToRun;
             this.rootPath = path.resolve(section);
-            this.commandTests = this.readTestsUnderPath(this.rootPath);
+            this.commandTests = this.readTestsUnderPath(this.rootPath, this.commandsToRun);
             this.languagesBag = new LanguagesBag();
         }
 
@@ -73,13 +75,20 @@ var ComparisonTestsRunner = (function () {
         /**
          * Retrieves, for each command in a directory, tests under that command.
          * 
-         * @param rootPath   An absolute path to a command's tests folder.
-         * @returns Tests for each command in a directory.
+         * @param {string} rootPath   An absolute path to a command's tests folder.
+         * @param {Set} commandsToRun   Command groups to run, if not all.
+         * @returns {object}   Tests for each command in a directory.
          * @private
          */
-        readTestsUnderPath(rootPath) {
-            const children = fs.readdirSync(rootPath);
+        readTestsUnderPath(rootPath, commandsToRun) {
+            let children = fs.readdirSync(rootPath);
             let tests = {};
+
+            if (commandsToRun) {
+                children = children.filter(child => {
+                    return commandsToRun.has(child.toLowerCase());
+                });
+            }
 
             children.forEach(childName => {
                 tests[childName] = fs.readdirSync(path.resolve(rootPath, childName))
@@ -91,8 +100,11 @@ var ComparisonTestsRunner = (function () {
         }
         
         /**
+         * Reads the code contents of a test file.
          * 
-         * 
+         * @param {string} command   The command this file is under.
+         * @param {string} name   The name of the file.
+         * @returns {string[]}   Lines of code in the file.
          * @private
          */
         readCommandFile(command, name) {

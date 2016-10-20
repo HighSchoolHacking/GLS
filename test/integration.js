@@ -1,4 +1,6 @@
-var ComparisonTestsRunner = require("./ComparisonTestsRunner.js");
+const ArgvParser = require("./ArgvParser");
+const ComparisonTestsRunner = require("./ComparisonTestsRunner");
 
-var integrationTests = new ComparisonTestsRunner("test/integration");
+const testNames = new ArgvParser(process.argv).parseCommandNames();
+const integrationTests = new ComparisonTestsRunner("test/integration", testNames);
 integrationTests.run();
