@@ -81,8 +81,8 @@ const ComparisonTestsRunner = (function () {
          * @private
          */
         readTestsUnderPath(rootPath, commandsToRun) {
+            const tests = {};
             let children = fs.readdirSync(rootPath);
-            let tests = {};
 
             if (commandsToRun) {
                 children = children.filter(child => {
