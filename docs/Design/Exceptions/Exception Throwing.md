@@ -119,5 +119,4 @@ throw new ExceptionType("foo")
 </table>
 
 ## Errata
-- Java requires that a function declare all errors it might throw. This is supported.
-- Ruby's `raise` keyword can be used on its own. It defaults to a RunTime error.
+- Java requires that a function declare all errors it might throw. GLS also requires this.
