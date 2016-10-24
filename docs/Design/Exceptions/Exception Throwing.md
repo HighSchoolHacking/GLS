@@ -1,49 +1,50 @@
 # Exception Throwing
 
-A manual exception throw merely calls the declared exception class, and is treated like a normally generated exception of the same type.
+A manual exception throw calls the declared exception class, and is treated like a normally generated exception of the same type.
 
 ## Commands
 
 ### `throw exception`
 
-`throw exception : exceptionType message`
+`throw exception : ExceptionType message`
 
-Throws a new exception of type exceptionType. The message parameter attacthes a message to the thrown exception.
+Throws a new exception of type ExceptionType. 
+The message parameter attaches a message to the thrown exception.
 
 ## Usage
 
 ```
-throw exception : exceptionType foo
+throw exception : ExceptionType foo
 ```
 
 ### CSharp
 
 ```csharp
-throw new exceptionType("foo")
+throw new ExceptionType("foo")
 ```
 
 ### Java
 
 ```java
-throw new exceptionType("foo")
+throw new ExceptionType("foo")
 ```
 
 ### Python
 
 ```python
-raise excpetionType("foo")
+raise ExceptionType("foo")
 ```
 
 ### Ruby
 
 ```ruby
-raise exceptionType.new("foo")
+raise ExceptionType.new("foo")
 ```
 
 ### TypeScript
 
 ```typescript
-throw new exceptionType("foo")
+throw new ExceptionType("foo")
 ```
 
 ## Implementation
@@ -120,4 +121,3 @@ throw new exceptionType("foo")
 ## Errata
 - Java requires that a function declare all errors it might throw. This is supported.
 - Ruby's `raise` keyword can be used on its own. It defaults to a RunTime error.
-- Python's `raise` keyword can be used to reraise the caught exception in an `except` block.

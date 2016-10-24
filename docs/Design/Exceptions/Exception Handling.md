@@ -1,8 +1,7 @@
 # Exception Handling
 
-This doc will cover both try/catch/finally logic.
-Try blocks contain code that might throw exceptions.
-Catch blocks detect these exceptions, and run the code contained if the exception is present.
+This document will cover both try/catch/finally logic.
+Catch blocks detect exceptions thrown in the try block, and run the code contained in the catch block.
 Finally blocks always run.
 
 ## Commands
@@ -21,9 +20,11 @@ Ends a try block.
 
 ### `catch start`
 
-`catch start : exceptionType *alias`
+`catch start : exceptionType [alias]`
 
-Starts a catch block. This command requires an exception type as an argument. Optional argument (*) is an alias for the exception.
+Starts a catch block. 
+This command requires an exception type as an argument. 
+Optional argument is an alias for the exception.
 
 ### `catch end`
 
@@ -47,13 +48,13 @@ Ends a finally block.
 
 ```
 try start
-    comment : Do stuff
+    comment : ...
 try end
 catch start : exceptionType foo
-    comment : Sometimes do stuff
+    comment : ...
 catch end
 finally start
-    comment : Always do stuff
+    comment : ...
 finally end
 ```
 
@@ -62,15 +63,15 @@ finally end
 ```csharp
 try
 {
-    // Do stuff
+    // ...
 }
 catch (exceptionType foo)
 {
-    // Sometimes do stuff
+    // ...
 }
 finally
 {
-    // Always do stuff
+    // ...
 }
 ```
 
@@ -78,11 +79,11 @@ finally
 
 ```java
 try {
-    // Do stuff
+    // ...
 } catch (exceptionType foo) {
-    // Sometimes do stuff
+    // ...
 } finally {
-    // Always do stuff
+    // ...
 }
 ```
 
@@ -90,33 +91,33 @@ try {
 
 ```python
 try:
-    ## Do stuff
+    ## ...
 except exceptionType as foo:
-    ## Sometimes do stuff
+    ## ...
 finally:
-    ## Always do stuff
+    ## ...
 ```
 
 ### Ruby
 
 ```ruby
 begin
-    ## Do stuff
+    ## ...
 rescue exceptionType => foo
-    ## Sometimes do stuff
+    ## ...
 ensure
-    ## Always do stuff
+    ## ...
 ```
 
 ### TypeScript
 
 ```typescript
 try {
-    // Do stuff
+    // ...
 } catch (exceptionType foo) {
-    // Sometimes do stuff
+    // ...
 } finally {
-    // Always do stuff
+    // ...
 }
 ```
 
@@ -181,13 +182,50 @@ try {
 
 ### Langauge Values
 
-#### Table 1
+#### Try Command
 
 <table>
     <thead>
         <th>Language</th>
         <th>TryStartLeft</th>
         <th>TryStartRight</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>CSharp</th>
+            <td><code>"try"</code></td>
+            <td><code>"\n{"</code></td>
+            
+        </tr>
+        <tr>
+            <th>Java</th>
+            <td><code>"try"</code></td>
+            <td><code>"{"</code></td>
+        </tr>
+        <tr>
+            <th>Ruby</th>
+            <td><code>"begin"</code></td>
+            <td><code>"\n"</code></td>
+        </tr>
+        <tr>
+            <th>Python</th>
+            <td><code>"try"</code></td>
+            <td><code>":\n"</code></td>
+            
+        </tr>
+        <tr>
+            <th>TypeScript</th>
+            <td><code>"try"</code></td>
+            <td><code>"{"</code></td>
+        </tr>
+    </tbody>
+</table>
+
+#### Catch Command
+
+<table>
+    <thead>
+        <th>Language</th>
         <th>CatchStartLeft</th>
         <th>CatchStartMiddle</th>
         <th>CatchStartLink</th>
@@ -196,8 +234,6 @@ try {
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>"try"</code></td>
-            <td><code>"\n{"</code></td>
             <td><code>"catch"</code></td>
             <td><code>"("</code></td>
             <td><code>""</code></td>
@@ -205,8 +241,6 @@ try {
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"try"</code></td>
-            <td><code>"{"</code></td>
             <td><code>"catch"</code></td>
             <td><code>"("</code></td>
             <td><code>""</code></td>
@@ -214,8 +248,6 @@ try {
         </tr>
         <tr>
             <th>Ruby</th>
-            <td><code>"begin"</code></td>
-            <td><code>"\n"</code></td>
             <td><code>"rescue"</code></td>
             <td><code>""</code></td>
             <td><code>"=>"</code></td>
@@ -223,8 +255,6 @@ try {
         </tr>
         <tr>
             <th>Python</th>
-            <td><code>"try"</code></td>
-            <td><code>":\n"</code></td>
             <td><code>"except"</code></td>
             <td><code>""</code></td>
             <td><code>"as"</code></td>
@@ -232,8 +262,6 @@ try {
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>"try"</code></td>
-            <td><code>"{"</code></td>
             <td><code>"catch"</code></td>
             <td><code>"("</code></td>
             <td><code>""</code></td>
@@ -242,7 +270,7 @@ try {
     </tbody>
 </table>
 
-#### Table 2
+### Finally Command and Blockend
 
 <table>
     <thead>
@@ -257,6 +285,7 @@ try {
             <td><code>"finally"</code></td>
             <td><code>"\n{"</code></td>
             <td><code>"\n}"</code></td>
+            
         </tr>
         <tr>
             <th>Java</th>
@@ -275,6 +304,7 @@ try {
             <td><code>"finally"</code></td>
             <td><code>":\n"</code></td>
             <td><code>""</code></td>
+            
         </tr>
         <tr>
             <th>TypeScript</th>
