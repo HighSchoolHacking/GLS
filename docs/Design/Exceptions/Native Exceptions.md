@@ -1,6 +1,6 @@
 # Native Exceptions
 
-The exception types represented here are those that had a counterpart in each languages.
+The exception types represented here are those that had a counterpart in each language.
 
 ## Exceptions
 
