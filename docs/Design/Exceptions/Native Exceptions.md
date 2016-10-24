@@ -1,6 +1,5 @@
 # Native Exceptions
 
-These are the supported native exceptions. 
 The exception types represented here are those that had a counterpart in each languages.
 
 ## Exceptions
@@ -12,7 +11,7 @@ The exception types represented here are those that had a counterpart in each la
     </thead>
         <tr>
             <td>Index Error</td>
-            <td>The specified array index can not be reached.</td>
+            <td>The specified array/list index can not be reached.</td>
         </tr>
         <tr>
             <td>Reference Error</td>
@@ -58,5 +57,4 @@ The exception types represented here are those that had a counterpart in each la
 </table>
 
 ## Errata
-- This list is not fully incluseive of all exception types across all languages.
-- Most exceptions are language specific and have no meaningful counterpart in other languages.
+- This list is not fully inclusive of all exception types across all languages.
