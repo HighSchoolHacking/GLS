@@ -14,7 +14,7 @@ export class InterfaceMethodCommand extends Command {
     private static parameters: Parameter[] = [
         new SingleParameter("InterfaceName", "The Interface name.", true),
         new RepeatingParameters(
-            "Parent interfaces.",
+            "Method arguments.",
             [
                 new SingleParameter(
                     "argumentName",
@@ -66,9 +66,7 @@ export class InterfaceMethodCommand extends Command {
             }
 
             line += this.language.properties.interfaces.declareMethodRight + ": " + parameters[2];
-        }
-
-        else {
+        } else {
             line += this.language.properties.interfaces.declareMethodLeft;
             line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;
 
