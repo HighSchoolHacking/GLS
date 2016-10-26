@@ -12,4 +12,4 @@ export class ClassEndCommand extends BlockEndCommand {
     protected renderBlockEnd(): string {
         return this.language.properties.classes.declareEnd;
     }
-    }
+}

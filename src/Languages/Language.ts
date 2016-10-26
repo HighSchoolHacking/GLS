@@ -11,6 +11,7 @@ import { ExceptionProperties } from "./Properties/ExceptionProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
+import { InterfaceProperties } from "./Properties/InterfaceProperties";
 import { LambdaProperties } from "./Properties/LambdaProperties";
 import { LanguageProperties } from "./Properties/LanguageProperties";
 import { ListProperties } from "./Properties/ListProperties";
@@ -52,6 +53,7 @@ export abstract class Language {
         this.generateFunctionProperties(this.properties.functions);
         this.generateGeneralProperties(this.properties.general);
         this.generateImportProperties(this.properties.imports);
+        this.generateInterfaceProperties(this.properties.interfaces);
         this.generateLambdaProperties(this.properties.lambdas);
         this.generateListProperties(this.properties.lists);
         this.generateLoopProperties(this.properties.loops);
@@ -156,6 +158,13 @@ export abstract class Language {
      * @param imports   A property container for metadata on imports.
      */
     protected abstract generateImportProperties(lambdas: ImportProperties): void;
+
+    /**
+     * Generates metadata on interfaces.
+     * 
+     * @param interfaces   A property container for metadata on interfaces.
+     */
+    protected abstract generateInterfaceProperties(lambdas: InterfaceProperties): void;
 
     /**
      * Generates metadata on lambdas.

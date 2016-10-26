@@ -9,6 +9,7 @@ import { ExceptionProperties } from "./ExceptionProperties";
 import { FunctionProperties } from "./FunctionProperties";
 import { GeneralProperties } from "./GeneralProperties";
 import { ImportProperties } from "./ImportProperties";
+import { InterfaceProperties } from "./InterfaceProperties";
 import { LambdaProperties } from "./LambdaProperties";
 import { ListProperties } from "./ListProperties";
 import { LoopProperties } from "./LoopProperties";
@@ -81,6 +82,11 @@ export class LanguageProperties {
     public imports: ImportProperties;
 
     /**
+     * Metadata on interfaces.
+     */
+    public interfaces: InterfaceProperties;
+
+    /**
      * Metadata on lambdas.
      */
     public lambdas: LambdaProperties;
@@ -150,6 +156,7 @@ export class LanguageProperties {
         this.functions = new FunctionProperties();
         this.general = new GeneralProperties();
         this.imports = new ImportProperties();
+        this.interfaces = new InterfaceProperties();
         this.lambdas = new LambdaProperties();
         this.lists = new ListProperties();
         this.loops = new LoopProperties();
