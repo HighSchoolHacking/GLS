@@ -72,8 +72,11 @@ export class InterfaceMethodCommand extends Command {
             line += this.language.properties.interfaces.declareMethodLeft;
             line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;
 
-            for (let i: number = 3; i < parameters.length - 1; i++) {
+            for (let i: number = 3; i < parameters.length - 1; i += 2) {
                 line += parameters[i + 1] + " " + parameters[i];
+                if (i !== parameters.length - 2) {
+                    line += ", ";
+                }
             }
 
             line += this.language.properties.interfaces.declareMethodRight;
