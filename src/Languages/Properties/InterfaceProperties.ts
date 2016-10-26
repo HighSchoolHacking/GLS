@@ -2,7 +2,6 @@
  * Metadata on a language's in depth interface properties.
  */
 export class InterfaceProperties {
-
     /**
      * Keyword that indicates interface declaration.
      */
@@ -29,7 +28,7 @@ export class InterfaceProperties {
     public declareEnd: string;
 
     /**
-     * Whether language supports interfaces.
+     * Whether the language supports interfaces.
      */
-    public interfaceSupport: boolean;
+    public supported: boolean;
 }

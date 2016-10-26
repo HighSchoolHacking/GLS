@@ -10,9 +10,10 @@ export class InterfaceEndCommand extends BlockEndCommand {
      * @returns The end block for interface declarations.
      */
     protected renderBlockEnd(): string {
-        if (this.language.properties.interfaces.interfaceSupport) {
+        if (this.language.properties.interfaces.supported) {
             return this.language.properties.interfaces.declareEnd;
         }
+
         return "";
     }
 }

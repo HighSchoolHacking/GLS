@@ -219,7 +219,7 @@ export class CSharp extends CLikeLanguage {
         interfaces.declareExtendsLeft = " : ";
         interfaces.declareExtendsRight = ", ";
         interfaces.declareEnd = "}";
-        interfaces.interfaceSupport = true;
+        interfaces.supported = true;
     }
 
     /**

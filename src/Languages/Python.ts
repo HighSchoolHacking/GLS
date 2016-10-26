@@ -192,7 +192,7 @@ export class Python extends PythonicLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
-        interfaces.interfaceSupport = false;
+        interfaces.supported = false;
     }
 
     /**

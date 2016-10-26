@@ -19,7 +19,7 @@ export class InterfaceStartCommand extends Command {
             [
                 new SingleParameter(
                     "parentInterfaceName",
-                    "Name of parent interface.",
+                    "Names of parent interfaces.",
                     true)
             ])
     ];
@@ -40,9 +40,8 @@ export class InterfaceStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         let empty: string = "";
         let line: string = "";
-        let output: CommandResult[];
 
-        if (this.language.properties.interfaces.interfaceSupport === false) {
+        if (this.language.properties.interfaces.supported === false) {
             return LineResults.newSingleLine(empty, false);
         }
 
@@ -51,6 +50,7 @@ export class InterfaceStartCommand extends Command {
 
         if (parameters.length > 2) {
             line += this.language.properties.interfaces.declareExtendsLeft;
+
             for (let i: number = 2; i < parameters.length; i++) {
                 line += parameters[i];
                 if (i !== parameters.length - 1) {
@@ -59,7 +59,7 @@ export class InterfaceStartCommand extends Command {
             }
         }
 
-        output = [new CommandResult(line, 0)];
+        let output : CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.properties.interfaces.declareStartRight, 1);
 
         return new LineResults(output, false);

@@ -1,0 +1,4 @@
+-
+interface aaa : bbb, ccc
+{
+-
