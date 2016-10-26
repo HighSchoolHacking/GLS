@@ -38,11 +38,10 @@ export class InterfaceStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let empty: string = "";
         let line: string = "";
 
         if (this.language.properties.interfaces.supported === false) {
-            return LineResults.newSingleLine(empty, false);
+            return LineResults.newSingleLine(line, false);
         }
 
         line += this.language.properties.interfaces.declareStartLeft;
