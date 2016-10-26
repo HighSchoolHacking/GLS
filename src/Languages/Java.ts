@@ -227,6 +227,10 @@ export class Java extends CLikeLanguage {
         interfaces.declareExtendsRight = ", ";
         interfaces.declareEnd = "}";
         interfaces.supported = true;
+        interfaces.declareMethodLeft = "public ";
+        interfaces.declareMethodMiddle = "(";
+        interfaces.declareMethodRight = ")";
+        interfaces.methodTypeAfter = false;
     }
 
     /**

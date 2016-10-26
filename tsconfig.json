@@ -57,6 +57,7 @@
         "src/Commands/IndexCommand.ts",
         "src/Commands/InterfaceStartCommand.ts",
         "src/Commands/InterfaceEndCommand.ts",
+        "src/Commands/InterfaceMethodCommand.ts",
         "src/Commands/IsNotNullCommand.ts",
         "src/Commands/IsNullCommand.ts",
         "src/Commands/LambdaBodyCommand.ts",

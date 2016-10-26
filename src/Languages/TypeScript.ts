@@ -226,6 +226,10 @@ export class TypeScript extends CLikeLanguage {
         interfaces.declareExtendsRight = ", ";
         interfaces.declareEnd = "}";
         interfaces.supported = true;
+        interfaces.declareMethodLeft = "";
+        interfaces.declareMethodMiddle = "(";
+        interfaces.declareMethodRight = ")";
+        interfaces.methodTypeAfter = true;
     }
 
     /**

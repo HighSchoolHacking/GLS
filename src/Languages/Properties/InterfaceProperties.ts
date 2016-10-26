@@ -28,6 +28,26 @@ export class InterfaceProperties {
     public declareEnd: string;
 
     /**
+     * Starts method declaration.
+     */
+    public declareMethodLeft: string;
+
+    /**
+     * Middle of method declaration.
+     */
+    public declareMethodMiddle: string;
+
+    /**
+     * End of method declaration.
+     */
+    public declareMethodRight: string;
+
+    /**
+     * Whether the method type is declared after the method is define.
+     */
+    public methodTypeAfter: boolean;
+
+    /**
      * Whether the language supports interfaces.
      */
     public supported: boolean;

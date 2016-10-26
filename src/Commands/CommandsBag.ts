@@ -47,6 +47,7 @@ import { ImportCommand } from "./ImportCommand";
 import { IndexCommand } from "./IndexCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
+import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
@@ -142,6 +143,7 @@ export class CommandsBag {
             "index": new IndexCommand(context),
             "interface start": new InterfaceStartCommand(context),
             "interface end": new InterfaceEndCommand(context),
+            "interface method": new InterfaceMethodCommand(context),
             "is not null": new IsNotNullCommand(context),
             "is null": new IsNullCommand(context),
             "lambda": new LambdaBodyCommand(context),
