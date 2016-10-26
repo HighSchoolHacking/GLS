@@ -58,7 +58,7 @@ export class InterfaceStartCommand extends Command {
             }
         }
 
-        let output : CommandResult[] = [new CommandResult(line, 0)];
+        let output: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.properties.interfaces.declareStartRight, 1);
 
         return new LineResults(output, false);
