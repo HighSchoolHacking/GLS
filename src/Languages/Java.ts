@@ -175,6 +175,8 @@ export class Java extends CLikeLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+        super.generateExceptionProperties(exceptions);
+
         exceptions.className = "Exception";
     }
 
@@ -188,6 +190,9 @@ export class Java extends CLikeLanguage {
 
         functions.defineStartLeft = " ";
         functions.defineStartRight = " {";
+
+        functions.requiresExceptions = true;
+        functions.functionThrows = " throws ";
     }
 
     /**

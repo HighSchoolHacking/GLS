@@ -111,9 +111,19 @@ export abstract class CLikeLanguage extends Language {
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
         exceptions.catch = "catch";
         exceptions.finally = "finally";
-        exceptions.throw = "throw";
+        exceptions.throw = "throw new";
         exceptions.try = "try";
         exceptions.variablePrefix = "";
+
+        exceptions.blockEnd = "}";
+        exceptions.tryStartRight = " {";
+        exceptions.finallyStartRight = " {";
+        exceptions.catchStartMiddle = " (";
+        exceptions.catchStartLink = " ";
+        exceptions.catchStartRight = ") {";
+
+        exceptions.throwExceptionMiddle = "(";
+        exceptions.throwExceptionRight = ")";
     }
 
     /**
@@ -124,6 +134,8 @@ export abstract class CLikeLanguage extends Language {
     protected generateFunctionProperties(functions: FunctionProperties): void {
         functions.defineEnd = "}";
         functions.explicitReturns = true;
+
+        functions.requiresExceptions = false;
     }
 
     /**

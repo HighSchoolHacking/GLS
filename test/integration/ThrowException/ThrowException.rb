@@ -1,0 +1,3 @@
+-
+raise ExceptionType.new("foo")
+-

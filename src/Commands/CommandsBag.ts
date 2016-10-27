@@ -5,6 +5,8 @@ import { LineResults } from "./LineResults";
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
 import { BreakCommand } from "./BreakCommand";
+import { CatchEndCommand } from "./CatchEndCommand";
+import { CatchStartCommand } from "./CatchStartCommand";
 import { ClassEndCommand } from "./ClassEndCommand";
 import { ClassStartCommand } from "./ClassStartCommand";
 import { CommentBlockCommand } from "./CommentBlockCommand";
@@ -31,6 +33,8 @@ import { EnumCommand } from "./EnumCommand";
 import { EnumEndCommand } from "./EnumEndCommand";
 import { EnumMemberCommand } from "./EnumMemberCommand";
 import { EnumStartCommand } from "./EnumStartCommand";
+import { FinallyEndCommand } from "./FinallyEndCommand";
+import { FinallyStartCommand } from "./FinallyStartCommand";
 import { FileEndCommand } from "./FileEndCommand";
 import { FileStartCommand } from "./FileStartCommand";
 import { ForEachEndCommand } from "./ForEachEndCommand";
@@ -71,6 +75,9 @@ import { StringIndexCommand } from "./StringIndexCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { SuperConstructorCommand } from "./SuperConstructorCommand";
 import { ThisCommand } from "./ThisCommand";
+import { ThrowExceptionCommand } from "./ThrowExceptionCommand";
+import { TryEndCommand } from "./TryEndCommand";
+import { TryStartCommand } from "./TryStartCommand";
 import { TypeCommand } from "./TypeCommand";
 import { ValueCommand } from "./ValueCommand";
 import { VariableCommand } from "./VariableCommand";
@@ -98,6 +105,8 @@ export class CommandsBag {
             "array initialize": new ArrayInitializeCommand(context),
             "array length": new ArrayLengthCommand(context),
             "break": new BreakCommand(context),
+            "catch end": new CatchEndCommand(context),
+            "catch start": new CatchStartCommand(context),
             "class end": new ClassEndCommand(context),
             "class start": new ClassStartCommand(context),
             "comment block": new CommentBlockCommand(context),
@@ -124,6 +133,8 @@ export class CommandsBag {
             "enum end": new EnumEndCommand(context),
             "enum member": new EnumMemberCommand(context),
             "enum start": new EnumStartCommand(context),
+            "finally end": new FinallyEndCommand(context),
+            "finally start": new FinallyStartCommand(context),
             "file end": new FileEndCommand(context),
             "file start": new FileStartCommand(context),
             "for each end": new ForEachEndCommand(context),
@@ -164,6 +175,9 @@ export class CommandsBag {
             "string length": new StringLengthCommand(context),
             "super constructor": new SuperConstructorCommand(context),
             "this": new ThisCommand(context),
+            "throw exception": new ThrowExceptionCommand(context),
+            "try end": new TryEndCommand(context),
+            "try start": new TryStartCommand(context),
             "type": new TypeCommand(context),
             "value": new ValueCommand(context),
             "variable": new VariableCommand(context),

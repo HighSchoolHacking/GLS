@@ -170,7 +170,13 @@ export class CSharp extends CLikeLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+        super.generateExceptionProperties(exceptions);
+
         exceptions.className = "Error";
+
+        exceptions.tryStartRight = "\n{";
+        exceptions.finallyStartRight = "\n{";
+        exceptions.catchStartRight = ")\n{";
     }
 
     /**

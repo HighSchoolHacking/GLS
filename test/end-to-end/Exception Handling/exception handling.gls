@@ -1,0 +1,11 @@
+-
+try start
+    comment line : ...
+try end
+catch start : exceptionType foo
+    comment line : ...
+catch end
+finally start
+    comment line : ...
+finally end
+-

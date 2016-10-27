@@ -8,6 +8,7 @@ import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
+import { ExceptionProperties } from "./Properties/ExceptionProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -158,6 +159,17 @@ export class Python extends PythonicLanguage {
         enums.declareStartRight = "(Enum):";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = ".";
+    }
+
+    /**
+     * Generates metadata on exceptions.
+     * 
+     * @param exceptions   A property container for metadata on exceptions.
+     */
+    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+        super.generateExceptionProperties(exceptions);
+
+        exceptions.catch = "except";
     }
 
     /**

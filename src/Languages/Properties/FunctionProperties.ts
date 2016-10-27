@@ -31,4 +31,14 @@ export class FunctionProperties {
      * A label between function name and its type, if type is after the name.
      */
     public returnTypeMarker: string;
+
+    /**
+     * Precedes exceptions that the funtion throws.
+     */
+    public functionThrows: string
+
+    /**
+     * Whether langauge requires functin to declare possible exceptions.
+     */
+    public requiresExceptions: boolean;
 }

@@ -8,6 +8,7 @@ import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
+import { ExceptionProperties } from "./Properties/ExceptionProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -169,6 +170,26 @@ export class Ruby extends PythonicLanguage {
         enums.declareStartRight = "";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = "::";
+    }
+
+    /**
+     * Generates metadata on exceptions.
+     * 
+     * @param exceptions   A property container for metadata on exceptions.
+     */
+    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+        super.generateExceptionProperties(exceptions);
+
+        exceptions.try = "begin";
+        exceptions.catch = "rescue";
+        exceptions.finally = "ensure";
+
+        exceptions.tryStartRight = "";
+        exceptions.finallyStartRight = "";
+        exceptions.catchStartRight = "";
+        exceptions.catchStartLink = " => ";
+
+        exceptions.throwExceptionMiddle = ".new(";
     }
 
     /**

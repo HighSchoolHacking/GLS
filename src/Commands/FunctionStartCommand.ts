@@ -20,6 +20,11 @@ export class FunctionStartCommand extends Command {
             [
                 new SingleParameter("parameterName", "A named parameter for the function.", true),
                 new SingleParameter("parameterType", "The type of the parameter.", true)
+            ]),
+        new RepeatingParameters(
+            "Possible exceptions.",
+            [
+                new SingleParameter("possibleException", "A possible exceptions thrown by this function.", true)
             ])
     ];
 

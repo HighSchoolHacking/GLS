@@ -1,0 +1,3 @@
+-
+throw new ExceptionType("foo");
+-
