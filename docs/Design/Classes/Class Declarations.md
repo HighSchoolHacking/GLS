@@ -46,6 +46,8 @@ class end
 
 class start : Point implements ICoords
 class end
+
+class start : Square extends Shape implements IPoint ICoords
 ```
 
 ### CSharp
@@ -66,25 +68,28 @@ class Shape : Measurements<Point>
 class Point : ICoords
 {
 }
+
+class Square : Shape, IPoint, ICoords
+{
+}
 ```
 
 ### Java
 
 ```java
-class Point
-{
+class Point {
 }
 
-class Measurements<T>
-{
+class Measurements<T> {
 }
 
-class Shape extends Measurements<Point>
-{
+class Shape extends Measurements<Point> {
 }
 
-class Point implements ICoords
-{
+class Point implements ICoords {
+}
+
+class Square extends Shape implements IPoint, ICoords {
 }
 ```
 
@@ -96,6 +101,10 @@ class Point:
 class Measurements:
 
 class Shape(Measurements):
+
+class Point:
+
+class Square(Shape):
 
 ```
 
@@ -109,6 +118,12 @@ class Measurements
 end
 
 class Shape < Measurements
+end
+
+class Point
+end
+
+class Square < Shape
 end
 ```
 
@@ -125,6 +140,9 @@ class Shape extends Measurements<Point> {
 }
 
 class Point implements ICoords {
+}
+
+class Square extends Shape implements IPoint, ICoords {
 }
 ```
 
