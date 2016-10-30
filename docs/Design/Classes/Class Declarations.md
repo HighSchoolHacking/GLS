@@ -6,19 +6,22 @@ This improvement adds support for class declarations to GLS, including:
 
 * Naming a class
 * Declaring any generics *(optional)*
-* Declaring a parent to extend/implement *(optional)*
+* Declaring a parent class to extend *(optional)*
+* Declaring parent interfaces to implement *(optional)*
 
 
 ## Commands
 
 ### `class start`
 
-`class start : classDescriptor [, "extends"/"implements" parentDescriptor]`
+`class start : classDescriptor [ "extends" parentClassDescriptor] [ "implements" parentInterfaceName1 parentInterfaceName2 parentInterfaceName3 ...] `
 
 Starting a class declaration will be done with the `class start` command. 
 * The first parameter (required) will be the class' descriptor.
-* The second parameter (optional) will be whether to extend or implement.
-* The third parameter (optional) will be a parent's descriptor.
+* The second parameter (optional) will be the keyword "extends".
+* The third parameter (optional) will be the parent class' descriptor.
+* The fourth parameter (optional) will be the keyword "implements".
+* The fifth parameter on (optional) will be the names of interfaces to implement from.
 
 A class descriptor is a class name and, optionally, any number of names of generics.
 
@@ -145,7 +148,12 @@ class Point implements ICoords {
         <tr>
             <td>DeclareExtendsLeft</td>
             <td>string</td>
-            <td>Start of a parent declaration within a class declaration.</td>
+            <td>Start of a parent class declaration within a class declaration.</td>
+        </tr>
+        <tr>
+            <td>DeclareImplements</td>
+            <td>string</td>
+            <td>Start of a parent interface declaration within a class declaration.</td>
         </tr>
         <tr>
             <td>DeclareExtendsRight</td>
@@ -181,6 +189,7 @@ class Point implements ICoords {
             <th>CSharp</th>
             <td><code>"class "</code></td>
             <td><code>" : "</code></td>
+            <td><code>" : "</code></td>
             <td><code>""</code></td>
             <td><code>"\n{"</code></td>
             <td><code>"}"</code></td>
@@ -188,7 +197,8 @@ class Point implements ICoords {
         <tr>
             <th>Java</th>
             <td><code>"class "</code></td>
-            <td><code>" extends " or " implements "</code></td>
+            <td><code>" extends "</code></td>
+            <td><code>" implements "</code></td>
             <td><code>""</code></td>
             <td><code>"{"</code></td>
             <td><code>"}"</code></td>
@@ -197,6 +207,7 @@ class Point implements ICoords {
             <th>Python</th>
             <td><code>"def "</code></td>
             <td><code>"("</code></td>
+            <td><code>""</code></td>
             <td><code>")"</code></td>
             <td><code>":"</code></td>
             <td><code>""</code></td>
@@ -207,12 +218,14 @@ class Point implements ICoords {
             <td><code>" < "</code></td>
             <td><code>""</code></td>
             <td><code>""</code></td>
+            <td><code>""</code></td>
             <td><code>"end"</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
             <td><code>"class "</code></td>
-            <td><code>" extends" or " implements "</code></td>
+            <td><code>" extends "</code></td>
+            <td><code>" implements "</code></td>
             <td><code>""</code></td>
             <td><code>"{"</code></td>
             <td><code>"}"</code></td>
@@ -222,8 +235,8 @@ class Point implements ICoords {
 
 ### Errata
 
-* Some languages such as Java and TypeScript do not support multiple inheritance, so GLS will not.
+* Some languages such as Java and TypeScript do not support multiple class inheritance, so GLS will not.
 * Interfaces do not exist in Python, so marking a class as implementing one is currently out of scope.
 * Adding modifiers such as `"extends"` to generics is currently out of scope.
 * Duck-typed languages such as Ruby and Python have no need for generics, so GLS will skip printing generic information in them.
-* Trying to implement interfaces in Python or Ruby will print nothing.
+* Python and Ruby do not support interfaces, so GLS will not print any information related to implementing them.
