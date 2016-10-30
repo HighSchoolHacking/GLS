@@ -18,8 +18,8 @@ This improvement adds support for class declarations to GLS, including:
 
 Starting a class declaration will be done with the `class start` command. 
 * The first parameter (required) will be the class' descriptor.
-* If there is a parent class the second and third parameters will be "extends" and the parent class' descriptor, respectively.
-* If there are interfaces to implement the fourth parameter will be "implements" and all following parameters will be the interface's names.
+* Optionally a parent class can be declared by typing "extends" followed by the parent class' descriptor.
+* Optionally interfaces to implement can be declared by typing "implements" followed by the interace's names.
 
 A class descriptor is a class name and, optionally, any number of names of generics.
 
