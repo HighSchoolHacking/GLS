@@ -14,14 +14,12 @@ This improvement adds support for class declarations to GLS, including:
 
 ### `class start`
 
-`class start : classDescriptor [ "extends" parentClassDescriptor] [ "implements" parentInterfaceName1 parentInterfaceName2 parentInterfaceName3 ...] `
+`class start : classDescriptor [ extends parentClassDescriptor] [ implements parentInterfaceName1 parentInterfaceName2 parentInterfaceName3 ...] `
 
 Starting a class declaration will be done with the `class start` command. 
 * The first parameter (required) will be the class' descriptor.
-* The second parameter (optional) will be the keyword "extends".
-* The third parameter (optional) will be the parent class' descriptor.
-* The fourth parameter (optional) will be the keyword "implements".
-* The fifth parameter on (optional) will be the names of interfaces to implement from.
+* If there is a parent class the second and third parameters will be "extends" and the parent class' descriptor, respectively.
+* If there are interfaces to implement the fourth parameter will be "implements" and all following parameters will be the interface's names.
 
 A class descriptor is a class name and, optionally, any number of names of generics.
 
@@ -44,10 +42,10 @@ class end
 class start : Shape extends Measurements<Point>
 class end
 
-class start : Point implements ICoords
+class start : Point implements ICoordinates
 class end
 
-class start : Square extends Shape implements IPoint ICoords
+class start : Square extends Shape implements IPoint ICoordinates
 ```
 
 ### CSharp
@@ -65,11 +63,11 @@ class Shape : Measurements<Point>
 {
 }
 
-class Point : ICoords
+class Point : ICoordinates
 {
 }
 
-class Square : Shape, IPoint, ICoords
+class Square : Shape, IPoint, ICoordinates
 {
 }
 ```
@@ -86,10 +84,10 @@ class Measurements<T> {
 class Shape extends Measurements<Point> {
 }
 
-class Point implements ICoords {
+class Point implements ICoordinates {
 }
 
-class Square extends Shape implements IPoint, ICoords {
+class Square extends Shape implements IPoint, ICoordinates {
 }
 ```
 
@@ -139,10 +137,10 @@ class Measurements<T> {
 class Shape extends Measurements<Point> {
 }
 
-class Point implements ICoords {
+class Point implements ICoordinates {
 }
 
-class Square extends Shape implements IPoint, ICoords {
+class Square extends Shape implements IPoint, ICoordinates {
 }
 ```
 
@@ -257,4 +255,4 @@ class Square extends Shape implements IPoint, ICoords {
 * Interfaces do not exist in Python, so marking a class as implementing one is currently out of scope.
 * Adding modifiers such as `"extends"` to generics is currently out of scope.
 * Duck-typed languages such as Ruby and Python have no need for generics, so GLS will skip printing generic information in them.
-* Python and Ruby do not support interfaces, so GLS will not print any information related to implementing them.
+* Some languages do not support interfaces, so GLS will not print any information related to implementing them in these languages.
