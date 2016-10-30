@@ -6,18 +6,19 @@ This improvement adds support for class declarations to GLS, including:
 
 * Naming a class
 * Declaring any generics *(optional)*
-* Declaring a class to extend *(optional)*
+* Declaring a parent to extend/implement *(optional)*
 
 
 ## Commands
 
 ### `class start`
 
-`class start` `:` `classDescriptor`*`[, parentClassDescriptor]`*
+`class start : classDescriptor [, "extends"/"implements" parentDescriptor]`
 
 Starting a class declaration will be done with the `class start` command. 
 * The first parameter (required) will be the class' descriptor.
-* The second parameter (optional) will be a parent class' descriptor.
+* The second parameter (optional) will be whether to extend or implement.
+* The third parameter (optional) will be a parent's descriptor.
 
 A class descriptor is a class name and, optionally, any number of names of generics.
 
@@ -37,7 +38,10 @@ class end
 class start : Measurements<T> 
 class end
 
-class start : Shape Measurements<Point>
+class start : Shape extends Measurements<Point>
+class end
+
+class start : Point implements ICoords
 class end
 ```
 
@@ -55,6 +59,10 @@ class Measurements<T>
 class Shape : Measurements<Point>
 {
 }
+
+class Point : ICoords
+{
+}
 ```
 
 ### Java
@@ -69,6 +77,10 @@ class Measurements<T>
 }
 
 class Shape extends Measurements<Point>
+{
+}
+
+class Point implements ICoords
 {
 }
 ```
@@ -108,6 +120,9 @@ class Measurements<T> {
 
 class Shape extends Measurements<Point> {
 }
+
+class Point implements ICoords {
+}
 ```
 
 
@@ -130,12 +145,12 @@ class Shape extends Measurements<Point> {
         <tr>
             <td>DeclareExtendsLeft</td>
             <td>string</td>
-            <td>Start of a parent class declaration within a class declaration.</td>
+            <td>Start of a parent declaration within a class declaration.</td>
         </tr>
         <tr>
             <td>DeclareExtendsRight</td>
             <td>string</td>
-            <td>End of a parent class declaration within a class declaration.</td>
+            <td>End of a parent declaration within a class declaration.</td>
         </tr>
         <tr>
             <td>DeclareStartRight</td>
@@ -164,43 +179,43 @@ class Shape extends Measurements<Point> {
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td>`"class "`</td>
-            <td>`" : "`</td>
-            <td>`""`</td>
-            <td>`"\n{"`</td>
-            <td>`"}"`</td>
+            <td><code>"class "</code></td>
+            <td><code>" : "</code></td>
+            <td><code>""</code></td>
+            <td><code>"\n{"</code></td>
+            <td><code>"}"</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td>`"class "`</td>
-            <td>`" extends "`</td>
-            <td>`""`</td>
-            <td>`"{"`</td>
-            <td>`"}"`</td>
+            <td><code>"class "</code></td>
+            <td><code>" extends " or " implements "</code></td>
+            <td><code>""</code></td>
+            <td><code>"{"</code></td>
+            <td><code>"}"</code></td>
         </tr>
         <tr>
             <th>Python</th>
-            <td>`"def "`</td>
-            <td>`"("`</td>
-            <td>`")"`</td>
-            <td>`":"`</td>
-            <td>`""`</td>
+            <td><code>"def "</code></td>
+            <td><code>"("</code></td>
+            <td><code>")"</code></td>
+            <td><code>":"</code></td>
+            <td><code>""</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
-            <td>`"class "`</td>
-            <td>`" < "`</td>
-            <td>`""`</td>
-            <td>`""`</td>
-            <td>`"end"`</td>
+            <td><code>"class "</code></td>
+            <td><code>" < "</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>"end"</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td>`"class "`</td>
-            <td>`" extends"`</td>
-            <td>`""`</td>
-            <td>`"{"`</td>
-            <td>`"}"`</td>
+            <td><code>"class "</code></td>
+            <td><code>" extends" or " implements "</code></td>
+            <td><code>""</code></td>
+            <td><code>"{"</code></td>
+            <td><code>"}"</code></td>
         </tr>
     </tbody>
 </table>
@@ -211,3 +226,4 @@ class Shape extends Measurements<Point> {
 * Interfaces do not exist in Python, so marking a class as implementing one is currently out of scope.
 * Adding modifiers such as `"extends"` to generics is currently out of scope.
 * Duck-typed languages such as Ruby and Python have no need for generics, so GLS will skip printing generic information in them.
+* Trying to implement interfaces in Python or Ruby will print nothing.
