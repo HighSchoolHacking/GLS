@@ -69,6 +69,7 @@ export class Java extends CLikeLanguage {
             "number": "double"
         };
         classes.declareExtendsLeft = " extends ";
+        classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
     }

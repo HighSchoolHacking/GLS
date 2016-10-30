@@ -31,7 +31,12 @@ export class ClassProperties {
     public declareExtendsLeft: string;
 
     /**
-     * Characters after an inherited class declaration.
+     * Characters before an inherited interface declaration.
+     */
+    public declareImplementsLeft: string;
+
+    /**
+     * Characters after an inheritance declaration.
      */
     public declareExtendsRight: string;
 

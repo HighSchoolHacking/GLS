@@ -19,7 +19,7 @@ class start : Measurements<T>
     constructor end
 class end
 
-class start : Shape Measurements<Point>
+class start : Shape extends Measurements<Point>
     constructor start : Shape points Point[]
         comment line : ...
     constructor end

@@ -1,4 +1,4 @@
 -
-class start : aaa bbb<ccc>
+class start : aaa extends bbb<ccc>
 class end
 -

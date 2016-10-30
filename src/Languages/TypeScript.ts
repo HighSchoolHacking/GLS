@@ -70,6 +70,7 @@ export class TypeScript extends CLikeLanguage {
         classes.constructorKeyword = "constructor";
         classes.constructorUsesKeyword = true;
         classes.declareExtendsLeft = " extends ";
+        classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
     }

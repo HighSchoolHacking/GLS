@@ -13,7 +13,8 @@ export class ClassStartCommand extends Command {
      */
     private static parameters: Parameter[] = [
         new SingleParameter("classDescriptor", "The class name and optional generics.", true),
-        new SingleParameter("parentClassDescriptor", "A parent class name and optional generics.", false)
+        new SingleParameter("extendMethod", "Whether to extend or implement from an interface.", false),
+        new SingleParameter("parentDescriptor", "A parent class name and optional generics.", false)
     ];
 
     /**
@@ -35,9 +36,21 @@ export class ClassStartCommand extends Command {
         line += this.language.properties.classes.declareStartLeft;
         line += this.context.convertCommon("type", parameters[1]);
 
-        if (parameters.length === 3) {
-            line += this.language.properties.classes.declareExtendsLeft;
-            line += this.context.convertCommon("type", parameters[2]);
+        if (parameters.length === 4) {
+
+            if (parameters[2] === "implements") {
+
+                if (this.language.properties.interfaces.supported === false) {
+                    return LineResults.newSingleLine("", false);
+                }
+                line += this.language.properties.classes.declareImplementsLeft;
+            }
+
+            else {
+                line += this.language.properties.classes.declareExtendsLeft;
+            }
+
+            line += this.context.convertCommon("type", parameters[3]);
             line += this.language.properties.classes.declareExtendsRight;
         }
 
