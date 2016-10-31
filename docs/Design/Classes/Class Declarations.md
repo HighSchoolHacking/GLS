@@ -14,12 +14,12 @@ This improvement adds support for class declarations to GLS, including:
 
 ### `class start`
 
-`class start : classDescriptor [ extends parentClassDescriptor] [ implements parentInterfaceName1 parentInterfaceName2 parentInterfaceName3 ...] `
+`class start : classDescriptor[ extends parentClassDescriptor][ implements parentInterfaceName1 parentInterfaceName2 parentInterfaceName3 ...] `
 
 Starting a class declaration will be done with the `class start` command. 
 * The first parameter (required) will be the class' descriptor.
 * Optionally, a parent class can be declared by typing "extends" followed by the parent class' descriptor.
-* Optionally, interfaces to implement can be declared by typing "implements" followed by the interace's names.
+* Optionally, interfaces to implement can be declared by typing "implements" followed by the interfaces's names.
 
 A class descriptor is a class name and, optionally, any number of names of generics.
 
@@ -46,6 +46,7 @@ class start : Point implements ICoordinates
 class end
 
 class start : Square extends Shape implements IPoint ICoordinates
+class end
 ```
 
 ### CSharp
