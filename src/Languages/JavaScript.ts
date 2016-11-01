@@ -36,7 +36,13 @@ export class JavaScript extends CLikeLanguage {
      * @param arrays   A property container for metadata on arrays.
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
-        // Your code here
+        arrays.className = "Array";
+        arrays.initializeAsNew = true;
+        arrays.initializeViaStatic = true;
+        arrays.length = new NativeCallProperties(
+            "length",
+            NativeCallScope.Member,
+            NativeCallType.Property);
     }
 
     /**
@@ -45,7 +51,7 @@ export class JavaScript extends CLikeLanguage {
      * @param booleans   A property container for metadata on booleans.
      */
     protected generateBooleanProperties(booleans: BooleanProperties): void {
-        // Your code here
+        booleans.className = "";
     }
 
     /**
@@ -75,7 +81,25 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateCommentProperties(comments: CommentProperties): void {
         super.generateCommentProperties(comments);
-        // Your code here
+
+        comments.docEnd = " */";
+        comments.docLineEnd = "";
+        comments.docLineStart = " * ";
+        comments.docTagAliases = {
+            "note": "remarks",
+            "parameter": "param",
+            "returns": "returns",
+            "summary": "",
+            "todo": "todo"
+        };
+        comments.docTagsWithParameters = {
+            "summary": "\0",
+            "parameter": ""
+        };
+        comments.docTagEnd = " ";
+        comments.docTagSpaceAfter = "  ";
+        comments.docTagStart = "@";
+        comments.docStart = "/**";
     }
 
     /**
@@ -85,7 +109,10 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateConditionalProperties(conditionals: ConditionalProperties): void {
         super.generateConditionalProperties(conditionals);
-        // Your code here
+
+        conditionals.continueLeft = "} ";
+        conditionals.continueRight = " {";
+        conditionals.startRight = ") {";
     }
 
     /**
@@ -94,7 +121,21 @@ export class JavaScript extends CLikeLanguage {
      * @param dictionaries   A property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        // Your code here
+        dictionaries.className = "Object";
+        dictionaries.containsKey = new NativeCallProperties(
+            "hasOwnProperty",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties(
+            "Object.keys",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        dictionaries.initializeEnd = "}";
+        dictionaries.initializePairComma = ",";
+        dictionaries.initializePairLeft = "";
+        dictionaries.initializePairMiddle = ": ";
+        dictionaries.initializePairRight = "";
+        dictionaries.initializeStart = "{";
     }
 
     /**
@@ -104,7 +145,10 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateEnumProperties(enums: EnumProperties): void {
         super.generateEnumProperties(enums);
-        // Your code here
+
+        enums.declareStartLeft = "var ";
+        enums.declareStartRight = " = {"
+        enums.declareValueLeft = ": ";
     }
 
     /**
@@ -114,7 +158,6 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
         super.generateExceptionProperties(exceptions);
-        // Your code here
     }
 
     /**
@@ -124,7 +167,10 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
-        // Your code here
+        
+        functions.defineStartLeft = "function ";
+        functions.defineStartRight = " {";
+        functions.explicitReturns = false;
     }
 
     /**
@@ -133,7 +179,8 @@ export class JavaScript extends CLikeLanguage {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        // Your code here
+        general.extension = ".js";
+        general.name = "JavaScript";
     }
 
     /**
@@ -142,7 +189,12 @@ export class JavaScript extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        // Your code here
+        imports.case = CaseStyle.FileSystem;
+        imports.explicit = true;
+        imports.itemsBeforePackage = true;
+        imports.left = "import { ";
+        imports.middle = " } from \"";
+        imports.right = "\";";
     }
 
     /**
@@ -152,7 +204,8 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
-        // Your code here
+        
+         lambdas.functionMiddle = ") => ";
     }
 
     /**
@@ -161,7 +214,19 @@ export class JavaScript extends CLikeLanguage {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListProperties(lists: ListProperties): void {
-        // Your code here
+        lists.asArray = true;
+        lists.length = new NativeCallProperties(
+            "length",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+        lists.pop = new NativeCallProperties(
+            "pop",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+        lists.push = new NativeCallProperties(
+            "push",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**
@@ -180,12 +245,7 @@ export class JavaScript extends CLikeLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.requiredImports = {};
-        math.mathName = "Math";
+        // Your code here
     }
 
     /**
@@ -194,7 +254,7 @@ export class JavaScript extends CLikeLanguage {
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "Number";
+        // Your code here
     }
 
     /**
@@ -204,9 +264,7 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateOperatorProperties(operators: OperatorProperties): void {
         super.generateOperatorProperties(operators);
-
-        operators.equalTo = "===";
-        operators.notEqualTo = "!==";
+        // Your code here
     }
 
     /**
@@ -215,7 +273,7 @@ export class JavaScript extends CLikeLanguage {
      * @param output   A property container for metadata on output.
      */
     protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "console.log";
+        // Your code here
     }
 
     /**
@@ -224,11 +282,7 @@ export class JavaScript extends CLikeLanguage {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
-        parameters.restDeclarationAfter = false;
-        parameters.restDeclarationType = false;
-        parameters.restKeywordLeft = "...";
-        parameters.restKeywordMiddle = "";
-        parameters.restKeywordRight = "";
+        // Your code here
     }
 
     /**
@@ -238,19 +292,7 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
-        style.fileStartLines = ["namespace {0} {"];
-
-        style.mainEndLines = ["})();"];
-        style.mainIndentation = 1;
-        style.mainStartLines = [
-            "(() => {"
-        ];
-
-        style.printEnd = ")";
-        style.printStart = "console.log(";
+        // Your code here
     }
 
     /**
@@ -260,16 +302,7 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
-
-        strings.className = "String";
-        strings.index = new NativeCallProperties(
-            "indexOf",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        // Your code here
     }
 
     /**
@@ -278,12 +311,7 @@ export class JavaScript extends CLikeLanguage {
      * @param strings   A property container for metadata on string formatting.
      */
     public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "`";
-        formatting.formatRight = "`";
-        formatting.formatInputLeft = "${";
-        formatting.formatInputRight = "}";
-        formatting.inputTypes = false;
-        formatting.useInterpolation = true;
+        // Your code here
     }
 
     /**
@@ -293,20 +321,6 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateVariableProperties(variables: VariableProperties): void {
         super.generateVariableProperties(variables);
-
-        variables.aliases = {
-            "infinity": "Infinity"
-        };
-        variables.castLeft = "<";
-        variables.castRight = ">";
-        variables.declaration = "var ";
-        variables.explicitTypes = false;
-        variables.null = "undefined";
-        variables.typesAfterName = false;
-        variables.isNullLeft = "typeof";
-        variables.isNotNullLeft = "typeof";
-        variables.isNotNullMiddle = "!=";
-        variables.isNullMiddle = "==";
-        variables.nullRight = "null";
+        // Your code here
     }
 }
