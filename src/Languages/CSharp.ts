@@ -220,11 +220,12 @@ export class CSharp extends CLikeLanguage {
         interfaces.declareExtendsLeft = " : ";
         interfaces.declareExtendsRight = ", ";
         interfaces.declareEnd = "}";
-        interfaces.supported = true;
         interfaces.declareMethodLeft = "";
         interfaces.declareMethodMiddle = "(";
         interfaces.declareMethodRight = ")";
+        interfaces.declareImplementsExplicit = false;
         interfaces.methodTypeAfter = false;
+        interfaces.supported = true;
     }
 
     /**

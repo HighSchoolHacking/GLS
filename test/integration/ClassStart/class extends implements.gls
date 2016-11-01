@@ -1,0 +1,4 @@
+-
+class start : aaa extends bbb implements ccc ddd eee
+class end
+-

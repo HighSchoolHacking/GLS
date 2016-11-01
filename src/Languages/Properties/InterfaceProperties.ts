@@ -43,6 +43,11 @@ export class InterfaceProperties {
     public declareMethodRight: string;
 
     /**
+     * Whether the implements keyword needs to be explicitly called after a class has been extended.
+     */
+    public declareImplementsExplicit: boolean;
+
+    /**
      * Whether the method type is declared after the method is define.
      */
     public methodTypeAfter: boolean;
