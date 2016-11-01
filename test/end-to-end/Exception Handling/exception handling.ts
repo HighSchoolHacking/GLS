@@ -1,11 +1,9 @@
 -
 try {
     // ...
-}
-catch (exceptionType foo) {
+} catch (foo) {
     // ...
-}
-finally {
+} finally {
     // ...
 }
 -

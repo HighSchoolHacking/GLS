@@ -177,6 +177,8 @@ export class CSharp extends CLikeLanguage {
         exceptions.tryStartRight = "\n{";
         exceptions.finallyStartRight = "\n{";
         exceptions.catchStartRight = ")\n{";
+
+        exceptions.blockEnd = "}\n";
     }
 
     /**

@@ -1,11 +1,9 @@
 -
 begin
     # ...
-
-rescue exceptionType => foo
+rescue ExceptionType => foo
     # ...
-
 ensure
     # ...
-
+end
 -

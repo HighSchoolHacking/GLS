@@ -3,7 +3,7 @@ try
 {
     // ...
 }
-catch (exceptionType foo)
+catch (ExceptionType foo)
 {
     // ...
 }

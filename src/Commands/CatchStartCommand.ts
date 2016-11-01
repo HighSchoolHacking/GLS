@@ -13,7 +13,7 @@ export class CatchStartCommand extends Command {
      */
     private static parameters: Parameter[] = [
         new SingleParameter("exception", "Target exception.", true),
-        new SingleParameter("alias", "Alias for target exception.", false)
+        new SingleParameter("alias", "Alias for target exception.", true)
     ];
 
     /**
@@ -30,17 +30,26 @@ export class CatchStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.exceptions.catch;
-        line += this.language.properties.exceptions.catchStartMiddle;
-        line += parameters[1];
+        let lines = [new CommandResult("", -1)];
+        let line: CommandResult;
 
-        if (parameters.length === 3) {
-            line += this.language.properties.exceptions.catchStartLink;
-            line += parameters[2];
+        if (!this.language.properties.style.separateBraceLines) {
+            lines[0].text = "\0";
+            lines.push(new CommandResult("", 0));
         }
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.exceptions.catchStartRight, 1);
+        this.addLineEnder(lines, this.language.properties.exceptions.blockEnd, 0);
+
+        line = lines[lines.length - 1];
+        line.text += this.language.properties.exceptions.catch;
+        line.text += this.language.properties.exceptions.catchStartMiddle;
+        if (this.language.properties.exceptions.requiresExceptionType) {
+            line.text += parameters[1];
+            line.text += this.language.properties.exceptions.catchStartLink;
+        }
+        line.text += parameters[2];
+
+        this.addLineEnder(lines, this.language.properties.exceptions.catchStartRight, 2);
 
         return new LineResults(lines, false);
     }

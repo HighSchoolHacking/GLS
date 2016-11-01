@@ -115,7 +115,7 @@ export abstract class CLikeLanguage extends Language {
         exceptions.try = "try";
         exceptions.variablePrefix = "";
 
-        exceptions.blockEnd = "}";
+        exceptions.blockEnd = "} ";
         exceptions.tryStartRight = " {";
         exceptions.finallyStartRight = " {";
         exceptions.catchStartMiddle = " (";
@@ -124,6 +124,8 @@ export abstract class CLikeLanguage extends Language {
 
         exceptions.throwExceptionMiddle = "(";
         exceptions.throwExceptionRight = ")";
+
+        exceptions.requiresExceptionType = true;
     }
 
     /**

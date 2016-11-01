@@ -2,7 +2,7 @@
 try start
     comment line : ...
 try end
-catch start : exceptionType foo
+catch start : ExceptionType foo
     comment line : ...
 catch end
 finally start

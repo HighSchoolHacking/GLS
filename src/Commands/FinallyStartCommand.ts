@@ -13,10 +13,20 @@ export class FinallyStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.exceptions.finally;
+        let lines = [new CommandResult("", -1)];
+        let line: CommandResult;
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.exceptions.finallyStartRight, 1);
+        if (!this.language.properties.style.separateBraceLines) {
+            lines[0].text = "\0";
+            lines.push(new CommandResult("", 0));
+        }
+
+        this.addLineEnder(lines, this.language.properties.exceptions.blockEnd, 0);
+
+        line = lines[lines.length - 1];
+        line.text += this.language.properties.exceptions.finally;
+
+        this.addLineEnder(lines, this.language.properties.exceptions.finallyStartRight, 2);
 
         return new LineResults(lines, false);
     }

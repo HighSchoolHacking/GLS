@@ -1,11 +1,8 @@
 -
 try:
     # ...
-
-except exceptionType as foo:
+except ExceptionType as foo:
     # ...
-
 finally:
     # ...
-
 -

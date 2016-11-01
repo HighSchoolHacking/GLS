@@ -173,6 +173,8 @@ export class TypeScript extends CLikeLanguage {
         super.generateExceptionProperties(exceptions);
 
         exceptions.className = "Error";
+
+        exceptions.requiresExceptionType = false;
     }
 
     /**

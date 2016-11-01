@@ -121,6 +121,8 @@ export abstract class PythonicLanguage extends Language {
 
         exceptions.throwExceptionMiddle = "(";
         exceptions.throwExceptionRight = ")";
+
+        exceptions.requiresExceptionType = true;
     }
 
     /**
@@ -131,7 +133,6 @@ export abstract class PythonicLanguage extends Language {
     protected generateFunctionProperties(functions: FunctionProperties): void {
         functions.defineStartLeft = "def ";
         functions.defineStartRight = ":";
-
         functions.requiresExceptions = false;
     }
 

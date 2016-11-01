@@ -71,4 +71,9 @@ export class ExceptionProperties {
      * End of throwexception line;
      */
     public throwExceptionRight: string;
+
+    /**
+     * Whether a langauge requires exception type.
+     */
+    public requiresExceptionType: boolean;
 }

@@ -35,7 +35,7 @@ export class FunctionProperties {
     /**
      * Precedes exceptions that the funtion throws.
      */
-    public functionThrows: string
+    public functionThrows: string;
 
     /**
      * Whether langauge requires functin to declare possible exceptions.
