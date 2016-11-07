@@ -109,7 +109,7 @@ export class ForEachPairStartCommand extends Command {
         line += this.language.properties.loops.forEachRight;
 
         output = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(output, this.language.properties.loops.forEachRight, 1);
 
         if (this.language.properties.loops.forEachPairsAsPair && this.language.properties.variables.declarationRequired) {
             this.addPairKeyLookup(parameters, output);
