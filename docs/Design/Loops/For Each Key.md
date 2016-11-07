@@ -1,6 +1,6 @@
 # For Each Key
 
-A loop that itterates over a dictionary by key.
+A loop that iterates over a dictionary by key.
 
 ## Commands
 
@@ -9,9 +9,8 @@ A loop that itterates over a dictionary by key.
 `for each key start : container key string`
 
 Starts a for each key block.
-The first parameter is the container to be itterated over.
-The second parameter is the itterator variable.
-The third parameter is the type of the itterator variable.
+The first parameter is the container to be iterated over.
+The second parameter and third parameters are the iterator variable and its type, respectivly.
 
 ## Usage
 ```
@@ -50,7 +49,7 @@ container.each_key { |key|
 
 ### TypeScript
 ```typescript
-for (let key: string in container) {
+for (let key in container) {
     // ...
 }
 ```
@@ -71,7 +70,7 @@ for (let key: string in container) {
             <td>Starts the first line of for each key block</td>
         </tr>
         <tr>
-            <td>ForEachKeyStartItteration</td>
+            <td>ForEachKeyStartIteration</td>
             <td><code>string</code></td>
             <td>Starts the iteration statement.</td>
         </tr>
@@ -104,7 +103,7 @@ for (let key: string in container) {
     <thead>
         <th>Language</th>
         <th>ForEachKeyStartLeft</th>
-        <th>ForEachKeyStartItteration</th>
+        <th>ForEachKeyStartIteration</th>
         <th>ForEachKeyStartMiddle</th>
     </thead>
     <tbody>
