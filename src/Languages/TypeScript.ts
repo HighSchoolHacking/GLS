@@ -287,6 +287,8 @@ export class TypeScript extends CLikeLanguage {
         loops.forEachStartItteration = " (";
         loops.forEachStartSeparator = " of ";
         loops.forEachStartRight = ") {";
+
+        loops.iterationTypeDeclarationRequired = false;
     }
 
     /**

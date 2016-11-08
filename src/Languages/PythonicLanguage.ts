@@ -167,7 +167,7 @@ export abstract class PythonicLanguage extends Language {
         loops.foreach = "for";
         loops.forEachMiddle = " in ";
         loops.rangedForLoops = true;
-
+        loops.iterationTypeDeclarationRequired = false;
         loops.forEachStartItteration = " ";
     }
 

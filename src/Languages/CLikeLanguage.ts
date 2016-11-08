@@ -163,6 +163,7 @@ export abstract class CLikeLanguage extends Language {
         loops.for = "for";
         loops.forEachEnd = "}";
         loops.forEachRight = ") {";
+        loops.iterationTypeDeclarationRequired = true;
     }
 
     /**

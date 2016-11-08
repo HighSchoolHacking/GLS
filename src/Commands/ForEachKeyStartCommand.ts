@@ -67,12 +67,13 @@ export class ForEachKeyStartCommand extends Command {
 
         line += this.language.properties.loops.forEachStartItteration;
 
-        if (this.language.properties.variables.declarationRequired) {
+        if (this.language.properties.loops.iterationTypeDeclarationRequired) {
             let variableInline = this.context.convertParsed(["variable inline", parameters[2], parameters[3]]);
 
             line += this.language.properties.variables.declaration;
             line += variableInline.commandResults[0].text;
         } else {
+            line += this.language.properties.variables.declaration;
             line += parameters[2];
         }
 
