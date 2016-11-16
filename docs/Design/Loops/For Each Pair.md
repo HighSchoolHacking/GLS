@@ -55,7 +55,7 @@ container.each { |key, value|
 
 ### TypeScript
 ```typescript
-for (let key: string in container) {
+for (let key in container) {
     let value: number = container[key];
     // ...
 }
