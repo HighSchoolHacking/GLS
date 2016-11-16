@@ -116,9 +116,4 @@ export class LoopProperties {
      * How to end a Pythonic ranged loop's initial line.
      */
     public rangedForLoopsRight: string;
-
-    /**
-     * Whether loop iterator variables must be initialized with a type.
-     */
-    public iterationTypeDeclarationRequired: boolean;
 }

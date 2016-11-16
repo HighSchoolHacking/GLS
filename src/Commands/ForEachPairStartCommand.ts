@@ -94,11 +94,7 @@ export class ForEachPairStartCommand extends Command {
             }
 
             line += this.language.properties.variables.declaration;
-            if (this.language.properties.loops.iterationTypeDeclarationRequired) {
-                line += this.context.convertParsed(["variable inline", iteratorName, typeName]).commandResults[0].text;
-            } else {
-                line += iteratorName;
-            }
+            line += this.context.convertParsed(["variable inline", iteratorName, typeName]).commandResults[0].text;
         } else {
             line += parameters[3];
 

@@ -1,4 +1,4 @@
 -
-for (let key in container) {
+for (let key: string in container) {
 }
 -
