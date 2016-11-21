@@ -73,7 +73,7 @@ export class LoopProperties {
     public forEachPairsRetrieveValue: string;
 
     /**
-     * How to end a foreach loop's initial line.     
+     * How to end a foreach loop's initial line.
      */
     public forEachRight: string;
 
@@ -82,7 +82,7 @@ export class LoopProperties {
      */
     public forEachStartItteration: string;
 
-   /**
+    /**
      * Begins a for each start statement
      */
     public forEachStartLeft: string;
