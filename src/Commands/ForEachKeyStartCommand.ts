@@ -47,7 +47,7 @@ export class ForEachKeyStartCommand extends Command {
      */
     public renderForEachAsMethod(parameters: string[]): LineResults {
         let output: string = parameters[1];
-        output += this.language.properties.loops.forEachGetKeys;        
+        output += this.language.properties.loops.forEachGetKeys;
         output += parameters[2];
         output += this.language.properties.loops.forEachRight;
 
@@ -72,7 +72,7 @@ export class ForEachKeyStartCommand extends Command {
             line += this.language.properties.variables.declaration;
             line += variableInline.commandResults[0].text;
         } else {
-             line += parameters[2];
+            line += parameters[2];
         }
 
         line += this.language.properties.loops.forEachMiddle;
