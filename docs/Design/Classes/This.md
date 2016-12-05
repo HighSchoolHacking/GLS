@@ -8,7 +8,7 @@ Keyword for an object to refer to itself.
 
 `this`
 
-Outputs the given languages equivilent to this.
+Outputs the keyword the language uses to refer to itself.
 
 ## Usage
 
@@ -58,9 +58,9 @@ this
     </thead>
     <tbody>
         <tr>
-            <td>This Left</td>
+            <td>This</td>
             <td><code>string</code></td>
-            <td>Starts this statement.</td>
+            <td>Keyword for self reference.</td>
         </tr>
     </tbody>
 </table>
@@ -70,7 +70,7 @@ this
 <table>
     <thead>
         <th>Language</th>
-        <th>This Left</th>
+        <th>This</th>
     </thead>
     <tbody>
         <tr>
