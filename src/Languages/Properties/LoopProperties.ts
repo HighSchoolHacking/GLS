@@ -123,12 +123,12 @@ export class LoopProperties {
     public whileStartLeft: string;
 
     /**
-     * The keyword used for "while".
+     * The middle of a while start statement.
      */
     public whileStartMiddle: string;
 
     /**
-     * The keyword used for "while".
+     * The end of a while start statement".
      */
     public whileStartRight: string;
 }
