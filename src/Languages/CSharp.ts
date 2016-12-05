@@ -299,6 +299,8 @@ export class CSharp extends CLikeLanguage {
         loops.forEachStartItteration = " (";
         loops.forEachStartSeparator = " in ";
         loops.forEachStartRight = ")\n{";
+
+        loops.whileStartRight = ")\n{";
     }
 
     /**

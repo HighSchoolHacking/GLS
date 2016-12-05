@@ -281,6 +281,8 @@ export class Ruby extends PythonicLanguage {
         loops.rangedForLoopsLeft = " in ";
         loops.rangedForLoopsMiddle = "..";
         loops.rangedForLoopsRight = "";
+
+        loops.whileStartRight = "";
     }
 
     /**
