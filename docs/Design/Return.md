@@ -43,7 +43,7 @@ return foo
 ### TypeScript
 
 ```typescript
-return foo
+return foo;
 ```
 
 ## Implementation
