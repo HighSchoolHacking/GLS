@@ -8,7 +8,8 @@ The commands to start and end a while loop.
 
 `while start: foo`
 
-Starts a while loop block. The passed parameter is used as the loop's condition.
+Starts a while loop block.
+The passed parameter is used as the loop's condition.
 
 ### `while end`
 
@@ -72,22 +73,22 @@ while (foo) {
         <tr>
             <td>WhileStartLeft</td>
             <td><code>string</code></td>
-            <td>Left of while start statement.</td>
+            <td>Left of a while start statement.</td>
         </tr>
         <tr>
             <td>WhileStartMiddle</td>
             <td><code>string</code></td>
-            <td>Middle of while start statement.</td>
+            <td>Middle of a while start statement.</td>
         </tr>
         <tr>
             <td>WhileStartRight</td>
             <td><code>string</code></td>
-            <td>Right of while start statement.</td>
+            <td>Right of a while start statement.</td>
         </tr>
         <tr>
             <td>WhileEnd</td>
             <td><code>string</code></td>
-            <td>End of while loop block.</td>
+            <td>End of a while loop block.</td>
         </tr>
     </tbody>
 </table>
