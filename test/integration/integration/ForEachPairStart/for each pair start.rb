@@ -1,0 +1,4 @@
+-
+container.each { |key, value|
+    # ...
+-

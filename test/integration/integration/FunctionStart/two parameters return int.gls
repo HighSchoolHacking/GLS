@@ -1,0 +1,4 @@
+-
+function start : aaa int bbb string ccc boolean
+    comment line : ...
+-
