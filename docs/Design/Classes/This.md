@@ -8,7 +8,7 @@ Keyword for an object to refer to itself.
 
 `this`
 
-Outputs the keyword the language uses to refer to itself.
+Outputs the keyword the an object in a language uses to refer to itself.
 
 ## Usage
 
