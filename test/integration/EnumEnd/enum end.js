@@ -1,4 +1,4 @@
 -
-var Direction = {
+enum Direction {
 }
 -

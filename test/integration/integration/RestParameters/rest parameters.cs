@@ -1,3 +1,0 @@
--
-params string[] aaa
--

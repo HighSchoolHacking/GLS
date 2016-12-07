@@ -1,3 +1,0 @@
--
-let aaa: string = "bbb"
--

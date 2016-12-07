@@ -1,7 +1,0 @@
--
-if start : aaa
-    comment line : ...
-else if start : bbb
-    comment line : ...
-if end
--

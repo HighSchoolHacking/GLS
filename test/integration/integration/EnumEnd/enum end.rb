@@ -1,4 +1,0 @@
--
-class Direction
-end
--

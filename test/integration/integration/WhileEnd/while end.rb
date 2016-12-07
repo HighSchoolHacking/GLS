@@ -1,4 +1,0 @@
--
-while aaa
-end
--

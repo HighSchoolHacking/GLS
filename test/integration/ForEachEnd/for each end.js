@@ -1,4 +1,4 @@
 -
-for (var key in container) {
+for (key in container) {
 }
 -

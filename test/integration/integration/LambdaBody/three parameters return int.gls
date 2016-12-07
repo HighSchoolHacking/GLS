@@ -1,3 +1,0 @@
--
-lambda : int aaa int bbb string ccc boolean { operation: aaa times 7 }
--

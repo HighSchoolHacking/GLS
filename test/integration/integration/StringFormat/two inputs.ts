@@ -1,1 +1,0 @@
-`Foo: ${foo}; Bar: ${bar}`;

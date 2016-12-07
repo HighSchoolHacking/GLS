@@ -1,3 +1,0 @@
--
-(aaa) => Console.WriteLine(aaa)
--

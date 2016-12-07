@@ -1,3 +1,0 @@
--
-require "aaa/bbb"
--

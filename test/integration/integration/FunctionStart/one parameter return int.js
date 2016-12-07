@@ -1,4 +1,0 @@
--
-function aaa(bbb) {
-    // ...
--

@@ -1,1 +1,0 @@
-aaa is not None
