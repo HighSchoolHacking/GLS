@@ -1,3 +1,3 @@
 -
-import { Ccc, Ddd } from "aaa/bbb";
+import { Ccc, Ddd } from "Aaa/Bbb"
 -

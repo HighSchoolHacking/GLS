@@ -1,3 +1,0 @@
--
-protected string Aaa;
--

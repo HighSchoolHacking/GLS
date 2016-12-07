@@ -1,1 +1,0 @@
-String.format("Foo");

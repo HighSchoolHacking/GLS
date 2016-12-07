@@ -1,3 +1,3 @@
 -
-new ["aaa", bbb]
+["aaa", bbb]
 -

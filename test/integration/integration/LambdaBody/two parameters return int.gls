@@ -1,3 +1,0 @@
--
-lambda: int aaa int bbb int { operation: aaa plus bbb }
--

@@ -1,3 +1,0 @@
--
-private aaa: string;
--

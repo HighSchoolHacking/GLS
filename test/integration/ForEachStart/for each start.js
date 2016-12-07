@@ -1,3 +1,3 @@
 -
-for (var fruit of basket) {
+for (var fruit in basket) {
 -

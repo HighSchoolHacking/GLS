@@ -1,3 +1,0 @@
--
-for (string fruit : basket) {
--

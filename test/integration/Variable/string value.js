@@ -1,3 +1,3 @@
 -
-var aaa = "bbb";
+aaa = "bbb"
 -

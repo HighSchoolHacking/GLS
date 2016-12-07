@@ -1,3 +1,0 @@
--
-Direction.Horizontal
--

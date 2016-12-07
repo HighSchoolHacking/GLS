@@ -1,3 +1,0 @@
--
-for fruit in basket:
--
