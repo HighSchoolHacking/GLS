@@ -6,7 +6,8 @@
 
 `file start : name`
 
-Starts file block. The first parameter is the name of the file.
+Starts file block. 
+The first parameter is the name of the file.
 
 ### `file end`
 
