@@ -1,0 +1,3 @@
+-
+{ [i: string]: number }
+-

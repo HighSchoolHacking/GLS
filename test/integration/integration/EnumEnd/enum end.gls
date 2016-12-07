@@ -1,0 +1,4 @@
+-
+enum start : Direction
+enum end
+-

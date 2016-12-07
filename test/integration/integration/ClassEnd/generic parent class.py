@@ -1,0 +1,3 @@
+-
+class aaa(bbb):
+-

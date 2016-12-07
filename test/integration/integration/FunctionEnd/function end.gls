@@ -1,0 +1,5 @@
+-
+function start : aaa void
+    comment line : ...
+function end
+-

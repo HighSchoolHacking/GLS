@@ -1,0 +1,1 @@
+string.Format("Foo");
