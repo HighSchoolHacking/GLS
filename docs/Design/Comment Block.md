@@ -1,6 +1,6 @@
 # Comment Block
 
-These commands create block-style comments.
+These commands are used to create block-style comments.
 
 ## Commands
 
@@ -14,7 +14,8 @@ Begins a comment block.
 
 `comment block : foo`
 
-Creates a line of a comment block. The first parameter is the content of that line of the comment block.
+Creates a line of a comment block. 
+The first parameter is the content of that line of the comment block.
 
 ### `Comment Block End`
 
