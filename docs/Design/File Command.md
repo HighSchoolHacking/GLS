@@ -78,12 +78,12 @@ namespace Program {
         <tr>
             <td>FileStartLeft</td>
             <td><code>string</code></td>
-            <td>Starts file start statement.</td>
+            <td>Starts the file start statement.</td>
         </tr>
         <tr>
             <td>FileStartRight</td>
             <td><code>string</code></td>
-            <td>Ends file start statement.</td>
+            <td>Ends the file start statement.</td>
         </tr>
         <tr>
             <td>FileEnd</td>
