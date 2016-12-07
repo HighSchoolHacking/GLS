@@ -82,12 +82,12 @@ if __name__ == "__main__":
         <tr>
             <td>MainStart</td>
             <td><code>string</code></td>
-            <td>Lines that start main.</td>
+            <td>Lines that start the main block.</td>
         </tr>
         <tr>
             <td>MainEnd</td>
             <td><code>string</code></td>
-            <td>Lines that end main.</td>
+            <td>Lines that end the main block.</td>
         </tr>
     </tbody>
 </table>
