@@ -174,6 +174,10 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
         super.generateExceptionProperties(exceptions);
+
+        exceptions.className = "Error";
+
+        exceptions.requiresExceptionType = false;
     }
 
     /**
