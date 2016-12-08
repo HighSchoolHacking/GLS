@@ -47,17 +47,7 @@ export class InterfaceMethodCommand extends Command {
             return LineResults.newSingleLine(line, false);
         }
 
-        if (this.language.properties.variables.explicitTypes === false) {
-            line += parameters[1];
-            line += this.language.properties.interfaces.declareMethodMiddle;
-            for (let i: number = 3; i < parameters.length; i++) {
-                if (i % 2 === 0) {
-                    line += parameters[i] + ", ";
-                }
-            }
-        }
-
-        else if (this.language.properties.interfaces.methodTypeAfter) {
+        if (this.language.properties.interfaces.methodTypeAfter) {
             line += parameters[1];
             line += this.language.properties.interfaces.declareMethodMiddle;
 
@@ -76,6 +66,14 @@ export class InterfaceMethodCommand extends Command {
             }
 
             line += this.language.properties.interfaces.declareMethodRight + ": " + parameters[2];
+        } 
+        
+        else if (this.language.properties.variables.explicitTypes === false) {
+            line += parameters[1];
+            line += this.language.properties.interfaces.declareMethodMiddle;
+            for (let i: number = 3; i < parameters.length; i += 2) {
+                line += parameters[i];
+            }
         } else {
             line += this.language.properties.interfaces.declareMethodLeft;
             line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;
