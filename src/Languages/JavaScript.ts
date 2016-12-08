@@ -150,9 +150,6 @@ export class JavaScript extends CLikeLanguage {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
-        dictionaries.typeLeft = "{ [i] ";
-        dictionaries.typeMiddle = "= ";
-        dictionaries.typeRight = " }";
     }
 
     /**
@@ -163,7 +160,7 @@ export class JavaScript extends CLikeLanguage {
     protected generateEnumProperties(enums: EnumProperties): void {
         super.generateEnumProperties(enums);
 
-        enums.declareStartLeft = "var ";
+        enums.declareStartLeft = "let ";
         enums.declareStartRight = " = {";
         enums.declareValueLeft = ": ";
         enums.declareLastRight = "";
@@ -410,7 +407,7 @@ export class JavaScript extends CLikeLanguage {
         };
         variables.castLeft = "<";
         variables.castRight = ">";
-        variables.declaration = "var ";
+        variables.declaration = "let ";
         variables.explicitTypes = false;
         variables.null = "undefined";
         variables.typesAfterName = false;

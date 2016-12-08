@@ -1,3 +1,3 @@
 -
-var aaa = "bbb"
+let aaa = "bbb"
 -

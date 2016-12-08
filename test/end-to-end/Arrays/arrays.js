@@ -1,8 +1,8 @@
 -
 // Initialization
-var aaa = [];
-var bbb = [1, 2, 3];
-var ccc = [aaa, ["eee", "fff"]];
+let aaa = [];
+let bbb = [1, 2, 3];
+let ccc = [aaa, ["eee", "fff"]];
 
 // Members
 aaa[0]

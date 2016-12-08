@@ -1,12 +1,12 @@
 -
 // Keys
-for (var key in container) {
+for (let key in container) {
     // ...
 }
 
 // Pairs
-for (var key in container) {
-    var value = container[key];
+for (let key in container) {
+    let value = container[key];
     // ...
 }
 -
