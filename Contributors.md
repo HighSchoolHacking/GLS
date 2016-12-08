@@ -9,7 +9,7 @@ Groups are in order of commit magnitude.
 * Project lead
 
 
-### [RCOS](https://rcos.io/projects/JoshuaKGoldberg/FullScreenPokemon/profile) RPI Students
+### [RCOS](https://rcos.io/projects/HighSchoolHacking/GLS/profile) RPI Students
 
 * [Carter Gleason](https://github.com/GleasonC4)
     * Fall 2016:
@@ -26,8 +26,17 @@ Groups are in order of commit magnitude.
         * [Interfaces](https://github.com/HighSchoolHacking/GLS/pulls?utf8=%E2%9C%93&q=is%3Apr%20interfaces%20author%3Aben-wolf)
         * [VS Code extension](https://github.com/HighSchoolHacking/VSCode-GLS-Colorizer)
         * JavaScript language support with Carter Gleason
-        
-        
+
+
+### Contributors
+
+* [Andrew Faulds](https://github.com/faulda)
+   * Spring 2016:
+      * [Java fixups](https://github.com/HighSchoolHacking/GLS/pull/23)
+      * [Documentation formatting fixes](https://github.com/HighSchoolHacking/GLS/pull/51/files)
+      * Lambda [design](https://github.com/HighSchoolHacking/GLS/pull/85) and [implementation](https://github.com/HighSchoolHacking/GLS/pull/88)
+
+
 ### Advisors
 
 * Altan Gulen - helped with initial architecture design
