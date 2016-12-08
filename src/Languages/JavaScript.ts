@@ -12,6 +12,7 @@ import { ExceptionProperties } from "./Properties/ExceptionProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
+import { InterfaceProperties } from "./Properties/InterfaceProperties";
 import { LambdaProperties } from "./Properties/LambdaProperties";
 import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
@@ -211,6 +212,25 @@ export class JavaScript extends CLikeLanguage {
         imports.left = "import { ";
         imports.middle = " } from \"";
         imports.right = "\";";
+    }
+
+    /**
+     * Generates metadata on imports.
+     * 
+     * @param imports   A property container for metadata on imports.
+     */
+    protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
+        interfaces.declareStartLeft = "interface ";
+        interfaces.declareStartRight = " {";
+        interfaces.declareExtendsLeft = " extends ";
+        interfaces.declareExtendsRight = ", ";
+        interfaces.declareEnd = "}";
+        interfaces.declareMethodLeft = "";
+        interfaces.declareMethodMiddle = "(";
+        interfaces.declareMethodRight = ")";
+        interfaces.declareImplementsExplicit = true;
+        interfaces.methodTypeAfter = false;
+        interfaces.supported = true;
     }
 
     /**
