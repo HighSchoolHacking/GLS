@@ -1,0 +1,4 @@
+-
+class aaa extends bbb {
+}
+-

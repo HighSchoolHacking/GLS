@@ -149,6 +149,7 @@
         "src/Languages/CLikeLanguage.ts",
         "src/Languages/CSharp.ts",
         "src/Languages/Java.ts",
+        "src/Languages/JavaScript.ts",
         "src/Languages/Language.ts",
         "src/Languages/LanguagesBag.ts",
         "src/Languages/Python.ts",

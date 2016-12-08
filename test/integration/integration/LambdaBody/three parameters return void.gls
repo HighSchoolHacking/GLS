@@ -1,0 +1,3 @@
+-
+lambda : void aaa int bbb string ccc boolean { print: bbb }
+-

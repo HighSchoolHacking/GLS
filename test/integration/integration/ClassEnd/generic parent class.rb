@@ -1,0 +1,4 @@
+-
+class aaa < bbb
+end
+-
