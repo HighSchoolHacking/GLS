@@ -43,8 +43,16 @@ export class InterfaceMethodCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line: string = "";
 
-        if (this.language.properties.interfaces.supported === false) {
+        if (this.language.properties.interfaces.methodType === false) {
             return LineResults.newSingleLine(line, false);
+        }
+
+        if (this.language.properties.variables.explicitTypes === false) {
+            line += parameters[1];
+            line += this.language.properties.interfaces.declareMethodMiddle;
+            for (let i: number = 3; i < parameters.length; i += 2) {
+                line += parameters[i];
+            }
         }
 
         if (this.language.properties.interfaces.methodTypeAfter) {
@@ -66,14 +74,6 @@ export class InterfaceMethodCommand extends Command {
             }
 
             line += this.language.properties.interfaces.declareMethodRight + ": " + parameters[2];
-        }
-
-        else if (this.language.properties.variables.explicitTypes === false) {
-            line += parameters[1];
-            line += this.language.properties.interfaces.declareMethodMiddle;
-            for (let i: number = 3; i < parameters.length; i += 2) {
-                line += parameters[i];
-            }
         } else {
             line += this.language.properties.interfaces.declareMethodLeft;
             line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;

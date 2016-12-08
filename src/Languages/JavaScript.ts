@@ -228,6 +228,7 @@ export class JavaScript extends CLikeLanguage {
         interfaces.declareMethodRight = ")";
         interfaces.declareImplementsExplicit = true;
         interfaces.methodTypeAfter = false;
+        interfaces.methodType = false;
         interfaces.supported = true;
     }
 
