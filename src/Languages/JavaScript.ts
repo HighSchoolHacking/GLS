@@ -218,18 +218,7 @@ export class JavaScript extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
-        interfaces.declareStartLeft = "interface ";
-        interfaces.declareStartRight = " {";
-        interfaces.declareExtendsLeft = " extends ";
-        interfaces.declareExtendsRight = ", ";
-        interfaces.declareEnd = "}";
-        interfaces.declareMethodLeft = "";
-        interfaces.declareMethodMiddle = "(";
-        interfaces.declareMethodRight = ")";
-        interfaces.declareImplementsExplicit = true;
-        interfaces.methodTypeAfter = false;
-        interfaces.methodType = false;
-        interfaces.supported = true;
+        interfaces.supported = false;
     }
 
     /**
