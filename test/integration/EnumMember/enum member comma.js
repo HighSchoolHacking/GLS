@@ -1,3 +1,3 @@
 -
-Horizontal = 1,
+Horizontal: 1,
 -

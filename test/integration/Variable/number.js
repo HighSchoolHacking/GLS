@@ -1,3 +1,3 @@
 -
-aaa
+var aaa;
 -
