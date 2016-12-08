@@ -46,7 +46,7 @@ export class InterfaceProperties {
      * Whether the implements keyword needs to be explicitly called after a class has been extended.
      */
     public declareImplementsExplicit: boolean;
-    
+
     /**
      * Whether the interface declares types.
      */
