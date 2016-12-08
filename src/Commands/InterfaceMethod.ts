@@ -66,8 +66,8 @@ export class InterfaceMethodCommand extends Command {
             }
 
             line += this.language.properties.interfaces.declareMethodRight + ": " + parameters[2];
-        } 
-        
+        }
+
         else if (this.language.properties.variables.explicitTypes === false) {
             line += parameters[1];
             line += this.language.properties.interfaces.declareMethodMiddle;
