@@ -51,11 +51,11 @@ export class InterfaceMethodCommand extends Command {
             line += parameters[1];
             line += this.language.properties.interfaces.declareMethodMiddle;
             for (let i: number = 3; i < parameters.length; i++) {
-                if (i % 2 == 0) {
+                if (i % 2 === 0) {
                     line += parameters[i] + ", ";
                 }
             }
-        } 
+        }
 
         else if (this.language.properties.interfaces.methodTypeAfter) {
             line += parameters[1];
