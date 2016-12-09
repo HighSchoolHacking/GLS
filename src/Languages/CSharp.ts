@@ -70,7 +70,6 @@ export class CSharp extends CLikeLanguage {
         classes.declareExtendsLeft = " : ";
         classes.declareStartRight = "\n{";
         classes.superConstructor = "base";
-        classes.generics.used = true;
     }
 
     /**

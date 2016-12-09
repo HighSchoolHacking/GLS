@@ -71,7 +71,6 @@ export class TypeScript extends CLikeLanguage {
         classes.declareExtendsLeft = " extends ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
-        classes.generics.used = true;
     }
 
     /**
