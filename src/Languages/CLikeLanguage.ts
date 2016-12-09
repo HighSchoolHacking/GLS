@@ -42,7 +42,6 @@ export abstract class CLikeLanguage extends Language {
         generics.left = "<";
         generics.middle = ", ";
         generics.right = ">";
-        generics.used = true;
     }
 
     /**

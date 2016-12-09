@@ -21,7 +21,7 @@ export class LanguagesBag {
     public Java: Java = new Java();
 
     /**
-     * An instance of the Java class.
+     * An instance of the JavaScript class.
      */
     public JavaScript: JavaScript = new JavaScript();
 
