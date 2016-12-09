@@ -13,13 +13,13 @@ class Point {
     }
 }
 
-class Measurements<T> {
+class Measurements {
     constructor(items) {
         // ...
     }
 }
 
-class Shape extends Measurements<Point> {
+class Shape extends Measurements {
     constructor(points) {
         // ...
     }
