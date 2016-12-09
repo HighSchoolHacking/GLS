@@ -31,7 +31,6 @@ export abstract class CLikeLanguage extends Language {
         classes.newStart = "new ";
         classes.staticLabel = "static ";
         classes.this = "this";
-        classes.generics.used = true;
     }
 
     /**

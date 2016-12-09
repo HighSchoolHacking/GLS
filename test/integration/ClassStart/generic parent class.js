@@ -1,3 +1,3 @@
 -
-class aaa extends bbb<ccc> {
+class aaa extends bbb {
 -
