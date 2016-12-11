@@ -1,19 +1,21 @@
 # File
 
+The commands that are used to create importable program files.
+
 ## Commands
 
 ### `file start`
 
 `file start : name`
 
-Starts file block. 
+Command that starts the file block. 
 The first parameter is the name of the file.
 
 ### `file end`
 
 `file end`
 
-Ends file block.
+Command that ends the file block.
 
 ## Usage
 
