@@ -1,6 +1,6 @@
 # Main
 
-Commands used to create main function of a program.
+Commands used to create the main function of a program.
 
 ## Commands
 
@@ -82,12 +82,12 @@ if __name__ == "__main__":
         <tr>
             <td>MainStart</td>
             <td><code>string</code></td>
-            <td>Lines that start the main block.</td>
+            <td>Line(s) that start the main block.</td>
         </tr>
         <tr>
             <td>MainEnd</td>
             <td><code>string</code></td>
-            <td>Lines that end the main block.</td>
+            <td>Line that ends the main block.</td>
         </tr>
     </tbody>
 </table>
