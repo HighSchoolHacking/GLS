@@ -1,10 +1,10 @@
-import { BlockEndCommand } from "./BlockEndCommand";
+import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 
 /**
  * A command for ending an enum declaration.
  */
-export class EnumEndCommand extends BlockEndCommand {
+export class EnumEndCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
      * 
@@ -12,7 +12,7 @@ export class EnumEndCommand extends BlockEndCommand {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let ender: string = this.renderBlockEnd();
+        let ender: string = this.renderEnumEnd();
 
         if (ender === "\0") {
             return LineResults.newBlockLine("\0", -1);
