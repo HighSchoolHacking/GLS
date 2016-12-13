@@ -401,8 +401,6 @@ export class JavaScript extends CLikeLanguage {
         variables.aliases = {
             "infinity": "Infinity"
         };
-        variables.castLeft = "<";
-        variables.castRight = ">";
         variables.declaration = "let ";
         variables.explicitTypes = false;
         variables.null = "undefined";
