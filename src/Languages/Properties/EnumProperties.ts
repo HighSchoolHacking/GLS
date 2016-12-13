@@ -33,6 +33,11 @@ export class EnumProperties {
     public declareValueRight: string;
 
     /**
+     * Whether enums act as a regular object.
+     */
+    public isObject: boolean;
+
+    /**
      * Start of a line retrieving an enum value.
      */
     public valueLeft: string;

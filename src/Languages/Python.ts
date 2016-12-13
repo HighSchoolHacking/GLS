@@ -158,6 +158,7 @@ export class Python extends PythonicLanguage {
         enums.declareStartRight = "(Enum):";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = ".";
+        enums.isObject = false;
     }
 
     /**

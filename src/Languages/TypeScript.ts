@@ -163,6 +163,7 @@ export class TypeScript extends CLikeLanguage {
 
         enums.declareStartRight = " {";
         enums.declareLastRight = "";
+        enums.isObject = false;
     }
 
     /**

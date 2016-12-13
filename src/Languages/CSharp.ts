@@ -163,6 +163,7 @@ export class CSharp extends CLikeLanguage {
 
         enums.declareStartRight = "\n{";
         enums.declareLastRight = "";
+        enums.isObject = false;
     }
 
     /**

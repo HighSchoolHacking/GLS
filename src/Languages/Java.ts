@@ -168,6 +168,7 @@ export class Java extends CLikeLanguage {
         enums.declareValueLeft = "(";
         enums.declareValueRight = ")";
         enums.declareLastRight = "";
+        enums.isObject = false;
     }
 
     /**

@@ -169,6 +169,7 @@ export class Ruby extends PythonicLanguage {
         enums.declareStartRight = "";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = "::";
+        enums.isObject = false;
     }
 
     /**
