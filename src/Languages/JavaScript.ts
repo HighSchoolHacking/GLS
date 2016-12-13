@@ -165,7 +165,7 @@ export class JavaScript extends CLikeLanguage {
         enums.declareStartLeft = "let ";
         enums.declareStartRight = " = {";
         enums.declareValueLeft = ": ";
-        enums.declareLastRight = "";
+        enums.declareLastRight = ";";
     }
 
     /**
