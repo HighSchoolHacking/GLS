@@ -6,6 +6,7 @@ Before working on contributing files to GLS, file issue(s) regarding the changes
 
 The GLS language specification lives as a set of `.md` files under [docs/Design](https://github.com/HighSchoolHacking/GLS/tree/master/docs/Design).
 Changes to the specification go through a three-step process:
+
 1. [Document the specification changes](#document-the-specification-changes)
 2. [Create BDD tests for the specification changes](#create-bdd-tests-for-the-specification-changes)
 3. [Implement the changes](#implement-the-changes)
