@@ -303,11 +303,11 @@ export class Ruby extends PythonicLanguage {
         math.max = new NativeCallProperties(
             "max",
             NativeCallScope.Member,
-            NativeCallType.Property);
+            NativeCallType.Function);
         math.min = new NativeCallProperties(
             "min",
             NativeCallScope.Member,
-            NativeCallType.Property);
+            NativeCallType.Function);
         math.requiredImports = {};
         math.mathName = "Math";
     }

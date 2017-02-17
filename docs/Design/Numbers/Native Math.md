@@ -37,6 +37,37 @@ variable : bar int -7
 
 math floor : foo
 ```
+
+### `math max`
+
+`math max` `:` `name`
+
+Generates code to compute the greater of two numbers.
+
+### Usage
+
+```
+variable : foo int 1
+variable : bar int 5
+
+math max : foo bar
+```
+
+### `math min`
+
+`math min` `:` `name`
+
+Generates code to compute the lower of two numbers.
+
+### Usage
+
+```
+variable : foo int 1
+variable : bar int 5
+
+math min : foo bar
+```
+
 ## Implementation
 
 ### Properties
