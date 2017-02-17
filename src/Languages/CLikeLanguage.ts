@@ -42,7 +42,6 @@ export abstract class CLikeLanguage extends Language {
         generics.left = "<";
         generics.middle = ", ";
         generics.right = ">";
-        generics.used = true;
     }
 
     /**
@@ -85,7 +84,6 @@ export abstract class CLikeLanguage extends Language {
         conditionals.end = "}";
         conditionals.if = "if";
         conditionals.startLeft = " (";
-        conditionals.while = "while";
     }
 
     /**
@@ -163,6 +161,9 @@ export abstract class CLikeLanguage extends Language {
         loops.for = "for";
         loops.forEachEnd = "}";
         loops.forEachRight = ") {";
+        loops.whileStartLeft = "while";
+        loops.whileStartMiddle = " (";
+        loops.whileStartRight = ") {";
     }
 
     /**

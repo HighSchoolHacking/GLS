@@ -1,5 +1,6 @@
 import { CSharp } from "./CSharp";
 import { Java } from "./Java";
+import { JavaScript } from "./JavaScript";
 import { Language } from "./Language";
 import { Python } from "./Python";
 import { Ruby } from "./Ruby";
@@ -18,6 +19,11 @@ export class LanguagesBag {
      * An instance of the Java class.
      */
     public Java: Java = new Java();
+
+    /**
+     * An instance of the JavaScript class.
+     */
+    public JavaScript: JavaScript = new JavaScript();
 
     /**
      * An instance of the CSharp class.
@@ -40,6 +46,7 @@ export class LanguagesBag {
     private languagesByName: { [i: string]: Language } = {
         "CSharp": this.CSharp,
         "Java": this.Java,
+        "JavaScript": this.JavaScript,
         "Python": this.Python,
         "Ruby": this.Ruby,
         "TypeScript": this.TypeScript

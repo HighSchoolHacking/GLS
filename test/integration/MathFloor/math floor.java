@@ -1,0 +1,3 @@
+-
+Math.floor(foo);
+-

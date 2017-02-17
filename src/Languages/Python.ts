@@ -160,6 +160,7 @@ export class Python extends PythonicLanguage {
         enums.declareStartRight = "(Enum):";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = ".";
+        enums.isObject = false;
     }
 
     /**
@@ -282,6 +283,18 @@ export class Python extends PythonicLanguage {
     protected generateMathProperties(math: MathProperties): void {
         math.absolute = new NativeCallProperties(
             "fabs",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.max = new NativeCallProperties(
+            "max",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.min = new NativeCallProperties(
+            "min",
             NativeCallScope.Static,
             NativeCallType.Function);
         math.requiredImports = {};

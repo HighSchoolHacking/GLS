@@ -171,6 +171,7 @@ export class Ruby extends PythonicLanguage {
         enums.declareStartRight = "";
         enums.declareValueLeft = " = ";
         enums.valueMiddle = "::";
+        enums.isObject = false;
     }
 
     /**
@@ -281,6 +282,8 @@ export class Ruby extends PythonicLanguage {
         loops.rangedForLoopsLeft = " in ";
         loops.rangedForLoopsMiddle = "..";
         loops.rangedForLoopsRight = "";
+
+        loops.whileStartRight = "";
     }
 
     /**
@@ -291,6 +294,18 @@ export class Ruby extends PythonicLanguage {
     protected generateMathProperties(math: MathProperties): void {
         math.absolute = new NativeCallProperties(
             "abs",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+        math.floor = new NativeCallProperties(
+            "floor",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+        math.max = new NativeCallProperties(
+            "max",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+        math.min = new NativeCallProperties(
+            "min",
             NativeCallScope.Member,
             NativeCallType.Property);
         math.requiredImports = {};

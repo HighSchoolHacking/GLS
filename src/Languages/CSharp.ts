@@ -72,6 +72,7 @@ export class CSharp extends CLikeLanguage {
         classes.declareImplementsLeft = " : ";
         classes.declareStartRight = "\n{";
         classes.superConstructor = "base";
+        classes.generics.used = true;
     }
 
     /**
@@ -164,6 +165,7 @@ export class CSharp extends CLikeLanguage {
 
         enums.declareStartRight = "\n{";
         enums.declareLastRight = "";
+        enums.isObject = false;
     }
 
     /**
@@ -299,6 +301,8 @@ export class CSharp extends CLikeLanguage {
         loops.forEachStartItteration = " (";
         loops.forEachStartSeparator = " in ";
         loops.forEachStartRight = ")\n{";
+
+        loops.whileStartRight = ")\n{";
     }
 
     /**
@@ -309,6 +313,18 @@ export class CSharp extends CLikeLanguage {
     protected generateMathProperties(math: MathProperties): void {
         math.absolute = new NativeCallProperties(
             "Math.Abs",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "Math.Floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.max = new NativeCallProperties(
+            "Math.Max",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.min = new NativeCallProperties(
+            "Math.Min",
             NativeCallScope.Static,
             NativeCallType.Function);
         math.requiredImports = {

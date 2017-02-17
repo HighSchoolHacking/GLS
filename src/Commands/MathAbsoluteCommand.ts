@@ -4,7 +4,7 @@ import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
- * A command for a computing the absolute value of a number.
+ * A command for computing the absolute value of a number.
  */
 export class MathAbsoluteCommand extends NativeCallCommand {
     /**

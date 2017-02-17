@@ -73,6 +73,7 @@ export class TypeScript extends CLikeLanguage {
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
+        classes.generics.used = true;
     }
 
     /**
@@ -164,6 +165,7 @@ export class TypeScript extends CLikeLanguage {
 
         enums.declareStartRight = " {";
         enums.declareLastRight = "";
+        enums.isObject = false;
     }
 
     /**
@@ -297,6 +299,18 @@ export class TypeScript extends CLikeLanguage {
     protected generateMathProperties(math: MathProperties): void {
         math.absolute = new NativeCallProperties(
             "Math.abs",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "Math.floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.max = new NativeCallProperties(
+            "Math.max",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+        math.min = new NativeCallProperties(
+            "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
         math.requiredImports = {};

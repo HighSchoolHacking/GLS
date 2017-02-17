@@ -65,7 +65,6 @@ export abstract class PythonicLanguage extends Language {
         conditionals.end = "\0";
         conditionals.if = "if";
         conditionals.startLeft = " ";
-        conditionals.while = "while";
     }
 
     /**
@@ -167,8 +166,10 @@ export abstract class PythonicLanguage extends Language {
         loops.foreach = "for";
         loops.forEachMiddle = " in ";
         loops.rangedForLoops = true;
-
         loops.forEachStartItteration = " ";
+        loops.whileStartLeft = "while";
+        loops.whileStartMiddle = " ";
+        loops.whileStartRight = ":";
     }
 
     /**

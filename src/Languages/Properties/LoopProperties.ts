@@ -116,4 +116,19 @@ export class LoopProperties {
      * How to end a Pythonic ranged loop's initial line.
      */
     public rangedForLoopsRight: string;
+
+    /**
+     * The keyword used for "while".
+     */
+    public whileStartLeft: string;
+
+    /**
+     * The middle of a while start statement.
+     */
+    public whileStartMiddle: string;
+
+    /**
+     * The end of a while start statement".
+     */
+    public whileStartRight: string;
 }
