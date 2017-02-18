@@ -135,6 +135,14 @@ No language is perfect. The following are some seemingly obvious omissions in GL
     </thead>
     <tbody>
         <tr>
+            <th>`async`/`await`!</th>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+        </tr>
+        <tr>
             <th>Default Member Variable Values</th>
             <td></td>
             <td></td>
