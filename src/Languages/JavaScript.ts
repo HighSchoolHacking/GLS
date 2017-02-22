@@ -289,6 +289,10 @@ export class JavaScript extends CLikeLanguage {
             "Math.abs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "Math.floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.requiredImports = {};
         math.mathName = "Math";
     }

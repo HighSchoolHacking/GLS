@@ -315,6 +315,10 @@ export class CSharp extends CLikeLanguage {
             "Math.Abs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "Math.Floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.requiredImports = {
             "System": ["Math"]
         };

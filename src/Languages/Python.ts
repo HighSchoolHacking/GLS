@@ -285,6 +285,10 @@ export class Python extends PythonicLanguage {
             "fabs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.floor = new NativeCallProperties(
+            "floor",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.requiredImports = {};
         math.mathName = "Math";
     }

@@ -4,9 +4,9 @@ import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
- * A command for computing the absolute value of a number.
+ * A command for computing the largest previous integer of a number
  */
-export class MathAbsoluteCommand extends NativeCallCommand {
+export class MathFloorCommand extends NativeCallCommand {
     /**
      * Information on parameters this command takes in.
      */
@@ -18,14 +18,14 @@ export class MathAbsoluteCommand extends NativeCallCommand {
      * @returns Information on parameters this command takes in.
      */
     public getParameters(): Parameter[] {
-        return MathAbsoluteCommand.parameters;
+        return MathFloorCommand.parameters;
     }
 
     /**
-     * @returns Metadata on how to perform the native call. 
+     * @returns Metadata on how to perform the native call.
      */
     protected retrieveNativeCallProperties(): NativeCallProperties {
-        return this.language.properties.math.absolute;
+        return this.language.properties.math.floor;
     }
 
     /**

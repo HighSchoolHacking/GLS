@@ -296,6 +296,10 @@ export class Ruby extends PythonicLanguage {
             "abs",
             NativeCallScope.Member,
             NativeCallType.Property);
+        math.floor = new NativeCallProperties(
+            "floor",
+            NativeCallScope.Member,
+            NativeCallType.Property);
         math.requiredImports = {};
         math.mathName = "Math";
     }

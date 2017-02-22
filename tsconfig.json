@@ -75,6 +75,7 @@
         "src/Commands/MainEndCommand.ts",
         "src/Commands/MainStartCommand.ts",
         "src/Commands/MathAbsoluteCommand.ts",
+        "src/Commands/MathFloorCommand.ts",
         "src/Commands/MemberVariableCommand.ts",
         "src/Commands/MemberVariableDeclareCommand.ts",
         "src/Commands/NativeCallCommand.ts",
