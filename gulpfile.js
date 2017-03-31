@@ -1,137 +1,112 @@
-const del = require("del");
-const eventStream = require("event-stream");
-const gulp = require("gulp");
-const insert = require("gulp-insert");
-const merge = require("merge2");
-const mocha = require("gulp-mocha");
-const mochaPhantomJS = require("gulp-mocha-phantomjs");
-const runSequence = require("run-sequence");
-const ts = require("gulp-typescript");
-const tslint = require("gulp-tslint");
-const typespace = require("gulp-typespace");
-const webpack = require("gulp-webpack");
+var del = require("del");
+var gulp = require("gulp");
+var gulpTslint = require("gulp-tslint");
+var gulpTypeScript = require("gulp-typescript");
+var merge = require("merge2");
+var mocha = require("gulp-mocha");
+var mochaPhantomJS = require("gulp-mocha-phantomjs");
+var runSequence = require("run-sequence");
+var tslint = require("tslint");
+var webpack = require("gulp-webpack");
 
-const distTypes = ["amd", "commonjs", "es2015", "system", "umd"];
+var getTsProject = (function () {
+    var tsProject;
 
-gulp.task("clean", () => {
+    return function () {
+        if (!tsProject) {
+            tsProject = gulpTypeScript.createProject("tsconfig.json");
+        }
+
+        return tsProject;
+    }
+})();
+
+gulp.task("clean", function () {
     return del([
-        "dist/*",
-        "src/**/*.js"
+        "lib/*",
+        "src/**/*.js",
+        "test/**/*.js"
     ]);
 });
 
-gulp.task("tslint", () => {
+gulp.task("src:tslint", function () {
+    var program = tslint.Linter.createProgram("./tsconfig.json");
+
     return gulp
-        .src(["src/**/*.ts", "!src/**/*.d.ts"])
-        .pipe(tslint())
-        .pipe(tslint.report("verbose"));
+        .src("src/**/*.ts")
+        .pipe(gulpTslint({ program }));
 });
 
-gulp.task("tsc", () => {
-    const tsProject = ts.createProject("tsconfig.json");
+gulp.task("src:tsc", function () {
+    var tsProject = getTsProject();
+    var tsResult = gulp.src("src/**/*.ts")
+        .pipe(tsProject());
 
-    return tsProject
-        .src()
-        .pipe(ts(tsProject))
-        .js.pipe(gulp.dest("src"));
+    return merge([
+        tsResult.dts.pipe(gulp.dest("lib")),
+        tsResult.js.pipe(gulp.dest("lib"))
+    ]);
 });
 
-gulp.task("dist:modules", () => {
-    const pipes = {};
-
-    distTypes.forEach(moduleType => {
-        const tsProject = ts.createProject(
-            "tsconfig.json",
-            {
-                module: moduleType
-            });
-
-        const result = tsProject
-            .src()
-            .pipe(ts(tsProject));
-
-        pipes[moduleType] = merge([
-            result.dts.pipe(gulp.dest(`dist/${moduleType}`)),
-            result.js.pipe(gulp.dest(`dist/${moduleType}`))
-        ]);
-    });
-
-    return eventStream.merge(Object.keys(pipes).map(moduleType => pipes[moduleType]));
-});
-
-gulp.task("dist:pack", () => {
-    return gulp.src("dist/es2015/**/*.js")
-        .pipe(webpack(require("./webpack.config.js")))
-        .pipe(insert.prepend("var Gls = "))
-        .pipe(insert.append("\nGls = Gls.Gls;"))
-        .pipe(gulp.dest("dist/global"));
-});
-
-gulp.task("dist", callback => {
+gulp.task("src", function (callback) {
     runSequence(
-        "dist:modules",
-        "dist:pack",
-        callback);
+        "clean",
+        ["src:tsc", "src:tslint"]);
 });
 
-gulp.task("test:unit", () => {
+gulp.task("test:tslint", function () {
+    var program = tslint.Linter.createProgram("./test/tsconfig.json");
+
+    return gulp
+        .src("test/**/*.ts")
+        .pipe(gulpTslint({ program }));
+});
+
+gulp.task("test:tsc", function () {
+    var tsProject = getTsProject();
+    var tsResult = gulp.src("test/**/*.ts")
+        .pipe(tsProject());
+
+    return merge([
+        tsResult.dts.pipe(gulp.dest("test")),
+        tsResult.js.pipe(gulp.dest("test"))
+    ]);
+});
+
+gulp.task("test:unit", function () {
     return gulp.src("test/unit/**/*.js")
         .pipe(mocha({
             reporter: "spec",
         }));
 });
 
-gulp.task("test:integration", () => {
+gulp.task("test:integration", function () {
     return gulp.src("test/integration.js")
         .pipe(mocha({
             reporter: "spec"
         }));
 });
 
-gulp.task("test:end-to-end", () => {
+gulp.task("test:end-to-end", function () {
     return gulp.src("test/end-to-end.js")
         .pipe(mocha({
             reporter: "spec"
         }));
 });
 
-gulp.task("test:browser", () => {
-    return gulp.src("test/browser/index.html")
-        .pipe(mochaPhantomJS());
-})
-
-gulp.task("test", callback => {
+gulp.task("test", function (callback) {
     runSequence(
+        "test:tsc",
         "test:unit",
         "test:integration",
-        "test:end-to-end",
-        "test:browser");
+        "test:end-to-end");
 });
 
-gulp.task("typespace", () => {
-    const settings = {
-        config: "./tsconfig.json",
-        namespace: "GLS.",
-        pathPrefix: "src/",
-        root: "."
-    };
-
-    typespace(settings)
-        .pipe(gulp.dest("dist/typespace"));
+gulp.task("watch", ["default"], function () {
+    gulp.watch("src/**/*.ts", ["src:tsc"]);
+    gulp.watch("test/**/*.ts", ["test:tsc"]);
 });
 
-gulp.task("watch", ["default"], () => {
-    gulp.watch("src/**/*.ts", ["default"]);
-});
-
-gulp.task("build", callback => {
-    runSequence(
-        "clean",
-        ["tsc", "tslint"],
-        "dist",
-        "test");
-})
-
-gulp.task("default", callback => {
-    runSequence("build", "test", callback);
+gulp.task("default", function (callback) {
+    runSequence("src", "test", callback);
 });

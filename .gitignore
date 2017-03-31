@@ -1,9 +1,5 @@
-dist
-src/**/*.js
-src/**/*.js.map
-src/**/*.js.min.map
-!src/exports.js
-node_modules/
 .tscache/
+lib
+node_modules/
 npm-debug.log
-
+test/unit/**/*.js
