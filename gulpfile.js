@@ -25,7 +25,8 @@ gulp.task("clean", function () {
     return del([
         "lib/*",
         "src/**/*.js",
-        "test/**/*.js"
+        "test/*.js",
+        "test/unit/**/*.js"
     ]);
 });
 
@@ -50,8 +51,9 @@ gulp.task("src:tsc", function () {
 
 gulp.task("src", function (callback) {
     runSequence(
-        "clean",
-        ["src:tsc", "src:tslint"]);
+        "src:tsc",
+        "src:tslint",
+        callback);
 });
 
 gulp.task("test:tslint", function () {
@@ -97,9 +99,11 @@ gulp.task("test:end-to-end", function () {
 gulp.task("test", function (callback) {
     runSequence(
         "test:tsc",
+        "test:tslint",
         "test:unit",
         "test:integration",
-        "test:end-to-end");
+        "test:end-to-end",
+        callback);
 });
 
 gulp.task("watch", ["default"], function () {
@@ -108,5 +112,5 @@ gulp.task("watch", ["default"], function () {
 });
 
 gulp.task("default", function (callback) {
-    runSequence("src", "test", callback);
+    runSequence("clean", "src", "test", callback);
 });
