@@ -60,7 +60,10 @@ gulp.task("test:tslint", function () {
     var program = tslint.Linter.createProgram("./test/tsconfig.json");
 
     return gulp
-        .src("test/**/*.ts")
+        .src([
+            "test/*.ts",
+            "test/unit/*.ts"
+        ])
         .pipe(gulpTslint({ program }));
 });
 

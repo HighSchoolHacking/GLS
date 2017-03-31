@@ -262,7 +262,15 @@ gulp
 ```
 
 To build, run `gulp`.
-You can build without running tests using `gulp build`, or just run tests using `gulp test`.
+You can build+lint the souce without running tests using `gulp src`, or just build+lint+run tests using `gulp test`.
+The full list of tasks is in `gulpfile.js`.
+
+Alternately, use `tsc` to build source files under `/src` to `/lib`, and `tsc -w` to build upon file changes.
+
+### IDEs
+
+VS Code is the recommended editor.
+Open a `code` window on your GLS directory to work in source, and another `code` window on the `/test` directory to work on test files.
 
 ### Tests
 
