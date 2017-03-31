@@ -1,10 +1,8 @@
 language: node_js
 
 node_js:
-  - "6.0"
-
-before_script:
-  npm install
+  - "7"
+  - "4"
 
 script:
-  gulp
+  node_modules/gulp/bin/gulp.js

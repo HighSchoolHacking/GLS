@@ -1,8 +1,8 @@
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
-import { ConversionContext } from "./ConversionContext";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
+import { ConversionContext } from "./ConversionContext";
 
 /**
  * Converter to transform raw GLS syntax into language code.
@@ -97,7 +97,7 @@ export class GlsParser {
      * 
      * @param line   A raw line of GLS syntax.
      * @returns The line's command name, followed by any parameters.
-     * @remarks This assumes the line is already whitespace-trimmed. 
+     * @remarks This assumes the line is already whitespace-trimmed.
      */
     private separateLineComponents(line: string): string[] {
         let colonIndex: number = line.indexOf(":");

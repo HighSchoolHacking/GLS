@@ -1,8 +1,8 @@
 import { LineResults } from "../Commands/LineResults";
-import { GlsParser } from "./GlsParser";
-import { Language } from "../Languages/Language";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { Language } from "../Languages/Language";
 import { Conversion } from "./Conversion";
+import { GlsParser } from "./GlsParser";
 
 /**
  * Driving context to use a GlsParser with a language to produce code. 

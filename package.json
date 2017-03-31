@@ -7,34 +7,29 @@
   "bugs": {
     "url": "https://github.com/HighSchoolHacking/GLS/issues"
   },
-  "description": "A unified syntax that compiles into a number of OOP languages.",
+  "description": "A unified syntax that compiles into your favorite OOP languages.",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
   },
   "version": "0.3.12",
-  "main": "./dist/commonjs/Gls.js",
-  "typings": "./dist/commonjs/Gls.d.ts",
   "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
     "chai": "^3.5.0",
-    "del": "^2.2.0",
-    "event-stream": "^3.3.2",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-insert": "^0.5.0",
-    "gulp-mocha": "^2.2.0",
-    "gulp-mocha-phantomjs": "^0.11.0",
-    "gulp-tslint": "^5.0.0",
-    "gulp-typescript": "^2.13.5",
-    "gulp-typespace": "^0.1.8",
+    "gulp-mocha": "^4.2.0",
+    "gulp-mocha-phantomjs": "^0.12.1",
+    "gulp-tslint": "^7.1.0",
+    "gulp-typescript": "^3.1.6",
     "gulp-webpack": "^1.5.0",
-    "install": "^0.8.1",
-    "merge2": "^1.0.2",
-    "mocha": "^2.5.3",
-    "requirejs": "^2.2.0",
-    "run-sequence": "^1.2.1",
-    "tslint": "^3.9.0",
-    "typescript": "^1.8.10"
+    "merge2": "^1.0.3",
+    "mocha": "^3.2.0",
+    "run-sequence": "^1.2.2",
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2"
   }
 }

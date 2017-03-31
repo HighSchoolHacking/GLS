@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "declaration": true,
+        "declaration": false,
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
@@ -8,12 +8,13 @@
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
-        "outDir": "./lib",
+        "outDir": ".",
         "pretty": true,
+        "rootDir": ".",
         "sourceMap": true,
         "strictNullChecks": true
     },
     "include": [
-        "src/**/*.ts"
+        "./**/*.ts"
     ]
 }
