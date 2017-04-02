@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { describe, it } from "mocha";
+import "mocha";
 
 import { ConversionContext } from "../../lib/Conversions/ConversionContext";
 import { GlsParser } from "../../lib/Conversions/GlsParser";
@@ -19,9 +19,14 @@ describe("GlsParser", () => {
 
             // Assert
             expect(parsed).to.be.deep.equal({
-                indentation: 0,
-                lines: [line],
-                text: "aaa bbb ccc"
+                addSemicolon: false,
+                addedImports: {},
+                commandResults: [
+                    {
+                        indentation: 0,
+                        text: "aaa bbb ccc"
+                    }
+                ]
             });
         });
 

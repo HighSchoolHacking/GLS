@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { describe, it } from "mocha";
+import "mocha";
 
 import { CommandsBag } from "../../../lib/Commands/CommandsBag";
 import { ConversionContext } from "../../../lib/Conversions/ConversionContext";

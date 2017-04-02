@@ -1,36 +1,36 @@
-var del = require("del");
 var gulp = require("gulp");
-var gulpTslint = require("gulp-tslint");
-var gulpTypeScript = require("gulp-typescript");
-var merge = require("merge2");
 var mocha = require("gulp-mocha");
-var mochaPhantomJS = require("gulp-mocha-phantomjs");
 var runSequence = require("run-sequence");
-var tslint = require("tslint");
-var webpack = require("gulp-webpack");
 
 var getTsProject = (function () {
-    var tsProject;
+    var tsProjects = {};
+    var gulpTypeScript;
 
-    return function () {
-        if (!tsProject) {
-            tsProject = gulpTypeScript.createProject("tsconfig.json");
+    return function (fileName) {
+        if (!gulpTypeScript) {
+             gulpTypeScript = require("gulp-typescript");
         }
 
-        return tsProject;
+        if (!tsProjects[fileName]) {
+            tsProjects[fileName] = gulpTypeScript.createProject(fileName);
+        }
+
+        return tsProjects[fileName];
     }
 })();
 
-gulp.task("clean", function () {
+gulp.task("src:clean", function () {
+    var del = require("del");
+
     return del([
         "lib/*",
-        "src/**/*.js",
-        "test/*.js",
-        "test/unit/**/*.js"
+        "src/**/*.js"
     ]);
 });
 
 gulp.task("src:tslint", function () {
+    var gulpTslint = require("gulp-tslint");
+    var tslint = require("tslint");
     var program = tslint.Linter.createProgram("./tsconfig.json");
 
     return gulp
@@ -39,7 +39,8 @@ gulp.task("src:tslint", function () {
 });
 
 gulp.task("src:tsc", function () {
-    var tsProject = getTsProject();
+    var merge = require("merge2");
+    var tsProject = getTsProject("tsconfig.json");
     var tsResult = gulp.src("src/**/*.ts")
         .pipe(tsProject());
 
@@ -51,30 +52,43 @@ gulp.task("src:tsc", function () {
 
 gulp.task("src", function (callback) {
     runSequence(
+        "src:clean",
         "src:tsc",
         "src:tslint",
         callback);
 });
 
+gulp.task("test:clean", function () {
+    var del = require("del");
+
+    return del([
+        "test/*.js",
+        "test/unit/**/*.js"
+    ]);
+});
+
 gulp.task("test:tslint", function () {
+    var gulpTslint = require("gulp-tslint");
+    var tslint = require("tslint");
     var program = tslint.Linter.createProgram("./test/tsconfig.json");
 
     return gulp
         .src([
-            "test/*.ts",
-            "test/unit/*.ts"
+            "./test/*.ts",
+            "./test/unit/*.ts"
         ])
         .pipe(gulpTslint({ program }));
 });
 
 gulp.task("test:tsc", function () {
-    var tsProject = getTsProject();
-    var tsResult = gulp.src("test/**/*.ts")
+    var merge = require("merge2");
+    var tsProject = getTsProject("./test/tsconfig.json");
+    var tsResult = tsProject.src()
         .pipe(tsProject());
 
     return merge([
-        tsResult.dts.pipe(gulp.dest("test")),
-        tsResult.js.pipe(gulp.dest("test"))
+        tsResult.dts.pipe(gulp.dest(".")),
+        tsResult.js.pipe(gulp.dest("."))
     ]);
 });
 
@@ -101,6 +115,7 @@ gulp.task("test:end-to-end", function () {
 
 gulp.task("test", function (callback) {
     runSequence(
+        "test:clean",
         "test:tsc",
         "test:tslint",
         "test:unit",

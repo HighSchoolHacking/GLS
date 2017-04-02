@@ -267,15 +267,10 @@ The full list of tasks is in `gulpfile.js`.
 
 Alternately, use `tsc` to build source files under `/src` to `/lib`, and `tsc -w` to build upon file changes.
 
-### IDEs
-
-VS Code is the recommended editor.
-Open a `code` window on your GLS directory to work in source, and another `code` window on the `/test` directory to work on test files.
-
 ### Tests
 
 Integration and end-to-end tests are done using BDD.
 Folders under `/test/integration` and `/test/end-to-end` will contain a `.gls` file with GLS source code along with text files of the expected output in supported languages.
 These are verifified during `gulp test`.
 
-You can run specific tests using their gulp task (`gulp test:integration` or `gulp test:end-to-end`), and individual test groups using `--command` (`gulp test:end-to-end --command arrays`).
+You can run specific tests using their gulp task (`gulp test:integration` or `gulp test:end-to-end`), and individual test groups using `--command` (e.g. `gulp test:end-to-end --command arrays`).

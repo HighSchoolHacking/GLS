@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import "mocha";
 
-import { CaseStyle } from "../../../../src/Languages/Casing/CaseStyle";
-import { CaseStyleConverterBag } from "../../../../src/Languages/Casing/CaseStyleConverterBag";
+import { CaseStyle } from "../../../../lib/Languages/Casing/CaseStyle";
+import { CaseStyleConverterBag } from "../../../../lib/Languages/Casing/CaseStyleConverterBag";
 
 describe("CaseStyleConverterBag", () => {
     describe("convert", () => {

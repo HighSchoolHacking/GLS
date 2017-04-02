@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { describe, it } from "mocha";
+import "mocha";
 
 import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
 import { TypeScript } from "../../../lib/Languages/TypeScript";

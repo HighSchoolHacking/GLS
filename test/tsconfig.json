@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "declaration": false,
+        "lib": ["dom", "es5", "es2015.collection"],
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
@@ -8,13 +9,16 @@
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
-        "outDir": ".",
         "pretty": true,
-        "rootDir": ".",
+        "rootDir": "..",
         "sourceMap": true,
         "strictNullChecks": true
     },
+    "exclude": [
+        "../src/**/*.ts"
+    ],
     "include": [
-        "./**/*.ts"
+        "./*.ts",
+        "./unit/**/*.ts"
     ]
 }

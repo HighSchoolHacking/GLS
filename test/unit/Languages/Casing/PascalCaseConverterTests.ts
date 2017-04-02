@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PascalCaseConverter } from "../../../../src/Languages/Casing/PascalCaseConverter";
+import { PascalCaseConverter } from "../../../../lib/Languages/Casing/PascalCaseConverter";
 
 describe("PascalCaseConverter", () => {
     describe("convert", () => {
@@ -38,7 +38,7 @@ describe("PascalCaseConverter", () => {
             const converted = converter.convert(original);
 
             // Assert
-            expect(converted).that.be.equal("abc_def_ghi");
+            expect(converted).that.be.equal("AbcDefGhi");
         });
     });
 });

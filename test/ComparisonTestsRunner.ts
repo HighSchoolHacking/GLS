@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import * as fs from "fs";
-import { describe, it } from "mocha";
+import "mocha";
 import * as path from "path";
 
 import { Gls } from "../lib/Gls";
@@ -28,7 +28,7 @@ export class ComparisonTestsRunner {
     /**
      * Command tests to be run within the section.
      */
-    private commandTests;
+    private commandTests: Map<string, string[]>;
 
     /**
      * Initializes a new instance of the ComparisonTestsRunner class.
@@ -59,10 +59,10 @@ export class ComparisonTestsRunner {
      * 
      * @param {string} command   The name of the command to test.
      */
-    public runCommandTests(command): void {
+    public runCommandTests(command: string): void {
         const languagesBag = new LanguagesBag();
 
-        for (const test of this.commandTests[command]) {
+        for (const test of this.commandTests.get(command)!) {
             describe(test, () => {
                 for (const language of languagesBag.getLanguageNames()) {
                     it(language, () => this.runCommandTest(command, test, language));
@@ -74,11 +74,11 @@ export class ComparisonTestsRunner {
     /**
      * Runs a test for a single command in a language.
      * 
-     * @param {string} command   A GLS command to be tested, such as "ArrayInitialize".
-     * @param {string} test   A test to be run for the command, such as "no values".
-     * @param {string} language   The language the test is running as.
+     * @param command   A GLS command to be tested, such as "ArrayInitialize".
+     * @param test   A test to be run for the command, such as "no values".
+     * @param language   The language the test is running as.
      */
-    public runCommandTest(command, test, language) {
+    public runCommandTest(command: string, test: string, language: string): void {
         const gls = new Gls().setLanguage(language);
         const extension = gls.getLanguage().properties.general.extension;
 
@@ -91,23 +91,24 @@ export class ComparisonTestsRunner {
     /**
      * Retrieves, for each command in a directory, tests under that command.
      * 
-     * @param {string} rootPath   An absolute path to a command's tests folder.
-     * @param {Set} commandsToRun   Command groups to run, if not all.
-     * @returns {object}   Tests for each command in a directory.
-     * @private
+     * @param rootPath   An absolute path to a command's tests folder.
+     * @param commandsToRun   Command groups to run, if not all.
+     * @returns Tests for each command in a directory.
      */
-    private readTestsUnderPath(rootPath, commandsToRun): Map<string, string[]> {
+    private readTestsUnderPath(rootPath: string, commandsToRun?: Set<string>): Map<string, string[]> {
         const tests = new Map<string, string[]>();
         let childrenNames = fs.readdirSync(rootPath);
 
-        if (commandsToRun.size > 0) {
+        if (commandsToRun && commandsToRun.size > 0) {
             childrenNames = childrenNames.filter(child => commandsToRun.has(child.toLowerCase()));
         }
 
         for (const childName of childrenNames) {
-            tests[childName] = fs.readdirSync(path.resolve(rootPath, childName))
-                .filter(testFileName => testFileName.indexOf(".gls") !== -1)
-                .map(testFileName => testFileName.substring(0, testFileName.indexOf(".gls")));
+            tests.set(
+                childName,
+                fs.readdirSync(path.resolve(rootPath, childName))
+                    .filter(testFileName => testFileName.indexOf(".gls") !== -1)
+                    .map(testFileName => testFileName.substring(0, testFileName.indexOf(".gls"))));
         }
 
         return tests;
@@ -116,12 +117,11 @@ export class ComparisonTestsRunner {
     /**
      * Reads the code contents of a test file.
      * 
-     * @param {string} command   The command this file is under.
-     * @param {string} name   The name of the file.
-     * @returns {string[]}   Lines of code in the file.
-     * @private
+     * @param command   The command this file is under.
+     * @param name   The name of the file.
+     * @returns   Lines of code in the file.
      */
-    private readCommandFile(command, name) {
+    private readCommandFile(command: string, name: string): string[] {
         const filePath = path.resolve(this.rootPath, command, name);
         const lines = fs.readFileSync(filePath).toString().replace(/\r/g, "").split("\n");
 

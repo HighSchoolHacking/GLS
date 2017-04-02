@@ -12,7 +12,7 @@ export class ArgvParser {
      * 
      * @param argv   Arguments from process.argv.
      */
-    constructor(argv) {
+    constructor(argv: string[]) {
         this.argv = argv;
     }
 
