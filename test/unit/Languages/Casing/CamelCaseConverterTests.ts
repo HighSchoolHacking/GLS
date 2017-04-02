@@ -14,7 +14,7 @@ describe("CamelCaseConverter", () => {
             const converted = converter.convert(original);
 
             // Assert
-            expect(converted).that.be.equal(original);
+            expect(converted).to.be.equal(original);
         });
 
         it("converts a PascalCase name", () => {
@@ -26,7 +26,7 @@ describe("CamelCaseConverter", () => {
             const converted = converter.convert(original);
 
             // Assert
-            expect(converted).that.be.equal("abcDefGhi");
+            expect(converted).to.be.equal("abcDefGhi");
         });
 
         it("converts a snake_case name", () => {
@@ -38,7 +38,7 @@ describe("CamelCaseConverter", () => {
             const converted = converter.convert(original);
 
             // Assert
-            expect(converted).that.be.equal("abcDefGhi");
+            expect(converted).to.be.equal("abcDefGhi");
         });
     });
 });

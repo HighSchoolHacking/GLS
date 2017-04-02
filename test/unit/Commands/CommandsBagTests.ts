@@ -2,32 +2,29 @@ import { expect } from "chai";
 import "mocha";
 
 import { CommandsBag } from "../../../lib/Commands/CommandsBag";
+import { LiteralCommand } from "../../../lib/Commands/LiteralCommand";
 import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
 import { TypeScript } from "../../../lib/Languages/TypeScript";
 
 describe("CommandsBag", () => {
     describe("renderCommand", () => {
-        it("renders a command by name", () => {
+        it("retrieves a command by name", () => {
             // Arrange
-            const language = new TypeScript();
-            const commandsBag = new CommandsBag(new ConversionContext(language));
+            const commandsBag = new CommandsBag(new ConversionContext(new TypeScript()));
 
             // Act
-            const lines = commandsBag.renderCommand(["literal"]);
+            const command = commandsBag.getCommand("literal");
 
             // Assert
-            expect(lines).to.be.deep.equal({
-
-            });
+            expect(command).that.be.instanceof(LiteralCommand);
         });
 
         it("throws an error for an unknown command", () => {
             // Arrange
-            const language = new TypeScript();
-            const commandsBag = new CommandsBag(new ConversionContext(language));
+            const commandsBag = new CommandsBag(new ConversionContext(new TypeScript()));
 
             // Act
-            const action = () => commandsBag.renderCommand(["definitely not a command"]);
+            const action = () => commandsBag.getCommand("definitely not a command");
 
             // Assert
             expect(action).to.throw();
