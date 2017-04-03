@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { CamelCaseConverter } from "../../../../lib/Languages/Casing/camelCaseConverter";
+import { CamelCaseConverter } from "../../../../lib/Languages/Casing/CamelCaseConverter";
 
 describe("CamelCaseConverter", () => {
     describe("convert", () => {
