@@ -48,21 +48,22 @@ export class ComparisonTestsRunner {
      */
     public run(): void {
         describe(this.section, () => {
-            for (const command in this.commandTests) {
-                describe(command, () => this.runCommandTests(command));
-            }
+            this.commandTests.forEach((tests: string[], command: string): void => {
+                describe(command, () => this.runCommandTests(command, tests));
+            });
         });
     }
 
     /**
      * Runs command tests for the given command.
      * 
-     * @param {string} command   The name of the command to test.
+     * @param command   Name of the command to test.
+     * @param tests   Tests under the command
      */
-    public runCommandTests(command: string): void {
+    public runCommandTests(command: string, tests: string[]): void {
         const languagesBag = new LanguagesBag();
 
-        for (const test of this.commandTests.get(command)!) {
+        for (const test of tests) {
             describe(test, () => {
                 for (const language of languagesBag.getLanguageNames()) {
                     it(language, () => this.runCommandTest(command, test, language));

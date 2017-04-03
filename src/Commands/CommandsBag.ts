@@ -1,6 +1,5 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
 import { Command } from "./Command";
-import { LineResults } from "./LineResults";
 
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
@@ -219,20 +218,5 @@ export class CommandsBag {
         }
 
         return this.commands[alias];
-    }
-
-    /**
-     * Renders a command in a language.
-     * 
-     * @param language   The language to render the command in.
-     * @param command   A command name, followed by parameters for it.
-     * @returns Line(s) of code in the language.
-     */
-    public renderCommand(parameters: string[]): LineResults {
-        let command: Command = this.getCommand(parameters[0]);
-
-        command.checkParameterValidity(parameters);
-
-        return command.render(parameters);
     }
 }

@@ -19,6 +19,10 @@ var getTsProject = (function () {
     }
 })();
 
+gulp.task("clean", function (callback) {
+    runSequence("src:clean", "test:clean", callback);
+});
+
 gulp.task("src:clean", function () {
     var del = require("del");
 
@@ -82,35 +86,40 @@ gulp.task("test:tslint", function () {
 
 gulp.task("test:tsc", function () {
     var merge = require("merge2");
+    var sourcemaps = require("gulp-sourcemaps");
     var tsProject = getTsProject("./test/tsconfig.json");
     var tsResult = tsProject.src()
+        .pipe(sourcemaps.init())
         .pipe(tsProject());
 
     return merge([
         tsResult.dts.pipe(gulp.dest(".")),
-        tsResult.js.pipe(gulp.dest("."))
+        tsResult.js
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest("."))
     ]);
 });
 
-gulp.task("test:unit", function () {
-    return gulp.src("test/unit/**/*.js")
+function runTests(wildcard) {
+    return gulp.src(wildcard)
         .pipe(mocha({
             reporter: "spec",
-        }));
+        }))
+        .on("error", function () {
+            process.exitCode = 1;
+        });
+}
+
+gulp.task("test:unit", function () {
+    return runTests("test/unit/**/*.js");
 });
 
 gulp.task("test:integration", function () {
-    return gulp.src("test/integration.js")
-        .pipe(mocha({
-            reporter: "spec"
-        }));
+    return runTests("test/integration.js");
 });
 
 gulp.task("test:end-to-end", function () {
-    return gulp.src("test/end-to-end.js")
-        .pipe(mocha({
-            reporter: "spec"
-        }));
+    return runTests("test/end-to-end.js");
 });
 
 gulp.task("test", function (callback) {
@@ -130,5 +139,5 @@ gulp.task("watch", ["default"], function () {
 });
 
 gulp.task("default", function (callback) {
-    runSequence("clean", "src", "test", callback);
+    runSequence("src", "test", callback);
 });

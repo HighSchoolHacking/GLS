@@ -1,3 +1,4 @@
+import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
@@ -11,7 +12,7 @@ export class GlsParser {
     /**
      * A bag for globally known commands.
      */
-    private caseConverter: CaseStyleConverterBag;
+    private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
      * A bag for globally known commands.
@@ -29,7 +30,7 @@ export class GlsParser {
      * @param context   A driving context for converting commands.
      */
     constructor(context: ConversionContext) {
-        this.caseConverter = new CaseStyleConverterBag();
+        this.caseStyleConverterBag = new CaseStyleConverterBag();
         this.context = context;
         this.commandsBag = new CommandsBag(context);
     }
@@ -59,18 +60,24 @@ export class GlsParser {
      * @returns The equivalent lines of code in the language.
      */
     public renderParsedCommand(lineParsed: string[]): LineResults {
-        return this.commandsBag.renderCommand(lineParsed);
+        let command: Command = this.commandsBag.getCommand(lineParsed[0]);
+
+        command.checkParameterValidity(lineParsed);
+
+        return command.render(lineParsed);
     }
 
     /**
      * Converts a name to a casing style.
      * 
      * @param name   A name to convert.
-     * @param casingStyle   A casing style.
+     * @param caseStyle   A casing style.
      * @returns The name under the casing style.
      */
-    public convertToCase(name: string, casingStyle: CaseStyle): string {
-        return this.caseConverter.convert(name, casingStyle);
+    public convertToCase(name: string, caseStyle: CaseStyle): string {
+        const converter = this.caseStyleConverterBag.getConverter(caseStyle);
+
+        return converter.convert(name);
     }
 
     /**

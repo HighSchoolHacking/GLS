@@ -47,15 +47,4 @@ export class CaseStyleConverterBag {
 
         return this.converters[caseStyleAlias];
     }
-
-    /**
-     * Converts a name to a casing style.
-     * 
-     * @param name   A name to convert.
-     * @param casingStyle   A casing style.
-     * @returns The name under the casing style.
-     */
-    public convert(name: string, caseStyle: CaseStyle): string {
-        return this.getConverter(caseStyle).convert(name);
-    }
 }

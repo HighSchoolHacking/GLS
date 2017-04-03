@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PascalCaseConverter } from "../../../../lib/Languages/Casing/PascalCaseConverter";
+import { NoneConverter } from "../../../../lib/Languages/Casing/NoneConverter";
 
-describe("PascalCaseConverter", () => {
+describe("NoneConverter", () => {
     describe("convert", () => {
         it("converts a camelCase name", () => {
             // Arrange
-            const converter = new PascalCaseConverter();
+            const converter = new NoneConverter();
             const original = "abcDefGhi";
 
             // Act
@@ -19,7 +19,7 @@ describe("PascalCaseConverter", () => {
 
         it("converts a PascalCase name", () => {
             // Arrange
-            const converter = new PascalCaseConverter();
+            const converter = new NoneConverter();
             const original = "AbcDefGhi";
 
             // Act
@@ -31,7 +31,7 @@ describe("PascalCaseConverter", () => {
 
         it("converts a snake_case name", () => {
             // Arrange
-            const converter = new PascalCaseConverter();
+            const converter = new NoneConverter();
             const original = "abc_def_ghi";
 
             // Act

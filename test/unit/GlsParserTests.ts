@@ -11,20 +11,19 @@ describe("GlsParser", () => {
             // Arrange
             const parser = new GlsParser(new ConversionContext(new TypeScript()));
             const command = "literal";
-            const parameters = "aaa bbb ccc";
-            const line = `${command} : ${parameters}`;
+            const line = `literal : abc def ghi`;
 
             // Act
             const parsed = parser.parseCommand(line);
 
             // Assert
-            expect(parsed).to.be.deep.equal({
+            expect({ ...parsed }).to.be.deep.equal({
                 addSemicolon: false,
                 addedImports: {},
                 commandResults: [
                     {
                         indentation: 0,
-                        text: "aaa bbb ccc"
+                        text: "abc def ghi"
                     }
                 ]
             });
@@ -34,17 +33,21 @@ describe("GlsParser", () => {
             // Arrange
             const parser = new GlsParser(new ConversionContext(new TypeScript()));
             const command = "literal";
-            const parameters = "aaa bbb ccc";
-            const line = `( ${command} : ${parameters} )`;
+            const line = `literal : { literal : abc def ghi } jkl`;
 
             // Act
             const parsed = parser.parseCommand(line);
 
             // Assert
-            expect(parsed).to.be.deep.equal({
-                indentation: 0,
-                lines: [line],
-                text: "aaa bbb ccc"
+            expect({ ...parsed }).to.be.deep.equal({
+                addSemicolon: false,
+                addedImports: {},
+                commandResults: [
+                    {
+                        indentation: 0,
+                        text: "abc def ghi jkl"
+                    }
+                ]
             });
         });
     });

@@ -38,7 +38,6 @@ describe("PascalCaseConverter", () => {
             const converted = converter.convert(original);
 
             // Assert
-            console.log("Got converted", converted);
             expect(converted).to.be.equal("AbcDefGhi");
         });
     });
