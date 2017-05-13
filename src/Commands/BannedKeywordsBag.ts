@@ -189,7 +189,7 @@ export class BannedKeywordsBag {
     }
 
     /**
-     * Whether the variable name is valid.
+     * Returns whether the variable name is valid.
      * 
      * @param name  A variable name.
      * @returns A boolean determining the validity of the variable name.
