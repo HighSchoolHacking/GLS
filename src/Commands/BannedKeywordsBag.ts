@@ -192,11 +192,7 @@ export class BannedKeywordsBag {
      * Returns whether the variable name is valid.
      * 
      * @param name  A variable name.
-<<<<<<< HEAD
-     * @returns Whether the variable name is valid.
-=======
      * @returns A boolean determining the validity of the variable name.
->>>>>>> e0556598d201487b4eadb566680e0e9b1bdf766a
      */
     public validateName(alias: string): boolean {
         if (this.bannedKeywords[alias]) {
