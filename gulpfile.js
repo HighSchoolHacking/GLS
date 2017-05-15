@@ -1,26 +1,69 @@
 var gulp = require("gulp");
-var mocha = require("gulp-mocha");
-var runSequence = require("run-sequence");
 
 var getTsProject = (function () {
     var tsProjects = {};
     var gulpTypeScript;
 
-    return function (fileName) {
+    return function (fileName, options) {
         if (!gulpTypeScript) {
              gulpTypeScript = require("gulp-typescript");
         }
 
         if (!tsProjects[fileName]) {
-            tsProjects[fileName] = gulpTypeScript.createProject(fileName);
+            tsProjects[fileName] = gulpTypeScript.createProject(fileName, options);
         }
 
         return tsProjects[fileName];
     }
 })();
 
+gulp.task("dist:clean", function () {
+    var del = require("del");
+
+    return del([
+        "dist/*"
+    ]);
+});
+gulp.task("dist:amd", function () {
+    var merge = require("merge2");
+    var uglify = require("gulp-uglify");
+    var tsProject = getTsProject("tsconfig.json", {
+        outFile: "GLS.js",
+        module: "amd"
+    });
+    var tsResult = gulp.src("src/**/*.ts")
+        .pipe(tsProject({}));
+
+    return merge([
+        tsResult.dts.pipe(gulp.dest("dist/amd")),
+        tsResult.js
+            .pipe(uglify())
+            .pipe(gulp.dest("dist/amd"))
+    ]);
+});
+gulp.task("dist:system", function () {
+    var merge = require("merge2");
+    var uglify = require("gulp-uglify");
+    var tsProject = getTsProject("tsconfig.json", {
+        outFile: "GLS.js",
+        module: "system"
+    });
+    var tsResult = gulp.src("src/**/*.ts")
+        .pipe(tsProject({}));
+
+    return merge([
+        tsResult.dts.pipe(gulp.dest("dist/system")),
+        tsResult.js
+            .pipe(uglify())
+            .pipe(gulp.dest("dist/system"))
+    ]);
+});
+gulp.task("dist", function (callback) {
+    require("run-sequence")("dist:clean", "dist:amd", "dist:system", callback);
+});
+
 gulp.task("clean", function (callback) {
-    runSequence("src:clean", "test:clean", callback);
+    require("run-sequence")("src:clean", "test:clean", callback);
 });
 
 gulp.task("src:clean", function () {
@@ -55,7 +98,7 @@ gulp.task("src:tsc", function () {
 });
 
 gulp.task("src", function (callback) {
-    runSequence(
+    require("run-sequence")(
         "src:clean",
         "src:tsc",
         "src:tslint",
@@ -101,6 +144,8 @@ gulp.task("test:tsc", function () {
 });
 
 function runTests(wildcard) {
+    var mocha = require("gulp-mocha");
+
     return gulp.src(wildcard)
         .pipe(mocha({
             reporter: "spec",
@@ -123,7 +168,7 @@ gulp.task("test:end-to-end", function () {
 });
 
 gulp.task("test", function (callback) {
-    runSequence(
+    require("run-sequence")(
         "test:clean",
         "test:tsc",
         "test:tslint",
@@ -139,5 +184,5 @@ gulp.task("watch", ["default"], function () {
 });
 
 gulp.task("default", function (callback) {
-    runSequence("src", "test", callback);
+    require("run-sequence")("src", "test", callback);
 });
