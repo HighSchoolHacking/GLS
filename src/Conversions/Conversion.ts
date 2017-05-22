@@ -135,18 +135,18 @@ export class Conversion {
         }
 
         for (let packageName in this.imports) {
-            this.convertImportToLineResults(packageName, this.imports[packageName]);
+            this.convertImportToLineResults(packageName.split("/"), this.imports[packageName]);
         }
     }
 
     /**
      * Converts a captured import statement to line results.
      * 
-     * @param packageName   The package name importing from.
+     * @param directories   Directory path to import from.
      * @param items   Items being imported from the package.
      */
-    private convertImportToLineResults(packageName: string, items: string[]): void {
-        let parameters: string[] = ["import", packageName, ...items];
+    private convertImportToLineResults(directories: string[], items: string[]): void {
+        let parameters: string[] = ["import", ...directories, "use", ...items];
         this.allLineResults.unshift(this.context.convertParsed(parameters));
     }
 

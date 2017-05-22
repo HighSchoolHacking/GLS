@@ -13,7 +13,12 @@ export class ImportCommand extends Command {
      * Information on parameters this command takes in.
      */
     private static parameters: Parameter[] = [
-        new SingleParameter("package", "A container to look within.", true),
+        new RepeatingParameters(
+            "Directory path for the directory to import from.",
+            [
+                new SingleParameter("directory", "Part of the directory path.", false)
+            ]),
+        new SingleParameter("use", "\"use\"", true),
         new RepeatingParameters(
             "items",
             [
@@ -35,12 +40,19 @@ export class ImportCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        let usingSplit = parameters.indexOf("use");
+        if (usingSplit === -1) {
+             throw new Error("A \"use\" parameter must be in import commands.");
+        }
+
+        let directories: string[] = parameters.slice(1, usingSplit);
+        let imports: string[] = parameters.slice(usingSplit + 1);
         let lines: CommandResult[];
 
         if (this.language.properties.imports.explicitLines) {
-            lines = this.renderMultipleLines(parameters);
+            lines = this.renderMultipleLines(directories, imports);
         } else {
-            lines = [this.renderCombinedLine(parameters)];
+            lines = [this.renderCombinedLine(directories, imports)];
         }
 
         return new LineResults(lines, false);
@@ -49,14 +61,15 @@ export class ImportCommand extends Command {
     /**
      * Renders the command for a language that splits item imports across lines.
      * 
-     * @param parameters   The command's name, followed by any parameters.
+     * @param directories   Directory path to import from.
+     * @param imports   Items to import from directories.
      * @returns Line(s) of code in the language.
      */
-    private renderMultipleLines(parameters: string[]): CommandResult[] {
+    private renderMultipleLines(directories: string[], imports: string[]): CommandResult[] {
         let results: CommandResult[] = [];
 
-        for (let i: number = 2; i < parameters.length; i += 1) {
-            results.push(this.renderLine(parameters[1], parameters[i]));
+        for (let i: number = 0; i < imports.length; i += 1) {
+            results.push(this.renderLine(directories, imports[i]));
         }
 
         return results;
@@ -65,22 +78,23 @@ export class ImportCommand extends Command {
     /**
      * Renders the command for a language that puts multiple items in one import.
      * 
-     * @param parameters   The command's name, followed by any parameters.
+     * @param directories   Directory path to import from.
+     * @param imports   Items to import from directories.
      * @returns Line(s) of code in the language.
      */
-    private renderCombinedLine(parameters: string[]): CommandResult {
-        let items: string = parameters.slice(2).join(", ");
-        return this.renderLine(parameters[1], items);
+    private renderCombinedLine(directories: string[], imports: string[]): CommandResult {
+        let items: string = imports.join(", ");
+        return this.renderLine(directories, items);
     }
 
     /**
      * Renders a single import line of some item(s) from a package.
      * 
-     * @param packageName   The name of the package.
-     * @param item   Item(s) being imported.
+     * @param directories   Directory path to import from.
+     * @param item   Item to import from directories.
      * A line of code in the language.
      */
-    private renderLine(packageName: string, item: string): CommandResult {
+    private renderLine(directories: string[], item: string): CommandResult {
         let line: string = this.language.properties.imports.left;
 
         if (this.language.properties.imports.itemsBeforePackage) {
@@ -89,9 +103,9 @@ export class ImportCommand extends Command {
                 line += this.language.properties.imports.middle;
             }
 
-            line += this.context.convertToCase(packageName, this.language.properties.imports.case);
+            line += this.context.convertToCase(directories.join("/"), this.language.properties.imports.case);
         } else {
-            line += this.context.convertToCase(packageName, this.language.properties.imports.case);
+            line += this.context.convertToCase(directories.join("/"), this.language.properties.imports.case);
 
             if (this.language.properties.imports.explicit) {
                 line += this.language.properties.imports.middle;

@@ -5,9 +5,14 @@ import { Conversion } from "./Conversion";
 import { GlsParser } from "./GlsParser";
 
 /**
- * Driving context to use a GlsParser with a language to produce code. 
+ * Driving context to use a GlsParser with a language to produce code.
  */
 export class ConversionContext {
+    /**
+     * Directories leading to the current file.
+     */
+    private directories: string[];
+
     /**
      * The language this context is converting GLS code into.
      */
@@ -19,16 +24,12 @@ export class ConversionContext {
     private parser: GlsParser;
 
     /**
-     * File path of a current file being emitted.
-     */
-    private directories: string[];
-
-    /**
      * Initializes a new instance of the ConversionContext class.
      * 
      * @param language   The language this context is converting GLS code into.
      */
     constructor(language: Language) {
+        this.directories = [];
         this.language = language;
         this.parser = new GlsParser(this);
     }
