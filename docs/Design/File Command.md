@@ -1,21 +1,24 @@
 # File
 
+GLS files may set their file path and import 
 The commands that are used to create importable program files.
 
 ## Commands
 
 ### `file start`
 
-`file start : name`
+`file start : `*`[...directories, ]`*`name`
 
-Command that starts the file block. 
-The first parameter is the name of the file.
+Starts a source file.
+Any number of directories may be passed to indicate a folder path of the file relative to the project root.
+The last parameter, which is required, is the name of the file in PascalCase.
 
 ### `file end`
 
 `file end`
 
-Command that ends the file block.
+Ends a file.
+
 
 ## Usage
 
@@ -62,9 +65,7 @@ import java.util.*;
 ### TypeScript
 
 ```typescript
-namespace Program {
-    // ...
-}
+// ...
 ```
 
 ## Implementation

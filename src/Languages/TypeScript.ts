@@ -380,9 +380,9 @@ export class TypeScript extends CLikeLanguage {
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
 
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
-        style.fileStartLines = ["namespace {0} {"];
+        style.fileEndLines = [];
+        style.fileIndentation = 0;
+        style.fileStartLines = [];
 
         style.mainEndLines = ["})();"];
         style.mainIndentation = 1;

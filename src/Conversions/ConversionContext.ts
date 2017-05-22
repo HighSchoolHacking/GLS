@@ -19,6 +19,11 @@ export class ConversionContext {
     private parser: GlsParser;
 
     /**
+     * File path of a current file being emitted.
+     */
+    private directories: string[];
+
+    /**
      * Initializes a new instance of the ConversionContext class.
      * 
      * @param language   The language this context is converting GLS code into.
@@ -86,5 +91,14 @@ export class ConversionContext {
      */
     public convertToCase(name: string, casingStyle: CaseStyle): string {
         return this.parser.convertToCase(name, casingStyle);
+    }
+
+    /**
+     * Sets the current file's directory path.
+     * 
+     * @param directories   Directories leading up to the current file.
+     */
+    public setDirectoryPath(directories: string[]): void {
+        this.directories = directories;
     }
 }

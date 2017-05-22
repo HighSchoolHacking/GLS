@@ -2,6 +2,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
+import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
@@ -12,6 +13,11 @@ export class FileStartCommand extends Command {
      * Information on parameters this command takes in.
      */
     private static parameters: Parameter[] = [
+        new RepeatingParameters(
+            "Directories leading to the file.",
+            [
+                new SingleParameter("directory", "Directory leading to the file", false)
+            ]),
         new SingleParameter("fileStart", "The name of the file.", true)
     ];
 
@@ -39,6 +45,8 @@ export class FileStartCommand extends Command {
         if (output.length !== 0) {
             output[output.length - 1].indentation = this.language.properties.style.fileIndentation;
         }
+
+        this.context.setDirectoryPath(parameters.slice(1));
 
         return new LineResults(output, false);
     }
