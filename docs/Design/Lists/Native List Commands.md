@@ -11,7 +11,7 @@ All supported languages provide some amount of built-in support to interact with
 
 `list add list : firstList secondList `
 
-The `list add list` command that adds everything in the second list to the first list.
+The `list add list` command adds everything in the second list to the first list.
 
 ### `list pop`
 
@@ -98,39 +98,25 @@ These commands will be implemented as native calls.
         <tr>
             <th>CSharp</th>
             <td>
-                <table style="float: left">
+                <table>
                     <tr>
                         <td>Name</td>
                         <td><code>"AddRange"</code></td>
-                    </tr>
-                    <tr>
-                        <td>Scope</td>
-                        <td><code>Static</code></td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td><code>Function</code></td>
-                    </tr>
-                    <tr>
-                        <td>Arguments</td>
-                        <td><code>[secondList]</code></td>
-                    </tr>
-                </table>
-                <table style="float: left">
-                    <tr>
-                        <td>Name</td>
                         <td><code>"RemoveAt"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
+                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
+                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
+                        <td><code>[secondList]</code></td>
                         <td><code>["{0}.Count - 1"]</code></td>
                     </tr>
                 </table>
@@ -139,39 +125,25 @@ These commands will be implemented as native calls.
         <tr>
             <th>Java</th>
             <td>
-                <table style="float: left">
+                <table>
                     <tr>
                         <td>Name</td>
                         <td><code>"addAll"</code></td>
-                    </tr>
-                    <tr>
-                        <td>Scope</td>
-                        <td><code>Static</code></td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td><code>Function</code></td>
-                    </tr>
-                    <tr>
-                        <td>Arguments</td>
-                        <td><code>[secondList]</code></td>
-                    </tr>
-                </table>
-                <table style="float: left">
-                    <tr>
-                        <td>Name</td>
                         <td><code>"remove"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
+                        <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
+                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
+                        <td><code>[secondList]</code></td>
                         <td><code>["{0}.size() - 1"]</code></td>
                     </tr>
                 </table>
@@ -180,36 +152,25 @@ These commands will be implemented as native calls.
         <tr>
             <th>Python</th>
             <td>
-                <table style="float: left">
+                <table>
                     <tr>
                         <td>Name</td>
                         <td><code>"extend"</code></td>
-                    </tr>
-                    <tr>
-                        <td>Scope</td>
-                        <td><code>Static</code></td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td><code>Function</code></td>
-                    </tr>
-                    <tr>
-                        <td>Arguments</td>
-                        <td><code>[secondList]</code></td>
-                    </tr>
-                </table>
-                <table style="float: left">
-                    <tr>
-                        <td>Name</td>
                         <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
+                        <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
+                        <td><code>[secondList]</code></td>
                     </tr>
                 </table>
             </td>
@@ -217,36 +178,25 @@ These commands will be implemented as native calls.
         <tr>
             <th>Ruby</th>
             <td>
-                <table style="float: left">
+                <table>
                     <tr>
                         <td>Name</td>
                         <td><code>"concat"</code></td>
-                    </tr>
-                    <tr>
-                        <td>Scope</td>
-                        <td><code>Static</code></td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td><code>Function</code></td>
-                    </tr>
-                    <tr>
-                        <td>Arguments</td>
-                        <td><code>[secondList]</code></td>
-                    </tr>
-                </table>
-                <table style="float: left">
-                    <tr>
-                        <td>Name</td>
                         <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
+                        <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
+                        <td><code>[secondList]</code></td>
                     </tr>
                 </table>
             </td>
@@ -258,32 +208,21 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"concat"</code></td>
-                    </tr>
-                    <tr>
-                        <td>Scope</td>
-                        <td><code>Static</code></td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td><code>Function</code></td>
-                    </tr>
-                    <tr>
-                        <td>Arguments</td>
-                        <td><code>[secondList]</code></td>
-                    </tr>
-                </table>
-                <table style="float: left">
-                    <tr>
-                        <td>Name</td>
                         <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
+                        <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
+                        <td><code>[secondList]</code></td>
                     </tr>
                 </table>
             </td>
