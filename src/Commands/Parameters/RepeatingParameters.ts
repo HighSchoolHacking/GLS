@@ -10,7 +10,7 @@ export class RepeatingParameters extends Parameter {
     public parameters: Parameter[];
 
     /**
-     * Initializes a new instance of the Parameter class.
+     * Initializes a new instance of the RepeatingParameter class.
      * 
      * @param descriptor   A plain-text description of the parameter.
      * @param parameters   Parameters contained inside.
