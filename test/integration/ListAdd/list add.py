@@ -1,0 +1,3 @@
+-
+aaa.extend(bbb)
+-

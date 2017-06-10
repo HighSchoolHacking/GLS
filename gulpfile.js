@@ -1,26 +1,81 @@
 var gulp = require("gulp");
-var mocha = require("gulp-mocha");
-var runSequence = require("run-sequence");
 
 var getTsProject = (function () {
     var tsProjects = {};
     var gulpTypeScript;
 
-    return function (fileName) {
+    return function (fileName, options) {
         if (!gulpTypeScript) {
              gulpTypeScript = require("gulp-typescript");
         }
 
         if (!tsProjects[fileName]) {
-            tsProjects[fileName] = gulpTypeScript.createProject(fileName);
+            tsProjects[fileName] = gulpTypeScript.createProject(fileName, options);
         }
 
         return tsProjects[fileName];
     }
 })();
 
+gulp.task("dist:clean", function () {
+    var del = require("del");
+
+    return del([
+        "dist/*"
+    ]);
+});
+
+gulp.task("dist:dev", function () {
+    var browserify = require("browserify");
+    var buffer = require("vinyl-buffer");
+    var source = require("vinyl-source-stream");
+    var tsify = require("tsify");
+
+    var browsering = browserify({
+        cache: {},
+        debug: true,
+        entries: "./src/index.ts",
+        packageCache: {},
+        standalone: "general-language-syntax"
+    });
+
+    return browsering
+        .plugin(tsify)
+        .bundle()
+        .pipe(source("Gls.js"))
+        .pipe(buffer())
+        .pipe(gulp.dest("./dist"));
+});
+
+gulp.task("dist:min", function () {
+    var browserify = require("browserify");
+    var buffer = require("vinyl-buffer");
+    var uglify = require("gulp-uglify");
+    var source = require("vinyl-source-stream");
+    var tsify = require("tsify");
+
+    var browsering = browserify({
+        cache: {},
+        entries: "./src/index.ts",
+        packageCache: {},
+        standalone: "general-language-syntax"
+    });
+
+    return browsering
+        .plugin(tsify)
+        .bundle()
+        .pipe(source("Gls.min.js"))
+        .pipe(buffer())
+        .pipe(uglify())
+        .pipe(gulp.dest("./dist"));
+});
+
+gulp.task("dist", function (callback) {
+    require("run-sequence")("dist:clean", "dist:dev", "dist:min", callback);
+});
+
 gulp.task("clean", function (callback) {
-    runSequence("src:clean", "test:clean", callback);
+    require("run-sequence")("src:clean", "test:clean", callback);
 });
 
 gulp.task("src:clean", function () {
@@ -55,7 +110,7 @@ gulp.task("src:tsc", function () {
 });
 
 gulp.task("src", function (callback) {
-    runSequence(
+    require("run-sequence")(
         "src:clean",
         "src:tsc",
         "src:tslint",
@@ -101,8 +156,11 @@ gulp.task("test:tsc", function () {
 });
 
 function runTests(wildcard) {
+    var mocha = require("gulp-mocha");
+
     return gulp.src(wildcard)
         .pipe(mocha({
+            argv: JSON.stringify(process.argv),
             reporter: "spec",
         }))
         .on("error", function () {
@@ -123,7 +181,7 @@ gulp.task("test:end-to-end", function () {
 });
 
 gulp.task("test", function (callback) {
-    runSequence(
+    require("run-sequence")(
         "test:clean",
         "test:tsc",
         "test:tslint",
@@ -139,5 +197,5 @@ gulp.task("watch", ["default"], function () {
 });
 
 gulp.task("default", function (callback) {
-    runSequence("src", "test", callback);
+    require("run-sequence")("src", "test", "dist", callback);
 });

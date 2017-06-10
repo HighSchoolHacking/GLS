@@ -5,6 +5,11 @@ import { NativeCallProperties } from "./NativeCallProperties";
  */
 export class ListProperties {
     /**
+     * Adds two lists together.
+     */
+    public addList: NativeCallProperties;
+
+    /**
      * Whether the language uses flexible arrays.
      */
     public asArray: boolean;
