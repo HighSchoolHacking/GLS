@@ -12,8 +12,8 @@ export class StringLiteralParameter extends Parameter {
     /**
      * Initializes a new instance of the StringLiteralParameter class.
      * 
-     * @param descriptor   A plain-text description of the parameter.
-     * @param parameters   Parameters contained inside.
+     * @param name          The name of the string literal.
+     * @param description   A high-level definition of the parameter.
      */
     constructor(name: string, description: string) {
         super(description);
