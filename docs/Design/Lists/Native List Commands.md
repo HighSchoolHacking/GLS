@@ -92,6 +92,7 @@ These commands will be implemented as native calls.
 <table>
     <thead>
         <th>Language</th>
+        <th>Add List</th>
         <th>Pop</th>
     </thead>
     <tbody>
@@ -102,21 +103,37 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"AddRange"</code></td>
-                        <td><code>"RemoveAt"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
-                        <td><code>Static</code></td>
                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
-                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
                         <td><code>[secondList]</code></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"RemoveAt"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
                         <td><code>["{0}.Count - 1"]</code></td>
                     </tr>
                 </table>
@@ -129,21 +146,37 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"addAll"</code></td>
-                        <td><code>"remove"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
-                        <td><code>Static</code></td>
                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
-                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
                         <td><code>[secondList]</code></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"remove"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
+                    </tr>
+                    <tr>
+                        <td>Arguments</td>
                         <td><code>["{0}.size() - 1"]</code></td>
                     </tr>
                 </table>
@@ -156,21 +189,34 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"extend"</code></td>
-                        <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
-                        <td><code>Static</code></td>
                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
-                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
                         <td><code>[secondList]</code></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
                     </tr>
                 </table>
             </td>
@@ -182,21 +228,34 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"concat"</code></td>
-                        <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
-                        <td><code>Static</code></td>
                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
-                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
                         <td><code>[secondList]</code></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
                     </tr>
                 </table>
             </td>
@@ -208,21 +267,34 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Name</td>
                         <td><code>"concat"</code></td>
-                        <td><code>"pop"</code></td>
                     </tr>
                     <tr>
                         <td>Scope</td>
-                        <td><code>Static</code></td>
                         <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td><code>Function</code></td>
-                        <td><code>Function</code></td>
                     </tr>
                     <tr>
                         <td>Arguments</td>
                         <td><code>[secondList]</code></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><code>"pop"</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td><code>Static</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td><code>Function</code></td>
                     </tr>
                 </table>
             </td>
