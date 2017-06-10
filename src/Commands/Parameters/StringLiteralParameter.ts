@@ -10,7 +10,7 @@ export class StringLiteralParameter extends Parameter {
     public name: string;
 
     /**
-     * Initializes a new instance of the Parameter class.
+     * Initializes a new instance of the StringLiteralParameter class.
      * 
      * @param descriptor   A plain-text description of the parameter.
      * @param parameters   Parameters contained inside.
