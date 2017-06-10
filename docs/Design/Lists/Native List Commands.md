@@ -107,7 +107,7 @@ These commands will be implemented as native calls.
                     <tr>
                         <td>Scope</td>
                         <td><code>Static</code></td>
-                         <td><code>Static</code></td>
+                        <td><code>Static</code></td>
                     </tr>
                     <tr>
                         <td>Type</td>
@@ -204,7 +204,7 @@ These commands will be implemented as native calls.
         <tr>
             <th>TypeScript</th>
             <td>
-                <table style="float: left">
+                <table>
                     <tr>
                         <td>Name</td>
                         <td><code>"concat"</code></td>
