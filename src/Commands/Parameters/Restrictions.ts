@@ -1,6 +1,7 @@
 import { Parameter } from "./Parameter";
 import { SingleParameter } from "./SingleParameter";
 import { RepeatingParameters } from "./RepeatingParameters";
+import { StringLiteralParameter } from "./StringLiteralParameter"
 
 /**
  * Summary of parameter restrictions for a command.
@@ -34,6 +35,8 @@ export class Restrictions {
                 this.addSingleParameter(parameter);
             } else if (parameter instanceof RepeatingParameters) {
                 this.addRepeatingParameters(parameter);
+            } else if (parameter instanceof StringLiteralParameter) {
+                this.addStringLiteralParameter(parameter);
             }
         }
     }
@@ -128,5 +131,14 @@ export class Restrictions {
     private addRepeatingParameters(parameter: RepeatingParameters): void {
         this.intervals.push(parameter.parameters.length);
         this.maximum = Infinity;
+    }
+
+    /**
+     * Marks a string literal parameter's restrictions.
+     * 
+     * @param parameter   A description of a parameter.
+     */
+    private addStringLiteralParameter(parameter: StringLiteralParameter): void {
+        this.maximum += 1;
     }
 }
