@@ -268,6 +268,10 @@ export class TypeScript extends CLikeLanguage {
             "push",
             NativeCallScope.Member,
             NativeCallType.Function);
+        lists.addList = new NativeCallProperties(
+            "concat",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**

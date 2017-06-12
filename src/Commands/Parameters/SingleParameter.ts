@@ -15,7 +15,7 @@ export class SingleParameter extends Parameter {
     public required: boolean;
 
     /**
-     * Initializes a new instance of the Parameter class.
+     * Initializes a new instance of the SingleParameter class.
      * 
      * @param descriptor   A plain-text description of the parameter.
      * @param parameters   Parameters contained inside.

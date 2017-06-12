@@ -54,6 +54,7 @@ import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
+import { ListAddListCommand } from "./ListAddListCommand";
 import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListPopCommand } from "./ListPopCommand";
@@ -160,6 +161,7 @@ export class CommandsBag {
             "is not null": new IsNotNullCommand(context),
             "is null": new IsNullCommand(context),
             "lambda": new LambdaBodyCommand(context),
+            "list add list": new ListAddListCommand(context),
             "list initialize": new ListInitializeCommand(context),
             "list length": new ListLengthCommand(context),
             "list pop": new ListPopCommand(context),
