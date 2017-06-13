@@ -2,9 +2,9 @@ import { expect } from "chai";
 import "mocha";
 
 import { BannedKeywordsBag } from "../../../src/Commands/BannedKeywordsBag";
-import { LiteralCommand } from "../../../src/Commands/LiteralCommand";
-import { ConversionContext } from "../../../src/Conversions/ConversionContext";
-import { TypeScript } from "../../../src/Languages/TypeScript";
+import { LiteralCommand } from "../../../lib/Commands/LiteralCommand";
+import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
+import { TypeScript } from "../../../lib/Languages/TypeScript";
 
 describe("BannedKeywordsBag", () => {
     describe("renderBannedKeyword", () => {
