@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { BannedKeywordsBag } from "../../../src/Commands/BannedKeywordsBag";
+import { BannedKeywordsBag } from "../../../lib/Commands/BannedKeywordsBag";
 import { LiteralCommand } from "../../../lib/Commands/LiteralCommand";
 import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
 import { TypeScript } from "../../../lib/Languages/TypeScript";
