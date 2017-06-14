@@ -41,13 +41,7 @@ export class Restrictions {
                     this.addSingleParameter(parameter);
                 }
             } else if (parameter instanceof RepeatingParameters) {
-                const bannedKeywordsBag = new BannedKeywordsBag();
-                const keyword = bannedKeywordsBag.validateName();
-                if (keyword) {
-                    throw new Error(`'${name}' is not a valid variable name.`);
-                } else {
-                    this.addRepeatingParameters(parameter);
-                }
+                this.addRepeatingParameters(parameter);
             } else if (parameter instanceof StringLiteralParameter) {
                 this.addStringLiteralParameter(parameter);
             }
