@@ -34,8 +34,8 @@ export class Restrictions {
 
             if (parameter instanceof SingleParameter) {
                 const bannedKeywordsBag = new BannedKeywordsBag();
-                const keyword = bannedKeywordsBag.validateName(parameter.name);
-                if (keyword) {
+                const valid = bannedKeywordsBag.validateName(parameter.name);
+                if (valid) {
                     throw new Error(`'${name}' is not a valid variable name.`);
                 } else {
                     this.addSingleParameter(parameter);
