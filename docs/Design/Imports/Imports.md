@@ -18,15 +18,20 @@ The second is used as a fallback when the first is unavailable or inconvenient.
 
 ### `import`
 
-`import` `:` `packageName`*`[, item, ...]`* 
+`import` `:` `[packagePath, ...]` `use` `[item, ...]`
 
-Importing some items from a package is done with the `import` command.
+The `import` command imports items from a package path.
+It takes in two lists of parameters, separated by a `"use"` literal.
 
+The first list is the absolute path to a package to import in `snake-case`.
+Each word in the list is a directory name, and will be combined in the language's style for sub-directories or sub-modules.
+
+The second list is the items to import from the package.
 
 ## Usage
 
 ```
-import : Package.Section ItemOne ItemTwo
+import : package section ItemOne ItemTwo
 ```
 
 ### CSharp
