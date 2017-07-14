@@ -1,7 +1,7 @@
 # File
 
-GLS files may set their file path and import 
 The commands that are used to create importable program files.
+Each GLS file has a single name with any number of folder names as its directory path.
 
 ## Commands
 
