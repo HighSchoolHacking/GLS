@@ -14,7 +14,7 @@ export class ArgvParser {
      */
     constructor(argv: string[]) {
         for (const arg of argv) {
-            if (arg.indexOf("--argv=") === 1) {
+            if (arg.indexOf("--argv=") === 0) {
                 this.argv = JSON.parse(arg.slice("--argv=".length));
                 break;
             }
