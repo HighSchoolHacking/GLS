@@ -44,7 +44,7 @@ export abstract class NativeCallCommand extends Command {
     public render(parameters: string[]): LineResults {
         let scope: NativeCallScope = this.nativeCallProperties.scope;
         let results: LineResults = this.scopeRenderers[scope](parameters);
-
+        
         results.addImports(this.retrieveImports());
 
         return results;

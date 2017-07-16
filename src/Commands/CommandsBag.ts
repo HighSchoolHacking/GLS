@@ -55,6 +55,7 @@ import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
+import { ListClearCommand } from "./ListClearCommand";
 import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListPopCommand } from "./ListPopCommand";
@@ -164,6 +165,7 @@ export class CommandsBag {
             "is null": new IsNullCommand(context),
             "lambda": new LambdaBodyCommand(context),
             "list add list": new ListAddListCommand(context),
+            "list clear": new ListClearCommand(context),
             "list initialize": new ListInitializeCommand(context),
             "list length": new ListLengthCommand(context),
             "list pop": new ListPopCommand(context),

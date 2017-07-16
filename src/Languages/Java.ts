@@ -265,6 +265,11 @@ export class Java extends CLikeLanguage {
             "addAll",
             NativeCallScope.Member,
             NativeCallType.Function);
+ 
+        lists.clear = new NativeCallProperties(
+            "clear",
+            NativeCallScope.Member,
+            NativeCallType.Function);
 
         lists.length = new NativeCallProperties(
             "size",

@@ -20,6 +20,11 @@ export class ListProperties {
     public className: string;
 
     /**
+     * How to clear a list.
+     */
+    public clear: NativeCallProperties;
+
+    /**
      * How to retrieve the length of a list.
      */
     public length: NativeCallProperties;
