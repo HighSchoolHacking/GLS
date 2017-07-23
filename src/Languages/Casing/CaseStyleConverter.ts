@@ -9,6 +9,10 @@ export class CaseStyleConverter {
      * @returns The word's equivalent in this converter's case style.
      */
     public convert(words: string[]): string {
+        if (words.length === 0) {
+            return "";
+        }
+
         let result = "";
 
         for (let i = 0; i < words.length - 1; i += 1) {

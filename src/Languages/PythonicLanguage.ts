@@ -1,3 +1,4 @@
+import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
@@ -207,6 +208,7 @@ export abstract class PythonicLanguage extends Language {
     protected generateStyleProperties(style: StyleProperties): void {
         style.fileEndLines = [];
         style.fileIndentation = 0;
+        style.fileStartCase = CaseStyle.None;
         style.fileStartLines = [];
 
         style.semicolon = "";

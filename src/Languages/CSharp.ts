@@ -1,6 +1,7 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -152,7 +153,7 @@ export class CSharp extends CLikeLanguage {
             new Import(
                 ["system", "collections", "generic"],
                 ["Dictionary"],
-                "absolute")
+                ImportRelativity.Absolute)
         ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
@@ -299,7 +300,7 @@ export class CSharp extends CLikeLanguage {
             new Import(
                 ["system", "collections", "generic"],
                 ["List"],
-                "absolute")
+                ImportRelativity.Absolute)
         ];
     }
 
@@ -355,7 +356,7 @@ export class CSharp extends CLikeLanguage {
             new Import(
                 ["system"],
                 ["Math"],
-                "absolute")
+                ImportRelativity.Absolute)
         ];
         math.mathName = "Math";
     }
@@ -436,6 +437,7 @@ export class CSharp extends CLikeLanguage {
 
         style.fileEndLines = ["}"];
         style.fileIndentation = 1;
+        style.fileStartCase = CaseStyle.PackageUpperCase;
         style.fileStartLines = [
             "namespace {0}",
             "{",

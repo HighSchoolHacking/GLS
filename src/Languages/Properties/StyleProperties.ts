@@ -1,9 +1,13 @@
+import { CaseStyle } from "../Casing/CaseStyle";
+
 /**
  * Metadata on a language's style.
  */
 export class StyleProperties {
     /**
-     * Lines at the end of each file. "{0}" is used for the file name. 
+     * Lines at the end of each file.
+     * 
+     * @remarks "{0}" is replaced with the file name.
      */
     public fileEndLines: string[];
 
@@ -13,7 +17,14 @@ export class StyleProperties {
     public fileIndentation: number;
 
     /**
-     * Lines at the start of every file. "{0}" is used for the file name.
+     * Casing for file name and paths in file start lines.
+     */
+    public fileStartCase: CaseStyle;
+
+    /**
+     * Lines at the start of every file.
+     * 
+     * @remarks "{0}" is replaced with the file name; "{1}" with the file path.
      */
     public fileStartLines: string[];
 

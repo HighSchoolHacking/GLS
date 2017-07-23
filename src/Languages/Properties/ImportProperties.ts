@@ -45,6 +45,11 @@ export class ImportProperties {
     public right: string;
 
     /**
+     * Whether local file imports should use relative paths.
+     */
+    public useLocalRelativeImports: boolean;
+
+    /**
      * Whether local file imports should be treated as file paths.
      */
     public useLocalRelativePaths: boolean;

@@ -218,6 +218,7 @@ export class TypeScript extends CLikeLanguage {
         imports.leftLocal = "import { ";
         imports.middle = " } from \"";
         imports.right = "\";";
+        imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }
 
@@ -384,6 +385,7 @@ export class TypeScript extends CLikeLanguage {
 
         style.fileEndLines = [];
         style.fileIndentation = 0;
+        style.fileStartCase = CaseStyle.None;
         style.fileStartLines = [];
 
         style.mainEndLines = ["})();"];

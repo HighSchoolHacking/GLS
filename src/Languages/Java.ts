@@ -1,6 +1,7 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -155,7 +156,7 @@ export class Java extends CLikeLanguage {
             new Import(
                 ["java", "util"],
                 ["HashMap"],
-                "absolute")
+                ImportRelativity.Absolute)
         ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
@@ -303,7 +304,7 @@ export class Java extends CLikeLanguage {
             new Import(
                 ["java", "util"],
                 ["ArrayList"],
-                "absolute")
+                ImportRelativity.Absolute)
         ];
     }
 
@@ -439,6 +440,7 @@ export class Java extends CLikeLanguage {
 
         style.fileEndLines = [];
         style.fileIndentation = 0;
+        style.fileStartCase = CaseStyle.PackageUpperCase;
         style.fileStartLines = [
             "package {0};",
             "",

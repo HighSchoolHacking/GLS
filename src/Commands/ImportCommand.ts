@@ -1,5 +1,6 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Import } from "../Languages/Imports/Import";
+import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { Command } from "./Command";
 import { ImportPathResolver } from "../Conversions/Imports/ImportPathResolver";
 import { CommandResult } from "./CommandResult";
@@ -57,9 +58,9 @@ export abstract class ImportCommand extends Command {
         let lineResults = new LineResults([], false);
         let packagePath: string[] = parameters.slice(1, usingSplit);
         let items: string[] = parameters.slice(usingSplit + 1);
-        let relativity = this.getRelativity();
+        let relativity: ImportRelativity = this.getRelativity();
 
-        if (relativity === "relative") {
+        if (relativity === ImportRelativity.Local) {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);
         }
 
@@ -71,7 +72,7 @@ export abstract class ImportCommand extends Command {
     }
 
     /**
-     * @returns Whether this is from an "absolute" package or "local" file.
+     * @returns Whether this is from an absolute package or local file.
      */
-    protected abstract getRelativity(): string;
+    protected abstract getRelativity(): ImportRelativity;
 }

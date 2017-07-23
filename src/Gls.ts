@@ -22,6 +22,13 @@ export class Gls {
     private conversionContext: ConversionContext;
 
     /**
+     * Initializes a new instance of the Gls class.
+     */
+    public constructor() {
+        this.languagesBag = new LanguagesBag();
+    }
+
+    /**
      * @returns The current language for conversion.
      */
     public getLanguage(): Language {
@@ -42,7 +49,6 @@ export class Gls {
      * @returns this
      */
     public setLanguage(name: string): Gls {
-        this.languagesBag = new LanguagesBag();
         this.language = this.languagesBag.getLanguage(name);
         this.conversionContext = new ConversionContext(this.language);
 

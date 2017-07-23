@@ -217,6 +217,7 @@ export class JavaScript extends CLikeLanguage {
         imports.leftLocal = "import { ";
         imports.middle = " } from \"";
         imports.right = "\";";
+        imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }
 
@@ -372,7 +373,8 @@ export class JavaScript extends CLikeLanguage {
         super.generateStyleProperties(style);
 
         style.fileEndLines = [];
-        style.fileIndentation = 1;
+        style.fileIndentation = 0;
+        style.fileStartCase = CaseStyle.None;
         style.fileStartLines = [];
 
         style.mainEndLines = ["})();"];

@@ -1,3 +1,5 @@
+import { ImportRelativity } from "./ImportRelativity";
+
 /**
  * Marks an import from an absolute package or local file.
  */
@@ -15,18 +17,18 @@ export class Import {
     public items: string[];
 
     /**
-     * Whether this is from an "absolute" package or "local" file.
+     * Whether this is from an absolute package or local file.
      */
-    public relativity: string;
+    public relativity: ImportRelativity;
 
     /**
      * Initializes a new instance of the Import class.
      *
      * @param packagePath   Package path to import from.
      * @param items   Items to import from the package path.
-     * @param relativity   Whether this is from an "absolute" package or "local" file.
+     * @param relativity   Whether this is from an absolute package or local file.
      */
-    public constructor(packagePath: string[], items: string[], relativity: string) {
+    public constructor(packagePath: string[], items: string[], relativity: ImportRelativity) {
         this.packagePath = packagePath;
         this.items = items;
         this.relativity = relativity;

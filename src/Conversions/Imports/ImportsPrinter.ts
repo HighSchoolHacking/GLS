@@ -2,6 +2,7 @@ import { CommandResult } from "../../Commands/CommandResult";
 import { LineResults } from "../../Commands/LineResults";
 import { CaseStyleConverter } from "../../Languages/Casing/CaseStyleConverter";
 import { Import } from "../../Languages/Imports/Import";
+import { ImportRelativity } from "../../Languages/Imports/ImportRelativity";
 import { Language } from "../../Languages/Language";
 
 /**
@@ -107,8 +108,8 @@ export class ImportsPrinter {
      * @param relativity   Relativity for an import.
      * @returns The left component of the import's rendered line equivalent.
      */
-    private renderImportLeft(relativity: string): string {
-        if (relativity === "absolute") {
+    private renderImportLeft(relativity: ImportRelativity): string {
+        if (relativity === ImportRelativity.Absolute) {
             return this.language.properties.imports.leftAbsolute;
         }
 
@@ -124,7 +125,8 @@ export class ImportsPrinter {
     private renderPackagePath(addedImport: Import): string {
         let line = this.caseStyleConverter.convert(addedImport.packagePath);
 
-        if (addedImport.relativity === "relative" && this.language.properties.imports.useLocalRelativePaths) {
+        if (addedImport.relativity === ImportRelativity.Local
+            && this.language.properties.imports.useLocalRelativePaths) {
             line = "./" + line;
         }
 

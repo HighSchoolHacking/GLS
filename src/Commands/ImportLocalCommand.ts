@@ -1,4 +1,5 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { ImportCommand } from "./ImportCommand";
 
 /**
@@ -17,9 +18,13 @@ export class ImportLocalCommand extends ImportCommand {
     }
 
     /**
-     * @returns Whether this is from an "absolute" package or "local" file.
+     * @returns Whether this is from an absolute package or local file.
      */
-    protected getRelativity(): string {
-        return "local";
+    protected getRelativity(): ImportRelativity {
+        if (this.language.properties.imports.useLocalRelativeImports) {
+            return ImportRelativity.Local;
+        }
+
+        return ImportRelativity.Absolute;
     }
 }

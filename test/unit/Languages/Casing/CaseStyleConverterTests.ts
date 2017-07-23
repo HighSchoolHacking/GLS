@@ -6,6 +6,7 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("CaseStyleConverter", () => {
     describe("convert", () => {
+        itConvertsFromTo(CaseStyleConverter, [], "");
         itConvertsFromTo(CaseStyleConverter, ["abc"], "abc");
         itConvertsFromTo(CaseStyleConverter, ["abc", "def"], "abcdef");
         itConvertsFromTo(CaseStyleConverter, ["abc", "def", "ghi"], "abcdefghi");
