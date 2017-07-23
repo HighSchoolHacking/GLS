@@ -69,7 +69,7 @@ export class MemberVariableDeclareCommand extends Command {
             casingStyle = this.language.properties.classes.members.variables.publicCase;
         }
 
-        name = this.context.convertToCase(name, casingStyle);
+        name = this.context.convertToCase([name], casingStyle);
         output += this.context.convertParsed(["variable inline", name, type]).commandResults[0].text;
 
         return LineResults.newSingleLine(output, true);

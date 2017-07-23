@@ -9,7 +9,7 @@ export class Gls {
     /**
      * A lookup for known languages.
      */
-    private languagesBag: LanguagesBag = new LanguagesBag();
+    private languagesBag: LanguagesBag;
 
     /**
      * The current language for conversion.
@@ -42,6 +42,7 @@ export class Gls {
      * @returns this
      */
     public setLanguage(name: string): Gls {
+        this.languagesBag = new LanguagesBag();
         this.language = this.languagesBag.getLanguage(name);
         this.conversionContext = new ConversionContext(this.language);
 

@@ -1,8 +1,12 @@
+import { DashLowerCaseConverter } from "./DashLowerCaseConverter";
+import { DashUpperCaseConverter } from "./DashUpperCaseConverter";
+import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
+import { DirectoryUpperCaseConverter } from "./DirectoryUpperCaseConverter";
 import { CamelCaseConverter } from "./CamelCaseConverter";
 import { CaseStyle } from "./CaseStyle";
 import { CaseStyleConverter } from "./CaseStyleConverter";
-import { FileSystemCaseConverter } from "./FileSystemCaseConverter";
-import { NoneConverter } from "./NoneConverter";
+import { FileSystemLowerCaseConverter } from "./FileSystemLowerCaseConverter";
+import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
 import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
 import { PackageUpperCaseConverter } from "./PackageUpperCaseConverter";
 import { PascalCaseConverter } from "./PascalCaseConverter";
@@ -15,20 +19,25 @@ export class CaseStyleConverterBag {
     /**
      * Casing converters, keyed by their case style.
      */
-    private converters: { [i: string]: CaseStyleConverter };
+    private converters: { [i: number /* CaseStyle */]: CaseStyleConverter };
 
     /**
      * Initializes a new instance of the CaseStyleConverter class.
      */
     constructor() {
         this.converters = {
-            [CaseStyle.None.toString()]: new NoneConverter(),
-            [CaseStyle.CamelCase.toString()]: new CamelCaseConverter(),
-            [CaseStyle.FileSystem.toString()]: new FileSystemCaseConverter(),
-            [CaseStyle.PackageLowerCase.toString()]: new PackageLowerCaseConverter(),
-            [CaseStyle.PackageUpperCase.toString()]: new PackageUpperCaseConverter(),
-            [CaseStyle.PascalCase.toString()]: new PascalCaseConverter(),
-            [CaseStyle.SnakeCase.toString()]: new SnakeCaseConverter()
+            [CaseStyle.None]: new CaseStyleConverter(),
+            [CaseStyle.DashLowerCase]: new DashLowerCaseConverter(),
+            [CaseStyle.DashUpperCase]: new DashUpperCaseConverter(),
+            [CaseStyle.DirectoryLowerCase]: new DirectoryLowerCaseConverter(),
+            [CaseStyle.DirectoryUpperCase]: new DirectoryUpperCaseConverter(),
+            [CaseStyle.CamelCase]: new CamelCaseConverter(),
+            [CaseStyle.FileSystemLowerCase]: new FileSystemLowerCaseConverter(),
+            [CaseStyle.FileSystemUpperCase]: new FileSystemUpperCaseConverter(),
+            [CaseStyle.PackageLowerCase]: new PackageLowerCaseConverter(),
+            [CaseStyle.PackageUpperCase]: new PackageUpperCaseConverter(),
+            [CaseStyle.PascalCase]: new PascalCaseConverter(),
+            [CaseStyle.SnakeCase]: new SnakeCaseConverter()
         };
     }
 
@@ -39,9 +48,9 @@ export class CaseStyleConverterBag {
      * @returns The case converter under the given asing style.
      */
     public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
-        let caseStyleAlias = caseStyle.toString();
+        let caseStyleAlias = caseStyle;
 
-        if (!this.converters.hasOwnProperty(caseStyleAlias)) {
+        if (!this.converters[caseStyle]) {
             throw new Error(`Unknown case style requested: '${caseStyle}'.`);
         }
 

@@ -1,28 +1,13 @@
 import { CaseStyleConverter } from "./CaseStyleConverter";
 
 /**
- * Converts a name to snake_case.
+ * Converts a series of words to snake_case.
  */
 export class SnakeCaseConverter extends CaseStyleConverter {
     /**
-     * Converts a name to snake_case.
-     * 
-     * @param name   A name to convert.
-     * @returns The name's equivalent in snake_case.
+     * @returns Filler between words in a conversion.
      */
-    public convert(name: string): string {
-        name = super.convert(name);
-
-        return name.substring(0, name.length - 1);
-    }
-
-    /**
-     * Transforms a word within a name to snake_case.
-     * 
-     * @param word   A word within a name.
-     * @returns The word transformed to snake_case.
-     */
-    protected applyTransformationToWord(word: string): string {
-        return word.toLowerCase() + "_";
+    protected getBetweenWords(): string {
+        return "_";
     }
 }

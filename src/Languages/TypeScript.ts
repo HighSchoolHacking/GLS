@@ -211,7 +211,7 @@ export class TypeScript extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
+        imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.itemsBeforePackage = true;
         imports.left = "import { ";
@@ -325,7 +325,7 @@ export class TypeScript extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 

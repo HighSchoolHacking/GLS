@@ -1,28 +1,28 @@
 import { CaseStyleConverter } from "./CaseStyleConverter";
 
 /**
- * Converts a name to camelCase.
+ * Converts a series of words to camelCase.
  */
 export class CamelCaseConverter extends CaseStyleConverter {
     /**
-     * Converts a name to camelCase.
+     * Combines a series of words to the equivalent case style.
      * 
-     * @param name   A name to convert.
-     * @returns The name's equivalent in camelCase.
+     * @param word   Words to convert.
+     * @returns The word's equivalent in this converter's case style.
      */
-    public convert(name: string): string {
-        name = super.convert(name);
+    public convert(words: string[]): string {
+        let name: string = super.convert(words);
 
         return name[0].toLowerCase() + name.substring(1);
     }
 
     /**
-     * Transforms a word within a name to camelCase.
+     * Transforms a word to camelCase.
      * 
      * @param word   A word within a name.
      * @returns The word transformed to camelCase.
      */
-    protected applyTransformationToWord(word: string): string {
+    protected transformWord(word: string): string {
         return word[0].toUpperCase() + word.substring(1);
     }
 }

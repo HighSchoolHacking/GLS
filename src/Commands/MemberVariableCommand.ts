@@ -62,7 +62,7 @@ export class MemberVariableCommand extends Command {
             casingStyle = this.language.properties.classes.members.variables.publicCase;
         }
 
-        variableName = this.context.convertToCase(variableName, casingStyle);
+        variableName = this.context.convertToCase([variableName], casingStyle);
 
         let output: string = "";
         output += instanceName + ".";

@@ -1,5 +1,6 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -150,9 +151,12 @@ export class Java extends CLikeLanguage {
         dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
-        dictionaries.requiredImports = {
-            "java.util": ["HashMap"]
-        };
+        dictionaries.requiredImports = [
+            new Import(
+                ["java", "util"],
+                ["HashMap"],
+                "absolute")
+        ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -294,9 +298,12 @@ export class Java extends CLikeLanguage {
             NativeCallScope.Member,
             NativeCallType.Function);
 
-        lists.requiredImports = {
-            "java.util": ["ArrayList"]
-        };
+        lists.requiredImports = [
+            new Import(
+                ["java", "util"],
+                ["ArrayList"],
+                "absolute")
+        ];
     }
 
     /**
@@ -345,7 +352,7 @@ export class Java extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 

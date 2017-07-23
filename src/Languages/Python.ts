@@ -224,7 +224,7 @@ export class Python extends PythonicLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
+        imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.left = "from \"";
         imports.middle = "\" import ";
@@ -311,7 +311,7 @@ export class Python extends PythonicLanguage {
             "min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 

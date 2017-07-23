@@ -1,7 +1,7 @@
 import { CaseStyleConverter } from "./CaseStyleConverter";
 
 /**
- * Converts a name to PascalCase.
+ * Converts a series of words to PascalCase.
  */
 export class PascalCaseConverter extends CaseStyleConverter {
     /**
@@ -10,7 +10,7 @@ export class PascalCaseConverter extends CaseStyleConverter {
      * @param word   A word within a name.
      * @returns The word transformed to PascalCase.
      */
-    public applyTransformationToWord(word: string) {
+    public transformWord(word: string) {
         return word[0].toUpperCase() + word.substring(1);
     }
 }

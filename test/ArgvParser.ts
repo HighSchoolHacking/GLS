@@ -22,17 +22,21 @@ export class ArgvParser {
     }
 
     /**
-     * @returns Test names from argv preceded by "--command".
+     * @returns Test names from argv preceded by "--command", if any.
      */
-    public parseCommandNames(): Set<string> {
+    public parseCommandNames(): Set<string> | undefined {
         const testNames = new Set();
+        let hadTest = false;
 
         for (let i = 0; i < this.argv.length - 1; i += 1) {
             if (this.argv[i] === "--command") {
                 testNames.add(this.argv[i + 1].toLowerCase());
+                hadTest = true;
             }
         }
 
-        return testNames;
+        return hadTest
+            ? testNames
+            : undefined;
     }
 }

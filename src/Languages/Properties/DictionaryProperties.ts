@@ -1,3 +1,4 @@
+import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "./NativeCallProperties";
 
 /**
@@ -57,7 +58,7 @@ export class DictionaryProperties {
     /**
      * Required imports to be able to use dictionaries.
      */
-    public requiredImports: { [i: string]: string[] };
+    public requiredImports: Import[];
 
     /**
      * How to start displaying types in a dictionary type.

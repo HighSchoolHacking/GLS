@@ -1,3 +1,4 @@
+import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "./NativeCallProperties";
 
 /**
@@ -47,5 +48,5 @@ export class ListProperties {
     /**
      * Required imports to be able to use lists.
      */
-    public requiredImports: { [i: string]: string[] };
+    public requiredImports: Import[];
 }

@@ -1,22 +1,25 @@
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { Import } from "../Languages/Imports/Import";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { StringLiteralParameter } from "./Parameters/StringLiteralParameter";
 
 /**
- * A command for importing items from a package.
+ * A command for importing items from a file or package.
  */
-export class ImportCommand extends Command {
+export abstract class ImportCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
     private static parameters: Parameter[] = [
         new RepeatingParameters(
-            "Directory path for the directory to import from.",
+            "Path for the package to import from.",
             [
-                new SingleParameter("directory", "Part of the directory path.", false)
+                new SingleParameter("path", "Part of the package path.", false)
             ]),
         new SingleParameter("use", "\"use\"", true),
         new RepeatingParameters(
@@ -45,75 +48,18 @@ export class ImportCommand extends Command {
              throw new Error("A \"use\" parameter must be in import commands.");
         }
 
-        let directories: string[] = parameters.slice(1, usingSplit);
-        let imports: string[] = parameters.slice(usingSplit + 1);
-        let lines: CommandResult[];
+        let packagePath: string[] = parameters.slice(1, usingSplit);
+        let items: string[] = parameters.slice(usingSplit + 1);
+        let addedImport: Import = new Import(packagePath, items, this.getRelativity());
+        let lineResults = new LineResults([], false);
 
-        if (this.language.properties.imports.explicitLines) {
-            lines = this.renderMultipleLines(directories, imports);
-        } else {
-            lines = [this.renderCombinedLine(directories, imports)];
-        }
+        lineResults.addImports([addedImport]);
 
-        return new LineResults(lines, false);
+        return lineResults;
     }
 
     /**
-     * Renders the command for a language that splits item imports across lines.
-     * 
-     * @param directories   Directory path to import from.
-     * @param imports   Items to import from directories.
-     * @returns Line(s) of code in the language.
+     * @returns Whether this is from an "absolute" package or "local" file.
      */
-    private renderMultipleLines(directories: string[], imports: string[]): CommandResult[] {
-        let results: CommandResult[] = [];
-
-        for (let i: number = 0; i < imports.length; i += 1) {
-            results.push(this.renderLine(directories, imports[i]));
-        }
-
-        return results;
-    }
-
-    /**
-     * Renders the command for a language that puts multiple items in one import.
-     * 
-     * @param directories   Directory path to import from.
-     * @param imports   Items to import from directories.
-     * @returns Line(s) of code in the language.
-     */
-    private renderCombinedLine(directories: string[], imports: string[]): CommandResult {
-        let items: string = imports.join(", ");
-        return this.renderLine(directories, items);
-    }
-
-    /**
-     * Renders a single import line of some item(s) from a package.
-     * 
-     * @param directories   Directory path to import from.
-     * @param item   Item to import from directories.
-     * A line of code in the language.
-     */
-    private renderLine(directories: string[], item: string): CommandResult {
-        let line: string = this.language.properties.imports.left;
-
-        if (this.language.properties.imports.itemsBeforePackage) {
-            if (this.language.properties.imports.explicit) {
-                line += item;
-                line += this.language.properties.imports.middle;
-            }
-
-            line += this.context.convertToCase(directories.join("/"), this.language.properties.imports.case);
-        } else {
-            line += this.context.convertToCase(directories.join("/"), this.language.properties.imports.case);
-
-            if (this.language.properties.imports.explicit) {
-                line += this.language.properties.imports.middle;
-                line += item;
-            }
-        }
-
-        line += this.language.properties.imports.right;
-        return new CommandResult(line, 0);
-    }
+    protected abstract getRelativity(): string;
 }

@@ -212,7 +212,7 @@ export class Ruby extends PythonicLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
+        imports.case = CaseStyle.DirectoryLowerCase;
         imports.left = "require \"";
         imports.right = "\"";
     }
@@ -320,7 +320,7 @@ export class Ruby extends PythonicLanguage {
             "min",
             NativeCallScope.Array,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 

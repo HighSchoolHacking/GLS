@@ -1,5 +1,6 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -147,9 +148,12 @@ export class CSharp extends CLikeLanguage {
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = " }";
         dictionaries.initializeStart = "\n{";
-        dictionaries.requiredImports = {
-            "System/Collections/Generic": ["Dictionary"]
-        };
+        dictionaries.requiredImports = [
+            new Import(
+                ["system", "collections", "generic"],
+                ["Dictionary"],
+                "absolute")
+        ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -261,7 +265,7 @@ export class CSharp extends CLikeLanguage {
             "AddRange",
             NativeCallScope.Member,
             NativeCallType.Function);
-        
+
         lists.length = new NativeCallProperties(
             "Count",
             NativeCallScope.Member,
@@ -290,9 +294,12 @@ export class CSharp extends CLikeLanguage {
             NativeCallScope.Member,
             NativeCallType.Function);
 
-        lists.requiredImports = {
-            "System/Collections/Generic": ["List"]
-        };
+        lists.requiredImports = [
+            new Import(
+                ["system", "collections", "generic"],
+                ["List"],
+                "absolute")
+        ];
     }
 
     /**
@@ -343,9 +350,12 @@ export class CSharp extends CLikeLanguage {
             "Math.Min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {
-            "System": ["Math"]
-        };
+        math.requiredImports = [
+            new Import(
+                ["system"],
+                ["Math"],
+                "absolute")
+        ];
         math.mathName = "Math";
     }
 
@@ -426,9 +436,6 @@ export class CSharp extends CLikeLanguage {
         style.fileEndLines = ["}"];
         style.fileIndentation = 1;
         style.fileStartLines = [
-            "using System;",
-            "using System.Collections.Generic;",
-            "",
             "namespace {0}",
             "{",
         ];
