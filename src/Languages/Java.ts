@@ -222,7 +222,8 @@ export class Java extends CLikeLanguage {
         imports.case = CaseStyle.PackageLowerCase;
         imports.explicit = true;
         imports.explicitLines = true;
-        imports.left = "import ";
+        imports.leftAbsolute = "import ";
+        imports.leftLocal = "import ";
         imports.middle = ".";
         imports.right = ";";
     }

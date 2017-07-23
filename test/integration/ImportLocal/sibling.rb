@@ -1,3 +1,3 @@
 -
-from "./eee" import { fff, ggg }
+require_relative "eee"
 -

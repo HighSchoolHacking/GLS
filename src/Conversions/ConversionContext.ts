@@ -110,4 +110,11 @@ export class ConversionContext {
     public setDirectoryPath(directories: string[]): void {
         this.directories = directories;
     }
+
+    /**
+     * @returns Directories leading up to the current file.
+     */
+    public getDirectoryPath(): string[] {
+        return this.directories;
+    }
 }

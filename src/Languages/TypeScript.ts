@@ -214,9 +214,11 @@ export class TypeScript extends CLikeLanguage {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.itemsBeforePackage = true;
-        imports.left = "import { ";
+        imports.leftAbsolute = "import { ";
+        imports.leftLocal = "import { ";
         imports.middle = " } from \"";
         imports.right = "\";";
+        imports.useLocalRelativePaths = true;
     }
 
     /**

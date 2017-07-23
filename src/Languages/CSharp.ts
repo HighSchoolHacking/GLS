@@ -219,7 +219,8 @@ export class CSharp extends CLikeLanguage {
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.PackageUpperCase;
         imports.explicit = false;
-        imports.left = "using ";
+        imports.leftAbsolute = "using ";
+        imports.leftLocal = "using ";
         imports.right = ";";
     }
 

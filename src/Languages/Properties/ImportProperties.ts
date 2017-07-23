@@ -25,9 +25,14 @@ export class ImportProperties {
     public itemsBeforePackage: boolean;
 
     /**
-     * Start of an import line.
+     * Start of an import line for an absolute import.
      */
-    public left: string;
+    public leftAbsolute: string;
+
+    /**
+     * Start of an import line for a local import.
+     */
+    public leftLocal: string;
 
     /**
      * Middle of an import line, between items and package.

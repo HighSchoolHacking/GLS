@@ -226,7 +226,8 @@ export class Python extends PythonicLanguage {
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
-        imports.left = "from \"";
+        imports.leftAbsolute = "from \"";
+        imports.leftLocal = "from \"";
         imports.middle = "\" import ";
         imports.right = "";
     }

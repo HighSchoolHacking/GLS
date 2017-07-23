@@ -30,7 +30,9 @@ export class ImportsStore {
         let stores = [];
 
         for (let i in this.imports) {
-            stores.push(this.imports[i]);
+            if ({}.hasOwnProperty.call(this.imports, i)) {
+                stores.push(this.imports[i]);
+            }
         }
 
         return stores;

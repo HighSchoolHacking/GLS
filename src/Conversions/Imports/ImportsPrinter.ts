@@ -81,7 +81,7 @@ export class ImportsPrinter {
      * @returns A line of code in the language.
      */
     private renderLine(addedImport: Import, item: string): CommandResult {
-        let line: string = this.language.properties.imports.left;
+        let line: string = this.renderImportLeft(addedImport.relativity);
 
         if (this.language.properties.imports.itemsBeforePackage) {
             if (this.language.properties.imports.explicit) {
@@ -101,6 +101,18 @@ export class ImportsPrinter {
 
         line += this.language.properties.imports.right;
         return new CommandResult(line, 0);
+    }
+
+    /**
+     * @param relativity   Relativity for an import.
+     * @returns The left component of the import's rendered line equivalent.
+     */
+    private renderImportLeft(relativity: string): string {
+        if (relativity === "absolute") {
+            return this.language.properties.imports.leftAbsolute;
+        }
+
+        return this.language.properties.imports.leftLocal;
     }
 
     /**

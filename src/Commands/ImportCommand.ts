@@ -1,6 +1,7 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Import } from "../Languages/Imports/Import";
 import { Command } from "./Command";
+import { ImportPathResolver } from "../Conversions/Imports/ImportPathResolver";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
@@ -30,6 +31,11 @@ export abstract class ImportCommand extends Command {
     ];
 
     /**
+     * Resolves absolute import paths to a file-relative import paths.
+     */
+    private static pathResolver: ImportPathResolver = new ImportPathResolver();
+
+    /**
      * @returns Information on parameters this command takes in.
      */
     public getParameters(): Parameter[] {
@@ -48,12 +54,18 @@ export abstract class ImportCommand extends Command {
              throw new Error("A \"use\" parameter must be in import commands.");
         }
 
+        let lineResults = new LineResults([], false);
         let packagePath: string[] = parameters.slice(1, usingSplit);
         let items: string[] = parameters.slice(usingSplit + 1);
-        let addedImport: Import = new Import(packagePath, items, this.getRelativity());
-        let lineResults = new LineResults([], false);
+        let relativity = this.getRelativity();
 
-        lineResults.addImports([addedImport]);
+        if (relativity === "relative") {
+            packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);
+        }
+
+        lineResults.addImports([
+            new Import(packagePath, items, this.getRelativity())
+        ]);
 
         return lineResults;
     }

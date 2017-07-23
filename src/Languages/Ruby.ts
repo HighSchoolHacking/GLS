@@ -213,7 +213,8 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.DirectoryLowerCase;
-        imports.left = "require \"";
+        imports.leftAbsolute = "require \"";
+        imports.leftLocal = "require_relative \"";
         imports.right = "\"";
     }
 
