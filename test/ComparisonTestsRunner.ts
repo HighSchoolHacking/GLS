@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import * as fs from "fs";
 import "mocha";
-import * as minimatch from "minimatch";
 import * as path from "path";
 
 import { Gls } from "../lib/Gls";
@@ -17,9 +16,9 @@ export class ComparisonTestsRunner {
     private section: string;
 
     /**
-     * Minimatchers for command groups to run.
+     * Command groups to run, if not all.
      */
-    private commandsToRun: Set<string>;
+    private commandsToRun?: Set<string>;
 
     /**
      * Disk root path for the section.
@@ -37,7 +36,7 @@ export class ComparisonTestsRunner {
      * @param section   Friendly directory path to read tests under.
      * @param commandsToRun   Command groups to run, if not all.
      */
-    public constructor(section: string, commandsToRun: Set<string> = new Set<string>(["*"])) {
+    public constructor(section: string, commandsToRun?: Set<string>) {
         this.section = section;
         this.commandsToRun = commandsToRun;
         this.rootPath = path.resolve(section);
@@ -97,26 +96,20 @@ export class ComparisonTestsRunner {
      * @param commandsToRun   Command groups to run, if not all.
      * @returns Tests for each command in a directory.
      */
-    private readTestsUnderPath(rootPath: string, commandsToRun: Set<string>): Map<string, string[]> {
+    private readTestsUnderPath(rootPath: string, commandsToRun?: Set<string>): Map<string, string[]> {
         const tests = new Map<string, string[]>();
         let childrenNames = fs.readdirSync(rootPath);
 
-        if (commandsToRun !== undefined) {
-            const commandMatchers = Array.from(commandsToRun.keys());
-            childrenNames = childrenNames
-                .filter(
-                    (childName) => commandMatchers.some(
-                        (commandMatcher) => minimatch(childName, commandMatcher, {
-                            nocase: true
-                        })));
+        if (commandsToRun && commandsToRun.size > 0) {
+            childrenNames = childrenNames.filter(child => commandsToRun.has(child.toLowerCase()));
         }
 
         for (const childName of childrenNames) {
             tests.set(
                 childName,
                 fs.readdirSync(path.resolve(rootPath, childName))
-                    .filter((testFileName) => testFileName.indexOf(".gls") !== -1)
-                    .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))));
+                    .filter(testFileName => testFileName.indexOf(".gls") !== -1)
+                    .map(testFileName => testFileName.substring(0, testFileName.indexOf(".gls"))));
         }
 
         return tests;

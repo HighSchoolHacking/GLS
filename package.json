@@ -18,7 +18,6 @@
   "version": "0.3.15",
   "devDependencies": {
     "@types/chai": "^3.5.2",
-    "@types/minimatch": "^2.0.29",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.18",
     "browserify": "^14.3.0",
@@ -31,7 +30,6 @@
     "gulp-typescript": "^3.1.6",
     "gulp-uglify": "^2.1.2",
     "merge2": "^1.0.3",
-    "minimatch": "^3.0.4",
     "mocha": "^3.4.1",
     "run-sequence": "^1.2.2",
     "tsify": "^3.0.1",

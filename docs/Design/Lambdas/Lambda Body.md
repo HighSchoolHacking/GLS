@@ -32,6 +32,11 @@ lambda { |x, y|  x == y }
 (x, y) => x === y
 ```
 
+### Javascript
+```JavaScript
+(x, y) => x === y
+```
+
 
 ## Design
 
@@ -138,6 +143,14 @@ Properties will be stored in a LambdaProperties file in langauge.properties.lamb
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"("</code></td>
+            <td><code>") => "</code></td>
+            <td><code>""</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"("</code></td>
             <td><code>") => "</code></td>
             <td><code>""</code></td>

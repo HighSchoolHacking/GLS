@@ -63,6 +63,14 @@ package program;
 // ...
 ```
 
+### JavaScript
+
+```javascript
+(() => {
+    // ... 
+})();
+```
+
 ## Implementation
 
 ### Properties
@@ -142,6 +150,12 @@ package program;
             <td><code>0</code></td>
             <td><code>FileSystemLowerCase</code></td>
             <td><code>""</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>"(() =>  "</code></td>
+            <td><code>" {</code></td>
+            <td><code>"})();"</code></td>
         </tr>
     </tbody>
 </table>

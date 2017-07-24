@@ -48,6 +48,12 @@ Direction::Horizontal
 Direction.Horizontal
 ```
 
+### JavaScript
+
+```javascript
+Direction.Horizontal
+```
+
 
 ## Implementation
 
@@ -116,6 +122,12 @@ Retrieving an enum value consists of `ValueLeft`, the name of the container enum
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td>`""`</td>
+            <td>`"."`</td>
+            <td>`""`</td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td>`""`</td>
             <td>`"."`</td>
             <td>`""`</td>

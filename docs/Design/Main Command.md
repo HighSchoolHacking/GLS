@@ -68,6 +68,14 @@ if __name__ == "__main__":
 })();
 ```
 
+### JavaScript
+
+```typescript
+(() => {
+    // ...
+})();
+```
+
 ## Implementation
 
 ### Properties
@@ -123,6 +131,11 @@ if __name__ == "__main__":
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"(() => {"</code></td>
+            <td><code>"})();"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"(() => {"</code></td>
             <td><code>"})();"</code></td>
         </tr>

@@ -47,6 +47,12 @@ raise ExceptionType.new("foo")
 throw new ExceptionType("foo")
 ```
 
+### JavaScript
+
+```javascript
+throw new ExceptionType("foo")
+```
+
 ## Implementation
 
 ### Properties
@@ -111,6 +117,12 @@ throw new ExceptionType("foo")
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"throw new"</code></td>
+            <td><code>"("</code></td>
+            <td><code>")"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"throw new"</code></td>
             <td><code>"("</code></td>
             <td><code>")"</code></td>

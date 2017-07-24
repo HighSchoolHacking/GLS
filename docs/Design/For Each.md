@@ -61,6 +61,13 @@ for (let fruit of basket) {
 }
 ```
 
+### JavaScript
+
+```javascript
+for (let fruit of basket) {
+}
+```
+
 ## Implementation
 
 ### Properties
@@ -146,6 +153,14 @@ for (let fruit of basket) {
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"for"</code></td>
+            <td><code>"(let"</code></td>
+            <td><code>"of"</code></td>
+            <td><code>") {"</code></td>
+            <td><code>"\n}"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"for"</code></td>
             <td><code>"(let"</code></td>
             <td><code>"of"</code></td>

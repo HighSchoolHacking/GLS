@@ -46,6 +46,12 @@ puts foo
 console.log(foo)
 ```
 
+### JavaScript
+
+```javascript
+console.log(foo)
+```
+
 ## Implementation
 
 ### Properties
@@ -101,6 +107,11 @@ console.log(foo)
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"console.log("</code></td>
+            <td><code>")"</code></td>
+        </tr>
+        <tr>
+            <th>Javascript</th>
             <td><code>"console.log("</code></td>
             <td><code>")"</code></td>
         </tr>

@@ -38,6 +38,13 @@ interface IOverMinimum {
 }
 ```
 
+### JavaScript
+```JavaScript
+interface IOverMinimum {
+    (amount: number): boolean;
+}
+```
+
 ## Implementation
 
 ### Properties
@@ -135,6 +142,15 @@ Properties will be stored in the LambdaProperties object. The following properti
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td>`true`</td>
+            <td>`true`</td>
+            <td>`false`</td>
+            <td>`"interface "`</td>
+            <td>`" {\n"`</td>
+            <td>`"\n}"`</td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td>`true`</td>
             <td>`true`</td>
             <td>`false`</td>

@@ -77,6 +77,16 @@ command 1 TypeScript output
 command 1 TypeScript output
 ```
 
+### JavaScript
+
+```javascript
+command 1 JavaScript output
+```
+
+```javascript
+command 1 JavaScript output
+```
+
 
 ## Implementation
 
@@ -135,6 +145,11 @@ command 1 TypeScript output
             <th>TypeScript</th>
             <td><code>TypeScript Property1 value</code></td>
             <td><code>TypeScript Property2 value</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>JavaScript Property1 value</code></td>
+            <td><code>JavaScript Property2 value</code></td>
         </tr>
     </tbody>
 </table>

@@ -83,6 +83,12 @@ import { ItemA, ItemB } from "package/one";
 import { ItemC, ItemD } from "./package/two";
 ```
 
+### JavaScript
+
+```javascript
+import { ItemOne, ItemTwo } from "package/section";
+```
+
 
 ## Implementation
 
@@ -226,6 +232,16 @@ Others allow items to be separated by `", "`.
             <td><code>"\";"</code></td>
             <td><code>true</code></td>
             <td><code>true</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>FileSystem</code></td>
+            <td><code>true</code></td>
+            <td><code>false</code></td>
+            <td><code>true</code></td>
+            <td><code>"import { "</code></td>
+            <td><code>" } from \""</code></td>
+            <td><code>"\";"</code></td>
         </tr>
     </tbody>
 </table>

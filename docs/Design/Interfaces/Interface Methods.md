@@ -46,7 +46,6 @@ interface IPoint {
 }
 ```
 
-
 ## Implementation
 
 ### Properties

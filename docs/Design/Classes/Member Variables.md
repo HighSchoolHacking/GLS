@@ -119,6 +119,21 @@ this.age;
 this.gender;
 ```
 
+### JavaScript
+
+```javascript
+public name;
+protected age;
+private gender;
+```
+
+```javascript
+person.name;
+person.name;
+this.age;
+this.gender;
+```
+
 
 ## Implementation
 
@@ -265,6 +280,19 @@ this.gender;
             <td><code>CamelCase</code></td>
             <td><code>""</code></td>
             <td><code>false</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>""</code></td>
+            <td><code>CamelCase</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>CamelCase</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>CamelCase</code></td>
+            <td><code>""</code></td>
+            <td><code>true</code></td>
         </tr>
     </tbody>
 </table>

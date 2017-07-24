@@ -88,6 +88,16 @@ enum Direction {
 }
 ```
 
+### JavaScript
+
+```
+let Direction = {
+            Unknown: 0,
+            Horizontal: 1,
+            Vertical: 2
+}
+```
+
 ## Implementation
 
 An enum declaration consists of a starting line, any number of values, and an endling line.
@@ -198,6 +208,15 @@ The ending line is a standard block end.
         <tr>
             <th>TypeScript</th>
             <td>`"enum "`</td>
+            <td>`""`</td>
+            <td>`" = "`</td>
+            <td>`""`</td>
+            <td>`","`</td>
+            <td>`""`</td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td>`"let "`</td>
             <td>`""`</td>
             <td>`" = "`</td>
             <td>`""`</td>

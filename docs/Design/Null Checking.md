@@ -78,6 +78,16 @@ typeof foo === "undefined"
 typeof bar !== "undefined"
 ```
 
+### JavaScript
+
+```javascript
+typeof foo === "undefined"
+```
+
+```javascript
+typeof bar !== "undefined"
+```
+
 ## Implementation
 
 A null check consists of a start variable to be checked, an explicit null value to check against and some operator to test equality or inequality.
@@ -165,6 +175,14 @@ A null check consists of a start variable to be checked, an explicit null value 
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"typeof"</code></td>
+            <td><code>"typeof"</code></td>
+            <td><code>"==="</code></td>
+            <td><code>"!=="</code></td>
+            <td><code>""undefined""</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"typeof"</code></td>
             <td><code>"typeof"</code></td>
             <td><code>"==="</code></td>

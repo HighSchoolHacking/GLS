@@ -145,6 +145,25 @@ class Square extends Shape implements IPoint, ICoordinates {
 }
 ```
 
+### JavaScript
+
+```javascript
+class Point {
+}
+
+class Measurements<T> {
+}
+
+class Shape extends Measurements<Point> {
+}
+
+class Point implements ICoordinates {
+}
+
+class Square extends Shape implements IPoint, ICoordinates {
+}
+```
+
 
 ## Implementation
 
@@ -240,6 +259,15 @@ class Square extends Shape implements IPoint, ICoordinates {
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"class "</code></td>
+            <td><code>" extends "</code></td>
+            <td><code>" implements "</code></td>
+            <td><code>""</code></td>
+            <td><code>"{"</code></td>
+            <td><code>"}"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"class "</code></td>
             <td><code>" extends "</code></td>
             <td><code>" implements "</code></td>

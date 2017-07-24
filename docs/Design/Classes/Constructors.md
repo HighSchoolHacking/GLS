@@ -92,6 +92,17 @@ constructor(name: string, count: number) {
 }
 ```
 
+### JavaScript
+
+```javascript
+constructor() {
+}
+
+constructor(name: string, count: number) {
+    super(name);
+}
+```
+
 
 ## Implementation
 
@@ -168,6 +179,13 @@ constructor(name: string, count: number) {
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td>`"constructor"`</td>
+            <td>`false`</td>
+            <td>`true`</td>
+            <td>`"super"`</td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td>`"constructor"`</td>
             <td>`false`</td>
             <td>`true`</td>

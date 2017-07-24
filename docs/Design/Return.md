@@ -46,6 +46,12 @@ return foo
 return foo;
 ```
 
+### Javascript
+
+```javascript
+return foo;
+```
+
 ## Implementation
 
 ### Properties
@@ -91,6 +97,10 @@ return foo;
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"return"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"return"</code></td>
         </tr>
     </tbody>

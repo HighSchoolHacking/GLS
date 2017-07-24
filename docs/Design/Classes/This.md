@@ -46,6 +46,12 @@ self
 this
 ```
 
+### JavaScript
+
+```javascript
+this
+```
+
 ## Implementation
 
 ### Properties
@@ -91,6 +97,10 @@ this
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"this"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"this"</code></td>
         </tr>
     </tbody>

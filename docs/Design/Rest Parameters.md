@@ -47,6 +47,12 @@ string... foo
 ...foo: string[]
 ```
 
+### JavaScript
+
+```javascript
+...foo
+```
+
 
 ## Implementation
 
@@ -137,6 +143,14 @@ string... foo
             <td><code>"[]"</code></td>
             <td><code>true</code></td>
             <td><code>true</code></td>
+        </tr>
+        <tr>
+            <th>Javascript</th>
+            <td><code>"..."</code></td>
+            <td><code>""</code></td>
+            <td><code>""</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
     </tbody>
 </table>

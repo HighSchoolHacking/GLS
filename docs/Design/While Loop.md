@@ -59,6 +59,13 @@ while (foo) {
 }
 ```
 
+### JavaScript
+
+```javascript
+while (foo) {
+}
+```
+
 ## Implementation
 
 ### Properties
@@ -134,6 +141,13 @@ while (foo) {
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"while"</code></td>
+            <td><code>"("</code></td>
+            <td><code>") {"</code></td>
+            <td><code>"}"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"while"</code></td>
             <td><code>"("</code></td>
             <td><code>") {"</code></td>

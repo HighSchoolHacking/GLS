@@ -77,6 +77,15 @@ aaa bbb ccc
 */
 ```
 
+### JavaScript
+
+```javascript
+/*
+
+aaa bbb ccc
+*/
+```
+
 ## Implementation
 
 ### Properties
@@ -132,6 +141,11 @@ aaa bbb ccc
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"/*"</code></td>
+            <td><code>"*/"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"/*"</code></td>
             <td><code>"*/"</code></td>
         </tr>

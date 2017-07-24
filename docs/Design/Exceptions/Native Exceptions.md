@@ -53,6 +53,11 @@ The exception types represented here are those that had a counterpart in each la
             <td><code>"RangeError"</code></td>
             <td><code>"ReferenceError"</code></td>
         </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>"RangeError"</code></td>
+            <td><code>"ReferenceError"</code></td>
+        </tr>
     </tbody>
 </table>
 

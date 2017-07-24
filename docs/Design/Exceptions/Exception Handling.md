@@ -121,6 +121,18 @@ try {
 }
 ```
 
+### JavaScript
+
+```javascript
+try {
+    // ...
+} catch (foo) {
+    // ...
+} finally {
+    // ...
+}
+```
+
 ## Implementation
 
 ### Properties
@@ -194,8 +206,7 @@ try {
         <tr>
             <th>CSharp</th>
             <td><code>"try"</code></td>
-            <td><code>"\n{"</code></td>
-            
+            <td><code>"\n{"</code></td>   
         </tr>
         <tr>
             <th>Java</th>
@@ -210,11 +221,15 @@ try {
         <tr>
             <th>Python</th>
             <td><code>"try"</code></td>
-            <td><code>":\n"</code></td>
-            
+            <td><code>":\n"</code></td>            
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"try"</code></td>
+            <td><code>"{"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"try"</code></td>
             <td><code>"{"</code></td>
         </tr>
@@ -267,6 +282,13 @@ try {
             <td><code>""</code></td>
             <td><code>") {"</code></td>
         </tr>
+        <tr>
+            <th>JavaScript</th>
+            <td><code>"catch"</code></td>
+            <td><code>"("</code></td>
+            <td><code>""</code></td>
+            <td><code>") {"</code></td>
+        </tr>
     </tbody>
 </table>
 
@@ -284,8 +306,7 @@ try {
             <th>CSharp</th>
             <td><code>"finally"</code></td>
             <td><code>"\n{"</code></td>
-            <td><code>"\n}"</code></td>
-            
+            <td><code>"\n}"</code></td>       
         </tr>
         <tr>
             <th>Java</th>
@@ -303,11 +324,16 @@ try {
             <th>Python</th>
             <td><code>"finally"</code></td>
             <td><code>":\n"</code></td>
-            <td><code>""</code></td>
-            
+            <td><code>""</code></td>            
         </tr>
         <tr>
             <th>TypeScript</th>
+            <td><code>"finally"</code></td>
+            <td><code>"{"</code></td>
+            <td><code>"}"</code></td>
+        </tr>
+        <tr>
+            <th>JavaScript</th>
             <td><code>"finally"</code></td>
             <td><code>"{"</code></td>
             <td><code>"}"</code></td>

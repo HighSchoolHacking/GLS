@@ -160,5 +160,13 @@ These commands will be implemented as native calls.
             <td><code>"Math.max"</code> / <code>Static</code> / <code>Function</code></td>
             <td><code>"Math.min"</code> / <code>Static</code> / <code>Function</code></td>
         </tr>
+        <tr>
+            <th>Javascript</th>
+            <td><code>"Math"</code></td>
+            <td><code>"Math.abs"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"Math.floor"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"Math.max"</code> / <code>Static</code> / <code>Function</code></td>
+            <td><code>"Math.min"</code> / <code>Static</code> / <code>Function</code></td>
+        </tr>
     <tbody>
 </table>
