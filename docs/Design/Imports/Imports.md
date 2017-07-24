@@ -105,7 +105,7 @@ Others allow items to be separated by `", "`.
     <tbody>
         <tr>
             <td>ImportCase</td>
-            <td><code>FileSystem</code> | <code>PackageUpperCase</code> | <code>PackageLowerCase</code></td>
+            <td><code>CaseStyle</code></td>
             <td>Casing modifier for package names.</td>
         </tr>
         <tr>
@@ -138,6 +138,16 @@ Others allow items to be separated by `", "`.
             <td>string</td>
             <td>End of an import line.</td>
         </tr>
+        <tr>
+            <td>ImportUseLocalRelativeImports</td>
+            <td>boolean</td>
+            <td>Whether local file imports should be treated differently from absolute imports.</td>
+        </tr>
+        <tr>
+            <td>ImportUseLocalRelativePaths</td>
+            <td>boolean</td>
+            <td>Whether local file imports should print "./"-style relative paths.</td>
+        </tr>
     </tbody>
 </table>
 
@@ -153,6 +163,8 @@ Others allow items to be separated by `", "`.
         <td>ImportLeft</td>
         <td>ImportMiddle</td>
         <td>ImportRight</td>
+        <td>ImportUseLocalRelativeImports</td>
+        <td>ImportUseLocalRelativePaths</td>
     </thead>
     <tbody>
         <tr>
@@ -164,6 +176,8 @@ Others allow items to be separated by `", "`.
             <td><code>"using "</code></td>
             <td></td>
             <td><code>";"</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Java</th>
@@ -174,6 +188,8 @@ Others allow items to be separated by `", "`.
             <td><code>"import "</code></td>
             <td><code>"."</code></td>
             <td><code>"*;"</code></td>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
         </tr>
         <tr>
             <th>Python</th>
@@ -184,6 +200,8 @@ Others allow items to be separated by `", "`.
             <td><code>"from \""</code></td>
             <td><code>"\" import *"</code></td>
             <td><code>""</code></td>
+            <td><code>true</code></td>
+            <td><code>true</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
@@ -194,6 +212,8 @@ Others allow items to be separated by `", "`.
             <td><code>"require \""</code></td>
             <td></td>
             <td><code>"\""</code></td>
+            <td><code>true</code></td>
+            <td><code>true</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
@@ -204,6 +224,8 @@ Others allow items to be separated by `", "`.
             <td><code>"import { "</code></td>
             <td><code>" } from \""</code></td>
             <td><code>"\";"</code></td>
+            <td><code>true</code></td>
+            <td><code>true</code></td>
         </tr>
     </tbody>
 </table>
