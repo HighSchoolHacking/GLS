@@ -26,7 +26,7 @@ export class LanguagesBag {
     public JavaScript: JavaScript = new JavaScript();
 
     /**
-     * An instance of the CSharp class.
+     * An instance of the Python class.
      */
     public Python: Python = new Python();
 

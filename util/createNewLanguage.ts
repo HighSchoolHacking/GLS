@@ -1,5 +1,6 @@
 // todo: use mz/fs for async/await :)
 import * as fs from "fs";
+import * as os from "os";
 import * as path from "path";
 
 import { findGlsTestSourcesUnder } from "./findGlsTestSourcesUnder";
@@ -9,11 +10,33 @@ export interface ILanguageTemplate {
     name: string;
 }
 
+const normalizeEndlines = (text: string) => text.replace(/\r\n|\r|\n/g, os.EOL);
+
+const createLanguageBagMember = (languageName: string) => normalizeEndlines(`
+    /**
+     * An instance of the ${languageName} class.
+     */
+    public ${languageName}: ${languageName} = new ${languageName}();
+`);
+
+const addToLanguagesBag = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
+    const filePath = path.join(__dirname, `../src/Languages/LanguagesBag.ts`);
+    const oldImportTemplate = `import { ${oldLanguage.name} } from "./${oldLanguage.name}";`;
+    const newImportTemplate = `import { ${newLanguage.name} } from "./${newLanguage.name}";`;
+    const oldMemberTemplate = createLanguageBagMember(oldLanguage.name);
+    const newMemberTemplate = createLanguageBagMember(newLanguage.name);
+
+    fs.writeFileSync(
+        filePath,
+        normalizeEndlines(fs.readFileSync(filePath).toString())
+            .replace(oldImportTemplate, `${oldImportTemplate}${os.EOL}${newImportTemplate}`)
+            .replace(oldMemberTemplate, oldMemberTemplate + newMemberTemplate));
+};
+
 const createLanguageFile = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
     const source = path.join(__dirname, `../src/Languages/${oldLanguage.name}.ts`);
     const sink = path.join(__dirname, `../src/Languages/${newLanguage.name}.ts`);
 
-    // don't judge pls, offline
     const sourceContents = fs.readFileSync(source)
         .toString()
         .replace(
@@ -50,6 +73,7 @@ const createLanguageTests = (newLanguage: ILanguageTemplate, oldLanguage: ILangu
 };
 
 export const createNewLanguage = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
+    addToLanguagesBag(newLanguage, oldLanguage);
     createLanguageFile(newLanguage, oldLanguage);
     createLanguageTests(newLanguage, oldLanguage);
 };
