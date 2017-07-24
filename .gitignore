@@ -4,3 +4,5 @@ node_modules/
 npm-debug.log
 test/*.js
 test/unit/**/*.js
+util/*.js
+util/**/*.js
