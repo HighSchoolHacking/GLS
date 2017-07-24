@@ -12,6 +12,17 @@ export interface ILanguageTemplate {
 
 const normalizeEndlines = (text: string) => text.replace(/\r\n|\r|\n/g, os.EOL);
 
+const addToIndex = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
+    const filePath = path.join(__dirname, `../src/index.ts`);
+    const oldExportTemplate = `export { ${oldLanguage.name} } from "./Languages/${oldLanguage.name}";`;
+    const newExportTemplate = `export { ${newLanguage.name} } from "./Languages/${newLanguage.name}";`;
+
+    fs.writeFileSync(
+        filePath,
+        normalizeEndlines(fs.readFileSync(filePath).toString())
+            .replace(oldExportTemplate, `${oldExportTemplate}${os.EOL}${newExportTemplate}`));
+};
+
 const createLanguageBagMember = (languageName: string) => normalizeEndlines(`
     /**
      * An instance of the ${languageName} class.
@@ -73,6 +84,7 @@ const createLanguageTests = (newLanguage: ILanguageTemplate, oldLanguage: ILangu
 };
 
 export const createNewLanguage = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
+    addToIndex(newLanguage, oldLanguage);
     addToLanguagesBag(newLanguage, oldLanguage);
     createLanguageFile(newLanguage, oldLanguage);
     createLanguageTests(newLanguage, oldLanguage);
