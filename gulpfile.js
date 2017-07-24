@@ -231,9 +231,17 @@ gulp.task("util", function (callback) {
 });
 
 gulp.task("util:new-language", function () {
-    var newLanguage = require("./util").newLanguage;
+    var createNewLanguage = require("./util").createNewLanguage;
 
-    newLanguage("PHP", "Python");
+    createNewLanguage(
+        {
+            extension: ".php",
+            name: "PHP"
+        },
+        {
+            extension: ".py",
+            name: "Python"
+        });
 });
 
 gulp.task("watch", ["default"], function () {

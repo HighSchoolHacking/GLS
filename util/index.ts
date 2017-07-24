@@ -1,2 +1,3 @@
+export * from "./createNewLanguage";
 export * from "./findGlsFilesUnder";
-export * from "./newLanguage";
+export * from "./findGlsTestSourcesUnder";
