@@ -6,8 +6,6 @@ import { CaseStyle } from "../Casing/CaseStyle";
 export class FileProperties {
     /**
      * Lines at the end of each file.
-     * 
-     * @remarks "{0}" is replaced with the file name.
      */
     public endLines: string[];
 

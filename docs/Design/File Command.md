@@ -75,24 +75,24 @@ package program;
     </thead>
     <tbody>
         <tr>
-            <td>FileStartLeft</td>
+            <td>FileEndLines</td>
             <td><code>string</code></td>
-            <td>Starts the file start statement.</td>
+            <td>Lines at the end of every file.</td>
         </tr>
         <tr>
-            <td>FileStartRight</td>
-            <td><code>string</code></td>
-            <td>Ends the file start statement.</td>
+            <td>FileIndentation</td>
+            <td><code>number</code></td>
+            <td>How indented each file's contents should be.</td>
         </tr>
         <tr>
             <td>FileStartCase</td>
-            <td><code>CaseStyle</code></td>
+            <td><code>string</code></td>
             <td>Casing for file name and paths in file start lines.</td>
         </tr>
         <tr>
-            <td>FileEndCase</td>
+            <td>FileStartLines</td>
             <td><code>string</code></td>
-            <td>The file end statement.</td>
+            <td>Lines at the start of every file. <code>"{0}"</code> is replaced with the file name; <code>"{1}"</code> with the file path.</td>
         </tr>
     </tbody>
 </table>
@@ -102,41 +102,46 @@ package program;
 <table>
     <thead>
         <th>Language</th>
-        <th>FileStartLeft</th>
-        <th>FileStartRight</th>
-        <th>FileStartCase</th>
         <th>FileEndLines</th>
+        <th>FileIndentation</th>
+        <th>FileStartCase</th>
+        <th>FileStartLines</th>
     </thead>
     <tbody>
         <tr>
             <th>CSharp</th>
-            <td><code>"using System;\nusing System.Collections.Generic;\n\nnamespace"</code></td>
-            <td><code>"\n{"</code></td>
             <td><code>"}"</code></td>
+            <td><code>1</code></td>
+            <td><code>PackageUpperCase</code></td>
+            <td><code>namespace {1}\n{</code></td>
         </tr>
         <tr>
             <th>Java</th>
-            <td><code>"package"</code></td>
-            <td><code>"\nimport java.util.*;\n"</code></td>
             <td><code>""</code></td>
+            <td><code>0</code></td>
+            <td><code>PackageLowerCase</code></td>
+            <td><code>package {1};\n</code></td>
         </tr>
         <tr>
             <th>Ruby</th>
             <td><code>""</code></td>
-            <td><code>""</code></td>
+            <td><code>0</code></td>
+            <td><code>FileSystemLowerCase</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
             <th>Python</th>
             <td><code>""</code></td>
-            <td><code>""</code></td>
+            <td><code>0</code></td>
+            <td><code>FileSystemLowerCase</code></td>
             <td><code>""</code></td>
         </tr>
         <tr>
             <th>TypeScript</th>
-            <td><code>"namespace "</code></td>
-            <td><code>" {</code></td>
-            <td><code>"}"</code></td>
+            <td><code>""</code></td>
+            <td><code>0</code></td>
+            <td><code>FileSystemLowerCase</code></td>
+            <td><code>""</code></td>
         </tr>
     </tbody>
 </table>
