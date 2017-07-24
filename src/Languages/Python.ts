@@ -230,6 +230,7 @@ export class Python extends PythonicLanguage {
         imports.leftLocal = "from \"";
         imports.middle = "\" import ";
         imports.right = "";
+        imports.useLocalRelativeImports = true;
     }
 
     /**

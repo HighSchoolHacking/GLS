@@ -1,5 +1,7 @@
 -
-package aaa.bbb.ccc.ddd;
+import aaa.bbb.ccc.eee.fff;
+import aaa.bbb.ccc.eee.ggg;
 
-import aaa.bbb.ccc.eee.*;
+package aaa.bbb.ccc;
+
 -

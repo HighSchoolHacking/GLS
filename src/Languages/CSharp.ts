@@ -439,7 +439,7 @@ export class CSharp extends CLikeLanguage {
         style.fileIndentation = 1;
         style.fileStartCase = CaseStyle.PackageUpperCase;
         style.fileStartLines = [
-            "namespace {0}",
+            "namespace {1}",
             "{",
         ];
 

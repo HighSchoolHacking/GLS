@@ -1,6 +1,6 @@
 -
 using Aaa.Bbb.Ccc.Eee;
 
-namespace Aaa.Bbb.Ccc.Ddd
+namespace Aaa.Bbb.Ccc
 {
 -

@@ -45,12 +45,12 @@ export class ImportProperties {
     public right: string;
 
     /**
-     * Whether local file imports should use relative paths.
+     * Whether local file imports should be treated differently from absolute imports.
      */
     public useLocalRelativeImports: boolean;
 
     /**
-     * Whether local file imports should be treated as file paths.
+     * Whether local file imports should print "./"-style relative paths.
      */
     public useLocalRelativePaths: boolean;
 }

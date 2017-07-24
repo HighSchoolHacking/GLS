@@ -440,11 +440,9 @@ export class Java extends CLikeLanguage {
 
         style.fileEndLines = [];
         style.fileIndentation = 0;
-        style.fileStartCase = CaseStyle.PackageUpperCase;
+        style.fileStartCase = CaseStyle.PackageLowerCase;
         style.fileStartLines = [
-            "package {0};",
-            "",
-            "import java.util.*;",
+            "package {1};",
             "",
         ];
 

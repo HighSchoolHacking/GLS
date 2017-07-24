@@ -7,13 +7,6 @@ import { ImportCommand } from "./ImportCommand";
  */
 export class ImportPackageCommand extends ImportCommand {
     /**
-     * @returns A prefix to add to paths.
-     */
-    protected getPathPrefix(): string {
-        return "";
-    }
-
-    /**
      * @returns Whether this is from an absolute package or local file.
      */
     protected getRelativity(): ImportRelativity {
