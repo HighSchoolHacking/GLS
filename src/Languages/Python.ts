@@ -231,6 +231,7 @@ export class Python extends PythonicLanguage {
         imports.middle = "\" import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
+        imports.useLocalRelativePaths = true;
     }
 
     /**

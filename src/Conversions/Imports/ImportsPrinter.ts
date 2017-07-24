@@ -127,7 +127,7 @@ export class ImportsPrinter {
 
         if (addedImport.relativity === ImportRelativity.Local
             && this.language.properties.imports.useLocalRelativePaths
-            && line.indexOf("./") !== 0) {
+            && line[0] !== ".") {
             line = "./" + line;
         }
 

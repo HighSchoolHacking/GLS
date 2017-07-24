@@ -217,6 +217,7 @@ export class Ruby extends PythonicLanguage {
         imports.leftLocal = "require_relative \"";
         imports.right = "\"";
         imports.useLocalRelativeImports = true;
+        imports.useLocalRelativePaths = true;
     }
 
     /**

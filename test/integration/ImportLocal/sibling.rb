@@ -1,4 +1,4 @@
 -
-require_relative "eee"
+require_relative "./eee"
 
 -
