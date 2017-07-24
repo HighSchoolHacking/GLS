@@ -4,6 +4,7 @@ import "mocha";
 import * as minimatch from "minimatch";
 import * as path from "path";
 
+import { findGlsFilesUnder } from "../util";
 import { Gls } from "../lib/Gls";
 import { LanguagesBag } from "../lib/Languages/LanguagesBag";
 
@@ -94,22 +95,12 @@ export class ComparisonTestsRunner {
      * Retrieves, for each command in a directory, tests under that command.
      * 
      * @param rootPath   An absolute path to a command's tests folder.
-     * @param commandsToRun   Command groups to run, if not all.
+     * @param inclusions   Command groups to run, if not all.
      * @returns Tests for each command in a directory.
      */
-    private readTestsUnderPath(rootPath: string, commandsToRun: Set<string>): Map<string, string[]> {
+    private readTestsUnderPath(rootPath: string, inclusions: Set<string>): Map<string, string[]> {
+        const childrenNames = findGlsFilesUnder(rootPath, inclusions);
         const tests = new Map<string, string[]>();
-        let childrenNames = fs.readdirSync(rootPath);
-
-        if (commandsToRun !== undefined) {
-            const commandMatchers = Array.from(commandsToRun.keys());
-            childrenNames = childrenNames
-                .filter(
-                    (childName) => commandMatchers.some(
-                        (commandMatcher) => minimatch(childName, commandMatcher, {
-                            nocase: true
-                        })));
-        }
 
         for (const childName of childrenNames) {
             tests.set(

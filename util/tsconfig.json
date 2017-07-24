@@ -15,11 +15,9 @@
         "strictNullChecks": true
     },
     "exclude": [
-        "../src/**/*.ts",
-        "../util/**/*.ts"
+        "../src/**/*.ts"
     ],
     "include": [
-        "./*.ts",
-        "./unit/**/*.ts"
+        "./*.ts"
     ]
 }

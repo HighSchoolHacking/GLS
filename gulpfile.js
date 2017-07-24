@@ -75,7 +75,7 @@ gulp.task("dist", function (callback) {
 });
 
 gulp.task("clean", function (callback) {
-    require("run-sequence")("src:clean", "test:clean", callback);
+    require("run-sequence")("src:clean", "util:clean", "test:clean", callback);
 });
 
 gulp.task("src:clean", function () {
@@ -191,11 +191,52 @@ gulp.task("test", function (callback) {
         callback);
 });
 
+gulp.task("util:clean", function () {
+    var del = require("del");
+
+    return del([
+        "util/**/*.d.ts",
+        "util/**/*.js"
+    ]);
+});
+
+gulp.task("util:tslint", function () {
+    var gulpTslint = require("gulp-tslint");
+    var tslint = require("tslint");
+    var program = tslint.Linter.createProgram("./util/tsconfig.json");
+
+    return gulp
+        .src("util/**/*.ts")
+        .pipe(gulpTslint({ program }));
+});
+
+gulp.task("util:tsc", function () {
+    var merge = require("merge2");
+    var tsProject = getTsProject("./util/tsconfig.json");
+    var tsResult = gulp.src("util/**/*.ts")
+        .pipe(tsProject());
+
+    return merge([
+        tsResult.dts.pipe(gulp.dest("util")),
+        tsResult.js.pipe(gulp.dest("util"))
+    ]);
+});
+
+gulp.task("util", function (callback) {
+    require("run-sequence")(
+        "util:clean",
+        "util:tsc",
+        "util:tslint",
+        callback);
+});
+
+
 gulp.task("watch", ["default"], function () {
+    gulp.watch("util/**/*.ts", ["src:build"]);
     gulp.watch("src/**/*.ts", ["src:tsc"]);
     gulp.watch("test/**/*.ts", ["test:tsc"]);
 });
 
 gulp.task("default", function (callback) {
-    require("run-sequence")("src", "test", "dist", callback);
+    require("run-sequence")("src", "util", "test", "dist", callback);
 });
