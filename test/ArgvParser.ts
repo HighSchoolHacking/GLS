@@ -25,7 +25,7 @@ export class ArgvParser {
      * @returns Test names from argv preceded by "--command", if any.
      */
     public parseCommandNames(): Set<string> | undefined {
-        const testNames = new Set();
+        const testNames = new Set<string>();
         let hadTest = false;
 
         for (let i = 0; i < this.argv.length - 1; i += 1) {
@@ -35,8 +35,10 @@ export class ArgvParser {
             }
         }
 
-        return hadTest
-            ? testNames
-            : undefined;
+        if (!hadTest) {
+            testNames.add("*");
+        }
+
+        return testNames;
     }
 }
