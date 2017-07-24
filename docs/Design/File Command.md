@@ -31,9 +31,6 @@ file end : Program
 ### CSharp
 
 ```csharp
-using System;
-using System.Collections.Generic;
-
 namespace Program
 {
     // ...
@@ -43,9 +40,7 @@ namespace Program
 ### Java
 
 ```java
-package Program;
-
-import java.util.*;
+package program;
 
 // ...
 ```

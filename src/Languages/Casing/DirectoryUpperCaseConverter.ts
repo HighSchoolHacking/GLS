@@ -18,6 +18,6 @@ export class DirectoryUpperCaseConverter extends CaseStyleConverter {
      * @returns The word after this style's transformation.
      */
     protected transformWord(word: string): string {
-        return word[0].toUpperCase() + word.substring(1);
+        return word[0].toUpperCase() + word.substring(1).toLowerCase();
     }
 }

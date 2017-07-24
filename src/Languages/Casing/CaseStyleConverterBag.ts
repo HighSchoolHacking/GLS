@@ -26,7 +26,6 @@ export class CaseStyleConverterBag {
      */
     constructor() {
         this.converters = {
-            [CaseStyle.None]: new CaseStyleConverter(),
             [CaseStyle.DashLowerCase]: new DashLowerCaseConverter(),
             [CaseStyle.DashUpperCase]: new DashUpperCaseConverter(),
             [CaseStyle.DirectoryLowerCase]: new DirectoryLowerCaseConverter(),

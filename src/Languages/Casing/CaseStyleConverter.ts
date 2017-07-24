@@ -1,7 +1,7 @@
 /**
  * Converts series of words to a case.
  */
-export class CaseStyleConverter {
+export abstract class CaseStyleConverter {
     /**
      * Combines a series of words to the equivalent case style.
      * 
@@ -34,12 +34,10 @@ export class CaseStyleConverter {
     }
 
     /**
-     * Applies this style's transformation to a word (by default, none).
+     * Applies this style's transformation to a word.
      * 
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */
-    protected transformWord(word: string): string {
-        return word;
-    }
+    protected abstract transformWord(word: string): string;
 }

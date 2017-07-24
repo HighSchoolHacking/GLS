@@ -5,12 +5,12 @@ import { CaseStyleConverter } from "./CaseStyleConverter";
  */
 export class PascalCaseConverter extends CaseStyleConverter {
     /**
-     * Transforms a word within a name to PascalCase.
+     * Applies this style's transformation to a word.
      * 
-     * @param word   A word within a name.
-     * @returns The word transformed to PascalCase.
+     * @param word   A word to convert.
+     * @returns The word after this style's transformation.
      */
-    public transformWord(word: string) {
-        return word[0].toUpperCase() + word.substring(1);
+    protected transformWord(word: string): string {
+        return word[0].toUpperCase() + word.substring(1).toLowerCase();
     }
 }

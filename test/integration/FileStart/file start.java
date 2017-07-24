@@ -1,7 +1,5 @@
 -
-package Program;
-
-import java.util.*;
+package program;
 
 // ...
 -

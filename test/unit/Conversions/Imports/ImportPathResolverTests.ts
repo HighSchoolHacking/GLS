@@ -37,6 +37,13 @@ describe("ImportPathResolver", () => {
                 ["..", ".."]);
         });
 
+        it("resolves a parent sibling path", () => {
+            itResolvesFromTo(
+                ["aaa", "bbb", "ccc"],
+                ["aaa", "ddd"],
+                ["..", "..", "ddd"]);
+        });
+
         it("resolves a cousin path", () => {
             itResolvesFromTo(
                 ["aaa", "bbb"],

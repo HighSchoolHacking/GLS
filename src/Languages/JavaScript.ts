@@ -374,7 +374,7 @@ export class JavaScript extends CLikeLanguage {
 
         style.fileEndLines = [];
         style.fileIndentation = 0;
-        style.fileStartCase = CaseStyle.None;
+        style.fileStartCase = CaseStyle.FileSystemLowerCase;
         style.fileStartLines = [];
 
         style.mainEndLines = ["})();"];

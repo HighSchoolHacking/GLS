@@ -3,11 +3,6 @@
  */
 export enum CaseStyle {
     /**
-     * No preference on casing.
-     */
-    None,
-
-    /**
      * Dashes in lower case, such as abc-def.
      */
     DashLowerCase,

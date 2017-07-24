@@ -2,8 +2,8 @@ import { expect } from "chai";
 import "mocha";
 
 import { CaseStyle } from "../../../../lib/Languages/Casing/CaseStyle";
-import { CaseStyleConverter } from "../../../../lib/Languages/Casing/CaseStyleConverter";
 import { CaseStyleConverterBag } from "../../../../lib/Languages/Casing/CaseStyleConverterBag";
+import { FileSystemLowerCaseConverter } from "../../../../lib/Languages/Casing/FileSystemLowerCaseConverter";
 
 describe("CaseStyleConverterBag", () => {
     describe("getConverter", () => {
@@ -12,10 +12,10 @@ describe("CaseStyleConverterBag", () => {
             const caseStyleConverterBag = new CaseStyleConverterBag();
 
             // Act
-            const command = caseStyleConverterBag.getConverter(CaseStyle.None);
+            const command = caseStyleConverterBag.getConverter(CaseStyle.FileSystemLowerCase);
 
             // Assert
-            expect(command).that.be.instanceof(CaseStyleConverter);
+            expect(command).that.be.instanceof(FileSystemLowerCaseConverter);
         });
 
         it("throws an error for an unknown case style", () => {

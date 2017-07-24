@@ -17,12 +17,12 @@ export class CamelCaseConverter extends CaseStyleConverter {
     }
 
     /**
-     * Transforms a word to camelCase.
+     * Applies this style's transformation to a word.
      * 
-     * @param word   A word within a name.
-     * @returns The word transformed to camelCase.
+     * @param word   A word to convert.
+     * @returns The word after this style's transformation.
      */
     protected transformWord(word: string): string {
-        return word[0].toUpperCase() + word.substring(1);
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
     }
 }

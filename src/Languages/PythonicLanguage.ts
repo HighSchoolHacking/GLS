@@ -208,7 +208,7 @@ export abstract class PythonicLanguage extends Language {
     protected generateStyleProperties(style: StyleProperties): void {
         style.fileEndLines = [];
         style.fileIndentation = 0;
-        style.fileStartCase = CaseStyle.None;
+        style.fileStartCase = CaseStyle.FileSystemLowerCase;
         style.fileStartLines = [];
 
         style.semicolon = "";
