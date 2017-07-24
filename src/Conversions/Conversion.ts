@@ -2,11 +2,11 @@ import { CommandResult } from "../Commands/CommandResult";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { ConversionContext } from "./ConversionContext";
 import { GlsParser } from "./GlsParser";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
-import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
 
 /**
  * A single conversion run from raw GLS syntax to a language.

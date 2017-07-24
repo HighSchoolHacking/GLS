@@ -2,9 +2,9 @@ import { expect } from "chai";
 import "mocha";
 
 import { CommandsBag } from "../../lib/Commands/CommandsBag";
+import { CaseStyleConverterBag } from "../../lib/Conversions/Casing/CaseStyleConverterBag";
 import { ConversionContext } from "../../lib/Conversions/ConversionContext";
 import { GlsParser } from "../../lib/Conversions/GlsParser";
-import { CaseStyleConverterBag } from "../../lib/Languages/Casing/CaseStyleConverterBag";
 import { TypeScript } from "../../lib/Languages/TypeScript";
 
 describe("GlsParser", () => {

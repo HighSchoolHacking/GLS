@@ -1,9 +1,9 @@
 import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { ConversionContext } from "./ConversionContext";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
 
 /**
  * Converter to transform raw GLS syntax into language code.

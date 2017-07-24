@@ -1,6 +1,6 @@
 import "mocha";
 
-import { DashLowerCaseConverter } from "../../../../lib/Languages/Casing/DashLowerCaseConverter";
+import { DashLowerCaseConverter } from "../../../../lib/Conversions/Casing/DashLowerCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("DashLowerCaseConverter", () => {

@@ -23,9 +23,9 @@ Ends a file.
 ## Usage
 
 ```
-file start : Program
+file start : Program File
 comment line : ...
-file end : Program
+file end
 ```
 
 ### CSharp
@@ -85,7 +85,12 @@ package program;
             <td>Ends the file start statement.</td>
         </tr>
         <tr>
-            <td>FileEnd</td>
+            <td>FileStartCase</td>
+            <td><code>CaseStyle</code></td>
+            <td>Casing for file name and paths in file start lines.</td>
+        </tr>
+        <tr>
+            <td>FileEndCase</td>
             <td><code>string</code></td>
             <td>The file end statement.</td>
         </tr>
@@ -99,7 +104,8 @@ package program;
         <th>Language</th>
         <th>FileStartLeft</th>
         <th>FileStartRight</th>
-        <th>FileEnd</th>
+        <th>FileStartCase</th>
+        <th>FileEndLines</th>
     </thead>
     <tbody>
         <tr>

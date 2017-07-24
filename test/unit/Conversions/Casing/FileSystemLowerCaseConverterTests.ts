@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { FileSystemLowerCaseConverter } from "../../../../lib/Languages/Casing/FileSystemLowerCaseConverter";
+import { FileSystemLowerCaseConverter } from "../../../../lib/Conversions/Casing/FileSystemLowerCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("FileSystemLowerCaseConverter", () => {

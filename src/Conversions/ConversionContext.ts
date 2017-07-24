@@ -1,8 +1,8 @@
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
 import { Language } from "../Languages/Language";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { Conversion } from "./Conversion";
 import { GlsParser } from "./GlsParser";
 

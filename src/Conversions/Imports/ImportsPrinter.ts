@@ -1,6 +1,6 @@
+import { CaseStyleConverter } from "../Casing/CaseStyleConverter";
 import { CommandResult } from "../../Commands/CommandResult";
 import { LineResults } from "../../Commands/LineResults";
-import { CaseStyleConverter } from "../../Languages/Casing/CaseStyleConverter";
 import { Import } from "../../Languages/Imports/Import";
 import { ImportRelativity } from "../../Languages/Imports/ImportRelativity";
 import { Language } from "../../Languages/Language";

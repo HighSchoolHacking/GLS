@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PackageLowerCaseConverter } from "../../../../lib/Languages/Casing/PackageLowerCaseConverter";
+import { PackageLowerCaseConverter } from "../../../../lib/Conversions/Casing/PackageLowerCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("PackageLowerCaseConverter", () => {

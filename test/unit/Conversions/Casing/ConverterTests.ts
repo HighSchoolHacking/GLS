@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { CaseStyleConverter } from "../../../../lib/Languages/Casing/CaseStyleConverter";
+import { CaseStyleConverter } from "../../../../lib/Conversions/Casing/CaseStyleConverter";
 
 export interface ICaseStyleConverterCreator {
     new(): CaseStyleConverter;

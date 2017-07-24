@@ -9,20 +9,6 @@ import { SingleParameter } from "./Parameters/SingleParameter";
  */
 export class FileEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
-     */
-    private static parameters: Parameter[] = [
-        new SingleParameter("fileName", "The name of the file.", true)
-    ];
-
-    /**
-     * @returns Information on parameters this command takes in.
-     */
-    public getParameters(): Parameter[] {
-        return FileEndCommand.parameters;
-    }
-
-    /**
      * Renders the command for a language with the given parameters.
      * 
      * @param parameters   The command's name, followed by any parameters.
@@ -33,7 +19,7 @@ export class FileEndCommand extends Command {
         let source: string[] = this.language.properties.style.fileEndLines;
 
         for (let i: number = 0; i < source.length; i += 1) {
-            output.push(new CommandResult(source[i].replace("{0}", parameters[1]), 0));
+            output.push(new CommandResult(source[i], 0));
         }
 
         if (output.length !== 0) {

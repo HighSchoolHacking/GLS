@@ -1,9 +1,9 @@
+import { CaseStyle } from "../../Languages/Casing/CaseStyle";
 import { DashLowerCaseConverter } from "./DashLowerCaseConverter";
 import { DashUpperCaseConverter } from "./DashUpperCaseConverter";
 import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
 import { DirectoryUpperCaseConverter } from "./DirectoryUpperCaseConverter";
 import { CamelCaseConverter } from "./CamelCaseConverter";
-import { CaseStyle } from "./CaseStyle";
 import { CaseStyleConverter } from "./CaseStyleConverter";
 import { FileSystemLowerCaseConverter } from "./FileSystemLowerCaseConverter";
 import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
