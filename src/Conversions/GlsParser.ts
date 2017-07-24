@@ -1,9 +1,9 @@
 import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { CaseStyleConverterBag } from "../Languages/Casing/CaseStyleConverterBag";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { ConversionContext } from "./ConversionContext";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 
 /**
  * Converter to transform raw GLS syntax into language code.
@@ -20,19 +20,13 @@ export class GlsParser {
     private commandsBag: CommandsBag;
 
     /**
-     * The driving context for converting commands.
-     */
-    private context: ConversionContext;
-
-    /**
      * Initializes a new instance of the GlsParser class.
      * 
      * @param context   A driving context for converting commands.
      */
-    constructor(context: ConversionContext) {
-        this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.context = context;
-        this.commandsBag = new CommandsBag(context);
+    constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
+        this.caseStyleConverterBag = caseStyleConverterBag;
+        this.commandsBag = commandsBag;
     }
 
     /**
@@ -74,8 +68,8 @@ export class GlsParser {
      * @param caseStyle   A casing style.
      * @returns The name under the casing style.
      */
-    public convertToCase(name: string, caseStyle: CaseStyle): string {
-        const converter = this.caseStyleConverterBag.getConverter(caseStyle);
+    public convertToCase(name: string[], caseStyle: CaseStyle): string {
+        let converter = this.caseStyleConverterBag.getConverter(caseStyle);
 
         return converter.convert(name);
     }

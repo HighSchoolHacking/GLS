@@ -3,37 +3,57 @@
  */
 export enum CaseStyle {
     /**
-     * No preference on casing.
+     * Dashes in lower case, such as abc-def.
      */
-    None,
+    DashLowerCase,
 
     /**
-     * Camel case, such as myVariable.
+     * Dashes in upper case, such as Abc-Def.
+     */
+    DashUpperCase,
+
+    /**
+     * Directories in lower case, such as abc/def.
+     */
+    DirectoryLowerCase,
+
+    /**
+     * Directories in upper case, such as Abc/Def.
+     */
+    DirectoryUpperCase,
+
+    /**
+     * Camel case, such as abcDef.
      */
     CamelCase,
 
     /**
-     * File system case, such as "my/variable.
+     * Lower case file names case, such as ./abc/def.
      */
-    FileSystem,
+    FileSystemLowerCase,
 
     /**
-     * Packages in lower case, such as "my.variable".
+     * Upper case file names case, such as ./Abc/Def.
+     */
+    FileSystemUpperCase,
+
+    /**
+     * Packages in lower case, such as abc.def.
      */
     PackageLowerCase,
 
     /**
-     * Packages in upper case, such as "My.Variable".
+     * Packages in upper case, such as Abc.Def.
      */
     PackageUpperCase,
 
     /**
-     * Pascal case, such as MyVariable.
+     * Pascal case, such as AbcDef.
      */
     PascalCase,
 
     /**
-     * Snake case, such as my_variable.
+     * Snake case, such as abc_def.
      */
     SnakeCase
 }

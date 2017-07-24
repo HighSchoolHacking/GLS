@@ -1,5 +1,7 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -9,6 +11,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -150,9 +153,12 @@ export class Java extends CLikeLanguage {
         dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
-        dictionaries.requiredImports = {
-            "java.util": ["HashMap"]
-        };
+        dictionaries.requiredImports = [
+            new Import(
+                ["java", "util"],
+                ["HashMap"],
+                ImportRelativity.Absolute)
+        ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -182,6 +188,21 @@ export class Java extends CLikeLanguage {
         super.generateExceptionProperties(exceptions);
 
         exceptions.className = "Exception";
+    }
+
+    /**
+     * Generates metadata on file contents.
+     * 
+     * @param files   The property container for metadata on file contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = [];
+        files.indentation = 0;
+        files.startCase = CaseStyle.PackageLowerCase;
+        files.startLines = [
+            "package {1};",
+            "",
+        ];
     }
 
     /**
@@ -218,7 +239,8 @@ export class Java extends CLikeLanguage {
         imports.case = CaseStyle.PackageLowerCase;
         imports.explicit = true;
         imports.explicitLines = true;
-        imports.left = "import ";
+        imports.leftAbsolute = "import ";
+        imports.leftLocal = "import ";
         imports.middle = ".";
         imports.right = ";";
     }
@@ -294,9 +316,12 @@ export class Java extends CLikeLanguage {
             NativeCallScope.Member,
             NativeCallType.Function);
 
-        lists.requiredImports = {
-            "java.util": ["ArrayList"]
-        };
+        lists.requiredImports = [
+            new Import(
+                ["java", "util"],
+                ["ArrayList"],
+                ImportRelativity.Absolute)
+        ];
     }
 
     /**
@@ -345,7 +370,7 @@ export class Java extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -428,15 +453,6 @@ export class Java extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = [];
-        style.fileIndentation = 0;
-        style.fileStartLines = [
-            "package {0};",
-            "",
-            "import java.util.*;",
-            "",
-        ];
 
         style.mainEndLines = [
             "    }",

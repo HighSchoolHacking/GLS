@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { CommandResult } from "./CommandResult";
 
 /**
@@ -17,7 +18,7 @@ export class LineResults {
     /**
      * Any imports that must be in a file to use this.
      */
-    public addedImports: { [i: string]: string[] };
+    public addedImports: Import[];
 
     /**
      * Initializes a new instance of the LineResults class.
@@ -28,21 +29,16 @@ export class LineResults {
     constructor(commandResults: CommandResult[], addSemicolon: boolean) {
         this.commandResults = commandResults;
         this.addSemicolon = addSemicolon;
-        this.addedImports = {};
+        this.addedImports = [];
     }
 
     /**
+     * Adds a series of imports to the results.
      * 
+     * @param imports   Requested package imports.
      */
-    public addImports(imports: { [i: string]: string[] }): void {
-        if (this.addedImports === undefined) {
-            this.addedImports = imports;
-            return;
-        }
-
-        for (let packageName in imports) {
-            this.addedImports[packageName] = imports[packageName];
-        }
+    public addImports(imports: Import[]): void {
+        this.addedImports.push(...imports);
     }
 
     /**

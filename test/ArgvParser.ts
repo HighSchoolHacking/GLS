@@ -24,20 +24,20 @@ export class ArgvParser {
     }
 
     /**
-     * @returns Test names from argv preceded by "--command".
+     * @returns Test names from argv preceded by "--command", if any.
      */
-    public parseCommandNames(): Set<string> {
-        const testNames = new Set();
-        let hadCustomCommand = false;
+    public parseCommandNames(): Set<string> | undefined {
+        const testNames = new Set<string>();
+        let hadTest = false;
 
         for (let i = 0; i < this.argv.length - 1; i += 1) {
             if (this.argv[i] === "--command") {
                 testNames.add(this.argv[i + 1].toLowerCase());
-                hadCustomCommand = true;
+                hadTest = true;
             }
         }
 
-        if (!hadCustomCommand) {
+        if (!hadTest) {
             testNames.add("*");
         }
 

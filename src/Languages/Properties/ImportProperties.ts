@@ -5,7 +5,7 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ImportProperties {
     /**
-     * Casing modifier for package names.
+     * Casing modifier for imports.
      */
     public case: CaseStyle;
 
@@ -25,9 +25,14 @@ export class ImportProperties {
     public itemsBeforePackage: boolean;
 
     /**
-     * Start of an import line.
+     * Start of an import line for an absolute import.
      */
-    public left: string;
+    public leftAbsolute: string;
+
+    /**
+     * Start of an import line for a local import.
+     */
+    public leftLocal: string;
 
     /**
      * Middle of an import line, between items and package.
@@ -38,4 +43,14 @@ export class ImportProperties {
      * End of an import line.
      */
     public right: string;
+
+    /**
+     * Whether local file imports should be treated differently from absolute imports.
+     */
+    public useLocalRelativeImports: boolean;
+
+    /**
+     * Whether local file imports should print "./"-style relative paths.
+     */
+    public useLocalRelativePaths: boolean;
 }

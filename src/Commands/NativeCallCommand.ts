@@ -1,4 +1,5 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
+import { Import } from "../Languages/Imports/Import";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "../Languages/Properties/NativeCallProperties";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
@@ -58,8 +59,8 @@ export abstract class NativeCallCommand extends Command {
     /**
      * @returns Any imports this native command requires.
      */
-    protected retrieveImports(): { [i: string]: string[] } {
-        return {};
+    protected retrieveImports(): Import[] {
+        return [];
     }
 
     /**
@@ -73,12 +74,12 @@ export abstract class NativeCallCommand extends Command {
     private renderAsArray(parameters: string[]): LineResults {
         let result: string = "";
 
-       result += "[" + parameters[1];
-       for (let i: number = 2; i < parameters.length; i += 1) {
-           result += ", " + parameters[i];
-       }
+        result += "[" + parameters[1];
+        for (let i: number = 2; i < parameters.length; i += 1) {
+            result += ", " + parameters[i];
+        }
 
-       result += "]." + this.nativeCallProperties.name;
+        result += "]." + this.nativeCallProperties.name;
 
         return LineResults.newSingleLine(result, true);
     }

@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
 import { NativeCallCommand } from "./NativeCallCommand";
 import { Parameter } from "./Parameters/Parameter";
@@ -32,7 +33,7 @@ export class MathMinCommand extends NativeCallCommand {
     /**
      * @returns Any imports this native command requires.
      */
-    protected retrieveImports(): { [i: string]: string[] } {
+    protected retrieveImports(): Import[] {
         return this.language.properties.math.requiredImports;
     }
 }

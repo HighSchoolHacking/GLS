@@ -1,5 +1,5 @@
 -
-file start : Program
+file start : Program File
     comment line : ...
-file end : Program
+file end
 -

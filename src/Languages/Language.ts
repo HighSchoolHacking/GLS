@@ -8,6 +8,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -50,6 +51,7 @@ export abstract class Language {
         this.generateDictionaryProperties(this.properties.dictionaries);
         this.generateEnumProperties(this.properties.enums);
         this.generateExceptionProperties(this.properties.exceptions);
+        this.generateFileProperties(this.properties.files);
         this.generateFunctionProperties(this.properties.functions);
         this.generateGeneralProperties(this.properties.general);
         this.generateImportProperties(this.properties.imports);
@@ -139,6 +141,13 @@ export abstract class Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected abstract generateExceptionProperties(exceptions: ExceptionProperties): void;
+
+    /**
+     * Generates metadata on file contents.
+     * 
+     * @param exceptions   A property container for metadata on file contents.
+     */
+    protected abstract generateFileProperties(files: FileProperties): void;
 
     /**
      * Generates metadata on functions.

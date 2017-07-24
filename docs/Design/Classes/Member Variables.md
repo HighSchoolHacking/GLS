@@ -138,7 +138,7 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariablePublicCase</td>
-            <td><code>PascalCase</code> | <code>CamelCase</code> | <code>SnakeCase</code></td>
+            <td><code>CaseStyle</code></td>
             <td>Casing modifier for public member variables.</td>
         </tr>
         <tr>
@@ -153,7 +153,7 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariableProtectedCase</td>
-            <td><code>PascalCase</code> | <code>CamelCase</code> | <code>SnakeCase</code></td>
+            <td><code>CaseStyle</code></td>
             <td>Casing modifier for protected member variables.</td>
         </tr>
         <tr>
@@ -168,7 +168,7 @@ this.gender;
         </tr>
         <tr>
             <td>MemberVariablePrivateCase</td>
-            <td><code>PascalCase</code> | <code>CamelCase</code> | <code>SnakeCase</code></td>
+            <td><code>CaseStyle</code></td>
             <td>Casing modifier for private member variables.</td>
         </tr>
         <tr>

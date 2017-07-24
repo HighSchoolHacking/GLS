@@ -9,7 +9,7 @@ export class Gls {
     /**
      * A lookup for known languages.
      */
-    private languagesBag: LanguagesBag = new LanguagesBag();
+    private languagesBag: LanguagesBag;
 
     /**
      * The current language for conversion.
@@ -20,6 +20,13 @@ export class Gls {
      * Context for the currently converted code.
      */
     private conversionContext: ConversionContext;
+
+    /**
+     * Initializes a new instance of the Gls class.
+     */
+    public constructor() {
+        this.languagesBag = new LanguagesBag();
+    }
 
     /**
      * @returns The current language for conversion.

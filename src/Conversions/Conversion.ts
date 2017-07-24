@@ -1,56 +1,60 @@
 import { CommandResult } from "../Commands/CommandResult";
 import { LineResults } from "../Commands/LineResults";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { Language } from "../Languages/Language";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { ConversionContext } from "./ConversionContext";
+import { GlsParser } from "./GlsParser";
+import { ImportsPrinter } from "./Imports/ImportsPrinter";
+import { ImportsStore } from "./Imports/ImportsStore";
 
 /**
  * A single conversion run from raw GLS syntax to a language.
  */
 export class Conversion {
     /**
-     * The driving context for this conversion.Z
+     * Renders imports to output line results.
      */
-    private context: ConversionContext;
+    private importsPrinter: ImportsPrinter;
 
     /**
-     * Raw lines of GLS syntax being converted.
+     * Language being converted to.
      */
-    private glsLines: string[];
+    private language: Language;
 
     /**
-     * Accumulated clusters of code converted fromthe raw GLS syntax.
+     * Converter to transform raw GLS syntax into language code.
      */
-    private allLineResults: LineResults[];
-
-    /**
-     * Accumulated imports retrieved from functions.
-     */
-    private imports: { [i: string]: string[] };
+    private parser: GlsParser;
 
     /**
      * Initializes a new instance of the Conversion class.
+     * 
+     * @param language   Language being converted to.
      */
-    constructor(glsLines: string[], context: ConversionContext) {
-        this.context = context;
-        this.glsLines = glsLines;
+    public constructor(caseStyleConverterBag: CaseStyleConverterBag, language: Language, parser: GlsParser) {
+        this.importsPrinter = new ImportsPrinter(
+            language,
+            caseStyleConverterBag.getConverter(language.properties.imports.case));
+
+        this.language = language;
+        this.parser = parser;
     }
 
     /**
      * Converts the stored lines of GLS syntax to language code.
      * 
+     * @param glsLines   Raw lines of GLS syntax being converted.
      * @returns Converted lines of language code.
      */
-    public convert(): string[] {
-        this.allLineResults = [];
-        this.imports = {};
-
-        this.generateAllLineResults();
-        this.convertImportsToLineResults();
+    public convert(glsLines: string[]): string[] {
+        let allLineResults = this.generateAllLineResults(glsLines);
 
         let output: string[] = [];
         let indentation: number = 0;
 
-        for (let i: number = 0; i < this.allLineResults.length; i += 1) {
-            let lineResults: LineResults = this.allLineResults[i];
+        for (let i: number = 0; i < allLineResults.length; i += 1) {
+            let lineResults: LineResults = allLineResults[i];
             let commandResults: CommandResult[] = lineResults.commandResults;
 
             for (let j: number = 0; j < commandResults.length; j += 1) {
@@ -70,7 +74,7 @@ export class Conversion {
             }
 
             if (lineResults.addSemicolon) {
-                output[output.length - 1] += this.context.getLanguage().properties.style.semicolon;
+                output[output.length - 1] += this.language.properties.style.semicolon;
             }
         }
 
@@ -78,76 +82,36 @@ export class Conversion {
     }
 
     /**
-     * Generates line results from raw GLS syntax.
+     * Generates line results from raw GLS.
+     * 
+     * @param glsLines   Raw lines of GLS syntax being converted.
+     * @return Clusters of code returned from parsing raw GLS.
      */
-    private generateAllLineResults(): void {
-        for (let i: number = 0; i < this.glsLines.length; i += 1) {
-            if (this.glsLines[i].trim() === "") {
-                this.allLineResults.push(LineResults.newSingleLine("", false));
+    private generateAllLineResults(glsLines: string[]): LineResults[] {
+        let allLineResults: LineResults[] = [];
+        let importsStore: ImportsStore = new ImportsStore();
+
+        for (let i: number = 0; i < glsLines.length; i += 1) {
+            if (glsLines[i].trim() === "") {
+                allLineResults.push(LineResults.newSingleLine("", false));
                 continue;
             }
 
-            let lineResults: LineResults = this.context.getParser().parseCommand(this.glsLines[i]);
-            this.allLineResults.push(lineResults);
+            let lineResults: LineResults = this.parser.parseCommand(glsLines[i]);
 
-            if (lineResults.addedImports !== undefined) {
-                this.addImports(lineResults.addedImports);
+            allLineResults.push(lineResults);
+            importsStore.addImports(lineResults.addedImports);
+        }
+
+        if (importsStore.hasAnyImports()) {
+            allLineResults.unshift(LineResults.newSingleLine("", false));
+
+            for (let addedImport of importsStore.getAllImportStores()) {
+                allLineResults.unshift(this.importsPrinter.render(addedImport));
             }
         }
-    }
 
-    /**
-     * Adds new imports to the stored imports.
-     * 
-     * @param addedImports   New imports to store.
-     */
-    private addImports(addedImports: { [i: string]: string[] } ): void {
-        for (let packageName in addedImports) {
-            this.addImportItems(packageName, addedImports[packageName]);
-        }
-    }
-
-    /**
-     * Adds items to a package's stored imports.
-     * 
-     * @param packageName   The name of a package.
-     * @param items   Items to import from the package.
-     */
-    private addImportItems(packageName: string, items: string[]): void {
-        if (!this.imports.hasOwnProperty(packageName)) {
-            this.imports[packageName] = items;
-            return;
-        }
-
-        for (let i: number = 0; i < items.length; i += 1) {
-            if (this.imports[packageName].indexOf(items[i]) !== -1) {
-                this.imports[packageName].push(items[i]);
-            }
-        }
-    }
-
-    /**
-     * Transfers captured import statements from commands to line results.
-     */
-    private convertImportsToLineResults(): void {
-        if (Object.keys(this.imports).length !== 0) {
-            this.allLineResults.unshift(LineResults.newSingleLine("", false));
-        }
-
-        for (let packageName in this.imports) {
-            this.convertImportToLineResults(packageName, this.imports[packageName]);
-        }
-    }
-
-    /**
-     * Converts a captured import statement to line results.
-     * 
-     * @param packageName   The package name importing from.
-     * @param items   Items being imported from the package.
-     */
-    private convertImportToLineResults(packageName: string, items: string[]): void {
-        let parameters: string[] = ["import", packageName, ...items];
-        this.allLineResults.unshift(this.context.convertParsed(parameters));
+        return allLineResults;
     }
 
     /**

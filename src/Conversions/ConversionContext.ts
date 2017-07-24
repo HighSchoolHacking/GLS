@@ -1,13 +1,30 @@
+import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { Conversion } from "./Conversion";
 import { GlsParser } from "./GlsParser";
 
 /**
- * Driving context to use a GlsParser with a language to produce code. 
+ * Driving context to use a GlsParser with a language to produce code.
  */
 export class ConversionContext {
+    /**
+     * Container for case style converters.
+     */
+    private caseStyleConverterBag: CaseStyleConverterBag;
+
+    /**
+     * Container for globally known commands.
+     */
+    private commandsBag: CommandsBag;
+
+    /**
+     * Directories leading to the current file.
+     */
+    private directories: string[];
+
     /**
      * The language this context is converting GLS code into.
      */
@@ -23,9 +40,13 @@ export class ConversionContext {
      * 
      * @param language   The language this context is converting GLS code into.
      */
-    constructor(language: Language) {
+    public constructor(language: Language) {
+        this.caseStyleConverterBag = new CaseStyleConverterBag();
+        this.directories = [];
         this.language = language;
-        this.parser = new GlsParser(this);
+
+        this.commandsBag = new CommandsBag(this);
+        this.parser = new GlsParser(this.caseStyleConverterBag, this.commandsBag);
     }
 
     /**
@@ -36,22 +57,15 @@ export class ConversionContext {
     }
 
     /**
-     * @returns The converter for transforming raw GLS syntax into language code.
-     */
-    public getParser(): GlsParser {
-        return this.parser;
-    }
-
-    /**
      * Converts raw GLS syntax to the context language.
      * 
      * @param lines   Lines of raw GLS syntax.
      * @returns Equivalent lines of code in the context language.
      */
     public convert(lines: string[]): string[] {
-        let converter: Conversion = new Conversion(lines, this);
+        let converter: Conversion = new Conversion(this.caseStyleConverterBag, this.language, this.parser);
 
-        return converter.convert();
+        return converter.convert(lines);
     }
 
     /**
@@ -84,7 +98,23 @@ export class ConversionContext {
      * @param casingStyle   A casing style.
      * @returns The name under the casing style.
      */
-    public convertToCase(name: string, casingStyle: CaseStyle): string {
+    public convertToCase(name: string[], casingStyle: CaseStyle): string {
         return this.parser.convertToCase(name, casingStyle);
+    }
+
+    /**
+     * Sets the current file's directory path.
+     * 
+     * @param directories   Directories leading up to the current file.
+     */
+    public setDirectoryPath(directories: string[]): void {
+        this.directories = directories;
+    }
+
+    /**
+     * @returns Directories leading up to the current file.
+     */
+    public getDirectoryPath(): string[] {
+        return this.directories;
     }
 }

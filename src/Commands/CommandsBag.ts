@@ -46,7 +46,8 @@ import { FunctionEndCommand } from "./FunctionEndCommand";
 import { FunctionStartCommand } from "./FunctionStartCommand";
 import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
-import { ImportCommand } from "./ImportCommand";
+import { ImportLocalCommand } from "./ImportLocalCommand";
+import { ImportPackageCommand } from "./ImportPackageCommand";
 import { IndexCommand } from "./IndexCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
@@ -155,7 +156,8 @@ export class CommandsBag {
             "function end": new FunctionEndCommand(context),
             "if end": new IfEndCommand(context),
             "if start": new IfStartCommand(context),
-            "import": new ImportCommand(context),
+            "import local": new ImportLocalCommand(context),
+            "import package": new ImportPackageCommand(context),
             "index": new IndexCommand(context),
             "interface start": new InterfaceStartCommand(context),
             "interface end": new InterfaceEndCommand(context),

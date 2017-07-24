@@ -1,5 +1,7 @@
 import { CLikeLanguage } from "./CLikeLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -9,6 +11,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -147,9 +150,12 @@ export class CSharp extends CLikeLanguage {
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = " }";
         dictionaries.initializeStart = "\n{";
-        dictionaries.requiredImports = {
-            "System/Collections/Generic": ["Dictionary"]
-        };
+        dictionaries.requiredImports = [
+            new Import(
+                ["system", "collections", "generic"],
+                ["Dictionary"],
+                ImportRelativity.Absolute)
+        ];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -186,6 +192,21 @@ export class CSharp extends CLikeLanguage {
     }
 
     /**
+     * Generates metadata on file contents.
+     * 
+     * @param files   The property container for metadata on file contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = ["}"];
+        files.indentation = 1;
+        files.startCase = CaseStyle.PackageUpperCase;
+        files.startLines = [
+            "namespace {1}",
+            "{",
+        ];
+    }
+
+    /**
      * Generates metadata on functions.
      * 
      * @param functions   A property container for metadata on functions.
@@ -215,7 +236,8 @@ export class CSharp extends CLikeLanguage {
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.PackageUpperCase;
         imports.explicit = false;
-        imports.left = "using ";
+        imports.leftAbsolute = "using ";
+        imports.leftLocal = "using ";
         imports.right = ";";
     }
 
@@ -261,7 +283,7 @@ export class CSharp extends CLikeLanguage {
             "AddRange",
             NativeCallScope.Member,
             NativeCallType.Function);
-        
+
         lists.length = new NativeCallProperties(
             "Count",
             NativeCallScope.Member,
@@ -290,9 +312,12 @@ export class CSharp extends CLikeLanguage {
             NativeCallScope.Member,
             NativeCallType.Function);
 
-        lists.requiredImports = {
-            "System/Collections/Generic": ["List"]
-        };
+        lists.requiredImports = [
+            new Import(
+                ["system", "collections", "generic"],
+                ["List"],
+                ImportRelativity.Absolute)
+        ];
     }
 
     /**
@@ -343,9 +368,12 @@ export class CSharp extends CLikeLanguage {
             "Math.Min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {
-            "System": ["Math"]
-        };
+        math.requiredImports = [
+            new Import(
+                ["system"],
+                ["Math"],
+                ImportRelativity.Absolute)
+        ];
         math.mathName = "Math";
     }
 
@@ -422,16 +450,6 @@ export class CSharp extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
-        style.fileStartLines = [
-            "using System;",
-            "using System.Collections.Generic;",
-            "",
-            "namespace {0}",
-            "{",
-        ];
 
         style.mainEndLines = [
             "    }",

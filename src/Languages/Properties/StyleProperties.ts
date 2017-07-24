@@ -1,22 +1,9 @@
+import { CaseStyle } from "../Casing/CaseStyle";
+
 /**
  * Metadata on a language's style.
  */
 export class StyleProperties {
-    /**
-     * Lines at the end of each file. "{0}" is used for the file name. 
-     */
-    public fileEndLines: string[];
-
-    /**
-     * How indented each file's contents should be.
-     */
-    public fileIndentation: number;
-
-    /**
-     * Lines at the start of every file. "{0}" is used for the file name.
-     */
-    public fileStartLines: string[];
-
     /**
      * Lines at the end of a main function.
      */

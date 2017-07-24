@@ -9,6 +9,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -183,6 +184,18 @@ export class JavaScript extends CLikeLanguage {
     }
 
     /**
+     * Generates metadata on file contents.
+     * 
+     * @param files   The property container for metadata on file contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = [];
+        files.indentation = 0;
+        files.startCase = CaseStyle.FileSystemLowerCase;
+        files.startLines = [];
+    }
+
+    /**
      * Generates metadata on functions.
      * 
      * @param functions   A property container for metadata on functions.
@@ -210,12 +223,15 @@ export class JavaScript extends CLikeLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.FileSystem;
+        imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.itemsBeforePackage = true;
-        imports.left = "import { ";
+        imports.leftAbsolute = "import { ";
+        imports.leftLocal = "import { ";
         imports.middle = " } from \"";
         imports.right = "\";";
+        imports.useLocalRelativeImports = true;
+        imports.useLocalRelativePaths = true;
     }
 
     /**
@@ -234,7 +250,8 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
         super.generateLambdaProperties(lambdas);
-         lambdas.functionMiddle = ") => ";
+
+        lambdas.functionMiddle = ") => ";
     }
 
     /**
@@ -313,7 +330,7 @@ export class JavaScript extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = {};
+        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -367,10 +384,6 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = ["})();"];
-        style.fileIndentation = 1;
-        style.fileStartLines = ["(() => {"];
 
         style.mainEndLines = ["})();"];
         style.mainIndentation = 1;

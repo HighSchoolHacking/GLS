@@ -1,3 +1,4 @@
+import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "../Properties/NativeCallProperties";
 
 /**
@@ -25,9 +26,9 @@ export class MathProperties {
     public min: NativeCallProperties;
 
     /**
-     * Any imports native math commands require.
+     * Required imports to be able to use native math commands.
      */
-    public requiredImports: { [i: string]: string[] };
+    public requiredImports: Import[];
 
     /**
      * The name of the math global or namespace.
