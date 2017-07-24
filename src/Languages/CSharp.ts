@@ -11,6 +11,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -188,6 +189,21 @@ export class CSharp extends CLikeLanguage {
         exceptions.catchStartRight = ")\n{";
 
         exceptions.blockEnd = "}\n";
+    }
+
+    /**
+     * Generates metadata on file contents.
+     * 
+     * @param files   The property container for metadata on file contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = ["}"];
+        files.indentation = 1;
+        files.startCase = CaseStyle.PackageUpperCase;
+        files.startLines = [
+            "namespace {1}",
+            "{",
+        ];
     }
 
     /**
@@ -434,14 +450,6 @@ export class CSharp extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = ["}"];
-        style.fileIndentation = 1;
-        style.fileStartCase = CaseStyle.PackageUpperCase;
-        style.fileStartLines = [
-            "namespace {1}",
-            "{",
-        ];
 
         style.mainEndLines = [
             "    }",

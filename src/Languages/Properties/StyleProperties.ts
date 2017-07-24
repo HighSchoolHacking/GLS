@@ -5,30 +5,6 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class StyleProperties {
     /**
-     * Lines at the end of each file.
-     * 
-     * @remarks "{0}" is replaced with the file name.
-     */
-    public fileEndLines: string[];
-
-    /**
-     * How indented each file's contents should be.
-     */
-    public fileIndentation: number;
-
-    /**
-     * Casing for file name and paths in file start lines.
-     */
-    public fileStartCase: CaseStyle;
-
-    /**
-     * Lines at the start of every file.
-     * 
-     * @remarks "{0}" is replaced with the file name; "{1}" with the file path.
-     */
-    public fileStartLines: string[];
-
-    /**
      * Lines at the end of a main function.
      */
     public mainEndLines: string[];

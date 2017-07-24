@@ -16,14 +16,14 @@ export class FileEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let output: CommandResult[] = [];
-        let source: string[] = this.language.properties.style.fileEndLines;
+        let source: string[] = this.language.properties.files.endLines;
 
         for (let i: number = 0; i < source.length; i += 1) {
             output.push(new CommandResult(source[i], 0));
         }
 
         if (output.length !== 0) {
-            output[0].indentation = -this.language.properties.style.fileIndentation;
+            output[0].indentation = -this.language.properties.files.indentation;
         }
 
         return new LineResults(output, false);

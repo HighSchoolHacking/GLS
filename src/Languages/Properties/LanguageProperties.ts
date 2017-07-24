@@ -6,6 +6,7 @@ import { ConditionalProperties } from "./ConditionalProperties";
 import { DictionaryProperties } from "./DictionaryProperties";
 import { EnumProperties } from "./EnumProperties";
 import { ExceptionProperties } from "./ExceptionProperties";
+import { FileProperties } from "./FileProperties";
 import { FunctionProperties } from "./FunctionProperties";
 import { GeneralProperties } from "./GeneralProperties";
 import { ImportProperties } from "./ImportProperties";
@@ -65,6 +66,11 @@ export class LanguageProperties {
      * Metadata on exceptions.
      */
     public exceptions: ExceptionProperties;
+
+    /**
+     * Metadata on file contents.
+     */
+    public files: FileProperties;
 
     /**
      * Metadata on functions.
@@ -153,6 +159,7 @@ export class LanguageProperties {
         this.dictionaries = new DictionaryProperties();
         this.enums = new EnumProperties();
         this.exceptions = new ExceptionProperties();
+        this.files = new FileProperties();
         this.functions = new FunctionProperties();
         this.general = new GeneralProperties();
         this.imports = new ImportProperties();

@@ -7,6 +7,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { LambdaProperties } from "./Properties/LambdaProperties";
 import { ListProperties } from "./Properties/ListProperties";
@@ -126,6 +127,18 @@ export abstract class PythonicLanguage extends Language {
     }
 
     /**
+     * Generates metadata on file contents.
+     * 
+     * @param file   The property container for metadata on contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = [];
+        files.indentation = 0;
+        files.startCase = CaseStyle.FileSystemLowerCase;
+        files.startLines = [];
+    }
+
+    /**
      * Generates metadata on functions.
      * 
      * @param functions   The property container for metadata on functions. 
@@ -206,11 +219,6 @@ export abstract class PythonicLanguage extends Language {
      * @param style   The property container for metadata on style. 
      */
     protected generateStyleProperties(style: StyleProperties): void {
-        style.fileEndLines = [];
-        style.fileIndentation = 0;
-        style.fileStartCase = CaseStyle.FileSystemLowerCase;
-        style.fileStartLines = [];
-
         style.semicolon = "";
     }
 

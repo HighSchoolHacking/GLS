@@ -36,12 +36,12 @@ export class FileStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let output: CommandResult[] = [];
-        let source: string[] = this.language.properties.style.fileStartLines;
+        let source: string[] = this.language.properties.files.startLines;
         let packagePathAndFileName: string[] = parameters.slice(1);
         let packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
         let packagePathJoined: string = this.context.convertToCase(
             packagePath,
-            this.language.properties.style.fileStartCase);
+            this.language.properties.files.startCase);
         let fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
 
         for (let i: number = 0; i < source.length; i += 1) {
@@ -54,7 +54,7 @@ export class FileStartCommand extends Command {
         }
 
         if (output.length !== 0) {
-            output[output.length - 1].indentation = this.language.properties.style.fileIndentation;
+            output[output.length - 1].indentation = this.language.properties.files.indentation;
         }
 
         this.context.setDirectoryPath(packagePath);

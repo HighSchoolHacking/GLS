@@ -11,6 +11,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -187,6 +188,21 @@ export class Java extends CLikeLanguage {
         super.generateExceptionProperties(exceptions);
 
         exceptions.className = "Exception";
+    }
+
+    /**
+     * Generates metadata on file contents.
+     * 
+     * @param files   The property container for metadata on file contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = [];
+        files.indentation = 0;
+        files.startCase = CaseStyle.PackageLowerCase;
+        files.startLines = [
+            "package {1};",
+            "",
+        ];
     }
 
     /**
@@ -437,14 +453,6 @@ export class Java extends CLikeLanguage {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
-
-        style.fileEndLines = [];
-        style.fileIndentation = 0;
-        style.fileStartCase = CaseStyle.PackageLowerCase;
-        style.fileStartLines = [
-            "package {1};",
-            "",
-        ];
 
         style.mainEndLines = [
             "    }",
