@@ -230,6 +230,11 @@ gulp.task("util", function (callback) {
         callback);
 });
 
+gulp.task("util:new-language", function () {
+    var newLanguage = require("./util").newLanguage;
+
+    newLanguage("PHP", "Python");
+});
 
 gulp.task("watch", ["default"], function () {
     gulp.watch("util/**/*.ts", ["src:build"]);

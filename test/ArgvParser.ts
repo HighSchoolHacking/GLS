@@ -5,20 +5,22 @@ export class ArgvParser {
     /**
      * Arguments from process.argv.
      */
-    private argv: string[] = [];
+    private readonly argv: string[];
 
     /**
      * Initializes a new instance of the ArgvParser class.
      * 
      * @param argv   Arguments from process.argv.
      */
-    constructor(argv: string[]) {
+    public constructor(argv: string[]) {
         for (const arg of argv) {
             if (arg.indexOf("--argv=") === 0) {
                 this.argv = JSON.parse(arg.slice("--argv=".length));
-                break;
+                return;
             }
         }
+
+        this.argv = [];
     }
 
     /**
