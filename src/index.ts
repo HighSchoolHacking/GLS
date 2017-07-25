@@ -1,6 +1,7 @@
 export { ConversionContext } from "./Conversions/ConversionContext";
 export { Command } from "./Commands/Command";
 export { CommandsBag } from "./Commands/CommandsBag";
+export { CommandNames } from "./Commands/CommandNames";
 export { Parameter } from "./Commands/Parameters/Parameter";
 export { RepeatingParameters } from "./Commands/Parameters/RepeatingParameters";
 export { SingleParameter } from "./Commands/Parameters/SingleParameter";

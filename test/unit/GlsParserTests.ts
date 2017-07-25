@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
+import { CommandNames } from "../../lib/Commands/CommandNames";
 import { CommandsBag } from "../../lib/Commands/CommandsBag";
 import { CaseStyleConverterBag } from "../../lib/Conversions/Casing/CaseStyleConverterBag";
 import { ConversionContext } from "../../lib/Conversions/ConversionContext";
@@ -16,7 +17,7 @@ describe("GlsParser", () => {
         it("parses a command", () => {
             // Arrange
             const parser = stubParser();
-            const line = `literal : abc def ghi`;
+            const line = `${CommandNames.Literal} : abc def ghi`;
 
             // Act
             const parsed = parser.parseCommand(line);
@@ -37,7 +38,7 @@ describe("GlsParser", () => {
         it("parses a recursive command", () => {
             // Arrange
             const parser = stubParser();
-            const line = `literal : { literal : abc def ghi } jkl`;
+            const line = `${CommandNames.Literal} : { ${CommandNames.Literal} : abc def ghi } jkl`;
 
             // Act
             const parsed = parser.parseCommand(line);
@@ -58,7 +59,7 @@ describe("GlsParser", () => {
         it("parses a recursive command that adds a semicolon", () => {
             // Arrange
             const parser = stubParser();
-            const line = `variable : abc def ghi`;
+            const line = `${CommandNames.Variable} : abc def ghi`;
 
             // Act
             const parsed = parser.parseCommand(line);
