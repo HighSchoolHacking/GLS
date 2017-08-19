@@ -56,5 +56,7 @@ The exception types represented here are those that had a counterpart in each la
     </tbody>
 </table>
 
+
 ## Errata
-- This list is not fully inclusive of all exception types across all languages.
+
+* This list is not fully inclusive of all exception types across all languages.
