@@ -2,12 +2,9 @@
 
 ## Feature Overview
 
-This improvement adds support for class declarations to GLS, including:
-
-* Naming a class
-* Declaring any generics *(optional)*
-* Declaring a parent class to extend *(optional)*
-* Declaring parent interfaces to implement *(optional)*
+All GLS languages have the ability to express the concept of a "class" in the traditional Object Oriented Programming sense.
+They can also declare a parent class to extend.
+Languages that support strong or gradual type systems can also declaring parent interfaces to implement, if any.
 
 
 ## Commands
@@ -21,7 +18,7 @@ Starting a class declaration will be done with the `class start` command.
 * Optionally, a parent class can be declared by typing "extends" followed by the parent class' descriptor.
 * Optionally, interfaces to implement can be declared by typing "implements" followed by the interface(s)' names.
 
-A class descriptor is a class name and, optionally, any number of names of generics.
+A class descriptor is a class name.
 
 ### `class end`
 
@@ -150,6 +147,4 @@ class Square extends Shape implements IPoint, ICoordinates {
 
 * Some languages such as Java and TypeScript do not support multiple class inheritance, so GLS will not.
 * Interfaces do not exist in most duck-typed languages, so marking a class as implementing one is currently out of scope.
-* Adding modifiers such as `"extends"` to generics is currently out of scope.
-* Duck-typed languages such as Ruby and Python have no need for generics, so GLS will skip printing generic information in them.
 * Some languages do not support interfaces, so GLS will not print any information related to implementing them in these languages.
