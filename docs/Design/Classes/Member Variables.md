@@ -86,10 +86,10 @@ this.gender;
 ```
 
 ```python
-person.name;
-person.name;
-this._age;
-this.__gender;
+person.name
+person.name
+this._age
+this.__gender
 ```
 
 ### Ruby
@@ -125,4 +125,4 @@ this.gender;
 * Ruby does not support default member values, so GLS does not.
 * Python does not support declaring member variables without a default value. Because of Ruby's restrictions, there is no situation for which Python will declare a member variable via GLS.
 * Ruby uses a different set of privacy modifiers and concepts than most other languages. Emulating them is currently out of scope.
-* `"public"`, `"protected"`, and `"private"` are already keywords in some languages. They should not be used as instanceName regardless of the privacy option.
+* `"public"`, `"protected"`, and `"private"` are already keywords in some languages. They can not be used as instanceName regardless of the privacy option.

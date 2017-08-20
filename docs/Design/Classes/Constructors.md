@@ -68,7 +68,7 @@ Bar(string name, int count) {
 def __init__(self):
 
 def __init__(self, name, count):
-    super().__init__(name);
+    super().__init__(name)
 ```
 
 ### Ruby
@@ -91,8 +91,3 @@ constructor(name: string, count: number) {
     super(name);
 }
 ```
-
-
-## Errata
-
-* Private constructors are currently out of scope.
