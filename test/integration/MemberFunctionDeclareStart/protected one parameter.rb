@@ -1,4 +1,4 @@
 -
 class Abc
-    def defGhi(jkl)
+    def def_ghi(jkl)
 -

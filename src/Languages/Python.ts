@@ -74,11 +74,11 @@ export class Python extends PythonicLanguage {
         classes.declareStartRight = ":";
 
         classes.members.functions.private = "def ";
-        classes.members.functions.privateCase = CaseStyle.CamelCase;
+        classes.members.functions.privateCase = CaseStyle.SnakeCase;
         classes.members.functions.protected = "def ";
-        classes.members.functions.protectedCase = CaseStyle.CamelCase;
+        classes.members.functions.protectedCase = CaseStyle.SnakeCase;
         classes.members.functions.public = "def ";
-        classes.members.functions.publicCase = CaseStyle.CamelCase;
+        classes.members.functions.publicCase = CaseStyle.SnakeCase;
 
         classes.superConstructor = "super().__init__";
     }

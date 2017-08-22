@@ -1,4 +1,4 @@
 -
 class Abc
-    def defGhi()
+    def def_ghi()
 -

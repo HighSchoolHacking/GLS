@@ -59,23 +59,6 @@ export class MemberFunctionCommand extends Command {
     }
 
     /**
-     * Determines which publicity prefix to use for a member function.
-     * 
-     * 
-     */
-    private getPublicity(publicity: string): string {
-        if (publicity === "private") {
-            return this.language.properties.classes.members.functions.private;
-        }
-
-        if (publicity === "protected") {
-            return this.language.properties.classes.members.functions.protected;
-        }
-
-        return this.language.properties.classes.members.functions.public;
-    }
-
-    /**
      * 
      */
     private getPublicityCase(publicity: string): CaseStyle {

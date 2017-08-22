@@ -1,4 +1,4 @@
 -
 class Abc:
-    def defGhi(jkl, mno):
+    def def_ghi(jkl, mno):
 -
