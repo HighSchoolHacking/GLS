@@ -1,0 +1,5 @@
+-
+class start : Abc
+    member function declare start : public DefGhi string
+    member function declare end
+-
