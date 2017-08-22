@@ -348,6 +348,16 @@ export class CommandNames {
     public static MathMin: string = "math min";
 
     /**
+     * Name key for the MemberFunctionDeclareStart command.
+     */
+    public static MemberFunctionDeclareStart: string = "member function declare start";
+
+    /**
+     * Name key for the MemberFunctionDeclareEnd command.
+     */
+    public static MemberFunctionDeclareEnd: string = "member function declare end";
+
+    /**
      * Name key for the MemberVariable command.
      */
     public static MemberVariable: string = "member variable";

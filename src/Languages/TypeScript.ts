@@ -69,13 +69,22 @@ export class TypeScript extends CLikeLanguage {
             "float": "number",
             "int": "number"
         };
+
         classes.constructorKeyword = "constructor";
         classes.constructorUsesKeyword = true;
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
-        classes.superConstructor = "super";
         classes.generics.used = true;
+
+        classes.members.functions.private = "private ";
+        classes.members.functions.privateCase = CaseStyle.CamelCase;
+        classes.members.functions.protected = "protected ";
+        classes.members.functions.protectedCase = CaseStyle.CamelCase;
+        classes.members.functions.public = "public ";
+        classes.members.functions.publicCase = CaseStyle.CamelCase;
+
+        classes.superConstructor = "super";
     }
 
     /**

@@ -64,6 +64,7 @@ export class Python extends PythonicLanguage {
             "dictionary": "dict",
             "number": "float"
         };
+
         classes.constructorKeyword = "def __init__";
         classes.constructorTakesThis = true;
         classes.declareEnd = "\0";
@@ -71,6 +72,14 @@ export class Python extends PythonicLanguage {
         classes.declareExtendsRight = ")";
         classes.declareStartLeft = "class ";
         classes.declareStartRight = ":";
+
+        classes.members.functions.private = "def ";
+        classes.members.functions.privateCase = CaseStyle.CamelCase;
+        classes.members.functions.protected = "def ";
+        classes.members.functions.protectedCase = CaseStyle.CamelCase;
+        classes.members.functions.public = "def ";
+        classes.members.functions.publicCase = CaseStyle.CamelCase;
+
         classes.superConstructor = "super().__init__";
     }
 

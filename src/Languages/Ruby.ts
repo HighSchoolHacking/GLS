@@ -64,12 +64,21 @@ export class Ruby extends PythonicLanguage {
             "dictionary": "Hash",
             "number": "Float"
         };
+
         classes.constructorKeyword = "def initialize";
         classes.declareEnd = "end";
         classes.declareExtendsLeft = " < ";
         classes.declareExtendsRight = "";
         classes.declareStartLeft = "class ";
         classes.declareStartRight = "";
+
+        classes.members.functions.private = "def ";
+        classes.members.functions.privateCase = CaseStyle.CamelCase;
+        classes.members.functions.protected = "def ";
+        classes.members.functions.protectedCase = CaseStyle.CamelCase;
+        classes.members.functions.public = "def ";
+        classes.members.functions.publicCase = CaseStyle.CamelCase;
+
         classes.superConstructor = "super";
     }
 

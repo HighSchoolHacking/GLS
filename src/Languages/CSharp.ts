@@ -72,10 +72,19 @@ export class CSharp extends CLikeLanguage {
             "list": "List",
             "number": "float"
         };
+
         classes.declareExtendsLeft = " : ";
         classes.declareImplementsLeft = " : ";
         classes.declareStartRight = "\n{";
         classes.superConstructor = "base";
+
+        classes.members.functions.private = "private ";
+        classes.members.functions.privateCase = CaseStyle.PascalCase;
+        classes.members.functions.protected = "protected ";
+        classes.members.functions.protectedCase = CaseStyle.PascalCase;
+        classes.members.functions.public = "public ";
+        classes.members.functions.publicCase = CaseStyle.PascalCase;
+
         classes.generics.used = true;
     }
 

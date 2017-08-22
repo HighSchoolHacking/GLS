@@ -2,6 +2,7 @@
     "extends": "tslint:recommended",
     "rules": {
         "linebreak-style": [false],
+        "max-line-length": [true, 175],
         "member-ordering": [false],
         "no-trailing-whitespace": [true, "ignore-jsdoc"],
         "object-literal-key-quotes": [false],

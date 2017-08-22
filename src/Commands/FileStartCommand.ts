@@ -39,7 +39,7 @@ export class FileStartCommand extends Command {
         let source: string[] = this.language.properties.files.startLines;
         let packagePathAndFileName: string[] = parameters.slice(1);
         let packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
-        let packagePathJoined: string = this.context.convertToCase(
+        let packagePathJoined: string = this.context.convertArrayToCase(
             packagePath,
             this.language.properties.files.startCase);
         let fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];

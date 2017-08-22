@@ -64,14 +64,14 @@ export class GlsParser {
     /**
      * Converts a name to a casing style.
      * 
-     * @param name   A name to convert.
+     * @param words   A name to convert.
      * @param caseStyle   A casing style.
      * @returns The name under the casing style.
      */
-    public convertToCase(name: string[], caseStyle: CaseStyle): string {
+    public convertToCase(words: string[], caseStyle: CaseStyle): string {
         let converter = this.caseStyleConverterBag.getConverter(caseStyle);
 
-        return converter.convert(name);
+        return converter.convert(words);
     }
 
     /**

@@ -39,37 +39,25 @@ export class MemberVariableDeclareCommand extends Command {
 
         let output: string = "";
         let privacy: string = parameters[1];
-        let name: string;
-        let type: string;
+        let name: string = parameters[2];
+        let type: string = parameters[3];
         let casingStyle: CaseStyle;
 
         if (privacy === "protected") {
             output += this.language.properties.classes.members.variables.protected;
             output += this.language.properties.classes.members.variables.protectedPrefix;
-            name = parameters[2];
-            type = parameters[3];
             casingStyle = this.language.properties.classes.members.variables.protectedCase;
         } else if (privacy === "private") {
             output += this.language.properties.classes.members.variables.private;
             output += this.language.properties.classes.members.variables.privatePrefix;
-            name = parameters[2];
-            type = parameters[3];
             casingStyle = this.language.properties.classes.members.variables.privateCase;
         } else {
-            if (privacy === "public") {
-                name = parameters[2];
-                type = parameters[3];
-            } else {
-                name = parameters[1];
-                type = parameters[2];
-            }
-
             output += this.language.properties.classes.members.variables.public;
             output += this.language.properties.classes.members.variables.publicPrefix;
             casingStyle = this.language.properties.classes.members.variables.publicCase;
         }
 
-        name = this.context.convertToCase([name], casingStyle);
+        name = this.context.convertArrayToCase([name], casingStyle);
         output += this.context.convertParsed(["variable inline", name, type]).commandResults[0].text;
 
         return LineResults.newSingleLine(output, true);

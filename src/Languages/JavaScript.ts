@@ -71,12 +71,21 @@ export class JavaScript extends CLikeLanguage {
             "float": "number",
             "int": "number"
         };
+
         classes.constructorKeyword = "constructor";
         classes.constructorUsesKeyword = true;
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
+
+        classes.members.functions.private = "";
+        classes.members.functions.privateCase = CaseStyle.CamelCase;
+        classes.members.functions.protected = "";
+        classes.members.functions.protectedCase = CaseStyle.CamelCase;
+        classes.members.functions.public = "";
+        classes.members.functions.publicCase = CaseStyle.CamelCase;
+
         classes.generics.used = false;
     }
 

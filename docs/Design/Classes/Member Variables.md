@@ -12,16 +12,6 @@ Others such as Python and Ruby forgo declaring them altogether under certain con
 
 ## Commands
 
-### `member variable`
-
-`member variable` `:` *`[privacy]`* `instanceName` `variableName`
-
-Retrieving a member variable will be done with the `member variable` command.
-This takes in the variable's privacy optionally, then the instance name and variable name.
-
-Privacy may be `"public"`, `"protected"`, or `"private"`, and defaults to `public"` if not provided.
-For languages that don't support privacy, variable name may receive a prefix as per the language's convention.
-
 ### `member variable declare`
 
 `member variable declare` `:` *`[privacy]`* `name` `type`
@@ -29,10 +19,22 @@ For languages that don't support privacy, variable name may receive a prefix as 
 Declaring a member variable will be done with the `member variable declare` command.
 This takes in the variable's privacy, name, and type.
 
-Privacy may be `"public"`, `"protected"`, or `"private"`, and defaults to `public"` if not provided.
-For languages that don't support privacy, variable name may receive a prefix as per the language's convention.
+Privacy may be `"public"`, `"protected"`, or `"private"`.
+The variable name may be modified as per the language's convention.
 
 Some languages don't declare member variables in some or all circumstances. These will consider the `member variable declare` command a no-op.
+It should be written in GLS in `camelCase`.
+
+### `member variable`
+
+`member variable` `:` `[privacy]` `instanceName` `variableName`
+
+Retrieving a member variable will be done with the `member variable` command.
+This takes in the variable's privacy, instance name, and variable name.
+
+Privacy may be `"public"`, `"protected"`, or `"private"`.
+The variable name may be modified as per the language's convention.
+It should be written in GLS in `camelCase`.
 
 
 ## Usage

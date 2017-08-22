@@ -3,6 +3,7 @@ import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
+import { NameSplitter } from "./Casing/NameSplitter";
 import { Conversion } from "./Conversion";
 import { GlsParser } from "./GlsParser";
 
@@ -14,6 +15,11 @@ export class ConversionContext {
      * Container for case style converters.
      */
     private caseStyleConverterBag: CaseStyleConverterBag;
+
+    /**
+     * Splits name strings into words.
+     */
+    private nameSplitter: NameSplitter;
 
     /**
      * Container for globally known commands.
@@ -42,6 +48,7 @@ export class ConversionContext {
      */
     public constructor(language: Language) {
         this.caseStyleConverterBag = new CaseStyleConverterBag();
+        this.nameSplitter = new NameSplitter();
         this.directories = [];
         this.language = language;
 
@@ -92,14 +99,25 @@ export class ConversionContext {
     }
 
     /**
-     * Converts a name to a casing style.
+     * Converts an array-split name to a casing style.
+     * 
+     * @param words   A name to convert.
+     * @param casingStyle   A casing style.
+     * @returns The name under the casing style.
+     */
+    public convertArrayToCase(words: string[], casingStyle: CaseStyle): string {
+        return this.parser.convertToCase(words, casingStyle);
+    }
+
+    /**
+     * Converts a string name to a casing style.
      * 
      * @param name   A name to convert.
      * @param casingStyle   A casing style.
      * @returns The name under the casing style.
      */
-    public convertToCase(name: string[], casingStyle: CaseStyle): string {
-        return this.parser.convertToCase(name, casingStyle);
+    public convertStringToCase(name: string, casingStyle: CaseStyle): string {
+        return this.convertArrayToCase(this.nameSplitter.split(name), casingStyle);
     }
 
     /**
