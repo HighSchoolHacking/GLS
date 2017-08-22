@@ -49,7 +49,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
         let declaration: string = "";
         let output: CommandResult[];
 
-        declaration += this.getPublicityPrefix(publicity);
+        declaration += this.getPublicity(publicity);
 
         if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
             declaration += returnType + " ";
@@ -81,9 +81,11 @@ export class MemberFunctionDeclareStartCommand extends Command {
     }
 
     /**
+     * Determines which publicity prefix to use for a member function.
+     * 
      * 
      */
-    private getPublicityPrefix(publicity: string): string {
+    private getPublicity(publicity: string): string {
         if (publicity === "private") {
             return this.language.properties.classes.members.functions.private;
         }

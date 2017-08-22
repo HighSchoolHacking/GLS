@@ -14,7 +14,7 @@ export class MemberVariableCommand extends Command {
      * @todo Use a value restriction on privacy (once it's implemented).
      */
     private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the member variable.", false),
+        new SingleParameter("privacy", "The privacy of the member variable.", true),
         new SingleParameter("instanceName", "A class instance retrieving a member variable.", true),
         new SingleParameter("variableName", "The name of the member variable.", true)
     ];
@@ -34,35 +34,23 @@ export class MemberVariableCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let privacy: string = parameters[1];
-        let instanceName: string;
-        let variableName: string;
+        let instanceName: string = parameters[2];
+        let variableName: string = parameters[3];
         let variablePrefix: string;
         let casingStyle: CaseStyle;
 
         if (privacy === "protected") {
-            instanceName = parameters[2];
-            variableName = parameters[3];
             variablePrefix = this.language.properties.classes.members.variables.protectedPrefix;
             casingStyle = this.language.properties.classes.members.variables.protectedCase;
         } else if (privacy === "private") {
-            instanceName = parameters[2];
-            variableName = parameters[3];
             variablePrefix = this.language.properties.classes.members.variables.privatePrefix;
             casingStyle = this.language.properties.classes.members.variables.privateCase;
         } else {
-            if (privacy === "public") {
-                instanceName = parameters[2];
-                variableName = parameters[3];
-            } else {
-                instanceName = privacy;
-                variableName = parameters[2];
-            }
-
             variablePrefix = this.language.properties.classes.members.variables.publicPrefix;
             casingStyle = this.language.properties.classes.members.variables.publicCase;
         }
 
-        variableName = this.context.convertArrayToCase([variableName], casingStyle);
+        variableName = this.context.convertStringToCase(variableName, casingStyle);
 
         let output: string = "";
         output += instanceName + ".";
