@@ -15,6 +15,11 @@ export class ClassMemberFunctionProperties {
     public publicCase: CaseStyle;
 
     /**
+     * Prefix before public member function names.
+     */
+    public publicPrefix: string;
+
+    /**
      * Decorator for protected member functions.
      */
     public protected: string;
@@ -25,6 +30,11 @@ export class ClassMemberFunctionProperties {
     public protectedCase: CaseStyle;
 
     /**
+     * Prefix before protected member function names.
+     */
+    public protectedPrefix: string;
+
+    /**
      * Decorator for private member functions.
      */
     public private: string;
@@ -33,4 +43,9 @@ export class ClassMemberFunctionProperties {
      * Casing modifier for private member functions.
      */
     public privateCase: CaseStyle;
+
+    /**
+     * Prefix before private member function names.
+     */
+    public privatePrefix: string;
 }

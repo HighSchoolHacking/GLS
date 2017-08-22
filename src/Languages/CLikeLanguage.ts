@@ -29,6 +29,10 @@ export abstract class CLikeLanguage extends Language {
         classes.declareExtendsRight = "";
         classes.declareStartLeft = "class ";
 
+        classes.members.functions.privatePrefix = "";
+        classes.members.functions.protectedPrefix = "";
+        classes.members.functions.publicPrefix = "";
+
         classes.newStart = "new ";
         classes.staticLabel = "static ";
         classes.this = "this";

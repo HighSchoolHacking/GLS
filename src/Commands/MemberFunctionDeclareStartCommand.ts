@@ -55,6 +55,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
             declaration += returnType + " ";
         }
 
+        declaration += this.getPublicityPrefix(publicity);
         declaration += this.context.convertStringToCase(functionName, this.getPublicityCase(publicity));
         declaration += "(";
 
@@ -81,9 +82,10 @@ export class MemberFunctionDeclareStartCommand extends Command {
     }
 
     /**
-     * Determines which publicity prefix to use for a member function.
+     * Determines the prefix for a member function.
      * 
-     * 
+     * @param publicity   Publicity of the member function.
+     * @returns Prefix for the publicity.
      */
     private getPublicity(publicity: string): string {
         if (publicity === "private") {
@@ -98,7 +100,10 @@ export class MemberFunctionDeclareStartCommand extends Command {
     }
 
     /**
+     * Determines the case style for a member function.
      * 
+     * @param publicity   Publicity of the member function.
+     * @returns Case style for the publicity.
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === "private") {
@@ -110,6 +115,24 @@ export class MemberFunctionDeclareStartCommand extends Command {
         }
 
         return this.language.properties.classes.members.functions.publicCase;
+    }
+
+    /**
+     * Determines the name prefix for a member function.
+     * 
+     * @param publicity   Publicity of the member function.
+     * @returns Name prefix for the publicity.
+     */
+    private getPublicityPrefix(publicity: string): string {
+        if (publicity === "private") {
+            return this.language.properties.classes.members.functions.privatePrefix;
+        }
+
+        if (publicity === "protected") {
+            return this.language.properties.classes.members.functions.protectedPrefix;
+        }
+
+        return this.language.properties.classes.members.functions.publicPrefix;
     }
 
     /**

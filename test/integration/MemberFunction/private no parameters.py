@@ -1,3 +1,3 @@
 -
-abc.def_ghi()
+abc.__def_ghi()
 -

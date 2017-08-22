@@ -41,6 +41,7 @@ export class MemberFunctionCommand extends Command {
         let functionName: string = parameters[3];
 
         let output: string = instanceName + ".";
+        output += this.getPublicityPrefix(publicity);
         output += this.context.convertStringToCase(functionName, this.getPublicityCase(publicity));
         output += "(";
 
@@ -59,7 +60,10 @@ export class MemberFunctionCommand extends Command {
     }
 
     /**
+     * Determines the case style for a member function.
      * 
+     * @param publicity   Publicity of the member function.
+     * @returns Case style for the publicity.
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === "private") {
@@ -71,6 +75,24 @@ export class MemberFunctionCommand extends Command {
         }
 
         return this.language.properties.classes.members.functions.publicCase;
+    }
+
+    /**
+     * Determines the name prefix for a member function.
+     * 
+     * @param publicity   Publicity of the member function.
+     * @returns Name prefix for the publicity.
+     */
+    private getPublicityPrefix(publicity: string): string {
+        if (publicity === "private") {
+            return this.language.properties.classes.members.functions.privatePrefix;
+        }
+
+        if (publicity === "protected") {
+            return this.language.properties.classes.members.functions.protectedPrefix;
+        }
+
+        return this.language.properties.classes.members.functions.publicPrefix;
     }
 
     /**
