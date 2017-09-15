@@ -49,21 +49,9 @@ export class Gls {
      * @returns this
      */
     public setLanguage(name: string): Gls {
-        this.language = this.languagesBag.getLanguage(name);
+        this.language = this.languagesBag.getLanguageByName(name);
         this.conversionContext = new ConversionContext(this.language);
 
-        return this;
-    }
-
-    /**
-     * Adds a new language to the languages bag.
-     * 
-     * @param language   The language being added.
-     * @param name   The name of the language (by default, its name property).
-     * @returns this
-     */
-    public addLanguage(language: Language, name: string = language.properties.general.name): Gls {
-        this.languagesBag.addLanguage(name, language);
         return this;
     }
 

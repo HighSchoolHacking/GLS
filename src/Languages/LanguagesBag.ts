@@ -7,50 +7,39 @@ import { Ruby } from "./Ruby";
 import { TypeScript } from "./TypeScript";
 
 /**
- * A quick lookup of standard languages.
+ * Lookup of standard languages.
  */
 export class LanguagesBag {
     /**
-     * An instance of the CSharp class.
+     * Built-in languages.
      */
-    public CSharp: CSharp = new CSharp();
-
-    /**
-     * An instance of the Java class.
-     */
-    public Java: Java = new Java();
-
-    /**
-     * An instance of the JavaScript class.
-     */
-    public JavaScript: JavaScript = new JavaScript();
-
-    /**
-     * An instance of the Python class.
-     */
-    public Python: Python = new Python();
-
-    /**
-     * An instance of the Ruby class.
-     */
-    public Ruby: Ruby = new Ruby();
-
-    /**
-     * An instance of the TypeScript class.
-     */
-    public TypeScript: TypeScript = new TypeScript();
+    private static languages: Language[] = [
+        new CSharp(),
+        new Java(),
+        new JavaScript(),
+        new Python(),
+        new Ruby(),
+        new TypeScript()
+    ];
 
     /**
      * Known languages, keyed by name.
      */
-    private languagesByName: { [i: string]: Language } = {
-        "CSharp": this.CSharp,
-        "Java": this.Java,
-        "JavaScript": this.JavaScript,
-        "Python": this.Python,
-        "Ruby": this.Ruby,
-        "TypeScript": this.TypeScript
-    };
+    private languagesByName: { [i: string]: Language } = {};
+
+    /**
+     * Known languages, keyed by extension.
+     */
+    private languagesByExtension: { [i: string]: Language } = {};
+
+    /**
+     * Initializes a new instance of the LanguagesBag class.
+     */
+    public constructor() {
+        for (const language of LanguagesBag.languages) {
+            this.addLanguage(language);
+        }
+    }
 
     /**
      * @returns Names of languages in the listing.
@@ -62,18 +51,34 @@ export class LanguagesBag {
     /**
      * Adds a language to the listing.
      * 
-     * @param name   The name of the language.
      * @param language   The language to add.
      */
-    public addLanguage(name: string, language: Language): void {
-        this.languagesByName[name] = language;
+    public addLanguage(language: Language): void {
+        this.languagesByExtension[language.properties.general.extension] = language;
+        this.languagesByName[language.properties.general.name] = language;
     }
 
     /**
-     * @param name   A name of a language.
-     * @returns The language under that name.
+     * Retrieves a language by its extension.
+     * 
+     * @param extension   Extension of a language, including preceding period.
+     * @returns The language under the extension.
      */
-    public getLanguage(name: string): Language {
+    public getLanguageByExtension(extension: string): Language {
+        if (!this.languagesByExtension.hasOwnProperty(extension)) {
+            throw new Error(`Unknown language extension: '${extension}'.'`);
+        }
+
+        return this.languagesByExtension[extension];
+    }
+
+    /**
+     * Retrieves a language by its name.
+     * 
+     * @param name   Name of a language.
+     * @returns The language under the name.
+     */
+    public getLanguageByName(name: string): Language {
         if (!this.languagesByName.hasOwnProperty(name)) {
             throw new Error(`Unknown language name: '${name}'.'`);
         }

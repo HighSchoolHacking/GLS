@@ -4,33 +4,44 @@ import "mocha";
 import * as minimatch from "minimatch";
 import * as path from "path";
 
-import { findGlsFilesUnder, findGlsTestSourcesUnder } from "../util";
 import { Gls } from "../lib/Gls";
 import { LanguagesBag } from "../lib/Languages/LanguagesBag";
+import { findGlsFilesUnder, findGlsTestSourcesUnder } from "../util";
+import { FilesReader } from "./FilesReader";
 
 /**
  * Test runner for comparing converted .gls files and expected output.
  */
 export class ComparisonTestsRunner {
     /**
-     * Friendly directory path to read tests under.
-     */
-    private section: string;
-
-    /**
      * Minimatchers for command groups to run.
      */
-    private commandsToRun: Set<string>;
-
-    /**
-     * Disk root path for the section.
-     */
-    private rootPath: string;
+    private readonly commandsToRun: Set<string>;
 
     /**
      * Command tests to be run within the section.
      */
-    private commandTests: Map<string, string[]>;
+    private readonly commandTests: Map<string, string[]>;
+
+    /**
+     * Reads contents of test case files.
+     */
+    private readonly filesReader: FilesReader;
+
+    /**
+     * Lookup of standard languages.
+     */
+    private readonly languagesBag: LanguagesBag;
+
+    /**
+     * Disk root path for test files.
+     */
+    private readonly rootPath: string;
+
+    /**
+     * Friendly directory path to read tests under.
+     */
+    private readonly section: string;
 
     /**
      * Initializes a new instance of the ComparisonTestsRunner class.
@@ -41,8 +52,10 @@ export class ComparisonTestsRunner {
     public constructor(section: string, commandsToRun: Set<string> = new Set<string>(["*"])) {
         this.section = section;
         this.commandsToRun = commandsToRun;
+        this.languagesBag = new LanguagesBag();
         this.rootPath = path.resolve(section);
         this.commandTests = findGlsTestSourcesUnder(this.rootPath, this.commandsToRun);
+        this.filesReader = new FilesReader(this.languagesBag, this.rootPath);
     }
 
     /**
@@ -63,11 +76,9 @@ export class ComparisonTestsRunner {
      * @param tests   Tests under the command
      */
     public runCommandTests(command: string, tests: string[]): void {
-        const languagesBag = new LanguagesBag();
-
         for (const test of tests) {
             describe(test, () => {
-                for (const language of languagesBag.getLanguageNames()) {
+                for (const language of this.languagesBag.getLanguageNames()) {
                     it(language, () => this.runCommandTest(command, test, language));
                 }
             });
@@ -85,23 +96,9 @@ export class ComparisonTestsRunner {
         const gls = new Gls().setLanguage(language);
         const extension = gls.getLanguage().properties.general.extension;
 
-        const source = this.readCommandFile(command, test + ".gls");
-        const expected = this.readCommandFile(command, test + extension);
+        const source = this.filesReader.readCommandFile(command, test + ".gls");
+        const expected = this.filesReader.readCommandFile(command, test + extension);
 
         expect(gls.convert(source)).to.be.deep.equal(expected);
-    }
-
-    /**
-     * Reads the code contents of a test file.
-     * 
-     * @param command   The command this file is under.
-     * @param name   The name of the file.
-     * @returns   Lines of code in the file.
-     */
-    private readCommandFile(command: string, name: string): string[] {
-        const filePath = path.resolve(this.rootPath, command, name);
-        const lines = fs.readFileSync(filePath).toString().replace(/\r/g, "").split("\n");
-
-        return lines.slice(lines.indexOf("-") + 1, lines.lastIndexOf("-"));
     }
 }
