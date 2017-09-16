@@ -9,7 +9,7 @@ export class ArgvParser {
 
     /**
      * Initializes a new instance of the ArgvParser class.
-     * 
+     *
      * @param argv   Arguments from process.argv.
      */
     public constructor(argv: string[]) {

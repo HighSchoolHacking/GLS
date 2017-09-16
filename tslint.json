@@ -1,8 +1,20 @@
 {
     "extends": "tslint:all",
     "rules": {
+        "completed-docs": [false],
         "linebreak-style": [false],
         "max-line-length": [true, 175],
-        "trailing-comma": [false]
+        "newline-before-return": [false],
+        "no-invalid-template-strings": [false],
+        "no-magic-numbers": [false],
+        "no-import-side-effect": [false],
+        "no-unsafe-any": [false],
+        "prefer-conditional-expression": [false],
+        "prefer-function-over-method": [false],
+        "prefer-template": [false],
+        "strict-type-predicates": [false],
+        "trailing-comma": [false],
+        "typedef": [false],
+        "variable-name": [false]
     }
 }

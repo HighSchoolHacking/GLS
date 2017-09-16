@@ -1,12 +1,10 @@
 import { expect } from "chai";
-import * as fs from "fs";
 import "mocha";
-import * as minimatch from "minimatch";
 import * as path from "path";
 
 import { Gls } from "../lib/Gls";
 import { LanguagesBag } from "../lib/Languages/LanguagesBag";
-import { findGlsFilesUnder, findGlsTestSourcesUnder } from "../util";
+import { findGlsTestSourcesUnder } from "../util";
 import { FilesReader } from "./FilesReader";
 
 /**
@@ -45,7 +43,7 @@ export class ComparisonTestsRunner {
 
     /**
      * Initializes a new instance of the ComparisonTestsRunner class.
-     * 
+     *
      * @param section   Friendly directory path to read tests under.
      * @param commandsToRun   Command groups to run, if not all.
      */
@@ -64,30 +62,16 @@ export class ComparisonTestsRunner {
     public run(): void {
         describe(this.section, () => {
             this.commandTests.forEach((tests: string[], command: string): void => {
-                describe(command, () => this.runCommandTests(command, tests));
+                describe(command, () => {
+                    this.runCommandTests(command, tests);
+                });
             });
         });
     }
 
     /**
-     * Runs command tests for the given command.
-     * 
-     * @param command   Name of the command to test.
-     * @param tests   Tests under the command
-     */
-    public runCommandTests(command: string, tests: string[]): void {
-        for (const test of tests) {
-            describe(test, () => {
-                for (const language of this.languagesBag.getLanguageNames()) {
-                    it(language, () => this.runCommandTest(command, test, language));
-                }
-            });
-        }
-    }
-
-    /**
      * Runs a test for a single command in a language.
-     * 
+     *
      * @param command   A GLS command to be tested, such as "ArrayInitialize".
      * @param test   A test to be run for the command, such as "no values".
      * @param language   The language the test is running as.
@@ -100,5 +84,23 @@ export class ComparisonTestsRunner {
         const expected = this.filesReader.readCommandFile(command, test + extension);
 
         expect(gls.convert(source)).to.be.deep.equal(expected);
+    }
+
+    /**
+     * Runs command tests for the given command.
+     *
+     * @param command   Name of the command to test.
+     * @param tests   Tests under the command
+     */
+    public runCommandTests(command: string, tests: string[]): void {
+        for (const test of tests) {
+            describe(test, () => {
+                for (const language of this.languagesBag.getLanguageNames()) {
+                    it(language, () => {
+                        this.runCommandTest(command, test, language);
+                    });
+                }
+            });
+        }
     }
 }

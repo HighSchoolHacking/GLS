@@ -19,7 +19,7 @@ export class FilesReader {
 
     /**
      * Initializes a new instance of the FilesReader class.
-     * 
+     *
      * @param languagesBag   Lookup of standard languages.
      * @param rootPath   Disk root path for test files.
      */
@@ -30,7 +30,7 @@ export class FilesReader {
 
     /**
      * Extracts the test case contents of a command file.
-     * 
+     *
      * @param command   Name of the parent command directory.
      * @param name   Name of the test file.
      * @returns Lines of text for the file's test case.
@@ -58,7 +58,7 @@ export class FilesReader {
 
     /**
      * Finds the comment marker for a language.
-     * 
+     *
      * @param extension   Extension of a language.
      * @returns Comment marker for the language.
      */

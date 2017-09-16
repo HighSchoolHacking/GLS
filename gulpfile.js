@@ -140,7 +140,11 @@ gulp.task("test:tslint", function () {
             "./test/*.ts",
             "./test/unit/*.ts"
         ])
-        .pipe(gulpTslint({ program }));
+        .pipe(gulpTslint({
+            formatter: "stylish",
+            program
+        }))
+        .pipe(gulpTslint.report())
 });
 
 gulp.task("test:tsc", function () {
