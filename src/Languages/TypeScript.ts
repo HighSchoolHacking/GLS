@@ -491,10 +491,10 @@ export class TypeScript extends CLikeLanguage {
         variables.null = "undefined";
         variables.typesAfterName = true;
         variables.typeLeft = ": ";
-        variables.isNullLeft = "typeof";
-        variables.isNotNullLeft = "typeof";
-        variables.isNotNullMiddle = "!=";
-        variables.isNullMiddle = "==";
-        variables.nullRight = "null";
+        variables.isNullLeft = "";
+        variables.isNotNullLeft = "";
+        variables.isNotNullMiddle = " !== ";
+        variables.isNullMiddle = " === ";
+        variables.nullRight = "undefined";
     }
 }

@@ -518,8 +518,10 @@ export class CSharp extends CLikeLanguage {
         variables.declaration = "";
         variables.explicitTypes = true;
         variables.null = "null";
-        variables.isNotNullMiddle = "!=";
-        variables.isNullMiddle = "==";
+        variables.isNotNullLeft = "";
+        variables.isNotNullMiddle = " != ";
+        variables.isNullLeft = "";
+        variables.isNullMiddle = " == ";
         variables.nullRight = "null";
     }
 }

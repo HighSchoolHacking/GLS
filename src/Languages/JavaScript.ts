@@ -477,10 +477,10 @@ export class JavaScript extends CLikeLanguage {
         variables.explicitTypes = false;
         variables.null = "undefined";
         variables.typesAfterName = false;
-        variables.isNullLeft = "typeof";
-        variables.isNotNullLeft = "typeof";
-        variables.isNotNullMiddle = "!=";
-        variables.isNullMiddle = "==";
-        variables.nullRight = "null";
+        variables.isNullLeft = "";
+        variables.isNotNullLeft = "";
+        variables.isNotNullMiddle = " !== ";
+        variables.isNullMiddle = " === ";
+        variables.nullRight = "undefined";
     }
 }
