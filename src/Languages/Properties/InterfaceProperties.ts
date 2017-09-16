@@ -3,14 +3,9 @@
  */
 export class InterfaceProperties {
     /**
-     * Keyword that indicates interface declaration.
+     * Ends interface declaration.
      */
-    public declareStartLeft: string;
-
-    /**
-     * Starts interface declaration.
-     */
-    public declareStartRight: string;
+    public declareEnd: string;
 
     /**
      * Keyword that indicates to extend from parent interfaces.
@@ -23,9 +18,9 @@ export class InterfaceProperties {
     public declareExtendsRight: string;
 
     /**
-     * Ends interface declaration.
+     * Whether the implements keyword needs to be explicitly called after a class has been extended.
      */
-    public declareEnd: string;
+    public declareImplementsExplicit: boolean;
 
     /**
      * Starts method declaration.
@@ -43,9 +38,14 @@ export class InterfaceProperties {
     public declareMethodRight: string;
 
     /**
-     * Whether the implements keyword needs to be explicitly called after a class has been extended.
+     * Keyword that indicates interface declaration.
      */
-    public declareImplementsExplicit: boolean;
+    public declareStartLeft: string;
+
+    /**
+     * Starts interface declaration.
+     */
+    public declareStartRight: string;
 
     /**
      * Whether the method type is declared after the method is define.

@@ -25,7 +25,7 @@ export class VariableCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -34,11 +34,11 @@ export class VariableCommand extends Command {
             return LineResults.newSingleLine("\0", false);
         }
 
-        let starter: string = this.language.properties.variables.declaration;
-        let newParameters: string[] = parameters.slice();
+        const starter: string = this.language.properties.variables.declaration;
+        const newParameters: string[] = parameters.slice();
         newParameters[0] = "variable inline";
 
-        let ender: string = this.context.convertParsed(newParameters).commandResults[0].text;
+        const ender: string = this.context.convertParsed(newParameters).commandResults[0].text;
 
         return LineResults.newSingleLine(starter + ender, true);
     }

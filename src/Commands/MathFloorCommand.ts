@@ -23,16 +23,16 @@ export class MathFloorCommand extends NativeCallCommand {
     }
 
     /**
-     * @returns Metadata on how to perform the native call.
-     */
-    protected retrieveNativeCallProperties(): NativeCallProperties {
-        return this.language.properties.math.floor;
-    }
-
-    /**
      * @returns Any imports this native command requires.
      */
     protected retrieveImports(): Import[] {
         return this.language.properties.math.requiredImports;
+    }
+
+    /**
+     * @returns Metadata on how to perform the native call.
+     */
+    protected retrieveNativeCallProperties(): NativeCallProperties {
+        return this.language.properties.math.floor;
     }
 }

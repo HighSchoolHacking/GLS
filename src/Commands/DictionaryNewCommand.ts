@@ -24,7 +24,7 @@ export class DictionaryNewCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -33,7 +33,7 @@ export class DictionaryNewCommand extends Command {
             return LineResults.newSingleLine("{}", false);
         }
 
-        let output: string = "new ";
+        let output = "new ";
         output += this.language.properties.dictionaries.className;
 
         if (this.language.properties.classes.generics.used) {

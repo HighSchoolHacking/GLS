@@ -24,14 +24,14 @@ export class RestParametersCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let left: string = this.language.properties.parameters.restKeywordLeft;
-        let middle: string = "";
-        let right: string = this.language.properties.parameters.restKeywordRight;
+        const left: string = this.language.properties.parameters.restKeywordLeft;
+        let middle = "";
+        const right: string = this.language.properties.parameters.restKeywordRight;
 
         if (this.language.properties.parameters.restDeclarationType) {
             if (!this.language.properties.parameters.restDeclarationAfter) {
@@ -40,10 +40,10 @@ export class RestParametersCommand extends Command {
             if (this.language.properties.parameters.restDeclarationAfter) {
                 middle = parameters[1] + this.language.properties.parameters.restKeywordMiddle + parameters[2];
             }
-        }
-        else {
+        } else {
             middle = this.language.properties.parameters.restKeywordMiddle + parameters[1];
         }
+
         return LineResults.newSingleLine(left + middle + right, false);
     }
 }

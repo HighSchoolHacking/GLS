@@ -23,12 +23,12 @@ export enum NewInstantiationSyntaxKind {
  */
 export class NewProperties {
     /**
-     * The keyword used to instantiate a new object.
-     */
-    public keyword: string;
-
-    /**
      * What kind of syntactical form is used for new object instantiations.
      */
     public instantiationKind: NewInstantiationSyntaxKind;
+
+    /**
+     * The keyword used to instantiate a new object.
+     */
+    public keyword: string;
 }

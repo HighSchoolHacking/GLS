@@ -6,19 +6,14 @@ import { NativeCallProperties } from "./NativeCallProperties";
  */
 export class DictionaryProperties {
     /**
-     * How to determine if a key exists in a dictionary.
-     */
-    public containsKey: NativeCallProperties;
-
-    /**
      * The name of the dictionary class.
      */
     public className: string;
 
     /**
-     * How to retrieve all keys from a dictionary as an array.
+     * How to determine if a key exists in a dictionary.
      */
-    public keys: NativeCallProperties;
+    public containsKey: NativeCallProperties;
 
     /**
      * Whether dictionaries are initialized as class instances using "new".
@@ -54,6 +49,11 @@ export class DictionaryProperties {
      * How to start initializing a new dictionary's values.
      */
     public initializeStart: string;
+
+    /**
+     * How to retrieve all keys from a dictionary as an array.
+     */
+    public keys: NativeCallProperties;
 
     /**
      * Required imports to be able to use dictionaries.

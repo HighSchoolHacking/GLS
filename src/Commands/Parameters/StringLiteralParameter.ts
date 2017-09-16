@@ -11,11 +11,11 @@ export class StringLiteralParameter extends Parameter {
 
     /**
      * Initializes a new instance of the StringLiteralParameter class.
-     * 
+     *
      * @param name          The name of the string literal.
      * @param description   A high-level definition of the parameter.
      */
-    constructor(name: string, description: string) {
+    public constructor(name: string, description: string) {
         super(description);
 
         this.name = name;

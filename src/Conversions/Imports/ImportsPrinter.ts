@@ -1,9 +1,9 @@
-import { CaseStyleConverter } from "../Casing/CaseStyleConverter";
 import { CommandResult } from "../../Commands/CommandResult";
 import { LineResults } from "../../Commands/LineResults";
 import { Import } from "../../Languages/Imports/Import";
 import { ImportRelativity } from "../../Languages/Imports/ImportRelativity";
 import { Language } from "../../Languages/Language";
+import { CaseStyleConverter } from "../Casing/CaseStyleConverter";
 
 /**
  * Renders imports to output line results.
@@ -32,7 +32,7 @@ export class ImportsPrinter {
 
     /**
      * Renders an import to a output line results.
-     * 
+     *
      * @param addedImport   Import to render.
      * @returns Line results for the rendered import.
      */
@@ -49,24 +49,8 @@ export class ImportsPrinter {
     }
 
     /**
-     * Renders an import for a language that splits item imports across lines.
-     * 
-     * @param addedImport   Import to render.
-     * @returns Line(s) of code in the language.
-     */
-    private renderMultipleLines(addedImport: Import): CommandResult[] {
-        let results: CommandResult[] = [];
-
-        for (let item of addedImport.items) {
-            results.push(this.renderLine(addedImport, item));
-        }
-
-        return results;
-    }
-
-    /**
      * Renders an import for a language that puts multiple items in one import.
-     * 
+     *
      * @param addedImport   Import to render.
      * @returns Line(s) of code in the language.
      */
@@ -75,8 +59,20 @@ export class ImportsPrinter {
     }
 
     /**
+     * @param relativity   Relativity for an import.
+     * @returns The left component of the import's rendered line equivalent.
+     */
+    private renderImportLeft(relativity: ImportRelativity): string {
+        if (relativity === ImportRelativity.Absolute) {
+            return this.language.properties.imports.leftAbsolute;
+        }
+
+        return this.language.properties.imports.leftLocal;
+    }
+
+    /**
      * Renders a single import line of some item(s) from a package.
-     * 
+     *
      * @param addedImport   Import to render.
      * @param item   Item to import from the import path.
      * @returns A line of code in the language.
@@ -105,15 +101,19 @@ export class ImportsPrinter {
     }
 
     /**
-     * @param relativity   Relativity for an import.
-     * @returns The left component of the import's rendered line equivalent.
+     * Renders an import for a language that splits item imports across lines.
+     *
+     * @param addedImport   Import to render.
+     * @returns Line(s) of code in the language.
      */
-    private renderImportLeft(relativity: ImportRelativity): string {
-        if (relativity === ImportRelativity.Absolute) {
-            return this.language.properties.imports.leftAbsolute;
+    private renderMultipleLines(addedImport: Import): CommandResult[] {
+        const results: CommandResult[] = [];
+
+        for (const item of addedImport.items) {
+            results.push(this.renderLine(addedImport, item));
         }
 
-        return this.language.properties.imports.leftLocal;
+        return results;
     }
 
     /**

@@ -25,7 +25,7 @@ export class DictionaryNewStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -34,11 +34,11 @@ export class DictionaryNewStartCommand extends Command {
             return LineResults.newSingleLine("{", false);
         }
 
-        let output: string = "new ";
+        let output = "new ";
 
         output += this.context.convertParsed(["dictionary type", parameters[1], parameters[2]]).commandResults[0].text;
 
-        let results: CommandResult[] = [new CommandResult(output, 0)];
+        const results: CommandResult[] = [new CommandResult(output, 0)];
         this.addLineEnder(results, this.language.properties.dictionaries.initializeStart, 1);
 
         return new LineResults(results, false);

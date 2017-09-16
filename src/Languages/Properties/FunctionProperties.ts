@@ -3,6 +3,11 @@
  */
 export class FunctionProperties {
     /**
+     * A line for after a function's definition.
+     */
+    public defineEnd: string;
+
+    /**
      * A prefix before defining a function, such as "def " or "function ".
      */
     public defineStartLeft: string;
@@ -13,24 +18,9 @@ export class FunctionProperties {
     public defineStartRight: string;
 
     /**
-     * A line for after a function's definition.
-     */
-    public defineEnd: string;
-
-    /**
      * Whether return types should be explicitly stated.
      */
     public explicitReturns: boolean;
-
-    /**
-     * Whether return types should be after the name, rather than before.
-     */
-    public returnTypeAfterName: boolean;
-
-    /**
-     * A label between function name and its type, if type is after the name.
-     */
-    public returnTypeMarker: string;
 
     /**
      * Precedes exceptions that the funtion throws.
@@ -41,4 +31,14 @@ export class FunctionProperties {
      * Whether langauge requires functin to declare possible exceptions.
      */
     public requiresExceptions: boolean;
+
+    /**
+     * Whether return types should be after the name, rather than before.
+     */
+    public returnTypeAfterName: boolean;
+
+    /**
+     * A label between function name and its type, if type is after the name.
+     */
+    public returnTypeMarker: string;
 }

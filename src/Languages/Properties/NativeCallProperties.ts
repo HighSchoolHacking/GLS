@@ -53,6 +53,11 @@ export enum NativeCallType {
  */
 export class NativeCallProperties {
     /**
+     * Any arguments this may add as a function or static.
+     */
+    public arguments: string[];
+
+    /**
      * What this is called.
      */
     public name: string;
@@ -68,18 +73,13 @@ export class NativeCallProperties {
     public type: NativeCallType;
 
     /**
-     * Any arguments this may add as a function or static.
-     */
-    public arguments: string[];
-
-    /**
      * Initializes a new instance of the NativeCallProperties class.
-     * 
+     *
      * @param name   What this is called.
      * @param scope   Where this is called from.
      * @param type   How this is called.
      */
-    constructor(name: string, scope: NativeCallScope, type: NativeCallType) {
+    public constructor(name: string, scope: NativeCallScope, type: NativeCallType) {
         this.name = name;
         this.scope = scope;
         this.type = type;
@@ -88,7 +88,7 @@ export class NativeCallProperties {
 
     /**
      * Adds an argument this may add as a function or static.
-     * 
+     *
      * @param argument   A new argument.
      */
     public addArgument(argument: string): void {

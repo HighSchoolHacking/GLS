@@ -24,7 +24,7 @@ export class ListAddListCommand extends NativeCallCommand {
     }
 
     /**
-     * @returns Metadata on how to perform the native call. 
+     * @returns Metadata on how to perform the native call.
      */
     protected retrieveNativeCallProperties(): NativeCallProperties {
         return this.language.properties.lists.addList;

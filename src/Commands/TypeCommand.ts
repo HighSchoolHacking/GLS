@@ -23,7 +23,7 @@ export class TypeCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -32,12 +32,51 @@ export class TypeCommand extends Command {
     }
 
     /**
-     * Converts a raw type name into the language's equivalent.
-     * 
+     * Converts a raw type name with array notation into the language's equivalent.
+     *
      * @param typeNameRaw   A raw type to convert.
      * @returns The equivalent converted type name.
      */
-    public convertType(typeNameRaw: string): string {
+    private convertArrayType(typeNameRaw: string): string {
+        const bracketIndex: number = typeNameRaw.indexOf("[");
+        const typeName: string = this.convertType(typeNameRaw.substring(0, bracketIndex));
+
+        return typeName + typeNameRaw.substring(bracketIndex);
+    }
+
+    /**
+     * Converts a raw type name with array notation into the language's equivalent.
+     *
+     * @param typeNameRaw   A raw type to convert.
+     * @returns The equivalent converted type name.
+     * @todo Support multiple generics (commas inside the <>s).
+     */
+    private convertGenericType(typeNameRaw: string): string {
+        const bracketStartIndex: number = typeNameRaw.indexOf("<");
+        const containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
+
+        if (!this.language.properties.classes.generics.used) {
+            return this.convertType(containerTypeName);
+        }
+
+        const bracketEndIndex: number = typeNameRaw.lastIndexOf(">");
+        const genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
+        let output: string = containerTypeName;
+
+        output += this.language.properties.classes.generics.left;
+        output += genericTypeName;
+        output += this.language.properties.classes.generics.right;
+
+        return output;
+    }
+
+    /**
+     * Converts a raw type name into the language's equivalent.
+     *
+     * @param typeNameRaw   A raw type to convert.
+     * @returns The equivalent converted type name.
+     */
+    private convertType(typeNameRaw: string): string {
         let typeName: string = typeNameRaw;
 
         if (this.language.properties.classes.aliases.hasOwnProperty(typeName)) {
@@ -53,45 +92,6 @@ export class TypeCommand extends Command {
         }
 
         return typeName;
-    }
-
-    /**
-     * Converts a raw type name with array notation into the language's equivalent.
-     * 
-     * @param typeNameRaw   A raw type to convert.
-     * @returns The equivalent converted type name.
-     */
-    private convertArrayType(typeNameRaw: string): string {
-        let bracketIndex: number = typeNameRaw.indexOf("[");
-        let typeName: string = this.convertType(typeNameRaw.substring(0, bracketIndex));
-
-        return typeName + typeNameRaw.substring(bracketIndex);
-    }
-
-    /**
-     * Converts a raw type name with array notation into the language's equivalent.
-     * 
-     * @param typeNameRaw   A raw type to convert.
-     * @returns The equivalent converted type name.
-     * @todo Support multiple generics (commas inside the <>s).
-     */
-    private convertGenericType(typeNameRaw: string): string {
-        let bracketStartIndex: number = typeNameRaw.indexOf("<");
-        let containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
-
-        if (!this.language.properties.classes.generics.used) {
-            return this.convertType(containerTypeName);
-        }
-
-        let bracketEndIndex: number = typeNameRaw.lastIndexOf(">");
-        let genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
-        let output: string = containerTypeName;
-
-        output += this.language.properties.classes.generics.left;
-        output += genericTypeName;
-        output += this.language.properties.classes.generics.right;
-
-        return output;
     }
 
     /**

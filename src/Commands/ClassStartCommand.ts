@@ -2,8 +2,8 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for starting to declare a class.
@@ -21,8 +21,8 @@ export class ClassStartCommand extends Command {
             "Parent Interfaces",
             [
                 new SingleParameter("interfaceName",
-                "Names of parent interfaces",
-                false)
+                                    "Names of parent interfaces",
+                                    false)
             ])
     ];
 
@@ -35,23 +35,22 @@ export class ClassStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = "";
+        let line = "";
 
         line += this.language.properties.classes.declareStartLeft;
         line += this.context.convertCommon("type", parameters[1]);
 
         if (parameters.length >= 4) {
-
             if (parameters[2] === "implements") {
-                if (this.language.properties.interfaces.supported === true) {
+                if (this.language.properties.interfaces.supported) {
                     line += this.language.properties.classes.declareImplementsLeft;
 
-                    for (let i: number = 3; i < parameters.length; i++) {
+                    for (let i = 3; i < parameters.length; i++) {
                             line += parameters[i];
                             if (i !== parameters.length - 1) {
                                 line += this.language.properties.interfaces.declareExtendsRight;
@@ -60,24 +59,20 @@ export class ClassStartCommand extends Command {
 
                     line += this.language.properties.classes.declareExtendsRight;
                 }
-            }
-
-            else {
+            } else {
                 line += this.language.properties.classes.declareExtendsLeft;
                 line += this.context.convertCommon("type", parameters[3]);
                 line += this.language.properties.classes.declareExtendsRight;
 
                 if (parameters[4] === "implements") {
-                    if (this.language.properties.interfaces.supported === true) {
-                        if (this.language.properties.interfaces.declareImplementsExplicit === true) {
+                    if (this.language.properties.interfaces.supported) {
+                        if (this.language.properties.interfaces.declareImplementsExplicit) {
                             line += this.language.properties.classes.declareImplementsLeft;
-                        }
-
-                        else {
+                        } else {
                             line += this.language.properties.interfaces.declareExtendsRight;
                         }
 
-                        for (let i: number = 5; i < parameters.length; i++) {
+                        for (let i = 5; i < parameters.length; i++) {
                             line += parameters[i];
                             if (i !== parameters.length - 1) {
                                 line += this.language.properties.interfaces.declareExtendsRight;
@@ -88,7 +83,7 @@ export class ClassStartCommand extends Command {
             }
         }
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
+        const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.properties.classes.declareStartRight, 1);
 
         return new LineResults(lines, false);

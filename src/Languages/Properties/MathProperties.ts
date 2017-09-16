@@ -16,6 +16,11 @@ export class MathProperties {
     public floor: NativeCallProperties;
 
     /**
+     * The name of the math global or namespace.
+     */
+    public mathName: string;
+
+    /**
      * How to retrieve the greater of two numbers.
      */
     public max: NativeCallProperties;
@@ -29,9 +34,4 @@ export class MathProperties {
      * Required imports to be able to use native math commands.
      */
     public requiredImports: Import[];
-
-    /**
-     * The name of the math global or namespace.
-     */
-    public mathName: string;
 }

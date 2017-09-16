@@ -6,7 +6,7 @@ import { BlockEndCommand } from "./BlockEndCommand";
 export class ClassEndCommand extends BlockEndCommand {
     /**
      * Renders the end block for class declarations.
-     * 
+     *
      * @returns The end block for class declarations.
      */
     protected renderBlockEnd(): string {

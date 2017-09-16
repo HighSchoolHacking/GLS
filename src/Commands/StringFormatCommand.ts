@@ -31,7 +31,7 @@ export class StringFormatCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -43,18 +43,18 @@ export class StringFormatCommand extends Command {
         let output: string = parameters[1].substring(1, parameters[1].length - 1);
         output = this.language.properties.strings.formatting.formatLeft + output;
 
-        let inputsLength: number = parameters.length / 2 - 1;
-        for (let i: number = 0; i < inputsLength; i += 1) {
-            let replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
+        const inputsLength: number = parameters.length / 2 - 1;
+        for (let i = 0; i < inputsLength; i += 1) {
+            const replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
 
-            output = output.replace(new RegExp("\\{" + i + "\\}", "gi"), replacement);
+            output = output.replace(new RegExp(`\\{${i}\\}`, "gi"), replacement);
         }
 
         if (!this.language.properties.strings.formatting.useInterpolation) {
             if (parameters.length > 2) {
                 output += this.language.properties.strings.formatting.formatMiddle;
 
-                for (let i: number = 2; i < parameters.length - 3; i += 2) {
+                for (let i = 2; i < parameters.length - 3; i += 2) {
                     output += parameters[i] += ", ";
                 }
 
@@ -71,7 +71,7 @@ export class StringFormatCommand extends Command {
 
     /**
      * Creates a replacement string for a format string input.
-     * 
+     *
      * @param i   What number replacement this is within the format string.
      * @param inputName   The input replacement name.
      * @param inputType   The input replacement type.
@@ -85,7 +85,7 @@ export class StringFormatCommand extends Command {
         }
 
         if (this.language.properties.strings.formatting.inputTypes) {
-            if (this.language.properties.strings.formatting.typeCodes[inputType]) {
+            if (this.language.properties.strings.formatting.typeCodes[inputType] !== undefined) {
                 output += this.language.properties.strings.formatting.typeCodes[inputType];
             } else {
                 output += inputType;

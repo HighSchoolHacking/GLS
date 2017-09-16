@@ -33,14 +33,14 @@ export class InterfaceStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = "";
+        let line = "";
 
-        if (this.language.properties.interfaces.supported === false) {
+        if (!this.language.properties.interfaces.supported) {
             return LineResults.newSingleLine(line, false);
         }
 
@@ -50,7 +50,7 @@ export class InterfaceStartCommand extends Command {
         if (parameters.length > 2) {
             line += this.language.properties.interfaces.declareExtendsLeft;
 
-            for (let i: number = 2; i < parameters.length; i++) {
+            for (let i = 2; i < parameters.length; i++) {
                 line += parameters[i];
                 if (i !== parameters.length - 1) {
                     line += this.language.properties.interfaces.declareExtendsRight;
@@ -58,7 +58,7 @@ export class InterfaceStartCommand extends Command {
             }
         }
 
-        let output: CommandResult[] = [new CommandResult(line, 0)];
+        const output: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.properties.interfaces.declareStartRight, 1);
 
         return new LineResults(output, false);

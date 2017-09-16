@@ -16,11 +16,11 @@ export class SingleParameter extends Parameter {
 
     /**
      * Initializes a new instance of the SingleParameter class.
-     * 
+     *
      * @param descriptor   A plain-text description of the parameter.
      * @param parameters   Parameters contained inside.
      */
-    constructor(name: string, description: string, required: boolean) {
+    public constructor(name: string, description: string, required: boolean) {
         super(description);
 
         this.name = name;

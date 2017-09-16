@@ -1,9 +1,7 @@
 import { CommandResult } from "../Commands/CommandResult";
 import { LineResults } from "../Commands/LineResults";
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
-import { ConversionContext } from "./ConversionContext";
 import { GlsParser } from "./GlsParser";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
@@ -29,7 +27,7 @@ export class Conversion {
 
     /**
      * Initializes a new instance of the Conversion class.
-     * 
+     *
      * @param language   Language being converted to.
      */
     public constructor(caseStyleConverterBag: CaseStyleConverterBag, language: Language, parser: GlsParser) {
@@ -43,23 +41,18 @@ export class Conversion {
 
     /**
      * Converts the stored lines of GLS syntax to language code.
-     * 
+     *
      * @param glsLines   Raw lines of GLS syntax being converted.
      * @returns Converted lines of language code.
      */
     public convert(glsLines: string[]): string[] {
-        let allLineResults = this.generateAllLineResults(glsLines);
+        const allLineResults: LineResults[] = this.generateAllLineResults(glsLines);
 
-        let output: string[] = [];
-        let indentation: number = 0;
+        const output: string[] = [];
+        let indentation = 0;
 
-        for (let i: number = 0; i < allLineResults.length; i += 1) {
-            let lineResults: LineResults = allLineResults[i];
-            let commandResults: CommandResult[] = lineResults.commandResults;
-
-            for (let j: number = 0; j < commandResults.length; j += 1) {
-                let result: CommandResult = commandResults[j];
-
+        for (const lineResults of allLineResults) {
+            for (const result of lineResults.commandResults) {
                 if (result.indentation < 0) {
                     indentation += result.indentation;
                 }
@@ -83,21 +76,21 @@ export class Conversion {
 
     /**
      * Generates line results from raw GLS.
-     * 
+     *
      * @param glsLines   Raw lines of GLS syntax being converted.
      * @return Clusters of code returned from parsing raw GLS.
      */
     private generateAllLineResults(glsLines: string[]): LineResults[] {
-        let allLineResults: LineResults[] = [];
-        let importsStore: ImportsStore = new ImportsStore();
+        const allLineResults: LineResults[] = [];
+        const importsStore: ImportsStore = new ImportsStore();
 
-        for (let i: number = 0; i < glsLines.length; i += 1) {
-            if (glsLines[i].trim() === "") {
+        for (const glsLine of glsLines) {
+            if (glsLine.trim() === "") {
                 allLineResults.push(LineResults.newSingleLine("", false));
                 continue;
             }
 
-            let lineResults: LineResults = this.parser.parseCommand(glsLines[i]);
+            const lineResults: LineResults = this.parser.parseCommand(glsLine);
 
             allLineResults.push(lineResults);
             importsStore.addImports(lineResults.addedImports);
@@ -106,7 +99,7 @@ export class Conversion {
         if (importsStore.hasAnyImports()) {
             allLineResults.unshift(LineResults.newSingleLine("", false));
 
-            for (let addedImport of importsStore.getAllImportStores()) {
+            for (const addedImport of importsStore.getAllImportStores()) {
                 allLineResults.unshift(this.importsPrinter.render(addedImport));
             }
         }
@@ -116,14 +109,14 @@ export class Conversion {
 
     /**
      * Generates spaces equivalent to 4-space code tabbing.
-     * 
+     *
      * @param amount   How many tabs should be added.
      * @returns An all-spaces String of length = amount * 4.
      */
     private generateTabs(amount: number): string {
-        let output: string = "";
+        let output = "";
 
-        for (let i: number = 0; i < amount; i += 1) {
+        for (let i = 0; i < amount; i += 1) {
             output += "    ";
         }
 

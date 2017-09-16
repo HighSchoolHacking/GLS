@@ -1,4 +1,3 @@
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { ImportCommand } from "./ImportCommand";
 

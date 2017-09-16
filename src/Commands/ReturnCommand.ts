@@ -24,12 +24,12 @@ export class ReturnCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: string = "return";
+        let output = "return";
 
         if (parameters.length > 1) {
             output += " " + parameters[1];

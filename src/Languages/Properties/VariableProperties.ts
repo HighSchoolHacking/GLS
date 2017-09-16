@@ -13,7 +13,7 @@ export class VariableProperties {
     public castLeft: string;
 
     /**
-     * How to end a type cast. 
+     * How to end a type cast.
      */
     public castRight: string;
 
@@ -33,24 +33,14 @@ export class VariableProperties {
     public explicitTypes: boolean;
 
     /**
-     * The keyword used for null/undefined.
-     */
-    public null: string;
-
-    /**
-     * Whether types should be put after variable names rather than before.
-     */
-    public typesAfterName: boolean;
-
-    /**
-     * How to start a variable's type name.
-     */
-    public typeLeft: string;
-
-    /**
      * Precedes variable when negatively checking for null.
      */
     public isNotNullLeft: string;
+
+    /**
+     * Middle portion of expression when negatively checking for null.
+     */
+    public isNotNullMiddle: string;
 
     /**
      * Precedes variable when positively checking for null.
@@ -63,12 +53,22 @@ export class VariableProperties {
     public isNullMiddle: string;
 
     /**
-     * Middle portion of expression when negatively checking for null.
+     * The keyword used for null/undefined.
      */
-    public isNotNullMiddle: string;
+    public null: string;
 
     /**
      * Explicit null to check variable against.
      */
     public nullRight: string;
+
+    /**
+     * How to start a variable's type name.
+     */
+    public typeLeft: string;
+
+    /**
+     * Whether types should be put after variable names rather than before.
+     */
+    public typesAfterName: boolean;
 }

@@ -29,14 +29,14 @@ export class ArrayInitializeCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let typeName: string = this.context.convertCommon("type", parameters[1]);
-        let output: string = "";
+        const typeName: string = this.context.convertCommon("type", parameters[1]);
+        let output = "";
 
         if (this.language.properties.arrays.initializeAsNew) {
             output += "new ";

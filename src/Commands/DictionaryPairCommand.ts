@@ -25,12 +25,12 @@ export class DictionaryPairCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let results: string = "";
+        let results = "";
 
         results += this.language.properties.dictionaries.initializePairLeft;
         results += this.renderKey(parameters[1]);
@@ -47,24 +47,24 @@ export class DictionaryPairCommand extends Command {
 
     /**
      * Renders a quoted (string) or unquoted (variable) pair key.
-     * 
+     *
      * @param keyRaw   The raw key used for it.
      * @returns The key, wrapped as necessary.
      * @todo Add wrapping brackets as needed (research for Python, Ruby).
      */
     private renderKey(keyRaw: string): string {
-        let firstCharacter: string = keyRaw[0];
-        let lastCharacter: string = keyRaw[keyRaw.length - 1];
+        const firstCharacter: string = keyRaw[0];
+        const lastCharacter: string = keyRaw[keyRaw.length - 1];
 
-        if (firstCharacter === `"` && lastCharacter === `"`) {
+        if (firstCharacter === '"' && lastCharacter === '"') {
             return keyRaw;
         }
 
-        if (firstCharacter === `"`) {
+        if (firstCharacter === '"') {
             throw new Error("Dictionary pair keys that start with quotes must end with quotes.");
         }
 
-        if (lastCharacter === `"`) {
+        if (lastCharacter === '"') {
             throw new Error("Dictionary pair keys that end with quotes must start with quotes.");
         }
 

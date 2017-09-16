@@ -5,19 +5,19 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassMemberFunctionProperties {
     /**
-     * Decorator for public member functions.
+     * Decorator for private member functions.
      */
-    public public: string;
+    public private: string;
 
     /**
-     * Casing modifier for public member functions.
+     * Casing modifier for private member functions.
      */
-    public publicCase: CaseStyle;
+    public privateCase: CaseStyle;
 
     /**
-     * Prefix before public member function names.
+     * Prefix before private member function names.
      */
-    public publicPrefix: string;
+    public privatePrefix: string;
 
     /**
      * Decorator for protected member functions.
@@ -35,17 +35,17 @@ export class ClassMemberFunctionProperties {
     public protectedPrefix: string;
 
     /**
-     * Decorator for private member functions.
+     * Decorator for public member functions.
      */
-    public private: string;
+    public public: string;
 
     /**
-     * Casing modifier for private member functions.
+     * Casing modifier for public member functions.
      */
-    public privateCase: CaseStyle;
+    public publicCase: CaseStyle;
 
     /**
-     * Prefix before private member function names.
+     * Prefix before public member function names.
      */
-    public privatePrefix: string;
+    public publicPrefix: string;
 }

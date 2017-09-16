@@ -7,12 +7,12 @@ import { LineResults } from "./LineResults";
 export class BlockEndCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let ender: string = this.renderBlockEnd();
+        const ender: string = this.renderBlockEnd();
 
         if (ender === "\0") {
             return LineResults.newBlockLine("\0", -1);
@@ -23,7 +23,7 @@ export class BlockEndCommand extends Command {
 
     /**
      * Renders the default end block for conditionals.
-     * 
+     *
      * @returns The default end block for conditionals.
      */
     protected renderBlockEnd(): string {

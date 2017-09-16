@@ -1,10 +1,9 @@
-import { PythonicLanguage } from "./PythonicLanguage";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
+import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
 import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
@@ -20,15 +19,16 @@ import { LambdaProperties } from "./Properties/LambdaProperties";
 import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { MathProperties } from "./Properties/MathProperties";
-import { NewProperties, NewInstantiationSyntaxKind } from "./Properties/NewProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
+import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
-import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
+import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
+import { PythonicLanguage } from "./PythonicLanguage";
 
 /**
  * A summary of information for the Ruby language.
@@ -36,8 +36,8 @@ import { VariableProperties } from "./Properties/VariableProperties";
 export class Ruby extends PythonicLanguage {
     /**
      * Generates metadata on arrays.
-     * 
-     * @param arrays   A property container for metadata on arrays. 
+     *
+     * @param arrays   A property container for metadata on arrays.
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "Array";
@@ -49,23 +49,57 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on booleans.
-     * 
+     *
      * @param booleans   A property container for metadata on booleans.
      */
     protected generateBooleanProperties(booleans: BooleanProperties): void {
         booleans.className = "";
     }
+
+    /**
+     * Generates metadata on class member functions.
+     *
+     * @param functions   A property container for metadata on class member functions.
+     */
+    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+        functions.private = "def ";
+        functions.privateCase = CaseStyle.SnakeCase;
+        functions.privatePrefix = "";
+        functions.protected = "def ";
+        functions.protectedCase = CaseStyle.SnakeCase;
+        functions.protectedPrefix = "";
+        functions.public = "def ";
+        functions.publicCase = CaseStyle.SnakeCase;
+        functions.publicPrefix = "";
+    }
+
+    /**
+     * Generates metadata on class member variables.
+     *
+     * @param members   A property container for metadata on class member variables.
+     */
+    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
+        super.generateClassMemberVariableProperties(variables);
+
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protectedCase = CaseStyle.CamelCase;
+        variables.protectedPrefix = "";
+        variables.publicCase = CaseStyle.CamelCase;
+        variables.publicPrefix = "";
+    }
+
     /**
      * Generates metadata on classes.
-     * 
-     * @param classes   A property container for metadata on classes. 
+     *
+     * @param classes   A property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
         classes.aliases = {
-            "dictionary": "Hash",
-            "number": "Float"
+            dictionary: "Hash",
+            number: "Float"
         };
 
         classes.constructorKeyword = "def initialize";
@@ -82,41 +116,8 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on class member variables.
-     * 
-     * @param members   A property container for metadata on class member variables.
-     */
-    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
-        super.generateClassMemberVariableProperties(variables);
-
-        variables.privateCase = CaseStyle.CamelCase;
-        variables.privatePrefix = "";
-        variables.protectedCase = CaseStyle.CamelCase;
-        variables.protectedPrefix = "";
-        variables.publicCase = CaseStyle.CamelCase;
-        variables.publicPrefix = "";
-    }
-
-    /**
-     * Generates metadata on class member functions.
-     * 
-     * @param functions   A property container for metadata on class member functions.
-     */
-    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
-        functions.private = "def ";
-        functions.privateCase = CaseStyle.SnakeCase;
-        functions.privatePrefix = "";
-        functions.protected = "def ";
-        functions.protectedCase = CaseStyle.SnakeCase;
-        functions.protectedPrefix = "";
-        functions.public = "def ";
-        functions.publicCase = CaseStyle.SnakeCase;
-        functions.publicPrefix = "";
-    }
-
-    /**
      * Generates metadata on class static functions.
-     * 
+     *
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
@@ -133,7 +134,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on class static variables.
-     * 
+     *
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
@@ -148,23 +149,9 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on conditionals.
-     * 
-     * @param conditionals   A property container for metadata on conditionals. 
-     */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
-        super.generateConditionalProperties(conditionals);
-
-        conditionals.continueRight = "";
-        conditionals.end = "end";
-        conditionals.elif = "elsif";
-        conditionals.startRight = "";
-    }
-
-    /**
      * Generates metadata on comments.
-     * 
-     * @param comments   A property container for metadata on comments. 
+     *
+     * @param comments   A property container for metadata on comments.
      */
     protected generateCommentProperties(comments: CommentProperties): void {
         comments.blockEnd = "=end";
@@ -177,14 +164,14 @@ export class Ruby extends PythonicLanguage {
         comments.docLineStart = "";
         comments.docStart = "##";
         comments.docTagAliases = {
-            "note": "remarks",
-            "parameter": "\0",
-            "returns": "returns",
-            "summary": "",
-            "todo": "todo"
+            note: "remarks",
+            parameter: "\0",
+            returns: "returns",
+            summary: "",
+            todo: "todo"
         };
         comments.docTagsWithParameters = {
-            "parameter": ""
+            parameter: ""
         };
         comments.docTagEnd = "] ";
         comments.docTagSpaceAfter = "  ";
@@ -195,9 +182,23 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
+     * Generates metadata on conditionals.
+     *
+     * @param conditionals   A property container for metadata on conditionals.
+     */
+    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+        super.generateConditionalProperties(conditionals);
+
+        conditionals.continueRight = "";
+        conditionals.end = "end";
+        conditionals.elif = "elsif";
+        conditionals.startRight = "";
+    }
+
+    /**
      * Generates properties on dictionaries.
-     * 
-     * @param dictionaries   The property container for metadata on dictionaries. 
+     *
+     * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
         super.generateDictionaryProperties(dictionaries);
@@ -210,18 +211,8 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
-     * Generates general metadata.
-     * 
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.extension = ".rb";
-        general.name = "Ruby";
-    }
-
-    /**
      * Generates metadata on enums.
-     * 
+     *
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumProperties(enums: EnumProperties): void {
@@ -235,7 +226,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on exceptions.
-     * 
+     *
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
@@ -255,8 +246,8 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on functions.
-     * 
-     * @param functions   The property container for metadata on functions. 
+     *
+     * @param functions   The property container for metadata on functions.
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
@@ -266,8 +257,18 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
+     * Generates general metadata.
+     *
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.extension = ".rb";
+        general.name = "Ruby";
+    }
+
+    /**
      * Generates metadata on imports.
-     * 
+     *
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
@@ -281,7 +282,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on imports.
-     * 
+     *
      * @param imports   A property container for metadata on imports.
      */
     protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
@@ -290,7 +291,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on lambdas.
-     * 
+     *
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
@@ -303,8 +304,8 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on lists.
-     * 
-     * @param lists   A property container for metadata on loops. 
+     *
+     * @param lists   A property container for metadata on loops.
      */
     protected generateListProperties(lists: ListProperties): void {
         super.generateListProperties(lists);
@@ -336,8 +337,8 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on loops.
-     * 
-     * @param loops   A property container for metadata on loops. 
+     *
+     * @param loops   A property container for metadata on loops.
      */
     protected generateLoopProperties(loops: LoopProperties): void {
         super.generateLoopProperties(loops);
@@ -362,7 +363,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on math.
-     * 
+     *
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
@@ -388,7 +389,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on new object instantiation.
-     * 
+     *
      * @param newProp   A property container for metadata on new object instantiation.
      */
     protected generateNewProperties(newProp: NewProperties): void {
@@ -398,7 +399,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on numbers.
-     * 
+     *
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
@@ -407,7 +408,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on numbers.
-     * 
+     *
      * @param numbers   A property container for metadata on numbers.
      */
     protected generateOutputProperties(output: OutputProperties): void {
@@ -416,7 +417,7 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on parameters
-     * 
+     *
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterProperties(parameters: ParameterProperties): void {
@@ -428,8 +429,30 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
+     * Generates metadata on string formatting.
+     *
+     * @param strings   A property container for metadata on string formatting.
+     */
+    protected generateStringFormatProperties(formatting: StringFormatProperties): void {
+        formatting.formatLeft = "\"";
+        formatting.formatMiddle = "\" % [";
+        formatting.formatAbbreviated = "\" % [";
+        formatting.formatRight = "]";
+        formatting.formatInputLeft = "$";
+        formatting.formatInputRight = "";
+        formatting.inputTypes = true;
+        formatting.useInterpolation = false;
+
+        formatting.typeCodes = {
+            float: "%f",
+            int: "%d",
+            string: "%s",
+        };
+    }
+
+    /**
      * Generates metadata on strings.
-     * 
+     *
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringProperties(strings: StringProperties): void {
@@ -447,31 +470,9 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on string formatting.
-     * 
-     * @param strings   A property container for metadata on string formatting.
-     */
-    public generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "\"";
-        formatting.formatMiddle = "\" % [";
-        formatting.formatAbbreviated = "\" % [";
-        formatting.formatRight = "]";
-        formatting.formatInputLeft = "$";
-        formatting.formatInputRight = "";
-        formatting.inputTypes = true;
-        formatting.useInterpolation = false;
-
-        formatting.typeCodes = {
-            int: "%d",
-            float: "%f",
-            string: "%s",
-        };
-    }
-
-    /**
      * Generates metadata on style.
-     * 
-     * @param style   The property container for metadata on style. 
+     *
+     * @param style   The property container for metadata on style.
      */
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
@@ -485,14 +486,14 @@ export class Ruby extends PythonicLanguage {
 
     /**
      * Generates metadata on variables.
-     * 
-     * @param variables   A property container for metadata on variables. 
+     *
+     * @param variables   A property container for metadata on variables.
      */
     protected generateVariableProperties(variables: VariableProperties): void {
         super.generateVariableProperties(variables);
 
         variables.aliases = {
-            "infinity": "float::Infinity",
+            infinity: "float::Infinity",
         };
         variables.null = "Nil";
         variables.isNullLeft = "";

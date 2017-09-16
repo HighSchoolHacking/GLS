@@ -8,14 +8,14 @@ import { LineResults } from "./LineResults";
 export class TryStartCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.exceptions.try;
+        const line: string = this.language.properties.exceptions.try;
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
+        const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.properties.exceptions.tryStartRight, 1);
 
         return new LineResults(lines, false);

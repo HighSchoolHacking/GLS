@@ -1,4 +1,3 @@
-import { CaseStyle } from "../Casing/CaseStyle";
 
 /**
  * Metadata on a language's style.
@@ -36,12 +35,12 @@ export class StyleProperties {
     public printStart: string;
 
     /**
-     * Whether block-starting braces should be moved to the next line.
-     */
-    public separateBraceLines: boolean;
-
-    /**
      * How to end lines, such as "" or ";".
      */
     public semicolon: string;
+
+    /**
+     * Whether block-starting braces should be moved to the next line.
+     */
+    public separateBraceLines: boolean;
 }

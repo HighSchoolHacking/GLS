@@ -1,8 +1,8 @@
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for calling a parent class constructor.
@@ -28,12 +28,12 @@ export class SuperConstructorCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: string = "";
+        let output = "";
 
         output += this.language.properties.classes.superConstructor;
         output += "(";
@@ -41,7 +41,7 @@ export class SuperConstructorCommand extends Command {
         if (parameters.length > 1) {
             output += parameters[1];
 
-            for (let i: number = 2; i < parameters.length; i += 1) {
+            for (let i = 2; i < parameters.length; i += 1) {
                 output += ", " + parameters[i];
             }
         }

@@ -6,7 +6,7 @@ import { BlockEndCommand } from "./BlockEndCommand";
 export class InterfaceEndCommand extends BlockEndCommand {
     /**
      * Renders the end block for interface declarations.
-     * 
+     *
      * @returns The end block for interface declarations.
      */
     protected renderBlockEnd(): string {

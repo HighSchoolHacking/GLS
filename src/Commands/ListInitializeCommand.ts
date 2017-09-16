@@ -1,8 +1,8 @@
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for initializing a new list.
@@ -29,7 +29,7 @@ export class ListInitializeCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
@@ -40,8 +40,8 @@ export class ListInitializeCommand extends Command {
             return this.context.convertParsed(parameters);
         }
 
-        let typeNameRaw: string = "list<" + parameters[1] + ">";
-        let typeName: string = this.context.convertCommon("type", typeNameRaw);
+        const typeNameRaw: string = "list<" + parameters[1] + ">";
+        const typeName: string = this.context.convertCommon("type", typeNameRaw);
         let output: string = "new " + typeName;
 
         if (parameters.length > 2) {

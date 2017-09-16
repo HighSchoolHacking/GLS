@@ -2,8 +2,8 @@ import { Language } from "../Languages/Language";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for printing a comment line.
@@ -29,13 +29,13 @@ export class CommentLineCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let language: Language = this.language;
-        let result: string = "";
+        const language: Language = this.language;
+        let result = "";
 
         result += language.properties.comments.lineLeft;
         result += parameters.slice(1).join(" ");

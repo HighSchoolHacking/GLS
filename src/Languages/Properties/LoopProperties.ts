@@ -48,11 +48,6 @@ export class LoopProperties {
     public forEachMiddle: string;
 
     /**
-     * The class name of foreach pairs, such as "KeyValuePair" or "MapEntry".
-     */
-    public forEachPairsPairClass: string;
-
-    /**
      * Whether foreach loops iterate over keys.
      */
     public forEachPairsAsKeys: boolean;
@@ -61,6 +56,11 @@ export class LoopProperties {
      * Whether foreach loops iterate over pairs of items.
      */
     public forEachPairsAsPair: boolean;
+
+    /**
+     * The class name of foreach pairs, such as "KeyValuePair" or "MapEntry".
+     */
+    public forEachPairsPairClass: string;
 
     /**
      * How to retrieve a key from a foreach pair, such as ".Key" or ".getKey()".
@@ -88,14 +88,14 @@ export class LoopProperties {
     public forEachStartLeft: string;
 
     /**
-     * Separates itteration variable and array in a foreach loop's initial line.
-     */
-    public forEachStartSeparator: string;
-
-    /**
      * Last part of a foreach loop's initial line.
      */
     public forEachStartRight: string;
+
+    /**
+     * Separates itteration variable and array in a foreach loop's initial line.
+     */
+    public forEachStartSeparator: string;
 
     /**
      * Whether Pythonic ranged loops are used, rather than traditional C-like ones.

@@ -17,8 +17,8 @@ import { LoopProperties } from "./LoopProperties";
 import { MathProperties } from "./MathProperties";
 import { NewProperties } from "./NewProperties";
 import { NumberProperties } from "./NumberProperties";
-import { OutputProperties } from "./OutputProperties";
 import { OperatorProperties } from "./OperatorProperties";
+import { OutputProperties } from "./OutputProperties";
 import { ParameterProperties } from "./ParameterProperties";
 import { StringProperties } from "./StringProperties";
 import { StyleProperties } from "./StyleProperties";
@@ -156,7 +156,7 @@ export class LanguageProperties {
     /**
      * Initializes a new instance of the LanguageProperties class.
      */
-    constructor() {
+    public constructor() {
         this.arrays = new ArrayProperties();
         this.booleans = new BooleanProperties();
         this.classes = new ClassProperties();

@@ -23,12 +23,12 @@ export class NotCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let not = this.language.properties.operators.not;
+        const not = this.language.properties.operators.not;
 
         return LineResults.newSingleLine(not + parameters[1], false);
     }

@@ -7,9 +7,9 @@ import { LanguagesBag } from "./Languages/LanguagesBag";
  */
 export class Gls {
     /**
-     * A lookup for known languages.
+     * Context for the currently converted code.
      */
-    private languagesBag: LanguagesBag;
+    private conversionContext: ConversionContext;
 
     /**
      * The current language for conversion.
@@ -17,15 +17,25 @@ export class Gls {
     private language: Language;
 
     /**
-     * Context for the currently converted code.
+     * A lookup for known languages.
      */
-    private conversionContext: ConversionContext;
+    private languagesBag: LanguagesBag;
 
     /**
      * Initializes a new instance of the Gls class.
      */
     public constructor() {
         this.languagesBag = new LanguagesBag();
+    }
+
+    /**
+     * Converts raw GLS syntax into language code.
+     *
+     * @param input   GLS syntax to be converted.
+     * @returns Language code from the input.
+     */
+    public convert(input: string[]): string[] {
+        return this.conversionContext.convert(input);
     }
 
     /**
@@ -44,7 +54,7 @@ export class Gls {
 
     /**
      * Sets a new language to be used for conversion.
-     * 
+     *
      * @param name   The name of the language.
      * @returns this
      */
@@ -53,15 +63,5 @@ export class Gls {
         this.conversionContext = new ConversionContext(this.language);
 
         return this;
-    }
-
-    /**
-     * Converts raw GLS syntax into language code.
-     * 
-     * @param input   GLS syntax to be converted.
-     * @returns Language code from the input.
-     */
-    public convert(input: string[]): string[] {
-        return this.conversionContext.convert(input);
     }
 }

@@ -31,12 +31,12 @@ export class ConstructorStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let declaration: string = "";
+        let declaration = "";
         let output: CommandResult[];
 
         if (this.language.properties.classes.constructorUsesKeyword) {
@@ -58,7 +58,7 @@ export class ConstructorStartCommand extends Command {
         if (parameters.length > 3) {
             declaration += this.generateParameterVariable(parameters, 2);
 
-            for (let i: number = 4; i < parameters.length; i += 2) {
+            for (let i = 4; i < parameters.length; i += 2) {
                 declaration += ", ";
                 declaration += this.generateParameterVariable(parameters, i);
             }
@@ -74,7 +74,7 @@ export class ConstructorStartCommand extends Command {
 
     /**
      * Generates a string for a parameter.
-     * 
+     *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
@@ -84,8 +84,8 @@ export class ConstructorStartCommand extends Command {
             return parameters[i];
         }
 
-        let parameterName: string = parameters[i];
-        let parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
+        const parameterName: string = parameters[i];
+        const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
 
         return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
     }

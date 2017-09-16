@@ -23,14 +23,14 @@ export class IsNullCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let left: string = this.language.properties.variables.isNullLeft;
-        let middle: string = this.language.properties.variables.isNullMiddle;
-        let right: string = this.language.properties.variables.nullRight;
+        const left: string = this.language.properties.variables.isNullLeft;
+        const middle: string = this.language.properties.variables.isNullMiddle;
+        const right: string = this.language.properties.variables.nullRight;
 
         return LineResults.newSingleLine(left + parameters[1] + middle + right, false);
     }

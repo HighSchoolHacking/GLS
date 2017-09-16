@@ -16,10 +16,10 @@ import { CommentDocEndCommand } from "./CommentDocEndCommand";
 import { CommentDocStartCommand } from "./CommentDocStartCommand";
 import { CommentDocTagCommand } from "./CommentDocTagCommand";
 import { CommentLineCommand } from "./CommentLineCommand";
+import { ConcatenateCommand } from "./ConcatenateCommand";
 import { ConstructorEndCommand } from "./ConstructorEndCommand";
 import { ConstructorStartCommand } from "./ConstructorStartCommand";
 import { ContinueCommand } from "./ContinueCommand";
-import { ConcatenateCommand } from "./ConcatenateCommand";
 import { DictionaryContainsKeyCommand } from "./DictionaryContainsKeyCommand";
 import { DictionaryKeysCommand } from "./DictionaryKeysCommand";
 import { DictionaryNewCommand } from "./DictionaryNewCommand";
@@ -33,16 +33,16 @@ import { EnumCommand } from "./EnumCommand";
 import { EnumEndCommand } from "./EnumEndCommand";
 import { EnumMemberCommand } from "./EnumMemberCommand";
 import { EnumStartCommand } from "./EnumStartCommand";
-import { FinallyEndCommand } from "./FinallyEndCommand";
-import { FinallyStartCommand } from "./FinallyStartCommand";
 import { FileEndCommand } from "./FileEndCommand";
 import { FileStartCommand } from "./FileStartCommand";
+import { FinallyEndCommand } from "./FinallyEndCommand";
+import { FinallyStartCommand } from "./FinallyStartCommand";
 import { ForEachEndCommand } from "./ForEachEndCommand";
 import { ForEachKeyStartCommand } from "./ForEachKeyStartCommand";
 import { ForEachPairStartCommand } from "./ForEachPairStartCommand";
 import { ForEachStartCommand } from "./ForEachStartCommand";
-import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
 import { ForNumbersEndCommand } from "./ForNumbersEndCommand";
+import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
 import { FunctionEndCommand } from "./FunctionEndCommand";
 import { FunctionStartCommand } from "./FunctionStartCommand";
 import { IfEndCommand } from "./IfEndCommand";
@@ -50,9 +50,9 @@ import { IfStartCommand } from "./IfStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
 import { IndexCommand } from "./IndexCommand";
-import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
+import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
@@ -62,9 +62,9 @@ import { ListLengthCommand } from "./ListLengthCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
-import { LiteralCommand } from "./LiteralCommand";
 import { ListSortCommand } from "./ListSortCommand";
 import { ListTypeCommand } from "./ListTypeCommand";
+import { LiteralCommand } from "./LiteralCommand";
 import { MainEndCommand } from "./MainEndCommand";
 import { MainStartCommand } from "./MainStartCommand";
 import { MathAbsoluteCommand } from "./MathAbsoluteCommand";
@@ -82,14 +82,12 @@ import { OperationCommand } from "./OperationCommand";
 import { OperatorCommand } from "./OperatorCommand";
 import { ParenthesisCommand } from "./ParenthesisCommand";
 import { PrintCommand } from "./PrintCommand";
-import { RestParametersCommand} from "./RestParametersCommand";
+import { RestParametersCommand } from "./RestParametersCommand";
 import { ReturnCommand } from "./ReturnCommand";
 import { StaticFunctionCommand } from "./StaticFunctionCommand";
 import { StaticFunctionDeclareEndCommand } from "./StaticFunctionDeclareEndCommand";
 import { StaticFunctionDeclareStartCommand } from "./StaticFunctionDeclareStartCommand";
 import { StaticVariableCommand } from "./StaticVariableCommand";
-// import { StaticVariableDeclareCommand } from "./StaticVariableDeclareCommand";
-
 import { StringFormatCommand } from "./StringFormatCommand";
 import { StringIndexCommand } from "./StringIndexCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
@@ -117,10 +115,10 @@ export class CommandsBag {
 
     /**
      * Initializes a new instance of the CommandsBag class.
-     * 
+     *
      * @param context   The driving context for conversions.
      */
-    constructor(context: ConversionContext) {
+    public constructor(context: ConversionContext) {
         this.commands = {
             [CommandNames.ArrayInitialize]: new ArrayInitializeCommand(context),
             [CommandNames.ArrayLength]: new ArrayLengthCommand(context),
@@ -208,8 +206,6 @@ export class CommandsBag {
             [CommandNames.StaticFunctionDeclareStart]: new StaticFunctionDeclareStartCommand(context),
             [CommandNames.StaticFunctionDeclareEnd]: new StaticFunctionDeclareEndCommand(context),
             [CommandNames.StaticVariable]: new StaticVariableCommand(context),
-            // [CommandNames.StaticVariableDeclare]: new StaticVariableDeclareCommand(context),
-
             [CommandNames.StringFormat]: new StringFormatCommand(context),
             [CommandNames.StringIndex]: new StringIndexCommand(context),
             [CommandNames.StringLength]: new StringLengthCommand(context),
@@ -229,15 +225,8 @@ export class CommandsBag {
     }
 
     /**
-     * @returns Commands, keyed by their GLS aliases.
-     */
-    public getCommands(): { [i: string]: Command } {
-        return this.commands;
-    }
-
-    /**
      * Retrieves the command under the given alias.
-     * 
+     *
      * @param name   The alias of a command.
      * @returns The command under the given alias.
      */

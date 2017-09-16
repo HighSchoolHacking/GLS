@@ -5,16 +5,16 @@ import { ImportRelativity } from "./ImportRelativity";
  */
 export class Import {
     /**
-     * Package path to import from.
-     */
-    public packagePath: string[];
-
-    /**
      * Items to import from the package path.
-     * 
+     *
      * @todo Use a Set once the source tsconfig.json allows it.
      */
     public items: string[];
+
+    /**
+     * Package path to import from.
+     */
+    public packagePath: string[];
 
     /**
      * Whether this is from an absolute package or local file.
@@ -36,11 +36,11 @@ export class Import {
 
     /**
      * Adds items to the unique accumulated items.
-     * 
+     *
      * @param items   Items to add.
      */
     public addItems(items: string[]) {
-        for (let item of items) {
+        for (const item of items) {
             if (this.items.indexOf(item) !== -1) {
                 this.items.push(item);
             }

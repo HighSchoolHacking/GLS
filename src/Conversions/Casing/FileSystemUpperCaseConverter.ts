@@ -6,7 +6,7 @@ import { CaseStyleConverter } from "./CaseStyleConverter";
 export class FileSystemUpperCaseConverter extends CaseStyleConverter {
     /**
      * Combines a series of words to ./File/System/Upper/Case.
-     * 
+     *
      * @param word   Words to convert.
      * @returns The word's equivalent in this converter's case style.
      */
@@ -23,7 +23,7 @@ export class FileSystemUpperCaseConverter extends CaseStyleConverter {
 
     /**
      * Applies this style's transformation to a word.
-     * 
+     *
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */

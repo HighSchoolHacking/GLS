@@ -8,12 +8,12 @@ import { LineResults } from "./LineResults";
 export class ElseStartCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let lines = [new CommandResult("", -1)];
+        const lines = [new CommandResult("", -1)];
 
         if (!this.language.properties.style.separateBraceLines) {
             lines[0].text = "\0";

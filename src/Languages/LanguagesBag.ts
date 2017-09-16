@@ -23,14 +23,14 @@ export class LanguagesBag {
     ];
 
     /**
-     * Known languages, keyed by name.
-     */
-    private languagesByName: { [i: string]: Language } = {};
-
-    /**
      * Known languages, keyed by extension.
      */
     private languagesByExtension: { [i: string]: Language } = {};
+
+    /**
+     * Known languages, keyed by name.
+     */
+    private languagesByName: { [i: string]: Language } = {};
 
     /**
      * Initializes a new instance of the LanguagesBag class.
@@ -42,15 +42,8 @@ export class LanguagesBag {
     }
 
     /**
-     * @returns Names of languages in the listing.
-     */
-    public getLanguageNames(): string[] {
-        return Object.keys(this.languagesByName);
-    }
-
-    /**
      * Adds a language to the listing.
-     * 
+     *
      * @param language   The language to add.
      */
     public addLanguage(language: Language): void {
@@ -60,7 +53,7 @@ export class LanguagesBag {
 
     /**
      * Retrieves a language by its extension.
-     * 
+     *
      * @param extension   Extension of a language, including preceding period.
      * @returns The language under the extension.
      */
@@ -74,7 +67,7 @@ export class LanguagesBag {
 
     /**
      * Retrieves a language by its name.
-     * 
+     *
      * @param name   Name of a language.
      * @returns The language under the name.
      */
@@ -84,5 +77,12 @@ export class LanguagesBag {
         }
 
         return this.languagesByName[name];
+    }
+
+    /**
+     * @returns Names of languages in the listing.
+     */
+    public getLanguageNames(): string[] {
+        return Object.keys(this.languagesByName);
     }
 }

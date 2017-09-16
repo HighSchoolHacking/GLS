@@ -1,9 +1,8 @@
 import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
-import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
-import { ConversionContext } from "./ConversionContext";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 
 /**
  * Converter to transform raw GLS syntax into language code.
@@ -21,24 +20,37 @@ export class GlsParser {
 
     /**
      * Initializes a new instance of the GlsParser class.
-     * 
+     *
      * @param context   A driving context for converting commands.
      */
-    constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
+    public constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
         this.caseStyleConverterBag = caseStyleConverterBag;
         this.commandsBag = commandsBag;
     }
 
     /**
+     * Converts a name to a casing style.
+     *
+     * @param words   A name to convert.
+     * @param caseStyle   A casing style.
+     * @returns The name under the casing style.
+     */
+    public convertToCase(words: string[], caseStyle: CaseStyle): string {
+        const converter = this.caseStyleConverterBag.getConverter(caseStyle);
+
+        return converter.convert(words);
+    }
+
+    /**
      * Parses a line of raw GLS syntax into the equivalent language code.
-     * 
+     *
      * @param line   A line of raw GLS syntax.
      * @returns The equivalent lines of code in the language.
      */
     public parseCommand(line: string): LineResults {
-        let parameters: string[] = this.separateLineComponents(line.trim());
+        const parameters: string[] = this.separateLineComponents(line.trim());
 
-        for (let i: number = 1; i < parameters.length; i += 1) {
+        for (let i = 1; i < parameters.length; i += 1) {
             if (parameters[i][0] === "{") {
                 parameters[i] = this.recurseOnCommand(parameters[i]);
             }
@@ -48,13 +60,13 @@ export class GlsParser {
     }
 
     /**
-     * Renders a parsed line into the equivalent language code. 
-     * 
+     * Renders a parsed line into the equivalent language code.
+     *
      * @param lineParsed   A parsed line from raw GLS syntax.
      * @returns The equivalent lines of code in the language.
      */
     public renderParsedCommand(lineParsed: string[]): LineResults {
-        let command: Command = this.commandsBag.getCommand(lineParsed[0]);
+        const command: Command = this.commandsBag.getCommand(lineParsed[0]);
 
         command.checkParameterValidity(lineParsed);
 
@@ -62,31 +74,46 @@ export class GlsParser {
     }
 
     /**
-     * Converts a name to a casing style.
-     * 
-     * @param words   A name to convert.
-     * @param caseStyle   A casing style.
-     * @returns The name under the casing style.
+     * Finds the corresponding end position for a starting separator.
+     *
+     * @param text   The String to search within.
+     * @param index   The starting location of the starting separator.
+     * @param starter   The starting separator, such as "{".
+     * @param ender   The ending separator, suchas "}".
+     * @returns The position of the starter's corresponding ender.
      */
-    public convertToCase(words: string[], caseStyle: CaseStyle): string {
-        let converter = this.caseStyleConverterBag.getConverter(caseStyle);
+    private findSearchEnd(text: string, index: number, starter: string, ender: string): number {
+        let numStarts = 1;
 
-        return converter.convert(words);
+        for (let i: number = index + 1; i < text.length; i += 1) {
+            const current: string = text[i];
+
+            if (current === ender) {
+                numStarts -= 1;
+                if (numStarts === 0) {
+                    return i;
+                }
+            } else if (current === starter) {
+                numStarts += 1;
+            }
+        }
+
+        return -1;
     }
 
     /**
      * Parses a sub-command of GLS syntax from within a full line.
-     * 
+     *
      * @param section   A section of raw GLS syntax.
      * @returns Text from the result of parsing this command.
      * @remarks Only the first result line is used.
      */
     private recurseOnCommand(section: string): string {
-        let command: string = this.trimEndCharacters(section).trim();
-        let lineResults: LineResults = this.parseCommand(command);
+        const command: string = this.trimEndCharacters(section).trim();
+        const lineResults: LineResults = this.parseCommand(command);
         let line: string = lineResults.commandResults[0].text;
 
-        for (let i: number = 1; i < lineResults.commandResults.length; i += 1) {
+        for (let i = 1; i < lineResults.commandResults.length; i += 1) {
             line += "\n" + lineResults.commandResults[i].text;
         }
 
@@ -95,18 +122,18 @@ export class GlsParser {
 
     /**
      * Separates a line into its command name and parameters.
-     * 
+     *
      * @param line   A raw line of GLS syntax.
      * @returns The line's command name, followed by any parameters.
      * @remarks This assumes the line is already whitespace-trimmed.
      */
     private separateLineComponents(line: string): string[] {
-        let colonIndex: number = line.indexOf(":");
+        const colonIndex: number = line.indexOf(":");
         if (colonIndex === -1) {
             return [line.trim()];
         }
 
-        let output: string[] = [line.substring(0, colonIndex).trim()];
+        const output: string[] = [line.substring(0, colonIndex).trim()];
 
         for (let i: number = colonIndex + 2; i < line.length; i += 1) {
             let end: number;
@@ -135,7 +162,6 @@ export class GlsParser {
                 default:
                     end = this.findSearchEnd(line, i, " ", " ");
                     nextStart = end;
-                    break;
             }
 
             if (end === -1) {
@@ -154,39 +180,11 @@ export class GlsParser {
 
     /**
      * Trims the first and last characters from a String.
-     * 
-     * @param text   A String. 
+     *
+     * @param text   A String.
      * @returns The same text, with end characters trimmed.
      */
     private trimEndCharacters(text: string): string {
         return text.substring(1, Math.max(text.length - 1, 1));
-    }
-
-    /**
-     * Finds the corresponding end position for a starting separator.
-     * 
-     * @param text   The String to search within.
-     * @param index   The starting location of the starting separator.
-     * @param starter   The starting separator, such as "{".
-     * @param ender   The ending separator, suchas "}".
-     * @returns The position of the starter's corresponding ender.
-     */
-    private findSearchEnd(text: string, index: number, starter: string, ender: string): number {
-        let numStarts: number = 1;
-
-        for (let i: number = index + 1; i < text.length; i += 1) {
-            let current: string = text[i];
-
-            if (current === ender) {
-                numStarts -= 1;
-                if (numStarts === 0) {
-                    return i;
-                }
-            } else if (current === starter) {
-                numStarts += 1;
-            }
-        }
-
-        return -1;
     }
 }

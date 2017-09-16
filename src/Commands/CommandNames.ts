@@ -5,505 +5,505 @@ export class CommandNames {
     /**
      * Name key for the ArrayInitialize command.
      */
-    public static ArrayInitialize: string = "array initialize";
+    public static ArrayInitialize = "array initialize";
 
     /**
      * Name key for the ArrayLength command.
      */
-    public static ArrayLength: string = "array length";
+    public static ArrayLength = "array length";
 
     /**
      * Name key for the Break command.
      */
-    public static Break: string = "break";
+    public static Break = "break";
 
     /**
      * Name key for the CatchEnd command.
      */
-    public static CatchEnd: string = "catch end";
+    public static CatchEnd = "catch end";
 
     /**
      * Name key for the CatchStart command.
      */
-    public static CatchStart: string = "catch start";
+    public static CatchStart = "catch start";
 
     /**
      * Name key for the ClassEnd command.
      */
-    public static ClassEnd: string = "class end";
+    public static ClassEnd = "class end";
 
     /**
      * Name key for the ClassStart command.
      */
-    public static ClassStart: string = "class start";
+    public static ClassStart = "class start";
 
     /**
      * Name key for the CommentBlock command.
      */
-    public static CommentBlock: string = "comment block";
+    public static CommentBlock = "comment block";
 
     /**
      * Name key for the CommentBlockEnd command.
      */
-    public static CommentBlockEnd: string = "comment block end";
+    public static CommentBlockEnd = "comment block end";
 
     /**
      * Name key for the CommentBlockStart command.
      */
-    public static CommentBlockStart: string = "comment block start";
+    public static CommentBlockStart = "comment block start";
 
     /**
      * Name key for the CommentBlockStart command.
      */
-    public static CommentDocEnd: string = "comment doc end";
+    public static CommentDocEnd = "comment doc end";
 
     /**
      * Name key for the  command.
      */
-    public static CommentDocStart: string = "comment doc start";
+    public static CommentDocStart = "comment doc start";
 
     /**
      * Name key for the CommentDocTag command.
      */
-    public static CommentDocTag: string = "comment doc tag";
+    public static CommentDocTag = "comment doc tag";
 
     /**
      * Name key for the CommentLine command.
      */
-    public static CommentLine: string = "comment line";
+    public static CommentLine = "comment line";
 
     /**
      * Name key for the Concatenate command.
      */
-    public static Concatenate: string = "concatenate";
+    public static Concatenate = "concatenate";
 
     /**
      * Name key for the ConstructorEnd command.
      */
-    public static ConstructorEnd: string = "constructor end";
+    public static ConstructorEnd = "constructor end";
 
     /**
      * Name key for the ConstructorStart command.
      */
-    public static ConstructorStart: string = "constructor start";
+    public static ConstructorStart = "constructor start";
 
     /**
      * Name key for the Continue command.
      */
-    public static Continue: string = "continue";
+    public static Continue = "continue";
 
     /**
      * Name key for the DictionaryContainsKey command.
      */
-    public static DictionaryContainsKey: string = "dictionary contains key";
+    public static DictionaryContainsKey = "dictionary contains key";
 
     /**
      * Name key for the DictionaryKeys command.
      */
-    public static DictionaryKeys: string = "dictionary keys";
+    public static DictionaryKeys = "dictionary keys";
 
     /**
      * Name key for the DictionaryNew command.
      */
-    public static DictionaryNew: string = "dictionary new";
+    public static DictionaryNew = "dictionary new";
 
     /**
      * Name key for the DictionaryNewEnd command.
      */
-    public static DictionaryNewEnd: string = "dictionary new end";
+    public static DictionaryNewEnd = "dictionary new end";
 
     /**
      * Name key for the DictionaryNewStart command.
      */
-    public static DictionaryNewStart: string = "dictionary new start";
+    public static DictionaryNewStart = "dictionary new start";
 
     /**
      * Name key for the DictionaryPair command.
      */
-    public static DictionaryPair: string = "dictionary pair";
+    public static DictionaryPair = "dictionary pair";
 
     /**
      * Name key for the DictionaryType command.
      */
-    public static DictionaryType: string = "dictionary type";
+    public static DictionaryType = "dictionary type";
 
     /**
      * Name key for the ElseIfStart command.
      */
-    public static ElseIfStart: string = "else if start";
+    public static ElseIfStart = "else if start";
 
     /**
      * Name key for the ElseStart command.
      */
-    public static ElseStart: string = "else start";
+    public static ElseStart = "else start";
 
     /**
      * Name key for the Enum command.
      */
-    public static Enum: string = "enum";
+    public static Enum = "enum";
 
     /**
      * Name key for the EnumEnd command.
      */
-    public static EnumEnd: string = "enum end";
+    public static EnumEnd = "enum end";
 
     /**
      * Name key for the EnumMember command.
      */
-    public static EnumMember: string = "enum member";
+    public static EnumMember = "enum member";
 
     /**
      * Name key the EnumStart command.
      */
-    public static EnumStart: string = "enum start";
-
-    /**
-     * Name key for the FinallyEnd command.
-     */
-    public static FinallyEnd: string = "finally end";
-
-    /**
-     * Name key for the FinallyStart command.
-     */
-    public static FinallyStart: string = "finally start";
+    public static EnumStart = "enum start";
 
     /**
      * Name key for the FileEnd command.
      */
-    public static FileEnd: string = "file end";
+    public static FileEnd = "file end";
 
     /**
      * Name key for the FileStart command.
      */
-    public static FileStart: string = "file start";
+    public static FileStart = "file start";
+
+    /**
+     * Name key for the FinallyEnd command.
+     */
+    public static FinallyEnd = "finally end";
+
+    /**
+     * Name key for the FinallyStart command.
+     */
+    public static FinallyStart = "finally start";
 
     /**
      * Name key for the ForEachEnd command.
      */
-    public static ForEachEnd: string = "for each end";
+    public static ForEachEnd = "for each end";
 
     /**
      * Name key for the ForEachKeyStart command.
      */
-    public static ForEachKeyStart: string = "for each key start";
-
-    /**
-     * Name key for the ForEachStart command.
-     */
-    public static ForEachStart: string = "for each start";
+    public static ForEachKeyStart = "for each key start";
 
     /**
      * Name key for the ForEachPairStart command.
      */
-    public static ForEachPairStart: string = "for each pair start";
+    public static ForEachPairStart = "for each pair start";
 
     /**
-     * Name key for the ForNumbersStart command.
+     * Name key for the ForEachStart command.
      */
-    public static ForNumbersStart: string = "for numbers start";
+    public static ForEachStart = "for each start";
 
     /**
      * Name key for the ForNumbersEnd command.
      */
-    public static ForNumbersEnd: string = "for numbers end";
+    public static ForNumbersEnd = "for numbers end";
 
     /**
-     * Name key for the FunctionStart command.
+     * Name key for the ForNumbersStart command.
      */
-    public static FunctionStart: string = "function start";
+    public static ForNumbersStart = "for numbers start";
 
     /**
      * Name key for the FunctionEnd command.
      */
-    public static FunctionEnd: string = "function end";
+    public static FunctionEnd = "function end";
+
+    /**
+     * Name key for the FunctionStart command.
+     */
+    public static FunctionStart = "function start";
 
     /**
      * Name key for the IfEnd command.
      */
-    public static IfEnd: string = "if end";
+    public static IfEnd = "if end";
 
     /**
      * Name key for the IfStart command.
      */
-    public static IfStart: string = "if start";
+    public static IfStart = "if start";
 
     /**
      * Name key for the ImportLocal command.
      */
-    public static ImportLocal: string = "import local";
+    public static ImportLocal = "import local";
 
     /**
      * Name key for the ImportPackage command.
      */
-    public static ImportPackage: string = "import package";
+    public static ImportPackage = "import package";
 
     /**
      * Name key for the Index command.
      */
-    public static Index: string = "index";
-
-    /**
-     * Name key for the InterfaceStart command.
-     */
-    public static InterfaceStart: string = "interface start";
+    public static Index = "index";
 
     /**
      * Name key for the InterfaceEnd command.
      */
-    public static InterfaceEnd: string = "interface end";
+    public static InterfaceEnd = "interface end";
 
     /**
      * Name key for the InterfaceMethod command.
      */
-    public static InterfaceMethod: string = "interface method";
+    public static InterfaceMethod = "interface method";
+
+    /**
+     * Name key for the InterfaceStart command.
+     */
+    public static InterfaceStart = "interface start";
 
     /**
      * Name key for the IsNotNull command.
      */
-    public static IsNotNull: string = "is not null";
+    public static IsNotNull = "is not null";
 
     /**
      * Name key for the IsNull command.
      */
-    public static IsNull: string = "is null";
+    public static IsNull = "is null";
 
     /**
      * Name key for the LambdaBody command.
      */
-    public static LambdaBody: string = "lambda";
+    public static LambdaBody = "lambda";
 
     /**
      * Name key for the LambdaBody command.
      */
-    public static ListAddList: string = "list add list";
+    public static ListAddList = "list add list";
 
     /**
      * Name key for the ListInitialize command.
      */
-    public static ListInitialize: string = "list initialize";
+    public static ListInitialize = "list initialize";
 
     /**
      * Name key for the ListLength command.
      */
-    public static ListLength: string = "list length";
+    public static ListLength = "list length";
 
     /**
      * Name key for the ListPop command.
      */
-    public static ListPop: string = "list pop";
+    public static ListPop = "list pop";
 
     /**
      * Name key the ListPopFront command.
      */
-    public static ListPopFront: string = "list pop front";
+    public static ListPopFront = "list pop front";
 
     /**
      * Name key for the ListPush command.
      */
-    public static ListPush: string = "list push";
-
-    /**
-     * Name key for the Literal command.
-     */
-    public static Literal: string = "literal";
+    public static ListPush = "list push";
 
     /**
      * Name key for the ListSort command.
      */
-    public static ListSort: string = "list sort";
+    public static ListSort = "list sort";
 
     /**
      * Name key for the ListType command.
      */
-    public static ListType: string = "list type";
+    public static ListType = "list type";
+
+    /**
+     * Name key for the Literal command.
+     */
+    public static Literal = "literal";
 
     /**
      * Name key for the  command.
      */
-    public static MainEnd: string = "main end";
+    public static MainEnd = "main end";
 
     /**
      * Name key for the MainStart command.
      */
-    public static MainStart: string = "main start";
+    public static MainStart = "main start";
 
     /**
      * Name key for the MathAbsolute command.
      */
-    public static MathAbsolute: string = "math absolute";
+    public static MathAbsolute = "math absolute";
 
     /**
      * Name key for the MathFloor command.
      */
-    public static MathFloor: string = "math floor";
+    public static MathFloor = "math floor";
 
     /**
      * Name key for the MathMax command.
      */
-    public static MathMax: string = "math max";
+    public static MathMax = "math max";
 
     /**
      * Name key for the MathMin command.
      */
-    public static MathMin: string = "math min";
+    public static MathMin = "math min";
 
     /**
      * Name key for the MemberFunction command.
      */
-    public static MemberFunction: string = "member function";
-
-    /**
-     * Name key for the MemberFunctionDeclareStart command.
-     */
-    public static MemberFunctionDeclareStart: string = "member function declare start";
+    public static MemberFunction = "member function";
 
     /**
      * Name key for the MemberFunctionDeclareEnd command.
      */
-    public static MemberFunctionDeclareEnd: string = "member function declare end";
+    public static MemberFunctionDeclareEnd = "member function declare end";
+
+    /**
+     * Name key for the MemberFunctionDeclareStart command.
+     */
+    public static MemberFunctionDeclareStart = "member function declare start";
 
     /**
      * Name key for the MemberVariable command.
      */
-    public static MemberVariable: string = "member variable";
+    public static MemberVariable = "member variable";
 
     /**
      * Name key for the MemberVariableDeclare command.
      */
-    public static MemberVariableDeclare: string = "member variable declare";
+    public static MemberVariableDeclare = "member variable declare";
 
     /**
      * Name key for the New command.
      */
-    public static New: string = "new";
+    public static New = "new";
 
     /**
      * Name key for the Not command.
      */
-    public static Not: string = "not";
+    public static Not = "not";
 
     /**
      * Name key for the Operation command.
      */
-    public static Operation: string = "operation";
+    public static Operation = "operation";
 
     /**
      * Name key for the Operator command.
      */
-    public static Operator: string = "operator";
+    public static Operator = "operator";
 
     /**
      * Name key for the Parenthesis command.
      */
-    public static Parenthesis: string = "parenthesis";
+    public static Parenthesis = "parenthesis";
 
     /**
      * Name key for the Print command.
      */
-    public static Print: string = "print";
+    public static Print = "print";
 
     /**
      * Name key for the RestParameters command.
      */
-    public static RestParameters: string = "rest parameters";
+    public static RestParameters = "rest parameters";
 
     /**
      * Name key for the Return command.
      */
-    public static Return: string = "return";
+    public static Return = "return";
 
     /**
      * Name key for the StaticFunction command.
      */
-    public static StaticFunction: string = "static function";
+    public static StaticFunction = "static function";
 
     /**
      * Name key for the StaticFunctionDeclareEnd command.
      */
-    public static StaticFunctionDeclareEnd: string = "static function declare end";
+    public static StaticFunctionDeclareEnd = "static function declare end";
 
     /**
      * Name key for the StaticFunctionDeclareStart command.
      */
-    public static StaticFunctionDeclareStart: string = "static function declare start";
+    public static StaticFunctionDeclareStart = "static function declare start";
 
     /**
      * Name key for the StaticVariable command.
      */
-    public static StaticVariable: string = "static variable";
+    public static StaticVariable = "static variable";
 
     /**
      * Name key the StringFormat command.
      */
-    public static StringFormat: string = "string format";
+    public static StringFormat = "string format";
 
     /**
      * Name key for the StringIndex command.
      */
-    public static StringIndex: string = "string index";
+    public static StringIndex = "string index";
 
     /**
      * Name key for the StringLength command.
      */
-    public static StringLength: string = "string length";
+    public static StringLength = "string length";
 
     /**
      * Name key for the SuperConstructor command.
      */
-    public static SuperConstructor: string = "super constructor";
+    public static SuperConstructor = "super constructor";
 
     /**
      * Name key for the This command.
      */
-    public static This: string = "this";
+    public static This = "this";
 
     /**
      * Name key for the ThrowException command.
      */
-    public static ThrowException: string = "throw exception";
+    public static ThrowException = "throw exception";
 
     /**
      * Name key for the TryEnd command.
      */
-    public static TryEnd: string = "try end";
+    public static TryEnd = "try end";
 
     /**
      * Name key for the TryStart command.
      */
-    public static TryStart: string = "try start";
+    public static TryStart = "try start";
 
     /**
      * Name key for the Type command.
      */
-    public static Type: string = "type";
+    public static Type = "type";
 
     /**
      * Name key for the Value command.
      */
-    public static Value: string = "value";
+    public static Value = "value";
 
     /**
      * Name key for the Variable command.
      */
-    public static Variable: string = "variable";
+    public static Variable = "variable";
 
     /**
      * Name key for the VariableInline command.
      */
-    public static VariableInline: string = "variable inline";
+    public static VariableInline = "variable inline";
 
     /**
      * Name key for the VariableStart command.
      */
-    public static VariableStart: string = "variable start";
+    public static VariableStart = "variable start";
 
     /**
      * Name key the WhileEnd command.
      */
-    public static WhileEnd: string = "while end";
+    public static WhileEnd = "while end";
 
     /**
      * Name key for the WhileStart command.
      */
-    public static WhileStart: string = "while start";
+    public static WhileStart = "while start";
 }

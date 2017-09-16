@@ -15,6 +15,11 @@ export abstract class Command {
     private static defaultParameters: Parameter[] = [];
 
     /**
+     * Whether this command's lines should end with a semicolon.
+     */
+    protected addsSemicolon: boolean;
+
+    /**
      * The driving context for converting the command.
      */
     protected context: ConversionContext;
@@ -25,24 +30,28 @@ export abstract class Command {
     protected language: Language;
 
     /**
-     * Whether this command'slines should end with a semicolon.
-     */
-    protected addsSemicolon: boolean;
-
-    /**
      * Validity checker for provided parameters.
      */
     private parameterRestrictions: Restrictions;
 
     /**
      * Initializes a new instance of the Command class.
-     * 
+     *
      * @param context   The driving context for converting the command.
      */
-    constructor(context: ConversionContext) {
+    public constructor(context: ConversionContext) {
         this.context = context;
         this.language = context.getLanguage();
         this.parameterRestrictions = new Restrictions(this.getParameters());
+    }
+
+    /**
+     * Checks if parameters are valid, throwing an error if not.
+     *
+     * @param parameters   The command's name, followed by any parameters.
+     */
+    public checkParameterValidity(parameters: string[]): void {
+        this.parameterRestrictions.checkValidity(parameters);
     }
 
     /**
@@ -60,17 +69,8 @@ export abstract class Command {
     }
 
     /**
-     * Checks if parameters are valid, throwing an error if not.
-     * 
-     * @param parameters   The command's name, followed by any parameters.
-     */
-    public checkParameterValidity(parameters: string[]): void {
-        this.parameterRestrictions.checkValidity(parameters);
-    }
-
-    /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -78,7 +78,7 @@ export abstract class Command {
 
     /**
      * Adds a portion of raw syntax that may contain endlines.
-     * 
+     *
      * @param lines   In-progress line(s) of code in the rendering language.
      * @param extra   Raw syntax to add to the lines.
      * @param indentation   How much indentation the last line should be.
@@ -93,10 +93,10 @@ export abstract class Command {
             return;
         }
 
-        let currentIndex: number = 0;
+        let currentIndex = 0;
 
         while (endlineIndex !== -1) {
-            let component: string = extra.substring(currentIndex, endlineIndex);
+            const component: string = extra.substring(currentIndex, endlineIndex);
 
             currentLine.text += component;
             currentIndex = endlineIndex;

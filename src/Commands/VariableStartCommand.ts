@@ -26,18 +26,18 @@ export class VariableStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
         // Languages like C# will give the last value in parameters including a "\n"
-        let newParameters: string[] = ["variable"];
-        for (let i: number = 1; i < parameters.length; i += 1) {
+        const newParameters: string[] = ["variable"];
+        for (let i = 1; i < parameters.length; i += 1) {
             newParameters.push(parameters[i].split("\n")[0]);
         }
 
-        let output = this.context.convertParsed(newParameters);
+        const output = this.context.convertParsed(newParameters);
         output.addSemicolon = false;
 
         // Languages like C# might need to pass a separate "\n{" through

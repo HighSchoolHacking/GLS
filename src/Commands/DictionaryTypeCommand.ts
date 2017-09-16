@@ -24,12 +24,12 @@ export class DictionaryTypeCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: string = "";
+        let output = "";
 
         if (this.language.properties.dictionaries.initializeAsNew) {
             output += this.language.properties.dictionaries.className;
@@ -43,11 +43,9 @@ export class DictionaryTypeCommand extends Command {
             output += this.language.properties.dictionaries.typeRight;
         }
 
-        let results = LineResults.newSingleLine(output, false);
+        const results = LineResults.newSingleLine(output, false);
 
-        if (this.language.properties.dictionaries.requiredImports) {
-            results.addImports(this.language.properties.dictionaries.requiredImports);
-        }
+        results.addImports(this.language.properties.dictionaries.requiredImports);
 
         return results;
     }

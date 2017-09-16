@@ -9,8 +9,8 @@ export class ImportPathResolver {
      * @param importPath   Import path to resolve to.
      */
     public resolve(filePath: string[], importPath: string[]): string[] {
-        let resolvedPath: string[] = [];
-        let i: number = 0;
+        const resolvedPath: string[] = [];
+        let i = 0;
 
         while (i < filePath.length && i < importPath.length) {
             if (filePath[i] !== importPath[i]) {

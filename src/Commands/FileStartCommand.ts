@@ -30,23 +30,21 @@ export class FileStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output: CommandResult[] = [];
-        let source: string[] = this.language.properties.files.startLines;
-        let packagePathAndFileName: string[] = parameters.slice(1);
-        let packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
-        let packagePathJoined: string = this.context.convertArrayToCase(
+        const output: CommandResult[] = [];
+        const source: string[] = this.language.properties.files.startLines;
+        const packagePathAndFileName: string[] = parameters.slice(1);
+        const packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
+        const packagePathJoined: string = this.context.convertArrayToCase(
             packagePath,
             this.language.properties.files.startCase);
-        let fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
+        const fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
 
-        for (let i: number = 0; i < source.length; i += 1) {
-            let line = source[i];
-
+        for (let line of source) {
             line = line.replace("{0}", fileName);
             line = line.replace("{1}", packagePathJoined);
 

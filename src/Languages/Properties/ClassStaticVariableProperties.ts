@@ -5,19 +5,19 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassStaticVariableProperties {
     /**
-     * Decorator for public statics.
+     * Decorator for private statics.
      */
-    public public: string;
+    public private: string;
 
     /**
-     * Casing modifier for public static variables.
+     * Casing modifier for private static variables.
      */
-    public publicCase: CaseStyle;
+    public privateCase: CaseStyle;
 
     /**
-     * Prefix for public statics.
+     * Prefix for private statics.
      */
-    public publicPrefix: string;
+    public privatePrefix: string;
 
     /**
      * Decorator for protected statics.
@@ -35,19 +35,19 @@ export class ClassStaticVariableProperties {
     public protectedPrefix: string;
 
     /**
-     * Decorator for private statics.
+     * Decorator for public statics.
      */
-    public private: string;
+    public public: string;
 
     /**
-     * Casing modifier for private static variables.
+     * Casing modifier for public static variables.
      */
-    public privateCase: CaseStyle;
+    public publicCase: CaseStyle;
 
     /**
-     * Prefix for private statics.
+     * Prefix for public statics.
      */
-    public privatePrefix: string;
+    public publicPrefix: string;
 
     /**
      * Whether static variables shouldn't be declared.

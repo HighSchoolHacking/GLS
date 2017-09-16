@@ -24,12 +24,12 @@ export class EnumCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result: string = "";
+        let result = "";
 
         result += this.language.properties.enums.valueLeft;
         result += parameters[1];

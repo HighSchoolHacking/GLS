@@ -37,12 +37,12 @@ export class FunctionStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      */
     public render(parameters: string[]): LineResults {
-        let returnType: string = this.context.convertCommon("type", parameters[2]);
-        let declaration: string = "";
+        const returnType: string = this.context.convertCommon("type", parameters[2]);
+        let declaration = "";
         let output: CommandResult[];
 
         if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
@@ -55,7 +55,7 @@ export class FunctionStartCommand extends Command {
         if (parameters.length > 3) {
             declaration += this.generateParameterVariable(parameters, 3);
 
-            for (let i: number = 5; i < parameters.length; i += 2) {
+            for (let i = 5; i < parameters.length; i += 2) {
                 declaration += ", ";
                 declaration += this.generateParameterVariable(parameters, i);
             }
@@ -76,7 +76,7 @@ export class FunctionStartCommand extends Command {
 
     /**
      * Generates a string for a parameter.
-     * 
+     *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
@@ -86,8 +86,8 @@ export class FunctionStartCommand extends Command {
             return parameters[i];
         }
 
-        let parameterName: string = parameters[i];
-        let parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
+        const parameterName: string = parameters[i];
+        const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
 
         return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
     }

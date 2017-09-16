@@ -10,7 +10,7 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class MemberVariableDeclareCommand extends Command {
     /**
      * Information on parameters this command takes in.
-     * 
+     *
      * @todo Use a value restriction on privacy (once it's implemented).
      */
     private static parameters: Parameter[] = [
@@ -28,7 +28,7 @@ export class MemberVariableDeclareCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -37,10 +37,10 @@ export class MemberVariableDeclareCommand extends Command {
             return LineResults.newSingleLine("\0", false);
         }
 
-        let output: string = "";
-        let privacy: string = parameters[1];
+        let output = "";
+        const privacy: string = parameters[1];
         let variableName: string = parameters[2];
-        let type: string = parameters[3];
+        const type: string = parameters[3];
         let casingStyle: CaseStyle;
 
         if (privacy === "protected") {

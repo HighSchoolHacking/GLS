@@ -2,8 +2,8 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for a lambda function body.
@@ -53,14 +53,14 @@ export class LambdaBodyCommand extends Command {
             throw Error("returnTypeRequired=true not implemented");
         }
 
-        let lambdaBody: string = "";
+        let lambdaBody = "";
 
         lambdaBody += this.language.properties.lambdas.functionLeft;
 
         if (parameters.length > 3) {
             lambdaBody += this.generateParameterVariable(parameters, 2);
 
-            for (let i: number = 4; (i + 1) < parameters.length; i += 2) {
+            for (let i = 4; (i + 1) < parameters.length; i += 2) {
                 lambdaBody += ", ";
                 lambdaBody += this.generateParameterVariable(parameters, i);
             }
@@ -70,13 +70,13 @@ export class LambdaBodyCommand extends Command {
         lambdaBody += parameters[parameters.length - 1];
         lambdaBody += this.language.properties.lambdas.functionRight;
 
-        let output = [new CommandResult(lambdaBody, 0)];
+        const output = [new CommandResult(lambdaBody, 0)];
         return new LineResults(output, false);
     }
 
     /**
      * Generates a string for a parameter.
-     * 
+     *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
@@ -86,8 +86,8 @@ export class LambdaBodyCommand extends Command {
             return parameters[i];
         }
 
-        let parameterName: string = parameters[i];
-        let parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
+        const parameterName: string = parameters[i];
+        const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
 
         return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
     }

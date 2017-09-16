@@ -10,7 +10,7 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class StaticVariableCommand extends Command {
     /**
      * Information on parameters this command takes in.
-     * 
+     *
      * @todo Use a value restriction on privacy (once it's implemented).
      */
     private static parameters: Parameter[] = [
@@ -28,13 +28,13 @@ export class StaticVariableCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let privacy: string = parameters[1];
-        let className: string = parameters[2];
+        const privacy: string = parameters[1];
+        const className: string = parameters[2];
         let variableName: string = parameters[3];
         let variablePrefix: string;
         let casingStyle: CaseStyle;
@@ -52,7 +52,7 @@ export class StaticVariableCommand extends Command {
 
         variableName = this.context.convertStringToCase(variableName, casingStyle);
 
-        let output: string = "";
+        let output = "";
         output += className + ".";
         output += variablePrefix;
         output += variableName;

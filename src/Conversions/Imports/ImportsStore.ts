@@ -1,4 +1,5 @@
 import { Import } from "../../Languages/Imports/Import";
+import { ImportRelativity } from "../../Languages/Imports/ImportRelativity";
 
 /**
  * Holds accumulated package imports during a conversion.
@@ -17,19 +18,23 @@ export class ImportsStore {
     }
 
     /**
-     * @returns Whether any imports have been added.
+     * Adds new imports to the stored imports.
+     *
+     * @param addedImports   New imports to store.
      */
-    public hasAnyImports(): boolean {
-        return Object.keys(this.imports).length > 0;
+    public addImports(addedImports: Import[]): void {
+        for (const addedImport of addedImports) {
+            this.addImport(addedImport);
+        }
     }
 
     /**
      * @returns All accumulated package import stores.
      */
     public getAllImportStores(): Import[] {
-        let stores = [];
+        const stores = [];
 
-        for (let i in this.imports) {
+        for (const i in this.imports) {
             if ({}.hasOwnProperty.call(this.imports, i)) {
                 stores.push(this.imports[i]);
             }
@@ -39,23 +44,19 @@ export class ImportsStore {
     }
 
     /**
-     * Adds new imports to the stored imports.
-     * 
-     * @param addedImports   New imports to store.
+     * @returns Whether any imports have been added.
      */
-    public addImports(addedImports: Import[]): void {
-        for (let addedImport of addedImports) {
-            this.addImport(addedImport);
-        }
+    public hasAnyImports(): boolean {
+        return Object.keys(this.imports).length > 0;
     }
 
     /**
      * Adds items to a package's stored imports.
-     * 
+     *
      * @param addedImport   New import to store.
      */
     private addImport(addedImport: Import): void {
-        let packageName: string = addedImport.relativity + addedImport.packagePath.join("/");
+        const packageName: string = ImportRelativity[addedImport.relativity] + addedImport.packagePath.join("/");
 
         if (packageName in this.imports) {
             this.imports[packageName].addItems(addedImport.items);

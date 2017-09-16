@@ -7,7 +7,7 @@ import { LineResults } from "./LineResults";
 export class CommentBlockStartCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */

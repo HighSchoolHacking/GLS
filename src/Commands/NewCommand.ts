@@ -1,6 +1,5 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
-import { Import } from "../Languages/Imports/Import";
-import { NewProperties, NewInstantiationSyntaxKind } from "../Languages/Properties/NewProperties";
+import { NewInstantiationSyntaxKind } from "../Languages/Properties/NewProperties";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
@@ -11,11 +10,6 @@ import { SingleParameter } from "./Parameters/SingleParameter";
  * A command for instantiating an object of a given type.
  */
 export class NewCommand extends Command {
-    /**
-     * Renderers for each possible render style.
-     */
-    private styleRenderers: { [i: number]: (parameters: string[]) => LineResults };
-
     /**
      * Information on parameters this command takes in.
      */
@@ -29,18 +23,16 @@ export class NewCommand extends Command {
     ];
 
     /**
-     * @returns Information on parameters this command takes in.
+     * Renderers for each possible render style.
      */
-    public getParameters(): Parameter[] {
-        return NewCommand.parameters;
-    }
+    private styleRenderers: { [i: number]: (parameters: string[]) => LineResults };
 
     /**
      * Initializes a new instance of the Command class.
-     * 
+     *
      * @param context   The driving context for converting the command.
      */
-    constructor(context: ConversionContext) {
+    public constructor(context: ConversionContext) {
         super(context);
 
         this.styleRenderers = {
@@ -51,8 +43,15 @@ export class NewCommand extends Command {
     }
 
     /**
+     * @returns Information on parameters this command takes in.
+     */
+    public getParameters(): Parameter[] {
+        return NewCommand.parameters;
+    }
+
+    /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
@@ -62,25 +61,23 @@ export class NewCommand extends Command {
     }
 
     /**
-     * Renders the New command in prefix style.
-     * 
+     * Renders the command for a language in member method call style.
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
      */
-    private renderPrefix(parameters: string[]): LineResults {
-        let result: string = "";
+    private renderMemberMethodCall(parameters: string[]): LineResults {
+        let result = "";
 
-        // the parser ensures we have a class name here in the argument list
-        let typeName: string = parameters[1];
-
-        result += this.language.properties.newProp.keyword;
-        result += " ";
+        const typeName: string = parameters[1];
         result += typeName;
+        result += ".";
+        result += this.language.properties.newProp.keyword;
         result += "(";
         if (parameters.length > 2) {
             result += parameters[2];
-            for (let i: number = 3; i < parameters.length; i += 1) {
+            for (let i = 3; i < parameters.length; i += 1) {
                 result += ", " + parameters[i];
             }
         }
@@ -91,22 +88,20 @@ export class NewCommand extends Command {
 
     /**
      * Renders the New command for a language in method call style.
-     * 
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
      */
     private renderMethodCall(parameters: string[]): LineResults {
-        let result: string = "";
-
-        // the parser ensures we have a class name here in the argument list
-        let typeName: string = parameters[1];
+        const typeName: string = parameters[1];
+        let result = "";
 
         result += typeName;
         result += "(";
         if (parameters.length > 2) {
             result += parameters[2];
-            for (let i: number = 3; i < parameters.length; i += 1) {
+            for (let i = 3; i < parameters.length; i += 1) {
                 result += ", " + parameters[i];
             }
         }
@@ -116,23 +111,23 @@ export class NewCommand extends Command {
     }
 
     /**
-     * Renders the command for a language in member method call style.
-     * 
+     * Renders the New command in prefix style.
+     *
      * @param parameters   The command's name, followed by any number of
      *                     items to initialize in the Array.
      * @returns Line(s) of code in the language.
      */
-    private renderMemberMethodCall(parameters: string[]): LineResults {
-        let result: string = "";
+    private renderPrefix(parameters: string[]): LineResults {
+        const typeName: string = parameters[1];
+        let result = "";
 
-        let typeName: string = parameters[1];
-        result += typeName;
-        result += ".";
         result += this.language.properties.newProp.keyword;
+        result += " ";
+        result += typeName;
         result += "(";
         if (parameters.length > 2) {
             result += parameters[2];
-            for (let i: number = 3; i < parameters.length; i += 1) {
+            for (let i = 3; i < parameters.length; i += 1) {
                 result += ", " + parameters[i];
             }
         }

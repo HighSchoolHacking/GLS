@@ -5,19 +5,19 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassStaticFunctionProperties {
     /**
-     * Decorator for public static functions.
+     * Decorator for private static functions.
      */
-    public public: string;
+    public private: string;
 
     /**
-     * Casing modifier for public static functions.
+     * Casing modifier for private static functions.
      */
-    public publicCase: CaseStyle;
+    public privateCase: CaseStyle;
 
     /**
-     * Prefix before public static function names.
+     * Prefix before private static function names.
      */
-    public publicPrefix: string;
+    public privatePrefix: string;
 
     /**
      * Decorator for protected static functions.
@@ -35,17 +35,17 @@ export class ClassStaticFunctionProperties {
     public protectedPrefix: string;
 
     /**
-     * Decorator for private static functions.
+     * Decorator for public static functions.
      */
-    public private: string;
+    public public: string;
 
     /**
-     * Casing modifier for private static functions.
+     * Casing modifier for public static functions.
      */
-    public privateCase: CaseStyle;
+    public publicCase: CaseStyle;
 
     /**
-     * Prefix before private static function names.
+     * Prefix before public static function names.
      */
-    public privatePrefix: string;
+    public publicPrefix: string;
 }

@@ -36,17 +36,17 @@ export class InterfaceMethodCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = "";
+        let line = "";
 
-        if (this.language.properties.variables.explicitTypes === false) {
+        if (!this.language.properties.variables.explicitTypes) {
             line += parameters[1];
             line += this.language.properties.interfaces.declareMethodMiddle;
-            for (let i: number = 3; i < parameters.length; i += 2) {
+            for (let i = 3; i < parameters.length; i += 2) {
                 line += parameters[i];
             }
         }
@@ -55,7 +55,7 @@ export class InterfaceMethodCommand extends Command {
             line += parameters[1];
             line += this.language.properties.interfaces.declareMethodMiddle;
 
-            for (let i: number = 3; i < parameters.length; i++) {
+            for (let i = 3; i < parameters.length; i++) {
                 if (i % 2 !== 0) {
                     line += parameters[i] + ": ";
                 } else if (i !== parameters.length - 1) {
@@ -70,7 +70,7 @@ export class InterfaceMethodCommand extends Command {
             line += this.language.properties.interfaces.declareMethodLeft;
             line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;
 
-            for (let i: number = 3; i < parameters.length - 1; i += 2) {
+            for (let i = 3; i < parameters.length - 1; i += 2) {
                 line += parameters[i + 1] + " " + parameters[i];
                 if (i !== parameters.length - 2) {
                     line += ", ";

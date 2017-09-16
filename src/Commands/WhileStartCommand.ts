@@ -24,7 +24,7 @@ export class WhileStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -33,7 +33,7 @@ export class WhileStartCommand extends Command {
         line += this.language.properties.loops.whileStartMiddle;
         line += this.context.convertCommon("value", parameters[1]);
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
+        const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.properties.loops.whileStartRight, 1);
 
         return new LineResults(lines, false);

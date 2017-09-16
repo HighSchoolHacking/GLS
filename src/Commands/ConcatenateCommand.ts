@@ -1,8 +1,8 @@
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for concatenating strings.
@@ -30,14 +30,14 @@ export class ConcatenateCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
         let result = parameters[1];
 
-        for (let i: number = 2; i < parameters.length; i += 1) {
+        for (let i = 2; i < parameters.length; i += 1) {
             result += this.language.properties.strings.concatenate + parameters[i];
         }
 

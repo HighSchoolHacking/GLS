@@ -3,6 +3,26 @@
  */
 export class CommentProperties {
     /**
+     * How to end block comments.
+     */
+    public blockEnd: string;
+
+    /**
+     * How to end block comment lines.
+     */
+    public blockLineLeft: string;
+
+    /**
+     * How to end block comment lines.
+     */
+    public blockLineRight: string;
+
+    /**
+     * How to start block comments.
+     */
+    public blockStart: string;
+
+    /**
      * Whether documentation blocks are formatted as XML.
      */
     public docAsXml: boolean;
@@ -23,29 +43,14 @@ export class CommentProperties {
     public docLineStart: string;
 
     /**
+     * How to start documentation blocks, if not XML.
+     */
+    public docStart: string;
+
+    /**
      * Aliases of known documentation tags.
      */
     public docTagAliases: { [i: string]: string };
-
-    /**
-     * Raw documentation tags that name a parameter.
-     */
-    public docTagParameterNames: { [i: string]: string };
-
-    /**
-     * Raw documentation tags that contain a parameter.
-     */
-    public docTagsWithParameters: { [i: string]: string };
-
-    /**
-     * How to start a documentation tag, if not XML.
-     */
-    public docTagStart: string;
-
-    /**
-     * Text after a documentation after a documentation tag, if not XML.
-     */
-    public docTagSpaceAfter: string;
 
     /**
      * How to end a documentation tag, if not XML.
@@ -53,29 +58,24 @@ export class CommentProperties {
     public docTagEnd: string;
 
     /**
-     * How to start documentation blocks, if not XML.
+     * Raw documentation tags that name a parameter.
      */
-    public docStart: string;
+    public docTagParameterNames: { [i: string]: string };
 
     /**
-     * How to end block comments.
+     * Text after a documentation after a documentation tag, if not XML.
      */
-    public blockEnd: string;
+    public docTagSpaceAfter: string;
 
     /**
-     * How to end block comment lines.
+     * How to start a documentation tag, if not XML.
      */
-    public blockLineLeft: string;
+    public docTagStart: string;
 
     /**
-     * How to end block comment lines.
+     * Raw documentation tags that contain a parameter.
      */
-    public blockLineRight: string;
-
-    /**
-     * How to start block comments.
-     */
-    public blockStart: string;
+    public docTagsWithParameters: { [i: string]: string };
 
     /**
      * How to start line comments.

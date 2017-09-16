@@ -25,7 +25,7 @@ export class ThrowExceptionCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -35,7 +35,7 @@ export class ThrowExceptionCommand extends Command {
         line += this.language.properties.exceptions.throwExceptionMiddle;
         line += "\"" + parameters[2] + "\"";
 
-        let lines: CommandResult[] = [new CommandResult(line, 0)];
+        const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.properties.exceptions.throwExceptionRight, 0);
         return new LineResults(lines, true);
     }

@@ -13,7 +13,7 @@ export class SnakeCaseConverter extends CaseStyleConverter {
 
     /**
      * Applies this style's transformation to a word.
-     * 
+     *
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */

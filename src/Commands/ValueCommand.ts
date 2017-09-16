@@ -23,7 +23,7 @@ export class ValueCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -33,7 +33,7 @@ export class ValueCommand extends Command {
 
     /**
      * Converts a raw value into the language's equivalent.
-     * 
+     *
      * @param typeNameRaw   A raw value to convert.
      * @returns The equivalent converted value.
      */

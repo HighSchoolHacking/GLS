@@ -27,14 +27,14 @@ export class ClassProperties {
     public constructorUsesKeyword: boolean;
 
     /**
+     * The last line of a class declaration.
+     */
+    public declareEnd: string;
+
+    /**
      * Characters before an inherited class declaration.
      */
     public declareExtendsLeft: string;
-
-    /**
-     * Characters before an inherited interface declaration.
-     */
-    public declareImplementsLeft: string;
 
     /**
      * Characters after an inheritance declaration.
@@ -42,9 +42,9 @@ export class ClassProperties {
     public declareExtendsRight: string;
 
     /**
-     * The last line of a class declaration.
+     * Characters before an inherited interface declaration.
      */
-    public declareEnd: string;
+    public declareImplementsLeft: string;
 
     /**
      * How to start the first line of a class declaration.

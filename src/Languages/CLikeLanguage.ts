@@ -1,9 +1,9 @@
-import { Language } from "./Language";
 import { CaseStyle } from "./Casing/CaseStyle";
-import { ClassProperties } from "./Properties/ClassProperties";
+import { Language } from "./Language";
 import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
+import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
 import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
@@ -23,8 +23,45 @@ import { VariableProperties } from "./Properties/VariableProperties";
  */
 export abstract class CLikeLanguage extends Language {
     /**
+     * Generates metadata on class generics.
+     *
+     * @param members   A property container for metadata on class generics.
+     */
+    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+        generics.left = "<";
+        generics.middle = ", ";
+        generics.right = ">";
+    }
+
+    /**
+     * Generates metadata on class member functions.
+     *
+     * @param functions   A property container for metadata on class member functions.
+     */
+    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+        functions.privatePrefix = "";
+        functions.protectedPrefix = "";
+        functions.publicPrefix = "";
+    }
+
+    /**
+     * Generates metadata on class member variables.
+     *
+     * @param members   A property container for metadata on class member variables.
+     */
+    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
+        variables.private = "private ";
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protected = "protected ";
+        variables.protectedPrefix = "";
+        variables.public = "public ";
+        variables.publicPrefix = "";
+    }
+
+    /**
      * Generates metadata on classes.
-     * 
+     *
      * @param classes   A property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
@@ -41,45 +78,8 @@ export abstract class CLikeLanguage extends Language {
     }
 
     /**
-     * Generates metadata on class generics.
-     * 
-     * @param members   A property container for metadata on class generics.
-     */
-    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
-        generics.left = "<";
-        generics.middle = ", ";
-        generics.right = ">";
-    }
-
-    /**
-     * Generates metadata on class member functions.
-     * 
-     * @param functions   A property container for metadata on class member functions.
-     */
-    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
-        functions.privatePrefix = "";
-        functions.protectedPrefix = "";
-        functions.publicPrefix = "";
-    }
-
-    /**
-     * Generates metadata on class member variables.
-     * 
-     * @param members   A property container for metadata on class member variables.
-     */
-    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
-        variables.private = "private ";
-        variables.privateCase = CaseStyle.CamelCase;
-        variables.privatePrefix = "";
-        variables.protected = "protected ";
-        variables.protectedPrefix = "";
-        variables.public = "public ";
-        variables.publicPrefix = "";
-    }
-
-    /**
      * Generates metadata on class static functions.
-     * 
+     *
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
@@ -90,7 +90,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on class static variables.
-     * 
+     *
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
@@ -105,7 +105,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on comments.
-     * 
+     *
      * @param comments   A property container for metadata on comments.
      */
     protected generateCommentProperties(comments: CommentProperties): void {
@@ -119,7 +119,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on conditionals.
-     * 
+     *
      * @param conditionals   A property container for metadata on conditionals.
      */
     protected generateConditionalProperties(conditionals: ConditionalProperties): void {
@@ -132,7 +132,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on enums.
-     * 
+     *
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumProperties(enums: EnumProperties): void {
@@ -147,7 +147,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on exceptions.
-     * 
+     *
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
@@ -172,7 +172,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on functions.
-     * 
+     *
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
@@ -184,7 +184,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on lambdas.
-     * 
+     *
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
@@ -196,7 +196,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on loops.
-     * 
+     *
      * @param loops   A property container for metadata on loops.
      */
     protected generateLoopProperties(loops: LoopProperties): void {
@@ -212,7 +212,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on operators.
-     * 
+     *
      * @param operators   A property container for metadata on operators.
      */
     protected generateOperatorProperties(operators: OperatorProperties): void {
@@ -239,7 +239,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on strings.
-     * 
+     *
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringProperties(strings: StringProperties): void {
@@ -248,7 +248,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on style.
-     * 
+     *
      * @param style   A property container for metadata on style.
      */
     protected generateStyleProperties(style: StyleProperties): void {
@@ -257,7 +257,7 @@ export abstract class CLikeLanguage extends Language {
 
     /**
      * Generates metadata on variables.
-     * 
+     *
      * @param variables   A property container for metadata on variables.
      */
     protected generateVariableProperties(variables: VariableProperties): void {

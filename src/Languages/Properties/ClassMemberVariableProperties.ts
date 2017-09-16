@@ -5,19 +5,19 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassMemberVariableProperties {
     /**
-     * Decorator for public members.
+     * Decorator for private members.
      */
-    public public: string;
+    public private: string;
 
     /**
-     * Casing modifier for public member variables.
+     * Casing modifier for private member variables.
      */
-    public publicCase: CaseStyle;
+    public privateCase: CaseStyle;
 
     /**
-     * Prefix for public members.
+     * Prefix for private members.
      */
-    public publicPrefix: string;
+    public privatePrefix: string;
 
     /**
      * Decorator for protected members.
@@ -35,19 +35,19 @@ export class ClassMemberVariableProperties {
     public protectedPrefix: string;
 
     /**
-     * Decorator for private members.
+     * Decorator for public members.
      */
-    public private: string;
+    public public: string;
 
     /**
-     * Casing modifier for private member variables.
+     * Casing modifier for public member variables.
      */
-    public privateCase: CaseStyle;
+    public publicCase: CaseStyle;
 
     /**
-     * Prefix for private members.
+     * Prefix for public members.
      */
-    public privatePrefix: string;
+    public publicPrefix: string;
 
     /**
      * Whether member variables shouldn't be declared.

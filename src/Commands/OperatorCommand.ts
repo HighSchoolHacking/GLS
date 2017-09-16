@@ -23,7 +23,7 @@ export class OperatorCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -33,7 +33,7 @@ export class OperatorCommand extends Command {
 
     /**
      * Converts a raw operator into the language's equivalent.
-     * 
+     *
      * @param typeNameRaw   A raw operator to convert.
      * @returns The equivalent converted operator.
      */

@@ -1,9 +1,9 @@
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
+import { ClassProperties } from "./Properties/ClassProperties";
 import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
 import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
@@ -26,8 +26,8 @@ import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { OutputProperties } from "./Properties/OutputProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
-import { StringProperties } from "./Properties/StringProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
+import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -43,7 +43,7 @@ export abstract class Language {
     /**
      * Initializes a new instance of the Language class.
      */
-    constructor() {
+    public constructor() {
         this.properties = new LanguageProperties();
         this.generateArrayProperties(this.properties.arrays);
         this.generateBooleanProperties(this.properties.booleans);
@@ -82,105 +82,105 @@ export abstract class Language {
 
     /**
      * Generates metadata on arrays.
-     * 
+     *
      * @param arrays   A property container for metadata on arrays.
      */
     protected abstract generateArrayProperties(arrays: ArrayProperties): void;
 
     /**
      * Generates metadata on booleans.
-     * 
+     *
      * @param booleans   A property container for metadata on booleans.
      */
     protected abstract generateBooleanProperties(booleans: BooleanProperties): void;
 
     /**
-     * Generates metadata on classes.
-     * 
-     * @param classes   A property container for metadata on classes.
-     */
-    protected abstract generateClassProperties(classes: ClassProperties): void;
-
-    /**
      * Generates metadata on class generics.
-     * 
+     *
      * @param members   A property container for metadata on class generics.
      */
     protected abstract generateClassGenericProperties(generics: ClassGenericProperties): void;
 
     /**
      * Generates metadata on class member functions.
-     * 
+     *
      * @param functions   A property container for metadata on class member functions.
      */
     protected abstract generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void;
 
     /**
      * Generates metadata on class member variables.
-     * 
+     *
      * @param members   A property container for metadata on class member variables.
      */
     protected abstract generateClassMemberVariableProperties(members: ClassMemberVariableProperties): void;
 
     /**
+     * Generates metadata on classes.
+     *
+     * @param classes   A property container for metadata on classes.
+     */
+    protected abstract generateClassProperties(classes: ClassProperties): void;
+
+    /**
      * Generates metadata on class static functions.
-     * 
+     *
      * @param functions   A property container for metadata on class static functions.
      */
     protected abstract generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void;
 
     /**
      * Generates metadata on class static variables.
-     * 
+     *
      * @param members   A property container for metadata on class static variables.
      */
     protected abstract generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void;
 
     /**
      * Generates metadata on comments.
-     * 
+     *
      * @param comments   A property container for metadata on comments.
      */
     protected abstract generateCommentProperties(comments: CommentProperties): void;
 
     /**
      * Generates metadata on conditionals.
-     * 
+     *
      * @param conditionals   A property container for metadata on conditionals.
      */
     protected abstract generateConditionalProperties(conditionals: ConditionalProperties): void;
 
     /**
      * Generates metadata on dictionaries.
-     * 
+     *
      * @param dictionaries   A property container for metadata on dictionaries.
      */
     protected abstract generateDictionaryProperties(dictionaries: DictionaryProperties): void;
 
     /**
      * Generates metadata on enums.
-     * 
+     *
      * @param enums   A property container for metadata on enums.
      */
     protected abstract generateEnumProperties(enums: EnumProperties): void;
 
     /**
      * Generates metadata on exceptions.
-     * 
+     *
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected abstract generateExceptionProperties(exceptions: ExceptionProperties): void;
 
     /**
      * Generates metadata on file contents.
-     * 
+     *
      * @param exceptions   A property container for metadata on file contents.
      */
     protected abstract generateFileProperties(files: FileProperties): void;
 
     /**
      * Generates metadata on functions.
-     * 
+     *
      * @param functions   A property container for metadata on functions.
      */
     protected abstract generateFunctionProperties(functions: FunctionProperties): void;
@@ -192,21 +192,21 @@ export abstract class Language {
 
     /**
      * Generates metadata on imports.
-     * 
+     *
      * @param imports   A property container for metadata on imports.
      */
     protected abstract generateImportProperties(lambdas: ImportProperties): void;
 
     /**
      * Generates metadata on interfaces.
-     * 
+     *
      * @param interfaces   A property container for metadata on interfaces.
      */
     protected abstract generateInterfaceProperties(lambdas: InterfaceProperties): void;
 
     /**
      * Generates metadata on lambdas.
-     * 
+     *
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected abstract generateLambdaProperties(lambdas: LambdaProperties): void;
@@ -218,83 +218,84 @@ export abstract class Language {
 
     /**
      * Generates metadata on loops.
-     * 
+     *
      * @param loops   A property container for metadata on loops.
      */
     protected abstract generateLoopProperties(loops: LoopProperties): void;
 
     /**
      * Generates metadata on math.
-     * 
+     *
      * @param math   A property container for metadata on math.
      */
     protected abstract generateMathProperties(math: MathProperties): void;
 
     /**
      * Generates metadata on newProp.
-     * 
+     *
      * @param newProp   A property container for metadata on new object instantiation.
      */
     protected abstract generateNewProperties(newProp: NewProperties): void;
 
     /**
      * Generates metadata on numbers.
-     * 
+     *
      * @param numbers   A property container for metadata on numbers.
      */
     protected abstract generateNewProperties(newProp: NewProperties): void;
 
     /**
      * Generates metadata on numbers.
-     * 
+     *
      * @param numbers   A property container for metadata on numbers.
      */
     protected abstract generateNumberProperties(numbers: NumberProperties): void;
 
     /**
      * Generates metadata on operators.
-     * 
+     *
      * @param operators   A property container for metadata on operators.
      */
     protected abstract generateOperatorProperties(operators: OperatorProperties): void;
 
     /**
      * Generates metadata on output.
-     * 
+     *
      * @param output   A property container for metadata on output.
      */
     protected abstract generateOutputProperties(operators: OutputProperties): void;
 
     /**
      * Generates metadata on parameters.
-     * 
+     *
      * @param parameters    A property container for metadata on parameters.
      */
     protected abstract generateParameterProperties(parameters: ParameterProperties): void;
-    /**
-     * Generates metadata on strings.
-     * 
-     * @param strings   A property container for metadata on strings.
-     */
-    protected abstract generateStringProperties(strings: StringProperties): void;
 
     /**
      * Generates metadata on string formatting.
-     * 
+     *
      * @param strings   A property container for metadata on string formatting.
      */
     protected abstract generateStringFormatProperties(formatting: StringFormatProperties): void;
 
     /**
+     * Generates metadata on strings.
+     *
+     * @param strings   A property container for metadata on strings.
+     */
+    protected abstract generateStringProperties(strings: StringProperties): void;
+
+    /**
      * Generates metadata on style.
-     * 
+     *
      * @param style   A property container for metadata on style.
      */
     protected abstract generateStyleProperties(style: StyleProperties): void;
 
     /**
      * Generates metadata on variables.
-     * 
+     *
      * @param variables   A property container for metadata on variables.
      */
     protected abstract generateVariableProperties(variables: VariableProperties): void;

@@ -1,14 +1,11 @@
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { ImportPathResolver } from "../Conversions/Imports/ImportPathResolver";
 import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { Command } from "./Command";
-import { ImportPathResolver } from "../Conversions/Imports/ImportPathResolver";
-import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { StringLiteralParameter } from "./Parameters/StringLiteralParameter";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for importing items from a file or package.
@@ -45,20 +42,20 @@ export abstract class ImportCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let usingSplit = parameters.indexOf("use");
+        const usingSplit = parameters.indexOf("use");
         if (usingSplit === -1) {
              throw new Error("A \"use\" parameter must be in import commands.");
         }
 
-        let lineResults = new LineResults([], false);
+        const lineResults = new LineResults([], false);
         let packagePath: string[] = parameters.slice(1, usingSplit);
-        let items: string[] = parameters.slice(usingSplit + 1);
-        let relativity: ImportRelativity = this.getRelativity();
+        const items: string[] = parameters.slice(usingSplit + 1);
+        const relativity: ImportRelativity = this.getRelativity();
 
         if (relativity === ImportRelativity.Local) {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);

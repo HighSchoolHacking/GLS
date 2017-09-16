@@ -17,11 +17,6 @@ export class ConversionContext {
     private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
-     * Splits name strings into words.
-     */
-    private nameSplitter: NameSplitter;
-
-    /**
      * Container for globally known commands.
      */
     private commandsBag: CommandsBag;
@@ -37,13 +32,18 @@ export class ConversionContext {
     private language: Language;
 
     /**
+     * Splits name strings into words.
+     */
+    private nameSplitter: NameSplitter;
+
+    /**
      * A converter for transforming raw GLS syntax into language code.
      */
     private parser: GlsParser;
 
     /**
      * Initializes a new instance of the ConversionContext class.
-     * 
+     *
      * @param language   The language this context is converting GLS code into.
      */
     public constructor(language: Language) {
@@ -57,50 +57,20 @@ export class ConversionContext {
     }
 
     /**
-     * @returns The language this context is converting GLS code into.
-     */
-    public getLanguage(): Language {
-        return this.language;
-    }
-
-    /**
      * Converts raw GLS syntax to the context language.
-     * 
+     *
      * @param lines   Lines of raw GLS syntax.
      * @returns Equivalent lines of code in the context language.
      */
     public convert(lines: string[]): string[] {
-        let converter: Conversion = new Conversion(this.caseStyleConverterBag, this.language, this.parser);
+        const converter: Conversion = new Conversion(this.caseStyleConverterBag, this.language, this.parser);
 
         return converter.convert(lines);
     }
 
     /**
-     * Converts a single-line command with a single argument.
-     * 
-     * @param command   The name of the command.
-     * @param argumentRaw   A raw argument for the command.
-     * @returns An equivalent line of code in the context language. 
-     */
-    public convertCommon(command: string, argumentRaw: string): string {
-        let lineResults: LineResults = this.parser.renderParsedCommand([command, argumentRaw]);
-
-        return lineResults.commandResults[0].text;
-    }
-
-    /**
-     * Converts a command with pre-parsed arguments.
-     * 
-     * @param lineParsed   A parsed line from raw GLS syntax.
-     * @returns The equivalent lines of code in the language.
-     */
-    public convertParsed(parameters: string[]): LineResults {
-        return this.parser.renderParsedCommand(parameters);
-    }
-
-    /**
      * Converts an array-split name to a casing style.
-     * 
+     *
      * @param words   A name to convert.
      * @param casingStyle   A casing style.
      * @returns The name under the casing style.
@@ -110,8 +80,31 @@ export class ConversionContext {
     }
 
     /**
+     * Converts a single-line command with a single argument.
+     *
+     * @param command   The name of the command.
+     * @param argumentRaw   A raw argument for the command.
+     * @returns An equivalent line of code in the context language.
+     */
+    public convertCommon(command: string, argumentRaw: string): string {
+        const lineResults: LineResults = this.parser.renderParsedCommand([command, argumentRaw]);
+
+        return lineResults.commandResults[0].text;
+    }
+
+    /**
+     * Converts a command with pre-parsed arguments.
+     *
+     * @param lineParsed   A parsed line from raw GLS syntax.
+     * @returns The equivalent lines of code in the language.
+     */
+    public convertParsed(parameters: string[]): LineResults {
+        return this.parser.renderParsedCommand(parameters);
+    }
+
+    /**
      * Converts a string name to a casing style.
-     * 
+     *
      * @param name   A name to convert.
      * @param casingStyle   A casing style.
      * @returns The name under the casing style.
@@ -121,18 +114,25 @@ export class ConversionContext {
     }
 
     /**
-     * Sets the current file's directory path.
-     * 
-     * @param directories   Directories leading up to the current file.
-     */
-    public setDirectoryPath(directories: string[]): void {
-        this.directories = directories;
-    }
-
-    /**
      * @returns Directories leading up to the current file.
      */
     public getDirectoryPath(): string[] {
         return this.directories;
+    }
+
+    /**
+     * @returns The language this context is converting GLS code into.
+     */
+    public getLanguage(): Language {
+        return this.language;
+    }
+
+    /**
+     * Sets the current file's directory path.
+     *
+     * @param directories   Directories leading up to the current file.
+     */
+    public setDirectoryPath(directories: string[]): void {
+        this.directories = directories;
     }
 }

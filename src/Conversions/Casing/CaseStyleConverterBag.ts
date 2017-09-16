@@ -1,10 +1,10 @@
 import { CaseStyle } from "../../Languages/Casing/CaseStyle";
+import { CamelCaseConverter } from "./CamelCaseConverter";
+import { CaseStyleConverter } from "./CaseStyleConverter";
 import { DashLowerCaseConverter } from "./DashLowerCaseConverter";
 import { DashUpperCaseConverter } from "./DashUpperCaseConverter";
 import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
 import { DirectoryUpperCaseConverter } from "./DirectoryUpperCaseConverter";
-import { CamelCaseConverter } from "./CamelCaseConverter";
-import { CaseStyleConverter } from "./CaseStyleConverter";
 import { FileSystemLowerCaseConverter } from "./FileSystemLowerCaseConverter";
 import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
 import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
@@ -24,7 +24,7 @@ export class CaseStyleConverterBag {
     /**
      * Initializes a new instance of the CaseStyleConverter class.
      */
-    constructor() {
+    public constructor() {
         this.converters = {
             [CaseStyle.DashLowerCase]: new DashLowerCaseConverter(),
             [CaseStyle.DashUpperCase]: new DashUpperCaseConverter(),
@@ -42,14 +42,14 @@ export class CaseStyleConverterBag {
 
     /**
      * Retrieves the case converter for the given casing style.
-     * 
+     *
      * @param caseStyle   A casing style.
      * @returns The case converter under the given asing style.
      */
     public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
-        let caseStyleAlias = caseStyle;
+        const caseStyleAlias = caseStyle;
 
-        if (!this.converters[caseStyle]) {
+        if (this.converters[caseStyle] === undefined) {
             throw new Error(`Unknown case style requested: '${caseStyle}'.`);
         }
 

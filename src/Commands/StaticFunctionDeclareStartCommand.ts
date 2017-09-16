@@ -1,10 +1,10 @@
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 
 /**
  * A command for the beginning of a static function.
@@ -39,14 +39,14 @@ export class StaticFunctionDeclareStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      */
     public render(parameters: string[]): LineResults {
-        let publicity: string = parameters[1];
-        let functionName: string = parameters[2];
-        let returnType: string = this.context.convertCommon("type", parameters[3]);
-        let declaration: string = "";
+        const publicity: string = parameters[1];
+        const functionName: string = parameters[2];
+        const returnType: string = this.context.convertCommon("type", parameters[3]);
+        let declaration = "";
         let output: CommandResult[];
 
         if (this.language.properties.classes.statics.labelBeforePublicity) {
@@ -70,7 +70,7 @@ export class StaticFunctionDeclareStartCommand extends Command {
         if (parameters.length > 4) {
             declaration += this.generateParameterVariable(parameters, 4);
 
-            for (let i: number = 6; i < parameters.length; i += 2) {
+            for (let i = 6; i < parameters.length; i += 2) {
                 declaration += ", ";
                 declaration += this.generateParameterVariable(parameters, i);
             }
@@ -91,8 +91,26 @@ export class StaticFunctionDeclareStartCommand extends Command {
     }
 
     /**
+     * Generates a string for a parameter.
+     *
+     * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
+     * @param i   An index in the parameters of a parameterName.
+     * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
+     */
+    private generateParameterVariable(parameters: string[], i: number): string {
+        if (!this.language.properties.variables.declarationRequired) {
+            return parameters[i];
+        }
+
+        const parameterName: string = parameters[i];
+        const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
+
+        return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
+    }
+
+    /**
      * Determines the prefix for a static function.
-     * 
+     *
      * @param publicity   Publicity of the static function.
      * @returns Prefix for the publicity.
      */
@@ -110,7 +128,7 @@ export class StaticFunctionDeclareStartCommand extends Command {
 
     /**
      * Determines the case style for a static function.
-     * 
+     *
      * @param publicity   Publicity of the static function.
      * @returns Case style for the publicity.
      */
@@ -128,7 +146,7 @@ export class StaticFunctionDeclareStartCommand extends Command {
 
     /**
      * Determines the name prefix for a static function.
-     * 
+     *
      * @param publicity   Publicity of the static function.
      * @returns Name prefix for the publicity.
      */
@@ -142,23 +160,5 @@ export class StaticFunctionDeclareStartCommand extends Command {
         }
 
         return this.language.properties.classes.statics.functions.publicPrefix;
-    }
-
-    /**
-     * Generates a string for a parameter.
-     * 
-     * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
-     * @param i   An index in the parameters of a parameterName.
-     * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
-     */
-    private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.variables.declarationRequired) {
-            return parameters[i];
-        }
-
-        let parameterName: string = parameters[i];
-        let parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
-
-        return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
     }
 }

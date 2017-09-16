@@ -25,7 +25,7 @@ export class VariableInlineCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -34,9 +34,9 @@ export class VariableInlineCommand extends Command {
             return LineResults.newSingleLine("\0", false);
         }
 
-        let name: string = parameters[1];
-        let typeName: string = this.context.convertCommon("type", parameters[2]);
-        let output: string = "";
+        const name: string = parameters[1];
+        const typeName: string = this.context.convertCommon("type", parameters[2]);
+        let output = "";
 
         if (this.language.properties.variables.explicitTypes) {
             if (this.language.properties.variables.typesAfterName) {
@@ -58,13 +58,13 @@ export class VariableInlineCommand extends Command {
 
     /**
      * Renders the "= value" part of a command.
-     * 
+     *
      * @param valueRaw   The raw value of a variable.
-     * @returns   The "= value" part of a command. 
+     * @returns   The "= value" part of a command.
      */
     private renderVariableValue(valueRaw: string): string {
-        let operator = this.context.convertCommon("operator", "equals");
-        let value = this.context.convertCommon("value", valueRaw);
+        const operator = this.context.convertCommon("operator", "equals");
+        const value = this.context.convertCommon("value", valueRaw);
 
         return operator + " " + value;
     }

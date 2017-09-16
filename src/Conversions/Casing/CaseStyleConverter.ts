@@ -4,7 +4,7 @@
 export abstract class CaseStyleConverter {
     /**
      * Combines a series of words to the equivalent case style.
-     * 
+     *
      * @param words   Words to convert.
      * @returns The word's equivalent in this converter's case style.
      */
@@ -16,7 +16,7 @@ export abstract class CaseStyleConverter {
         let result = "";
 
         for (let i = 0; i < words.length - 1; i += 1) {
-            let word = words[i];
+            const word = words[i];
 
             result += this.transformWord(word);
             result += this.getBetweenWords();
@@ -35,7 +35,7 @@ export abstract class CaseStyleConverter {
 
     /**
      * Applies this style's transformation to a word.
-     * 
+     *
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */

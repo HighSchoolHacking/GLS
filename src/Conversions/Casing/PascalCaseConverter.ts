@@ -6,7 +6,7 @@ import { CaseStyleConverter } from "./CaseStyleConverter";
 export class PascalCaseConverter extends CaseStyleConverter {
     /**
      * Applies this style's transformation to a word.
-     * 
+     *
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */

@@ -21,7 +21,7 @@ export class FileProperties {
 
     /**
      * Lines at the start of every file.
-     * 
+     *
      * @remarks "{0}" is replaced with the file name; "{1}" with the file path.
      */
     public startLines: string[];

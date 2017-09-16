@@ -7,12 +7,12 @@ import { LineResults } from "./LineResults";
 export class EnumEndCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let ender: string = this.renderEnumEnd();
+        const ender: string = this.renderEnumEnd();
 
         if (ender === "\0") {
             return LineResults.newBlockLine("\0", -1);
@@ -23,7 +23,7 @@ export class EnumEndCommand extends Command {
 
     /**
      * Renders the end block for enums.
-     * 
+     *
      * @returns The end block for enums.
      */
     protected renderEnumEnd(): string {
@@ -31,8 +31,6 @@ export class EnumEndCommand extends Command {
             return this.language.properties.conditionals.end + ";";
         }
 
-        else {
-            return this.language.properties.conditionals.end;
-        }
+        return this.language.properties.conditionals.end;
     }
 }

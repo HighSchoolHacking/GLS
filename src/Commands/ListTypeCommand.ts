@@ -23,7 +23,7 @@ export class ListTypeCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
@@ -38,11 +38,9 @@ export class ListTypeCommand extends Command {
 
         typeName = this.context.convertCommon("type", typeName);
 
-        let results = LineResults.newSingleLine(typeName, false);
+        const results = LineResults.newSingleLine(typeName, false);
 
-        if (this.language.properties.lists.requiredImports) {
-            results.addImports(this.language.properties.lists.requiredImports);
-        }
+        results.addImports(this.language.properties.lists.requiredImports);
 
         return results;
     }

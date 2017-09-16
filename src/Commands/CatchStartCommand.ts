@@ -25,12 +25,12 @@ export class CatchStartCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let lines = [new CommandResult("", -1)];
+        const lines = [new CommandResult("", -1)];
         let line: CommandResult;
 
         if (!this.language.properties.style.separateBraceLines) {

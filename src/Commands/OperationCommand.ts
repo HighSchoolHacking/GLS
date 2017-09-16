@@ -1,8 +1,8 @@
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
+import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for printing an operation.
@@ -32,14 +32,14 @@ export class OperationCommand extends Command {
 
     /**
      * Renders the command for a language with the given parameters.
-     * 
+     *
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
         let result = this.context.convertCommon("value", parameters[1]);
 
-        for (let i: number = 2; i < parameters.length; i += 2) {
+        for (let i = 2; i < parameters.length; i += 2) {
             result += " " + this.context.convertCommon("operator", parameters[i]);
             result += " " + this.context.convertCommon("value", parameters[i + 1]);
         }

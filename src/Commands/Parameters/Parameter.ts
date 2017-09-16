@@ -9,10 +9,10 @@ export abstract class Parameter {
 
     /**
      * Initializes a new instance of the Parameter class.
-     * 
+     *
      * @param descriptor   A plain-text description of the parameter.
      */
-    constructor(description: string) {
+    public constructor(description: string) {
         this.description = description;
     }
 }
