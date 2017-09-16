@@ -1,4 +1,4 @@
--
+//
 // Dictionary types
 let foo: { [i: string]: number } = {};
 let bar: { [i: string]: { [i: string]: number } } = {};
@@ -13,4 +13,4 @@ let aaa: { [i: string]: number } = {
     "ccc": 2,
     "ddd": 3
 };
--
+//

@@ -1,4 +1,4 @@
--
+//
 class Abc {
     static defGhi() {
--
+//

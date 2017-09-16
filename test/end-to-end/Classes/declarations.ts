@@ -1,4 +1,4 @@
--
+//
 class Point {
     public x: number;
     public y: number;
@@ -24,4 +24,4 @@ class Shape extends Measurements<Point> {
         // ...
     }
 }
--
+//

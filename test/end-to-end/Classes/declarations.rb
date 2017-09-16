@@ -1,4 +1,4 @@
--
+#
 class Point
     
     def initialize(x, y)
@@ -20,4 +20,4 @@ class Shape < Measurements
         # ...
     end
 end
--
+#

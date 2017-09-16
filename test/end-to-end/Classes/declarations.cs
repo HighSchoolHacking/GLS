@@ -1,4 +1,4 @@
--
+//
 class Point
 {
     public int X;
@@ -30,4 +30,4 @@ class Shape : Measurements<Point>
         // ...
     }
 }
--
+//

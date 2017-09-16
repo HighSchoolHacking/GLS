@@ -1,4 +1,4 @@
--
+#
 class Point:
     
     def __init__(self, x, y):
@@ -14,4 +14,4 @@ class Measurements:
 class Shape(Measurements):
     def __init__(self, points):
         # ...
--
+#

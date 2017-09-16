@@ -1,4 +1,4 @@
--
+//
 try {
     // ...
 } catch (ExceptionType foo) {
@@ -6,4 +6,4 @@ try {
 } finally {
     // ...
 }
--
+//

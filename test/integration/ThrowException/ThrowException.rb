@@ -1,3 +1,3 @@
--
+#
 raise ExceptionType.new("foo")
--
+#

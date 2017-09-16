@@ -1,2 +1,3 @@
-typeof aaa !== "undefined"
--
+//
+aaa !== undefined
+//

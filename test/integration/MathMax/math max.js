@@ -1,3 +1,3 @@
--
+//
 Math.max(foo, bar);
--
+//

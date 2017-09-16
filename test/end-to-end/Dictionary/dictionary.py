@@ -1,4 +1,4 @@
--
+#
 # Dictionary types
 foo = {}
 bar = {}
@@ -13,4 +13,4 @@ aaa = {
     "ccc": 2,
     "ddd": 3
 }
--
+#

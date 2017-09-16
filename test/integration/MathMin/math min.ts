@@ -1,3 +1,3 @@
--
+//
 Math.min(foo, bar);
--
+//

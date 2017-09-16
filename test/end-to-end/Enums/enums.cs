@@ -1,4 +1,4 @@
--
+//
 enum Direction
 {
     Unknown = 0,
@@ -8,4 +8,4 @@ enum Direction
 
 Direction direction;
 Direction unknown = Direction.Unknown;
--
+//

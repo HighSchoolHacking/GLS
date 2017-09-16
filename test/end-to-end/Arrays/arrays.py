@@ -1,4 +1,4 @@
--
+#
 # Initialization
 aaa = []
 bbb = [1, 2, 3]
@@ -10,4 +10,4 @@ aaa[1 + 1]
 
 # Length
 len(aaa)
--
+#

@@ -1,3 +1,3 @@
--
+//
 new ClassName(arg1)
--
+//

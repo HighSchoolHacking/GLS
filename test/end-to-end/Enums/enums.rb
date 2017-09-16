@@ -1,4 +1,4 @@
--
+#
 class Direction
     Unknown = 0
     Horizontal = 1
@@ -6,4 +6,4 @@ class Direction
 end
 
 unknown = Direction::Unknown
--
+#

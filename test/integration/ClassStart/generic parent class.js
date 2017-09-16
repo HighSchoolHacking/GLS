@@ -1,3 +1,3 @@
--
+//
 class aaa extends bbb {
--
+//

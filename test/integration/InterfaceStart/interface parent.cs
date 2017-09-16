@@ -1,4 +1,4 @@
--
+//
 interface aaa : bbb, ccc
 {
--
+//

@@ -1,4 +1,4 @@
--
+//
 // Dictionary types
 Dictionary<string, int> foo = new Dictionary<string, int>();
 Dictionary<string, Dictionary<string, int>> bar = new Dictionary<string, new Dictionary<string, int>>();
@@ -14,4 +14,4 @@ Dictionary<string, int> aaa = new Dictionary<string, int>
     { "ccc", 2 },
     { "ddd", 3 }
 };
--
+//

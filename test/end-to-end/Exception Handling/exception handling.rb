@@ -1,4 +1,4 @@
--
+#
 begin
     # ...
 rescue ExceptionType => foo
@@ -6,4 +6,4 @@ rescue ExceptionType => foo
 ensure
     # ...
 end
--
+#

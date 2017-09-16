@@ -1,3 +1,3 @@
--
+//
 throw new ExceptionType("foo");
--
+//

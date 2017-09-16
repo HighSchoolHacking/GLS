@@ -1,4 +1,4 @@
--
+//
 // Keys
 foreach (string key in container.Keys)
 {
@@ -12,4 +12,4 @@ foreach (KeyValuePair<string, int> pair in container)
     int value = pair.Value;
     // ...
 }
--
+//

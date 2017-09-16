@@ -1,4 +1,4 @@
--
+//
 let Direction = {
     Unknown: 0,
     Horizontal: 1,
@@ -7,4 +7,4 @@ let Direction = {
 
 let direction;
 let unknown = Direction.Unknown;
--
+//

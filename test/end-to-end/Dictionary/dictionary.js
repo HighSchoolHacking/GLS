@@ -1,4 +1,4 @@
--
+//
 // Dictionary types
 let foo = {};
 let bar = {};
@@ -13,4 +13,4 @@ let aaa = {
     "ccc": 2,
     "ddd": 3
 };
--
+//

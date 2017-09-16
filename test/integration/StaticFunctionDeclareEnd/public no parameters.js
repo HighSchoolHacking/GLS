@@ -1,5 +1,5 @@
--
+//
 class Abc {
     static defGhi() {
     }
--
+//
