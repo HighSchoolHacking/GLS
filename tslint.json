@@ -1,15 +1,8 @@
 {
-    "extends": "tslint:recommended",
+    "extends": "tslint:all",
     "rules": {
         "linebreak-style": [false],
         "max-line-length": [true, 175],
-        "member-ordering": [false],
-        "no-trailing-whitespace": [true, "ignore-jsdoc"],
-        "object-literal-key-quotes": [false],
-        "object-literal-sort-keys": [false],
-        "ordered-imports": [false],
-        "prefer-const": [false],
-        "prefer-for-of": [false],
         "trailing-comma": [false]
     }
 }
