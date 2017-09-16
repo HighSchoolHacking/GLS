@@ -1,6 +1,8 @@
 import { Parameter } from "./Parameter";
 import { SingleParameter } from "./SingleParameter";
 import { RepeatingParameters } from "./RepeatingParameters";
+import { StringLiteralParameter } from "./StringLiteralParameter"
+import { BannedKeywordsBag } from "../../../lib/Commands/BannedKeywordsBag";
 
 /**
  * Summary of parameter restrictions for a command.
@@ -31,9 +33,17 @@ export class Restrictions {
             let parameter: Parameter = parameters[i];
 
             if (parameter instanceof SingleParameter) {
-                this.addSingleParameter(parameter);
+                const bannedKeywordsBag = new BannedKeywordsBag();
+                const valid = bannedKeywordsBag.validateName(parameter.name);
+                if (valid) {
+                    throw new Error(`'${name}' is not a valid variable name.`);
+                } else {
+                    this.addSingleParameter(parameter);
+                }
             } else if (parameter instanceof RepeatingParameters) {
                 this.addRepeatingParameters(parameter);
+            } else if (parameter instanceof StringLiteralParameter) {
+                this.addStringLiteralParameter(parameter);
             }
         }
     }
@@ -128,5 +138,14 @@ export class Restrictions {
     private addRepeatingParameters(parameter: RepeatingParameters): void {
         this.intervals.push(parameter.parameters.length);
         this.maximum = Infinity;
+    }
+
+    /**
+     * Marks a string literal parameter's restrictions.
+     * 
+     * @param parameter   A description of a parameter.
+     */
+    private addStringLiteralParameter(parameter: StringLiteralParameter): void {
+        this.maximum += 1;
     }
 }
