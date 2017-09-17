@@ -13,6 +13,11 @@ export class CommandNames {
     public static ArrayLength = "array length";
 
     /**
+     * Name key for the ArrayType command.
+     */
+    public static ArrayType = "array type";
+
+    /**
      * Name key for the Break command.
      */
     public static Break = "break";

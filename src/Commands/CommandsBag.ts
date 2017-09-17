@@ -4,6 +4,7 @@ import { CommandNames } from "./CommandNames";
 
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
+import { ArrayTypeCommand } from "./ArrayTypeCommand";
 import { BreakCommand } from "./BreakCommand";
 import { CatchEndCommand } from "./CatchEndCommand";
 import { CatchStartCommand } from "./CatchStartCommand";
@@ -122,6 +123,7 @@ export class CommandsBag {
         this.commands = {
             [CommandNames.ArrayInitialize]: new ArrayInitializeCommand(context),
             [CommandNames.ArrayLength]: new ArrayLengthCommand(context),
+            [CommandNames.ArrayType]: new ArrayTypeCommand(context),
             [CommandNames.Break]: new BreakCommand(context),
             [CommandNames.CatchEnd]: new CatchEndCommand(context),
             [CommandNames.CatchStart]: new CatchStartCommand(context),
