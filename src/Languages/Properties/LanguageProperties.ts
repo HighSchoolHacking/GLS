@@ -14,6 +14,7 @@ import { InterfaceProperties } from "./InterfaceProperties";
 import { LambdaProperties } from "./LambdaProperties";
 import { ListProperties } from "./ListProperties";
 import { LoopProperties } from "./LoopProperties";
+import { MainProperties } from "./MainProperties";
 import { MathProperties } from "./MathProperties";
 import { NewProperties } from "./NewProperties";
 import { NumberProperties } from "./NumberProperties";
@@ -109,6 +110,11 @@ export class LanguageProperties {
     public loops: LoopProperties;
 
     /**
+     * Metadata on main execution areas.
+     */
+    public main: MainProperties;
+
+    /**
      * Metadata on math.
      */
     public math: MathProperties;
@@ -173,6 +179,7 @@ export class LanguageProperties {
         this.lambdas = new LambdaProperties();
         this.lists = new ListProperties();
         this.loops = new LoopProperties();
+        this.main = new MainProperties();
         this.math = new MathProperties();
         this.newProp = new NewProperties();
         this.numbers = new NumberProperties();

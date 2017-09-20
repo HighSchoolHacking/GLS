@@ -18,6 +18,7 @@ import { InterfaceProperties } from "./Properties/InterfaceProperties";
 import { LambdaProperties } from "./Properties/LambdaProperties";
 import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
+import { MainProperties } from "./Properties/MainProperties";
 import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
@@ -352,6 +353,20 @@ export class Python extends PythonicLanguage {
     }
 
     /**
+     * Generates metadata on main execution areas.
+     *
+     * @param math   A property container for metadata on main execution areas.
+     */
+    protected generateMainProperties(main: MainProperties): void {
+        main.contextEndLines = [];
+        main.contextIndentation = 0;
+        main.contextStartLines = [];
+        main.mainEndLines = [];
+        main.mainIndentation = 1;
+        main.mainStartLines = ["if __name__ == \"__main__\":"];
+    }
+
+    /**
      * Generates metadata on math.
      *
      * @param math   A property container for metadata on math.
@@ -460,9 +475,6 @@ export class Python extends PythonicLanguage {
     protected generateStyleProperties(style: StyleProperties): void {
         super.generateStyleProperties(style);
 
-        style.mainEndLines = [""];
-        style.mainIndentation = 1;
-        style.mainStartLines = ["if __name__ == \"__main__\":"];
         style.printEnd = ")";
         style.printStart = "print(";
     }

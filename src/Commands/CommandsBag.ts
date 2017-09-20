@@ -66,6 +66,8 @@ import { ListPushCommand } from "./ListPushCommand";
 import { ListSortCommand } from "./ListSortCommand";
 import { ListTypeCommand } from "./ListTypeCommand";
 import { LiteralCommand } from "./LiteralCommand";
+import { MainContextEndCommand } from "./MainContextEndCommand";
+import { MainContextStartCommand } from "./MainContextStartCommand";
 import { MainEndCommand } from "./MainEndCommand";
 import { MainStartCommand } from "./MainStartCommand";
 import { MathAbsoluteCommand } from "./MathAbsoluteCommand";
@@ -185,6 +187,8 @@ export class CommandsBag {
             [CommandNames.Literal]: new LiteralCommand(context),
             [CommandNames.ListSort]: new ListSortCommand(context),
             [CommandNames.ListType]: new ListTypeCommand(context),
+            [CommandNames.MainContextEnd]: new MainContextEndCommand(context),
+            [CommandNames.MainContextStart]: new MainContextStartCommand(context),
             [CommandNames.MainEnd]: new MainEndCommand(context),
             [CommandNames.MainStart]: new MainStartCommand(context),
             [CommandNames.MathAbsolute]: new MathAbsoluteCommand(context),

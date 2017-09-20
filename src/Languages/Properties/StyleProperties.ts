@@ -1,22 +1,7 @@
-
 /**
  * Metadata on a language's style.
  */
 export class StyleProperties {
-    /**
-     * Lines at the end of a main function.
-     */
-    public mainEndLines: string[];
-
-    /**
-     * How indented the main function should be.
-     */
-    public mainIndentation: number;
-
-    /**
-     * Lines at the start of a main function.
-     */
-    public mainStartLines: string[];
 
     /**
      * Whether class method and public member names are in PascalCase

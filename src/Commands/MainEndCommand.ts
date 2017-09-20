@@ -14,14 +14,14 @@ export class MainEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const endLines: string[] = this.language.properties.style.mainEndLines;
+        const endLines: string[] = this.language.properties.main.mainEndLines;
 
         for (const endLine of endLines) {
             output.push(new CommandResult(endLine, 0));
         }
 
         if (output.length !== 0) {
-            output[0].indentation = -this.language.properties.style.mainIndentation;
+            output[0].indentation = -this.language.properties.main.mainIndentation;
         }
 
         return new LineResults(output, false);

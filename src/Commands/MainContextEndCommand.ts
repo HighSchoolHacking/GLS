@@ -3,9 +3,9 @@ import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 
 /**
- * A command for starting a main function.
+ * A command for ending a main context.
  */
-export class MainStartCommand extends Command {
+export class MainContextEndCommand extends Command {
     /**
      * Renders the command for a language with the given parameters.
      *
@@ -14,14 +14,14 @@ export class MainStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const startLines: string[] = this.language.properties.main.mainStartLines;
+        const endLines: string[] = this.language.properties.main.contextEndLines;
 
-        for (const startLine of startLines) {
-            output.push(new CommandResult(startLine, 0));
+        for (const endLine of endLines) {
+            output.push(new CommandResult(endLine, 0));
         }
 
         if (output.length !== 0) {
-            output[output.length - 1].indentation = this.language.properties.main.mainIndentation;
+            output[0].indentation = -this.language.properties.main.contextIndentation;
         }
 
         return new LineResults(output, false);

@@ -20,6 +20,7 @@ import { LambdaProperties } from "./Properties/LambdaProperties";
 import { LanguageProperties } from "./Properties/LanguageProperties";
 import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
+import { MainProperties } from "./Properties/MainProperties";
 import { MathProperties } from "./Properties/MathProperties";
 import { NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
@@ -66,6 +67,7 @@ export abstract class Language {
         this.generateLambdaProperties(this.properties.lambdas);
         this.generateListProperties(this.properties.lists);
         this.generateLoopProperties(this.properties.loops);
+        this.generateMainProperties(this.properties.main);
         this.generateMathProperties(this.properties.math);
         this.generateNewProperties(this.properties.newProp);
         this.generateNumberProperties(this.properties.numbers);
@@ -224,6 +226,13 @@ export abstract class Language {
     protected abstract generateLoopProperties(loops: LoopProperties): void;
 
     /**
+     * Generates metadata on main execution areas.
+     *
+     * @param math   A property container for metadata on main execution areas.
+     */
+    protected abstract generateMainProperties(main: MainProperties): void;
+
+    /**
      * Generates metadata on math.
      *
      * @param math   A property container for metadata on math.
@@ -231,7 +240,7 @@ export abstract class Language {
     protected abstract generateMathProperties(math: MathProperties): void;
 
     /**
-     * Generates metadata on newProp.
+     * Generates metadata on new object instantiation.
      *
      * @param newProp   A property container for metadata on new object instantiation.
      */

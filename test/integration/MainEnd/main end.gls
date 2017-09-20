@@ -1,5 +1,6 @@
 -
-main start
-    comment line : ...
-main end
+main context start
+    main start
+    main end
+main context end
 -
