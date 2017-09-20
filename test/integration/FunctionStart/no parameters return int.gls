@@ -1,4 +1,4 @@
 -
-function start : aaa int
+function start : Aaa int
     comment line : ...
 -

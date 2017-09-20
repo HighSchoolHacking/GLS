@@ -1,5 +1,5 @@
 //
-void aaa(string bbb, bool ccc, float ddd)
+void Aaa(string bbb, bool ccc, float ddd)
 {
     // ...
 //

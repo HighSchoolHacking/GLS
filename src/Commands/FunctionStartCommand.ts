@@ -4,6 +4,7 @@ import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 import { SingleParameter } from "./Parameters/SingleParameter";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 
 /**
  * A command for the beginning of a function.
@@ -50,7 +51,8 @@ export class FunctionStartCommand extends Command {
         }
 
         declaration += this.language.properties.functions.defineStartLeft;
-        declaration += parameters[1] + "(";
+        declaration += this.context.convertStringToCase(parameters[1], this.language.properties.functions.case);
+        declaration += "(";
 
         if (parameters.length > 3) {
             declaration += this.generateParameterVariable(parameters, 3);

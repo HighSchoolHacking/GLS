@@ -1,5 +1,5 @@
 //
-void aaa(string bbb)
+void Aaa(string bbb)
 {
     // ...
 //

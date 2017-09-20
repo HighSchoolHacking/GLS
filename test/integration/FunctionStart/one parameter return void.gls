@@ -1,4 +1,4 @@
 -
-function start : aaa void bbb string
+function start : Aaa void bbb string
     comment line : ...
 -

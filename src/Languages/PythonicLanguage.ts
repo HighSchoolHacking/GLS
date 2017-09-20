@@ -152,6 +152,7 @@ export abstract class PythonicLanguage extends Language {
      * @param functions   The property container for metadata on functions.
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
+        functions.case = CaseStyle.SnakeCase;
         functions.defineStartLeft = "def ";
         functions.defineStartRight = ":";
         functions.requiresExceptions = false;

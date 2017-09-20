@@ -1,7 +1,14 @@
+import { CaseStyle } from "../Casing/CaseStyle";
+
 /**
  * Metadata on a language's functions.
  */
 export class FunctionProperties {
+    /**
+     * Case style for function names.
+     */
+    public case: CaseStyle;
+
     /**
      * A line for after a function's definition.
      */

@@ -238,6 +238,8 @@ export class Java extends CLikeLanguage {
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
 
+        functions.case = CaseStyle.CamelCase;
+
         functions.defineStartLeft = " ";
         functions.defineStartRight = " {";
 

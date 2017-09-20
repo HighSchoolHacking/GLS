@@ -227,6 +227,9 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
+
+        functions.case = CaseStyle.CamelCase;
+
         functions.defineStartLeft = "function ";
         functions.defineStartRight = " {";
         functions.explicitReturns = false;

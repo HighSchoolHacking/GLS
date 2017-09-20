@@ -1,5 +1,5 @@
 //
-int aaa(string bbb, bool ccc)
+int Aaa(string bbb, bool ccc)
 {
     // ...
 //

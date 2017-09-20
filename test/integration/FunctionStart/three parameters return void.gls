@@ -1,4 +1,4 @@
 -
-function start : aaa void bbb string ccc boolean ddd float
+function start : Aaa void bbb string ccc boolean ddd float
     comment line : ...
 -

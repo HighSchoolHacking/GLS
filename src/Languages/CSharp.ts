@@ -239,6 +239,8 @@ export class CSharp extends CLikeLanguage {
     protected generateFunctionProperties(functions: FunctionProperties): void {
         super.generateFunctionProperties(functions);
 
+        functions.case = CaseStyle.PascalCase;
+
         functions.defineStartLeft = " ";
         functions.defineStartRight = "\n{";
     }
