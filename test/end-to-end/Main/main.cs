@@ -7,7 +7,7 @@ class Program
     {
         Console.WriteLine("Hello, " + name + "!");
     }
-    
+
     public static void Main()
     {
         SayHello("GLS");

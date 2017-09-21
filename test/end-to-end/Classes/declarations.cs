@@ -5,7 +5,7 @@ class Point
     public int Y;
     protected int Square;
     private string name;
-    
+
     Point(int x, int y)
     {
         this.X = x;

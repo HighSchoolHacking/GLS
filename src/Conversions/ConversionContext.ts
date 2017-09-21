@@ -4,8 +4,10 @@ import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
-import { Conversion } from "./Conversion";
 import { GlsParser } from "./GlsParser";
+import { ImportsPrinter } from "./Imports/ImportsPrinter";
+import { LineResultsGenerator } from "./LineResultsGenerator";
+import { OutputGenerator } from "./OutputGenerator";
 
 /**
  * Driving context to use a GlsParser with a language to produce code.
@@ -32,9 +34,16 @@ export class ConversionContext {
     private language: Language;
 
     /**
+     * Generates line results from raw GLS.
+     */
+    private lineResultsGenerator: LineResultsGenerator;
+
+    /**
      * Splits name strings into words.
      */
     private nameSplitter: NameSplitter;
+
+    private outputGenerator: OutputGenerator;
 
     /**
      * A converter for transforming raw GLS syntax into language code.
@@ -47,13 +56,21 @@ export class ConversionContext {
      * @param language   The language this context is converting GLS code into.
      */
     public constructor(language: Language) {
-        this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.nameSplitter = new NameSplitter();
-        this.directories = [];
         this.language = language;
 
+        this.caseStyleConverterBag = new CaseStyleConverterBag();
         this.commandsBag = new CommandsBag(this);
+        this.directories = [];
+        this.nameSplitter = new NameSplitter();
         this.parser = new GlsParser(this.caseStyleConverterBag, this.commandsBag);
+
+        this.lineResultsGenerator = new LineResultsGenerator(
+            new ImportsPrinter(
+                language,
+                this.caseStyleConverterBag.getConverter(language.properties.imports.case)),
+            this.parser);
+
+        this.outputGenerator = new OutputGenerator(language.properties.style.semicolon);
     }
 
     /**
@@ -63,9 +80,10 @@ export class ConversionContext {
      * @returns Equivalent lines of code in the context language.
      */
     public convert(lines: string[]): string[] {
-        const converter: Conversion = new Conversion(this.caseStyleConverterBag, this.language, this.parser);
+        const allLineResults: LineResults[] = this.lineResultsGenerator.generateLineResults(lines);
+        const output = this.outputGenerator.generateOutputResults(allLineResults);
 
-        return converter.convert(lines);
+        return output;
     }
 
     /**
@@ -76,7 +94,9 @@ export class ConversionContext {
      * @returns The name under the casing style.
      */
     public convertArrayToCase(words: string[], casingStyle: CaseStyle): string {
-        return this.parser.convertToCase(words, casingStyle);
+        const converter = this.caseStyleConverterBag.getConverter(casingStyle);
+
+        return converter.convert(words);
     }
 
     /**

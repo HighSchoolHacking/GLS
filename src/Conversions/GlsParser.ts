@@ -1,11 +1,10 @@
 import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 
 /**
- * Converter to transform raw GLS syntax into language code.
+ * Transforms raw GLS syntax into line results.
  */
 export class GlsParser {
     /**
@@ -29,23 +28,10 @@ export class GlsParser {
     }
 
     /**
-     * Converts a name to a casing style.
-     *
-     * @param words   A name to convert.
-     * @param caseStyle   A casing style.
-     * @returns The name under the casing style.
-     */
-    public convertToCase(words: string[], caseStyle: CaseStyle): string {
-        const converter = this.caseStyleConverterBag.getConverter(caseStyle);
-
-        return converter.convert(words);
-    }
-
-    /**
-     * Parses a line of raw GLS syntax into the equivalent language code.
+     * Parses a line of raw GLS syntax into line results.
      *
      * @param line   A line of raw GLS syntax.
-     * @returns The equivalent lines of code in the language.
+     * @returns The equivalent line results.
      */
     public parseCommand(line: string): LineResults {
         const parameters: string[] = this.separateLineComponents(line.trim());
@@ -60,10 +46,10 @@ export class GlsParser {
     }
 
     /**
-     * Renders a parsed line into the equivalent language code.
+     * Renders a parsed line into line results.
      *
      * @param lineParsed   A parsed line from raw GLS syntax.
-     * @returns The equivalent lines of code in the language.
+     * @returns The equivalent line results.
      */
     public renderParsedCommand(lineParsed: string[]): LineResults {
         const command: Command = this.commandsBag.getCommand(lineParsed[0]);

@@ -4,7 +4,7 @@ class Point {
     public y: number;
     protected square: number;
     private name: string;
-    
+
     constructor(x: number, y: number) {
         this.x = x;
         this.y = y;

@@ -11,7 +11,11 @@ import { TypeScript } from "../../lib/Languages/TypeScript";
 describe("GlsParser", () => {
     describe("parseCommand", () => {
         const stubParser = () =>
-            new GlsParser(new CaseStyleConverterBag(), new CommandsBag(new ConversionContext(new TypeScript())));
+            new GlsParser(
+                new CaseStyleConverterBag(),
+                new CommandsBag(
+                    new ConversionContext(
+                        new TypeScript())));
 
         it("parses a command", () => {
             // Arrange

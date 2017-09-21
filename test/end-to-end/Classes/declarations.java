@@ -4,7 +4,7 @@ class Point {
     public int y;
     protected int square;
     private string name;
-    
+
     Point(int x, int y) {
         this.x = x;
         this.y = y;

@@ -35,6 +35,10 @@ export class Gls {
      * @returns Language code from the input.
      */
     public convert(input: string[]): string[] {
+        if (this.language === undefined) {
+            throw new Error("You must specify a language before converting.");
+        }
+
         return this.conversionContext.convert(input);
     }
 

@@ -1,6 +1,6 @@
 #
 class Point
-    
+
     def initialize(x, y)
         self.x = x
         self.y = y

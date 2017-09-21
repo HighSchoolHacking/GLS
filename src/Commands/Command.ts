@@ -6,7 +6,7 @@ import { Parameter } from "./Parameters/Parameter";
 import { Restrictions } from "./Parameters/Restrictions";
 
 /**
- * Abstract base class for commands that may be rendered into language code.
+ * Base class for commands that may be rendered into language code.
  */
 export abstract class Command {
     /**
