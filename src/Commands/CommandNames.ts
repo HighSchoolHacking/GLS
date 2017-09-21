@@ -213,6 +213,11 @@ export class CommandNames {
     public static ForNumbersStart = "for numbers start";
 
     /**
+     * Name key for the Function command.
+     */
+    public static Function = "function";
+
+    /**
      * Name key for the FunctionEnd command.
      */
     public static FunctionEnd = "function end";

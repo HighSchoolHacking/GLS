@@ -1,10 +1,10 @@
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
 import { RepeatingParameters } from "./Parameters/RepeatingParameters";
 import { SingleParameter } from "./Parameters/SingleParameter";
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 
 /**
  * A command for the beginning of a function.

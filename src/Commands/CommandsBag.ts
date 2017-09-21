@@ -44,6 +44,7 @@ import { ForEachPairStartCommand } from "./ForEachPairStartCommand";
 import { ForEachStartCommand } from "./ForEachStartCommand";
 import { ForNumbersEndCommand } from "./ForNumbersEndCommand";
 import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
+import { FunctionCommand } from "./FunctionCommand";
 import { FunctionEndCommand } from "./FunctionEndCommand";
 import { FunctionStartCommand } from "./FunctionStartCommand";
 import { IfEndCommand } from "./IfEndCommand";
@@ -165,6 +166,7 @@ export class CommandsBag {
             [CommandNames.ForEachStart]: new ForEachStartCommand(context),
             [CommandNames.ForNumbersStart]: new ForNumbersStartCommand(context),
             [CommandNames.ForNumbersEnd]: new ForNumbersEndCommand(context),
+            [CommandNames.Function]: new FunctionCommand(context),
             [CommandNames.FunctionStart]: new FunctionStartCommand(context),
             [CommandNames.FunctionEnd]: new FunctionEndCommand(context),
             [CommandNames.IfEnd]: new IfEndCommand(context),
