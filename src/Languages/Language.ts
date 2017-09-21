@@ -25,8 +25,8 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
-import { OutputProperties } from "./Properties/OutputProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
+import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
@@ -72,8 +72,8 @@ export abstract class Language {
         this.generateNewProperties(this.properties.newProp);
         this.generateNumberProperties(this.properties.numbers);
         this.generateOperatorProperties(this.properties.operators);
-        this.generateOutputProperties(this.properties.output);
         this.generateParameterProperties(this.properties.parameters);
+        this.generatePrintingProperties(this.properties.printing);
         this.generateStringProperties(this.properties.strings);
         this.generateStringFormatProperties(this.properties.strings.formatting);
         this.generateStyleProperties(this.properties.style);
@@ -268,18 +268,18 @@ export abstract class Language {
     protected abstract generateOperatorProperties(operators: OperatorProperties): void;
 
     /**
-     * Generates metadata on output.
-     *
-     * @param output   A property container for metadata on output.
-     */
-    protected abstract generateOutputProperties(operators: OutputProperties): void;
-
-    /**
      * Generates metadata on parameters.
      *
      * @param parameters    A property container for metadata on parameters.
      */
     protected abstract generateParameterProperties(parameters: ParameterProperties): void;
+
+    /**
+     * Generates metadata on printing.
+     *
+     * @param parameters    A property container for metadata on printing.
+     */
+    protected abstract generatePrintingProperties(printing: PrintingProperties): void;
 
     /**
      * Generates metadata on string formatting.

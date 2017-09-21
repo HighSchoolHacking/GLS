@@ -2,22 +2,11 @@
  * Metadata on a language's style.
  */
 export class StyleProperties {
-
     /**
      * Whether class method and public member names are in PascalCase
      * rather than camelCase.
      */
     public pascalCase: boolean;
-
-    /**
-     * How to start printing a line.
-     */
-    public printEnd: string;
-
-    /**
-     * How to end printing a line.
-     */
-    public printStart: string;
 
     /**
      * How to end lines, such as "" or ";".

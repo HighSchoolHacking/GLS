@@ -28,16 +28,20 @@ export class PrintCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let line = "";
 
-        result += this.language.properties.style.printStart;
+        line += this.language.properties.printing.start;
 
         if (parameters.length > 1) {
-            result += parameters[1];
+            line += parameters[1];
         }
 
-        result += this.language.properties.style.printEnd;
+        line += this.language.properties.printing.end;
 
-        return LineResults.newSingleLine(result, true);
+        const results = LineResults.newSingleLine(line, true);
+
+        results.addImports(this.language.properties.printing.requiredImports);
+
+        return results;
     }
 }

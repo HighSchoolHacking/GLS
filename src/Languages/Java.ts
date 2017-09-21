@@ -24,11 +24,10 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
-import { OutputProperties } from "./Properties/OutputProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
+import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
@@ -443,15 +442,6 @@ export class Java extends CLikeLanguage {
     }
 
     /**
-     * Generates metadata on output.
-     *
-     * @param output   A property container for metadata on output.
-     */
-    protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "System.out.println";
-    }
-
-    /**
      * Generates metadata on parameters
      *
      * @param parameters    A property container for metadata on parameters
@@ -462,6 +452,17 @@ export class Java extends CLikeLanguage {
         parameters.restKeywordLeft = "";
         parameters.restKeywordMiddle = "... ";
         parameters.restKeywordRight = "";
+    }
+
+    /**
+     * Generates metadata on printing.
+     *
+     * @param parameters    A property container for metadata on printing.
+     */
+    protected generatePrintingProperties(printing: PrintingProperties): void {
+        printing.end = ")";
+        printing.requiredImports = [];
+        printing.start = "System.out.println(";
     }
 
     /**
@@ -503,18 +504,6 @@ export class Java extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
-    }
-
-    /**
-     * Generates metadata on style.
-     *
-     * @param style   A property container for metadata on style.
-     */
-    protected generateStyleProperties(style: StyleProperties): void {
-        super.generateStyleProperties(style);
-
-        style.printEnd = ")";
-        style.printStart = "System.out.println(";
     }
 
     /**

@@ -19,8 +19,8 @@ import { MathProperties } from "./MathProperties";
 import { NewProperties } from "./NewProperties";
 import { NumberProperties } from "./NumberProperties";
 import { OperatorProperties } from "./OperatorProperties";
-import { OutputProperties } from "./OutputProperties";
 import { ParameterProperties } from "./ParameterProperties";
+import { PrintingProperties } from "./PrintingProperties";
 import { StringProperties } from "./StringProperties";
 import { StyleProperties } from "./StyleProperties";
 import { VariableProperties } from "./VariableProperties";
@@ -135,14 +135,14 @@ export class LanguageProperties {
     public operators: OperatorProperties;
 
     /**
-     * Metadata on output.
-     */
-    public output: OutputProperties;
-
-    /**
      * Metadata on parameters.
      */
     public parameters: ParameterProperties;
+
+    /**
+     * Metadata on printing.
+     */
+    public printing: PrintingProperties;
 
     /**
      * Metadata on strings.
@@ -184,8 +184,8 @@ export class LanguageProperties {
         this.newProp = new NewProperties();
         this.numbers = new NumberProperties();
         this.operators = new OperatorProperties();
-        this.output = new OutputProperties();
         this.parameters = new ParameterProperties();
+        this.printing = new PrintingProperties();
         this.strings = new StringProperties();
         this.style = new StyleProperties();
         this.variables = new VariableProperties();

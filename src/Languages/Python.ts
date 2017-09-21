@@ -23,11 +23,10 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
-import { OutputProperties } from "./Properties/OutputProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
+import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
 
@@ -411,15 +410,6 @@ export class Python extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on numbers.
-     *
-     * @param numbers   A property container for metadata on numbers.
-     */
-    protected generateOutputProperties(output: OutputProperties): void {
-        output.print = "print";
-    }
-
-    /**
      * Generates metadata on parameters
      *
      * @param parameters    A property container for metadata on parameters
@@ -430,6 +420,17 @@ export class Python extends PythonicLanguage {
         parameters.restKeywordLeft = "*";
         parameters.restKeywordMiddle = "";
         parameters.restKeywordRight = "";
+    }
+
+    /**
+     * Generates metadata on printing.
+     *
+     * @param parameters    A property container for metadata on printing.
+     */
+    protected generatePrintingProperties(printing: PrintingProperties): void {
+        printing.end = ")";
+        printing.requiredImports = [];
+        printing.start = "print(";
     }
 
     /**
@@ -465,18 +466,6 @@ export class Python extends PythonicLanguage {
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
-    }
-
-    /**
-     * Generates metadata on style.
-     *
-     * @param style   The property container for metadata on style.
-     */
-    protected generateStyleProperties(style: StyleProperties): void {
-        super.generateStyleProperties(style);
-
-        style.printEnd = ")";
-        style.printStart = "print(";
     }
 
     /**
