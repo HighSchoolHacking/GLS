@@ -1,4 +1,3 @@
-import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 import { Parameter } from "./Parameters/Parameter";
