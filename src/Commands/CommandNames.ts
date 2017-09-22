@@ -458,11 +458,6 @@ export class CommandNames {
     public static StringFormat = "string format";
 
     /**
-     * Name key for the StringIndex command.
-     */
-    public static StringIndex = "string index";
-
-    /**
      * Name key for the StringLength command.
      */
     public static StringLength = "string length";
