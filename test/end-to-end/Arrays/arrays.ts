@@ -10,4 +10,9 @@ aaa[1 + 1]
 
 // Length
 aaa.length;
+
+// Printing
+let fruits: string[] = ["apple", "banana", "cherry"];
+console.log(`There are ${fruits.length} fruits.`);
+console.log(`The first fruit is ${fruits[0]}.`);
 //

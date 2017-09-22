@@ -10,4 +10,9 @@ index : aaa { operation : 1 plus 1 }
 
 comment line : Length
 array length : aaa
+
+comment line : Printing
+variable : fruits { array type : string } { array initialize : string "apple" "banana" "cherry" }
+print : { string format : ("There are {0} fruits.") { array length : fruits } int }
+print : { string format : ("The first fruit is {0}.") { index : fruits 0 } string }
 -

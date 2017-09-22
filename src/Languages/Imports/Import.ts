@@ -41,7 +41,7 @@ export class Import {
      */
     public addItems(items: string[]) {
         for (const item of items) {
-            if (this.items.indexOf(item) !== -1) {
+            if (this.items.indexOf(item) === -1) {
                 this.items.push(item);
             }
         }
