@@ -6,7 +6,7 @@ class Point
     protected int Square;
     private string name;
 
-    Point(int x, int y)
+    public Point(int x, int y)
     {
         this.X = x;
         this.Y = y;
@@ -17,7 +17,7 @@ class Point
 
 class Measurements<T>
 {
-    Measurements(T[] items)
+    public Measurements(T[] items)
     {
         // ...
     }
@@ -25,7 +25,7 @@ class Measurements<T>
 
 class Shape : Measurements<Point>
 {
-    Shape(Point[] points)
+    public Shape(Point[] points)
     {
         // ...
     }

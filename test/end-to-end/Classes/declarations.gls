@@ -5,7 +5,7 @@ class start : Point
     member variable declare : protected square int
     member variable declare : private name string
 
-    constructor start : Point x int y int
+    constructor start : public Point x int y int
         operation : { member variable : public { this } x } equals x
         operation : { member variable : public { this } y } equals y
         operation : { member variable : protected { this } square } equals { operation : x times y }
@@ -14,13 +14,13 @@ class start : Point
 class end
 
 class start : Measurements<T>
-    constructor start : Measurements items T[]
+    constructor start : public Measurements items T[]
         comment line : ...
     constructor end
 class end
 
 class start : Shape extends Measurements<Point>
-    constructor start : Shape points Point[]
+    constructor start : public Shape points Point[]
         comment line : ...
     constructor end
 class end

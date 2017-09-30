@@ -5,7 +5,7 @@ class Point {
     protected int square;
     private string name;
 
-    Point(int x, int y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
         this.square = x * y;
@@ -14,13 +14,13 @@ class Point {
 }
 
 class Measurements<T> {
-    Measurements(T[] items) {
+    public Measurements(T[] items) {
         // ...
     }
 }
 
 class Shape extends Measurements<Point> {
-    Shape(Point[] points) {
+    public Shape(Point[] points) {
         // ...
     }
 }

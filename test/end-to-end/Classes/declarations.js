@@ -1,10 +1,5 @@
 //
 class Point {
-    public x;
-    public y;
-    protected square;
-    private name;
-
     constructor(x, y) {
         this.x = x;
         this.y = y;
