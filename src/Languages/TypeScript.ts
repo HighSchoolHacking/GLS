@@ -83,8 +83,12 @@ export class TypeScript extends CLikeLanguage {
             int: "number"
         };
 
-        classes.constructorKeyword = "constructor";
-        classes.constructorUsesKeyword = true;
+        classes.constructors.private = "private ";
+        classes.constructors.protected = "protected ";
+        classes.constructors.public = "public ";
+        classes.constructors.keyword = "constructor";
+        classes.constructors.useKeyword = true;
+
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";

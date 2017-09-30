@@ -1,4 +1,4 @@
 -
-constructor start : Foo
+constructor start : public Foo
 constructor end
 -

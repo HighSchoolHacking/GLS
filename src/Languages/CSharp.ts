@@ -86,6 +86,10 @@ export class CSharp extends CLikeLanguage {
             number: "float"
         };
 
+        classes.constructors.private = "private ";
+        classes.constructors.protected = "protected ";
+        classes.constructors.public = "public ";
+
         classes.declareExtendsLeft = " : ";
         classes.declareImplementsLeft = " : ";
         classes.declareStartRight = "\n{";

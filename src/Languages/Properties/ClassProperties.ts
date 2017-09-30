@@ -1,3 +1,4 @@
+import { ClassConstructorProperties } from "./ClassConstructorProperties";
 import { ClassGenericProperties } from "./ClassGenericProperties";
 import { ClassMemberProperties } from "./ClassMemberProperties";
 import { ClassStaticProperties } from "./ClassStaticProperties";
@@ -12,19 +13,9 @@ export class ClassProperties {
     public aliases: { [i: string]: string };
 
     /**
-     * The keyword used for constructors, if not the class name.
+     * Metadata on constructors.
      */
-    public constructorKeyword: string;
-
-    /**
-     * Whether constructors take in the class instance as a first parameter.
-     */
-    public constructorTakesThis: boolean;
-
-    /**
-     * Whether constructors are named with a keyword, rather than the class name.
-     */
-    public constructorUsesKeyword: boolean;
+    public constructors: ClassConstructorProperties = new ClassConstructorProperties();
 
     /**
      * The last line of a class declaration.

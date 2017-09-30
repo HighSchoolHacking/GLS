@@ -42,13 +42,13 @@ class Noun(Word):
 
 ### Constructors
 
-Constructors, or initialization methods, are called when a new instance of a class is created. It's declared with `constructor start`, which takes the name of the class and any number of \(name, type\) arguments, and `constructor end`.
+Constructors, or initialization methods, are called when a new instance of a class is created. It's declared with `constructor start`, which takes the publicity of the constructor, the name of the class, and any number of \(name, type\) arguments, and `constructor end`.
 
 Inherited classes may use `super constructor` to call to their parent class' constructor.
 
 ```gls
 class start : Noun extends Word
-    constructor start : Noun name string
+    constructor start : public Noun name string
         super constructor
         print : { concatenate : "Creating" name }
     constructor end

@@ -1,4 +1,4 @@
 //
-Foo()
+public Foo()
 {
 //

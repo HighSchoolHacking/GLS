@@ -48,7 +48,11 @@ export abstract class PythonicLanguage extends Language {
      * @param classes   The property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
-        classes.constructorUsesKeyword = true;
+        classes.constructors.private = "";
+        classes.constructors.protected = "";
+        classes.constructors.public = "";
+        classes.constructors.useKeyword = true;
+
         classes.newStart = "new ";
         classes.statics.label = "static ";
         classes.this = "self";

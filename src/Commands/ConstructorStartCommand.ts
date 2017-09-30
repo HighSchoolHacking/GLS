@@ -13,6 +13,7 @@ export class ConstructorStartCommand extends Command {
      * Information on parameters this command takes in.
      */
     private static parameters: Parameter[] = [
+        new SingleParameter("privacy", "The privacy of the constructor.", true),
         new SingleParameter("className", "The name of the class.", true),
         new RepeatingParameters(
             "Function parameters.",
@@ -39,26 +40,28 @@ export class ConstructorStartCommand extends Command {
         let declaration = "";
         let output: CommandResult[];
 
-        if (this.language.properties.classes.constructorUsesKeyword) {
-            declaration += this.language.properties.classes.constructorKeyword;
+        declaration += this.getPublicity(parameters[1]);
+
+        if (this.language.properties.classes.constructors.useKeyword) {
+            declaration += this.language.properties.classes.constructors.keyword;
         } else {
-            declaration += parameters[1];
+            declaration += parameters[2];
         }
 
         declaration += "(";
 
-        if (this.language.properties.classes.constructorTakesThis) {
+        if (this.language.properties.classes.constructors.takeThis) {
             declaration += this.language.properties.classes.this;
 
-            if (parameters.length > 3) {
+            if (parameters.length > 4) {
                 declaration += ", ";
             }
         }
 
-        if (parameters.length > 3) {
-            declaration += this.generateParameterVariable(parameters, 2);
+        if (parameters.length > 4) {
+            declaration += this.generateParameterVariable(parameters, 3);
 
-            for (let i = 4; i < parameters.length; i += 2) {
+            for (let i = 5; i < parameters.length; i += 2) {
                 declaration += ", ";
                 declaration += this.generateParameterVariable(parameters, i);
             }
@@ -88,5 +91,23 @@ export class ConstructorStartCommand extends Command {
         const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
 
         return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
+    }
+
+    /**
+     * Determines the name prefix for a constructor.
+     *
+     * @param publicity   Publicity of the constructor.
+     * @returns Name prefix for the publicity.
+     */
+    private getPublicity(publicity: string): string {
+        if (publicity === "private") {
+            return this.language.properties.classes.constructors.private;
+        }
+
+        if (publicity === "protected") {
+            return this.language.properties.classes.constructors.protected;
+        }
+
+        return this.language.properties.classes.constructors.public;
     }
 }

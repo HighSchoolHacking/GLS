@@ -84,8 +84,12 @@ export class JavaScript extends CLikeLanguage {
             int: "number"
         };
 
-        classes.constructorKeyword = "constructor";
-        classes.constructorUsesKeyword = true;
+        classes.constructors.private = "";
+        classes.constructors.protected = "";
+        classes.constructors.public = "";
+        classes.constructors.keyword = "constructor";
+        classes.constructors.useKeyword = true;
+
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";

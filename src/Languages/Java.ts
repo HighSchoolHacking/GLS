@@ -85,6 +85,10 @@ export class Java extends CLikeLanguage {
             number: "double"
         };
 
+        classes.constructors.private = "private ";
+        classes.constructors.protected = "protected ";
+        classes.constructors.public = "public ";
+
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";

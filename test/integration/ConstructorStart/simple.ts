@@ -1,3 +1,3 @@
 //
-constructor() {
+public constructor() {
 //

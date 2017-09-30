@@ -102,7 +102,9 @@ export class Ruby extends PythonicLanguage {
             number: "Float"
         };
 
-        classes.constructorKeyword = "def initialize";
+        classes.constructors.keyword = "def initialize";
+        classes.constructors.takeThis = false;
+
         classes.declareEnd = "end";
         classes.declareExtendsLeft = " < ";
         classes.declareExtendsRight = "";

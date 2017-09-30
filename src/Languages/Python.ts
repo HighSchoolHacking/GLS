@@ -101,8 +101,9 @@ export class Python extends PythonicLanguage {
             number: "float"
         };
 
-        classes.constructorKeyword = "def __init__";
-        classes.constructorTakesThis = true;
+        classes.constructors.keyword = "def __init__";
+        classes.constructors.takeThis = true;
+
         classes.declareEnd = "\0";
         classes.declareExtendsLeft = "(";
         classes.declareExtendsRight = ")";
