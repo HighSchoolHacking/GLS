@@ -1,5 +1,3 @@
-import { CaseStyle } from "../Casing/CaseStyle";
-
 /**
  * Metadata on a language's class constructors.
  */
