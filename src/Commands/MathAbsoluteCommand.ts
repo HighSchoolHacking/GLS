@@ -2,7 +2,6 @@ import { Import } from "../Languages/Imports/Import";
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
 import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
-import { Parameter } from "./Metadata/Parameters/Parameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 

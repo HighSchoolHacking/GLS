@@ -1,4 +1,4 @@
-import { Parameter } from "./Parameter";
+import { IParameter } from "./Parameter";
 import { RepeatingParameters } from "./RepeatingParameters";
 import { SingleParameter } from "./SingleParameter";
 
@@ -26,7 +26,7 @@ export class Restrictions {
      *
      * @param parameters   Descriptions of parameters passed to a command.
      */
-    public constructor(parameters: Parameter[]) {
+    public constructor(parameters: IParameter[]) {
         for (const parameter of parameters) {
             if (parameter instanceof SingleParameter) {
                 this.addSingleParameter(parameter);

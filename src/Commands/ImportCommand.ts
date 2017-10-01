@@ -3,7 +3,7 @@ import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Metadata/Parameters/Parameter";
+import { IParameter } from "./Metadata/Parameters/Parameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -14,7 +14,7 @@ export abstract class ImportCommand extends Command {
     /**
      * Information on parameters import commands take in.
      */
-    protected static parameters: Parameter[] = [
+    protected static parameters: IParameter[] = [
         new RepeatingParameters(
             "Path for the package to import from.",
             [

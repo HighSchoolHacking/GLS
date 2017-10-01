@@ -1,4 +1,4 @@
-import { Parameter } from "./Parameters/Parameter";
+import { IParameter } from "./Parameters/Parameter";
 
 /**
  * Metadata on a command.
@@ -17,7 +17,7 @@ export class CommandMetadata {
     /**
      * Required parameters for the command.
      */
-    public parameters: Parameter[];
+    public parameters: IParameter[];
 
     /**
      * Initializes a new instance of the Metadata class.
@@ -26,7 +26,7 @@ export class CommandMetadata {
      * @param indentation   How this affects GLS source code indentation levels.
      * @param parameters   Required parameters for the command.
      */
-    public constructor(name: string, indentation: number[], parameters: Parameter[]) {
+    public constructor(name: string, indentation: number[], parameters: IParameter[]) {
         this.name = name;
         this.indentation = indentation;
         this.parameters = parameters;

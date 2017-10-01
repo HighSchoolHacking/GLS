@@ -3,7 +3,6 @@ import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
-import { Parameter } from "./Metadata/Parameters/Parameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -28,7 +27,11 @@ export class CommentDocTagCommand extends Command {
         [
             new SingleParameter("tag", "The name of the tag.", true),
             new SingleParameter("parameter", "An optional descriptor for the tag.", false),
-            new RepeatingParameters("Comments regarding the tag", [])
+            new RepeatingParameters(
+                "Comments regarding the tag",
+                [
+                    new SingleParameter("contents", "Contents of the comment", true)
+                ])
         ]);
 
     /**

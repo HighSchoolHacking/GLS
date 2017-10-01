@@ -3,7 +3,6 @@ import { Language } from "../Languages/Language";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
-import { Parameter } from "./Metadata/Parameters/Parameter";
 
 /**
  * Base class for commands that may be rendered into language code.

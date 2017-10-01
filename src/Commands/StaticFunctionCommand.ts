@@ -3,7 +3,6 @@ import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
-import { Parameter } from "./Metadata/Parameters/Parameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 

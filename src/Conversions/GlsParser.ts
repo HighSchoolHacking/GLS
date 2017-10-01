@@ -2,6 +2,7 @@ import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
+import { ParametersValidator } from "./ParametersValidator";
 
 /**
  * Transforms raw GLS syntax into line results.
@@ -18,6 +19,11 @@ export class GlsParser {
     private commandsBag: CommandsBag;
 
     /**
+     * Validates whether input parameters match command requirements.
+     */
+    private parametersValidator: ParametersValidator;
+
+    /**
      * Initializes a new instance of the GlsParser class.
      *
      * @param context   A driving context for converting commands.
@@ -25,6 +31,7 @@ export class GlsParser {
     public constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
         this.caseStyleConverterBag = caseStyleConverterBag;
         this.commandsBag = commandsBag;
+        this.parametersValidator = new ParametersValidator();
     }
 
     /**
@@ -54,7 +61,7 @@ export class GlsParser {
     public renderParsedCommand(lineParsed: string[]): LineResults {
         const command: Command = this.commandsBag.getCommand(lineParsed[0]);
 
-        command.checkParameterValidity(lineParsed);
+        this.parametersValidator.validate(lineParsed, command.getMetadata().parameters);
 
         return command.render(lineParsed);
     }
@@ -65,7 +72,7 @@ export class GlsParser {
      * @param text   The String to search within.
      * @param index   The starting location of the starting separator.
      * @param starter   The starting separator, such as "{".
-     * @param ender   The ending separator, suchas "}".
+     * @param ender   The ending separator, such as "}".
      * @returns The position of the starter's corresponding ender.
      */
     private findSearchEnd(text: string, index: number, starter: string, ender: string): number {

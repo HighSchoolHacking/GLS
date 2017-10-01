@@ -1,18 +1,20 @@
 /**
  * Some parameter(s) to be passed to a command.
  */
-export abstract class Parameter {
+export interface IParameter {
     /**
-     * A plain-text description of this parameter.
+     * @returns Whether this parameter is required.
      */
-    public description: string;
+    isRequired(): boolean;
 
     /**
-     * Initializes a new instance of the Parameter class.
+     * Validates whether parameter inputs match this requirement.
      *
-     * @param descriptor   A plain-text description of the parameter.
+     * @param inputs   All raw parameter inputs.
+     * @param inputPosition   Index of a starting input under test.
+     * @param requirements   All parameter requirements.
+     * @param requirementPosition   Index of the parameter requirement under test.
+     * @returns A new input position following all valid inputs.
      */
-    public constructor(description: string) {
-        this.description = description;
-    }
+    validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number;
 }

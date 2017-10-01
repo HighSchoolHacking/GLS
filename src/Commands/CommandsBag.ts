@@ -1,6 +1,5 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
 import { Command } from "./Command";
-import { CommandNames } from "./CommandNames";
 
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
@@ -237,6 +236,8 @@ export class CommandsBag {
      * @param context   The driving context for conversions.
      */
     public constructor(commands: Command[]) {
+        this.commands = {};
+
         for (const command of commands) {
             this.addCommand(command);
         }

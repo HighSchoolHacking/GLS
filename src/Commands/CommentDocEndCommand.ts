@@ -11,7 +11,7 @@ export class CommentDocEndCommand extends Command {
      * Information on parameters this command takes in.
      */
     private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentBlockEnd,
+        CommandNames.CommentDocEnd,
         [],
         []);
 

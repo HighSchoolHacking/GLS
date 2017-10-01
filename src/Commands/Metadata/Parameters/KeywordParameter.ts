@@ -1,41 +1,35 @@
 import { IParameter } from "./Parameter";
 
 /**
- * A single named parameter.
+ * A string literal keyword parameter.
  */
-export class SingleParameter implements IParameter {
+export class KeywordParameter implements IParameter {
     /**
      * A plain-text description of this parameter.
      */
     public description: string;
 
     /**
-     * The name of this parameter.
+     * The name of the string literal.
      */
-    public name: string;
+    public literal: string;
 
     /**
-     * Whether this must be provided.
-     */
-    public required: boolean;
-
-    /**
-     * Initializes a new instance of the SingleParameter class.
+     * Initializes a new instance of the KeywordParameter class.
      *
-     * @param descriptor   A plain-text description of the parameter.
-     * @param parameters   Parameters contained inside.
+     * @param literal   String literal value for the keyword.
+     * @param description   A high-level definition of the parameter.
      */
-    public constructor(name: string, description: string, required: boolean) {
-        this.name = name;
+    public constructor(literal: string, description: string) {
         this.description = description;
-        this.required = required;
+        this.literal = literal;
     }
 
     /**
-     * @returns Whether this parameter is required.
+     * @returns Whether this parameter is required (false).
      */
     public isRequired(): boolean {
-        return this.required;
+        return false;
     }
 
     /**
@@ -48,10 +42,7 @@ export class SingleParameter implements IParameter {
      * @returns A new input position following all valid inputs.
      */
     public validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        if (this.required && inputPosition >= inputs.length) {
-            throw new Error(`Missing parameter: '${this.name}'`);
-        }
-
+        // Keywords are assumed to always be optional (and only used to separate repeating parameters)
         return inputPosition + 1;
     }
 }

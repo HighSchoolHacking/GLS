@@ -5,7 +5,7 @@ export { Command } from "./Commands/Command";
 export { CommandsBag } from "./Commands/CommandsBag";
 export { CommandNames } from "./Commands/CommandNames";
 export { CommandMetadata } from "./Commands/Metadata/CommandMetadata";
-export { Parameter } from "./Commands/Metadata/Parameters/Parameter";
+export { IParameter } from "./Commands/Metadata/Parameters/Parameter";
 export { RepeatingParameters } from "./Commands/Metadata/Parameters/RepeatingParameters";
 export { SingleParameter } from "./Commands/Metadata/Parameters/SingleParameter";
 export { Gls } from "./Gls";
