@@ -2,23 +2,13 @@ import { ConversionContext } from "../Conversions/ConversionContext";
 import { Language } from "../Languages/Language";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { Restrictions } from "./Parameters/Restrictions";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
 
 /**
  * Base class for commands that may be rendered into language code.
  */
 export abstract class Command {
-    /**
-     * Default information on parameters a command takes in (none).
-     */
-    private static defaultParameters: Parameter[] = [];
-
-    /**
-     * Whether this command's lines should end with a semicolon.
-     */
-    protected addsSemicolon: boolean;
-
     /**
      * The driving context for converting the command.
      */
@@ -30,11 +20,6 @@ export abstract class Command {
     protected language: Language;
 
     /**
-     * Validity checker for provided parameters.
-     */
-    private parameterRestrictions: Restrictions;
-
-    /**
      * Initializes a new instance of the Command class.
      *
      * @param context   The driving context for converting the command.
@@ -42,31 +27,12 @@ export abstract class Command {
     public constructor(context: ConversionContext) {
         this.context = context;
         this.language = context.getLanguage();
-        this.parameterRestrictions = new Restrictions(this.getParameters());
     }
 
     /**
-     * Checks if parameters are valid, throwing an error if not.
-     *
-     * @param parameters   The command's name, followed by any parameters.
+     * @returns Metadata on the command.
      */
-    public checkParameterValidity(parameters: string[]): void {
-        this.parameterRestrictions.checkValidity(parameters);
-    }
-
-    /**
-     * @returns Whether this command's lines should end with a semicolon.
-     */
-    public getAddsSemicolon(): boolean {
-        return this.addsSemicolon;
-    }
-
-    /**
-     * @returns Information on parameters this command takes in.
-     */
-    public getParameters(): Parameter[] {
-        return Command.defaultParameters;
-    }
+    public abstract getMetadata(): CommandMetadata;
 
     /**
      * Renders the command for a language with the given parameters.

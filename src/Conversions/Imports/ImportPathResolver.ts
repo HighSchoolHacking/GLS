@@ -1,9 +1,9 @@
 /**
- * Resolves absolute import paths to a file-relative import paths.
+ * Resolves absolute import paths to file-relative import paths.
  */
 export class ImportPathResolver {
     /**
-     * Resolves an absolute import path to a a file-relative import path.
+     * Resolves an absolute import path to a file-relative import path.
      *
      * @param filePath   File path to resolve from.
      * @param importPath   Import path to resolve to.

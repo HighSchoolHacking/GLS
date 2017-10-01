@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for an in-place dictionary initialization pair.
@@ -10,17 +12,20 @@ export class DictionaryPairCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("key", "The pair key.", true),
-        new SingleParameter("value", "The pair value", true),
-        new SingleParameter("comma", "Whether a comma is needed", false)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.DictionaryPair,
+        [],
+        [
+            new SingleParameter("key", "The pair key.", true),
+            new SingleParameter("value", "The pair value", true),
+            new SingleParameter("comma", "Whether a comma is needed", false)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return DictionaryPairCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return DictionaryPairCommand.metadata;
     }
 
     /**

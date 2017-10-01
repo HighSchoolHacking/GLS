@@ -1,7 +1,9 @@
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
+import { CommandNames } from "./CommandNames";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for a retrieving the keys of a dictionary.
@@ -10,15 +12,18 @@ export class DictionaryKeysCommand extends NativeCallCommand {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("dictionary", "A dictionary to retrieve the keys of.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.DictionaryKeys,
+        [],
+        [
+            new SingleParameter("dictionary", "A dictionary to retrieve the keys of.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return DictionaryKeysCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return DictionaryKeysCommand.metadata;
     }
 
     /**

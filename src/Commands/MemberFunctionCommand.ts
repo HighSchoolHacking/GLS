@@ -1,9 +1,11 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a member function.
@@ -12,22 +14,25 @@ export class MemberFunctionCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the function.", true),
-        new SingleParameter("name", "The name of the function.", true),
-        new SingleParameter("returnType", "Return type of the member function", true),
-        new RepeatingParameters(
-            "Function parameters.",
-            [
-                new SingleParameter("parameterName", "A named parameter for the function.", true),
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.MemberFunction,
+        [],
+        [
+            new SingleParameter("privacy", "The privacy of the function.", true),
+            new SingleParameter("name", "The name of the function.", true),
+            new SingleParameter("returnType", "Return type of the member function", true),
+            new RepeatingParameters(
+                "Function parameters.",
+                [
+                    new SingleParameter("parameterName", "A named parameter for the function.", true),
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return MemberFunctionCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return MemberFunctionCommand.metadata;
     }
 
     /**

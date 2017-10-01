@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for declaring a list type.
@@ -10,15 +12,18 @@ export class ListTypeCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("type", "The type of the list", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ListType,
+        [],
+        [
+            new SingleParameter("type", "The type of the list", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ListTypeCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ListTypeCommand.metadata;
     }
 
     /**

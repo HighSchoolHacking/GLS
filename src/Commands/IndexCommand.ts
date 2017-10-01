@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for an indexed [] lookup.
@@ -10,16 +12,19 @@ export class IndexCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("container", "A container to look within.", true),
-        new SingleParameter("index", "The index within the container.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Index,
+        [],
+        [
+            new SingleParameter("container", "A container to look within.", true),
+            new SingleParameter("index", "The index within the container.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return IndexCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return IndexCommand.metadata;
     }
 
     /**

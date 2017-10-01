@@ -1,11 +1,28 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for ending a main function.
  */
 export class MainEndCommand extends Command {
+    /**
+     * Metadata on the command.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.MainEnd,
+        [-1],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return MainEndCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

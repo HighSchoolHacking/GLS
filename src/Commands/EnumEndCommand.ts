@@ -1,10 +1,27 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for ending an enum declaration.
  */
 export class EnumEndCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.EnumEnd,
+        [-1],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return EnumEndCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

@@ -1,7 +1,9 @@
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
+import { CommandNames } from "./CommandNames";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command that adds everything in the second list to the first list.
@@ -9,18 +11,20 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class ListAddListCommand extends NativeCallCommand {
     /**
      * Information on parameters this command takes in.
-     * second parameter contains values that will be added to first parameter
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("first", "The first list.", true),
-        new SingleParameter("second", "The second list.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ListAddList,
+        [],
+        [
+            new SingleParameter("first", "The first list.", true),
+            new SingleParameter("second", "The second list.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ListAddListCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ListAddListCommand.metadata;
     }
 
     /**

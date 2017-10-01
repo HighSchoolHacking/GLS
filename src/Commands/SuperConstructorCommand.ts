@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for calling a parent class constructor.
@@ -11,19 +13,22 @@ export class SuperConstructorCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new RepeatingParameters(
-            "Function arguments.",
-            [
-                new SingleParameter("argument", "An argument for the super constructor.", true),
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.SuperConstructor,
+        [],
+        [
+            new RepeatingParameters(
+                "Function arguments.",
+                [
+                    new SingleParameter("argument", "An argument for the super constructor.", true),
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return SuperConstructorCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return SuperConstructorCommand.metadata;
     }
 
     /**

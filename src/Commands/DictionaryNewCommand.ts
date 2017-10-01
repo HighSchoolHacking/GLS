@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for initializing a new dictionary.
@@ -10,16 +12,19 @@ export class DictionaryNewCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("keyType", "The type of the keys.", true),
-        new SingleParameter("valueType", "The type of the values", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.DictionaryNew,
+        [],
+        [
+            new SingleParameter("keyType", "The type of the keys.", true),
+            new SingleParameter("valueType", "The type of the values", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return DictionaryNewCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return DictionaryNewCommand.metadata;
     }
 
     /**

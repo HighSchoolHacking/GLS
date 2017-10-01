@@ -1,8 +1,9 @@
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for declaring a variable inline (without a preceding "var ").
@@ -11,17 +12,20 @@ export class VariableInlineCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "The name of the variable.", true),
-        new SingleParameter("type", "The type of the variable.", true),
-        new SingleParameter("value", "The starting value of the variable.", false)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.VariableInline,
+        [],
+        [
+            new SingleParameter("name", "The name of the variable.", true),
+            new SingleParameter("type", "The type of the variable.", true),
+            new SingleParameter("value", "The starting value of the variable.", false)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return VariableInlineCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return VariableInlineCommand.metadata;
     }
 
     /**

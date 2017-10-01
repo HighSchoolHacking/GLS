@@ -10,7 +10,7 @@ describe("CommandsBag", () => {
     describe("renderCommand", () => {
         it("retrieves a command by name", () => {
             // Arrange
-            const commandsBag = new CommandsBag(new ConversionContext(new TypeScript()));
+            const commandsBag = CommandsBag.forContext(new ConversionContext(new TypeScript()));
 
             // Act
             const command = commandsBag.getCommand("literal");
@@ -21,7 +21,7 @@ describe("CommandsBag", () => {
 
         it("throws an error for an unknown command", () => {
             // Arrange
-            const commandsBag = new CommandsBag(new ConversionContext(new TypeScript()));
+            const commandsBag = CommandsBag.forContext(new ConversionContext(new TypeScript()));
 
             // Act
             const action = () => commandsBag.getCommand("definitely not a command");

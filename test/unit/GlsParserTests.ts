@@ -13,7 +13,7 @@ describe("GlsParser", () => {
         const stubParser = () =>
             new GlsParser(
                 new CaseStyleConverterBag(),
-                new CommandsBag(
+                CommandsBag.forContext(
                     new ConversionContext(
                         new TypeScript())));
 

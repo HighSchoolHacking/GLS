@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the declaring an enum member value.
@@ -10,17 +12,20 @@ export class EnumMemberCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("memberName", "A member of the container enum.", true),
-        new SingleParameter("memberValue", "A value for the enum member.", true),
-        new SingleParameter("comma", "Whether a comma is needed.", false)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.EnumMember,
+        [],
+        [
+            new SingleParameter("memberName", "A member of the container enum.", true),
+            new SingleParameter("memberValue", "A value for the enum member.", true),
+            new SingleParameter("comma", "Whether a comma is needed.", false)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return EnumMemberCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return EnumMemberCommand.metadata;
     }
 
     /**

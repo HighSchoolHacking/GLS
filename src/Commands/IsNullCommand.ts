@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for checking whether a variable is null.
@@ -10,15 +12,18 @@ export class IsNullCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("value", "A value to check against null.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.IsNull,
+        [],
+        [
+            new SingleParameter("value", "A value to check against null.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return IsNullCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return IsNullCommand.metadata;
     }
 
     /**

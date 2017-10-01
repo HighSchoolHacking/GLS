@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for initializing a new list.
@@ -11,20 +13,23 @@ export class ListInitializeCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("type", "The type of object.", true),
-        new RepeatingParameters(
-            "Items initially in the list.",
-            [
-                new SingleParameter("item", "An item initially in the list.", false)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ListInitialize,
+        [],
+        [
+            new SingleParameter("type", "The type of object.", true),
+            new RepeatingParameters(
+                "Items initially in the list.",
+                [
+                    new SingleParameter("item", "An item initially in the list.", false)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ListInitializeCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ListInitializeCommand.metadata;
     }
 
     /**

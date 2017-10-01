@@ -43,6 +43,9 @@ export class ConversionContext {
      */
     private nameSplitter: NameSplitter;
 
+    /**
+     * Generates language output from line results.
+     */
     private outputGenerator: OutputGenerator;
 
     /**
@@ -59,7 +62,7 @@ export class ConversionContext {
         this.language = language;
 
         this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.commandsBag = new CommandsBag(this);
+        this.commandsBag = CommandsBag.forContext(this);
         this.directories = [];
         this.nameSplitter = new NameSplitter();
         this.parser = new GlsParser(this.caseStyleConverterBag, this.commandsBag);

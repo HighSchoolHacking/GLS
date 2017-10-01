@@ -1,8 +1,10 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for retrieving a member variable.
@@ -10,20 +12,21 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class MemberVariableCommand extends Command {
     /**
      * Information on parameters this command takes in.
-     *
-     * @todo Use a value restriction on privacy (once it's implemented).
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the member variable.", true),
-        new SingleParameter("instanceName", "A class instance retrieving a member variable.", true),
-        new SingleParameter("variableName", "The name of the member variable.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.MemberVariable,
+        [],
+        [
+            new SingleParameter("privacy", "The privacy of the member variable.", true),
+            new SingleParameter("instanceName", "A class instance retrieving a member variable.", true),
+            new SingleParameter("variableName", "The name of the member variable.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return MemberVariableCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return MemberVariableCommand.metadata;
     }
 
     /**

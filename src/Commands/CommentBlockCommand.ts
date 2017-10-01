@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for printing a comment block line.
@@ -11,19 +13,22 @@ export class CommentBlockCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new RepeatingParameters(
-            "Contents of the comment block line",
-            [
-                new SingleParameter("word", "A word in the line.", false)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.CommentBlock,
+        [],
+        [
+            new RepeatingParameters(
+                "Contents of the comment block line",
+                [
+                    new SingleParameter("word", "A word in the line.", false)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return CommentBlockCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return CommentBlockCommand.metadata;
     }
 
     /**

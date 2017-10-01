@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for calling a function.
@@ -11,20 +13,23 @@ export class FunctionCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "The name of the function.", true),
-        new RepeatingParameters(
-            "Function parameters.",
-            [
-                new SingleParameter("parameterName", "A named parameter for the function.", true),
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Function,
+        [],
+        [
+            new SingleParameter("name", "The name of the function.", true),
+            new RepeatingParameters(
+                "Function parameters.",
+                [
+                    new SingleParameter("parameterName", "A named parameter for the function.", true),
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return FunctionCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return FunctionCommand.metadata;
     }
 
     /**

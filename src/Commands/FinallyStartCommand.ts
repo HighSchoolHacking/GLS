@@ -1,11 +1,28 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for the beginning of a finally block.
  */
 export class FinallyStartCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.FinallyStart,
+        [1],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return FinallyStartCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

@@ -112,6 +112,121 @@ import { WhileStartCommand } from "./WhileStartCommand";
  */
 export class CommandsBag {
     /**
+     * Initializes a new instance of the CommandsBag class with a conversion context.
+     *
+     * @param context   Driving context for a conversion.
+     * @returns CommandsBag instance for the conversion context.
+     */
+    public static forContext(context: ConversionContext): CommandsBag {
+        return new CommandsBag([
+            new ArrayInitializeCommand(context),
+            new ArrayLengthCommand(context),
+            new ArrayTypeCommand(context),
+            new BreakCommand(context),
+            new CatchEndCommand(context),
+            new CatchStartCommand(context),
+            new ClassEndCommand(context),
+            new ClassStartCommand(context),
+            new CommentBlockCommand(context),
+            new CommentBlockEndCommand(context),
+            new CommentBlockStartCommand(context),
+            new CommentDocEndCommand(context),
+            new CommentDocStartCommand(context),
+            new CommentDocTagCommand(context),
+            new CommentLineCommand(context),
+            new ConcatenateCommand(context),
+            new ConstructorEndCommand(context),
+            new ConstructorStartCommand(context),
+            new ContinueCommand(context),
+            new DictionaryContainsKeyCommand(context),
+            new DictionaryKeysCommand(context),
+            new DictionaryNewCommand(context),
+            new DictionaryNewEndCommand(context),
+            new DictionaryNewStartCommand(context),
+            new DictionaryPairCommand(context),
+            new DictionaryTypeCommand(context),
+            new ElseIfStartCommand(context),
+            new ElseStartCommand(context),
+            new EnumCommand(context),
+            new EnumEndCommand(context),
+            new EnumMemberCommand(context),
+            new EnumStartCommand(context),
+            new FinallyEndCommand(context),
+            new FinallyStartCommand(context),
+            new FileEndCommand(context),
+            new FileStartCommand(context),
+            new ForEachEndCommand(context),
+            new ForEachKeyStartCommand(context),
+            new ForEachPairStartCommand(context),
+            new ForEachStartCommand(context),
+            new ForNumbersStartCommand(context),
+            new ForNumbersEndCommand(context),
+            new FunctionCommand(context),
+            new FunctionStartCommand(context),
+            new FunctionEndCommand(context),
+            new IfEndCommand(context),
+            new IfStartCommand(context),
+            new ImportLocalCommand(context),
+            new ImportPackageCommand(context),
+            new IndexCommand(context),
+            new InterfaceStartCommand(context),
+            new InterfaceEndCommand(context),
+            new InterfaceMethodCommand(context),
+            new IsNotNullCommand(context),
+            new IsNullCommand(context),
+            new LambdaBodyCommand(context),
+            new ListAddListCommand(context),
+            new ListInitializeCommand(context),
+            new ListLengthCommand(context),
+            new ListPopCommand(context),
+            new ListPopFrontCommand(context),
+            new ListPushCommand(context),
+            new LiteralCommand(context),
+            new ListSortCommand(context),
+            new ListTypeCommand(context),
+            new MainContextEndCommand(context),
+            new MainContextStartCommand(context),
+            new MainEndCommand(context),
+            new MainStartCommand(context),
+            new MathAbsoluteCommand(context),
+            new MathFloorCommand(context),
+            new MathMaxCommand(context),
+            new MathMinCommand(context),
+            new MemberFunctionCommand(context),
+            new MemberFunctionDeclareStartCommand(context),
+            new MemberFunctionDeclareEndCommand(context),
+            new MemberVariableCommand(context),
+            new MemberVariableDeclareCommand(context),
+            new NewCommand(context),
+            new NotCommand(context),
+            new OperationCommand(context),
+            new OperatorCommand(context),
+            new ParenthesisCommand(context),
+            new PrintCommand(context),
+            new RestParametersCommand(context),
+            new ReturnCommand(context),
+            new StaticFunctionCommand(context),
+            new StaticFunctionDeclareStartCommand(context),
+            new StaticFunctionDeclareEndCommand(context),
+            new StaticVariableCommand(context),
+            new StringFormatCommand(context),
+            new StringLengthCommand(context),
+            new SuperConstructorCommand(context),
+            new ThisCommand(context),
+            new ThrowExceptionCommand(context),
+            new TryEndCommand(context),
+            new TryStartCommand(context),
+            new TypeCommand(context),
+            new ValueCommand(context),
+            new VariableCommand(context),
+            new VariableInlineCommand(context),
+            new VariableStartCommand(context),
+            new WhileEndCommand(context),
+            new WhileStartCommand(context)
+        ]);
+    }
+
+    /**
      * Globally known commands, keyed by their GLS alias.
      */
     private commands: { [i: string]: Command };
@@ -121,127 +236,39 @@ export class CommandsBag {
      *
      * @param context   The driving context for conversions.
      */
-    public constructor(context: ConversionContext) {
-        this.commands = {
-            [CommandNames.ArrayInitialize]: new ArrayInitializeCommand(context),
-            [CommandNames.ArrayLength]: new ArrayLengthCommand(context),
-            [CommandNames.ArrayType]: new ArrayTypeCommand(context),
-            [CommandNames.Break]: new BreakCommand(context),
-            [CommandNames.CatchEnd]: new CatchEndCommand(context),
-            [CommandNames.CatchStart]: new CatchStartCommand(context),
-            [CommandNames.ClassEnd]: new ClassEndCommand(context),
-            [CommandNames.ClassStart]: new ClassStartCommand(context),
-            [CommandNames.CommentBlock]: new CommentBlockCommand(context),
-            [CommandNames.CommentBlockEnd]: new CommentBlockEndCommand(context),
-            [CommandNames.CommentBlockStart]: new CommentBlockStartCommand(context),
-            [CommandNames.CommentDocEnd]: new CommentDocEndCommand(context),
-            [CommandNames.CommentDocStart]: new CommentDocStartCommand(context),
-            [CommandNames.CommentDocTag]: new CommentDocTagCommand(context),
-            [CommandNames.CommentLine]: new CommentLineCommand(context),
-            [CommandNames.Concatenate]: new ConcatenateCommand(context),
-            [CommandNames.ConstructorEnd]: new ConstructorEndCommand(context),
-            [CommandNames.ConstructorStart]: new ConstructorStartCommand(context),
-            [CommandNames.Continue]: new ContinueCommand(context),
-            [CommandNames.DictionaryContainsKey]: new DictionaryContainsKeyCommand(context),
-            [CommandNames.DictionaryKeys]: new DictionaryKeysCommand(context),
-            [CommandNames.DictionaryNew]: new DictionaryNewCommand(context),
-            [CommandNames.DictionaryNewEnd]: new DictionaryNewEndCommand(context),
-            [CommandNames.DictionaryNewStart]: new DictionaryNewStartCommand(context),
-            [CommandNames.DictionaryPair]: new DictionaryPairCommand(context),
-            [CommandNames.DictionaryType]: new DictionaryTypeCommand(context),
-            [CommandNames.ElseIfStart]: new ElseIfStartCommand(context),
-            [CommandNames.ElseStart]: new ElseStartCommand(context),
-            [CommandNames.Enum]: new EnumCommand(context),
-            [CommandNames.EnumEnd]: new EnumEndCommand(context),
-            [CommandNames.EnumMember]: new EnumMemberCommand(context),
-            [CommandNames.EnumStart]: new EnumStartCommand(context),
-            [CommandNames.FinallyEnd]: new FinallyEndCommand(context),
-            [CommandNames.FinallyStart]: new FinallyStartCommand(context),
-            [CommandNames.FileEnd]: new FileEndCommand(context),
-            [CommandNames.FileStart]: new FileStartCommand(context),
-            [CommandNames.ForEachEnd]: new ForEachEndCommand(context),
-            [CommandNames.ForEachKeyStart]: new ForEachKeyStartCommand(context),
-            [CommandNames.ForEachPairStart]: new ForEachPairStartCommand(context),
-            [CommandNames.ForEachStart]: new ForEachStartCommand(context),
-            [CommandNames.ForNumbersStart]: new ForNumbersStartCommand(context),
-            [CommandNames.ForNumbersEnd]: new ForNumbersEndCommand(context),
-            [CommandNames.Function]: new FunctionCommand(context),
-            [CommandNames.FunctionStart]: new FunctionStartCommand(context),
-            [CommandNames.FunctionEnd]: new FunctionEndCommand(context),
-            [CommandNames.IfEnd]: new IfEndCommand(context),
-            [CommandNames.IfStart]: new IfStartCommand(context),
-            [CommandNames.ImportLocal]: new ImportLocalCommand(context),
-            [CommandNames.ImportPackage]: new ImportPackageCommand(context),
-            [CommandNames.Index]: new IndexCommand(context),
-            [CommandNames.InterfaceStart]: new InterfaceStartCommand(context),
-            [CommandNames.InterfaceEnd]: new InterfaceEndCommand(context),
-            [CommandNames.InterfaceMethod]: new InterfaceMethodCommand(context),
-            [CommandNames.IsNotNull]: new IsNotNullCommand(context),
-            [CommandNames.IsNull]: new IsNullCommand(context),
-            [CommandNames.LambdaBody]: new LambdaBodyCommand(context),
-            [CommandNames.ListAddList]: new ListAddListCommand(context),
-            [CommandNames.ListInitialize]: new ListInitializeCommand(context),
-            [CommandNames.ListLength]: new ListLengthCommand(context),
-            [CommandNames.ListPop]: new ListPopCommand(context),
-            [CommandNames.ListPopFront]: new ListPopFrontCommand(context),
-            [CommandNames.ListPush]: new ListPushCommand(context),
-            [CommandNames.Literal]: new LiteralCommand(context),
-            [CommandNames.ListSort]: new ListSortCommand(context),
-            [CommandNames.ListType]: new ListTypeCommand(context),
-            [CommandNames.MainContextEnd]: new MainContextEndCommand(context),
-            [CommandNames.MainContextStart]: new MainContextStartCommand(context),
-            [CommandNames.MainEnd]: new MainEndCommand(context),
-            [CommandNames.MainStart]: new MainStartCommand(context),
-            [CommandNames.MathAbsolute]: new MathAbsoluteCommand(context),
-            [CommandNames.MathFloor]: new MathFloorCommand(context),
-            [CommandNames.MathMax]: new MathMaxCommand(context),
-            [CommandNames.MathMin]: new MathMinCommand(context),
-            [CommandNames.MemberFunction]: new MemberFunctionCommand(context),
-            [CommandNames.MemberFunctionDeclareStart]: new MemberFunctionDeclareStartCommand(context),
-            [CommandNames.MemberFunctionDeclareEnd]: new MemberFunctionDeclareEndCommand(context),
-            [CommandNames.MemberVariable]: new MemberVariableCommand(context),
-            [CommandNames.MemberVariableDeclare]: new MemberVariableDeclareCommand(context),
-            [CommandNames.New]: new NewCommand(context),
-            [CommandNames.Not]: new NotCommand(context),
-            [CommandNames.Operation]: new OperationCommand(context),
-            [CommandNames.Operator]: new OperatorCommand(context),
-            [CommandNames.Parenthesis]: new ParenthesisCommand(context),
-            [CommandNames.Print]: new PrintCommand(context),
-            [CommandNames.RestParameters]: new RestParametersCommand(context),
-            [CommandNames.Return]: new ReturnCommand(context),
-            [CommandNames.StaticFunction]: new StaticFunctionCommand(context),
-            [CommandNames.StaticFunctionDeclareStart]: new StaticFunctionDeclareStartCommand(context),
-            [CommandNames.StaticFunctionDeclareEnd]: new StaticFunctionDeclareEndCommand(context),
-            [CommandNames.StaticVariable]: new StaticVariableCommand(context),
-            [CommandNames.StringFormat]: new StringFormatCommand(context),
-            [CommandNames.StringLength]: new StringLengthCommand(context),
-            [CommandNames.SuperConstructor]: new SuperConstructorCommand(context),
-            [CommandNames.This]: new ThisCommand(context),
-            [CommandNames.ThrowException]: new ThrowExceptionCommand(context),
-            [CommandNames.TryEnd]: new TryEndCommand(context),
-            [CommandNames.TryStart]: new TryStartCommand(context),
-            [CommandNames.Type]: new TypeCommand(context),
-            [CommandNames.Value]: new ValueCommand(context),
-            [CommandNames.Variable]: new VariableCommand(context),
-            [CommandNames.VariableInline]: new VariableInlineCommand(context),
-            [CommandNames.VariableStart]: new VariableStartCommand(context),
-            [CommandNames.WhileEnd]: new WhileEndCommand(context),
-            [CommandNames.WhileStart]: new WhileStartCommand(context)
-        };
+    public constructor(commands: Command[]) {
+        for (const command of commands) {
+            this.addCommand(command);
+        }
+    }
+
+    /**
+     * Adds a command to the bag.
+     *
+     * @param command   Command to add.
+     */
+    public addCommand(command: Command): void {
+        const metadata = command.getMetadata();
+
+        if (this.commands.hasOwnProperty(metadata.name)) {
+            throw new Error(`Cannot add duplicate command: '${metadata.name}'.`);
+        }
+
+        this.commands[metadata.name] = command;
     }
 
     /**
      * Retrieves the command under the given alias.
      *
-     * @param name   The alias of a command.
+     * @param name   The unique name of a command.
      * @returns The command under the given alias.
      */
-    public getCommand(alias: string): Command {
-        if (!this.commands.hasOwnProperty(alias)) {
-            throw new Error(`Unknown command requested: '${alias}'.`);
+    public getCommand(name: string): Command {
+        if (!this.commands.hasOwnProperty(name)) {
+            throw new Error(`Unknown command requested: '${name}'.`);
         }
 
-        return this.commands[alias];
+        return this.commands[name];
     }
 
     /**

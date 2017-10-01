@@ -1,8 +1,10 @@
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
 
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandNames } from "./CommandNames";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for returning in a function.
@@ -11,15 +13,18 @@ export class ReturnCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("value", "A value to return.", false)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Return,
+        [],
+        [
+            new SingleParameter("value", "A value to return.", false)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ReturnCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ReturnCommand.metadata;
     }
 
     /**

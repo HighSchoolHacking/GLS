@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a for loop over numbers.
@@ -11,18 +13,21 @@ export class ForNumbersStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "The name of the loop variable.", true),
-        new SingleParameter("type", "The type of the loop variable", true),
-        new SingleParameter("start", "What the loop variable starts at.", true),
-        new SingleParameter("end", "What the loop variable ends at.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ForNumbersStart,
+        [1],
+        [
+            new SingleParameter("name", "The name of the loop variable.", true),
+            new SingleParameter("type", "The type of the loop variable", true),
+            new SingleParameter("start", "What the loop variable starts at.", true),
+            new SingleParameter("end", "What the loop variable ends at.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ForNumbersStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ForNumbersStartCommand.metadata;
     }
 
     /**

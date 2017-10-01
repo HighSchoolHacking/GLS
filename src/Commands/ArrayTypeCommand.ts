@@ -1,24 +1,29 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for declaring an array type.
  */
 export class ArrayTypeCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("type", "The type of object.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ArrayType,
+        [],
+        [
+            new SingleParameter("type", "The type of object.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ArrayTypeCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ArrayTypeCommand.metadata;
     }
 
     /**

@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a catch block.
@@ -11,16 +13,19 @@ export class CatchStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("exception", "Target exception.", true),
-        new SingleParameter("alias", "Alias for target exception.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.CatchStart,
+        [1],
+        [
+            new SingleParameter("exception", "Target exception.", true),
+            new SingleParameter("alias", "Alias for target exception.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return CatchStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return CatchStartCommand.metadata;
     }
 
     /**

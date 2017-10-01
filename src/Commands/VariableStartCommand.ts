@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the start of declaring a variable.
@@ -11,17 +13,20 @@ export class VariableStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "The name of the variable.", true),
-        new SingleParameter("type", "The type of the variable.", true),
-        new SingleParameter("value", "The start of the value of the variable.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.VariableStart,
+        [1],
+        [
+            new SingleParameter("name", "The name of the variable.", true),
+            new SingleParameter("type", "The type of the variable.", true),
+            new SingleParameter("value", "The start of the value of the variable.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return VariableStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return VariableStartCommand.metadata;
     }
 
     /**

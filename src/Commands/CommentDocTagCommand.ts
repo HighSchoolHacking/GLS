@@ -1,9 +1,11 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for printing a documentation tag.
@@ -20,17 +22,20 @@ export class CommentDocTagCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("tag", "The name of the tag.", true),
-        new SingleParameter("parameter", "An optional descriptor for the tag.", false),
-        new RepeatingParameters("Comments regarding the tag", [])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.CommentDocTag,
+        [],
+        [
+            new SingleParameter("tag", "The name of the tag.", true),
+            new SingleParameter("parameter", "An optional descriptor for the tag.", false),
+            new RepeatingParameters("Comments regarding the tag", [])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return CommentDocTagCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return CommentDocTagCommand.metadata;
     }
 
     /**

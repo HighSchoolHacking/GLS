@@ -1,10 +1,27 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for printing the "break" keyword.
  */
 export class BreakCommand extends Command {
+    /**
+     * Metadata on the command.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Break,
+        [],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return BreakCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

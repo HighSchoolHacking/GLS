@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for wrapping with parenthesis.
@@ -11,19 +13,22 @@ export class ParenthesisCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new RepeatingParameters(
-            "Contents within the parenthesis.",
-            [
-                new SingleParameter("contents", "Contents within the parenthesis.", false)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Parenthesis,
+        [],
+        [
+            new RepeatingParameters(
+                "Contents within the parenthesis.",
+                [
+                    new SingleParameter("contents", "Contents within the parenthesis.", false)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ParenthesisCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ParenthesisCommand.metadata;
     }
 
     /**

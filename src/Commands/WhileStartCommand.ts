@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a while loop.
@@ -11,15 +13,18 @@ export class WhileStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("conditional", "A conditional to check.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.WhileStart,
+        [1],
+        [
+            new SingleParameter("conditional", "A conditional to check.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return WhileStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return WhileStartCommand.metadata;
     }
 
     /**

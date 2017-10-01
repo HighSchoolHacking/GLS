@@ -1,7 +1,9 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for creating an array that takes in unassigned arguments.
@@ -10,16 +12,19 @@ export class RestParametersCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "A name for the rest parameter array.", true),
-        new SingleParameter("type", "A type for the rest parameter array.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.RestParameters,
+        [],
+        [
+            new SingleParameter("name", "A name for the rest parameter array.", true),
+            new SingleParameter("type", "A type for the rest parameter array.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return RestParametersCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return RestParametersCommand.metadata;
     }
 
     /**

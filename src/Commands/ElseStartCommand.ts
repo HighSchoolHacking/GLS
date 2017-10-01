@@ -1,11 +1,28 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for the beginning of an else statement.
  */
 export class ElseStartCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ElseStart,
+        [1],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return ElseStartCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

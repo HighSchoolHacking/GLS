@@ -1,8 +1,10 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for declaring a member variable.
@@ -10,20 +12,21 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class MemberVariableDeclareCommand extends Command {
     /**
      * Information on parameters this command takes in.
-     *
-     * @todo Use a value restriction on privacy (once it's implemented).
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the member variable.", true),
-        new SingleParameter("name", "The name of the member variable.", true),
-        new SingleParameter("type", "The type of the variable.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.MemberVariableDeclare,
+        [],
+        [
+            new SingleParameter("privacy", "The privacy of the member variable.", true),
+            new SingleParameter("name", "The name of the member variable.", true),
+            new SingleParameter("type", "The type of the variable.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return MemberVariableDeclareCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return MemberVariableDeclareCommand.metadata;
     }
 
     /**

@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for concatenating strings.
@@ -11,21 +13,24 @@ export class ConcatenateCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("string", "A string to concatenate.", true),
-        new SingleParameter("string", "A string to concatenate.", true),
-        new RepeatingParameters(
-            "Additional strings to concatenate.",
-            [
-                new SingleParameter("string", "A string to concatenate.", false)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.Concatenate,
+        [],
+        [
+            new SingleParameter("string", "A string to concatenate.", true),
+            new SingleParameter("string", "A string to concatenate.", true),
+            new RepeatingParameters(
+                "Additional strings to concatenate.",
+                [
+                    new SingleParameter("string", "A string to concatenate.", false)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ConcatenateCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ConcatenateCommand.metadata;
     }
 
     /**

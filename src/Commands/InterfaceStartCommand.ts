@@ -1,9 +1,11 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for starting to declare an interface.
@@ -12,23 +14,26 @@ export class InterfaceStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("InterfaceName", "The Interface name.", true),
-        new RepeatingParameters(
-            "Parent interfaces.",
-            [
-                new SingleParameter(
-                    "parentInterfaceName",
-                    "Names of parent interfaces.",
-                    true)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.InterfaceStart,
+        [1],
+        [
+            new SingleParameter("InterfaceName", "The Interface name.", true),
+            new RepeatingParameters(
+                "Parent interfaces.",
+                [
+                    new SingleParameter(
+                        "parentInterfaceName",
+                        "Names of parent interfaces.",
+                        true)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return InterfaceStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return InterfaceStartCommand.metadata;
     }
 
     /**

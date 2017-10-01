@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a foreach loop over a container's pairs.
@@ -11,20 +13,23 @@ export class ForEachPairStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("container", "A container to iterate over.", true),
-        new SingleParameter("pairName", "The name of the pair variable", true),
-        new SingleParameter("keyName", "The name of the key variable.", true),
-        new SingleParameter("keyType", "The type of the key variable.", true),
-        new SingleParameter("valueName", "The name of the value variable.", true),
-        new SingleParameter("valueType", "The type of the value variable.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ForEachPairStart,
+        [1],
+        [
+            new SingleParameter("container", "A container to iterate over.", true),
+            new SingleParameter("pairName", "The name of the pair variable", true),
+            new SingleParameter("keyName", "The name of the key variable.", true),
+            new SingleParameter("keyType", "The type of the key variable.", true),
+            new SingleParameter("valueName", "The name of the value variable.", true),
+            new SingleParameter("valueType", "The type of the value variable.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ForEachPairStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ForEachPairStartCommand.metadata;
     }
 
     /**

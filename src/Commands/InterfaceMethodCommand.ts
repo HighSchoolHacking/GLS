@@ -1,8 +1,10 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for declaring methods within an interface.
@@ -11,28 +13,31 @@ export class InterfaceMethodCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("MethodName", "The method name.", true),
-        new SingleParameter("returnType", "Return type of the method", true),
-        new RepeatingParameters(
-            "Method arguments.",
-            [
-                new SingleParameter(
-                    "argumentName",
-                    "Name of argument.",
-                    true),
-                new SingleParameter(
-                    "argumentType",
-                    "Type of argument.",
-                    true)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.InterfaceMethod,
+        [],
+        [
+            new SingleParameter("MethodName", "The method name.", true),
+            new SingleParameter("returnType", "Return type of the method", true),
+            new RepeatingParameters(
+                "Method arguments.",
+                [
+                    new SingleParameter(
+                        "argumentName",
+                        "Name of argument.",
+                        true),
+                    new SingleParameter(
+                        "argumentType",
+                        "Type of argument.",
+                        true)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return InterfaceMethodCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return InterfaceMethodCommand.metadata;
     }
 
     /**

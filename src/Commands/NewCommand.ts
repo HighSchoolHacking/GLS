@@ -1,10 +1,12 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
 import { NewInstantiationSyntaxKind } from "../Languages/Properties/NewProperties";
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for instantiating an object of a given type.
@@ -13,14 +15,17 @@ export class NewCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("typeName", "The type of the object to instantiate.", true),
-        new RepeatingParameters(
-            "Arguments to pass into the constructor",
-            [
-                new SingleParameter("argument", "Argument to pass into the constructor", false)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.New,
+        [],
+        [
+            new SingleParameter("typeName", "The type of the object to instantiate.", true),
+            new RepeatingParameters(
+                "Arguments to pass into the constructor",
+                [
+                    new SingleParameter("argument", "Argument to pass into the constructor", false)
+                ])
+        ]);
 
     /**
      * Renderers for each possible render style.
@@ -43,10 +48,10 @@ export class NewCommand extends Command {
     }
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return NewCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return NewCommand.metadata;
     }
 
     /**

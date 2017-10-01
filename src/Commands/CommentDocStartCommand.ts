@@ -1,10 +1,27 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for starting a documentation block.
  */
 export class CommentDocStartCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.CommentDocStart,
+        [],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return CommentDocStartCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

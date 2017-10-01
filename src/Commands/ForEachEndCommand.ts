@@ -1,11 +1,28 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * A command for the end of a foreach loop.
  */
 export class ForEachEndCommand extends Command {
+    /**
+     * Information on parameters this command takes in.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ForEachEnd,
+        [-1],
+        []);
+
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+        return ForEachEndCommand.metadata;
+    }
+
     /**
      * Renders the command for a language with the given parameters.
      *

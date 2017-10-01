@@ -1,9 +1,11 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for the beginning of a constructor.
@@ -12,22 +14,25 @@ export class ConstructorStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the constructor.", true),
-        new SingleParameter("className", "The name of the class.", true),
-        new RepeatingParameters(
-            "Function parameters.",
-            [
-                new SingleParameter("parameterName", "A named parameter for the constructor.", true),
-                new SingleParameter("parameterType", "The type of the parameter.", true)
-            ])
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ConstructorStart,
+        [1],
+        [
+            new SingleParameter("privacy", "The privacy of the constructor.", true),
+            new SingleParameter("className", "The name of the class.", true),
+            new RepeatingParameters(
+                "Function parameters.",
+                [
+                    new SingleParameter("parameterName", "A named parameter for the constructor.", true),
+                    new SingleParameter("parameterType", "The type of the parameter.", true)
+                ])
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ConstructorStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ConstructorStartCommand.metadata;
     }
 
     /**

@@ -3,18 +3,18 @@ import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { Command } from "./Command";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for importing items from a file or package.
  */
 export abstract class ImportCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Information on parameters import commands take in.
      */
-    private static parameters: Parameter[] = [
+    protected static parameters: Parameter[] = [
         new RepeatingParameters(
             "Path for the package to import from.",
             [
@@ -29,16 +29,9 @@ export abstract class ImportCommand extends Command {
     ];
 
     /**
-     * Resolves absolute import paths to a file-relative import paths.
+     * Resolves absolute import paths to file-relative import paths.
      */
     private static pathResolver: ImportPathResolver = new ImportPathResolver();
-
-    /**
-     * @returns Information on parameters this command takes in.
-     */
-    public getParameters(): Parameter[] {
-        return ImportCommand.parameters;
-    }
 
     /**
      * Renders the command for a language with the given parameters.

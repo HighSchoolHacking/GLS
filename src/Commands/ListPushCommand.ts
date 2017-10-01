@@ -1,7 +1,9 @@
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
+import { CommandNames } from "./CommandNames";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
 
 /**
  * A command for a list push statement.
@@ -10,16 +12,19 @@ export class ListPushCommand extends NativeCallCommand {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("name", "The name of the list.", true),
-        new SingleParameter("value", "An item to push into the list.", true),
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.ListPush,
+        [],
+        [
+            new SingleParameter("name", "The name of the list.", true),
+            new SingleParameter("value", "An item to push into the list.", true),
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return ListPushCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return ListPushCommand.metadata;
     }
 
     /**

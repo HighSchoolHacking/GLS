@@ -1,9 +1,11 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for starting a file.
@@ -12,20 +14,23 @@ export class FileStartCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new RepeatingParameters(
-            "Directories leading to the file.",
-            [
-                new SingleParameter("directory", "Directory leading to the file", false)
-            ]),
-        new SingleParameter("fileStart", "The name of the file.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.FileStart,
+        [1],
+        [
+            new RepeatingParameters(
+                "Directories leading to the file.",
+                [
+                    new SingleParameter("directory", "Directory leading to the file", false)
+                ]),
+            new SingleParameter("fileStart", "The name of the file.", true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return FileStartCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return FileStartCommand.metadata;
     }
 
     /**

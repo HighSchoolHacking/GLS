@@ -1,9 +1,11 @@
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { RepeatingParameters } from "./Parameters/RepeatingParameters";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for a lambda function body.
@@ -12,34 +14,37 @@ export class LambdaBodyCommand extends Command {
     /**
      * Information on parameters this command takes in.
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter(
-            "returnType",
-            "Return type of the lambda function",
-            true),
-        new RepeatingParameters(
-            "Lambda function parameters.",
-            [
-                new SingleParameter(
-                    "parameterName",
-                    "A named parameter for the lambda function.",
-                    true),
-                new SingleParameter(
-                    "parameterType",
-                    "The type of the parameter.",
-                    true)
-            ]),
-        new SingleParameter(
-            "functionBody",
-            "The actual body of the lambda function",
-            true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.LambdaBody,
+        [],
+        [
+            new SingleParameter(
+                "returnType",
+                "Return type of the lambda function",
+                true),
+            new RepeatingParameters(
+                "Lambda function parameters.",
+                [
+                    new SingleParameter(
+                        "parameterName",
+                        "A named parameter for the lambda function.",
+                        true),
+                    new SingleParameter(
+                        "parameterType",
+                        "The type of the parameter.",
+                        true)
+                ]),
+            new SingleParameter(
+                "functionBody",
+                "The actual body of the lambda function",
+                true)
+        ]);
 
     /**
-     * @returns Information on parameters this command takes in.
+     * @returns Metadata on the command.
      */
-    public getParameters(): Parameter[] {
-        return LambdaBodyCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return LambdaBodyCommand.metadata;
     }
 
     /**

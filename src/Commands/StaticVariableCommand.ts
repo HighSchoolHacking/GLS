@@ -1,8 +1,10 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
+import { CommandNames } from "./CommandNames";
 import { LineResults } from "./LineResults";
-import { Parameter } from "./Parameters/Parameter";
-import { SingleParameter } from "./Parameters/SingleParameter";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { Parameter } from "./Metadata/Parameters/Parameter";
+import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
  * A command for retrieving a static variable.
@@ -10,20 +12,20 @@ import { SingleParameter } from "./Parameters/SingleParameter";
 export class StaticVariableCommand extends Command {
     /**
      * Information on parameters this command takes in.
-     *
-     * @todo Use a value restriction on privacy (once it's implemented).
      */
-    private static parameters: Parameter[] = [
-        new SingleParameter("privacy", "The privacy of the static variable.", true),
-        new SingleParameter("className", "The name of the class the function is on.", true),
-        new SingleParameter("variableName", "The name of the static variable.", true)
-    ];
+    private static metadata: CommandMetadata = new CommandMetadata(
+        CommandNames.StaticVariable,
+        [],
+        [
+            new SingleParameter("privacy", "The privacy of the static variable.", true),
+            new SingleParameter("className", "The name of the class the function is on.", true),
+            new SingleParameter("variableName", "The name of the static variable.", true)
+        ]);
 
-    /**
-     * @returns Information on parameters this command takes in.
+    /**Metadata on the command.@returns Information on parameters this command takes in.
      */
-    public getParameters(): Parameter[] {
-        return StaticVariableCommand.parameters;
+    public getMetadata(): CommandMetadata {
+        return StaticVariableCommand.metadata;
     }
 
     /**
