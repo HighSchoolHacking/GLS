@@ -16,6 +16,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareStart)
         .withDescription("Starts a member function.")
+        .withIndentation([1])
         .withParameters([
             new SingleParameter("privacy", "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
