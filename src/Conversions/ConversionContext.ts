@@ -1,4 +1,5 @@
 import { CommandsBag } from "../Commands/CommandsBag";
+import { CommandsBagFactory } from "../Commands/CommandsBagFactory";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
@@ -14,7 +15,7 @@ import { OutputGenerator } from "./OutputGenerator";
  */
 export class ConversionContext {
     /**
-     * Container for case style converters.
+     * Holds case style converters, keyed by their case style.
      */
     private caseStyleConverterBag: CaseStyleConverterBag;
 
@@ -62,7 +63,7 @@ export class ConversionContext {
         this.language = language;
 
         this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.commandsBag = CommandsBag.forContext(this);
+        this.commandsBag = CommandsBagFactory.forContext(this);
         this.directories = [];
         this.nameSplitter = new NameSplitter();
         this.parser = new GlsParser(this.caseStyleConverterBag, this.commandsBag);

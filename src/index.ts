@@ -3,6 +3,7 @@ export { CaseStyleConverterBag } from "./Conversions/Casing/CaseStyleConverterBa
 export { ConversionContext } from "./Conversions/ConversionContext";
 export { Command } from "./Commands/Command";
 export { CommandsBag } from "./Commands/CommandsBag";
+export { CommandsBagFactory } from "./Commands/CommandsBagFactory";
 export { CommandNames } from "./Commands/CommandNames";
 export { CommandMetadata } from "./Commands/Metadata/CommandMetadata";
 export { IParameter } from "./Commands/Metadata/Parameters/Parameter";

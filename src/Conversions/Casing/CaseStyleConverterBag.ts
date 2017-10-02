@@ -13,7 +13,7 @@ import { PascalCaseConverter } from "./PascalCaseConverter";
 import { SnakeCaseConverter } from "./SnakeCaseConverter";
 
 /**
- * A container for case style converters.
+ * Holds case style converters, keyed by their case style.
  */
 export class CaseStyleConverterBag {
     /**
