@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { CommandsBag } from "../../../lib/Commands/CommandsBag";
+import { CommandsBagFactory } from "../../../lib/Commands/CommandsBagFactory";
 import { LiteralCommand } from "../../../lib/Commands/LiteralCommand";
 import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
 import { TypeScript } from "../../../lib/Languages/TypeScript";
@@ -10,7 +10,7 @@ describe("CommandsBag", () => {
     describe("renderCommand", () => {
         it("retrieves a command by name", () => {
             // Arrange
-            const commandsBag = CommandsBag.forContext(new ConversionContext(new TypeScript()));
+            const commandsBag = CommandsBagFactory.forLanguage(new TypeScript());
 
             // Act
             const command = commandsBag.getCommand("literal");
@@ -21,7 +21,7 @@ describe("CommandsBag", () => {
 
         it("throws an error for an unknown command", () => {
             // Arrange
-            const commandsBag = CommandsBag.forContext(new ConversionContext(new TypeScript()));
+            const commandsBag = CommandsBagFactory.forLanguage(new TypeScript());
 
             // Act
             const action = () => commandsBag.getCommand("definitely not a command");

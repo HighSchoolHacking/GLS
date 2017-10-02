@@ -9,12 +9,12 @@ import { ParametersValidator } from "./ParametersValidator";
  */
 export class GlsParser {
     /**
-     * A bag for globally known commands.
+     * Holds case style converters, keyed by their case style.
      */
     private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
-     * A bag for globally known commands.
+     * Hodls commands indexed by name.
      */
     private commandsBag: CommandsBag;
 
@@ -26,7 +26,8 @@ export class GlsParser {
     /**
      * Initializes a new instance of the GlsParser class.
      *
-     * @param context   A driving context for converting commands.
+     * @param caseStyleConverterBag   Holds case style converters, keyed by their case style.
+     * @param commandsBag   Holds commands indexed by name.
      */
     public constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
         this.caseStyleConverterBag = caseStyleConverterBag;
