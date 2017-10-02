@@ -44,8 +44,3 @@ class Person:
         self.__name = name
         self.__age = age
 ```
-
-Default/initial member variable values are not yet available pending JavaScript's [ESnext class fields proposal](https://github.com/tc39/proposal-class-fields).
-
-
-

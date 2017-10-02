@@ -1,6 +1,6 @@
-# Statics
+# Static Functions
 
-GLS syntax for static functions behave almost identical to the member equivalents. The only difference is that accessing them takes in the class name instead of an instance reference.
+GLS syntax for static functions behaves almost identically to the member equivalents. The only difference is that accessing them takes in the class name instead of an instance reference.
 
 ```gls
 class start : Utilities
@@ -9,7 +9,7 @@ class start : Utilities
 
         for each start : words string word
             if start : { operation : { string length : word } (greater than) { string length : longest } }
-            operation : longest equals word            
+            operation : longest equals word
         for each end
 
         static function : public Utilities log word
@@ -74,6 +74,3 @@ class Utilities:
     def log(word):
         print("Logging: " + word)
 ```
-
-> Static variables are not yet a part of the ratified JavaScript specification pending the [ESnext class fields proposal](https://github.com/tc39/proposal-class-fields).
-> Use Babel's [Class properties transform](https://babeljs.io/docs/plugins/transform-class-properties/) or similar.
