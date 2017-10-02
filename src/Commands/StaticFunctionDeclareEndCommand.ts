@@ -6,9 +6,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Ends a static function.
  */
 export class StaticFunctionDeclareEndCommand extends BlockEndCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunctionDeclareEnd)
         .withDescription("Ends a static function.")
         .withIndentation([-1]);

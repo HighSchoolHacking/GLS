@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Checks whether a variable is not null.
  */
 export class IsNotNullCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IsNotNull)
         .withDescription("Checks whether a variable is not null.")
         .withParameters([

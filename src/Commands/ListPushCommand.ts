@@ -8,9 +8,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Adds an item to a list.
  */
 export class ListPushCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPush)
         .withDescription("Adds an item to a list.")
         .withParameters([

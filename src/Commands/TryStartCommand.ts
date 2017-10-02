@@ -8,9 +8,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Starts a try block.
  */
 export class TryStartCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryStart)
         .withDescription("Starts a try block.")
         .withIndentation([1]);

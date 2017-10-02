@@ -9,9 +9,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Computes the absolute value of a number.
  */
 export class MathAbsoluteCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathAbsolute)
         .withDescription("Computes the absolute value of a number.")
         .withParameters([

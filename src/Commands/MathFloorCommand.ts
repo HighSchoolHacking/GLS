@@ -9,9 +9,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Rounds a number down to the nearest integer.
  */
 export class MathFloorCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathFloor)
         .withDescription("Rounds a number down to the nearest integer.")
         .withParameters([

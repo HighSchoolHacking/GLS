@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Logically inverts a value.
  */
 export class NotCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Not)
         .withDescription("Logically inverts a value.")
         .withParameters([

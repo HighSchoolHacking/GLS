@@ -9,9 +9,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Returns a value.
  */
 export class ReturnCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Return)
         .withDescription("Returns a value.")
         .withParameters([

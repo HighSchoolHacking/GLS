@@ -9,9 +9,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Declares a method within an interface.
  */
 export class InterfaceMethodCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceMethod)
         .withDescription("Declares a method within an interface.")
         .withParameters([

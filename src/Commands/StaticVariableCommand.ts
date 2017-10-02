@@ -9,9 +9,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Retrieves a static variable.
  */
 export class StaticVariableCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticVariable)
         .withDescription("Retrieves a static variable.")
         .withParameters([

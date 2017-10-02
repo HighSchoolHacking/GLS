@@ -6,9 +6,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Ends an interface declaration.
  */
 export class InterfaceEndCommand extends BlockEndCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceEnd)
         .withDescription("Ends an interface declaration.")
         .withIndentation([-1]);

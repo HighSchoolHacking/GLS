@@ -10,9 +10,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Calls a static function.
  */
 export class StaticFunctionCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunction)
         .withDescription("Calls a static function.")
         .withIndentation([1])

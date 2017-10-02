@@ -9,9 +9,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Gets the larger of two numbers.
  */
 export class MathMaxCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathMax)
         .withDescription("Gets the larger of two numbers.")
         .withParameters([

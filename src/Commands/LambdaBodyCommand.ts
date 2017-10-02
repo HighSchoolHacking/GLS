@@ -10,9 +10,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * The body of a lambda function.
  */
 export class LambdaBodyCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.LambdaBody)
         .withDescription("The body of a lambda function.")
         .withParameters([

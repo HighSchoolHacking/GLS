@@ -9,9 +9,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Wraps contents with parenthesis.
  */
 export class ParenthesisCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Parenthesis)
         .withDescription("Wraps contents with parenthesis.")
         .withParameters([

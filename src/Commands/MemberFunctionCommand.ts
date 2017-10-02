@@ -10,9 +10,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Starts a member function.
  */
 export class MemberFunctionCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunction)
         .withDescription("Starts a member function.")
         .withParameters([

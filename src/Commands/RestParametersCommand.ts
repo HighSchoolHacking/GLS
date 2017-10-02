@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Creates an array for unassigned arguments.
  */
 export class RestParametersCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.RestParameters)
         .withDescription("Creates an array for unassigned arguments.")
         .withParameters([

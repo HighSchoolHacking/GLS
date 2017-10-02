@@ -8,9 +8,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Ends a main function.
  */
 export class MainEndCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainEnd)
         .withDescription("Ends a main function.")
         .withIndentation([-1]);

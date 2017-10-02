@@ -9,9 +9,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Gets the smaller of two numbers.
  */
 export class MathMinCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathMin)
         .withDescription("Gets the smaller of two numbers.")
         .withParameters([

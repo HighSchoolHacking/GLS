@@ -8,9 +8,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Sorts a list in-place.
  */
 export class ListSortCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSort)
         .withDescription("Sorts a list in-place.")
         .withParameters([

@@ -8,9 +8,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Pops the first item from a list.
  */
 export class ListPopFrontCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPopFront)
         .withDescription("Pops the first item from a list.")
         .withParameters([

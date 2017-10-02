@@ -8,9 +8,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Pops the last item out of a list.
  */
 export class ListPopCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPop)
         .withDescription("Pops the last item out of a list.")
         .withParameters([

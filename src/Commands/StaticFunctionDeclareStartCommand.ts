@@ -11,9 +11,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Starts a static function.
  */
 export class StaticFunctionDeclareStartCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunctionDeclareStart)
         .withDescription("Starts a static function.")
         .withIndentation([1])

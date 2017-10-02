@@ -9,9 +9,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Calls a parent class constructor.
  */
 export class SuperConstructorCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.SuperConstructor)
         .withDescription("Calls a parent class constructor.")
         .withParameters([

@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Declares a list type.
  */
 export class ListTypeCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListType)
         .withDescription("Declares a list type.")
         .withParameters([

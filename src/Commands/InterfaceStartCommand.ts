@@ -10,9 +10,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Starts an interface declaration.
  */
 export class InterfaceStartCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceStart)
         .withDescription("Starts an interface declaration.")
         .withIndentation([1])

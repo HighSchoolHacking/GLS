@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Declares a variable.
  */
 export class VariableCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Variable)
         .withDescription("Declares a variable.")
         .withParameters([

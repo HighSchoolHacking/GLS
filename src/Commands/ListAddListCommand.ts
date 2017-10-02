@@ -8,9 +8,9 @@ import { NativeCallCommand } from "./NativeCallCommand";
  * Adds everything in one list to another.
  */
 export class ListAddListCommand extends NativeCallCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListAddList)
         .withDescription("Adds everything in one list to another.")
         .withParameters([

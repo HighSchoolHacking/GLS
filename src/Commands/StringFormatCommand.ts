@@ -10,9 +10,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Concatenates multiple other values into a single string.
  */
 export class StringFormatCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringFormat)
         .withDescription("Concatenates multiple other values into a single string.")
         .withParameters([

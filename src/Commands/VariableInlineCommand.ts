@@ -8,9 +8,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Declares a variable inline (without a preceding 'var ' equivalent).
  */
 export class VariableInlineCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableInline)
         .withDescription("Declares a variable inline (without a preceding 'var ' equivalent).")
         .withParameters([

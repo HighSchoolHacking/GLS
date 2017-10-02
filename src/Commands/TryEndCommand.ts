@@ -7,9 +7,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Ends a try block.
  */
 export class TryEndCommand extends BlockEndCommand {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryEnd)
         .withDescription("Ends a try block.")
         .withIndentation([-1]);

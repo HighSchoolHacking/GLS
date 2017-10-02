@@ -11,9 +11,9 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
  * Instantiates a new class instance.
  */
 export class NewCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.New)
         .withDescription("Instantiates a new class instance.")
         .withParameters([

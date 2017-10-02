@@ -7,9 +7,9 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
  * Prints the 'this' keyword."
  */
 export class ThisCommand extends Command {
-	/**
-	 * Metadata on the command.
-	 */
+    /**
+     * Metadata on the command.
+     */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.This)
         .withDescription("Prints the 'this' keyword.");
 
