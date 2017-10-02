@@ -7,16 +7,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a function.
+ * Starts a function.
  */
 export class FunctionStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.FunctionStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FunctionStart)
+        .withDescription("Starts a function.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),
             new RepeatingParameters(

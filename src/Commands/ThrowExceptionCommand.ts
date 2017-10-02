@@ -6,18 +6,17 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command to throw an exception.
+ * Throws an exception.
  */
 export class ThrowExceptionCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ThrowException,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ThrowException)
+        .withDescription("Throws an exception.")
+        .withParameters([
             new SingleParameter("exception", "Exception to throw.", true),
-            new SingleParameter("message", "Message to attach to exception.", true)
+            new SingleParameter("message", "Message to attach to the exception.", true)
         ]);
 
     /**

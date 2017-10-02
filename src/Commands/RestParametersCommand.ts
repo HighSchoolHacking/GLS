@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for creating an array that takes in unassigned arguments.
+ * Creates an array for unassigned arguments.
  */
 export class RestParametersCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.RestParameters,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.RestParameters)
+        .withDescription("Creates an array for unassigned arguments.")
+        .withParameters([
             new SingleParameter("name", "A name for the rest parameter array.", true),
             new SingleParameter("type", "A type for the rest parameter array.", true)
         ]);

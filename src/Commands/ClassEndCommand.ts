@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a class declaration.
+ * Ends a class declaration.
  */
 export class ClassEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ClassEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ClassEnd)
+        .withDescription("Ends a class declaration.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

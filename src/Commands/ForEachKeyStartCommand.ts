@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a foreach loop over a container's keys.
+ * Starts a foreach loop over a container's keys.
  */
 export class ForEachKeyStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ForEachKeyStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachKeyStart)
+        .withDescription("Starts a foreach loop over a container's keys.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),
             new SingleParameter("keyName", "The name of the iteration key variable.", true),
             new SingleParameter("keyType", "The type of the iteration key variable.", true)

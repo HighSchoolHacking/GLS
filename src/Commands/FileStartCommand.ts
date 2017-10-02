@@ -7,16 +7,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for starting a file.
+ * Starts a file.
  */
 export class FileStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.FileStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FileStart)
+        .withDescription("Starts a file.")
+        .withIndentation([1])
+        .withParameters([
             new RepeatingParameters(
                 "Directories leading to the file.",
                 [

@@ -7,16 +7,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for starting to declare an interface.
+ * Starts an interface declaration.
  */
 export class InterfaceStartCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.InterfaceStart,
-        [1],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceStart)
+        .withDescription("Starts an interface declaration.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("InterfaceName", "The Interface name.", true),
             new RepeatingParameters(
                 "Parent interfaces.",

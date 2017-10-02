@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for wrapping with parenthesis.
+ * Wraps contents with parenthesis.
  */
 export class ParenthesisCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Parenthesis,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Parenthesis)
+        .withDescription("Wraps contents with parenthesis.")
+        .withParameters([
             new RepeatingParameters(
                 "Contents within the parenthesis.",
                 [

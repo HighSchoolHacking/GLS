@@ -4,16 +4,14 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for ending a documentation block.
+ * Ends a documentation block.
  */
 export class CommentDocEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentDocEnd,
-        [],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentDocEnd)
+        .withDescription("Ends a documentation block.");
 
     /**
      * @returns Metadata on the command.

@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for a retrieving the keys of a dictionary.
+ * Retrieves the keys of a dictionary.
  */
 export class DictionaryKeysCommand extends NativeCallCommand {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryKeys,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryKeys)
+        .withDescription("Retrieves the keys of a dictionary.")
+        .withParameters([
             new SingleParameter("dictionary", "A dictionary to retrieve the keys of.", true)
         ]);
 

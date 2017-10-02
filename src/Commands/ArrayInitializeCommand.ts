@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for initializing a new array.
+ * Initializes a new array.
  */
 export class ArrayInitializeCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ArrayInitialize,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayInitialize)
+        .withDescription("Initializes a new array.")
+        .withParameters([
             new SingleParameter("type", "The type of object.", true),
             new RepeatingParameters(
                 "Items initially in the array.",

@@ -6,16 +6,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for computing the largest previous integer of a number
+ * Rounds a number down to the nearest integer.
  */
 export class MathFloorCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MathFloor,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathFloor)
+        .withDescription("Rounds a number down to the nearest integer.")
+        .withParameters([
             new SingleParameter("name", "The name of the variable.", true)
         ]);
 

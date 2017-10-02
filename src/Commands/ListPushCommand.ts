@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for a list push statement.
+ * Adds an item to a list.
  */
 export class ListPushCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListPush,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPush)
+        .withDescription("Adds an item to a list.")
+        .withParameters([
             new SingleParameter("name", "The name of the list.", true),
             new SingleParameter("value", "An item to push into the list.", true),
         ]);

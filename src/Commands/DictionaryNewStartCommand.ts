@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for starting to initialize a new dictionary.
+ * Starts to initialize a new dictionary.
  */
 export class DictionaryNewStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryNewStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryNewStart)
+        .withDescription("Starts to initialize a new dictionary.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),
             new SingleParameter("valueType", "Tye type of the values", true)
         ]);

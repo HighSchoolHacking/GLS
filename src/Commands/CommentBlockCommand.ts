@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for printing a comment block line.
+ * A single line within a comment block.
  */
 export class CommentBlockCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentBlock,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlock)
+        .withDescription("A single line within a comment block.")
+        .withParameters([
             new RepeatingParameters(
                 "Contents of the comment block line",
                 [

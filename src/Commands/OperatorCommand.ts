@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for printing an operator.
+ * Prints a mathematical operator.
  */
 export class OperatorCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Operator,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Operator)
+        .withDescription("Prints a mathematical operator.")
+        .withParameters([
             new SingleParameter("operator", "An operator to alias.", true)
         ]);
 

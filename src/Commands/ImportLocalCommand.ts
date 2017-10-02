@@ -4,16 +4,15 @@ import { ImportCommand } from "./ImportCommand";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for importing items from a local file.
+ * Imports items from a local file.
  */
 export class ImportLocalCommand extends ImportCommand {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ImportLocal,
-        [],
-        ImportCommand.parameters);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ImportLocal)
+        .withDescription("Imports items from a local file.")
+        .withParameters(ImportCommand.parameters);
 
     /**
      * @returns Metadata on the command.

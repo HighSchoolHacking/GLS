@@ -4,16 +4,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a try block.
+ * Ends a try block.
  */
 export class TryEndCommand extends BlockEndCommand {
-    /**
-     * Metadata on the command.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.TryEnd,
-        [-1],
-        []);
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryEnd)
+        .withDescription("Ends a try block.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

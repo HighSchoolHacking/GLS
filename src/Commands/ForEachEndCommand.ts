@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a foreach loop.
+ * Ends a foreach loop.
  */
 export class ForEachEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ForEachEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachEnd)
+        .withDescription("Ends a foreach loop.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

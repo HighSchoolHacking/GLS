@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for initializing a new list.
+ * Initializes a new list.
  */
 export class ListInitializeCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListInitialize,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListInitialize)
+        .withDescription("Initializes a new list.")
+        .withParameters([
             new SingleParameter("type", "The type of object.", true),
             new RepeatingParameters(
                 "Items initially in the list.",

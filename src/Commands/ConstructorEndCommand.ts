@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a constructor.
+ * Ends a constructor.
  */
 export class ConstructorEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ConstructorEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ConstructorEnd)
+        .withDescription("Ends a constructor.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

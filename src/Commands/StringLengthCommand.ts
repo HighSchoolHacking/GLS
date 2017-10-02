@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for a retrieving the length of an string.
+ * Retrieves the length of an string.
  */
 export class StringLengthCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.StringLength,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringLength)
+        .withDescription("Retrieves the length of an string.")
+        .withParameters([
             new SingleParameter("string", "A string to retrieve the length of.", true)
         ]);
 

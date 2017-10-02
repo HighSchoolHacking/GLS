@@ -6,22 +6,24 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for retrieving a static variable.
+ * Retrieves a static variable.
  */
 export class StaticVariableCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.StaticVariable,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticVariable)
+        .withDescription("Retrieves a static variable.")
+        .withParameters([
             new SingleParameter("privacy", "The privacy of the static variable.", true),
             new SingleParameter("className", "The name of the class the function is on.", true),
             new SingleParameter("variableName", "The name of the static variable.", true)
         ]);
 
-    /**Metadata on the command.@returns Information on parameters this command takes in.
+    /**
+     * Metadata on the command.
+     *
+     * @returns Information on parameters this command takes in.
      */
     public getMetadata(): CommandMetadata {
         return StaticVariableCommand.metadata;

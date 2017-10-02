@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for initializing a new dictionary.
+ * Initializes a new dictionary.
  */
 export class DictionaryNewCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryNew,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryNew)
+        .withDescription("Initializes a new dictionary.")
+        .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),
             new SingleParameter("valueType", "The type of the values", true)
         ]);

@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for calling a function.
+ * Calls a function.
  */
 export class FunctionCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Function,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Function)
+        .withDescription("Calls a function.")
+        .withParameters([
             new SingleParameter("name", "The name of the function.", true),
             new RepeatingParameters(
                 "Function parameters.",

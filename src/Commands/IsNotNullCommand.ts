@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for checking whether a variable is not null.
+ * Checks whether a variable is not null.
  */
 export class IsNotNullCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.IsNotNull,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IsNotNull)
+        .withDescription("Checks whether a variable is not null.")
+        .withParameters([
             new SingleParameter("value", "A value to check against null.", true)
         ]);
 

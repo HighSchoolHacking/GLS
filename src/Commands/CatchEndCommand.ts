@@ -4,16 +4,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a catch block.
+ * Ends a catch block.
  */
 export class CatchEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CatchEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CatchEnd)
+        .withDescription("Ends a catch block.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

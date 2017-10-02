@@ -4,16 +4,14 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for printing the "break" keyword.
+ * Prints the 'break' keyword.
  */
 export class BreakCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Break,
-        [],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Break)
+        .withDescription("Prints the 'break' keyword.");
 
     /**
      * @returns Metadata on the command.

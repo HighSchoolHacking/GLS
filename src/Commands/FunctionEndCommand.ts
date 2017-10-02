@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a function.
+ * Ends a function.
  */
 export class FunctionEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.FunctionEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FunctionEnd)
+        .withDescription("Ends a function.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

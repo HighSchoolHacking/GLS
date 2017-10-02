@@ -5,18 +5,17 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command that adds everything in the second list to the first list.
+ * Adds everything in one list to another.
  */
 export class ListAddListCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListAddList,
-        [],
-        [
-            new SingleParameter("first", "The first list.", true),
-            new SingleParameter("second", "The second list.", true)
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListAddList)
+        .withDescription("Adds everything in one list to another.")
+        .withParameters([
+            new SingleParameter("first", "A container list.", true),
+            new SingleParameter("second", "Items to add to the first list.", true)
         ]);
 
     /**

@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for printing the input parameters directly.
+ * Prints the input parameters directly.
  */
 export class LiteralCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Literal,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Literal)
+        .withDescription("Prints the input parameters directly.")
+        .withParameters([
             new RepeatingParameters(
                 "Contents to print.",
                 [

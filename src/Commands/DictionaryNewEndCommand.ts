@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a new dictionary.
+ * Ends a new dictionary.
  */
 export class DictionaryNewEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryNewEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryNewEnd)
+        .withDescription("Ends a new dictionary.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a foreach loop over a container's pairs.
+ * Starts a foreach loop over a container's pairs.
  */
 export class ForEachPairStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ForEachPairStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachPairStart)
+        .withDescription("Starts a foreach loop over a container's pairs.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),
             new SingleParameter("pairName", "The name of the pair variable", true),
             new SingleParameter("keyName", "The name of the key variable.", true),

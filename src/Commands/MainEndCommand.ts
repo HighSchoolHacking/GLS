@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for ending a main function.
+ * Ends a main function.
  */
 export class MainEndCommand extends Command {
-    /**
-     * Metadata on the command.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MainEnd,
-        [-1],
-        []);
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainEnd)
+        .withDescription("Ends a main function.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

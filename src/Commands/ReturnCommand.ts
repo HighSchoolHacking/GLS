@@ -6,16 +6,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for returning in a function.
+ * Returns a value.
  */
 export class ReturnCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Return,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Return)
+        .withDescription("Returns a value.")
+        .withParameters([
             new SingleParameter("value", "A value to return.", false)
         ]);
 

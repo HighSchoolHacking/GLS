@@ -6,16 +6,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for starting to declare an enum.
+ * Starts an enum declaration.
  */
 export class EnumStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.EnumStart,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumStart)
+        .withDescription("Starts an enum declaration.")
+        .withParameters([
             new SingleParameter("name", "The name of the enum.", true)
         ]);
 

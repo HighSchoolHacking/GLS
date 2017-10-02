@@ -7,16 +7,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a constructor.
+ * Starts a constructor.
  */
 export class ConstructorStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ConstructorStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ConstructorStart)
+        .withDescription("Starts a constructor.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("privacy", "The privacy of the constructor.", true),
             new SingleParameter("className", "The name of the class.", true),
             new RepeatingParameters(

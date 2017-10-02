@@ -7,7 +7,7 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for printing a documentation tag.
+ * Line within a documentation tag.
  */
 export class CommentDocTagCommand extends Command {
     /**
@@ -19,12 +19,11 @@ export class CommentDocTagCommand extends Command {
     private static maximumLineLength = 70;
 
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentDocTag,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentDocTag)
+        .withDescription("Line within a documentation tag.")
+        .withParameters([
             new SingleParameter("tag", "The name of the tag.", true),
             new SingleParameter("parameter", "An optional descriptor for the tag.", false),
             new RepeatingParameters(

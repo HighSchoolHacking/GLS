@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a while loop.
+ * Ends a while loop.
  */
 export class WhileEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.WhileEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.WhileEnd)
+        .withDescription("Ends a while loop.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

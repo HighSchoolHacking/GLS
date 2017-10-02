@@ -7,16 +7,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for concatenating multiple other values into a single string.
+ * Concatenates multiple other values into a single string.
  */
 export class StringFormatCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.StringFormat,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringFormat)
+        .withDescription("Concatenates multiple other values into a single string.")
+        .withParameters([
             new SingleParameter("format", "String describing the format.", true),
             new RepeatingParameters(
                 "Input pairs.",

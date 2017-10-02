@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for an indexed [] lookup.
+ * An indexed [] lookup.
  */
 export class IndexCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Index,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Index)
+        .withDescription("An indexed [] lookup.")
+        .withParameters([
             new SingleParameter("container", "A container to look within.", true),
             new SingleParameter("index", "The index within the container.", true)
         ]);

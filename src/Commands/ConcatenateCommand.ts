@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for concatenating strings.
+ * Concatenates strings with primitives.
  */
 export class ConcatenateCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Concatenate,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Concatenate)
+        .withDescription("Concatenates strings with primitives.")
+        .withParameters([
             new SingleParameter("string", "A string to concatenate.", true),
             new SingleParameter("string", "A string to concatenate.", true),
             new RepeatingParameters(

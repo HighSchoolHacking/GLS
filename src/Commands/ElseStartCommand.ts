@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the beginning of an else statement.
+ * Starts an else statement.
  */
 export class ElseStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ElseStart,
-        [1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ElseStart)
+        .withDescription("Starts an else statement.")
+        .withIndentation([1]);
 
     /**
      * @returns Metadata on the command.

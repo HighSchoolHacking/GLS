@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for a retrieving the length of an string.
+ * Retrieves the length of an string.
  */
 export class DictionaryContainsKeyCommand extends NativeCallCommand {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryContainsKey,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryContainsKey)
+        .withDescription("Retrieves the length of an string.")
+        .withParameters([
             new SingleParameter("dictionary", "A dictionary to check for key membership.", true),
             new SingleParameter("key", "A key to check for membership in the dictionary.", true)
         ]);

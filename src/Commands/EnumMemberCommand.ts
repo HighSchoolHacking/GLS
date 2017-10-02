@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the declaring an enum member value.
+ * Adds a member to an enum.
  */
 export class EnumMemberCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.EnumMember,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumMember)
+        .withDescription("Adds a member to an enum.")
+        .withParameters([
             new SingleParameter("memberName", "A member of the container enum.", true),
             new SingleParameter("memberValue", "A value for the enum member.", true),
             new SingleParameter("comma", "Whether a comma is needed.", false)

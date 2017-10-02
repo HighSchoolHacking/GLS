@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for declaring a variable inline (without a preceding "var ").
+ * Declares a variable inline (without a preceding 'var ' equivalent).
  */
 export class VariableInlineCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.VariableInline,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableInline)
+        .withDescription("Declares a variable inline (without a preceding 'var ' equivalent).")
+        .withParameters([
             new SingleParameter("name", "The name of the variable.", true),
             new SingleParameter("type", "The type of the variable.", true),
             new SingleParameter("value", "The starting value of the variable.", false)

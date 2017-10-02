@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the beginning of a finally block.
+ * Starts a finally block.
  */
 export class FinallyStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.FinallyStart,
-        [1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FinallyStart)
+        .withDescription("Starts a finally block.")
+        .withIndentation([1]);
 
     /**
      * @returns Metadata on the command.

@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the beginning of a try block.
+ * Starts a try block.
  */
 export class TryStartCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.TryStart,
-        [1],
-        []);
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryStart)
+        .withDescription("Starts a try block.")
+        .withIndentation([1]);
 
     /**
      * @returns Metadata on the command.

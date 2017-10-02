@@ -8,16 +8,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a member function.
+ * Starts a member function.
  */
 export class MemberFunctionDeclareStartCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MemberFunctionDeclareStart,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareStart)
+        .withDescription("Starts a member function.")
+        .withParameters([
             new SingleParameter("privacy", "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),

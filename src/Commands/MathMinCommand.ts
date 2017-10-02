@@ -6,16 +6,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command that returns the greater of two numbers.
+ * Gets the smaller of two numbers.
  */
 export class MathMinCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MathMin,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathMin)
+        .withDescription("Gets the smaller of two numbers.")
+        .withParameters([
             new SingleParameter("name", "The name of the first variable.", true),
             new SingleParameter("name", "The name of the second variable.", true)
         ]);

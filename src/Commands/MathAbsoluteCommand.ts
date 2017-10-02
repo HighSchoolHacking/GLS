@@ -6,16 +6,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for computing the absolute value of a number.
+ * Computes the absolute value of a number.
  */
 export class MathAbsoluteCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MathAbsolute,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathAbsolute)
+        .withDescription("Computes the absolute value of a number.")
+        .withParameters([
             new SingleParameter("name", "The name of the variable.", true)
         ]);
 

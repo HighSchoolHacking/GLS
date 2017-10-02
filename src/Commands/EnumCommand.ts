@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the retrieving an enum value by name.
+ * Retrieves an enum value by name.
  */
 export class EnumCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Enum,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Enum)
+        .withDescription("Retrieves an enum value by name.")
+        .withParameters([
             new SingleParameter("enumName", "A container enum.", true),
             new SingleParameter("memberName", "A member of the container enum.", true)
         ]);

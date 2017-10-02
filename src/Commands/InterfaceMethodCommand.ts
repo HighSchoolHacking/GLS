@@ -6,16 +6,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for declaring methods within an interface.
+ * Declares a method within an interface.
  */
 export class InterfaceMethodCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.InterfaceMethod,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceMethod)
+        .withDescription("Declares a method within an interface.")
+        .withParameters([
             new SingleParameter("MethodName", "The method name.", true),
             new SingleParameter("returnType", "Return type of the method", true),
             new RepeatingParameters(

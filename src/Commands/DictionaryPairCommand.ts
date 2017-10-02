@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for an in-place dictionary initialization pair.
+ * An in-place dictionary initialization pair.
  */
 export class DictionaryPairCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.DictionaryPair,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryPair)
+        .withDescription("An in-place dictionary initialization pair.")
+        .withParameters([
             new SingleParameter("key", "The pair key.", true),
             new SingleParameter("value", "The pair value", true),
             new SingleParameter("comma", "Whether a comma is needed", false)

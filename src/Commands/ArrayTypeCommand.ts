@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for declaring an array type.
+ * Declares an array type.
  */
 export class ArrayTypeCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ArrayType,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayType)
+        .withDescription("Declares an array type.")
+        .withParameters([
             new SingleParameter("type", "The type of object.", true)
         ]);
 

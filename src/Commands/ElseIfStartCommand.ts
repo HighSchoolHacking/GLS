@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of an elif statement.
+ * Starts an elif statement.
  */
 export class ElseIfStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ElseIfStart,
-        [-1, 1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ElseIfStart)
+        .withDescription("Starts an elif statement.")
+        .withIndentation([-1, 1])
+        .withParameters([
             new SingleParameter("conditional", "A conditional to check.", true)
         ]);
 

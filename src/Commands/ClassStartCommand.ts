@@ -7,16 +7,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for starting to declare a class.
+ * Starts a class declaration.
  */
 export class ClassStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ClassStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ClassStart)
+        .withDescription("Starts a class declaration.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("classDescriptor", "The class name and optional generics.", true),
             new SingleParameter("extends", "Keyword to extend from a parent class.", false),
             new SingleParameter("parentClassDescriptor", "A parent class name and optional generics.", false),

@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for an in-place list sort statement.
+ * Sorts a list in-place.
  */
 export class ListSortCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListSort,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSort)
+        .withDescription("Sorts a list in-place.")
+        .withParameters([
             new SingleParameter("name", "The name of the list.", true)
         ]);
 

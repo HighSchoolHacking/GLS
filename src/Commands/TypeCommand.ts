@@ -5,16 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for parsing a language's name for a type.
+ * Parses a language's alias for a type.
  */
 export class TypeCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.Type,
-        [],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Type)
+        .withDescription("Parses a language's alias for a type.")
+        .withParameters([
             new SingleParameter("type", "A type to parse.", true)
         ]);
 

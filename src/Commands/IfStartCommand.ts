@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of an if statement.
+ * Starts an if statement.
  */
 export class IfStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.IfStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStart)
+        .withDescription("Starts an if statement.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("conditional", "A conditional to check.", true)
         ]);
 

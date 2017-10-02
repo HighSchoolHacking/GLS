@@ -8,16 +8,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a static function.
+ * Starts a static function.
  */
 export class StaticFunctionDeclareStartCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.StaticFunctionDeclareStart,
-        [1],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunctionDeclareStart)
+        .withDescription("Starts a static function.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("privacy", "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),

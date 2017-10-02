@@ -7,16 +7,15 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for a lambda function body.
+ * The body of a lambda function.
  */
 export class LambdaBodyCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.LambdaBody,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.LambdaBody)
+        .withDescription("The body of a lambda function.")
+        .withParameters([
             new SingleParameter(
                 "returnType",
                 "Return type of the lambda function",

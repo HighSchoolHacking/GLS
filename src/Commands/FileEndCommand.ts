@@ -5,16 +5,15 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for ending a file.
+ * Ends a file.
  */
 export class FileEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.FileEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FileEnd)
+        .withDescription("Ends a file.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

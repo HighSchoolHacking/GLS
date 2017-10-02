@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a for loop over numbers.
+ * Ends a for loop over numbers.
  */
 export class ForNumbersEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ForNumbersEnd,
-        [-1],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForNumbersEnd)
+        .withDescription("Ends a for loop over numbers.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

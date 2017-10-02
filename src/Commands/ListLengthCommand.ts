@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for retrieving the length of a list.
+ * Retrieves the length of a list.
  */
 export class ListLengthCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListLength,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListLength)
+        .withDescription("Retrieves the length of a list.")
+        .withParameters([
             new SingleParameter("name", "The name of the list.", true)
         ]);
 

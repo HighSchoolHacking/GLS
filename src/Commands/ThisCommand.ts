@@ -4,16 +4,14 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for printing the "this" keyword.
+ * Prints the 'this' keyword."
  */
 export class ThisCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.This,
-        [],
-        []);
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.This)
+        .withDescription("Prints the 'this' keyword.");
 
     /**
      * @returns Metadata on the command.

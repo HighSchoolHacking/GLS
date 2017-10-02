@@ -5,16 +5,15 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * A command for a list pop statement.
+ * Pops the first item from a list.
  */
 export class ListPopFrontCommand extends NativeCallCommand {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ListPopFront,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPopFront)
+        .withDescription("Pops the first item from a list.")
+        .withParameters([
             new SingleParameter("name", "The name of the list.", true)
         ]);
 

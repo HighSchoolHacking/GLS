@@ -6,16 +6,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for retrieving a member variable.
+ * Retrieves a member variable.
  */
 export class MemberVariableCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.MemberVariable,
-        [],
-        [
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberVariable)
+        .withDescription("Retrieves a member variable.")
+        .withParameters([
             new SingleParameter("privacy", "The privacy of the member variable.", true),
             new SingleParameter("instanceName", "A class instance retrieving a member variable.", true),
             new SingleParameter("variableName", "The name of the member variable.", true)

@@ -4,16 +4,14 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for ending a comment block.
+ * Ends a comment block.
  */
 export class CommentBlockEndCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentBlockEnd,
-        [],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlockEnd)
+        .withDescription("Ends a comment block.");
 
     /**
      * @returns Metadata on the command.

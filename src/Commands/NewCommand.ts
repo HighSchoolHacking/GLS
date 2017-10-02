@@ -8,17 +8,16 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for instantiating an object of a given type.
+ * Instantiates a new class instance.
  */
 export class NewCommand extends Command {
-    /**
-     * Information on parameters this command takes in.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.New,
-        [],
-        [
-            new SingleParameter("typeName", "The type of the object to instantiate.", true),
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.New)
+        .withDescription("Instantiates a new class instance.")
+        .withParameters([
+            new SingleParameter("className", "Name of the class.", true),
             new RepeatingParameters(
                 "Arguments to pass into the constructor",
                 [

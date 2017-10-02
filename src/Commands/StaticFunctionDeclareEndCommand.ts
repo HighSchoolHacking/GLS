@@ -3,16 +3,15 @@ import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for the end of a static function.
+ * Ends a static function.
  */
 export class StaticFunctionDeclareEndCommand extends BlockEndCommand {
-    /**
-     * Metadata on the command.
-     */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.StaticFunctionDeclareEnd,
-        [-1],
-        []);
+	/**
+	 * Metadata on the command.
+	 */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunctionDeclareEnd)
+        .withDescription("Ends a static function.")
+        .withIndentation([-1]);
 
     /**
      * @returns Metadata on the command.

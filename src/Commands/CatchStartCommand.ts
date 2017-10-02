@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a catch block.
+ * Starts a catch block.
  */
 export class CatchStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CatchStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CatchStart)
+        .withDescription("Starts a catch block.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("exception", "Target exception.", true),
             new SingleParameter("alias", "Alias for target exception.", true)
         ]);

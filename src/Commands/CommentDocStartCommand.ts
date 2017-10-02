@@ -4,16 +4,14 @@ import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
- * A command for starting a documentation block.
+ * Starts a documentation block.
  */
 export class CommentDocStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.CommentDocStart,
-        [],
-        []);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentDocStart)
+        .withDescription("Starts a documentation block.");
 
     /**
      * @returns Metadata on the command.

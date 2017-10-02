@@ -6,16 +6,16 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * A command for the beginning of a for loop over numbers.
+ * Starts a for loop over numbers.
  */
 export class ForNumbersStartCommand extends Command {
     /**
-     * Information on parameters this command takes in.
+     * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(
-        CommandNames.ForNumbersStart,
-        [1],
-        [
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForNumbersStart)
+        .withDescription("Starts a for loop over numbers.")
+        .withIndentation([1])
+        .withParameters([
             new SingleParameter("name", "The name of the loop variable.", true),
             new SingleParameter("type", "The type of the loop variable", true),
             new SingleParameter("start", "What the loop variable starts at.", true),
