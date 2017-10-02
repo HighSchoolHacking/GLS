@@ -81,10 +81,13 @@ export class Ruby extends PythonicLanguage {
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
         super.generateClassMemberVariableProperties(variables);
 
+        variables.private = "";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
+        variables.protected = "";
         variables.protectedCase = CaseStyle.CamelCase;
         variables.protectedPrefix = "";
+        variables.public = "";
         variables.publicCase = CaseStyle.CamelCase;
         variables.publicPrefix = "";
     }
@@ -111,7 +114,6 @@ export class Ruby extends PythonicLanguage {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = "";
 
-        classes.statics.label = "self.";
         classes.statics.labelBeforePublicity = false;
 
         classes.superConstructor = "super";
@@ -123,6 +125,7 @@ export class Ruby extends PythonicLanguage {
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+        functions.label = "self.";
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "";
@@ -142,6 +145,7 @@ export class Ruby extends PythonicLanguage {
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
         super.generateClassStaticVariableProperties(variables);
 
+        variables.label = "@@";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
         variables.protectedCase = CaseStyle.CamelCase;

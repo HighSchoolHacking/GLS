@@ -91,6 +91,7 @@ import { StaticFunctionCommand } from "./StaticFunctionCommand";
 import { StaticFunctionDeclareEndCommand } from "./StaticFunctionDeclareEndCommand";
 import { StaticFunctionDeclareStartCommand } from "./StaticFunctionDeclareStartCommand";
 import { StaticVariableCommand } from "./StaticVariableCommand";
+import { StaticVariableDeclareCommand } from "./StaticVariableDeclareCommand";
 import { StringFormatCommand } from "./StringFormatCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { SuperConstructorCommand } from "./SuperConstructorCommand";
@@ -208,6 +209,7 @@ export class CommandsBag {
             new StaticFunctionDeclareStartCommand(context),
             new StaticFunctionDeclareEndCommand(context),
             new StaticVariableCommand(context),
+            new StaticVariableDeclareCommand(context),
             new StringFormatCommand(context),
             new StringLengthCommand(context),
             new SuperConstructorCommand(context),

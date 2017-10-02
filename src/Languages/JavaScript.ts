@@ -2,8 +2,11 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { CLikeLanguage } from "./CLikeLanguage";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
+import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
+import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
+import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
 import { CommentProperties } from "./Properties/CommentProperties";
 import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
@@ -58,6 +61,22 @@ export class JavaScript extends CLikeLanguage {
     }
 
     /**
+     * Generates metadata on class member functions.
+     *
+     * @param functions   A property container for metadata on class member functions.
+     */
+    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+        super.generateClassMemberFunctionProperties(functions);
+
+        functions.private = "";
+        functions.privateCase = CaseStyle.CamelCase;
+        functions.protected = "";
+        functions.protectedCase = CaseStyle.CamelCase;
+        functions.public = "";
+        functions.publicCase = CaseStyle.CamelCase;
+    }
+
+    /**
      * Generates metadata on class member variables.
      *
      * @param members   A property container for metadata on class member variables.
@@ -96,28 +115,40 @@ export class JavaScript extends CLikeLanguage {
         classes.declareStartRight = " {";
         classes.superConstructor = "super";
 
-        classes.members.functions.private = "";
-        classes.members.functions.privateCase = CaseStyle.CamelCase;
-        classes.members.functions.protected = "";
-        classes.members.functions.protectedCase = CaseStyle.CamelCase;
-        classes.members.functions.public = "";
-        classes.members.functions.publicCase = CaseStyle.CamelCase;
-
-        classes.statics.functions.private = "";
-        classes.statics.functions.privateCase = CaseStyle.CamelCase;
-        classes.statics.functions.protected = "";
-        classes.statics.functions.protectedCase = CaseStyle.CamelCase;
-        classes.statics.functions.public = "";
-        classes.statics.functions.publicCase = CaseStyle.CamelCase;
-
-        classes.statics.variables.private = "private ";
-        classes.statics.variables.privateCase = CaseStyle.CamelCase;
-        classes.statics.variables.protected = "protected ";
-        classes.statics.variables.protectedCase = CaseStyle.CamelCase;
-        classes.statics.variables.public = "public ";
-        classes.statics.variables.publicCase = CaseStyle.CamelCase;
-
         classes.generics.used = false;
+    }
+
+    /**
+     * Generates metadata on class static functions.
+     *
+     * @param functions   A property container for metadata on class static functions.
+     */
+    protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+        super.generateClassStaticFunctionProperties(functions);
+
+        functions.private = "";
+        functions.privateCase = CaseStyle.CamelCase;
+        functions.protected = "";
+        functions.protectedCase = CaseStyle.CamelCase;
+        functions.public = "";
+        functions.publicCase = CaseStyle.CamelCase;
+    }
+
+    /**
+     * Generates metadata on class static variables.
+     *
+     * @param members   A property container for metadata on class static variables.
+     */
+    protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
+        super.generateClassStaticVariableProperties(variables);
+
+        variables.skipStaticVariables = true;
+        variables.private = "";
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.protected = "";
+        variables.protectedCase = CaseStyle.CamelCase;
+        variables.public = "";
+        variables.publicCase = CaseStyle.CamelCase;
     }
 
     /**

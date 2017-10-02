@@ -1,0 +1,3 @@
+//
+protected static aaa: string;
+//

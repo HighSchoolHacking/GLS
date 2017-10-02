@@ -1,0 +1,3 @@
+//
+public static string aaa;
+//

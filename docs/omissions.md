@@ -9,8 +9,7 @@ If any target language doesn't reasonably support a feature, GLS cannot support 
 | Feature | C\# | Java | JavaScript | Python | Ruby | TypeScript |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | async/await |  | _Missing_ |  |  | _Missing_ |  |
-| Default Member Variable Values |  |  | [_Pending_](https://github.com/tc39/proposal-class-fields) |  |  |  |
-| Static Member Variables |  |  | [_Pending_](https://github.com/tc39/proposal-class-fields) |  |  |  |
+| Default Member Variable Values |  |  |  |  | _Missing_ |  |
 | Do/While Loops |  |  |  | _Missing_ |  |  |
 | Enums Without Values |  |  |  |  | _Missing_ |  |
 | Multiline Lambdas |  |  |  | _Missing_ |  |  |

@@ -110,7 +110,6 @@ export class Python extends PythonicLanguage {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = ":";
 
-        classes.statics.label = "@staticmethod\n";
         classes.statics.labelBeforePublicity = true;
 
         classes.superConstructor = "super().__init__";
@@ -122,6 +121,7 @@ export class Python extends PythonicLanguage {
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+        functions.label = "@staticmethod\n";
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "__";
@@ -141,11 +141,13 @@ export class Python extends PythonicLanguage {
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
         super.generateClassStaticVariableProperties(variables);
 
+        variables.label = "";
         variables.privateCase = CaseStyle.SnakeCase;
         variables.privatePrefix = "__";
         variables.protectedCase = CaseStyle.SnakeCase;
         variables.protectedPrefix = "_";
         variables.publicCase = CaseStyle.CamelCase;
+        variables.publicPrefix = "";
     }
 
     /**

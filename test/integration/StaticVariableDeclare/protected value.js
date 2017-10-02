@@ -1,0 +1,3 @@
+//
+static aaa = "bbb";
+//

@@ -1,0 +1,3 @@
+//
+private static aaa: string;
+//

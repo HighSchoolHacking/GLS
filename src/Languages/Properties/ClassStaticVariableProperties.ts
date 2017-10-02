@@ -5,6 +5,11 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassStaticVariableProperties {
     /**
+     * Label for static variables.
+     */
+    public label: string;
+
+    /**
      * Decorator for private statics.
      */
     public private: string;

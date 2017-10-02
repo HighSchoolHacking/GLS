@@ -54,7 +54,6 @@ export abstract class PythonicLanguage extends Language {
         classes.constructors.useKeyword = true;
 
         classes.newStart = "new ";
-        classes.statics.label = "static ";
         classes.this = "self";
     }
 
@@ -64,7 +63,9 @@ export abstract class PythonicLanguage extends Language {
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
-        variables.publicPrefix = "";
+        variables.private = "";
+        variables.protected = "";
+        variables.public = "";
         variables.skipStaticVariables = true;
     }
 

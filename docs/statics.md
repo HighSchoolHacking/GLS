@@ -75,5 +75,5 @@ class Utilities:
         print("Logging: " + word)
 ```
 
-Static variables are not yet available pending JavaScript's [ESnext class fields proposal](https://github.com/tc39/proposal-class-fields).
-
+> Static variables are not yet a part of the ratified JavaScript specification pending the [ESnext class fields proposal](https://github.com/tc39/proposal-class-fields).
+> Use Babel's [Class properties transform](https://babeljs.io/docs/plugins/transform-class-properties/) or similar.

@@ -453,6 +453,11 @@ export class CommandNames {
     public static StaticVariable = "static variable";
 
     /**
+     * Name key for the StaticVariableDeclare command.
+     */
+    public static StaticVariableDeclare = "static variable declare";
+
+    /**
      * Name key the StringFormat command.
      */
     public static StringFormat = "string format";

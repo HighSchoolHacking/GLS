@@ -11,12 +11,7 @@ export class ClassStaticProperties {
     public functions: ClassStaticFunctionProperties = new ClassStaticFunctionProperties();
 
     /**
-     * The keyword for a static class or member.
-     */
-    public label: string;
-
-    /**
-     * Whether the static label should come before its publicity type..
+     * Whether the static label should come before its publicity type.
      */
     public labelBeforePublicity: boolean;
 

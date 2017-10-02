@@ -55,13 +55,13 @@ export class StaticFunctionDeclareStartCommand extends Command {
         let output: CommandResult[];
 
         if (this.language.properties.classes.statics.labelBeforePublicity) {
-            declaration += this.language.properties.classes.statics.label;
+            declaration += this.language.properties.classes.statics.functions.label;
         }
 
         declaration += this.getPublicity(publicity);
 
         if (!this.language.properties.classes.statics.labelBeforePublicity) {
-            declaration += this.language.properties.classes.statics.label;
+            declaration += this.language.properties.classes.statics.functions.label;
         }
 
         if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {

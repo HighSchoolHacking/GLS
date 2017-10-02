@@ -50,12 +50,9 @@ export abstract class CLikeLanguage extends Language {
      * @param members   A property container for metadata on class member variables.
      */
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
-        variables.private = "private ";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
-        variables.protected = "protected ";
         variables.protectedPrefix = "";
-        variables.public = "public ";
         variables.publicPrefix = "";
     }
 
@@ -71,7 +68,6 @@ export abstract class CLikeLanguage extends Language {
 
         classes.newStart = "new ";
 
-        classes.statics.label = "static ";
         classes.statics.labelBeforePublicity = false;
 
         classes.this = "this";
@@ -83,6 +79,7 @@ export abstract class CLikeLanguage extends Language {
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+        functions.label = "static ";
         functions.privatePrefix = "";
         functions.protectedPrefix = "";
         functions.publicPrefix = "";
@@ -94,12 +91,10 @@ export abstract class CLikeLanguage extends Language {
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
-        variables.private = "private ";
+        variables.label = "static ";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
-        variables.protected = "protected ";
         variables.protectedPrefix = "";
-        variables.public = "public ";
         variables.publicPrefix = "";
     }
 
