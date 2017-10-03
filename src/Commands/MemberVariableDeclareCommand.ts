@@ -1,6 +1,7 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
@@ -44,11 +45,11 @@ export class MemberVariableDeclareCommand extends Command {
         const type: string = parameters[3];
         let casingStyle: CaseStyle;
 
-        if (privacy === "protected") {
+        if (privacy === KeywordNames.Protected) {
             output += this.language.properties.classes.members.variables.protected;
             output += this.language.properties.classes.members.variables.protectedPrefix;
             casingStyle = this.language.properties.classes.members.variables.protectedCase;
-        } else if (privacy === "private") {
+        } else if (privacy === KeywordNames.Private) {
             output += this.language.properties.classes.members.variables.private;
             output += this.language.properties.classes.members.variables.privatePrefix;
             casingStyle = this.language.properties.classes.members.variables.privateCase;

@@ -1,6 +1,7 @@
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
@@ -104,11 +105,11 @@ export class ConstructorStartCommand extends Command {
      * @returns Name prefix for the publicity.
      */
     private getPublicity(publicity: string): string {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.constructors.private;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.constructors.protected;
         }
 
