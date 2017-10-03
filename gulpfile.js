@@ -98,7 +98,7 @@ gulp.task("src:tslint", function () {
             formatter: "stylish",
             program
         }))
-        .pipe(gulpTslint.report())
+        .pipe(gulpTslint.report());
 });
 
 gulp.task("src:tsc", function () {
@@ -144,7 +144,7 @@ gulp.task("test:tslint", function () {
             formatter: "stylish",
             program
         }))
-        .pipe(gulpTslint.report())
+        .pipe(gulpTslint.report());
 });
 
 gulp.task("test:tsc", function () {
