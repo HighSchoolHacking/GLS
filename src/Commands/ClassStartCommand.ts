@@ -4,6 +4,7 @@ import { CommandResult } from "./CommandResult";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -19,13 +20,13 @@ export class ClassStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("classDescriptor", "The class name and optional generics.", true),
-            new SingleParameter(KeywordNames.Extends, "Keyword to extend from a parent class.", false),
+            new KeywordParameter([KeywordNames.Extends], "Keyword to extend from a parent class."),
             new SingleParameter("parentClassDescriptor", "A parent class name and optional generics.", false),
-            new SingleParameter(KeywordNames.Implements, "Keyword to implement from parent interface(s).", false),
+            new KeywordParameter([KeywordNames.Implements], "Keyword to implement from parent interface(s)."),
             new RepeatingParameters(
-                "Parent Interfaces",
+                "Parent interfaces",
                 [
-                    new SingleParameter("interfaceName", "Names of parent interfaces", false)
+                    new SingleParameter("interfaceName", "Names of parent interfaces.", false)
                 ])
         ]);
 

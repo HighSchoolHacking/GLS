@@ -4,6 +4,7 @@ import { CommandNames } from "./CommandNames";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
@@ -16,7 +17,7 @@ export class MemberVariableDeclareCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberVariableDeclare)
         .withDescription("Declares a member variable.")
         .withParameters([
-            new SingleParameter("privacy", "The privacy of the member variable.", true),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the member variable."),
             new SingleParameter("name", "The name of the member variable.", true),
             new SingleParameter("type", "The type of the variable.", true)
         ]);

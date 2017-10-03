@@ -30,7 +30,7 @@ export class KeywordNames {
     /**
      * Name keys for publicity keywords.
      */
-    public static Publicities: string[] = [
+    public static Privacies: string[] = [
         KeywordNames.Public,
         KeywordNames.Protected,
         KeywordNames.Private
