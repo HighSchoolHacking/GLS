@@ -2,6 +2,7 @@ import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
@@ -111,11 +112,11 @@ export class MemberFunctionDeclareStartCommand extends Command {
      * @returns Prefix for the publicity.
      */
     private getPublicity(publicity: string): string {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.members.functions.private;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.members.functions.protected;
         }
 
@@ -129,11 +130,11 @@ export class MemberFunctionDeclareStartCommand extends Command {
      * @returns Case style for the publicity.
      */
     private getPublicityCase(publicity: string): CaseStyle {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.members.functions.privateCase;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.members.functions.protectedCase;
         }
 
@@ -147,11 +148,11 @@ export class MemberFunctionDeclareStartCommand extends Command {
      * @returns Name prefix for the publicity.
      */
     private getPublicityPrefix(publicity: string): string {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.members.functions.privatePrefix;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.members.functions.protectedPrefix;
         }
 

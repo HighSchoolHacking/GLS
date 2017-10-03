@@ -1,6 +1,7 @@
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
@@ -18,9 +19,9 @@ export class ClassStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("classDescriptor", "The class name and optional generics.", true),
-            new SingleParameter("extends", "Keyword to extend from a parent class.", false),
+            new SingleParameter(KeywordNames.Extends, "Keyword to extend from a parent class.", false),
             new SingleParameter("parentClassDescriptor", "A parent class name and optional generics.", false),
-            new SingleParameter("implements", "Keyword to implement from parent interface(s).", false),
+            new SingleParameter(KeywordNames.Implements, "Keyword to implement from parent interface(s).", false),
             new RepeatingParameters(
                 "Parent Interfaces",
                 [
@@ -48,7 +49,7 @@ export class ClassStartCommand extends Command {
         line += this.context.convertCommon("type", parameters[1]);
 
         if (parameters.length >= 4) {
-            if (parameters[2] === "implements") {
+            if (parameters[2] === KeywordNames.Implements) {
                 if (this.language.properties.interfaces.supported) {
                     line += this.language.properties.classes.declareImplementsLeft;
 
@@ -66,7 +67,7 @@ export class ClassStartCommand extends Command {
                 line += this.context.convertCommon("type", parameters[3]);
                 line += this.language.properties.classes.declareExtendsRight;
 
-                if (parameters[4] === "implements") {
+                if (parameters[4] === KeywordNames.Implements) {
                     if (this.language.properties.interfaces.supported) {
                         if (this.language.properties.interfaces.declareImplementsExplicit) {
                             line += this.language.properties.classes.declareImplementsLeft;

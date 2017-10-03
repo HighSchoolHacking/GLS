@@ -1,6 +1,7 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
@@ -42,10 +43,10 @@ export class StaticVariableCommand extends Command {
         let variablePrefix: string;
         let casingStyle: CaseStyle;
 
-        if (privacy === "protected") {
+        if (privacy === KeywordNames.Protected) {
             variablePrefix = this.language.properties.classes.statics.variables.protectedPrefix;
             casingStyle = this.language.properties.classes.statics.variables.protectedCase;
-        } else if (privacy === "private") {
+        } else if (privacy === KeywordNames.Private) {
             variablePrefix = this.language.properties.classes.statics.variables.privatePrefix;
             casingStyle = this.language.properties.classes.statics.variables.privateCase;
         } else {

@@ -1,6 +1,7 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
@@ -68,11 +69,11 @@ export class StaticFunctionCommand extends Command {
      * @returns Case style for the publicity.
      */
     private getPublicityCase(publicity: string): CaseStyle {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.statics.functions.privateCase;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.statics.functions.protectedCase;
         }
 
@@ -86,11 +87,11 @@ export class StaticFunctionCommand extends Command {
      * @returns Name prefix for the publicity.
      */
     private getPublicityPrefix(publicity: string): string {
-        if (publicity === "private") {
+        if (publicity === KeywordNames.Private) {
             return this.language.properties.classes.statics.functions.privatePrefix;
         }
 
-        if (publicity === "protected") {
+        if (publicity === KeywordNames.Protected) {
             return this.language.properties.classes.statics.functions.protectedPrefix;
         }
 
