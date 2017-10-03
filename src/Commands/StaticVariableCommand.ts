@@ -4,6 +4,7 @@ import { CommandNames } from "./CommandNames";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
@@ -16,7 +17,7 @@ export class StaticVariableCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticVariable)
         .withDescription("Retrieves a static variable.")
         .withParameters([
-            new SingleParameter("privacy", "The privacy of the static variable.", true),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the static variable."),
             new SingleParameter("className", "The name of the class the function is on.", true),
             new SingleParameter("variableName", "The name of the static variable.", true)
         ]);

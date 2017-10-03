@@ -4,6 +4,7 @@ import { CommandNames } from "./CommandNames";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -17,7 +18,7 @@ export class MemberFunctionCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunction)
         .withDescription("Starts a member function.")
         .withParameters([
-            new SingleParameter("privacy", "The privacy of the function.", true),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function."),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "Return type of the member function", true),
             new RepeatingParameters(

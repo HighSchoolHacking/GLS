@@ -1,8 +1,10 @@
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -25,6 +27,7 @@ export class FunctionStartCommand extends Command {
                     new SingleParameter("parameterName", "A named parameter for the function.", true),
                     new SingleParameter("parameterType", "The type of the parameter.", true)
                 ]),
+            new KeywordParameter([KeywordNames.Throws], "Keyword to list possible exceptions"),
             new RepeatingParameters(
                 "Possible exceptions.",
                 [

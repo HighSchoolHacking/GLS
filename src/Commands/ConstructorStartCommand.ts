@@ -4,6 +4,7 @@ import { CommandResult } from "./CommandResult";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -18,7 +19,7 @@ export class ConstructorStartCommand extends Command {
         .withDescription("Starts a constructor.")
         .withIndentation([1])
         .withParameters([
-            new SingleParameter("privacy", "The privacy of the constructor.", true),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the constructor."),
             new SingleParameter("className", "The name of the class.", true),
             new RepeatingParameters(
                 "Function parameters.",

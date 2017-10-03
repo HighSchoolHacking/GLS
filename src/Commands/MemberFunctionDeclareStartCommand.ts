@@ -5,6 +5,7 @@ import { CommandResult } from "./CommandResult";
 import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
@@ -19,7 +20,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
         .withDescription("Starts a member function.")
         .withIndentation([1])
         .withParameters([
-            new SingleParameter("privacy", "The privacy of the function.", true),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function."),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),
             new RepeatingParameters(
@@ -28,7 +29,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
                     new SingleParameter("parameterName", "A named parameter for the function.", true),
                     new SingleParameter("parameterType", "The type of the parameter.", true)
                 ]),
-            new SingleParameter("throws", "Keyword to list possible exceptions.", false),
+            new KeywordParameter([KeywordNames.Throws], "Keyword to list possible exceptions"),
             new RepeatingParameters(
                 "Possible exceptions.",
                 [
