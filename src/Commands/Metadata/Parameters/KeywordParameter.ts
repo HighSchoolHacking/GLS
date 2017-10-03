@@ -1,7 +1,7 @@
 import { IParameter } from "./Parameter";
 
 /**
- * A string literal keyword parameter.
+ * A parameter that's only satisfied by particular string literal(s).
  */
 export class KeywordParameter implements IParameter {
     /**
@@ -10,19 +10,19 @@ export class KeywordParameter implements IParameter {
     public description: string;
 
     /**
-     * The name of the string literal.
+     * Allowed matching string literals.
      */
-    public literal: string;
+    public literals: Set<string>;
 
     /**
      * Initializes a new instance of the KeywordParameter class.
      *
-     * @param literal   String literal value for the keyword.
+     * @param literal   Allowed matching string literals.
      * @param description   A high-level definition of the parameter.
      */
-    public constructor(literal: string, description: string) {
+    public constructor(literals: string[], description: string) {
         this.description = description;
-        this.literal = literal;
+        this.literals = new Set(literals);
     }
 
     /**

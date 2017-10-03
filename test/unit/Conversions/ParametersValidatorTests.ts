@@ -105,7 +105,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter("literal", "")
+                    new KeywordParameter(["literal"], "")
                 ]
             },
             {
@@ -118,7 +118,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter("literal", "")
+                    new KeywordParameter(["literal"], "")
                 ]
             },
             {
@@ -131,7 +131,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter("literal", ""),
+                    new KeywordParameter(["literal"], ""),
                     new RepeatingParameters(
                         "",
                         [
@@ -150,7 +150,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter("literal", ""),
+                    new KeywordParameter(["literal"], ""),
                     new RepeatingParameters(
                         "",
                         [
@@ -168,7 +168,7 @@ describe("ParametersValidator", () => {
                         [
                             new SingleParameter("first", "", true),
                         ]),
-                    new KeywordParameter("literal", ""),
+                    new KeywordParameter(["literal"], ""),
                     new RepeatingParameters(
                         "",
                         [
