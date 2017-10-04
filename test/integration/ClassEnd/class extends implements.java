@@ -1,4 +1,4 @@
 //
-class aaa extends bbb implements ccc, ddd, eee {
+class Aaa extends bbb implements ccc, ddd, eee {
 }
 //

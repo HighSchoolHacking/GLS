@@ -1,4 +1,4 @@
 //
-class aaa : bbb<ccc>
+class Aaa : Bbb<Ccc>
 {
 //

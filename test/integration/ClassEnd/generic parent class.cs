@@ -1,5 +1,5 @@
 //
-class aaa : bbb<ccc>
+class Aaa : bbb<ccc>
 {
 }
 //

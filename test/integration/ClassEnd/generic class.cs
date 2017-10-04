@@ -1,5 +1,5 @@
 //
-class aaa<bbb>
+class Aaa<bbb>
 {
 }
 //

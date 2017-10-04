@@ -1,5 +1,5 @@
 //
-class aaa : bbb, ccc, ddd, eee
+class Aaa : Bbb, ICcc, IDdd, IEee
 {
 }
 //
