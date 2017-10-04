@@ -66,8 +66,8 @@ export class VariableInlineCommand extends Command {
      * @returns   The "= value" part of a command.
      */
     private renderVariableValue(valueRaw: string): string {
-        const operator = this.context.convertCommon("operator", "equals");
-        const value = this.context.convertCommon("value", valueRaw);
+        const operator = this.context.convertCommon(CommandNames.Operator, "equals");
+        const value = this.context.convertCommon(CommandNames.Value, valueRaw);
 
         return operator + " " + value;
     }

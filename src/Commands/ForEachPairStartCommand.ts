@@ -79,7 +79,7 @@ export class ForEachPairStartCommand extends Command {
             }
 
             line += this.language.properties.variables.declaration;
-            line += this.context.convertParsed(["variable inline", iteratorName, typeName]).commandResults[0].text;
+            line += this.context.convertParsed([CommandNames.VariableInline, iteratorName, typeName]).commandResults[0].text;
         } else {
             line += parameters[3];
 
@@ -132,10 +132,10 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     private addKeyedValueLookup(parameters: string[], output: CommandResult[]): void {
-        const valueName: string = this.context.convertCommon("type", parameters[5]);
+        const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
-        const valueLookup: string = this.context.convertParsed(["index", parameters[1], parameters[3]]).commandResults[0].text;
-        let valueVariable: string = this.context.convertParsed(["variable", valueName, valueType, valueLookup]).commandResults[0].text;
+        const valueLookup: string = this.context.convertParsed([CommandNames.Index, parameters[1], parameters[3]]).commandResults[0].text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0].text;
 
         valueVariable  += this.language.properties.style.semicolon;
 
@@ -150,10 +150,10 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     private addPairKeyLookup(parameters: string[], output: CommandResult[]): void {
-        const keyName: string = this.context.convertCommon("type", parameters[3]);
+        const keyName: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
         const keyType: string = parameters[4];
         const keyLookup: string = parameters[2] + this.language.properties.loops.forEachPairsRetrieveKey;
-        let keyVariable: string = this.context.convertParsed(["variable", keyName, keyType, keyLookup]).commandResults[0].text;
+        let keyVariable: string = this.context.convertParsed([CommandNames.Variable, keyName, keyType, keyLookup]).commandResults[0].text;
 
         keyVariable += this.language.properties.style.semicolon;
 
@@ -168,10 +168,10 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     private addPairValueLookup(parameters: string[], output: CommandResult[]): void {
-        const valueName: string = this.context.convertCommon("type", parameters[5]);
+        const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
         const valueLookup: string = parameters[2] + this.language.properties.loops.forEachPairsRetrieveValue;
-        let valueVariable: string = this.context.convertParsed(["variable", valueName, valueType, valueLookup]).commandResults[0].text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0].text;
 
         valueVariable  += this.language.properties.style.semicolon;
 

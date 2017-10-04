@@ -47,7 +47,7 @@ export class ClassStartCommand extends Command {
         let line = "";
 
         line += this.language.properties.classes.declareStartLeft;
-        line += this.context.convertCommon("type", parameters[1]);
+        line += this.context.convertCommon(CommandNames.Type, parameters[1]);
 
         if (parameters.length >= 4) {
             if (parameters[2] === KeywordNames.Implements) {
@@ -65,7 +65,7 @@ export class ClassStartCommand extends Command {
                 }
             } else {
                 line += this.language.properties.classes.declareExtendsLeft;
-                line += this.context.convertCommon("type", parameters[3]);
+                line += this.context.convertCommon(CommandNames.Type, parameters[3]);
                 line += this.language.properties.classes.declareExtendsRight;
 
                 if (parameters[4] === KeywordNames.Implements) {

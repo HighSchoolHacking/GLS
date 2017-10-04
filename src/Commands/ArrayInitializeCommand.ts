@@ -38,7 +38,7 @@ export class ArrayInitializeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const typeName: string = this.context.convertCommon("type", parameters[1]);
+        const typeName: string = this.context.convertCommon(CommandNames.Type, parameters[1]);
         let output = "";
 
         if (this.language.properties.arrays.initializeAsNew) {
@@ -51,7 +51,7 @@ export class ArrayInitializeCommand extends Command {
                 return LineResults.newSingleLine(output, false);
             }
 
-            output += this.context.convertCommon("type", typeName + "[]");
+            output += this.context.convertCommon(CommandNames.Type, typeName + "[]");
         }
 
         if (this.language.properties.arrays.initializeByType) {

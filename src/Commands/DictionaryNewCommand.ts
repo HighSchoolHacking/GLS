@@ -41,9 +41,9 @@ export class DictionaryNewCommand extends Command {
 
         if (this.language.properties.classes.generics.used) {
             output += this.language.properties.classes.generics.left;
-            output += this.context.convertCommon("type", parameters[1]);
+            output += this.context.convertCommon(CommandNames.Type, parameters[1]);
             output += this.language.properties.classes.generics.middle;
-            output += this.context.convertCommon("type", parameters[2]);
+            output += this.context.convertCommon(CommandNames.Type, parameters[2]);
             output += this.language.properties.classes.generics.right;
         }
 

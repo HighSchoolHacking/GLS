@@ -39,7 +39,7 @@ export class ListTypeCommand extends Command {
             typeName = "list<" + parameters[1] + ">";
         }
 
-        typeName = this.context.convertCommon("type", typeName);
+        typeName = this.context.convertCommon(CommandNames.Type, typeName);
 
         const results = LineResults.newSingleLine(typeName, false);
 

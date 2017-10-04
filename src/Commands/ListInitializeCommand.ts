@@ -39,12 +39,12 @@ export class ListInitializeCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.properties.lists.asArray) {
-            parameters[0] = "array initialize";
+            parameters[0] = CommandNames.ArrayInitialize;
             return this.context.convertParsed(parameters);
         }
 
         const typeNameRaw: string = "list<" + parameters[1] + ">";
-        const typeName: string = this.context.convertCommon("type", typeNameRaw);
+        const typeName: string = this.context.convertCommon(CommandNames.Type, typeNameRaw);
         let output: string = "new " + typeName;
 
         if (parameters.length > 2) {
