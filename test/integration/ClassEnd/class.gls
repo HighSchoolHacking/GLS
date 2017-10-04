@@ -1,4 +1,4 @@
 -
-class start : aaa
+class start : Aaa
 class end
 -

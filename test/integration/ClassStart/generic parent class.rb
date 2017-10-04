@@ -1,3 +1,3 @@
 #
-class aaa < bbb
+class Aaa < Bbb
 #

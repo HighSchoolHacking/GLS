@@ -1,4 +1,4 @@
 -
-class start : aaa implements bbb
+class start : Aaa implements Bbb
 class end
 -

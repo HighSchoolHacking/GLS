@@ -1,4 +1,4 @@
 //
-class aaa {
+class Aaa {
 }
 //

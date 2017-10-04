@@ -13,13 +13,13 @@ class start : Point
     constructor end
 class end
 
-class start : Measurements<T>
+class start : { generic type : Measurements T }
     constructor start : public Measurements items { array type : T }
         comment line : ...
     constructor end
 class end
 
-class start : Shape extends Measurements<Point>
+class start : Shape extends { generic type : Measurements Point }
     constructor start : public Shape points { array type : Point }
         comment line : ...
     constructor end

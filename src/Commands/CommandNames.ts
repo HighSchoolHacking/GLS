@@ -228,6 +228,11 @@ export class CommandNames {
     public static FunctionStart = "function start";
 
     /**
+     * Name key for the GenericType command.
+     */
+    public static GenericType = "generic type";
+
+    /**
      * Name key for the IfEnd command.
      */
     public static IfEnd = "if end";

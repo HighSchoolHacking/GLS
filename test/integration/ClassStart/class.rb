@@ -1,3 +1,3 @@
 #
-class aaa
+class Aaa
 #

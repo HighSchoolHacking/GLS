@@ -1,5 +1,5 @@
 //
-class aaa
+class Aaa
 {
 }
 //

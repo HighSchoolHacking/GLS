@@ -47,6 +47,7 @@ import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
 import { FunctionCommand } from "./FunctionCommand";
 import { FunctionEndCommand } from "./FunctionEndCommand";
 import { FunctionStartCommand } from "./FunctionStartCommand";
+import { GenericTypeCommand } from "./GenericTypeCommand";
 import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
@@ -165,6 +166,7 @@ export class CommandsBagFactory {
             new FunctionCommand(context),
             new FunctionStartCommand(context),
             new FunctionEndCommand(context),
+            new GenericTypeCommand(context),
             new IfEndCommand(context),
             new IfStartCommand(context),
             new ImportLocalCommand(context),
