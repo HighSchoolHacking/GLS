@@ -61,11 +61,11 @@ export class ForNumbersStartCommand extends Command {
         let output: string = this.language.properties.loops.for;
 
         output += this.language.properties.conditionals.startLeft;
-        output += this.context.convertParsed(["variable", parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.Variable, parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
         output += this.language.properties.style.semicolon + " ";
-        output += this.context.convertParsed(["operation", parameters[1], "less than", parameters[4]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "less than", parameters[4]]).commandResults[0].text;
         output += this.language.properties.style.semicolon + " ";
-        output += this.context.convertParsed(["operation", parameters[1], "increase by", "1"]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "increase by", "1"]).commandResults[0].text;
 
         return output;
     }

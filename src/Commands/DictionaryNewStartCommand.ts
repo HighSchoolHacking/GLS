@@ -40,7 +40,7 @@ export class DictionaryNewStartCommand extends Command {
 
         let output = "new ";
 
-        output += this.context.convertParsed(["dictionary type", parameters[1], parameters[2]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.DictionaryType, parameters[1], parameters[2]]).commandResults[0].text;
 
         const results: CommandResult[] = [new CommandResult(output, 0)];
         this.addLineEnder(results, this.language.properties.dictionaries.initializeStart, 1);

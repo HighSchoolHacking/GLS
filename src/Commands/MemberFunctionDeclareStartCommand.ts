@@ -50,7 +50,7 @@ export class MemberFunctionDeclareStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const publicity: string = parameters[1];
         const functionName: string = parameters[2];
-        const returnType: string = this.context.convertCommon("type", parameters[3]);
+        const returnType: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
         let declaration = "";
         let output: CommandResult[];
 
@@ -99,9 +99,9 @@ export class MemberFunctionDeclareStartCommand extends Command {
         }
 
         const parameterName: string = parameters[i];
-        const parameterType: string = this.context.convertCommon("type", parameters[i + 1]);
+        const parameterType: string = this.context.convertCommon(CommandNames.Type, parameters[i + 1]);
 
-        return this.context.convertParsed(["variable inline", parameterName, parameterType]).commandResults[0].text;
+        return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]).commandResults[0].text;
     }
 
     /**

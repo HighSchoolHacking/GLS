@@ -40,11 +40,11 @@ export class OperationCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = this.context.convertCommon("value", parameters[1]);
+        let result = this.context.convertCommon(CommandNames.Value, parameters[1]);
 
         for (let i = 2; i < parameters.length; i += 2) {
-            result += " " + this.context.convertCommon("operator", parameters[i]);
-            result += " " + this.context.convertCommon("value", parameters[i + 1]);
+            result += " " + this.context.convertCommon(CommandNames.Operator, parameters[i]);
+            result += " " + this.context.convertCommon(CommandNames.Value, parameters[i + 1]);
         }
 
         return LineResults.newSingleLine(result, true);

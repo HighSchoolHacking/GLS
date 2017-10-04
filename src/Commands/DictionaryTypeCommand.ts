@@ -40,9 +40,9 @@ export class DictionaryTypeCommand extends Command {
 
         if (this.language.properties.variables.explicitTypes) {
             output += this.language.properties.dictionaries.typeLeft;
-            output += this.context.convertCommon("type", parameters[1]);
+            output += this.context.convertCommon(CommandNames.Type, parameters[1]);
             output += this.language.properties.dictionaries.typeMiddle;
-            output += this.context.convertCommon("type", parameters[2]);
+            output += this.context.convertCommon(CommandNames.Type, parameters[2]);
             output += this.language.properties.dictionaries.typeRight;
         }
 

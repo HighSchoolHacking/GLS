@@ -56,7 +56,7 @@ export class ForEachKeyStartCommand extends Command {
         line += this.language.properties.conditionals.startLeft;
 
         if (this.language.properties.variables.declarationRequired) {
-            const variableInline = this.context.convertParsed(["variable inline", parameters[2], parameters[3]]);
+            const variableInline = this.context.convertParsed([CommandNames.VariableInline, parameters[2], parameters[3]]);
 
             line += this.language.properties.variables.declaration;
             line += variableInline.commandResults[0].text;
