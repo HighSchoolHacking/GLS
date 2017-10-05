@@ -12,7 +12,6 @@ export class NativeOperatorCallRenderer extends NativeCallRenderer {
      * @param properties   Language properties for the native call.
      * @param parameters   The command's name, followed by any parameters.
      * @returns Line(s) of code in the language.
-     * @remarks Usage: (container, operand)
      */
     public render(properties: NativeCallProperties, parameters: string[]): LineResults {
         let result = "";

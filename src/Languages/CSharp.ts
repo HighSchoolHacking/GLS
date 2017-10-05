@@ -24,6 +24,7 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { MainProperties } from "./Properties/MainProperties";
 import { MathProperties } from "./Properties/MathProperties";
+import { NativeCallArgument } from "./Properties/NativeCallArgument";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
@@ -357,13 +358,17 @@ export class CSharp extends CLikeLanguage {
             .withType(NativeCallType.Property);
 
         lists.pop = new NativeCallProperties()
-            .withArguments(["{0}.Count - 1"])
+            .withArguments([
+                new NativeCallArgument("{0}.Count - 1", 0)
+            ])
             .withName("RemoveAt")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
 
         lists.popFront = new NativeCallProperties()
-            .withArguments(["0"])
+            .withArguments([
+                new NativeCallArgument("0", 0)
+            ])
             .withName("RemoveAt")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
@@ -561,12 +566,15 @@ export class CSharp extends CLikeLanguage {
             .withType(NativeCallType.Property);
 
         strings.substrings.index = new NativeCallProperties()
-            .withName("Substring")
+            .withArguments([
+                new NativeCallArgument("{2} - {1}", 1, NativeCallArgumentPosition.Computation)
+            ])
+            .withName("SubString")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
 
         strings.substrings.length = new NativeCallProperties()
-            .withName("Substring")
+            .withName("SubString")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
     }

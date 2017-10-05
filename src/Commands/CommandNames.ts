@@ -473,6 +473,16 @@ export class CommandNames {
     public static StringLength = "string length";
 
     /**
+     * Name key for the StringSubstringIndex command.
+     */
+    public static StringSubstringIndex = "string substring index";
+
+    /**
+     * Name key for the StringSubstringLength command.
+     */
+    public static StringSubstringLength = "string substring length";
+
+    /**
      * Name key for the SuperConstructor command.
      */
     public static SuperConstructor = "super constructor";

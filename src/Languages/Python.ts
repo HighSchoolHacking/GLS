@@ -20,6 +20,7 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { MainProperties } from "./Properties/MainProperties";
 import { MathProperties } from "./Properties/MathProperties";
+import { NativeCallArgument } from "./Properties/NativeCallArgument";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
@@ -317,7 +318,9 @@ export class Python extends PythonicLanguage {
             .withType(NativeCallType.Function);
 
         lists.popFront = new NativeCallProperties()
-            .withArguments(["0"])
+            .withArguments([
+                new NativeCallArgument("0", 0)
+            ])
             .withName("pop")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
@@ -480,6 +483,23 @@ export class Python extends PythonicLanguage {
         strings.length = new NativeCallProperties()
             .withName("len")
             .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        strings.substrings.index = new NativeCallProperties()
+            .withArguments([
+                new NativeCallArgument("", 1, NativeCallArgumentPosition.Default)
+            ])
+            .withScope(NativeCallScope.Array)
+            .withSeparator(":")
+            .withType(NativeCallType.Function);
+
+        strings.substrings.length = new NativeCallProperties()
+            .withArguments([
+                new NativeCallArgument("", 1, NativeCallArgumentPosition.Default),
+                new NativeCallArgument("{1} - {0}", 1, NativeCallArgumentPosition.Computation)
+            ])
+            .withScope(NativeCallScope.Array)
+            .withSeparator(":")
             .withType(NativeCallType.Function);
     }
 

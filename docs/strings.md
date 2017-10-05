@@ -15,6 +15,10 @@ concatenate : "abc" def "ghi"
 * In C\#: `"abc" + def + "ghi"`
 * In Python: `"abc" + def + "ghi"`
 
+### Substrings
+
+...yeah...
+
 ### Formatting
 
 The `string format` command allows inserting primitives into a format string. It takes in a single format string, then any number of input name & type pairs. Format strings are string literals with any number of bracket-surrounded numbers inside, with the format `{#}`.
@@ -48,4 +52,3 @@ bar = 7
 ```
 
 Some languages, such as C\# and Python above, use string formatting with numeric insertion points into the template string. Some, such as JavaScript, boil down to concatenating them together. As a result, it is not allowed to use the same `{#}` number multiple times in the format string.
-

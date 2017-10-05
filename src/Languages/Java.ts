@@ -24,6 +24,7 @@ import { ListProperties } from "./Properties/ListProperties";
 import { LoopProperties } from "./Properties/LoopProperties";
 import { MainProperties } from "./Properties/MainProperties";
 import { MathProperties } from "./Properties/MathProperties";
+import { NativeCallArgument } from "./Properties/NativeCallArgument";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
@@ -361,13 +362,17 @@ export class Java extends CLikeLanguage {
             .withType(NativeCallType.Function);
 
         lists.pop = new NativeCallProperties()
-            .withArguments(["{0}.size() - 1"])
+            .withArguments([
+                new NativeCallArgument("{0}.size() - 1", 0)
+            ])
             .withName("remove")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
 
         lists.popFront = new NativeCallProperties()
-            .withArguments(["0"])
+            .withArguments([
+                new NativeCallArgument("0", 0)
+            ])
             .withName("remove")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
@@ -547,6 +552,19 @@ export class Java extends CLikeLanguage {
 
         strings.length = new NativeCallProperties()
             .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.substrings.index = new NativeCallProperties()
+            .withArguments([
+                new NativeCallArgument("{2} - {1}", 1, NativeCallArgumentPosition.Computation)
+            ])
+            .withName("substring")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.substrings.length = new NativeCallProperties()
+            .withName("substring")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Function);
     }

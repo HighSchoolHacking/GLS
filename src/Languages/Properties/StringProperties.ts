@@ -1,5 +1,6 @@
 import { NativeCallProperties } from "./NativeCallProperties";
 import { StringFormatProperties } from "./StringFormatProperties";
+import { StringSubstringProperties } from "./StringSubstringProperties";
 
 /**
  * Metadata on a language's Strings.
@@ -29,4 +30,9 @@ export class StringProperties {
      * How to retrieve a string's length.
      */
     public length: NativeCallProperties;
+
+    /**
+     * Metadata on the language's string substrings.
+     */
+    public substrings: StringSubstringProperties = new StringSubstringProperties();
 }

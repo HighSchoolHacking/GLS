@@ -513,6 +513,15 @@ export class JavaScript extends CLikeLanguage {
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Property);
 
+        strings.substrings.index = new NativeCallProperties()
+            .withName("substring")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.substrings.length = new NativeCallProperties()
+            .withName("substr")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**

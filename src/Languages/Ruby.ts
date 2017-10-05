@@ -29,6 +29,7 @@ import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
+import { NativeCallArgument } from "./Properties/NativeCallArgument";
 
 /**
  * A summary of information for the Ruby language.
@@ -408,12 +409,12 @@ export class Ruby extends PythonicLanguage {
         math.max = new NativeCallProperties()
             .withName("max")
             .withScope(NativeCallScope.Array)
-            .withType(NativeCallType.Function);
+            .withType(NativeCallType.FloatingLeft);
 
         math.min = new NativeCallProperties()
             .withName("min")
             .withScope(NativeCallScope.Array)
-            .withType(NativeCallType.Function);
+            .withType(NativeCallType.FloatingLeft);
 
         math.mathName = "Math";
     }
@@ -502,6 +503,23 @@ export class Ruby extends PythonicLanguage {
             .withName("length")
             .withScope(NativeCallScope.Member)
             .withType(NativeCallType.Property);
+
+        strings.substrings.index = new NativeCallProperties()
+            .withArguments([
+                new NativeCallArgument("-1", 1, NativeCallArgumentPosition.Default),
+                new NativeCallArgument("{1} - {0}", 1, NativeCallArgumentPosition.Computation)
+            ])
+            .withScope(NativeCallScope.Array)
+            .withSeparator("..")
+            .withType(NativeCallType.Function);
+
+        strings.substrings.length = new NativeCallProperties()
+            .withArguments([
+                new NativeCallArgument("-1", 1, NativeCallArgumentPosition.Default)
+            ])
+            .withScope(NativeCallScope.Array)
+            .withSeparator("..")
+            .withType(NativeCallType.Function);
     }
 
     /**

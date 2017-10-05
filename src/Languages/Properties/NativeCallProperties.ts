@@ -1,4 +1,5 @@
 import { Import } from "../Imports/Import";
+import { NativeCallArgument } from "./NativeCallArgument";
 
 /**
  * Where native operations are called from.
@@ -57,7 +58,7 @@ export class NativeCallProperties {
     /**
      * Default arguments to pass to function calls (none).
      */
-    private static defaultArguments: string[] = [];
+    private static defaultArguments: NativeCallArgument[] = [];
 
     /**
      * Default imports commands require (none).
@@ -65,9 +66,19 @@ export class NativeCallProperties {
     private static defaultImports: Import[] = [];
 
     /**
+     * Default name for commands (empty).
+     */
+    private static defaultName = "";
+
+    /**
+     * Default text between arguments.
+     */
+    private static defaultSeparator = ", ";
+
+    /**
      * Any arguments this may add as a function or static.
      */
-    public arguments: string[] = NativeCallProperties.defaultArguments;
+    public arguments: NativeCallArgument[] = NativeCallProperties.defaultArguments;
 
     /**
      * Any imports this native command requires.
@@ -77,7 +88,7 @@ export class NativeCallProperties {
     /**
      * What this is called.
      */
-    public name: string;
+    public name: string = NativeCallProperties.defaultName;
 
     /**
      * Where this is called from.
@@ -85,11 +96,16 @@ export class NativeCallProperties {
     public scope: NativeCallScope;
 
     /**
+     * Text between arguments.
+     */
+    public separator: string = NativeCallProperties.defaultSeparator;
+
+    /**
      * How this is called.
      */
     public type: NativeCallType;
 
-    public withArguments(args: string[]): NativeCallProperties {
+    public withArguments(args: NativeCallArgument[]): NativeCallProperties {
         this.arguments = args;
         return this;
     }
@@ -106,6 +122,11 @@ export class NativeCallProperties {
 
     public withScope(scope: NativeCallScope): NativeCallProperties {
         this.scope = scope;
+        return this;
+    }
+
+    public withSeparator(separator: string): NativeCallProperties {
+        this.separator = separator;
         return this;
     }
 
