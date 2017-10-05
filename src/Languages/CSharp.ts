@@ -47,10 +47,11 @@ export class CSharp extends CLikeLanguage {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallProperties(
-            "Length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        arrays.length = new NativeCallProperties()
+            .withName("Length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
     }
 
     /**
@@ -197,14 +198,16 @@ export class CSharp extends CLikeLanguage {
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
         dictionaries.className = "Dictionary";
-        dictionaries.containsKey = new NativeCallProperties(
-            "ContainsKey",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties(
-            "Keys",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        dictionaries.containsKey = new NativeCallProperties()
+            .withName("ContainsKey")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties()
+            .withName("Keys")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -343,38 +346,37 @@ export class CSharp extends CLikeLanguage {
     protected generateListProperties(lists: ListProperties): void {
         lists.className = "List";
 
-        lists.addList = new NativeCallProperties(
-            "AddRange",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.addList = new NativeCallProperties()
+            .withName("AddRange")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.length = new NativeCallProperties(
-            "Count",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        lists.length = new NativeCallProperties()
+            .withName("Count")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
 
-        lists.pop = new NativeCallProperties(
-            "RemoveAt",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.pop = new NativeCallProperties()
+            .withArguments(["{0}.Count - 1"])
+            .withName("RemoveAt")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.pop.addArgument("{0}.Count - 1");
+        lists.popFront = new NativeCallProperties()
+            .withArguments(["0"])
+            .withName("RemoveAt")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.popFront = new NativeCallProperties(
-            "RemoveAt",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.push = new NativeCallProperties()
+            .withName("Add")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.popFront.addArgument("0");
-
-        lists.push = new NativeCallProperties(
-            "Add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "Sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.sort = new NativeCallProperties()
+            .withName("Sort")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
         lists.requiredImports = [
             new Import(
@@ -440,28 +442,37 @@ export class CSharp extends CLikeLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.Abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "Math.Floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "Math.Max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "Math.Min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.requiredImports = [
+        const requiredImports: Import[] = [
             new Import(
                 ["system"],
                 ["Math"],
                 ImportRelativity.Absolute)
         ];
+
+        math.absolute = new NativeCallProperties()
+            .withImports(requiredImports)
+            .withName("Math.Abs")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.floor = new NativeCallProperties()
+            .withImports(requiredImports)
+            .withName("Math.Floor")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.max = new NativeCallProperties()
+            .withImports(requiredImports)
+            .withName("Math.Max")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.min = new NativeCallProperties()
+            .withImports(requiredImports)
+            .withName("Math.Min")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
         math.mathName = "Math";
     }
 
@@ -538,14 +549,26 @@ export class CSharp extends CLikeLanguage {
         super.generateStringProperties(strings);
 
         strings.className = "string";
-        strings.index = new NativeCallProperties(
-            "IndexOf",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        strings.length = new NativeCallProperties(
-            "Length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        strings.index = new NativeCallProperties()
+            .withName("IndexOf")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.length = new NativeCallProperties()
+            .withName("Length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        strings.substrings.index = new NativeCallProperties()
+            .withName("Substring")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.substrings.length = new NativeCallProperties()
+            .withName("Substring")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**

@@ -41,10 +41,11 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "Array";
-        arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        arrays.length = new NativeCallProperties()
+            .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
     }
 
     /**
@@ -210,10 +211,11 @@ export class Ruby extends PythonicLanguage {
         super.generateDictionaryProperties(dictionaries);
 
         dictionaries.className = "hash";
-        dictionaries.keys = new NativeCallProperties(
-            "keys",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        dictionaries.keys = new NativeCallProperties()
+            .withName("keys")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
     }
 
     /**
@@ -315,30 +317,36 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateListProperties(lists: ListProperties): void {
         super.generateListProperties(lists);
-        lists.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.pop = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.popFront = new NativeCallProperties(
-            "shift",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.push = new NativeCallProperties(
-            "push",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.addList = new NativeCallProperties(
-            "concat",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+
+        lists.length = new NativeCallProperties()
+            .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        lists.pop = new NativeCallProperties()
+            .withName("pop")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        lists.popFront = new NativeCallProperties()
+            .withName("shift")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        lists.push = new NativeCallProperties()
+            .withName("push")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.addList = new NativeCallProperties()
+            .withName("concat")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.sort = new NativeCallProperties()
+            .withName("sort")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**
@@ -387,23 +395,26 @@ export class Ruby extends PythonicLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "abs",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        math.floor = new NativeCallProperties(
-            "floor",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        math.max = new NativeCallProperties(
-            "max",
-            NativeCallScope.Array,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "min",
-            NativeCallScope.Array,
-            NativeCallType.Function);
-        math.requiredImports = [];
+        math.absolute = new NativeCallProperties()
+            .withName("abs")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        math.floor = new NativeCallProperties()
+            .withName("floor")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
+
+        math.max = new NativeCallProperties()
+            .withName("max")
+            .withScope(NativeCallScope.Array)
+            .withType(NativeCallType.Function);
+
+        math.min = new NativeCallProperties()
+            .withName("min")
+            .withScope(NativeCallScope.Array)
+            .withType(NativeCallType.Function);
+
         math.mathName = "Math";
     }
 
@@ -481,14 +492,16 @@ export class Ruby extends PythonicLanguage {
         super.generateStringProperties(strings);
 
         strings.className = "string";
-        strings.index = new NativeCallProperties(
-            "index",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+
+        strings.index = new NativeCallProperties()
+            .withName("index")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.length = new NativeCallProperties()
+            .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Property);
     }
 
     /**

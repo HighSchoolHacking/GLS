@@ -88,10 +88,11 @@ export abstract class PythonicLanguage extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.containsKey = new NativeCallProperties(
-            " in ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingLeft);
+        dictionaries.containsKey = new NativeCallProperties()
+            .withName(" in ")
+            .withScope(NativeCallScope.Operator)
+            .withType(NativeCallType.FloatingLeft);
+
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
         dictionaries.initializePairLeft = "";

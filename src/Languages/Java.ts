@@ -46,10 +46,11 @@ export class Java extends CLikeLanguage {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+
+        arrays.length = new NativeCallProperties()
+            .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**
@@ -199,14 +200,17 @@ export class Java extends CLikeLanguage {
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
         dictionaries.className = "HashMap";
-        dictionaries.containsKey = new NativeCallProperties(
-            "containsKey",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties(
-            "keySet",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+
+        dictionaries.containsKey = new NativeCallProperties()
+            .withName("containsKey")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        dictionaries.keys = new NativeCallProperties()
+            .withName("keySet")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
@@ -346,38 +350,37 @@ export class Java extends CLikeLanguage {
     protected generateListProperties(lists: ListProperties): void {
         lists.className = "ArrayList";
 
-        lists.addList = new NativeCallProperties(
-            "addAll",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.addList = new NativeCallProperties()
+            .withName("addAll")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.length = new NativeCallProperties(
-            "size",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.length = new NativeCallProperties()
+            .withName("size")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.pop = new NativeCallProperties(
-            "remove",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.pop = new NativeCallProperties()
+            .withArguments(["{0}.size() - 1"])
+            .withName("remove")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.pop.addArgument("{0}.size() - 1");
+        lists.popFront = new NativeCallProperties()
+            .withArguments(["0"])
+            .withName("remove")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.popFront = new NativeCallProperties(
-            "remove",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.push = new NativeCallProperties()
+            .withName("add")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
-        lists.popFront.addArgument("0");
-
-        lists.push = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.sort = new NativeCallProperties()
+            .withName("sort")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
 
         lists.requiredImports = [
             new Import(
@@ -439,23 +442,26 @@ export class Java extends CLikeLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "Math.floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "Math.max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "Math.min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.requiredImports = [];
+        math.absolute = new NativeCallProperties()
+            .withName("Math.abs")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.floor = new NativeCallProperties()
+            .withName("Math.floor")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.max = new NativeCallProperties()
+            .withName("Math.max")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.min = new NativeCallProperties()
+            .withName("Math.min")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
         math.mathName = "Math";
     }
 
@@ -533,14 +539,16 @@ export class Java extends CLikeLanguage {
         super.generateStringProperties(strings);
 
         strings.className = "string";
-        strings.index = new NativeCallProperties(
-            "indexOf",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+
+        strings.index = new NativeCallProperties()
+            .withName("indexOf")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.length = new NativeCallProperties()
+            .withName("length")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**

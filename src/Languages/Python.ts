@@ -41,10 +41,11 @@ export class Python extends PythonicLanguage {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "list";
-        arrays.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+
+        arrays.length = new NativeCallProperties()
+            .withName("len")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
     }
 
     /**
@@ -205,10 +206,11 @@ export class Python extends PythonicLanguage {
         super.generateDictionaryProperties(dictionaries);
 
         dictionaries.className = "dict";
-        dictionaries.keys = new NativeCallProperties(
-            "keys",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+
+        dictionaries.keys = new NativeCallProperties()
+            .withName("keys")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**
@@ -303,32 +305,37 @@ export class Python extends PythonicLanguage {
      */
     protected generateListProperties(lists: ListProperties): void {
         super.generateListProperties(lists);
-        lists.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        lists.pop = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.popFront = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.popFront.addArgument("0");
 
-        lists.push = new NativeCallProperties(
-            "append",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.addList = new NativeCallProperties(
-            "extend",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.length = new NativeCallProperties()
+            .withName("len")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        lists.pop = new NativeCallProperties()
+            .withName("pop")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.popFront = new NativeCallProperties()
+            .withArguments(["0"])
+            .withName("pop")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.push = new NativeCallProperties()
+            .withName("append")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.addList = new NativeCallProperties()
+            .withName("extend")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        lists.sort = new NativeCallProperties()
+            .withName("sort")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
     }
 
     /**
@@ -374,23 +381,26 @@ export class Python extends PythonicLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "fabs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.requiredImports = [];
+        math.absolute = new NativeCallProperties()
+            .withName("fabs")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.floor = new NativeCallProperties()
+            .withName("floor")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.max = new NativeCallProperties()
+            .withName("max")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
+        math.min = new NativeCallProperties()
+            .withName("min")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
+
         math.mathName = "Math";
     }
 
@@ -461,14 +471,16 @@ export class Python extends PythonicLanguage {
         super.generateStringProperties(strings);
 
         strings.className = "string";
-        strings.index = new NativeCallProperties(
-            "index",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        strings.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+
+        strings.index = new NativeCallProperties()
+            .withName("index")
+            .withScope(NativeCallScope.Member)
+            .withType(NativeCallType.Function);
+
+        strings.length = new NativeCallProperties()
+            .withName("len")
+            .withScope(NativeCallScope.Static)
+            .withType(NativeCallType.Function);
     }
 
     /**
