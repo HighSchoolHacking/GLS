@@ -31,6 +31,7 @@ import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
+import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 
 /**
  * A summary of information for the JavaScript language.
@@ -497,6 +498,19 @@ export class JavaScript extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+    }
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.leftIndex = ".substr(";
+        substrings.leftLength = ".substring(";
+        substrings.middle = ", ";
+        substrings.right = ")";
+        substrings.support = StringSubstringSupport.Both;
     }
 
     /**

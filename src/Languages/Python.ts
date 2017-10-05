@@ -29,6 +29,7 @@ import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
+import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 
 /**
  * A summary of information for the Python language.
@@ -450,6 +451,19 @@ export class Python extends PythonicLanguage {
         formatting.formatInputRight = "}";
         formatting.inputTypes = false;
         formatting.useInterpolation = false;
+    }
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.leftIndex = "[";
+        substrings.leftLength = "[";
+        substrings.middle = ":";
+        substrings.right = "]";
+        substrings.support = StringSubstringSupport.Both;
     }
 
     /**

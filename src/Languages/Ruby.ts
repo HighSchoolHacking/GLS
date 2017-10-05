@@ -29,6 +29,7 @@ import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
+import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 
 /**
  * A summary of information for the Ruby language.
@@ -489,6 +490,19 @@ export class Ruby extends PythonicLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+    }
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.leftIndex = "[";
+        substrings.leftLength = "[";
+        substrings.middle = "..";
+        substrings.right = "]";
+        substrings.support = StringSubstringSupport.Length;
     }
 
     /**

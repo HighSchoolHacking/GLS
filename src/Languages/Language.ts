@@ -29,6 +29,7 @@ import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -76,6 +77,7 @@ export abstract class Language {
         this.generatePrintingProperties(this.properties.printing);
         this.generateStringProperties(this.properties.strings);
         this.generateStringFormatProperties(this.properties.strings.formatting);
+        this.generateStringSubstringProperties(this.properties.strings.substrings);
         this.generateStyleProperties(this.properties.style);
         this.generateVariableProperties(this.properties.variables);
 
@@ -301,6 +303,13 @@ export abstract class Language {
      * @param style   A property container for metadata on style.
      */
     protected abstract generateStyleProperties(style: StyleProperties): void;
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected abstract generateStringSubstringProperties(substrings: StringSubstringProperties): void;
 
     /**
      * Generates metadata on variables.

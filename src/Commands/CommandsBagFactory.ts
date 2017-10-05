@@ -96,6 +96,8 @@ import { StaticVariableCommand } from "./StaticVariableCommand";
 import { StaticVariableDeclareCommand } from "./StaticVariableDeclareCommand";
 import { StringFormatCommand } from "./StringFormatCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
+import { StringSubstringIndexCommand } from "./StringSubstringIndexCommand";
+import { StringSubstringLengthCommand } from "./StringSubstringLengthCommand";
 import { SuperConstructorCommand } from "./SuperConstructorCommand";
 import { ThisCommand } from "./ThisCommand";
 import { ThrowExceptionCommand } from "./ThrowExceptionCommand";
@@ -215,6 +217,8 @@ export class CommandsBagFactory {
             new StaticVariableDeclareCommand(context),
             new StringFormatCommand(context),
             new StringLengthCommand(context),
+            new StringSubstringIndexCommand(context),
+            new StringSubstringLengthCommand(context),
             new SuperConstructorCommand(context),
             new ThisCommand(context),
             new ThrowExceptionCommand(context),
