@@ -30,8 +30,8 @@ import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
-import { VariableProperties } from "./Properties/VariableProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
  * A summary of information for the JavaScript language.
@@ -506,8 +506,9 @@ export class JavaScript extends CLikeLanguage {
      * @param strings   A property container for metadata on string substrings.
      */
     protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
-        substrings.leftIndex = ".substr(";
-        substrings.leftLength = ".substring(";
+        substrings.defaultEnd = "";
+        substrings.leftIndex = ".substring(";
+        substrings.leftLength = ".substr(";
         substrings.middle = ", ";
         substrings.right = ")";
         substrings.support = StringSubstringSupport.Both;

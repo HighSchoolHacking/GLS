@@ -555,6 +555,7 @@ export class CSharp extends CLikeLanguage {
      * @param strings   A property container for metadata on string substrings.
      */
     protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.defaultEnd = "";
         substrings.leftIndex = ".SubString(";
         substrings.leftLength = ".SubString(";
         substrings.middle = ", ";

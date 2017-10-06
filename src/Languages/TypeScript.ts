@@ -519,8 +519,9 @@ export class TypeScript extends CLikeLanguage {
      * @param strings   A property container for metadata on string substrings.
      */
     protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
-        substrings.leftIndex = ".substr(";
-        substrings.leftLength = ".substring(";
+        substrings.defaultEnd = "";
+        substrings.leftIndex = ".substring(";
+        substrings.leftLength = ".substr(";
         substrings.middle = ", ";
         substrings.right = ")";
         substrings.support = StringSubstringSupport.Both;

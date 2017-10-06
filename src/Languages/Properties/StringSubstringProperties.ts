@@ -23,6 +23,11 @@ export enum StringSubstringSupport {
  */
 export class StringSubstringProperties {
     /**
+     * Default second parameter if one isn't provided.
+     */
+    public defaultEnd: string;
+
+    /**
      * How to start a substring index call.
      */
     public leftIndex: string;
@@ -33,7 +38,7 @@ export class StringSubstringProperties {
     public leftLength: string;
 
     /**
-     * Middle of a substring call.
+     * Middle of a substring call if a second parameter is provided.
      */
     public middle: string;
 
