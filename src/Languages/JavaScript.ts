@@ -489,15 +489,29 @@ export class JavaScript extends CLikeLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
+        strings.caseLower = new NativeCallProperties(
+            "toLowerCase",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.caseUpper = new NativeCallProperties(
+            "toUpperCase",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.className = "String";
+
         strings.index = new NativeCallProperties(
             "indexOf",
             NativeCallScope.Member,
             NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.requiredImports = [];
     }
 
     /**

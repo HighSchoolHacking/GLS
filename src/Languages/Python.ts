@@ -475,15 +475,29 @@ export class Python extends PythonicLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
+        strings.caseLower = new NativeCallProperties(
+            "lower",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.caseUpper = new NativeCallProperties(
+            "upper",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.className = "string";
+
         strings.index = new NativeCallProperties(
             "index",
             NativeCallScope.Member,
             NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
+
+        strings.requiredImports = [];
     }
 
     /**

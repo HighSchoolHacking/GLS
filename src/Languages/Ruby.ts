@@ -481,15 +481,29 @@ export class Ruby extends PythonicLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
+        strings.caseLower = new NativeCallProperties(
+            "downcase",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+
+        strings.caseUpper = new NativeCallProperties(
+            "upcase",
+            NativeCallScope.Member,
+            NativeCallType.Property);
+
         strings.className = "string";
+
         strings.index = new NativeCallProperties(
             "index",
             NativeCallScope.Member,
             NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.requiredImports = [];
     }
 
     /**

@@ -94,6 +94,8 @@ import { StaticFunctionDeclareEndCommand } from "./StaticFunctionDeclareEndComma
 import { StaticFunctionDeclareStartCommand } from "./StaticFunctionDeclareStartCommand";
 import { StaticVariableCommand } from "./StaticVariableCommand";
 import { StaticVariableDeclareCommand } from "./StaticVariableDeclareCommand";
+import { StringCaseLowerCommand } from "./StringCaseLowerCommand";
+import { StringCaseUpperCommand } from "./StringCaseUpperCommand";
 import { StringFormatCommand } from "./StringFormatCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { StringSubstringIndexCommand } from "./StringSubstringIndexCommand";
@@ -215,6 +217,8 @@ export class CommandsBagFactory {
             new StaticFunctionDeclareEndCommand(context),
             new StaticVariableCommand(context),
             new StaticVariableDeclareCommand(context),
+            new StringCaseLowerCommand(context),
+            new StringCaseUpperCommand(context),
             new StringFormatCommand(context),
             new StringLengthCommand(context),
             new StringSubstringIndexCommand(context),
