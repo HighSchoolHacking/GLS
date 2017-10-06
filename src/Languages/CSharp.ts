@@ -538,15 +538,34 @@ export class CSharp extends CLikeLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
+        strings.caseLower = new NativeCallProperties(
+            "ToLower",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.caseUpper = new NativeCallProperties(
+            "ToUpper",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.className = "string";
+
         strings.index = new NativeCallProperties(
             "IndexOf",
             NativeCallScope.Member,
             NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "Length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.requiredImports = [
+            new Import(
+                ["system"],
+                [],
+                ImportRelativity.Absolute)
+        ];
     }
 
     /**

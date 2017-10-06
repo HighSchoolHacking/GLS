@@ -483,6 +483,16 @@ export class CommandNames {
     public static StringSubstringLength = "string substring length";
 
     /**
+     * Name key for the StringCaseLower command.
+     */
+    public static StringCaseLower = "string case lower";
+
+    /**
+     * Name key for the StringCaseUpper command.
+     */
+    public static StringCaseUpper = "string case upper";
+
+    /**
      * Name key for the SuperConstructor command.
      */
     public static SuperConstructor = "super constructor";

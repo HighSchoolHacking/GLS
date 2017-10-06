@@ -533,15 +533,29 @@ export class Java extends CLikeLanguage {
     protected generateStringProperties(strings: StringProperties): void {
         super.generateStringProperties(strings);
 
+        strings.caseLower = new NativeCallProperties(
+            "toLowerCase",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.caseUpper = new NativeCallProperties(
+            "toUpperCase",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.className = "string";
+
         strings.index = new NativeCallProperties(
             "indexOf",
             NativeCallScope.Member,
             NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
+
+        strings.requiredImports = [];
     }
 
     /**

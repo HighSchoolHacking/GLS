@@ -1,3 +1,4 @@
+import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "./NativeCallProperties";
 import { StringFormatProperties } from "./StringFormatProperties";
 import { StringSubstringProperties } from "./StringSubstringProperties";
@@ -6,6 +7,16 @@ import { StringSubstringProperties } from "./StringSubstringProperties";
  * Metadata on a language's Strings.
  */
 export class StringProperties {
+    /**
+     * How to create a lower-case copy of a string.
+     */
+    public caseLower: NativeCallProperties;
+
+    /**
+     * How to create an upper-case copy of a string.
+     */
+    public caseUpper: NativeCallProperties;
+
     /**
      * The name of the string class.
      */
@@ -35,4 +46,9 @@ export class StringProperties {
      * Metadata on the language's string substrings.
      */
     public substrings: StringSubstringProperties = new StringSubstringProperties();
+
+    /**
+     * Required imports to be able to use native string commands.
+     */
+    public requiredImports: Import[];
 }
