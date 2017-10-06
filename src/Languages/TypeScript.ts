@@ -30,6 +30,7 @@ import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -510,6 +511,20 @@ export class TypeScript extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+    }
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.defaultEnd = "";
+        substrings.leftIndex = ".substring(";
+        substrings.leftLength = ".substr(";
+        substrings.middle = ", ";
+        substrings.right = ")";
+        substrings.support = StringSubstringSupport.Both;
     }
 
     /**

@@ -31,6 +31,7 @@ import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
+import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
@@ -541,6 +542,20 @@ export class Java extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
+    }
+
+    /**
+     * Generates metadata on string substrings.
+     *
+     * @param strings   A property container for metadata on string substrings.
+     */
+    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+        substrings.defaultEnd = "";
+        substrings.leftIndex = ".substring(";
+        substrings.leftLength = ".substring(";
+        substrings.middle = ", ";
+        substrings.right = ")";
+        substrings.support = StringSubstringSupport.Index;
     }
 
     /**
