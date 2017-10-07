@@ -1,5 +1,6 @@
 export { CaseStyleConverter } from "./Conversions/Casing/CaseStyleConverter";
 export { CaseStyleConverterBag } from "./Conversions/Casing/CaseStyleConverterBag";
+export { NameSplitter } from "./Conversions/Casing/NameSplitter";
 export { ConversionContext } from "./Conversions/ConversionContext";
 export { Command } from "./Commands/Command";
 export { CommandsBag } from "./Commands/CommandsBag";

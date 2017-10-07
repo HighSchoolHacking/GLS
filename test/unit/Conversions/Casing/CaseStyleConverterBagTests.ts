@@ -15,7 +15,7 @@ describe("CaseStyleConverterBag", () => {
             const command = caseStyleConverterBag.getConverter(CaseStyle.FileSystemLowerCase);
 
             // Assert
-            expect(command).that.be.instanceof(FileSystemLowerCaseConverter);
+            expect(command).to.be.instanceof(FileSystemLowerCaseConverter);
         });
 
         it("throws an error for an unknown case style", () => {
@@ -26,7 +26,31 @@ describe("CaseStyleConverterBag", () => {
             const action = () => caseStyleConverterBag.getConverter(-1);
 
             // Assert
-            expect(action).to.throw();
+            expect(action).to.throw(/Unknown case style requested(.*)/);
+        });
+    });
+
+    describe("convert", () => {
+        it("converts a case style by its enum", () => {
+            // Arrange
+            const caseStyleConverterBag = new CaseStyleConverterBag();
+
+            // Act
+            const converted = caseStyleConverterBag.convertToCase(CaseStyle.PascalCase, ["foo", "bar"]);
+
+            // Assert
+            expect(converted).to.be.equal("FooBar");
+        });
+
+        it("throws an error for an unknown case style", () => {
+            // Arrange
+            const caseStyleConverterBag = new CaseStyleConverterBag();
+
+            // Act
+            const action = () => caseStyleConverterBag.convertToCase(-1, ["foo", "bar"]);
+
+            // Assert
+            expect(action).to.throw(/Unknown case style requested(.*)/);
         });
     });
 });
