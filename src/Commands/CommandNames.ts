@@ -378,6 +378,11 @@ export class CommandNames {
     public static MemberFunction = "member function";
 
     /**
+     * Name key for the MemberFunctionDeclareAbstract command.
+     */
+    public static MemberFunctionDeclareAbstract = "member function declare abstract";
+
+    /**
      * Name key for the MemberFunctionDeclareEnd command.
      */
     public static MemberFunctionDeclareEnd = "member function declare end";

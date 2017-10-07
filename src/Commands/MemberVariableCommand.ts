@@ -17,7 +17,7 @@ export class MemberVariableCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberVariable)
         .withDescription("Retrieves a member variable.")
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the member variable."),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the member variable.", true),
             new SingleParameter("instanceName", "A class instance retrieving a member variable.", true),
             new SingleParameter("variableName", "The name of the member variable.", true)
         ]);

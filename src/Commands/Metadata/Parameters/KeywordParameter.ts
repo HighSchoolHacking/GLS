@@ -15,21 +15,28 @@ export class KeywordParameter implements IParameter {
     public literals: Set<string>;
 
     /**
+     * Whether this must be provided.
+     */
+    public required: boolean;
+
+    /**
      * Initializes a new instance of the KeywordParameter class.
      *
      * @param literal   Allowed matching string literals.
      * @param description   A high-level definition of the parameter.
+     * @param required   Whether this must be required.
      */
-    public constructor(literals: string[], description: string) {
+    public constructor(literals: string[], description: string, required: boolean) {
         this.description = description;
         this.literals = new Set(literals);
+        this.required = required;
     }
 
     /**
-     * @returns Whether this parameter is required (false).
+     * @returns Whether this parameter is required.
      */
     public isRequired(): boolean {
-        return false;
+        return this.required;
     }
 
     /**
@@ -42,7 +49,14 @@ export class KeywordParameter implements IParameter {
      * @returns A new input position following all valid inputs.
      */
     public validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        // Keywords are assumed to always be optional (and only used to separate repeating parameters)
-        return inputPosition + 1;
+        if (this.literals.has(inputs[inputPosition])) {
+            return inputPosition + 1;
+        }
+
+        if (this.required) {
+            throw new Error(`Missing required parameter: must be one of: '${Array.from(this.literals).join("', '")}'`);
+        }
+
+        return inputPosition;
     }
 }

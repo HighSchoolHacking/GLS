@@ -3,6 +3,11 @@
  */
 export class KeywordNames {
     /**
+     * Name key for the "abstract" keyword.
+     */
+    public static Abstract = "abstract";
+
+    /**
      * Name key for the "extends" keyword.
      */
     public static Extends = "extends";
@@ -25,7 +30,7 @@ export class KeywordNames {
     /**
      * Name key for the "public" keyword.
      */
-    public static Public = "private";
+    public static Public = "public";
 
     /**
      * Name keys for publicity keywords.
@@ -34,6 +39,14 @@ export class KeywordNames {
         KeywordNames.Public,
         KeywordNames.Protected,
         KeywordNames.Private
+    ];
+
+    /**
+     * Name keys for abstract-compatiblepublicity keywords.
+     */
+    public static AbstractPrivacies: string[] = [
+        KeywordNames.Public,
+        KeywordNames.Protected
     ];
 
     /**

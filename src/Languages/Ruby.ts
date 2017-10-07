@@ -101,6 +101,7 @@ export class Ruby extends PythonicLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "Hash",
             number: "Float"

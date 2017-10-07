@@ -18,7 +18,7 @@ export class MemberFunctionCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunction)
         .withDescription("Starts a member function.")
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function."),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "Return type of the member function", true),
             new RepeatingParameters(

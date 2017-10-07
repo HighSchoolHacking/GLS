@@ -24,6 +24,7 @@ export class SingleParameter implements IParameter {
      *
      * @param descriptor   A plain-text description of the parameter.
      * @param parameters   Parameters contained inside.
+     * @param required   Whether this must be provided.
      */
     public constructor(name: string, description: string, required: boolean) {
         this.name = name;

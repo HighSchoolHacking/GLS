@@ -71,6 +71,7 @@ export class CSharp extends CLikeLanguage {
     protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
         super.generateClassMemberFunctionProperties(functions);
 
+        functions.abstractDeclaration = "abstract ";
         functions.private = "private ";
         functions.privateCase = CaseStyle.PascalCase;
         functions.protected = "protected ";
@@ -102,6 +103,8 @@ export class CSharp extends CLikeLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "abstract ";
+        classes.abstractsSupported = true;
         classes.aliases = {
             boolean: "bool",
             dictionary: "Dictionary",
