@@ -42,6 +42,14 @@ export class KeywordNames {
     ];
 
     /**
+     * Name keys for abstract-compatiblepublicity keywords.
+     */
+    public static AbstractPrivacies: string[] = [
+        KeywordNames.Public,
+        KeywordNames.Protected
+    ];
+
+    /**
      * Name key for the "throws" keyword.
      */
     public static Throws = "throws";

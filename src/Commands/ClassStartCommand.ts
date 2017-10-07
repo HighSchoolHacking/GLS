@@ -48,15 +48,8 @@ export class ClassStartCommand extends Command {
         const remainingParameters = parameters.slice(1);
         let line = "";
 
-        const forAbstract: string = this.getForAbstract(remainingParameters);
-
-        if (this.language.properties.classes.abstractAfterStart) {
-            line += this.language.properties.classes.declareStartLeft;
-            line += forAbstract;
-        } else {
-            line += forAbstract;
-            line += this.language.properties.classes.declareStartLeft;
-        }
+        line += this.getForAbstract(remainingParameters);
+        line += this.language.properties.classes.declareStartLeft;
 
         line += this.getForClassName(remainingParameters);
 

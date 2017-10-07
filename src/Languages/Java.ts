@@ -70,6 +70,7 @@ export class Java extends CLikeLanguage {
     protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
         super.generateClassMemberFunctionProperties(functions);
 
+        functions.abstractDeclaration = "abstract ";
         functions.private = "private ";
         functions.privateCase = CaseStyle.CamelCase;
         functions.protected = "protected ";
@@ -102,6 +103,7 @@ export class Java extends CLikeLanguage {
         super.generateClassProperties(classes);
 
         classes.abstractDeclaration = "abstract ";
+        classes.abstractsSupported = true;
         classes.aliases = {
             boolean: "boolean",
             dictionary: "HashMap",

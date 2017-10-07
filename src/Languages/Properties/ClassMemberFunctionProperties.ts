@@ -5,6 +5,11 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ClassMemberFunctionProperties {
     /**
+     * Decorator for abstract function declarations.
+     */
+    public abstractDeclaration: string;
+
+    /**
      * Decorator for private member functions.
      */
     public private: string;

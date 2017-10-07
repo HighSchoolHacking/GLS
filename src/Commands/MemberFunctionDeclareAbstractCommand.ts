@@ -7,17 +7,17 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Starts a member function.
+ * Declares an abstract member function.
  */
-export class MemberFunctionDeclareStartCommand extends MemberFunctionDeclareCommand {
+export class MemberFunctionDeclareAbstractCommand extends MemberFunctionDeclareCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareStart)
-        .withDescription("Starts a member function.")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareAbstract)
+        .withDescription("Declares an abstract member function.")
         .withIndentation([1])
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
+            new KeywordParameter(KeywordNames.AbstractPrivacies, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),
             new RepeatingParameters(
@@ -38,27 +38,27 @@ export class MemberFunctionDeclareStartCommand extends MemberFunctionDeclareComm
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return MemberFunctionDeclareStartCommand.metadata;
+        return MemberFunctionDeclareAbstractCommand.metadata;
     }
 
     /**
-     * @returns Whether this is able to render any output (true).
+     * @returns Whether this is able to render any output.
      */
     protected canRender(): boolean {
-        return true;
+        return this.language.properties.classes.abstractsSupported;
     }
 
     /**
      * @returns Text after the publicity keyword.
      */
     protected getAfterPublicity(): string {
-        return "";
+        return this.language.properties.classes.members.functions.abstractDeclaration;
     }
 
     /**
      * @returns Text to end the declaration.
      */
     protected getEnder(): string {
-        return this.language.properties.functions.defineStartRight;
+        return this.language.properties.style.semicolon;
     }
 }

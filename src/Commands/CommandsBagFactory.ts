@@ -77,6 +77,7 @@ import { MathFloorCommand } from "./MathFloorCommand";
 import { MathMaxCommand } from "./MathMaxCommand";
 import { MathMinCommand } from "./MathMinCommand";
 import { MemberFunctionCommand } from "./MemberFunctionCommand";
+import { MemberFunctionDeclareAbstractCommand } from "./MemberFunctionDeclareAbstractCommand";
 import { MemberFunctionDeclareEndCommand } from "./MemberFunctionDeclareEndCommand";
 import { MemberFunctionDeclareStartCommand } from "./MemberFunctionDeclareStartCommand";
 import { MemberVariableCommand } from "./MemberVariableCommand";
@@ -200,8 +201,9 @@ export class CommandsBagFactory {
             new MathMaxCommand(context),
             new MathMinCommand(context),
             new MemberFunctionCommand(context),
-            new MemberFunctionDeclareStartCommand(context),
+            new MemberFunctionDeclareAbstractCommand(context),
             new MemberFunctionDeclareEndCommand(context),
+            new MemberFunctionDeclareStartCommand(context),
             new MemberVariableCommand(context),
             new MemberVariableDeclareCommand(context),
             new NewCommand(context),
