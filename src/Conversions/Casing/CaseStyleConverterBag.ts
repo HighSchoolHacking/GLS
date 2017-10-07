@@ -55,4 +55,14 @@ export class CaseStyleConverterBag {
 
         return this.converters[caseStyleAlias];
     }
+
+    /**
+     * Combines a series of words to the equivalent case style.
+     *
+     * @param words   Words to convert.
+     * @returns The word's equivalent in the case style.
+     */
+    public convertToCase(caseStyle: CaseStyle, words: string[]): string {
+        return this.getConverter(caseStyle).convert(words);
+    }
 }
