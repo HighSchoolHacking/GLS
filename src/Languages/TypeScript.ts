@@ -99,6 +99,7 @@ export class TypeScript extends CLikeLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "abstract ";
         classes.aliases = {
             dictionary: "object",
             double: "number",

@@ -8,6 +8,16 @@ import { ClassStaticProperties } from "./ClassStaticProperties";
  */
 export class ClassProperties {
     /**
+     * Whether the "abstract" keyword is placed after the declaration start.
+     */
+    public abstractAfterStart: boolean;
+
+    /**
+     * Prefix to mark a method as abstract.
+     */
+    public abstractDeclaration: string;
+
+    /**
      * Aliases of types, from raw GLS syntax to this language's equivalents.
      */
     public aliases: { [i: string]: string };

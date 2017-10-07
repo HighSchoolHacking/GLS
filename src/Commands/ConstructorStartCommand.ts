@@ -19,7 +19,7 @@ export class ConstructorStartCommand extends Command {
         .withDescription("Starts a constructor.")
         .withIndentation([1])
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the constructor."),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the constructor.", true),
             new SingleParameter("className", "The name of the class.", true),
             new RepeatingParameters(
                 "Function parameters.",

@@ -101,6 +101,7 @@ export class Java extends CLikeLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "abstract ";
         classes.aliases = {
             boolean: "boolean",
             dictionary: "HashMap",

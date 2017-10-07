@@ -27,7 +27,7 @@ export class FunctionStartCommand extends Command {
                     new SingleParameter("parameterName", "A named parameter for the function.", true),
                     new SingleParameter("parameterType", "The type of the parameter.", true)
                 ]),
-            new KeywordParameter([KeywordNames.Throws], "Keyword to list possible exceptions"),
+            new KeywordParameter([KeywordNames.Throws], "Keyword to list possible exceptions", false),
             new RepeatingParameters(
                 "Possible exceptions.",
                 [

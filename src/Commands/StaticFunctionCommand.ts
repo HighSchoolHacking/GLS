@@ -18,7 +18,7 @@ export class StaticFunctionCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunction)
         .withDescription("Calls a static function.")
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function."),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
             new SingleParameter("className", "The name of the class the function is on.", true),
             new RepeatingParameters(
                 "Function parameters.",

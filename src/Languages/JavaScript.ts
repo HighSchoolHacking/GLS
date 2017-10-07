@@ -98,6 +98,7 @@ export class JavaScript extends CLikeLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "object",
             double: "number",

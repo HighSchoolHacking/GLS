@@ -50,6 +50,48 @@ describe("ParametersValidator", () => {
                 ]
             },
             {
+                expectation: "accepts a matched required keyword parameter before an optional single parameter",
+                inputs: ["command", "first"],
+                requirements: [
+                    new KeywordParameter(["first"], "", true),
+                    new SingleParameter("second", "", false)
+                ]
+            },
+            {
+                expectation: "accepts a matched required keyword parameter and a single parameter",
+                inputs: ["command", "first", "second"],
+                requirements: [
+                    new KeywordParameter(["first"], "", true),
+                    new SingleParameter("second", "", true)
+                ]
+            },
+            {
+                expectation: "accepts an unmatched optional keyword parameter before a required single parameter",
+                inputs: ["command", "abc"],
+                requirements: [
+                    new KeywordParameter(["first"], "", false),
+                    new SingleParameter("second", "", true)
+                ]
+            },
+            {
+                expectation: "rejects an unmatched required keyword parameter before an optional single parameter",
+                failure: "Missing required parameter: must be one of: \'first\'",
+                inputs: ["command", "abc"],
+                requirements: [
+                    new KeywordParameter(["first"], "", true),
+                    new SingleParameter("second", "", false)
+                ]
+            },
+            {
+                expectation: "rejects an unmatched required keyword parameter and a matched single parameter",
+                failure: "Missing required parameter: must be one of: \'first\'",
+                inputs: ["command", "abc", "second"],
+                requirements: [
+                    new KeywordParameter(["first"], "", true),
+                    new SingleParameter("second", "", true)
+                ]
+            },
+            {
                 expectation: "accepts zero matched repeating parameters",
                 inputs: ["command"],
                 requirements: [
@@ -96,7 +138,7 @@ describe("ParametersValidator", () => {
                 ]
             },
             {
-                expectation: "accepts repeating parameters without a subsequent keyword",
+                expectation: "accepts repeating parameters without a subsequent optional keyword",
                 inputs: ["command", "abc", "def"],
                 requirements: [
                     new RepeatingParameters(
@@ -105,11 +147,11 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter(["literal"], "")
+                    new KeywordParameter(["literal"], "", false)
                 ]
             },
             {
-                expectation: "accepts repeating parameters with a subsequent keyword",
+                expectation: "accepts repeating parameters with a subsequent optional keyword",
                 inputs: ["command", "abc", "def", "literal"],
                 requirements: [
                     new RepeatingParameters(
@@ -118,11 +160,11 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter(["literal"], "")
+                    new KeywordParameter(["literal"], "", false)
                 ]
             },
             {
-                expectation: "accepts repeating parameters with a subsequent keyword and repeating parameters",
+                expectation: "accepts repeating parameters with a subsequent optional keyword and repeating parameters",
                 inputs: ["command", "abc", "def", "literal", "fhi"],
                 requirements: [
                     new RepeatingParameters(
@@ -131,7 +173,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter(["literal"], ""),
+                    new KeywordParameter(["literal"], "", false),
                     new RepeatingParameters(
                         "",
                         [
@@ -140,7 +182,7 @@ describe("ParametersValidator", () => {
                 ]
             },
             {
-                expectation: "rejects repeating parameters of the wrong count with a subsequent keyword and repeating parameters",
+                expectation: "rejects repeating parameters of the wrong count with a subsequent optional keyword and repeating parameters",
                 failure: "Expected a multiple of 2 repeating parameters but got 1.",
                 inputs: ["command", "abc", "literal", "def"],
                 requirements: [
@@ -150,7 +192,7 @@ describe("ParametersValidator", () => {
                             new SingleParameter("first", "", true),
                             new SingleParameter("second", "", true),
                         ]),
-                    new KeywordParameter(["literal"], ""),
+                    new KeywordParameter(["literal"], "", false),
                     new RepeatingParameters(
                         "",
                         [
@@ -159,7 +201,7 @@ describe("ParametersValidator", () => {
                 ]
             },
             {
-                expectation: "rejects repeating parameters with a subsequent keyword and repeating parameters of the wrong count",
+                expectation: "rejects repeating parameters with a subsequent optional keyword and repeating parameters of the wrong count",
                 failure: "Expected a multiple of 2 repeating parameters but got 1.",
                 inputs: ["command", "abc", "literal", "def"],
                 requirements: [
@@ -168,7 +210,7 @@ describe("ParametersValidator", () => {
                         [
                             new SingleParameter("first", "", true),
                         ]),
-                    new KeywordParameter(["literal"], ""),
+                    new KeywordParameter(["literal"], "", false),
                     new RepeatingParameters(
                         "",
                         [

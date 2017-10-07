@@ -97,6 +97,7 @@ export class Python extends PythonicLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "dict",
             number: "float"

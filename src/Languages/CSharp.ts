@@ -102,6 +102,7 @@ export class CSharp extends CLikeLanguage {
     protected generateClassProperties(classes: ClassProperties): void {
         super.generateClassProperties(classes);
 
+        classes.abstractDeclaration = "abstract ";
         classes.aliases = {
             boolean: "bool",
             dictionary: "Dictionary",

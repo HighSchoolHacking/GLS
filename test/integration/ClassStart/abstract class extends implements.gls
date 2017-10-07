@@ -1,0 +1,4 @@
+-
+class start : abstract Aaa extends Bbb implements ICcc IDdd IEee
+class end
+-

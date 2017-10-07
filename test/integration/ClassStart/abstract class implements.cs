@@ -1,0 +1,5 @@
+//
+abstract class Aaa : Bbb
+{
+}
+//

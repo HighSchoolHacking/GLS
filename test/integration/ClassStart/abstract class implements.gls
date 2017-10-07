@@ -1,0 +1,4 @@
+-
+class start : abstract Aaa implements Bbb
+class end
+-

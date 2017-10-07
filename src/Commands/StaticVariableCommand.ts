@@ -17,7 +17,7 @@ export class StaticVariableCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticVariable)
         .withDescription("Retrieves a static variable.")
         .withParameters([
-            new KeywordParameter(KeywordNames.Privacies, "The privacy of the static variable."),
+            new KeywordParameter(KeywordNames.Privacies, "The privacy of the static variable.", true),
             new SingleParameter("className", "The name of the class the function is on.", true),
             new SingleParameter("variableName", "The name of the static variable.", true)
         ]);
