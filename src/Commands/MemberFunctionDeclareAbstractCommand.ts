@@ -15,7 +15,7 @@ export class MemberFunctionDeclareAbstractCommand extends MemberFunctionDeclareC
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareAbstract)
         .withDescription("Declares an abstract member function.")
-        .withIndentation([1])
+        .withIndentation([0])
         .withParameters([
             new KeywordParameter(KeywordNames.AbstractPrivacies, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
