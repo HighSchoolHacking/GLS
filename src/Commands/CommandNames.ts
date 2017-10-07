@@ -3,6 +3,11 @@
  */
 export class CommandNames {
     /**
+     * Name key for the ArrayIndex command.
+     */
+    public static ArrayIndex = "array index";
+
+    /**
      * Name key for the ArrayInitialize command.
      */
     public static ArrayInitialize = "array initialize";
@@ -101,6 +106,11 @@ export class CommandNames {
      * Name key for the DictionaryContainsKey command.
      */
     public static DictionaryContainsKey = "dictionary contains key";
+
+    /**
+     * Name key for the DictionaryIndex command.
+     */
+    public static DictionaryIndex = "dictionary index";
 
     /**
      * Name key for the DictionaryKeys command.
@@ -253,11 +263,6 @@ export class CommandNames {
     public static ImportPackage = "import package";
 
     /**
-     * Name key for the Index command.
-     */
-    public static Index = "index";
-
-    /**
      * Name key for the InterfaceEnd command.
      */
     public static InterfaceEnd = "interface end";
@@ -291,6 +296,11 @@ export class CommandNames {
      * Name key for the LambdaBody command.
      */
     public static ListAddList = "list add list";
+
+    /**
+     * Name key for the ListIndex command.
+     */
+    public static ListIndex = "list index";
 
     /**
      * Name key for the ListInitialize command.
@@ -471,6 +481,11 @@ export class CommandNames {
      * Name key the StringFormat command.
      */
     public static StringFormat = "string format";
+
+    /**
+     * Name key for the StringIndex command.
+     */
+    public static StringIndex = "string index";
 
     /**
      * Name key for the StringLength command.

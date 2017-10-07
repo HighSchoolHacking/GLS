@@ -4,8 +4,8 @@ variable : foo { dictionary type : string int } { dictionary new : string int }
 variable : bar { dictionary type : string { dictionary type : string int } } { dictionary new : string { dictionary new : string int } }
 
 comment line : Indices
-operation : { index : foo "baz" } equals 7
-variable : qux int { index : foo "baz" }
+operation : { dictionary index : foo "baz" } equals 7
+variable : qux int { dictionary index : foo "baz" }
 
 comment line : In-place initialization
 variable start : aaa { dictionary type : string int } { dictionary new start : string int }

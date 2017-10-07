@@ -5,8 +5,8 @@ variable : bbb { array type : int } { array initialize : int 1 2 3 }
 variable : ccc { array type : { array type : string } } { array initialize : { array type : string } aaa { array initialize : string "eee" "fff" } }
 
 comment line : Members
-index : aaa 0
-index : aaa { operation : 1 plus 1 }
+array index : aaa 0
+array index : aaa { operation : 1 plus 1 }
 
 comment line : Length
 array length : aaa
@@ -14,5 +14,5 @@ array length : aaa
 comment line : Printing
 variable : fruits { array type : string } { array initialize : string "apple" "banana" "cherry" }
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
-print : { string format : ("The first fruit is {0}.") { index : fruits 0 } string }
+print : { string format : ("The first fruit is {0}.") { array index : fruits 0 } string }
 -

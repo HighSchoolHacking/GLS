@@ -134,7 +134,7 @@ export class ForEachPairStartCommand extends Command {
     private addKeyedValueLookup(parameters: string[], output: CommandResult[]): void {
         const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
-        const valueLookup: string = this.context.convertParsed([CommandNames.Index, parameters[1], parameters[3]]).commandResults[0].text;
+        const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryIndex, parameters[1], parameters[3]]).commandResults[0].text;
         let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0].text;
 
         valueVariable  += this.language.properties.style.semicolon;
