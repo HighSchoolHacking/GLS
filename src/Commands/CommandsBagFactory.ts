@@ -1,6 +1,7 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
 import { Language } from "../Languages/Language";
 import { LanguagesBag } from "../Languages/LanguagesBag";
+import { ArrayIndexCommand } from "./ArrayIndexCommand";
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
 import { ArrayTypeCommand } from "./ArrayTypeCommand";
@@ -22,6 +23,7 @@ import { ConstructorEndCommand } from "./ConstructorEndCommand";
 import { ConstructorStartCommand } from "./ConstructorStartCommand";
 import { ContinueCommand } from "./ContinueCommand";
 import { DictionaryContainsKeyCommand } from "./DictionaryContainsKeyCommand";
+import { DictionaryIndexCommand } from "./DictionaryIndexCommand";
 import { DictionaryKeysCommand } from "./DictionaryKeysCommand";
 import { DictionaryNewCommand } from "./DictionaryNewCommand";
 import { DictionaryNewEndCommand } from "./DictionaryNewEndCommand";
@@ -52,7 +54,6 @@ import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
-import { IndexCommand } from "./IndexCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
@@ -60,6 +61,7 @@ import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
+import { ListIndexCommand } from "./ListIndexCommand";
 import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListPopCommand } from "./ListPopCommand";
@@ -97,6 +99,7 @@ import { StaticVariableDeclareCommand } from "./StaticVariableDeclareCommand";
 import { StringCaseLowerCommand } from "./StringCaseLowerCommand";
 import { StringCaseUpperCommand } from "./StringCaseUpperCommand";
 import { StringFormatCommand } from "./StringFormatCommand";
+import { StringIndexCommand } from "./StringIndexCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { StringSubstringIndexCommand } from "./StringSubstringIndexCommand";
 import { StringSubstringLengthCommand } from "./StringSubstringLengthCommand";
@@ -125,6 +128,7 @@ export class CommandsBagFactory {
      */
     public static forContext(context: ConversionContext): CommandsBag {
         return new CommandsBag([
+            new ArrayIndexCommand(context),
             new ArrayInitializeCommand(context),
             new ArrayLengthCommand(context),
             new ArrayTypeCommand(context),
@@ -145,6 +149,7 @@ export class CommandsBagFactory {
             new ConstructorStartCommand(context),
             new ContinueCommand(context),
             new DictionaryContainsKeyCommand(context),
+            new DictionaryIndexCommand(context),
             new DictionaryKeysCommand(context),
             new DictionaryNewCommand(context),
             new DictionaryNewEndCommand(context),
@@ -175,7 +180,6 @@ export class CommandsBagFactory {
             new IfStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
-            new IndexCommand(context),
             new InterfaceStartCommand(context),
             new InterfaceEndCommand(context),
             new InterfaceMethodCommand(context),
@@ -183,6 +187,7 @@ export class CommandsBagFactory {
             new IsNullCommand(context),
             new LambdaBodyCommand(context),
             new ListAddListCommand(context),
+            new ListIndexCommand(context),
             new ListInitializeCommand(context),
             new ListLengthCommand(context),
             new ListPopCommand(context),
@@ -219,6 +224,7 @@ export class CommandsBagFactory {
             new StaticVariableDeclareCommand(context),
             new StringCaseLowerCommand(context),
             new StringCaseUpperCommand(context),
+            new StringIndexCommand(context),
             new StringFormatCommand(context),
             new StringLengthCommand(context),
             new StringSubstringIndexCommand(context),

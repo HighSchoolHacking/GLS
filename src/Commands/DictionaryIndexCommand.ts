@@ -5,24 +5,24 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * An indexed [] lookup.
+ * An indexed dictionary lookup.
  */
-export class IndexCommand extends Command {
+export class DictionaryIndexCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Index)
-        .withDescription("An indexed [] lookup.")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryIndex)
+        .withDescription("An indexed dictionary lookup.")
         .withParameters([
-            new SingleParameter("container", "A container to look within.", true),
-            new SingleParameter("index", "The index within the container.", true)
+            new SingleParameter("dictionary", "A dictionary to look within.", true),
+            new SingleParameter("index", "The index within the dictionary.", true)
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return IndexCommand.metadata;
+        return DictionaryIndexCommand.metadata;
     }
 
     /**
