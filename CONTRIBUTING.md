@@ -4,7 +4,7 @@ Before working on contributing files to GLS, file issue(s) regarding the changes
 
 ## Language Specification
 
-The GLS language specification lives as a set of `.md` files under [docs/Design](https://github.com/HighSchoolHacking/GLS/tree/master/docs/Design).
+The GLS language specification lives as a set of `.md` files under [docs](https://github.com/HighSchoolHacking/GLS/tree/master/docs).
 Changes to the specification go through a three-step process:
 
 1. [Document the specification changes](#document-the-specification-changes)
@@ -16,7 +16,6 @@ These should all be done on a fork of the GLS repository, then sent as a GitHub 
 ### Document the specification changes
 
 Each grouping of GLS commands has its own `.md` file.
-Those files follow the format in [docs/Design Doc Template.md](https://github.com/HighSchoolHacking/GLS/blob/master/docs/Design/Design%20Doc%20Template.md).
 
 ### Create BDD tests for the specification changes
 
