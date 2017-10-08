@@ -397,6 +397,10 @@ export class JavaScript extends CLikeLanguage {
             "Math.abs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.ceiling = new NativeCallProperties(
+            "Math.ceil",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.floor = new NativeCallProperties(
             "Math.floor",
             NativeCallScope.Static,

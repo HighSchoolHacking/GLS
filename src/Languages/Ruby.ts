@@ -393,6 +393,10 @@ export class Ruby extends PythonicLanguage {
             "abs",
             NativeCallScope.Member,
             NativeCallType.Property);
+        math.ceiling = new NativeCallProperties(
+            "ceil",
+            NativeCallScope.Member,
+            NativeCallType.Property);
         math.floor = new NativeCallProperties(
             "floor",
             NativeCallScope.Member,

@@ -368,6 +368,11 @@ export class CommandNames {
     public static MathAbsolute = "math absolute";
 
     /**
+     * Name key for the MathCeiling command.
+     */
+    public static MathCeiling = "math ceiling";
+
+    /**
      * Name key for the MathFloor command.
      */
     public static MathFloor = "math floor";
