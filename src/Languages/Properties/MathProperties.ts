@@ -11,6 +11,11 @@ export class MathProperties {
     public absolute: NativeCallProperties;
 
     /**
+     * How to retrieve the largest integer >= a number
+     */
+    public ceiling: NativeCallProperties;
+
+    /**
      * How to retrieve the largest integer <= a number.
      */
     public floor: NativeCallProperties;

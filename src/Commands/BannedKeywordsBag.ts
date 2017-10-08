@@ -37,6 +37,7 @@ export class BannedKeywordsBag {
             byte: true,
             case: true,
             catch: true,
+            ceiling: true,
             char: true,
             checked: true,
             class: true,
