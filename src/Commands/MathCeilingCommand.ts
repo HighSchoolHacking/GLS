@@ -6,36 +6,36 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * Rounds a number up to the nearest integer
+ * Rounds a number up to the nearest integer.
  */
 export class MathCeilingCommand extends NativeCallCommand {
-  /**
-   * Metadata on the command.
-   */
-  private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathCeiling)
-      .withDescription("Rounds a number up to the nearest integer.")
-      .withParameters([
-        new SingleParameter("name", "The name of the variable.", true)
-      ]);
+    /**
+     * Metadata on the command.
+     */
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathCeiling)
+        .withDescription("Rounds a number up to the nearest integer.")
+        .withParameters([
+          new SingleParameter("name", "The name of the variable.", true)
+        ]);
 
-  /**
-   * @returns Metadata on the command.
-   */
-  public getMetadata(): CommandMetadata {
-    return MathCeilingCommand.metadata;
-  }
+    /**
+     * @returns Metadata on the command.
+     */
+    public getMetadata(): CommandMetadata {
+      return MathCeilingCommand.metadata;
+    }
 
-  /**
-   * @returns Any imports this native command requires.
-   */
-  protected retrieveImports(): Import[] {
-    return this.language.properties.math.requiredImports;
-  }
+    /**
+     * @returns Any imports this native command requires.
+     */
+    protected retrieveImports(): Import[] {
+      return this.language.properties.math.requiredImports;
+    }
 
-  /**
-   * @returns Metadata on how to perform the native call.
-   */
-  protected retrieveNativeCallProperties(): NativeCallProperties {
-    return this.language.properties.math.ceiling;
-  }
+    /**
+     * @returns Metadata on how to perform the native call.
+     */
+    protected retrieveNativeCallProperties(): NativeCallProperties {
+      return this.language.properties.math.ceiling;
+    }
 }
