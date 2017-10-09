@@ -65,22 +65,22 @@ GLS is halfway between **0.3** and **0.4**.
         <tr>
             <th>TypeScript Compiler + C# Output</th>
             <td>0.3</td>
-            <td>GLS compiler re-written in TypeScript, with correct TypeScript and C# output.</td>
+            <td>GLS compiler re-written in TypeScript. Near-working C#, Java, JavaScript, Python, Ruby, and TypeScript output.</td>
         </tr>
         <tr>
-            <th>Dogfood Feature Complete</th>
+            <th>Roundtripping Feature Complete</th>
             <td>0.4</td>
-            <td>All features expected to be required for dogfooding implemented. Java, JavaScript, Python, and Ruby support.</td>
+            <td>All features expected to be required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output.</td>
         </tr>
         <tr>
-            <th>Dogfood</th>
+            <th>Full Language Outputs</th>
             <td>0.5</td>
-            <td>Compiler written in GLS code, working in C#, Java, JavaScript, Ruby, Python, and TypeScript.</td>
+            <td>Working C#, Java, JavaScript, Ruby, Python, and TypeScript output.</td>
         </tr>
         <tr>
-            <th>Powershell, PHP, Objective-C, Misc.</th>
+            <th>Powershell, PHP, Misc.</th>
             <td>0.6</td>
-            <td>Dogfood or reject those languages and other possibilities.</td>
+            <td>Onboard or reject those languages and other possibilities.</td>
         </tr>
         <tr>
             <th>Language Specification Finalized</th>
@@ -90,7 +90,7 @@ GLS is halfway between **0.3** and **0.4**.
         <tr>
             <th>General Release</th>
             <td>1.0</td>
-            <td>Public announcement, glory to everyone.</td>
+            <td>Public announcement, glory to everyone. Switched to a better name.</td>
         </tr>
     </tbody>
 </table>
