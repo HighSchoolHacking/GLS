@@ -1,7 +1,7 @@
 import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
 
 /**
- * Converts a series of words to PascalCase.
+ * Converts a series of words to PythonCase.
  */
 export class PythonCaseConverter extends PackageLowerCaseConverter {
     /**
