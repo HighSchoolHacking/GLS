@@ -53,9 +53,9 @@ export enum CaseStyle {
     PascalCase,
 
     /**
-     * Python case, such as .abc.def.
+     * Python import case, such as .abc.def.
      */
-    PythonCase,
+    PythonImportCase,
 
     /**
      * Snake case, such as abc_def.
