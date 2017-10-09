@@ -428,7 +428,6 @@ export class TypeScript extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -530,8 +529,6 @@ export class TypeScript extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
-
-        strings.requiredImports = [];
     }
 
     /**

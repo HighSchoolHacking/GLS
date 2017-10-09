@@ -271,7 +271,7 @@ export class Python extends PythonicLanguage {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.leftAbsolute = "from ";
-        imports.leftLocal = "from ";
+        imports.leftLocal = "from .";
         imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
@@ -319,7 +319,9 @@ export class Python extends PythonicLanguage {
             "pop",
             NativeCallScope.Member,
             NativeCallType.Function);
-        lists.popFront.addArgument("0");
+        lists.popFront.withArguments([
+            "0"
+        ]);
 
         lists.push = new NativeCallProperties(
             "append",
@@ -503,8 +505,6 @@ export class Python extends PythonicLanguage {
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
-
-        strings.requiredImports = [];
     }
 
     /**

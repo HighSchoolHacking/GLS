@@ -1,4 +1,3 @@
-import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "../Properties/NativeCallProperties";
 
 /**
@@ -34,9 +33,4 @@ export class MathProperties {
      * How to retrieve the lower of two numbers.
      */
     public min: NativeCallProperties;
-
-    /**
-     * Required imports to be able to use native math commands.
-     */
-    public requiredImports: Import[];
 }
