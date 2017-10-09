@@ -10,6 +10,7 @@ import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
 import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
 import { PackageUpperCaseConverter } from "./PackageUpperCaseConverter";
 import { PascalCaseConverter } from "./PascalCaseConverter";
+import { PythonCaseConverter } from "./PythonCaseConverter";
 import { SnakeCaseConverter } from "./SnakeCaseConverter";
 
 /**
@@ -36,6 +37,7 @@ export class CaseStyleConverterBag {
             [CaseStyle.PackageLowerCase]: new PackageLowerCaseConverter(),
             [CaseStyle.PackageUpperCase]: new PackageUpperCaseConverter(),
             [CaseStyle.PascalCase]: new PascalCaseConverter(),
+            [CaseStyle.PythonCase]: new PythonCaseConverter(),
             [CaseStyle.SnakeCase]: new SnakeCaseConverter()
         };
     }
