@@ -1,4 +1,4 @@
 #
-from ".." import eee, fff
+from .. import eee, fff
 
 #
