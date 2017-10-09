@@ -360,16 +360,18 @@ export class CSharp extends CLikeLanguage {
         lists.pop = new NativeCallProperties(
             "RemoveAt",
             NativeCallScope.Member,
-            NativeCallType.Function);
-
-        lists.pop.addArgument("{0}.Count - 1");
+            NativeCallType.Function)
+            .withArguments([
+                "{0}.Count - 1"
+            ]);
 
         lists.popFront = new NativeCallProperties(
             "RemoveAt",
             NativeCallScope.Member,
-            NativeCallType.Function);
-
-        lists.popFront.addArgument("0");
+            NativeCallType.Function)
+            .withArguments([
+                "0"
+            ]);
 
         lists.push = new NativeCallProperties(
             "Add",
@@ -444,32 +446,39 @@ export class CSharp extends CLikeLanguage {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.Abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.ceiling = new NativeCallProperties(
-            "Math.Ceiling",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "Math.Floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "Math.Max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "Math.Min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.requiredImports = [
+        const requiredImports = [
             new Import(
                 ["system"],
                 ["Math"],
                 ImportRelativity.Absolute)
         ];
+
+        math.absolute = new NativeCallProperties(
+            "Math.Abs",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+        math.ceiling = new NativeCallProperties(
+            "Math.Ceiling",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+        math.floor = new NativeCallProperties(
+            "Math.Floor",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+        math.max = new NativeCallProperties(
+            "Math.Max",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+        math.min = new NativeCallProperties(
+            "Math.Min",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+
         math.mathName = "Math";
     }
 
@@ -566,13 +575,6 @@ export class CSharp extends CLikeLanguage {
             "Length",
             NativeCallScope.Member,
             NativeCallType.Property);
-
-        strings.requiredImports = [
-            new Import(
-                ["system"],
-                [],
-                ImportRelativity.Absolute)
-        ];
     }
 
     /**

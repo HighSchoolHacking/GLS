@@ -1,4 +1,3 @@
-import { Import } from "../Languages/Imports/Import";
 import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
 import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
@@ -24,13 +23,6 @@ export class MathMinCommand extends NativeCallCommand {
      */
     public getMetadata(): CommandMetadata {
         return MathMinCommand.metadata;
-    }
-
-    /**
-     * @returns Any imports this native command requires.
-     */
-    protected retrieveImports(): Import[] {
-        return this.language.properties.math.requiredImports;
     }
 
     /**

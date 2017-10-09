@@ -363,16 +363,18 @@ export class Java extends CLikeLanguage {
         lists.pop = new NativeCallProperties(
             "remove",
             NativeCallScope.Member,
-            NativeCallType.Function);
-
-        lists.pop.addArgument("{0}.size() - 1");
+            NativeCallType.Function)
+            .withArguments([
+                "{0}.size() - 1"
+            ]);
 
         lists.popFront = new NativeCallProperties(
             "remove",
             NativeCallScope.Member,
-            NativeCallType.Function);
-
-        lists.popFront.addArgument("0");
+            NativeCallType.Function)
+            .withArguments([
+                "0"
+            ]);
 
         lists.push = new NativeCallProperties(
             "add",
@@ -463,7 +465,6 @@ export class Java extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -561,8 +562,6 @@ export class Java extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
-
-        strings.requiredImports = [];
     }
 
     /**

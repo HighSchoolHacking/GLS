@@ -55,7 +55,7 @@ export abstract class NativeCallCommand extends Command {
      * @returns Any imports this native command requires.
      */
     protected retrieveImports(): Import[] {
-        return [];
+        return this.nativeCallProperties.imports;
     }
 
     /**

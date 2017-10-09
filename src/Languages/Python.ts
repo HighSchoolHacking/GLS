@@ -317,7 +317,9 @@ export class Python extends PythonicLanguage {
             "pop",
             NativeCallScope.Member,
             NativeCallType.Function);
-        lists.popFront.addArgument("0");
+        lists.popFront.withArguments([
+            "0"
+        ]);
 
         lists.push = new NativeCallProperties(
             "append",
@@ -396,7 +398,6 @@ export class Python extends PythonicLanguage {
             "min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -501,8 +502,6 @@ export class Python extends PythonicLanguage {
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
-
-        strings.requiredImports = [];
     }
 
     /**
