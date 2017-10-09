@@ -1,28 +1,32 @@
 # Contributing
 
-Before working on contributing files to GLS, file issue(s) regarding the changes you'd like to see.
+First off, thanks for your interest in GLS!
+GLS is an experimental syntax that provides a unified way to describe code.
+It's very new and very untested, so don't expect everything to work.
+
+Development respects the GitHub way of life.
+Any changes should have an [issue](https://github.com/general-language-syntax/issues) [filed](https://github.com/general-language-syntax/issues/new) filed before a [pull request](https://github.com/general-language-syntax/pulls) is sent from a repository fork.
+
+
+## Existing Style
+
+Most rules are enforced by [TSLint](https://palantir.github.io/tslint).
+For those that aren't, follow the existing conventions, including sensible variable names, consistent indentation, and correct grammar, spelling, and punctuation.
+
 
 ## Language Specification
 
-The GLS language specification lives as a set of `.md` files under [docs](https://github.com/HighSchoolHacking/GLS/tree/master/docs).
-Changes to the specification go through a three-step process:
+The GLS language description on glslang.org is a set of `.md` files under [docs](https://github.com/general-language-syntax/GLS/tree/master/docs).
 
-1. [Document the specification changes](#document-the-specification-changes)
-2. [Create BDD tests for the specification changes](#create-bdd-tests-for-the-specification-changes)
-3. [Implement the changes](#implement-the-changes)
 
-These should all be done on a fork of the GLS repository, then sent as a GitHub pull request.
 
-### Document the specification changes
+## Tests
 
-Each grouping of GLS commands has its own `.md` file.
+### Integration and End-To-End
 
-### Create BDD tests for the specification changes
-
-Test files are located under [test/integration](https://github.com/HighSchoolHacking/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/HighSchoolHacking/GLS/tree/master/test/end-to-end).
+Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).
 Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
 
-### Implement the changes
+When adding a new command, _always_ add new integration tests for it.
 
-Follow the existing style guide for code.
-It helps to use the TSLint extension for your code editor.
+When adding a new
