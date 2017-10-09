@@ -380,6 +380,10 @@ export class Python extends PythonicLanguage {
             "fabs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.ceiling = new NativeCallProperties(
+            "ceil",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.floor = new NativeCallProperties(
             "floor",
             NativeCallScope.Static,

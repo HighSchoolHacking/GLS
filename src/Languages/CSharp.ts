@@ -448,6 +448,10 @@ export class CSharp extends CLikeLanguage {
             "Math.Abs",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.ceiling = new NativeCallProperties(
+            "Math.Ceiling",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.floor = new NativeCallProperties(
             "Math.Floor",
             NativeCallScope.Static,
