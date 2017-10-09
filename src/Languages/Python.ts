@@ -269,7 +269,7 @@ export class Python extends PythonicLanguage {
         imports.case = CaseStyle.PythonCase;
         imports.explicit = true;
         imports.leftAbsolute = "from ";
-        imports.leftLocal = "from ";
+        imports.leftLocal = "from .";
         imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
