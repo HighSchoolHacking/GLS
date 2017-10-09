@@ -1,5 +1,5 @@
 #
-from math import fabs, ceil, floor
+from math import fabs
 
 fabs(foo)
 #

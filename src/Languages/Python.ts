@@ -271,7 +271,7 @@ export class Python extends PythonicLanguage {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.leftAbsolute = "from ";
-        imports.leftLocal = "from .";
+        imports.leftLocal = "from ";
         imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
@@ -383,15 +383,18 @@ export class Python extends PythonicLanguage {
         math.absolute = new NativeCallProperties(
             "fabs",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["fabs"], ImportRelativity.Absolute)]);
         math.ceiling = new NativeCallProperties(
             "ceil",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["ceil"], ImportRelativity.Absolute)]);
         math.floor = new NativeCallProperties(
             "floor",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["floor"], ImportRelativity.Absolute)]);
         math.max = new NativeCallProperties(
             "max",
             NativeCallScope.Static,
@@ -400,7 +403,6 @@ export class Python extends PythonicLanguage {
             "min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [new Import(["math"], ["fabs", "ceil", "floor"], ImportRelativity.Absolute)];
         math.mathName = "Math";
     }
 
