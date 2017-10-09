@@ -413,7 +413,6 @@ export class JavaScript extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -515,8 +514,6 @@ export class JavaScript extends CLikeLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
-
-        strings.requiredImports = [];
     }
 
     /**

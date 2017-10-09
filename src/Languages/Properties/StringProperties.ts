@@ -1,4 +1,3 @@
-import { Import } from "../Imports/Import";
 import { NativeCallProperties } from "./NativeCallProperties";
 import { StringFormatProperties } from "./StringFormatProperties";
 import { StringSubstringProperties } from "./StringSubstringProperties";
@@ -46,9 +45,4 @@ export class StringProperties {
      * Metadata on the language's string substrings.
      */
     public substrings: StringSubstringProperties = new StringSubstringProperties();
-
-    /**
-     * Required imports to be able to use native string commands.
-     */
-    public requiredImports: Import[];
 }

@@ -409,7 +409,6 @@ export class Ruby extends PythonicLanguage {
             "min",
             NativeCallScope.Array,
             NativeCallType.Function);
-        math.requiredImports = [];
         math.mathName = "Math";
     }
 
@@ -507,8 +506,6 @@ export class Ruby extends PythonicLanguage {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
-
-        strings.requiredImports = [];
     }
 
     /**
