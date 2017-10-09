@@ -1,4 +1,6 @@
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
@@ -268,9 +270,9 @@ export class Python extends PythonicLanguage {
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
-        imports.leftAbsolute = "from \"";
-        imports.leftLocal = "from \"";
-        imports.middle = "\" import ";
+        imports.leftAbsolute = "from ";
+        imports.leftLocal = "from ";
+        imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
@@ -392,7 +394,7 @@ export class Python extends PythonicLanguage {
             "min",
             NativeCallScope.Static,
             NativeCallType.Function);
-        math.requiredImports = [];
+        math.requiredImports = [new Import(["math"], ["fabs", "ceil", "floor"], ImportRelativity.Absolute)];
         math.mathName = "Math";
     }
 
