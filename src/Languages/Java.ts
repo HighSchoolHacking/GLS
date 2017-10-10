@@ -118,6 +118,12 @@ export class Java extends CLikeLanguage {
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
+
+        classes.instanceOf = new NativeCallProperties(
+            " instanceof ",
+            NativeCallScope.Operator,
+            NativeCallType.FloatingRight);
+
         classes.generics.used = true;
 
         classes.superConstructor = "super";

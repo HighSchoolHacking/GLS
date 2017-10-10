@@ -114,6 +114,11 @@ export class Python extends PythonicLanguage {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = ":";
 
+        classes.instanceOf = new NativeCallProperties(
+            "isinstance",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+
         classes.statics.labelBeforePublicity = true;
 
         classes.superConstructor = "super().__init__";

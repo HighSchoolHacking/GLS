@@ -115,6 +115,12 @@ export class JavaScript extends CLikeLanguage {
         classes.declareExtendsLeft = " extends ";
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
+
+        classes.instanceOf = new NativeCallProperties(
+            " instanceof ",
+            NativeCallScope.Operator,
+            NativeCallType.FloatingRight);
+
         classes.superConstructor = "super";
 
         classes.generics.used = false;

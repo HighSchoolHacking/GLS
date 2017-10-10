@@ -1,0 +1,3 @@
+//
+abc instanceof Def;
+//

@@ -119,6 +119,12 @@ export class CSharp extends CLikeLanguage {
         classes.declareExtendsLeft = " : ";
         classes.declareImplementsLeft = " : ";
         classes.declareStartRight = "\n{";
+
+        classes.instanceOf = new NativeCallProperties(
+            " is ",
+            NativeCallScope.Operator,
+            NativeCallType.FloatingRight);
+
         classes.superConstructor = "base";
 
         classes.generics.used = true;

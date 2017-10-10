@@ -54,6 +54,7 @@ import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
+import { InstanceOfCommand } from "./InstanceOfCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
@@ -178,6 +179,7 @@ export class CommandsBagFactory {
             new FunctionStartCommand(context),
             new FunctionEndCommand(context),
             new GenericTypeCommand(context),
+            new InstanceOfCommand(context),
             new IfEndCommand(context),
             new IfStartCommand(context),
             new ImportLocalCommand(context),
