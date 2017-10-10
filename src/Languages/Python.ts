@@ -268,14 +268,14 @@ export class Python extends PythonicLanguage {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportProperties(imports: ImportProperties): void {
-        imports.case = CaseStyle.DirectoryLowerCase;
+        imports.case = CaseStyle.PythonImportCase;
         imports.explicit = true;
         imports.leftAbsolute = "from ";
-        imports.leftLocal = "from ";
+        imports.leftLocal = "from .";
         imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
-        imports.useLocalRelativePaths = true;
+        imports.useLocalRelativePaths = false;
     }
 
     /**
