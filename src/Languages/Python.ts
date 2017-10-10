@@ -1,4 +1,6 @@
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
@@ -381,15 +383,18 @@ export class Python extends PythonicLanguage {
         math.absolute = new NativeCallProperties(
             "fabs",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["fabs"], ImportRelativity.Absolute)]);
         math.ceiling = new NativeCallProperties(
             "ceil",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["ceil"], ImportRelativity.Absolute)]);
         math.floor = new NativeCallProperties(
             "floor",
             NativeCallScope.Static,
-            NativeCallType.Function);
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["floor"], ImportRelativity.Absolute)]);
         math.max = new NativeCallProperties(
             "max",
             NativeCallScope.Static,
