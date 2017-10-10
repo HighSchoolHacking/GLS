@@ -50,7 +50,7 @@ Inherited classes may use `super constructor` to call to their parent class' con
 class start : Noun extends Word
     constructor start : public Noun name string
         super constructor
-        print : { concatenate : "Creating" name }
+        print : { concatenate : ("Creating ") name }
     constructor end
 class end
 ```
@@ -63,7 +63,7 @@ class Noun : Word
     Noun(string name)
     {
         base();
-        Console.WriteLine("Creating" + name);
+        Console.WriteLine("Creating " + name);
     }
 }
 ```
@@ -74,7 +74,7 @@ In Python:
 class Noun(Word):
     def __init__(self, name):
         super().__init__()
-        print("Creating" + name)
+        print("Creating " + name)
 ```
 
 ### This
