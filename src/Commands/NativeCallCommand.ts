@@ -158,6 +158,10 @@ export abstract class NativeCallCommand extends Command {
             result += parameters[1];
             result += this.nativeCallProperties.name;
             result += parameters[2];
+
+            if (parameters.length === 4) {
+                result += parameters[3];
+            }
         }
 
         return LineResults.newSingleLine(result, true);

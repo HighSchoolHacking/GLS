@@ -263,6 +263,11 @@ export class CommandNames {
     public static ImportPackage = "import package";
 
     /**
+     * Name key for the InstanceOf command.
+     */
+    public static InstanceOf = "instance of";
+
+    /**
      * Name key for the InterfaceEnd command.
      */
     public static InterfaceEnd = "interface end";

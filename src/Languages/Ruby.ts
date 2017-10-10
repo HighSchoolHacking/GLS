@@ -116,6 +116,11 @@ export class Ruby extends PythonicLanguage {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = "";
 
+        classes.instanceOf = new NativeCallProperties(
+            ".kind_of? ",
+            NativeCallScope.Operator,
+            NativeCallType.FloatingRight);
+
         classes.statics.labelBeforePublicity = false;
 
         classes.superConstructor = "super";

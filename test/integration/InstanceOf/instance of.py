@@ -1,0 +1,3 @@
+#
+isinstance(abc, Def)
+#

@@ -2,6 +2,7 @@ import { ClassConstructorProperties } from "./ClassConstructorProperties";
 import { ClassGenericProperties } from "./ClassGenericProperties";
 import { ClassMemberProperties } from "./ClassMemberProperties";
 import { ClassStaticProperties } from "./ClassStaticProperties";
+import { NativeCallProperties } from "./NativeCallProperties";
 
 /**
  * Metadata on a language's classes.
@@ -61,6 +62,11 @@ export class ClassProperties {
      * Metadata on generic (templated) types.
      */
     public generics: ClassGenericProperties = new ClassGenericProperties();
+
+    /**
+     * How to check whether a variable is an instance of a class.
+     */
+    public instanceOf: NativeCallProperties;
 
     /**
      * Metadata on member variables and functions.
