@@ -17,6 +17,30 @@ The recommended setup is [Visual Studio Code](https://code.visualstudio.com) wit
 Most rules are enforced by [TSLint](https://palantir.github.io/tslint).
 For those that aren't, follow the existing conventions, including sensible variable names, consistent indentation, and correct grammar, spelling, and punctuation.
 
+### Adding Commands
+
+Command class instances are stored at runtime by their unique string name.
+When adding a new command under `src/Commands`, also add a line for it under `src/CommandsBagFactory`.
+
+When adding a new command class, you'll need to override the abstract `getMetadata` and `render` commands.
+
+To directly see which files you should add or edit to add a new command, run a full-text search on both the PascalCase command name (e.g. `MemberFunction`) and the GLS style name (e.g. `member function`).
+
+_([#375](https://github.com/general-language-syntax/GLS/issues/375) tracks adding a utility to automate adding this!)_
+
+#### "Native" Commands
+
+Some commands, such as native math operations, directly call into native APIs and would require a lot of repeated source code to represent.
+A `NativeCallCommand` sub-class of `Command` can be extended from for these.
+It requires overriding the abstract `retrieveNativeCallProperties` instead of `render`, which returns the language's `NativeCallProperties` for that command.
+
+### Adding Languages
+
+Languages are stored at runtime by their language name in a `LanguagesBag`.
+You can add a new language by running `gulp util:new-language --name <name> --extension <extension> --baseName <baseName> --baseExtension <baseExtension>`.
+
+Files and listings for a new language identical to the original language except for the name and extension will be added locally.
+
 ### Integration and End-To-End Tests
 
 Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).

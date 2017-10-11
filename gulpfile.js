@@ -239,16 +239,37 @@ gulp.task("util", function (callback) {
 });
 
 gulp.task("util:new-language", function () {
+    if (process.argv.length !== 11
+        || process.argv[3] !== "--name"
+        || process.argv[5] !== "--extension"
+        || process.argv[7] !== "--baseName"
+        || process.argv[9] !== "--baseExtension") {
+        console.error();
+        console.error("Invalid arguments passed to util:new-language.");
+        console.error("Arguments are case-insensitive and cannot be re-ordered.");
+        console.error();
+        console.error("Usage: gulp util:new-language --name <name> --extension <extension> --baseName <baseName> --baseExtension <baseExtension>");
+        console.error("Eample: gulp util:new-language JavaScript .js --baseName TypeScript --baseExtension .ts");
+        console.error();
+        return;
+    }
+
     var createNewLanguage = require("./util").createNewLanguage;
+    var name = process.argv[4];
+    var extension = process.argv[6];
+    var baseName = process.argv[8];
+    var baseExtension = process.argv[10];
+    console.log("Making new language with name '" + name + "' and extension '" + extension + "'.");
+    console.log("Basing it off of name '" + baseName + "' and extension '" + baseExtension + "'.");
 
     createNewLanguage(
         {
-            extension: ".php",
-            name: "PHP"
+            extension: extension,
+            name: name
         },
         {
-            extension: ".py",
-            name: "Python"
+            extension: baseExtension,
+            name: baseName
         });
 });
 
