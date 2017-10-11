@@ -210,6 +210,7 @@ export class CommandsBagFactory {
             new MathFloorCommand(context),
             new MathMaxCommand(context),
             new MathMinCommand(context),
+            new MathPowerCommand(context),
             new MemberFunctionCommand(context),
             new MemberFunctionDeclareAbstractCommand(context),
             new MemberFunctionDeclareEndCommand(context),
