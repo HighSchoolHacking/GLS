@@ -1,3 +1,4 @@
+
 import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
@@ -412,6 +413,10 @@ export class Ruby extends PythonicLanguage {
             NativeCallType.Function);
         math.min = new NativeCallProperties(
             "min",
+            NativeCallScope.Array,
+            NativeCallType.Function);
+        math.power = new NativeCallProperties(
+            "pow",
             NativeCallScope.Array,
             NativeCallType.Function);
         math.mathName = "Math";

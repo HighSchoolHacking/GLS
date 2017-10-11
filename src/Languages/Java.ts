@@ -471,6 +471,10 @@ export class Java extends CLikeLanguage {
             "Math.min",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.power = new NativeCallProperties(
+            "Math.pow",
+            NativeCallScope.Static,
+            NativeCallType.Function);
         math.mathName = "Math";
     }
 

@@ -393,6 +393,11 @@ export class CommandNames {
     public static MathMin = "math min";
 
     /**
+     * Name key for the MathPower command.
+     */
+    public static MathPower = "math power";
+
+    /**
      * Name key for the MemberFunction command.
      */
     public static MemberFunction = "member function";

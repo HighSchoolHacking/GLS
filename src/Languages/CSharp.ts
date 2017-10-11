@@ -484,6 +484,11 @@ export class CSharp extends CLikeLanguage {
             NativeCallScope.Static,
             NativeCallType.Function)
             .withImports(requiredImports);
+        math.power = new NativeCallProperties(
+            "Math.Pow",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports(requiredImports);
 
         math.mathName = "Math";
     }
