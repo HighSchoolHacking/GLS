@@ -80,6 +80,7 @@ import { MathCeilingCommand } from "./MathCeilingCommand";
 import { MathFloorCommand } from "./MathFloorCommand";
 import { MathMaxCommand } from "./MathMaxCommand";
 import { MathMinCommand } from "./MathMinCommand";
+import { MathPowerCommand } from "./MathPowerCommand";
 import { MemberFunctionCommand } from "./MemberFunctionCommand";
 import { MemberFunctionDeclareAbstractCommand } from "./MemberFunctionDeclareAbstractCommand";
 import { MemberFunctionDeclareEndCommand } from "./MemberFunctionDeclareEndCommand";
