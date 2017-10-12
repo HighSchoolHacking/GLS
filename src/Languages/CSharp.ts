@@ -30,6 +30,7 @@ import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewPrope
 import { NumberProperties } from "./Properties/NumberProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
+import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
@@ -545,6 +546,54 @@ export class CSharp extends CLikeLanguage {
                 ImportRelativity.Absolute)
         ];
         printing.start = "Console.WriteLine(";
+    }
+
+    /**
+     * Generates metadata on sets.
+     *
+     * @param parameters   A property container for metadata on sets.
+     */
+    protected generateSetProperties(sets: SetProperties): void {
+        const requiredImports: Import[] = [
+            new Import(
+                ["system", "collections", "generic"],
+                ["Dictionary"],
+                ImportRelativity.Absolute)
+        ];
+
+        sets.add = new NativeCallProperties(
+            "Add",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.className = "HashSet";
+
+        sets.contains = new NativeCallProperties(
+            "Contains",
+            NativeCallScope.Member,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+
+        sets.initializeAsNew = true;
+        sets.initializeStart = "";
+
+        sets.toArray = new NativeCallProperties(
+            "ToArray",
+            NativeCallScope.Member,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+
+        sets.toList = new NativeCallProperties(
+            "ToList",
+            NativeCallScope.Member,
+            NativeCallType.Function)
+            .withImports(requiredImports);
+
+        sets.requiredImports = requiredImports;
+        sets.startItemsLeft = "[";
+        sets.startItemsRight = "]";
+        sets.typeLeft = "<";
+        sets.typeRight = ">";
     }
 
     /**

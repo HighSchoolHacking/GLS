@@ -21,6 +21,7 @@ import { NumberProperties } from "./NumberProperties";
 import { OperatorProperties } from "./OperatorProperties";
 import { ParameterProperties } from "./ParameterProperties";
 import { PrintingProperties } from "./PrintingProperties";
+import { SetProperties } from "./SetProperties";
 import { StringProperties } from "./StringProperties";
 import { StyleProperties } from "./StyleProperties";
 import { VariableProperties } from "./VariableProperties";
@@ -145,6 +146,11 @@ export class LanguageProperties {
     public printing: PrintingProperties;
 
     /**
+     * Metadata on sets.
+     */
+    public sets: SetProperties;
+
+    /**
      * Metadata on strings.
      */
     public strings: StringProperties;
@@ -186,6 +192,7 @@ export class LanguageProperties {
         this.operators = new OperatorProperties();
         this.parameters = new ParameterProperties();
         this.printing = new PrintingProperties();
+        this.sets = new SetProperties();
         this.strings = new StringProperties();
         this.style = new StyleProperties();
         this.variables = new VariableProperties();
