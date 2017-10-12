@@ -33,4 +33,9 @@ export class MathProperties {
      * How to retrieve the lower of two numbers.
      */
     public min: NativeCallProperties;
+
+    /**
+     * How to retrieve number a to the power of number b.
+     */
+    public power: NativeCallProperties;
 }

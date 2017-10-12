@@ -80,6 +80,7 @@ import { MathCeilingCommand } from "./MathCeilingCommand";
 import { MathFloorCommand } from "./MathFloorCommand";
 import { MathMaxCommand } from "./MathMaxCommand";
 import { MathMinCommand } from "./MathMinCommand";
+import { MathPowerCommand } from "./MathPowerCommand";
 import { MemberFunctionCommand } from "./MemberFunctionCommand";
 import { MemberFunctionDeclareAbstractCommand } from "./MemberFunctionDeclareAbstractCommand";
 import { MemberFunctionDeclareEndCommand } from "./MemberFunctionDeclareEndCommand";
@@ -215,6 +216,7 @@ export class CommandsBagFactory {
             new MathFloorCommand(context),
             new MathMaxCommand(context),
             new MathMinCommand(context),
+            new MathPowerCommand(context),
             new MemberFunctionCommand(context),
             new MemberFunctionDeclareAbstractCommand(context),
             new MemberFunctionDeclareEndCommand(context),

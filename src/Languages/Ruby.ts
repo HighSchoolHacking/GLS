@@ -426,6 +426,10 @@ export class Ruby extends PythonicLanguage {
             "min",
             NativeCallScope.Array,
             NativeCallType.Function);
+        math.power = new NativeCallProperties(
+            "pow",
+            NativeCallScope.Array,
+            NativeCallType.Function);
         math.mathName = "Math";
     }
 

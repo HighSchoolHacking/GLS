@@ -420,6 +420,11 @@ export class Python extends PythonicLanguage {
             "min",
             NativeCallScope.Static,
             NativeCallType.Function);
+        math.power = new NativeCallProperties(
+            "pow",
+            NativeCallScope.Static,
+            NativeCallType.Function)
+            .withImports([new Import(["math"], ["pow"], ImportRelativity.Absolute)]);
         math.mathName = "Math";
     }
 

@@ -1,0 +1,3 @@
+//
+Math.pow(foo, bar);
+//
