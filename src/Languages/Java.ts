@@ -30,6 +30,7 @@ import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewPrope
 import { NumberProperties } from "./Properties/NumberProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
+import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
@@ -526,6 +527,44 @@ export class Java extends CLikeLanguage {
         printing.end = ")";
         printing.requiredImports = [];
         printing.start = "System.out.println(";
+    }
+
+    /**
+     * Generates metadata on sets.
+     *
+     * @param parameters   A property container for metadata on sets.
+     */
+    protected generateSetProperties(sets: SetProperties): void {
+        sets.add = new NativeCallProperties(
+            "add",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.className = "HashSet";
+
+        sets.contains = new NativeCallProperties(
+            "contains",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.initializeAsNew = true;
+        sets.initializeStart = "";
+
+        sets.toArray = new NativeCallProperties(
+            "toArray",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.toList = new NativeCallProperties(
+            "new ArrayList<>",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+
+        sets.requiredImports = [];
+        sets.startItemsLeft = "[";
+        sets.startItemsRight = "]";
+        sets.typeLeft = "<";
+        sets.typeRight = ">";
     }
 
     /**

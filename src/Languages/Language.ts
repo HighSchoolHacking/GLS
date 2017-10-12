@@ -28,6 +28,7 @@ import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
+import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
@@ -77,6 +78,7 @@ export abstract class Language {
         this.generateOperatorProperties(this.properties.operators);
         this.generateParameterProperties(this.properties.parameters);
         this.generatePrintingProperties(this.properties.printing);
+        this.generateSetProperties(this.properties.sets);
         this.generateStringProperties(this.properties.strings);
         this.generateStringFormatProperties(this.properties.strings.formatting);
         this.generateStringSubstringProperties(this.properties.strings.substrings);
@@ -291,6 +293,13 @@ export abstract class Language {
      * @param parameters    A property container for metadata on printing.
      */
     protected abstract generatePrintingProperties(printing: PrintingProperties): void;
+
+    /**
+     * Generates metadata on sets.
+     *
+     * @param parameters   A property container for metadata on sets.
+     */
+    protected abstract generateSetProperties(sets: SetProperties): void;
 
     /**
      * Generates metadata on string formatting.

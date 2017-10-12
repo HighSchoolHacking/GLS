@@ -29,6 +29,7 @@ import { NumberProperties } from "./Properties/NumberProperties";
 import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
+import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
@@ -486,6 +487,39 @@ export class JavaScript extends CLikeLanguage {
         printing.end = ")";
         printing.requiredImports = [];
         printing.start = "console.log(";
+    }
+
+    /**
+     * Generates metadata on sets.
+     *
+     * @param parameters   A property container for metadata on sets.
+     */
+    protected generateSetProperties(sets: SetProperties): void {
+        sets.add = new NativeCallProperties(
+            "add",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.className = "Set";
+
+        sets.contains = new NativeCallProperties(
+            "has",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        sets.initializeAsNew = true;
+        sets.initializeStart = "";
+
+        sets.toArray = new NativeCallProperties(
+            "Array.from",
+            NativeCallScope.Static,
+            NativeCallType.Function);
+
+        sets.toList = sets.toArray;
+
+        sets.requiredImports = [];
+        sets.startItemsLeft = "[";
+        sets.startItemsRight = "]";
     }
 
     /**

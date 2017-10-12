@@ -94,6 +94,12 @@ import { ParenthesisCommand } from "./ParenthesisCommand";
 import { PrintCommand } from "./PrintCommand";
 import { RestParametersCommand } from "./RestParametersCommand";
 import { ReturnCommand } from "./ReturnCommand";
+import { SetAddCommand } from "./SetAddCommand";
+import { SetContainsCommand } from "./SetContainsCommand";
+import { SetNewCommand } from "./SetNewCommand";
+import { SetToArrayCommand } from "./SetToArrayCommand";
+import { SetToListCommand } from "./SetToListCommand";
+import { SetTypeCommand } from "./SetTypeCommand";
 import { StaticFunctionCommand } from "./StaticFunctionCommand";
 import { StaticFunctionDeclareEndCommand } from "./StaticFunctionDeclareEndCommand";
 import { StaticFunctionDeclareStartCommand } from "./StaticFunctionDeclareStartCommand";
@@ -223,6 +229,12 @@ export class CommandsBagFactory {
             new PrintCommand(context),
             new RestParametersCommand(context),
             new ReturnCommand(context),
+            new SetAddCommand(context),
+            new SetContainsCommand(context),
+            new SetToArrayCommand(context),
+            new SetToListCommand(context),
+            new SetNewCommand(context),
+            new SetTypeCommand(context),
             new StaticFunctionCommand(context),
             new StaticFunctionDeclareStartCommand(context),
             new StaticFunctionDeclareEndCommand(context),

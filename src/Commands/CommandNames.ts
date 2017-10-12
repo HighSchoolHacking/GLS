@@ -463,6 +463,36 @@ export class CommandNames {
     public static Return = "return";
 
     /**
+     * Name key for the SetAdd command.
+     */
+    public static SetAdd = "set add";
+
+    /**
+     * Name key for the SetContains command.
+     */
+    public static SetContains = "set contains";
+
+    /**
+     * Name key for the SetToArray command.
+     */
+    public static SetToArray = "set to array";
+
+    /**
+     * Name key for the SetToList command.
+     */
+    public static SetToList = "set to list";
+
+    /**
+     * Name key for the SetNew command.
+     */
+    public static SetNew = "set new";
+
+    /**
+     * Name key for the SetType command.
+     */
+    public static SetType = "set type";
+
+    /**
      * Name key for the StaticFunction command.
      */
     public static StaticFunction = "static function";
