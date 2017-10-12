@@ -1,4 +1,5 @@
 import { ClassConstructorProperties } from "./ClassConstructorProperties";
+import { ClassExportProperties } from "./ClassExportProperties";
 import { ClassGenericProperties } from "./ClassGenericProperties";
 import { ClassMemberProperties } from "./ClassMemberProperties";
 import { ClassStaticProperties } from "./ClassStaticProperties";
@@ -57,6 +58,11 @@ export class ClassProperties {
      * How to end the first line of a class declaration.
      */
     public declareStartRight: string;
+
+    /**
+     * Metadata on exported classes.
+     */
+    public exports: ClassExportProperties = new ClassExportProperties();
 
     /**
      * Metadata on generic (templated) types.

@@ -2,6 +2,7 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { CLikeLanguage } from "./CLikeLanguage";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
+import { ClassExportProperties } from "./Properties/ClassExportProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -59,6 +60,16 @@ export class JavaScript extends CLikeLanguage {
      */
     protected generateBooleanProperties(booleans: BooleanProperties): void {
         booleans.className = "";
+    }
+
+    /**
+     * Generates metadata on exported classes.
+     *
+     * @param members   A property container for metadata on exported classes.
+     */
+    protected generateClassExportProperties(exports: ClassExportProperties): void {
+        exports.exported = "export ";
+        exports.internal = "";
     }
 
     /**
