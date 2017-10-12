@@ -20,7 +20,7 @@ This is faster but doesn't run linting.
 
 ## Coding for GLS
 
-The recommended setup is [Visual Studio Code](https://code.visualstudio.com) with the [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint).
+The recommended setup is [Visual Studio Code](https://code.visualstudio.com) with the [TSLint extension](https://marketplace.visualstudio.com/items?itemName=eg2.tslint).
 
 ### Style Guidelines
 
