@@ -8,6 +8,11 @@ export class KeywordNames {
     public static Abstract = "abstract";
 
     /**
+     * Name key for the "export" keyword.
+     */
+    public static Export = "export";
+
+    /**
      * Name key for the "extends" keyword.
      */
     public static Extends = "extends";

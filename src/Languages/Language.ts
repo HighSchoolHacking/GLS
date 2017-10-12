@@ -1,5 +1,6 @@
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
+import { ClassExportProperties } from "./Properties/ClassExportProperties";
 import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
@@ -50,6 +51,7 @@ export abstract class Language {
         this.generateArrayProperties(this.properties.arrays);
         this.generateBooleanProperties(this.properties.booleans);
         this.generateClassProperties(this.properties.classes);
+        this.generateClassExportProperties(this.properties.classes.exports);
         this.generateClassGenericProperties(this.properties.classes.generics);
         this.generateClassMemberFunctionProperties(this.properties.classes.members.functions);
         this.generateClassMemberVariableProperties(this.properties.classes.members.variables);
@@ -97,6 +99,13 @@ export abstract class Language {
      * @param booleans   A property container for metadata on booleans.
      */
     protected abstract generateBooleanProperties(booleans: BooleanProperties): void;
+
+    /**
+     * Generates metadata on exported classes.
+     *
+     * @param members   A property container for metadata on exported classes.
+     */
+    protected abstract generateClassExportProperties(exports: ClassExportProperties): void;
 
     /**
      * Generates metadata on class generics.

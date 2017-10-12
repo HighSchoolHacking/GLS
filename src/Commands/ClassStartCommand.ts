@@ -19,6 +19,7 @@ export class ClassStartCommand extends Command {
         .withDescription("Starts a class declaration.")
         .withIndentation([1])
         .withParameters([
+            new KeywordParameter([KeywordNames.Export], "Keyword to export this class publicly.", false),
             new KeywordParameter([KeywordNames.Abstract], "Keyword to extend from a parent class.", false),
             new SingleParameter("classDescriptor", "The class name and optional generics.", true),
             new KeywordParameter([KeywordNames.Extends], "Keyword to extend from a parent class.", false),
@@ -48,6 +49,7 @@ export class ClassStartCommand extends Command {
         const remainingParameters = parameters.slice(1);
         let line = "";
 
+        line += this.getForExport(remainingParameters);
         line += this.getForAbstract(remainingParameters);
         line += this.language.properties.classes.declareStartLeft;
 
@@ -78,6 +80,21 @@ export class ClassStartCommand extends Command {
         this.addLineEnder(lines, this.language.properties.classes.declareStartRight, 1);
 
         return new LineResults(lines, false);
+    }
+
+    /**
+     * Removes any parameters for exporting the class.
+     *
+     * @param remainingParameters   Remaining input parameters.
+     * @returns Language output equivalent for the removed parameters.
+     */
+    private getForExport(remainingParameters: string[]): string {
+        if (remainingParameters[0] !== KeywordNames.Export) {
+            return this.language.properties.classes.exports.internal;
+        }
+
+        remainingParameters.shift();
+        return this.language.properties.classes.exports.exported;
     }
 
     /**
