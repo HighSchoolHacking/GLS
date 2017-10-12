@@ -239,37 +239,40 @@ gulp.task("util", function (callback) {
 });
 
 gulp.task("util:new-language", function () {
-    if (process.argv.length !== 11
-        || process.argv[3] !== "--name"
-        || process.argv[5] !== "--extension"
-        || process.argv[7] !== "--baseName"
-        || process.argv[9] !== "--baseExtension") {
-        console.error();
-        console.error("Invalid arguments passed to util:new-language.");
-        console.error("Arguments are case-insensitive and cannot be re-ordered.");
-        console.error();
-        console.error("Usage: gulp util:new-language --name <name> --extension <extension> --baseName <baseName> --baseExtension <baseExtension>");
-        console.error("Eample: gulp util:new-language JavaScript .js --baseName TypeScript --baseExtension .ts");
-        console.error();
-        return;
+    var program = require('commander');
+
+    program
+        .description('Adds a new language to GLS.')
+        .usage('util:new-language --language-name <language-name> --language-extension <language-extension> ' +
+               '--base-name <base-name> --base-extension <base-extension>')
+        .option('-n, --language-name <language-name>', 'name of the language to add')
+        .option('-e, --language-extension <language-extension>', 'extension for language files')
+        .option('-b, --base-name <base-name>', 'pre-existing language to use as a base')
+        .option('-x, --base-extension <base-extension>', 'extension to use as a base');
+    
+    program.parse(process.argv);
+    
+    var name = program.languageName;
+    var extension = program.languageExtension;
+    var baseName = program.baseName;
+    var baseExtension = program.baseExtension;
+
+    if (!name || !extension || !baseName || !baseExtension) {
+        program.help();
     }
 
-    var createNewLanguage = require("./util").createNewLanguage;
-    var name = process.argv[4];
-    var extension = process.argv[6];
-    var baseName = process.argv[8];
-    var baseExtension = process.argv[10];
     console.log("Making new language with name '" + name + "' and extension '" + extension + "'.");
     console.log("Basing it off of name '" + baseName + "' and extension '" + baseExtension + "'.");
 
+    var createNewLanguage = require("./util").createNewLanguage;
     createNewLanguage(
         {
             extension: extension,
-            name: name
+            name: name,
         },
         {
             extension: baseExtension,
-            name: baseName
+            name: baseName,
         });
 });
 
