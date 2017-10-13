@@ -71,6 +71,7 @@ export class IfStringToFloatStartCommand extends Command {
         const results: LineResults = new LineResults(lines, false);
 
         results.addImports(this.language.properties.strings.toFloat.requiredImports);
+        results.commandResults[results.commandResults.length - 1].indentation = 1;
 
         return results;
     }
