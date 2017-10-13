@@ -89,7 +89,7 @@ Most simple math operations are doable with the `operation` command. It takes in
 
 > Recall that parenthesis are required for arguments with spaces: including operator aliases.
 
-The `parenthesis` command is also commonly used with math. It takes a single argument and wraps it in `()` parenthesis.
+The `parenthesis` command is also commonly used with math. It takes a single argument and wraps it in `()` parentheses.
 
 ```
 operation : foo times 2
@@ -130,5 +130,39 @@ math max : foo bar
 * In C\#: `Math.Max(foo, bar)`
 * In Python: `max(foo, bar)`
 
+All possible native math commands are given below.
+
+<table>
+    <thead>
+        <th>GLS Syntax</th>
+        <th>Common Equivalent</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>math absolute</td>
+            <td><code>math.abs()</code></td>
+        </tr>
+        <tr>
+            <td>math ceiling</td>
+            <td><code>math.ceil()</code></td>
+        </tr>
+        <tr>
+            <td>math floor</td>
+            <td><code>math.floor()</code></td>
+        </tr>
+        <tr>
+            <td>math max</td>
+            <td><code>math.max()</code></td>
+        </tr>
+        <tr>
+            <td>math min</td>
+            <td><code>math.min()</code></td>
+        </tr>
+        <tr>
+            <td>math power</td>
+            <td><code>math.pow()</code></td>
+        </tr>
+    </tbody>
+</table>
 
 
