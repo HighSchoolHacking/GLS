@@ -1,3 +1,4 @@
+import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -32,6 +33,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
 
@@ -557,6 +559,24 @@ export class Python extends PythonicLanguage {
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
+    }
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+        toFloat.conversionType = StringToFloatStartConversionType.PredeclareConvertAndValidate;
+        toFloat.initialVariableValues = "None";
+        toFloat.initializeVariablesEnd = "\n\ntry:\n";
+        toFloat.perVariableConversionStartLeft = "    ";
+        toFloat.perVariableConversionStartMiddle = " = float(";
+        toFloat.perVariableConversionStartRight = ")\n";
+        toFloat.validationBlockComparison = "{1} is not None";
+        toFloat.validationBlockLeft = "except:\n    pass\n\nif ";
+        toFloat.validationBlockMiddle = " and ";
+        toFloat.validationBlockRight = ":";
     }
 
     /**

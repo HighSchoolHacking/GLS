@@ -52,6 +52,8 @@ import { FunctionStartCommand } from "./FunctionStartCommand";
 import { GenericTypeCommand } from "./GenericTypeCommand";
 import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
+import { IfStringToFloatEndCommand } from "./IfStringToFloatEndCommand";
+import { IfStringToFloatStartCommand } from "./IfStringToFloatStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
 import { InstanceOfCommand } from "./InstanceOfCommand";
@@ -247,6 +249,8 @@ export class CommandsBagFactory {
             new StringLengthCommand(context),
             new StringSubstringIndexCommand(context),
             new StringSubstringLengthCommand(context),
+            new IfStringToFloatStartCommand(context),
+            new IfStringToFloatEndCommand(context),
             new SuperConstructorCommand(context),
             new ThisCommand(context),
             new ThrowExceptionCommand(context),

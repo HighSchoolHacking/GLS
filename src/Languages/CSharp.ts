@@ -1,3 +1,4 @@
+import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { CLikeLanguage } from "./CLikeLanguage";
 import { Import } from "./Imports/Import";
@@ -34,6 +35,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -655,6 +657,27 @@ export class CSharp extends CLikeLanguage {
         substrings.middle = ", ";
         substrings.right = ")";
         substrings.support = StringSubstringSupport.Length;
+    }
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+        toFloat.conversionType = StringToFloatStartConversionType.ValidateDirectly;
+
+        toFloat.requiredImports = [
+            new Import(
+                ["system"],
+                ["Float"],
+                ImportRelativity.Absolute)
+        ];
+
+        toFloat.validationBlockComparison = "float.TryParse({0}, out var {1})";
+        toFloat.validationBlockLeft = "if (";
+        toFloat.validationBlockMiddle = " && ";
+        toFloat.validationBlockRight = ")\n{";
     }
 
     /**

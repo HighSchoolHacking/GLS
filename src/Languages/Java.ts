@@ -1,3 +1,4 @@
+import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { CLikeLanguage } from "./CLikeLanguage";
 import { Import } from "./Imports/Import";
@@ -34,6 +35,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
@@ -632,6 +634,24 @@ export class Java extends CLikeLanguage {
         substrings.middle = ", ";
         substrings.right = ")";
         substrings.support = StringSubstringSupport.Index;
+    }
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+        toFloat.conversionType = StringToFloatStartConversionType.PredeclareConvertAndValidate;
+        toFloat.initialVariableValues = "null";
+        toFloat.initializeVariablesEnd = "\n\ntry {\n";
+        toFloat.perVariableConversionStartLeft = "    ";
+        toFloat.perVariableConversionStartMiddle = " = Float.parseFloat(";
+        toFloat.perVariableConversionStartRight = ");\n";
+        toFloat.validationBlockComparison = "{1} != null";
+        toFloat.validationBlockLeft = "} catch (NumberFormatException e) { }\n\nif (";
+        toFloat.validationBlockMiddle = " && ";
+        toFloat.validationBlockRight = ") {";
     }
 
     /**

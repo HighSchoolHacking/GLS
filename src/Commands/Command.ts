@@ -69,11 +69,12 @@ export abstract class Command {
             currentLine = new CommandResult("", 0);
             lines.push(currentLine);
 
-            endlineIndex = extra.indexOf("\n", currentIndex + 1);
+            currentIndex += 1;
+            endlineIndex = extra.indexOf("\n", currentIndex);
         }
 
         if (currentIndex !== -1) {
-            currentLine.text = extra.substring(currentIndex + 1);
+            currentLine.text = extra.substring(currentIndex);
         }
 
         lines[lines.length - 1].indentation = indentation;
