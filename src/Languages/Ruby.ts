@@ -1,3 +1,4 @@
+import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
@@ -30,6 +31,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 import { PythonicLanguage } from "./PythonicLanguage";
 
@@ -574,6 +576,22 @@ export class Ruby extends PythonicLanguage {
         substrings.middle = "..";
         substrings.right = "]";
         substrings.support = StringSubstringSupport.Length;
+    }
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+        toFloat.conversionType = StringToFloatStartConversionType.ConvertAndValidate;
+        toFloat.perVariableConversionStartLeft = "";
+        toFloat.perVariableConversionStartMiddle = " = ";
+        toFloat.perVariableConversionStartRight = ".to_f\n";
+        toFloat.validationBlockComparison = "{1} != nil";
+        toFloat.validationBlockLeft = "\nif (";
+        toFloat.validationBlockMiddle = " && ";
+        toFloat.validationBlockRight = ")";
     }
 
     /**

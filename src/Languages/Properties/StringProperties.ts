@@ -1,11 +1,17 @@
 import { NativeCallProperties } from "./NativeCallProperties";
 import { StringFormatProperties } from "./StringFormatProperties";
 import { StringSubstringProperties } from "./StringSubstringProperties";
+import { StringToFloatProperties } from "./StringToFloatProperties";
 
 /**
  * Metadata on a language's Strings.
  */
 export class StringProperties {
+    /**
+     * How to make a block to be executed if a string can be converted to a float.
+     */
+    public toFloat: StringToFloatProperties = new StringToFloatProperties();
+
     /**
      * How to create a lower-case copy of a string.
      */

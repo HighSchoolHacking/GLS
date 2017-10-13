@@ -253,6 +253,16 @@ export class CommandNames {
     public static IfStart = "if start";
 
     /**
+     * Name key for the IfStringToFloatEnd command.
+     */
+    public static IfStringToFloatEnd = "if string to float end";
+
+    /**
+     * Name key for the IfStringToFloatStart command.
+     */
+    public static IfStringToFloatStart = "if string to float start";
+
+    /**
      * Name key for the ImportLocal command.
      */
     public static ImportLocal = "import local";

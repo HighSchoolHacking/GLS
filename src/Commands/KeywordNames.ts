@@ -18,6 +18,11 @@ export class KeywordNames {
     public static Extends = "extends";
 
     /**
+     * Name key for the "float" keyword.
+     */
+    public static Float = "float";
+
+    /**
      * Name key for the "implements" keyword.
      */
     public static Implements = "implements";
@@ -53,6 +58,11 @@ export class KeywordNames {
         KeywordNames.Public,
         KeywordNames.Protected
     ];
+
+    /**
+     * Name key for the "string" keyword.
+     */
+    public static String = "string";
 
     /**
      * Name key for the "throws" keyword.

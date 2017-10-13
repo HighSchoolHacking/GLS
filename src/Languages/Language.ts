@@ -32,6 +32,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -82,6 +83,7 @@ export abstract class Language {
         this.generateStringProperties(this.properties.strings);
         this.generateStringFormatProperties(this.properties.strings.formatting);
         this.generateStringSubstringProperties(this.properties.strings.substrings);
+        this.generateStringToFloatProperties(this.properties.strings.toFloat);
         this.generateStyleProperties(this.properties.style);
         this.generateVariableProperties(this.properties.variables);
 
@@ -316,18 +318,25 @@ export abstract class Language {
     protected abstract generateStringProperties(strings: StringProperties): void;
 
     /**
-     * Generates metadata on style.
-     *
-     * @param style   A property container for metadata on style.
-     */
-    protected abstract generateStyleProperties(style: StyleProperties): void;
-
-    /**
      * Generates metadata on string substrings.
      *
      * @param strings   A property container for metadata on string substrings.
      */
     protected abstract generateStringSubstringProperties(substrings: StringSubstringProperties): void;
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected abstract generateStringToFloatProperties(toFloat: StringToFloatProperties): void;
+
+    /**
+     * Generates metadata on style.
+     *
+     * @param style   A property container for metadata on style.
+     */
+    protected abstract generateStyleProperties(style: StyleProperties): void;
 
     /**
      * Generates metadata on variables.

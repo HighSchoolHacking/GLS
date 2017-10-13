@@ -1,3 +1,4 @@
+import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { CLikeLanguage } from "./CLikeLanguage";
 import { ArrayProperties } from "./Properties/ArrayProperties";
@@ -33,6 +34,7 @@ import { SetProperties } from "./Properties/SetProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
+import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
@@ -600,6 +602,22 @@ export class TypeScript extends CLikeLanguage {
         substrings.middle = ", ";
         substrings.right = ")";
         substrings.support = StringSubstringSupport.Both;
+    }
+
+    /**
+     * Generates metadata on string-to-float conversions.
+     *
+     * @param toFloat   A property container for metadata on string-to-float conversions.
+     */
+    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+        toFloat.conversionType = StringToFloatStartConversionType.ConvertAndValidate;
+        toFloat.perVariableConversionStartLeft = "let ";
+        toFloat.perVariableConversionStartMiddle = ": number = parseFloat(";
+        toFloat.perVariableConversionStartRight = ");\n";
+        toFloat.validationBlockComparison = "!isNaN({1})";
+        toFloat.validationBlockLeft = "\nif (";
+        toFloat.validationBlockMiddle = " && ";
+        toFloat.validationBlockRight = ") {";
     }
 
     /**
