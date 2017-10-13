@@ -2,7 +2,9 @@ import { ImportPathResolver } from "../Conversions/Imports/ImportPathResolver";
 import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 import { Command } from "./Command";
+import { KeywordNames } from "./KeywordNames";
 import { LineResults } from "./LineResults";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { IParameter } from "./Metadata/Parameters/Parameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
@@ -20,7 +22,7 @@ export abstract class ImportCommand extends Command {
             [
                 new SingleParameter("path", "Part of the package path.", false)
             ]),
-        new SingleParameter("use", "\"use\"", true),
+        new KeywordParameter([KeywordNames.Use], "Keyword to import items.", true),
         new RepeatingParameters(
             "items",
             [
