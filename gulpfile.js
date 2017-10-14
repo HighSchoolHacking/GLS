@@ -6,7 +6,7 @@ var getTsProject = (function () {
 
     return function (fileName, options) {
         if (!gulpTypeScript) {
-             gulpTypeScript = require("gulp-typescript");
+            gulpTypeScript = require("gulp-typescript");
         }
 
         if (!tsProjects[fileName]) {
@@ -239,32 +239,53 @@ gulp.task("util", function (callback) {
 });
 
 gulp.task("util:new-language", function () {
-    var program = require('commander');
+    // Creates an object literal yargs will accept with a few defaults
+    function createYargsOption(specifiedOptions) {
+        var defaultOptions = {
+            demandOption: true,
+            nargs: 1,
+        }
+        return Object.assign({}, defaultOptions, specifiedOptions);
+    }
 
-    program
-        .description('Adds a new language to GLS.')
-        .usage('util:new-language --language-name <language-name> --language-extension <language-extension> ' +
-               '--base-name <base-name> --base-extension <base-extension>')
-        .option('-n, --language-name <language-name>', 'name of the language to add')
-        .option('-e, --language-extension <language-extension>', 'extension for language files')
-        .option('-b, --base-name <base-name>', 'pre-existing language to use as a base')
-        .option('-x, --base-extension <base-extension>', 'extension to use as a base');
-    
-    program.parse(process.argv);
-    
+    // Ensures that an extension string passed in as an argument begins with a period
+    var extensionFormatCheck = function (extension) {
+        return (extension.charAt(0) !== '.') ? '.' + extension : extension;
+    }
+
+    var program = require('yargs')
+        .usage('Usage: gulp util:new-language --language-name <language-name> ' + 
+               '--language-extension <language-extension> --base-name <base-name> --base-extension <base-extension>')
+        .option('language-name', createYargsOption({
+            alias: 'n',
+            describe: 'name of the language to add',
+        }))
+        .option('language-extension', createYargsOption({
+            alias: 'e',
+            describe: 'extension for language files',
+            coerce: extensionFormatCheck,
+        }))
+        .option('base-name', createYargsOption({
+            alias: 'b',
+            describe: 'pre-existing language to use as a base',
+        }))
+        .option('base-extension', createYargsOption({
+            alias: 'x',
+            describe: 'extension to use as a base',
+            coerce: extensionFormatCheck,
+        }))
+        .argv;
+
     var name = program.languageName;
     var extension = program.languageExtension;
     var baseName = program.baseName;
     var baseExtension = program.baseExtension;
 
-    if (!name || !extension || !baseName || !baseExtension) {
-        program.help();
-    }
-
     console.log("Making new language with name '" + name + "' and extension '" + extension + "'.");
     console.log("Basing it off of name '" + baseName + "' and extension '" + baseExtension + "'.");
 
     var createNewLanguage = require("./util").createNewLanguage;
+
     createNewLanguage(
         {
             extension: extension,
