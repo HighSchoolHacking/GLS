@@ -2,6 +2,7 @@ export { CaseStyleConverter } from "./Conversions/Casing/CaseStyleConverter";
 export { CaseStyleConverterBag } from "./Conversions/Casing/CaseStyleConverterBag";
 export { NameSplitter } from "./Conversions/Casing/NameSplitter";
 export { ConversionContext } from "./Conversions/ConversionContext";
+export { ImportPathResolver } from "./Conversions/Imports/ImportPathResolver";
 export { Command } from "./Commands/Command";
 export { CommandsBag } from "./Commands/CommandsBag";
 export { CommandsBagFactory } from "./Commands/CommandsBagFactory";
