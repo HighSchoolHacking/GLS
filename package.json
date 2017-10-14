@@ -38,6 +38,7 @@
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^9.0.1"
   }
 }

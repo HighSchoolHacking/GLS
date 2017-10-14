@@ -6,7 +6,7 @@ var getTsProject = (function () {
 
     return function (fileName, options) {
         if (!gulpTypeScript) {
-             gulpTypeScript = require("gulp-typescript");
+            gulpTypeScript = require("gulp-typescript");
         }
 
         if (!tsProjects[fileName]) {
@@ -239,37 +239,61 @@ gulp.task("util", function (callback) {
 });
 
 gulp.task("util:new-language", function () {
-    if (process.argv.length !== 11
-        || process.argv[3] !== "--name"
-        || process.argv[5] !== "--extension"
-        || process.argv[7] !== "--baseName"
-        || process.argv[9] !== "--baseExtension") {
-        console.error();
-        console.error("Invalid arguments passed to util:new-language.");
-        console.error("Arguments are case-insensitive and cannot be re-ordered.");
-        console.error();
-        console.error("Usage: gulp util:new-language --name <name> --extension <extension> --baseName <baseName> --baseExtension <baseExtension>");
-        console.error("Eample: gulp util:new-language JavaScript .js --baseName TypeScript --baseExtension .ts");
-        console.error();
-        return;
+    // Creates an object literal yargs will accept with a few defaults
+    function createYargsOption(specifiedOptions) {
+        var defaultOptions = {
+            demandOption: true,
+            nargs: 1,
+        }
+        return Object.assign({}, defaultOptions, specifiedOptions);
     }
 
-    var createNewLanguage = require("./util").createNewLanguage;
-    var name = process.argv[4];
-    var extension = process.argv[6];
-    var baseName = process.argv[8];
-    var baseExtension = process.argv[10];
+    // Ensures that an extension string passed in as an argument begins with a period
+    var extensionFormatCheck = function (extension) {
+        return (extension.charAt(0) !== '.') ? '.' + extension : extension;
+    }
+
+    var program = require('yargs')
+        .usage('Usage: gulp util:new-language --language-name <language-name> ' + 
+               '--language-extension <language-extension> --base-name <base-name> --base-extension <base-extension>')
+        .option('language-name', createYargsOption({
+            alias: 'n',
+            describe: 'name of the language to add',
+        }))
+        .option('language-extension', createYargsOption({
+            alias: 'e',
+            describe: 'extension for language files',
+            coerce: extensionFormatCheck,
+        }))
+        .option('base-name', createYargsOption({
+            alias: 'b',
+            describe: 'pre-existing language to use as a base',
+        }))
+        .option('base-extension', createYargsOption({
+            alias: 'x',
+            describe: 'extension to use as a base',
+            coerce: extensionFormatCheck,
+        }))
+        .argv;
+
+    var name = program.languageName;
+    var extension = program.languageExtension;
+    var baseName = program.baseName;
+    var baseExtension = program.baseExtension;
+
     console.log("Making new language with name '" + name + "' and extension '" + extension + "'.");
     console.log("Basing it off of name '" + baseName + "' and extension '" + baseExtension + "'.");
+
+    var createNewLanguage = require("./util").createNewLanguage;
 
     createNewLanguage(
         {
             extension: extension,
-            name: name
+            name: name,
         },
         {
             extension: baseExtension,
-            name: baseName
+            name: baseName,
         });
 });
 

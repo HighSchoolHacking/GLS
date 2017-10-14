@@ -47,7 +47,7 @@ It requires overriding the abstract `retrieveNativeCallProperties` instead of `r
 ### Adding Languages
 
 Languages are stored at runtime by their language name in a `LanguagesBag`.
-You can add a new language by running `gulp util:new-language --name <name> --extension <extension> --baseName <baseName> --baseExtension <baseExtension>`.
+You can add a new language by running `gulp util:new-language --language-name <language-name> --language-extension <language-extension> --base-name <base-name> --base-extension <base-extension>`.
 
 Files and listings for a new language identical to the original language except for the name and extension will be added locally.
 
