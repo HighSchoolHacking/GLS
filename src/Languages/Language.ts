@@ -243,7 +243,7 @@ export abstract class Language {
     /**
      * Generates metadata on main execution areas.
      *
-     * @param math   A property container for metadata on main execution areas.
+     * @param main   A property container for metadata on main execution areas.
      */
     protected abstract generateMainProperties(main: MainProperties): void;
 

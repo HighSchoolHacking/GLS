@@ -1,8 +1,10 @@
 import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Language } from "./Language";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassExportProperties } from "./Properties/ClassExportProperties";
+import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -13,6 +15,7 @@ import { ConditionalProperties } from "./Properties/ConditionalProperties";
 import { DictionaryProperties } from "./Properties/DictionaryProperties";
 import { EnumProperties } from "./Properties/EnumProperties";
 import { ExceptionProperties } from "./Properties/ExceptionProperties";
+import { FileProperties } from "./Properties/FileProperties";
 import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ImportProperties } from "./Properties/ImportProperties";
@@ -25,6 +28,7 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
+import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { SetProperties } from "./Properties/SetProperties";
@@ -32,13 +36,22 @@ import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
+import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
-import { PythonicLanguage } from "./PythonicLanguage";
 
 /**
  * A summary of information for the Ruby language.
  */
-export class Ruby extends PythonicLanguage {
+export class Ruby extends Language {
+    /**
+     * Generates metadata on class generics.
+     *
+     * @param generics   The property container for metadata on class generics.
+     */
+    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+        // Unused
+    }
+
     /**
      * Generates metadata on arrays.
      *
@@ -94,7 +107,8 @@ export class Ruby extends PythonicLanguage {
      * @param members   A property container for metadata on class member variables.
      */
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
-        super.generateClassMemberVariableProperties(variables);
+        variables.publicPrefix = "";
+        variables.skipMemberVariables = true;
 
         variables.private = "";
         variables.privateCase = CaseStyle.CamelCase;
@@ -113,7 +127,12 @@ export class Ruby extends PythonicLanguage {
      * @param classes   A property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
-        super.generateClassProperties(classes);
+        classes.constructors.private = "";
+        classes.constructors.protected = "";
+        classes.constructors.public = "";
+        classes.constructors.useKeyword = true;
+        classes.newStart = "new ";
+        classes.this = "self";
 
         classes.abstractDeclaration = "";
         classes.aliases = {
@@ -164,7 +183,10 @@ export class Ruby extends PythonicLanguage {
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
-        super.generateClassStaticVariableProperties(variables);
+        variables.private = "";
+        variables.protected = "";
+        variables.public = "";
+        variables.skipStaticVariables = true;
 
         variables.label = "@@";
         variables.privateCase = CaseStyle.CamelCase;
@@ -214,7 +236,11 @@ export class Ruby extends PythonicLanguage {
      * @param conditionals   A property container for metadata on conditionals.
      */
     protected generateConditionalProperties(conditionals: ConditionalProperties): void {
-        super.generateConditionalProperties(conditionals);
+        conditionals.continueLeft = "";
+        conditionals.else = "else";
+        conditionals.end = "\0";
+        conditionals.if = "if";
+        conditionals.startLeft = " ";
 
         conditionals.continueRight = "";
         conditionals.end = "end";
@@ -228,7 +254,16 @@ export class Ruby extends PythonicLanguage {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        super.generateDictionaryProperties(dictionaries);
+        dictionaries.containsKey = new NativeCallProperties(
+            " in ",
+            NativeCallScope.Operator,
+            NativeCallType.FloatingLeft);
+        dictionaries.initializeEnd = "}";
+        dictionaries.initializePairComma = ",";
+        dictionaries.initializePairLeft = "";
+        dictionaries.initializePairMiddle = ": ";
+        dictionaries.initializePairRight = "";
+        dictionaries.initializeStart = "{";
 
         dictionaries.className = "hash";
         dictionaries.keys = new NativeCallProperties(
@@ -243,7 +278,12 @@ export class Ruby extends PythonicLanguage {
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumProperties(enums: EnumProperties): void {
-        super.generateEnumProperties(enums);
+        enums.declareStartLeft = "class ";
+        enums.declareValueRight = "";
+        enums.declareCommaRight = "";
+        enums.declareLastRight = "";
+        enums.valueLeft = "";
+        enums.valueRight = "";
 
         enums.declareStartRight = "";
         enums.declareValueLeft = " = ";
@@ -257,11 +297,16 @@ export class Ruby extends PythonicLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
-        super.generateExceptionProperties(exceptions);
+        exceptions.throw = "raise";
+        exceptions.variablePrefix = "";
+        exceptions.blockEnd = "";
+        exceptions.throwExceptionRight = ")";
+        exceptions.requiresExceptionType = true;
 
         exceptions.try = "begin";
         exceptions.catch = "rescue";
         exceptions.finally = "ensure";
+        exceptions.catchStartMiddle = " ";
 
         exceptions.tryStartRight = "";
         exceptions.finallyStartRight = "";
@@ -272,12 +317,26 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
+     * Generates metadata on file contents.
+     *
+     * @param file   The property container for metadata on contents.
+     */
+    protected generateFileProperties(files: FileProperties): void {
+        files.endLines = [];
+        files.indentation = 0;
+        files.startCase = CaseStyle.FileSystemLowerCase;
+        files.startLines = [];
+    }
+
+    /**
      * Generates metadata on functions.
      *
      * @param functions   The property container for metadata on functions.
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
-        super.generateFunctionProperties(functions);
+        functions.case = CaseStyle.SnakeCase;
+        functions.defineStartLeft = "def ";
+        functions.requiresExceptions = false;
 
         functions.defineStartRight = "";
         functions.defineEnd = "end";
@@ -308,9 +367,9 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
-     * Generates metadata on imports.
+     * Generates metadata on interfaces.
      *
-     * @param imports   A property container for metadata on imports.
+     * @param interfaces   A property container for metadata on interfaces.
      */
     protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
         interfaces.supported = false;
@@ -322,7 +381,8 @@ export class Ruby extends PythonicLanguage {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
-        super.generateLambdaProperties(lambdas);
+        lambdas.parameterTypeRequired = false;
+        lambdas.returnTypeRequired = false;
 
         lambdas.functionLeft = "lambda { |";
         lambdas.functionMiddle = "| ";
@@ -335,7 +395,8 @@ export class Ruby extends PythonicLanguage {
      * @param lists   A property container for metadata on loops.
      */
     protected generateListProperties(lists: ListProperties): void {
-        super.generateListProperties(lists);
+        lists.asArray = true;
+
         lists.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
@@ -368,7 +429,15 @@ export class Ruby extends PythonicLanguage {
      * @param loops   A property container for metadata on loops.
      */
     protected generateLoopProperties(loops: LoopProperties): void {
-        super.generateLoopProperties(loops);
+        loops.break = "break";
+        loops.continue = "continue";
+        loops.for = "for";
+        loops.forEachMiddle = " in ";
+        loops.rangedForLoops = true;
+        loops.forEachStartItteration = " ";
+        loops.whileStartLeft = "while";
+        loops.whileStartMiddle = " ";
+        loops.whileStartRight = ":";
 
         loops.foreach = "foreach";
         loops.forEachAsMethod = true;
@@ -452,6 +521,33 @@ export class Ruby extends PythonicLanguage {
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
         numbers.className = "float";
+    }
+
+    /**
+     * Generates metadata on operators.
+     *
+     * @param operators   The property container for metadata on operators.
+     */
+    protected generateOperatorProperties(operators: OperatorProperties): void {
+        operators.and = "&&";
+        operators.decreaseBy = "-=";
+        operators.divide = "/";
+        operators.divideBy = "/=";
+        operators.equals = "=";
+        operators.equalTo = "==";
+        operators.greaterThan = ">";
+        operators.greaterThanOrEqualTo = ">=";
+        operators.increaseBy = "+=";
+        operators.lessThan = "<";
+        operators.lessThanOrEqualTo = "<=";
+        operators.minus = "-";
+        operators.mod = "%";
+        operators.multiplyBy = "*=";
+        operators.not = "!";
+        operators.notEqualTo = "!=";
+        operators.or = "||";
+        operators.plus = "+";
+        operators.times = "*";
     }
 
     /**
@@ -539,7 +635,7 @@ export class Ruby extends PythonicLanguage {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringProperties(strings: StringProperties): void {
-        super.generateStringProperties(strings);
+        strings.concatenate = " + ";
 
         strings.caseLower = new NativeCallProperties(
             "downcase",
@@ -595,12 +691,21 @@ export class Ruby extends PythonicLanguage {
     }
 
     /**
+     * Generates metadata on style.
+     *
+     * @param style   The property container for metadata on style.
+     */
+    protected generateStyleProperties(style: StyleProperties): void {
+        style.semicolon = "";
+    }
+
+    /**
      * Generates metadata on variables.
      *
      * @param variables   A property container for metadata on variables.
      */
     protected generateVariableProperties(variables: VariableProperties): void {
-        super.generateVariableProperties(variables);
+        variables.declaration = "";
 
         variables.aliases = {
             infinity: "float::Infinity",

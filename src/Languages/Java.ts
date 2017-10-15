@@ -1,11 +1,12 @@
 import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
-import { CLikeLanguage } from "./CLikeLanguage";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
+import { Language } from "./Language";
 import { ArrayProperties } from "./Properties/ArrayProperties";
 import { BooleanProperties } from "./Properties/BooleanProperties";
 import { ClassExportProperties } from "./Properties/ClassExportProperties";
+import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
 import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
 import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
 import { ClassProperties } from "./Properties/ClassProperties";
@@ -29,6 +30,7 @@ import { MathProperties } from "./Properties/MathProperties";
 import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
 import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
 import { NumberProperties } from "./Properties/NumberProperties";
+import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { SetProperties } from "./Properties/SetProperties";
@@ -36,12 +38,24 @@ import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
+import { StyleProperties } from "./Properties/StyleProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
  * A summary of information for the Java language.
  */
-export class Java extends CLikeLanguage {
+export class Java extends Language {
+    /**
+     * Generates metadata on class generics.
+     *
+     * @param members   A property container for metadata on class generics.
+     */
+    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+        generics.left = "<";
+        generics.middle = ", ";
+        generics.right = ">";
+    }
+
     /**
      * Generates metadata on arrays.
      *
@@ -82,7 +96,9 @@ export class Java extends CLikeLanguage {
      * @param functions   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
-        super.generateClassMemberFunctionProperties(functions);
+        functions.privatePrefix = "";
+        functions.protectedPrefix = "";
+        functions.publicPrefix = "";
 
         functions.abstractDeclaration = "abstract ";
         functions.private = "private ";
@@ -99,7 +115,10 @@ export class Java extends CLikeLanguage {
      * @param members   A property container for metadata on class member variables.
      */
     protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
-        super.generateClassMemberVariableProperties(variables);
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protectedPrefix = "";
+        variables.publicPrefix = "";
 
         variables.private = "private ";
         variables.protected = "protected ";
@@ -114,7 +133,12 @@ export class Java extends CLikeLanguage {
      * @param classes   A property container for metadata on classes.
      */
     protected generateClassProperties(classes: ClassProperties): void {
-        super.generateClassProperties(classes);
+        classes.declareEnd = "}";
+        classes.declareExtendsRight = "";
+        classes.declareStartLeft = "class ";
+        classes.newStart = "new ";
+        classes.statics.labelBeforePublicity = false;
+        classes.this = "this";
 
         classes.abstractDeclaration = "abstract ";
         classes.abstractsSupported = true;
@@ -149,7 +173,10 @@ export class Java extends CLikeLanguage {
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
-        super.generateClassStaticFunctionProperties(functions);
+        functions.label = "static ";
+        functions.privatePrefix = "";
+        functions.protectedPrefix = "";
+        functions.publicPrefix = "";
 
         functions.private = "private ";
         functions.privateCase = CaseStyle.CamelCase;
@@ -165,7 +192,11 @@ export class Java extends CLikeLanguage {
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
-        super.generateClassStaticVariableProperties(variables);
+        variables.label = "static ";
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protectedPrefix = "";
+        variables.publicPrefix = "";
 
         variables.private = "private ";
         variables.privateCase = CaseStyle.CamelCase;
@@ -181,7 +212,12 @@ export class Java extends CLikeLanguage {
      * @param comments   A property container for metadata on comments.
      */
     protected generateCommentProperties(comments: CommentProperties): void {
-        super.generateCommentProperties(comments);
+        comments.blockEnd = "*/";
+        comments.blockLineLeft = "";
+        comments.blockLineRight = "";
+        comments.blockStart = "/*";
+        comments.lineLeft = "// ";
+        comments.lineRight = "";
 
         comments.docEnd = " */";
         comments.docLineEnd = "";
@@ -209,7 +245,11 @@ export class Java extends CLikeLanguage {
      * @param conditionals   A property container for metadata on conditionals.
      */
     protected generateConditionalProperties(conditionals: ConditionalProperties): void {
-        super.generateConditionalProperties(conditionals);
+        conditionals.elif = "else if";
+        conditionals.else = "else";
+        conditionals.end = "}";
+        conditionals.if = "if";
+        conditionals.startLeft = " (";
 
         conditionals.continueLeft = "} ";
         conditionals.continueRight = " {";
@@ -255,7 +295,13 @@ export class Java extends CLikeLanguage {
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumProperties(enums: EnumProperties): void {
-        super.generateEnumProperties(enums);
+        enums.declareStartLeft = "enum ";
+        enums.declareValueLeft = " = ";
+        enums.declareValueRight = "";
+        enums.declareCommaRight = ",";
+        enums.valueLeft = "";
+        enums.valueMiddle = ".";
+        enums.valueRight = "";
 
         enums.declareStartRight = " {";
         enums.declareValueLeft = "(";
@@ -270,7 +316,20 @@ export class Java extends CLikeLanguage {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionProperties(exceptions: ExceptionProperties): void {
-        super.generateExceptionProperties(exceptions);
+        exceptions.catch = "catch";
+        exceptions.finally = "finally";
+        exceptions.throw = "throw new";
+        exceptions.try = "try";
+        exceptions.variablePrefix = "";
+        exceptions.blockEnd = "} ";
+        exceptions.tryStartRight = " {";
+        exceptions.finallyStartRight = " {";
+        exceptions.catchStartMiddle = " (";
+        exceptions.catchStartLink = " ";
+        exceptions.catchStartRight = ") {";
+        exceptions.throwExceptionMiddle = "(";
+        exceptions.throwExceptionRight = ")";
+        exceptions.requiresExceptionType = true;
 
         exceptions.className = "Exception";
     }
@@ -296,7 +355,8 @@ export class Java extends CLikeLanguage {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionProperties(functions: FunctionProperties): void {
-        super.generateFunctionProperties(functions);
+        functions.defineEnd = "}";
+        functions.explicitReturns = true;
 
         functions.case = CaseStyle.CamelCase;
 
@@ -333,9 +393,9 @@ export class Java extends CLikeLanguage {
     }
 
     /**
-     * Generates metadata on imports.
+     * Generates metadata on interfaces.
      *
-     * @param imports   A property container for metadata on imports.
+     * @param interfaces   A property container for metadata on interfaces.
      */
     protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
         interfaces.declareStartLeft = "interface ";
@@ -357,7 +417,10 @@ export class Java extends CLikeLanguage {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaProperties(lambdas: LambdaProperties): void {
-        super.generateLambdaProperties(lambdas);
+        lambdas.functionLeft = "(";
+        lambdas.functionRight = "";
+        lambdas.parameterTypeRequired = false;
+        lambdas.returnTypeRequired = false;
 
         lambdas.functionMiddle = ") -> ";
     }
@@ -419,7 +482,13 @@ export class Java extends CLikeLanguage {
      * @param loops   A property container for metadata on loops.
      */
     protected generateLoopProperties(loops: LoopProperties): void {
-        super.generateLoopProperties(loops);
+        loops.break = "break";
+        loops.continue = "continue";
+        loops.for = "for";
+        loops.forEachEnd = "}";
+        loops.whileStartLeft = "while";
+        loops.whileStartMiddle = " (";
+        loops.whileStartRight = ") {";
 
         loops.foreach = "for";
         loops.forEachGetKeys = ".keySet()";
@@ -440,7 +509,7 @@ export class Java extends CLikeLanguage {
     /**
      * Generates metadata on main execution areas.
      *
-     * @param math   A property container for metadata on main execution areas.
+     * @param main   A property container for metadata on main execution areas.
      */
     protected generateMainProperties(main: MainProperties): void {
         main.contextEndLines = [
@@ -509,6 +578,33 @@ export class Java extends CLikeLanguage {
      */
     protected generateNumberProperties(numbers: NumberProperties): void {
         numbers.className = "double";
+    }
+
+    /**
+     * Generates metadata on operators.
+     *
+     * @param operators   A property container for metadata on operators.
+     */
+    protected generateOperatorProperties(operators: OperatorProperties): void {
+        operators.and = "&&";
+        operators.decreaseBy = "-=";
+        operators.divide = "/";
+        operators.divideBy = "/=";
+        operators.equals = "=";
+        operators.equalTo = "==";
+        operators.greaterThan = ">";
+        operators.greaterThanOrEqualTo = ">=";
+        operators.increaseBy = "+=";
+        operators.lessThan = "<";
+        operators.lessThanOrEqualTo = "<=";
+        operators.minus = "-";
+        operators.mod = "%";
+        operators.multiplyBy = "*=";
+        operators.not = "!";
+        operators.notEqualTo = "!=";
+        operators.or = "||";
+        operators.plus = "+";
+        operators.times = "*";
     }
 
     /**
@@ -601,7 +697,7 @@ export class Java extends CLikeLanguage {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringProperties(strings: StringProperties): void {
-        super.generateStringProperties(strings);
+        strings.concatenate = " + ";
 
         strings.caseLower = new NativeCallProperties(
             "toLowerCase",
@@ -659,12 +755,21 @@ export class Java extends CLikeLanguage {
     }
 
     /**
+     * Generates metadata on style.
+     *
+     * @param style   A property container for metadata on style.
+     */
+    protected generateStyleProperties(style: StyleProperties): void {
+        style.semicolon = ";";
+    }
+
+    /**
      * Generates metadata on variables.
      *
      * @param variables   A property container for metadata on variables.
      */
     protected generateVariableProperties(variables: VariableProperties): void {
-        super.generateVariableProperties(variables);
+        variables.declarationRequired = true;
 
         variables.aliases = {
             infinity: "double.POSITIVE_INFINITY"
