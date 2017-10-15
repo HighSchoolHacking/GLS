@@ -9,6 +9,7 @@ export { CommandsBagFactory } from "./Commands/CommandsBagFactory";
 export { CommandNames } from "./Commands/CommandNames";
 export { KeywordNames } from "./Commands/KeywordNames";
 export { CommandMetadata } from "./Commands/Metadata/CommandMetadata";
+export { KeywordParameter } from "./Commands/Metadata/Parameters/KeywordParameter";
 export { IParameter } from "./Commands/Metadata/Parameters/Parameter";
 export { RepeatingParameters } from "./Commands/Metadata/Parameters/RepeatingParameters";
 export { SingleParameter } from "./Commands/Metadata/Parameters/SingleParameter";
