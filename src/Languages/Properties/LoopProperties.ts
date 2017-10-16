@@ -78,9 +78,9 @@ export class LoopProperties {
     public forEachRight: string;
 
     /**
-     * Starts itteration portion of foreach loop's initial line.
+     * Starts iteration portion of foreach loop's initial line.
      */
-    public forEachStartItteration: string;
+    public forEachStartIteration: string;
 
     /**
      * Begins a for each start statement
@@ -93,7 +93,7 @@ export class LoopProperties {
     public forEachStartRight: string;
 
     /**
-     * Separates itteration variable and array in a foreach loop's initial line.
+     * Separates iteration variable and array in a foreach loop's initial line.
      */
     public forEachStartSeparator: string;
 

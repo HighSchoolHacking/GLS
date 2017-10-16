@@ -38,7 +38,7 @@ export class ForEachStartCommand extends Command {
         let line: string = this.language.properties.loops.forEachStartLeft;
         let output: CommandResult[];
 
-        line += this.language.properties.loops.forEachStartItteration;
+        line += this.language.properties.loops.forEachStartIteration;
 
         if (this.language.properties.variables.declarationRequired) {
             line += this.language.properties.variables.declaration;

@@ -501,7 +501,7 @@ export class Java extends Language {
         loops.forEachRight = "";
 
         loops.forEachStartLeft = "for";
-        loops.forEachStartItteration = " (";
+        loops.forEachStartIteration = " (";
         loops.forEachStartSeparator = " : ";
         loops.forEachStartRight = ") {";
     }
