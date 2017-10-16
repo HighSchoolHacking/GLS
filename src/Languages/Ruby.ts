@@ -450,6 +450,13 @@ export class Ruby extends Language {
         loops.forEachStartSeparator = " in ";
         loops.forEachStartRight = "";
 
+        loops.rangedForLoopsFunctionalIncrementor = true;
+        loops.rangedForLoopsFunctionalLeft = "(";
+        loops.rangedForLoopsFunctionalMiddleLeft = "..";
+        loops.rangedForLoopsFunctionalMiddleMiddle = ").step(";
+        loops.rangedForLoopsFunctionalMiddleRight = ") do |";
+        loops.rangedForLoopsFunctionalRight = "|";
+
         loops.rangedForLoopsLeft = " in ";
         loops.rangedForLoopsMiddle = "..";
         loops.rangedForLoopsRight = "";
