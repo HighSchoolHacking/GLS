@@ -437,7 +437,7 @@ export class Python extends Language {
         loops.foreach = "for";
         loops.forEachMiddle = " in ";
         loops.rangedForLoops = true;
-        loops.forEachStartItteration = " ";
+        loops.forEachStartIteration = " ";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " ";
         loops.whileStartRight = ":";
