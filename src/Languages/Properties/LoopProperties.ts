@@ -103,6 +103,36 @@ export class LoopProperties {
     public rangedForLoops: boolean;
 
     /**
+     * Whether ranged loops with custom incrementors start as a function-like form.
+     */
+    public rangedForLoopsFunctionalIncrementor: boolean;
+
+    /**
+     * How to start a functional ranged for loop.
+     */
+    public rangedForLoopsFunctionalLeft: string;
+
+    /**
+     * How to start the middle of a functional ranged for loop.
+     */
+    public rangedForLoopsFunctionalMiddleLeft: string;
+
+    /**
+     * Text in the middle of the middle of a functional ranged for loop.
+     */
+    public rangedForLoopsFunctionalMiddleMiddle: string;
+
+    /**
+     * How to end the middle of a functional ranged for loop.
+     */
+    public rangedForLoopsFunctionalMiddleRight: string;
+
+    /**
+     * How to end a function ranged for loop.
+     */
+    public rangedForLoopsFunctionalRight: string;
+
+    /**
      * How to start a Pythonic ranged loop's initial line.
      */
     public rangedForLoopsLeft: string;
