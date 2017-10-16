@@ -470,7 +470,7 @@ export class TypeScript extends Language {
         loops.forEachRight = "";
 
         loops.forEachStartLeft = "for";
-        loops.forEachStartItteration = " (";
+        loops.forEachStartIteration = " (";
         loops.forEachStartSeparator = " of ";
         loops.forEachStartRight = ") {";
     }

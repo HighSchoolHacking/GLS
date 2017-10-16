@@ -498,7 +498,7 @@ export class CSharp extends Language {
         loops.forEachRight = "";
 
         loops.forEachStartLeft = "foreach";
-        loops.forEachStartItteration = " (";
+        loops.forEachStartIteration = " (";
         loops.forEachStartSeparator = " in ";
         loops.forEachStartRight = ")\n{";
 
