@@ -32,13 +32,13 @@
     "gulp-uglify": "^3.0.0",
     "merge2": "^1.2.0",
     "minimatch": "^3.0.4",
-    "mocha": "^3.5.3",
+    "mocha": "^4.0.1",
     "run-sequence": "^2.1.0",
     "tsify": "^3.0.3",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "yargs": "^9.0.1"
+    "yargs": "^10.0.3"
   }
 }
