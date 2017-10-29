@@ -1,5 +1,7 @@
 # GLS - General Language Syntax
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/general-language-syntax/GLS.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/general-language-syntax/GLS.svg?)](https://travis-ci.org/general-language-syntax/GLS)
 [![NPM version](https://badge.fury.io/js/general-language-syntax.svg)](http://badge.fury.io/js/general-language-syntax)
 
