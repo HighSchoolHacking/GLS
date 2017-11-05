@@ -3,6 +3,8 @@
  * Separates lines into their command names and parameters.
  */
 export class LineComponentSeparator {
+    private static readonly quoteCharacters = new Set(["'", '"', "`"]);
+
     /**
      * Separates a line into its command name and parameters.
      *
@@ -42,6 +44,16 @@ export class LineComponentSeparator {
                     i += 1;
                     break;
 
+                case "\"":
+                    end = line.indexOf("\"", i);
+                    if (end === -1) {
+                        throw new Error(`Could not find end for '"' starting at position ${i}.`);
+                    }
+
+                    end += 1;
+                    nextStart = end;
+                    break;
+
                 default:
                     end = this.findSearchEnd(line, i, " ", " ");
                     nextStart = end;
@@ -72,17 +84,22 @@ export class LineComponentSeparator {
      */
     private findSearchEnd(text: string, index: number, starter: string, ender: string): number {
         let numStarts = 1;
+        let insideQuotes = false;
 
         for (let i: number = index + 1; i < text.length; i += 1) {
             const current: string = text[i];
 
-            if (current === ender) {
-                numStarts -= 1;
-                if (numStarts === 0) {
-                    return i;
+            if (LineComponentSeparator.quoteCharacters.has(current)) {
+                insideQuotes = !insideQuotes;
+            } else if (!insideQuotes) {
+                if (current === ender) {
+                    numStarts -= 1;
+                    if (numStarts === 0) {
+                        return i;
+                    }
+                } else if (current === starter) {
+                    numStarts += 1;
                 }
-            } else if (current === starter) {
-                numStarts += 1;
             }
         }
 
