@@ -45,7 +45,7 @@ export class LineComponentSeparator {
                     break;
 
                 case "\"":
-                    end = line.indexOf("\"", i);
+                    end = this.findSearchEndForQuotes(line, i);
                     if (end === -1) {
                         throw new Error(`Could not find end for '"' starting at position ${i}.`);
                     }
@@ -100,6 +100,25 @@ export class LineComponentSeparator {
                 } else if (current === starter) {
                     numStarts += 1;
                 }
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * Finds the corresponding end position for a starting separator.
+     *
+     * @param text   The String to search within.
+     * @param index   The starting location of the starting separator.
+     * @param starter   The starting separator, such as "{".
+     * @param ender   The ending separator, such as "}".
+     * @returns The position of the starter's corresponding ender.
+     */
+    private findSearchEndForQuotes(text: string, index: number): number {
+        for (let i: number = index + 1; i < text.length; i += 1) {
+            if (text[i] === '"' && text[i - 1] !== "\\") {
+                return i;
             }
         }
 

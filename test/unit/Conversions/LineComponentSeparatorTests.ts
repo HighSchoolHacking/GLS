@@ -50,6 +50,11 @@ describe("LineComponentSeparator", () => {
                 description: "ignores brackets within nested quotes",
                 input: 'abc : { def ghi : jkl "{" mno }',
                 output: ["abc", '{ def ghi : jkl "{" mno }']
+            },
+            {
+                description: "ignores an escaped quote",
+                input: 'abc : "\""',
+                output: ["abc", '\""']
             }
         ];
 
