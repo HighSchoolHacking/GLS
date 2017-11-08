@@ -10,6 +10,7 @@
         "no-magic-numbers": [false],
         "no-import-side-effect": [false],
         "no-unsafe-any": [false],
+        "no-unnecessary-class": [false],
         "prefer-conditional-expression": [false],
         "prefer-function-over-method": [false],
         "prefer-template": [false],
