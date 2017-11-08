@@ -66,7 +66,7 @@ export class ConversionContext {
         this.commandsBag = CommandsBagFactory.forContext(this);
         this.directories = [];
         this.nameSplitter = new NameSplitter();
-        this.parser = new GlsParser(this.caseStyleConverterBag, this.commandsBag);
+        this.parser = new GlsParser(this.commandsBag);
 
         this.lineResultsGenerator = new LineResultsGenerator(
             new ImportsPrinter(
