@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/general-language-syntax/GLS.svg?)](https://travis-ci.org/general-language-syntax/GLS)
 [![NPM version](https://badge.fury.io/js/general-language-syntax.svg)](http://badge.fury.io/js/general-language-syntax)
+[![Greenkeeper badge](https://badges.greenkeeper.io/general-language-syntax/GLS.svg)](https://greenkeeper.io/)
 
 A unified syntax that compiles into a number of OOP languages.
 * Read the docs at **[glslang.org](https://glslang.org)**.
