@@ -3,16 +3,13 @@ import "mocha";
 
 import { CommandNames } from "../../lib/Commands/CommandNames";
 import { CommandsBagFactory } from "../../lib/Commands/CommandsBagFactory";
-import { CaseStyleConverterBag } from "../../lib/Conversions/Casing/CaseStyleConverterBag";
 import { GlsParser } from "../../lib/Conversions/GlsParser";
 import { TypeScript } from "../../lib/Languages/TypeScript";
 
 describe("GlsParser", () => {
     describe("parseCommand", () => {
         const stubParser = () =>
-            new GlsParser(
-                new CaseStyleConverterBag(),
-                CommandsBagFactory.forLanguage(new TypeScript()));
+            new GlsParser(CommandsBagFactory.forLanguage(new TypeScript()));
 
         it("parses a command", () => {
             // Arrange

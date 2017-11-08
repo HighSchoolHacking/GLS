@@ -1,7 +1,6 @@
 import { Command } from "../Commands/Command";
 import { CommandsBag } from "../Commands/CommandsBag";
 import { LineResults } from "../Commands/LineResults";
-import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { LineComponentSeparator } from "./LineComponentSeparator";
 import { ParametersValidator } from "./ParametersValidator";
 
@@ -9,11 +8,6 @@ import { ParametersValidator } from "./ParametersValidator";
  * Transforms raw GLS syntax into line results.
  */
 export class GlsParser {
-    /**
-     * Holds case style converters, keyed by their case style.
-     */
-    private caseStyleConverterBag: CaseStyleConverterBag;
-
     /**
      * Hodls commands indexed by name.
      */
@@ -32,11 +26,9 @@ export class GlsParser {
     /**
      * Initializes a new instance of the GlsParser class.
      *
-     * @param caseStyleConverterBag   Holds case style converters, keyed by their case style.
      * @param commandsBag   Holds commands indexed by name.
      */
-    public constructor(caseStyleConverterBag: CaseStyleConverterBag, commandsBag: CommandsBag) {
-        this.caseStyleConverterBag = caseStyleConverterBag;
+    public constructor(commandsBag: CommandsBag) {
         this.commandsBag = commandsBag;
         this.parametersValidator = new ParametersValidator();
         this.lineComponentSeparator = new LineComponentSeparator();
