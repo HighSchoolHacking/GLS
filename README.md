@@ -32,7 +32,7 @@ See [gls-cli](https://github.com/HighSchoolHacking/gls-cli).
 `npm install general-language-syntax`
 
 ```javascript
-const Gls = require("general-language-syntax").Gls;
+import { Gls } from "general-language-syntax";
 
 const gls = new Gls();
 gls.setLanguage("CSharp");
@@ -100,3 +100,6 @@ GLS is just shy of **0.4**.
 ## Development
 
 If you'd like to contribute to GLS, see [Development.md](https://github.com/general-language-syntax/GLS/blob/master/docs/development.md).
+
+_Requires Node >=5_
+
