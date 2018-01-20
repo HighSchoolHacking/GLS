@@ -44,7 +44,7 @@ console.log(gls.convert([`print : ("Hello world!")`]));
 
 ## Status
 
-GLS is halfway between **0.3** and **0.4**.
+GLS is just shy of **0.4**.
 
 <table>
     <thead>
@@ -71,7 +71,7 @@ GLS is halfway between **0.3** and **0.4**.
         <tr>
             <th>Roundtripping Feature Complete</th>
             <td>0.4</td>
-            <td>All features expected to be required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output.</td>
+            <td>All features required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output.</td>
         </tr>
         <tr>
             <th>Full Language Outputs</th>

@@ -13,32 +13,35 @@
     "type": "git",
     "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
   },
+  "scripts": {
+    "gulp": "gulp"
+  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "version": "0.3.22",
   "devDependencies": {
-    "@types/chai": "^4.0.4",
-    "@types/minimatch": "^3.0.1",
-    "@types/mocha": "^2.2.43",
+    "@types/chai": "^4.1.1",
+    "@types/minimatch": "^3.0.3",
+    "@types/mocha": "^2.2.46",
     "@types/node": "^9.3.0",
-    "browserify": "^15.0.0",
+    "browserify": "^15.2.0",
     "chai": "^4.1.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-mocha": "^5.0.0",
-    "gulp-sourcemaps": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.3",
     "gulp-tslint": "^8.1.2",
-    "gulp-typescript": "^3.2.2",
+    "gulp-typescript": "^4.0.0-alpha.1",
     "gulp-uglify": "^3.0.0",
-    "merge2": "^1.2.0",
+    "merge2": "^1.2.1",
     "minimatch": "^3.0.4",
     "mocha": "^5.0.0",
-    "run-sequence": "^2.1.0",
-    "tsify": "^3.0.3",
-    "tslint": "^5.7.0",
-    "typescript": "^2.5.2",
-    "vinyl-buffer": "^1.0.0",
+    "run-sequence": "^2.2.1",
+    "tsify": "^3.0.4",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2",
+    "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "yargs": "^10.0.3"
+    "yargs": "^10.1.1"
   }
 }
