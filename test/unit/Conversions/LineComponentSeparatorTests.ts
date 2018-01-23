@@ -64,7 +64,7 @@ describe("LineComponentSeparator", () => {
                 const separator = new LineComponentSeparator();
 
                 // Act
-                const actual = separator.separate(test.input);
+                const actual = separator.separate(test.input, 0);
 
                 // Assert
                 expect(actual).to.be.deep.equal(test.output);

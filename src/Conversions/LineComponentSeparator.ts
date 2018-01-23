@@ -9,10 +9,11 @@ export class LineComponentSeparator {
      * Separates a line into its command name and parameters.
      *
      * @param line   A raw line of GLS syntax.
+     * @param lineNumber   What number line this is within its source file.
      * @returns The line's command name, followed by any parameters.
      * @remarks This assumes the line is already whitespace-trimmed.
      */
-    public separate(line: string): string[] {
+    public separate(line: string, lineNumber: number): string[] {
         const colonIndex: number = line.indexOf(":");
         if (colonIndex === -1) {
             return [line.trim()];
@@ -24,11 +25,17 @@ export class LineComponentSeparator {
             let end: number;
             let nextStart: number;
 
+            // Problem: if line[i] is ( but contains quotes, like...
+            // ("\".format(")
+            // ..., then we don't have a way of indicating to ignore the )
+            // .
+            // This should instead use a stack (like in interview questions).
+            // See #420.
             switch (line[i]) {
                 case "{":
                     end = this.findSearchEnd(line, i, line[i], "}") + 1;
                     if (end === 0) {
-                        throw new Error(`Could not find end for '{' starting at position ${i}.`);
+                        throw new Error(`Could not find end for '{' starting at position ${i} in line ${lineNumber}.`);
                     }
 
                     nextStart = end;
@@ -37,7 +44,7 @@ export class LineComponentSeparator {
                 case "(":
                     end = this.findSearchEnd(line, i, line[i], ")");
                     if (end === -1) {
-                        throw new Error(`Could not find end for '(' starting at position ${i}.`);
+                        throw new Error(`Could not find end for '(' starting at position ${i} in line ${lineNumber}.`);
                     }
 
                     nextStart = end + 1;
@@ -47,7 +54,7 @@ export class LineComponentSeparator {
                 case "\"":
                     end = this.findSearchEndForQuotes(line, i);
                     if (end === -1) {
-                        throw new Error(`Could not find end for '"' starting at position ${i}.`);
+                        throw new Error(`Could not find end for '"' starting at position ${i} in line ${lineNumber}.`);
                     }
 
                     end += 1;
