@@ -17,7 +17,7 @@ describe("GlsParser", () => {
             const line = `${CommandNames.Literal} : abc def ghi`;
 
             // Act
-            const parsed = parser.parseCommand(line);
+            const parsed = parser.parseCommand(line, 0);
 
             // Assert
             expect({ ...parsed }).to.be.deep.equal({
@@ -38,7 +38,7 @@ describe("GlsParser", () => {
             const line = `${CommandNames.Literal} : { ${CommandNames.Literal} : abc def ghi } jkl`;
 
             // Act
-            const parsed = parser.parseCommand(line);
+            const parsed = parser.parseCommand(line, 0);
 
             // Assert
             expect({ ...parsed }).to.be.deep.equal({
@@ -59,7 +59,7 @@ describe("GlsParser", () => {
             const line = `${CommandNames.Variable} : abc def ghi`;
 
             // Act
-            const parsed = parser.parseCommand(line);
+            const parsed = parser.parseCommand(line, 0);
 
             // Assert
             expect({ ...parsed }).to.be.deep.equal({

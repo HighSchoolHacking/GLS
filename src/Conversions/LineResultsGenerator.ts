@@ -38,13 +38,14 @@ export class LineResultsGenerator {
         const allLineResults: LineResults[] = [];
         const importsStore: ImportsStore = new ImportsStore();
 
-        for (const glsLine of glsLines) {
+        for (let i = 0; i < glsLines.length; i += 1) {
+            const glsLine = glsLines[i];
             if (glsLine.trim() === "") {
                 allLineResults.push(LineResults.newSingleLine("", false));
                 continue;
             }
 
-            const lineResults: LineResults = this.parser.parseCommand(glsLine);
+            const lineResults: LineResults = this.parser.parseCommand(glsLine, i);
 
             allLineResults.push(lineResults);
             importsStore.addImports(lineResults.addedImports);

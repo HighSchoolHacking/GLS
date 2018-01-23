@@ -38,14 +38,15 @@ export class GlsParser {
      * Parses a line of raw GLS syntax into line results.
      *
      * @param line   A line of raw GLS syntax.
+     * @param lineNumber   What number line this is within its source file.
      * @returns The equivalent line results.
      */
-    public parseCommand(line: string): LineResults {
-        const parameters: string[] = this.lineComponentSeparator.separate(line.trim());
+    public parseCommand(line: string, lineNumber: number): LineResults {
+        const parameters: string[] = this.lineComponentSeparator.separate(line.trim(), lineNumber);
 
         for (let i = 1; i < parameters.length; i += 1) {
             if (parameters[i][0] === "{") {
-                parameters[i] = this.recurseOnCommand(parameters[i]);
+                parameters[i] = this.recurseOnCommand(parameters[i], lineNumber);
             }
         }
 
@@ -70,12 +71,13 @@ export class GlsParser {
      * Parses a sub-command of GLS syntax from within a full line.
      *
      * @param section   A section of raw GLS syntax.
+     * @param lineNumber   What number line this is within its source file.
      * @returns Text from the result of parsing this command.
      * @remarks Only the first result line is used.
      */
-    private recurseOnCommand(section: string): string {
+    private recurseOnCommand(section: string, lineNumber: number): string {
         const command: string = this.trimEndCharacters(section).trim();
-        const lineResults: LineResults = this.parseCommand(command);
+        const lineResults: LineResults = this.parseCommand(command, lineNumber);
         let line: string = lineResults.commandResults[0].text;
 
         for (let i = 1; i < lineResults.commandResults.length; i += 1) {
