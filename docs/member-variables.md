@@ -4,7 +4,7 @@ Classes may define member variables that each instance of that class contains. C
 
 Declaring a member variable is done with `member variable declare`. It takes in the variable's privacy \(as `public`, `protected`, or `private`\), name in camelCase, and type.
 
-Member variables can then be access with `member variable`, which takes in the privacy of the member variable, the instance to retrieve the member from, and the name of the member variable.
+Member variables can then be accessed with `member variable`, which takes in the privacy of the member variable, the instance to retrieve the member from, and the name of the member variable.
 
 > Privacy is needed for accessing variables because some languages, such as Python, have different naming conventions per member variable privacy.
 
