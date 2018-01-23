@@ -42,6 +42,6 @@
     "typescript": "^2.6.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "yargs": "^10.1.1"
+    "yargs": "^11.0.0"
   }
 }
