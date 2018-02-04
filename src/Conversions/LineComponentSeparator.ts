@@ -1,10 +1,7 @@
-
 /**
  * Separates lines into their command names and parameters.
  */
 export class LineComponentSeparator {
-    private static readonly quoteCharacters = new Set(["'", '"', "`"]);
-
     /**
      * Separates a line into its command name and parameters.
      *
