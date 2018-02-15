@@ -55,6 +55,7 @@ Files and listings for a new language identical to the original language except 
 
 Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).
 Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
+You can run specific suites of tests using `gulp test:integration` or `gulp test:end-to-end`.
 
 When adding a new command, _always_ add new integration tests for it.
 
