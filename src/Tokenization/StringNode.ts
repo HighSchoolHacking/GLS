@@ -11,7 +11,7 @@ export class StringNode implements IGlsNode {
 
     /**
      * Initializes a new instance of the StringNode class.
-     * 
+     *
      * @param content   Raw string contents of the node.
      */
     public constructor(content: string) {

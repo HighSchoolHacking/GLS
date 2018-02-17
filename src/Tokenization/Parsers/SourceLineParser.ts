@@ -1,8 +1,9 @@
 import { BlankNode } from "../Nodes/BlankNode";
 import { CommandNode } from "../Nodes/CommandNode";
 import { IGlsNode } from "../Nodes/IGlsNode";
+import { TextNode } from "../Nodes/TextNode";
 import { StringNode } from "../StringNode";
-import { ParseStackContext } from "./ParseStackContext";
+import { StringSearching } from "./StringSearching";
 
 /**
  * Parses individual lines of raw syntax into GLS nodes.
@@ -14,7 +15,8 @@ export class SourceLineParser {
      * @param rawLine   Raw line of source syntax.
      */
     public parseLine(rawLine: string): IGlsNode {
-        if (rawLine.trim() === "") {
+        rawLine = rawLine.trim();
+        if (rawLine === "") {
             return new BlankNode();
         }
 
@@ -24,85 +26,102 @@ export class SourceLineParser {
         }
 
         const command: string = rawLine.substring(0, colonIndex).trim();
-        const args: IGlsNode[] = this.parseCommandArgs(rawLine.substring(colonIndex + 1).trim());
+        const rawArgs = rawLine.substring(colonIndex + 1).trim();
+        const args: IGlsNode[] = [];
+
+        this.parseCommandArgs(rawArgs, 0, args);
 
         return new CommandNode(command, args);
     }
 
-    private parseCommandArgs(rawArgs: string): IGlsNode[] {
-        const nodes: IGlsNode[] = [];
-        const context: ParseStackContext[] = [];
-        let currentIndex = 0;
-        let startingIndexOfStringNode = 0; // tslint:disable-line
-        let readingControlCharacters = true;
+    /**
+     * @returns Next starting index after the last added node.
+     */
+    private parseCommandArgs(rawArgs: string, start: number, nodes: IGlsNode[]): number {
+        for (let i = start; i < rawArgs.length; i += 1) {
+            switch (rawArgs[i]) {
+                // Sub-command start
+                case "{":
+                    i = this.parseSubCommand(rawArgs, i, nodes);
+                    break;
 
-        // This just in: .addChild
+                // Sub-command end
+                case "}":
+                    return i + 1;
 
-        // tslint:disable one-line
-        // Todo within this: each one should ensure it's within the proper stack type
-        // Todo: consider moving to a transient state-mutating class
-        while (currentIndex < rawArgs.length) {
-            const currentCharacter = rawArgs[currentIndex];
+                // Parenthesis start
+                case "(":
+                    i = this.parseParenthesis(rawArgs, i + 1, nodes);
+                    break;
 
-            // Starting a ( for the first time: add it to the context stack
-            if (currentCharacter === "(") {
-                if (context.length === 0 || context[context.length - 1].getStartingCharacter() !== "(") {
-                    context.push(new ParseStackContext(currentCharacter));
-                    readingControlCharacters = true;
-                }
+                // Parenthesis end
+                case ")":
+                    break;
 
-                currentIndex += 1;
-                continue;
+                // Space start
+                case " ":
+                    break;
+
+                // Regular text start
+                default:
+                    i = this.parseTextCommand(rawArgs, i, nodes);
             }
-
-            // Starting a {: add it to the stack
-            if (currentCharacter === "{") {
-                context.push(new ParseStackContext(currentCharacter));
-                currentIndex += 1;
-                continue;
-            }
-
-            // : separator: add it to the child context (assumed to be {)
-            if (currentCharacter === ":") {
-                context[context.length - 1].addChild(new Gls)
-                currentIndex += 1;
-                continue;
-            }
-            // In theory this is part of the the preceding { context...
-            // Space: if reading a raw string, add it as a string node
-            else if (currentCharacter === " ") {
-                if (!readingControlCharacters) {
-                    readingControlCharacters = true;
-
-                    // Deep (: keep going within the string node
-                    // (we have to go back 2 because this should wrap regular string characters)
-                    if (context.length >= 2 && context[context.length - 2].getStartingCharacter() !== "(") {
-                        nodes.push(new StringNode(rawArgs.substring(startingIndexOfStringNode, currentIndex)));
-                    }
-                    else if (context.length > 1) {
-                        // : separator:
-                        if (context[context.length - 1].getStartingCharacter() === ":") {
-                            // WAT
-                        }
-
-                    }
-
-                    // : separator:
-                }
-            }
-            // Regular character: add the full string to the context stack
-            else {
-                // Optimization: search for next space?
-                if (readingControlCharacters) {
-                    context.push(new ParseStackContext(currentCharacter));
-                    readingControlCharacters = false;
-                }
-            }
-
-            // ...wat
-            currentIndex += 1;
         }
 
-        return nodes;
+        return rawArgs.length;
+    }
+
+    /**
+     * @returns Next starting index after the last added node.
+     */
+    private parseSubCommand(text: string, i: number, nodes: IGlsNode[]): number {
+        // Move past the starting "{" or "{ "
+        i = StringSearching.getNextStartOfWordIndex(text, i + 1);
+
+        // Command name
+        const commandNameEnd = StringSearching.getNextEndOfCommandNameIndex(text, i);
+        const commandName = text.substring(i, commandNameEnd).trim();
+
+        // "}" (command end) or ":" (command args start)
+        i = StringSearching.getNextNonSpaceIndex(text, commandNameEnd);
+
+        // "}" (command end)
+        if (text[i] === "}") {
+            nodes.push(new CommandNode(commandName, []));
+            return i + 1;
+        }
+
+        // ":" (command args start)
+        const commandArgs: IGlsNode[] = [];
+        i = this.parseCommandArgs(text, i + 1, commandArgs);
+
+        nodes.push(new CommandNode(commandName, commandArgs));
+
+        return i;
+    }
+
+    /**
+     * @returns Next starting index after the last added node.
+     */
+    private parseParenthesis(rawArgs: string, i: number, nodes: IGlsNode[]): number {
+        const nextEndOfWordIndex = StringSearching.getNextEndOfParenthesisWordIndex(rawArgs, i);
+        const textRaw = rawArgs.substring(i, nextEndOfWordIndex);
+        const text = StringSearching.removeBackslashesFromWord(textRaw);
+
+        nodes.push(new TextNode(text));
+
+        return nextEndOfWordIndex;
+    }
+
+    /**
+     * @returns Next starting index after the last added node.
+     */
+    private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
+        const nextEndOfWordIndex = StringSearching.getNextEndOfWordIndex(rawArgs, i);
+        const text = rawArgs.substring(i, nextEndOfWordIndex);
+
+        nodes.push(new TextNode(text));
+
+        return nextEndOfWordIndex;
     }
 }

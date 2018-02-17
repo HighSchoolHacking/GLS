@@ -24,4 +24,8 @@ export class InvalidNode implements IGlsNode {
         this.complaint = complaint;
         this.rawString = rawString;
     }
+
+    public toString() {
+        return `! ${this.complaint}: ${this.rawString}`;
+    }
 }
