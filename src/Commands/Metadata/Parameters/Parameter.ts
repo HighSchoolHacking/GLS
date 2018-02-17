@@ -1,3 +1,5 @@
+import { IGlsNode } from "../../../Tokenization/Nodes/IGlsNode";
+
 /**
  * Some parameter(s) to be passed to a command.
  */
@@ -8,13 +10,13 @@ export interface IParameter {
     isRequired(): boolean;
 
     /**
-     * Validates whether parameter inputs match this requirement.
+     * Validates whether a command's args match this requirement.
      *
-     * @param inputs   All raw parameter inputs.
+     * @param args   All args of a command.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number;
+    validate(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number;
 }

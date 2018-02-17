@@ -1,4 +1,5 @@
 import { IParameter } from "../Commands/Metadata/Parameters/Parameter";
+import { CommandNode } from "../Tokenization/Nodes/CommandNode";
 
 /**
  * Validates whether input parameters match command requirements.
@@ -7,17 +8,17 @@ export class ParametersValidator {
     /**
      * Validates parameter inputs match their command requirements.
      *
-     * @param inputs   Input parameters from a source file.
+     * @param node   Command node with args from a source file.
      * @param requirements   Required parameters for a command.
      */
-    public validate(inputs: string[], requirements: IParameter[]): void {
+    public validate(node: CommandNode, requirements: IParameter[]): void {
         // The first input should be a command name
-        let inputPosition = 1;
+        let inputPosition = 0;
 
         for (let i = 0; i < requirements.length; i += 1) {
             const requirement = requirements[i];
 
-            inputPosition = requirement.validate(inputs, inputPosition, requirements, i);
+            inputPosition = requirement.validate(node.args, inputPosition, requirements, i);
         }
     }
 }

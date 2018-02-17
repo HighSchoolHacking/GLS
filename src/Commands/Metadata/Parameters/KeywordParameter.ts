@@ -1,3 +1,5 @@
+import { IGlsNode } from "../../../Tokenization/Nodes/IGlsNode";
+import { TextNode } from "../../../Tokenization/Nodes/TextNode";
 import { IParameter } from "./Parameter";
 
 /**
@@ -40,16 +42,25 @@ export class KeywordParameter implements IParameter {
     }
 
     /**
-     * Validates whether parameter inputs match this requirement.
+     * Validates whether a command's args match this requirement.
      *
-     * @param inputs   All raw parameter inputs.
+     * @param args   All args of a command.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    public validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        if (this.literals.has(inputs[inputPosition])) {
+    public validate(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+        const inputArg = args[inputPosition];
+        if (!(inputArg instanceof TextNode)) {
+            if (this.required) {
+                throw new Error("Parameter must be a text keyword.");
+            }
+
+            return inputPosition;
+        }
+
+        if (this.literals.has(inputArg.text)) {
             return inputPosition + 1;
         }
 
