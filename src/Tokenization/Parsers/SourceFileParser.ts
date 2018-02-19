@@ -3,9 +3,9 @@ import { IGlsNode } from "../Nodes/IGlsNode";
 import { SourceLineParser } from "./SourceLineParser";
 
 /**
- * Parses lines of raw source syntax GLS files.
+ * Parses lines of raw source syntax into GLS files.
  */
-export class SourceTreeParser {
+export class SourceFileParser {
     /**
      * Parses individual lines of raw syntax into GLS nodes.
      */

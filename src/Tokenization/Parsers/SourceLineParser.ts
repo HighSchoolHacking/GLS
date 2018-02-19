@@ -2,7 +2,6 @@ import { BlankNode } from "../Nodes/BlankNode";
 import { CommandNode } from "../Nodes/CommandNode";
 import { IGlsNode } from "../Nodes/IGlsNode";
 import { TextNode } from "../Nodes/TextNode";
-import { StringNode } from "../StringNode";
 import { StringSearching } from "./StringSearching";
 
 /**

@@ -3,15 +3,17 @@ import { CommandsBagFactory } from "../Commands/CommandsBagFactory";
 import { LineResults } from "../Commands/LineResults";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { Language } from "../Languages/Language";
+import { GlsFile } from "../Tokenization/GlsFile";
+import { CommandNode } from "../Tokenization/Nodes/CommandNode";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
-import { GlsParser } from "./GlsParser";
+import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { LineResultsGenerator } from "./LineResultsGenerator";
 import { OutputGenerator } from "./OutputGenerator";
 
 /**
- * Driving context to use a GlsParser with a language to produce code.
+ * Backing command context for converting GLS nodes to text.
  */
 export class ConversionContext {
     /**
@@ -20,7 +22,7 @@ export class ConversionContext {
     private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
-     * Container for globally known commands.
+     * Holds commands indexed by name.
      */
     private commandsBag: CommandsBag;
 
@@ -35,7 +37,7 @@ export class ConversionContext {
     private language: Language;
 
     /**
-     * Generates line results from raw GLS.
+     * Generates line results from GLS nodes.
      */
     private lineResultsGenerator: LineResultsGenerator;
 
@@ -45,14 +47,14 @@ export class ConversionContext {
     private nameSplitter: NameSplitter;
 
     /**
+     * Renders GLS nodes into line results.
+     */
+    private nodeRenderer: GlsNodeRenderer;
+
+    /**
      * Generates language output from line results.
      */
     private outputGenerator: OutputGenerator;
-
-    /**
-     * A converter for transforming raw GLS syntax into language code.
-     */
-    private parser: GlsParser;
 
     /**
      * Initializes a new instance of the ConversionContext class.
@@ -66,41 +68,26 @@ export class ConversionContext {
         this.commandsBag = CommandsBagFactory.forContext(this);
         this.directories = [];
         this.nameSplitter = new NameSplitter();
-        this.parser = new GlsParser(this.commandsBag);
+        this.nodeRenderer = new GlsNodeRenderer(this.commandsBag);
+        this.outputGenerator = new OutputGenerator(language.properties.style.semicolon);
 
         this.lineResultsGenerator = new LineResultsGenerator(
             new ImportsPrinter(
                 language,
                 this.caseStyleConverterBag.getConverter(language.properties.imports.case)),
-            this.parser);
-
-        this.outputGenerator = new OutputGenerator(language.properties.style.semicolon);
+            this.nodeRenderer);
     }
 
     /**
-     * Converts raw GLS syntax to the context language.
+     * ...
      *
-     * @param lines   Lines of raw GLS syntax.
+     * @param glsFile   ...
      * @returns Equivalent lines of code in the context language.
      */
-    public convert(lines: string[]): string[] {
-        const allLineResults: LineResults[] = this.lineResultsGenerator.generateLineResults(lines);
-        const output = this.outputGenerator.generateOutputResults(allLineResults);
+    public convert(glsFile: GlsFile): string[] {
+        const allLineResults: LineResults[] = this.lineResultsGenerator.generateLineResults(glsFile.nodes);
 
-        return output;
-    }
-
-    /**
-     * Converts an array-split name to a casing style.
-     *
-     * @param words   A name to convert.
-     * @param casingStyle   A casing style.
-     * @returns The name under the casing style.
-     */
-    public convertArrayToCase(words: string[], casingStyle: CaseStyle): string {
-        const converter = this.caseStyleConverterBag.getConverter(casingStyle);
-
-        return converter.convert(words);
+        return this.outputGenerator.generateOutputResults(allLineResults);
     }
 
     /**
@@ -111,7 +98,8 @@ export class ConversionContext {
      * @returns An equivalent line of code in the context language.
      */
     public convertCommon(command: string, argumentRaw: string): string {
-        const lineResults: LineResults = this.parser.renderParsedCommand([command, argumentRaw]);
+        const commandNode = new CommandNode(command, [argumentRaw]);
+        const lineResults: LineResults = this.nodeRenderer.renderNode(commandNode);
 
         return lineResults.commandResults[0].text;
     }
@@ -123,7 +111,20 @@ export class ConversionContext {
      * @returns The equivalent lines of code in the language.
      */
     public convertParsed(parameters: string[]): LineResults {
-        return this.parser.renderParsedCommand(parameters);
+        const commandNode = new CommandNode(parameters[0], parameters.slice(1));
+
+        return this.nodeRenderer.renderNode(commandNode);
+    }
+
+    /**
+     * Converts an array-split name to a casing style.
+     *
+     * @param words   A name to convert.
+     * @param casingStyle   A casing style.
+     * @returns The name under the casing style.
+     */
+    public convertArrayToCase(words: string[], casingStyle: CaseStyle): string {
+        return this.caseStyleConverterBag.getConverter(casingStyle).convert(words);
     }
 
     /**

@@ -39,12 +39,7 @@ export class StringFormatCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (parameters[1][0] !== "\"") {
-            throw new Error("String formatting must be done with primitives.");
-        }
-
-        let output: string = parameters[1].substring(1, parameters[1].length - 1);
-        output = this.language.properties.strings.formatting.formatLeft + output;
+        let output: string = this.language.properties.strings.formatting.formatLeft + parameters[1];
 
         const inputsLength: number = parameters.length / 2 - 1;
         for (let i = 0; i < inputsLength; i += 1) {

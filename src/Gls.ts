@@ -1,13 +1,14 @@
 import { ConversionContext } from "./Conversions/ConversionContext";
 import { Language } from "./Languages/Language";
 import { LanguagesBag } from "./Languages/LanguagesBag";
+import { SourceFileParser } from "./Tokenization/Parsers/SourceFileParser";
 
 /**
  * Driving object to convert GLS syntax into real language code.
  */
 export class Gls {
     /**
-     * Context for the currently converted code.
+     * Backing command context for converting GLS nodes to text.
      */
     private conversionContext: ConversionContext;
 
@@ -22,10 +23,18 @@ export class Gls {
     private languagesBag: LanguagesBag;
 
     /**
+     * Parses lines of raw source syntax into GLS files.
+     */
+    private sourceFileParser: SourceFileParser;
+
+    /**
      * Initializes a new instance of the Gls class.
      */
-    public constructor() {
+    public constructor(language: string) {
         this.languagesBag = new LanguagesBag();
+        this.sourceFileParser = new SourceFileParser();
+
+        this.setLanguage(language);
     }
 
     /**
@@ -35,11 +44,9 @@ export class Gls {
      * @returns Language code from the input.
      */
     public convert(input: string[]): string[] {
-        if (this.language === undefined) {
-            throw new Error("You must specify a language before converting.");
-        }
+        this.conversionContext.setDirectoryPath([]);
 
-        return this.conversionContext.convert(input);
+        return this.conversionContext.convert(this.sourceFileParser.parseLines(input));
     }
 
     /**

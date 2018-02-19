@@ -1,6 +1,4 @@
 import { ConversionContext } from "../Conversions/ConversionContext";
-import { Language } from "../Languages/Language";
-import { LanguagesBag } from "../Languages/LanguagesBag";
 import { ArrayIndexCommand } from "./ArrayIndexCommand";
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
@@ -266,29 +264,5 @@ export class CommandsBagFactory {
             new WhileEndCommand(context),
             new WhileStartCommand(context)
         ]);
-    }
-
-    /**
-     * Initializes a new instance of the CommandsBag class with a language.
-     *
-     * @param language   Language to convert code into.
-     * @returns CommandsBag instance for the language.
-     */
-    public static forLanguage(language: Language): CommandsBag {
-        return CommandsBagFactory.forContext(
-            new ConversionContext(language));
-    }
-
-    /**
-     * Initializes a new instance of the CommandsBag class with a language by name.
-     *
-     * @param languageName   Name of a language to convert code into.
-     * @returns CommandsBag instance for the language name.
-     */
-    public static forLanguageName(languageName: string): CommandsBag {
-        const languagesBag = new LanguagesBag();
-
-        return CommandsBagFactory.forLanguage(
-            languagesBag.getLanguageByName(languageName));
     }
 }

@@ -6,11 +6,13 @@ import { IParameter } from "../../../lib/Commands/Metadata/Parameters/Parameter"
 import { RepeatingParameters } from "../../../lib/Commands/Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "../../../lib/Commands/Metadata/Parameters/SingleParameter";
 import { ParametersValidator } from "../../../lib/Conversions/ParametersValidator";
+import { CommandNode } from "../../../lib/Tokenization/Nodes/CommandNode";
+import { TextNode } from "../../../lib/Tokenization/Nodes/TextNode";
 
 interface IValidation {
     expectation: string;
     failure?: string;
-    inputs: string[];
+    input: CommandNode;
     requirements: IParameter[];
 }
 
@@ -20,14 +22,18 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects a missing required single parameter",
                 failure: "Missing parameter: 'first'",
-                inputs: ["command"],
+                input: new CommandNode("command", []),
                 requirements: [
                     new SingleParameter("first", "", true)
                 ]
             },
             {
                 expectation: "accepts an available required single parameter",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new SingleParameter("first", "", true)
                 ]
@@ -35,7 +41,11 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects a missing required second parameter",
                 failure: "Missing parameter: 'second'",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new SingleParameter("first", "", true),
                     new SingleParameter("second", "", true)
@@ -43,7 +53,12 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts an available required second parameter",
-                inputs: ["command", "abc", "def"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("def"),
+                    ]),
                 requirements: [
                     new SingleParameter("first", "", true),
                     new SingleParameter("first", "", true)
@@ -51,7 +66,11 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts a matched required keyword parameter before an optional single parameter",
-                inputs: ["command", "first"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("first"),
+                    ]),
                 requirements: [
                     new KeywordParameter(["first"], "", true),
                     new SingleParameter("second", "", false)
@@ -59,7 +78,12 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts a matched required keyword parameter and a single parameter",
-                inputs: ["command", "first", "second"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("first"),
+                        new TextNode("second"),
+                    ]),
                 requirements: [
                     new KeywordParameter(["first"], "", true),
                     new SingleParameter("second", "", true)
@@ -67,7 +91,11 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts an unmatched optional keyword parameter before a required single parameter",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new KeywordParameter(["first"], "", false),
                     new SingleParameter("second", "", true)
@@ -76,7 +104,11 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects an unmatched required keyword parameter before an optional single parameter",
                 failure: "Missing required parameter: must be one of: \'first\'",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new KeywordParameter(["first"], "", true),
                     new SingleParameter("second", "", false)
@@ -85,7 +117,12 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects an unmatched required keyword parameter and a matched single parameter",
                 failure: "Missing required parameter: must be one of: \'first\'",
-                inputs: ["command", "abc", "second"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("second"),
+                    ]),
                 requirements: [
                     new KeywordParameter(["first"], "", true),
                     new SingleParameter("second", "", true)
@@ -93,7 +130,7 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts zero matched repeating parameters",
-                inputs: ["command"],
+                input: new CommandNode("command", []),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -104,7 +141,11 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts one matched repeating parameter",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -115,7 +156,12 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts two matched repeating parameters",
-                inputs: ["command", "abc", "def"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("def"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -127,7 +173,11 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects one repeating parameter when two are required",
                 failure: "Expected a multiple of 2 repeating parameters but got 1.",
-                inputs: ["command", "abc"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -139,7 +189,12 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts repeating parameters without a subsequent optional keyword",
-                inputs: ["command", "abc", "def"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("def"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -152,7 +207,13 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts repeating parameters with a subsequent optional keyword",
-                inputs: ["command", "abc", "def", "literal"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("def"),
+                        new TextNode("literal"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -165,7 +226,14 @@ describe("ParametersValidator", () => {
             },
             {
                 expectation: "accepts repeating parameters with a subsequent optional keyword and repeating parameters",
-                inputs: ["command", "abc", "def", "literal", "fhi"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("def"),
+                        new TextNode("literal"),
+                        new TextNode("ghi"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -184,7 +252,13 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects repeating parameters of the wrong count with a subsequent optional keyword and repeating parameters",
                 failure: "Expected a multiple of 2 repeating parameters but got 1.",
-                inputs: ["command", "abc", "literal", "def"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("literal"),
+                        new TextNode("def"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -203,7 +277,13 @@ describe("ParametersValidator", () => {
             {
                 expectation: "rejects repeating parameters with a subsequent optional keyword and repeating parameters of the wrong count",
                 failure: "Expected a multiple of 2 repeating parameters but got 1.",
-                inputs: ["command", "abc", "literal", "def"],
+                input: new CommandNode(
+                    "command",
+                    [
+                        new TextNode("abc"),
+                        new TextNode("literal"),
+                        new TextNode("def"),
+                    ]),
                 requirements: [
                     new RepeatingParameters(
                         "",
@@ -222,7 +302,7 @@ describe("ParametersValidator", () => {
         ];
 
         for (const validation of validations) {
-            const { failure, inputs, requirements } = validation;
+            const { failure, input, requirements } = validation;
 
             it(validation.expectation, () => {
                 // Arrange
@@ -230,7 +310,7 @@ describe("ParametersValidator", () => {
 
                 // Act
                 const action = () => {
-                    validator.validate(inputs, requirements);
+                    validator.validate(input, requirements);
                 };
 
                 // Act

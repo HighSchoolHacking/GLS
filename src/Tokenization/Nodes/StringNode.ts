@@ -1,4 +1,4 @@
-import { IGlsNode } from "./Nodes/IGlsNode";
+import { IGlsNode } from "./IGlsNode";
 
 /**
  * A GLS node that just contains a string.

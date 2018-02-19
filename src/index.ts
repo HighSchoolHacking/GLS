@@ -23,3 +23,5 @@ export { JavaScript } from "./Languages/JavaScript";
 export { Python } from "./Languages/Python";
 export { Ruby } from "./Languages/Ruby";
 export { TypeScript } from "./Languages/TypeScript";
+export { GlsFile } from "./Tokenization/GlsFile";
+export { IGlsNode } from "./Tokenization/Nodes/IGlsNode";

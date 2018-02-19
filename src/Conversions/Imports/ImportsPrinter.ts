@@ -31,7 +31,7 @@ export class ImportsPrinter {
     }
 
     /**
-     * Renders an import to a output line results.
+     * Renders an import to line results.
      *
      * @param addedImport   Import to render.
      * @returns Line results for the rendered import.
