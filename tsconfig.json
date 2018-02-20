@@ -12,7 +12,8 @@
         "outDir": "./lib",
         "pretty": true,
         "sourceMap": true,
-        "strict": true
+        "strict": true,
+        "strictPropertyInitialization": false
     },
     "include": [
         "src/**/*.ts"
