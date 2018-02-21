@@ -1,6 +1,9 @@
-import { ConversionContext } from "./Conversions/ConversionContext";
-import { Language } from "./Languages/Language";
-import { LanguagesBag } from "./Languages/LanguagesBag";
+import { ConversionContext } from "./ConversionContext";
+import { OutputMerger } from "./Merging/OutputGenerator";
+import { Language } from "./Rendering/Languages/Language";
+import { LanguagesBag } from "./Rendering/Languages/LanguagesBag";
+import { LineResults } from "./Rendering/LineResults";
+import { GlsFile } from "./Tokenization/GlsFile";
 import { SourceFileParser } from "./Tokenization/Parsers/SourceFileParser";
 
 /**
@@ -28,6 +31,11 @@ export class Gls {
     private sourceFileParser: SourceFileParser;
 
     /**
+     * Generates language output by merging line results.
+     */
+    private outputMerger: OutputMerger;
+
+    /**
      * Initializes a new instance of the Gls class.
      */
     public constructor(language: string) {
@@ -42,11 +50,18 @@ export class Gls {
      *
      * @param input   GLS syntax to be converted.
      * @returns Language code from the input.
+     * @remarks See docs/internals for full documentation!
      */
     public convert(input: string[]): string[] {
-        this.conversionContext.setDirectoryPath([]);
+        // 1. Tokenization
+        const glsFile: GlsFile = this.sourceFileParser.parseLines(input);
 
-        return this.conversionContext.convert(this.sourceFileParser.parseLines(input));
+        // 2. Rendering
+        this.conversionContext.setDirectoryPath([]);
+        const fileLineResults: LineResults[] = this.conversionContext.convert(glsFile);
+
+        // 3. Merging
+        return this.outputMerger.mergeFileLineResults(fileLineResults);
     }
 
     /**
@@ -54,13 +69,6 @@ export class Gls {
      */
     public getLanguage(): Language {
         return this.language;
-    }
-
-    /**
-     * @returns A lookup for known languages.
-     */
-    public getLanguagesBag(): LanguagesBag {
-        return this.languagesBag;
     }
 
     /**
@@ -72,6 +80,7 @@ export class Gls {
     public setLanguage(name: string): Gls {
         this.language = this.languagesBag.getLanguageByName(name);
         this.conversionContext = new ConversionContext(this.language);
+        this.outputMerger = new OutputMerger(this.language.properties.style.semicolon);
 
         return this;
     }

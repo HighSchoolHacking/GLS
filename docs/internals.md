@@ -1,94 +1,120 @@
 # Internal Structure
 
-The driving class to convert GLS syntax into real language code is`Gls`. Its internal conversion process consists of two steps:
+The driving class to convert GLS syntax into real language code is `Gls`.
+Its internal conversion process consists of three steps:
 
-1. Create individual lines of output language from the raw GLS
-2. Combine those lines into full output files
+1. **Tokenization**
+2. **Rendering**
+3. **Merging**
 
-## `Gls`
+## 1. Tokenization
+
+Given raw syntax as string(s), it must be "tokenized" (parsed) into GLS nodes.
+GLS nodes come in three varieties, each of which implement the exported `IGlsNode` interface:
+
+* `BlankNode`: Blank line with no non-whitespace characters.
+* `CommandNode`: Command name followed by any number of arguments.
+* `TextNode`: Raw text passed to a command.
+
+For example, given the following line:
+
+```gls
+variable : foo number { operation : 1 plus 2 }
+```
+
+The corresponding GLS file's node structure in JSON would look like:
+
+```json
+{
+    "nodes": [
+        {
+            "args": [
+                "foo",
+                "number",
+                {
+                    "args": [
+                        "1",
+                        "plus",
+                        "2"
+                    ],
+                    "command": "operation",
+                    "type": "Command"
+                }
+            ],
+            "command": "variable",
+            "type": "Command"
+        }
+    ]
+}
+```
+
+### `SourceFileParser`
+
+Parsing raw GLS strings is done by `SourceFileParser`, which uses a `SourceLineParser` to convert each line of the input file.
+You can directly create a `GlsFile` containing `IGlsNode`s using one without a driving `Gls` context:
 
 ```javascript
-import { Gls } from "general-language-syntax");
+import { SourceFileParser } from "general-language-syntax";
 
-const gls = new Gls();
-gls.setLanguage("CSharp");
+const parser = new SourceFileParser();
 
-// System.Console.WriteLine("Hello world!");
-gls.convert([
-    `print : ("Hello world!")`
+parser.parseLines([
+    `print: ("Hello world!")`
 ]);
 ```
 
-Each`Gls`instance has a current language. The public method`convert`takes in an array of lines of raw GLS syntax and returns an array of lines in the output language.
+## 2. Rendering
 
-> _Don't forget to_`setLanguage`_before calling_`convert`_!_
+Given a `GlsFile`, each "line" (root-level node) is converted to an intermediate `LineResults` instance.
+The `LineResults` class contains an array of `CommandResult` instances, which store the generated language-specific code and desired indentation, and whether the line should have a semicolon.
 
-## `ConversionContext`
+> Semicolons and indentation levels are separate from the `CommandResult` text because nested commands need to ignore them.
+> For example, `operation : b (increase by) c` creates a semicolon and is indented normally on its own,
+> but not inside `list push : a { operation : b (increase by) c }`.
 
-Within the`Gls`instance is a`ConversionContext`instance with a plethora of public methods. The most notable method is also`convert`, and is directly called by the parent`Gls`.
+### `ConversionContext`
 
-> The`ConversionContext`instance is itself immutable \(no conversion state is stored\); only variables created within its methods local to a conversion will change.
+Rendering is managed by a `ConversionContext` instance containing a plethora of public methods.
+It has references to the current `Language`, `Command` classes that can render nodes, and current directory path of the parsed file.
+The `ConversionContext` instance is exposed to each `Command` for command recursion..
 
-Within`convert`, a private`LineResultsGenerator`instance generates an array of`LineResults`describing each GLS line's language equivalent with its private`GlsParser`. Those are then converted to the language output using a private`OutputGenerator`.
+The most notable method is also `convert`, and is directly called by the parent `Gls`.
+This `convert` takes in a `GlsFile` and returns an array of `LineResults`.
 
-### `LineResults`
+```javascript
+import { ConversionContext, CSharp, SourceFileParser } from "general-language-syntax";
 
-Each`LineResults`instance is a summary of a single raw GLS line's rendered language output. It contains:
+const parser = new SourceFileParser();
+const context = new ConversionContext(new CSharp());
 
-* Raw text to be output
-* Whether the line should end with a semicolon _\(if not a sub-command\)_
-* Any collected imports required for a file to use the line
+const glsFile = parser.parseLines([
+    `print: ("Hello world!")`
+]);
 
-### `LineResultsGenerator`
-
-Uses a private`GlsParser`to create an array of`LineResults`from raw GLS syntax. An`ImportsStore`also keeps track of imports required by each line. After all lines are parsed, imports are converted to`LineResults`with a private`ImportsPrinter`and prepended to the results array.
-
-#### `GlsParser`
-
-Creates an array of`LineResults`from raw GLS syntax. Each line is assumed to consist of a command name and, optionally,`:`followed by space-separated arguments to the command.
-
-Each command name is linked by a private`CommandsBag`instance to an instance of its`Command`sub-class. That command instance has access to the parent`ConversionContext`.
-
-> _Arguments may contain spaces by being wrapped in_`()`_parenthesis_.
-
-Arguments may be recursive by being wrapped in`{}`brackets. Recursing on a command will parse the sub-command as usual, then add it to the parent's parameters with`"\n"`-split sub-lines.
-
-#### `Command`
-
-Describes the parameters for a single GLS command\_\(if any\)\_and how to render the results. Each`Command`instance has access to the output language properties and root conversion context. The`render`method takes in the words parsed from the raw GLS syntax, including the command name, and outputs a`LineResults`instance.
-
-### `OutputGenerator`
-
-Converts an array of`LineResults`to the language output. For each line in the array, its text is added to a list of output lines, with indentation prepended and a semicolon appended if specified.
-
-## In Summary
-
-Calling`convert`on a`Gls`instance passes the raw GLS lines to a`ConversionContext`instance. Those lines are converted to temporary`LineResults`summaries in its`LineResultsGenerator`instance using a`GlsParser`. Those`LineResults`are converted to the output language with the context's`OutputGenerator`instance.
-
-```
-                                 Gls
-                                  |
-                       (contains) |
-                                  |
-                                  V
-        ---------------> ConversionContext
-        |                  /            \
-        |                 /              \
-        |                /                \
-        |    (contains) /                  \ (contains)
-        |              /                    \
-        |             /                      \
-        |            V                        V
-        |   LineResultsGenerator -----> OutputGenerator
-        |                 |
-        |      (contains) |
-        |                 |
-        |                 V
-        |            GlsParser
-        |                 |
-        -------------------
- (renders commands with access to)
+// System.Console.WriteLine("Hello world!");
+context.convert(glsFile);
 ```
 
+The recursive step to convert `IGlsNode`s into `LineResults` is done by an internal `GlsNodeRenderer`.
+
+### `Command`
+
+Each available GLS command is keyed to a `Command` sub-class by name.
+They're retrieved by name by the `GlsNodeRenderer` using a `CommandsBag`.
+Raw GLS describes the commands in `lower case`; `Command` sub-classes have the corresponding name in `PascalCase`.
+For example, `list push` corresponds to `ListPushCommand` in `src/Rendering/Commands/ListPushCommand.ts`.
+
+Commands render `LineResults` through their `render` function.
+
+#### `CommandMetadata`
+
+Each `Command` stores a `CommandMetadata` member with some basic information on the command, such as its name and description.
+The metadata also includes the expected parameters the command takes in as an. `IParameter` array.
+These are validated by the `GlsNodeRenderer` against what the command is passed before commands are rendered.
 
 
+## 3. Merging
+
+Once a file's `LineResults` are collected into an array, they're conglomerated into a `string[]` of output language lines.
+
+This boils down to an advanced string concatenation: each result of each `LineResult` is added to the overall `output`, factoring in indentation.
