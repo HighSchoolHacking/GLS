@@ -1,9 +1,9 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { KeywordNames } from "./KeywordNames";
-import { LineResults } from "../LineResults";
 
 /**
  * Starts any kind of member function.

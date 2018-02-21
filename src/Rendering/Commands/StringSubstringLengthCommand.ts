@@ -1,7 +1,7 @@
 import { StringSubstringSupport } from "../Languages/Properties/StringSubstringProperties";
+import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
-import { LineResults } from "../LineResults";
 import { MathOperation } from "./MathResolution/MathOperations";
 import { MathResolver } from "./MathResolution/MathResolver";
 import { CommandMetadata } from "./Metadata/CommandMetadata";

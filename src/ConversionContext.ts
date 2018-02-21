@@ -1,6 +1,5 @@
 import { CaseStyleConverterBag } from "./Rendering/Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Rendering/Casing/NameSplitter";
-import { CommandsBag } from "./Rendering/Commands/CommandsBag";
 import { CommandsBagFactory } from "./Rendering/Commands/CommandsBagFactory";
 import { GlsNodeRenderer } from "./Rendering/GlsNodeRenderer";
 import { ImportsPrinter } from "./Rendering/Imports/ImportsPrinter";

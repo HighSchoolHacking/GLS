@@ -1,6 +1,6 @@
+import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
-import { LineResults } from "../LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**

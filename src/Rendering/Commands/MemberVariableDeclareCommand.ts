@@ -1,8 +1,8 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { KeywordNames } from "./KeywordNames";
-import { LineResults } from "../LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";

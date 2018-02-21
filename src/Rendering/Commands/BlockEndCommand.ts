@@ -1,5 +1,5 @@
-import { Command } from "./Command";
 import { LineResults } from "../LineResults";
+import { Command } from "./Command";
 
 /**
  * A general command for the end of a conditional block.

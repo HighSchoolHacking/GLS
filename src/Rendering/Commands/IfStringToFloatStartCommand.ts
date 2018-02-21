@@ -1,8 +1,8 @@
+import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { KeywordNames } from "./KeywordNames";
-import { LineResults } from "../LineResults";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 

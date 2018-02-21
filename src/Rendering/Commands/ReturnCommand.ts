@@ -1,5 +1,5 @@
-import { Command } from "./Command";
 import { LineResults } from "../LineResults";
+import { Command } from "./Command";
 
 import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
