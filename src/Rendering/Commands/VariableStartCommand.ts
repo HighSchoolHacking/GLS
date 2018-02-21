@@ -35,7 +35,6 @@ export class VariableStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        // Languages like C# will give the last value in parameters including a "\n"
         const newParameters: string[] = ["variable"];
         for (let i = 1; i < parameters.length; i += 1) {
             newParameters.push(parameters[i].split("\n")[0]);
@@ -44,7 +43,7 @@ export class VariableStartCommand extends Command {
         const output = this.context.convertParsed(newParameters);
         output.addSemicolon = false;
 
-        // Languages like C# might need to pass a separate "\n{" through
+        // Languages like C# might need to pass a separate "{" through on the next line
         if (this.language.properties.style.separateBraceLines) {
             if (parameters.length === 5) {
                 output.commandResults.push(new CommandResult(parameters[4], 1));
