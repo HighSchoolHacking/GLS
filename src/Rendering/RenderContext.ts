@@ -66,13 +66,13 @@ export class RenderContext {
     }
 
     /**
-     * ...
+     * Converts a GLS file to its line results.
      *
-     * @param glsFile   ...
+     * @param glsFile   GLS file to convert.
      * @returns Equivalent lines of code in the context language.
      */
     public convert(glsFile: GlsFile): LineResults[] {
-        return this.lineResultsGenerator.generateLineResults(glsFile.nodes);
+        return this.lineResultsGenerator.generateLineResults(glsFile.getNodes());
     }
 
     /**

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { LanguagesBag } from "../../../lib/Rendering/Languages/LanguagesBag";
+import { LanguagesBag } from "../../../../lib/Rendering/Languages/LanguagesBag";
 
 describe("LanguagesBag", () => {
     describe("getLanguageByExtension", () => {

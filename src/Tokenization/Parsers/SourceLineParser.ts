@@ -2,7 +2,7 @@ import { BlankNode } from "../Nodes/BlankNode";
 import { CommandNode } from "../Nodes/CommandNode";
 import { IGlsNode } from "../Nodes/IGlsNode";
 import { TextNode } from "../Nodes/TextNode";
-import { StringSearching } from "./StringSearching";
+import { TextParsing } from "./TextParsing";
 
 /**
  * Parses individual lines of raw syntax into GLS nodes.
@@ -25,23 +25,27 @@ export class SourceLineParser {
         }
 
         const command: string = rawLine.substring(0, colonIndex).trim();
-        const rawArgs = rawLine.substring(colonIndex + 1).trim();
         const args: IGlsNode[] = [];
 
-        this.parseCommandArgs(rawArgs, 0, args);
+        this.parseCommandArgs(rawLine, colonIndex + 1, args);
 
         return new CommandNode(command, args);
     }
 
     /**
+     * Parses the args for a command.
+     *
+     * @param rawLine   Raw line containing the command.
+     * @param start   Starting index of the args within the line.
+     * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseCommandArgs(rawArgs: string, start: number, nodes: IGlsNode[]): number {
-        for (let i = start; i < rawArgs.length; i += 1) {
-            switch (rawArgs[i]) {
+    private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
+        for (let i = start; i < rawLine.length; i += 1) {
+            switch (rawLine[i]) {
                 // Sub-command start
                 case "{":
-                    i = this.parseSubCommand(rawArgs, i, nodes);
+                    i = this.parseSubCommand(rawLine, i, nodes);
                     break;
 
                 // Sub-command end
@@ -50,49 +54,54 @@ export class SourceLineParser {
 
                 // Parenthesis start
                 case "(":
-                    i = this.parseParenthesis(rawArgs, i + 1, nodes);
+                    i = this.parseParenthesis(rawLine, i + 1, nodes);
                     break;
 
                 // Parenthesis end
                 case ")":
                     break;
 
-                // Space start
+                // Space (do nothing)
                 case " ":
                     break;
 
                 // Regular text start
                 default:
-                    i = this.parseTextCommand(rawArgs, i, nodes);
+                    i = this.parseTextCommand(rawLine, i, nodes);
             }
         }
 
-        return rawArgs.length;
+        return rawLine.length;
     }
 
     /**
+     * Recurses into a command-within-a-command.
+     *
+     * @param rawLine   Raw line containing the command.
+     * @param start   Starting index of the args within the line.
+     * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseSubCommand(text: string, i: number, nodes: IGlsNode[]): number {
+    private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
         // Move past the starting "{" or "{ "
-        i = StringSearching.getNextStartOfWordIndex(text, i + 1);
+        i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1);
 
         // Command name
-        const commandNameEnd = StringSearching.getNextEndOfCommandNameIndex(text, i);
-        const commandName = text.substring(i, commandNameEnd).trim();
+        const commandNameEnd = TextParsing.getNextEndOfCommandNameIndex(rawLine, i);
+        const commandName = rawLine.substring(i, commandNameEnd).trim();
 
-        // "}" (command end) or ":" (command args start)
-        i = StringSearching.getNextNonSpaceIndex(text, commandNameEnd);
+        // Either "}" (command end) or ":" (command args start)
+        i = TextParsing.getNextNonSpaceIndex(rawLine, commandNameEnd);
 
         // "}" (command end)
-        if (text[i] === "}") {
+        if (rawLine[i] === "}") {
             nodes.push(new CommandNode(commandName, []));
             return i + 1;
         }
 
         // ":" (command args start)
         const commandArgs: IGlsNode[] = [];
-        i = this.parseCommandArgs(text, i + 1, commandArgs);
+        i = this.parseCommandArgs(rawLine, i + 1, commandArgs);
 
         nodes.push(new CommandNode(commandName, commandArgs));
 
@@ -100,12 +109,17 @@ export class SourceLineParser {
     }
 
     /**
+     * Collects the text contents between parenthesis.
+     *
+     * @param rawLine   Raw line containing the command.
+     * @param start   Starting index of the args within the line.
+     * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseParenthesis(rawArgs: string, i: number, nodes: IGlsNode[]): number {
-        const nextEndOfWordIndex = StringSearching.getNextEndOfParenthesisWordIndex(rawArgs, i);
-        const textRaw = rawArgs.substring(i, nextEndOfWordIndex);
-        const text = StringSearching.removeBackslashesFromWord(textRaw);
+    private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
+        const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i);
+        const textRaw = rawLine.substring(i, nextEndOfWordIndex);
+        const text = TextParsing.removeBackslashesFromWord(textRaw);
 
         nodes.push(new TextNode(text));
 
@@ -113,10 +127,15 @@ export class SourceLineParser {
     }
 
     /**
+     * Parses raw text.
+     *
+     * @param rawLine   Raw line containing the command.
+     * @param start   Starting index of the args within the line.
+     * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
     private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
-        const nextEndOfWordIndex = StringSearching.getNextEndOfWordIndex(rawArgs, i);
+        const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i);
         const text = rawArgs.substring(i, nextEndOfWordIndex);
 
         nodes.push(new TextNode(text));

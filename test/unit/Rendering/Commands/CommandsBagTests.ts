@@ -1,10 +1,10 @@
 import { expect } from "chai";
 import "mocha";
 
-import { CommandsBagFactory } from "../../../lib/Rendering/Commands/CommandsBagFactory";
-import { LiteralCommand } from "../../../lib/Rendering/Commands/LiteralCommand";
-import { TypeScript } from "../../../lib/Rendering/Languages/TypeScript";
-import { RenderContext } from "../../../lib/Rendering/RenderContext";
+import { CommandsBagFactory } from "../../../../lib/Rendering/Commands/CommandsBagFactory";
+import { LiteralCommand } from "../../../../lib/Rendering/Commands/LiteralCommand";
+import { TypeScript } from "../../../../lib/Rendering/Languages/TypeScript";
+import { RenderContext } from "../../../../lib/Rendering/RenderContext";
 
 describe("CommandsBag", () => {
     describe("renderCommand", () => {

@@ -7,7 +7,7 @@ export class GlsFile {
     /**
      * All nodes in the file.
      */
-    public readonly nodes: IGlsNode[];
+    private nodes: IGlsNode[];
 
     /**
      * Initializes a new instance of the GlsFile class.
@@ -16,5 +16,12 @@ export class GlsFile {
      */
     public constructor(nodes: IGlsNode[]) {
         this.nodes = nodes;
+    }
+
+    /**
+     * @returns All nodes in the file.
+     */
+    public getNodes(): IGlsNode[] {
+        return this.nodes;
     }
 }
