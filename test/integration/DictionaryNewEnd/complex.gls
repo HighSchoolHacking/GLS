@@ -1,4 +1,4 @@
 -
-dictionary new start : string { dictionary type : string int }
-dictionary new end
+dictionary initialize start : string { dictionary type : string int }
+dictionary initialize end
 -

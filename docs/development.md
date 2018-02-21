@@ -67,6 +67,7 @@ mocha test/unit/Tokenization/Parsers/SourceLineParser.js -g "nested CommandNode"
 
 Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).
 Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
+You can run specific suites of tests using `gulp test:integration` or `gulp test:end-to-end`.
 
 You can run a subset of commands by passing `--command`:
 
