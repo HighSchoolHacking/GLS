@@ -1,5 +1,6 @@
 import { GlsFile } from "../Tokenization/GlsFile";
 import { CommandNode } from "../Tokenization/Nodes/CommandNode";
+import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
 import { CommandsBagFactory } from "./Commands/CommandsBagFactory";
@@ -82,7 +83,7 @@ export class RenderContext {
      * @returns An equivalent line of code in the context language.
      */
     public convertCommon(command: string, argumentRaw: string): string {
-        const commandNode = new CommandNode(command, [argumentRaw]);
+        const commandNode = new CommandNode(command, [new TextNode(argumentRaw)]);
         const lineResults: LineResults = this.nodeRenderer.renderNode(commandNode);
 
         return lineResults.commandResults[0].text;
@@ -94,8 +95,13 @@ export class RenderContext {
      * @param lineParsed   A parsed line from raw GLS syntax.
      * @returns The equivalent lines of code in the language.
      */
-    public convertParsed(parameters: string[]): LineResults {
-        const commandNode = new CommandNode(parameters[0], parameters.slice(1));
+    public convertParsed(parametersRaw: string[]): LineResults {
+        const args: TextNode[] = [];
+        for (let i = 1; i < parametersRaw.length; i += 1) {
+            args.push(new TextNode(parametersRaw[i]));
+        }
+
+        const commandNode = new CommandNode(parametersRaw[0], args);
 
         return this.nodeRenderer.renderNode(commandNode);
     }

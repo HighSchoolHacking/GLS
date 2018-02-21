@@ -67,13 +67,9 @@ export class GlsNodeRenderer {
         const parameters = [node.command];
 
         for (const arg of node.args) {
-            if (typeof arg === "string") {
-                parameters.push(arg);
-            } else {
-                const subResults = this.renderNode(arg).commandResults;
-                for (const subResult of subResults) {
-                    parameters.push(subResult.text);
-                }
+            const subResults = this.renderNode(arg).commandResults;
+            for (const subResult of subResults) {
+                parameters.push(subResult.text);
             }
         }
 
