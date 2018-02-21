@@ -46,10 +46,8 @@ export class VariableStartCommand extends Command {
 
         // Languages like C# might need to pass a separate "\n{" through
         if (this.language.properties.style.separateBraceLines) {
-            let lastParameter = parameters[parameters.length - 1];
-            if (lastParameter.indexOf("\n") !== -1) {
-                lastParameter = lastParameter.split("\n")[1];
-                output.commandResults.push(new CommandResult(lastParameter, 1));
+            if (parameters.length === 5) {
+                output.commandResults.push(new CommandResult(parameters[4], 1));
             }
         } else {
             output.commandResults[output.commandResults.length - 1].indentation += 1;

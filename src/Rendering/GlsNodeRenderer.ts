@@ -64,13 +64,16 @@ export class GlsNodeRenderer {
 
         this.parametersValidator.validate(node, command.getMetadata().parameters);
 
-        const parameters =  [node.command];
+        const parameters = [node.command];
 
         for (const arg of node.args) {
             if (typeof arg === "string") {
                 parameters.push(arg);
             } else {
-                parameters.push(this.renderNode(arg).commandResults[0].text);
+                const subResults = this.renderNode(arg).commandResults;
+                for (const subResult of subResults) {
+                    parameters.push(subResult.text);
+                }
             }
         }
 
