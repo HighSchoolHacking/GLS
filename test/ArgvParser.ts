@@ -13,14 +13,7 @@ export class ArgvParser {
      * @param argv   Arguments from process.argv.
      */
     public constructor(argv: string[]) {
-        for (const arg of argv) {
-            if (arg.indexOf("--argv=") === 0) {
-                this.argv = JSON.parse(arg.slice("--argv=".length));
-                return;
-            }
-        }
-
-        this.argv = [];
+        this.argv = argv;
     }
 
     /**
