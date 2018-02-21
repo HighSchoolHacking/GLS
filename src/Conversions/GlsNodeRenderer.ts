@@ -64,25 +64,12 @@ export class GlsNodeRenderer {
 
         this.parametersValidator.validate(node, command.getMetadata().parameters);
 
-        const parameters =  this.renderCommandNodeParameters(node.args);
+        const parameters =  [node.command];
 
-        return command.render(parameters);
-    }
-
-    /**
-     * Renders a command node's args into raw text parameters.
-     *
-     * @param args   Arg parameters for a command node..
-     * @returns Equivalent text results for the node.
-     * @remarks Each node's command result's first line is used for text exclusively.
-     */
-    private renderCommandNodeParameters(args: IGlsNode[]): string[] {
-        const results: string[] = [];
-
-        for (const arg of args) {
-            results.push(this.renderNode(arg).commandResults[0].text);
+        for (const arg of node.args) {
+            parameters.push(this.renderNode(arg).commandResults[0].text);
         }
 
-        return results;
+        return command.render(parameters);
     }
 }
