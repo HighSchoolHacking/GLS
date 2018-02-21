@@ -67,7 +67,11 @@ export class GlsNodeRenderer {
         const parameters =  [node.command];
 
         for (const arg of node.args) {
-            parameters.push(this.renderNode(arg).commandResults[0].text);
+            if (typeof arg === "string") {
+                parameters.push(arg);
+            } else {
+                parameters.push(this.renderNode(arg).commandResults[0].text);
+            }
         }
 
         return command.render(parameters);
