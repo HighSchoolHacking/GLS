@@ -3,7 +3,7 @@ import "mocha";
 import * as path from "path";
 
 import { Gls } from "../lib/Gls";
-import { LanguagesBag } from "../lib/Languages/LanguagesBag";
+import { LanguagesBag } from "../lib/Rendering/Languages/LanguagesBag";
 import { findGlsTestSourcesUnder } from "../util";
 import { FilesReader } from "./FilesReader";
 

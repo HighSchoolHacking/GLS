@@ -72,20 +72,20 @@ The `LineResults` class contains an array of `CommandResult` instances, which st
 > For example, `operation : b (increase by) c` creates a semicolon and is indented normally on its own,
 > but not inside `list push : a { operation : b (increase by) c }`.
 
-### `ConversionContext`
+### `RenderContext`
 
-Rendering is managed by a `ConversionContext` instance containing a plethora of public methods.
-It has references to the current `Language`, `Command` classes that can render nodes, and current directory path of the parsed file.
-The `ConversionContext` instance is exposed to each `Command` for command recursion..
+Rendering is managed by a `RenderContext` instance containing a plethora of public methods.
+It has references to the output `Language`, `Command` classes that can render nodes to the language, and current directory path of the parsed file.
+The `RenderContext` instance is exposed to each `Command` for recursion.
 
 The most notable method is also `convert`, and is directly called by the parent `Gls`.
 This `convert` takes in a `GlsFile` and returns an array of `LineResults`.
 
 ```javascript
-import { ConversionContext, CSharp, SourceFileParser } from "general-language-syntax";
+import { CSharp, RenderContext, SourceFileParser } from "general-language-syntax";
 
 const parser = new SourceFileParser();
-const context = new ConversionContext(new CSharp());
+const context = new RenderContext(new CSharp());
 
 const glsFile = parser.parseLines([
     `print: ("Hello world!")`

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PackageUpperCaseConverter } from "../../../../lib/Conversions/Casing/PackageUpperCaseConverter";
+import { PackageUpperCaseConverter } from "../../../../lib/Rendering/Casing/PackageUpperCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("PackageUpperCaseConverter", () => {

@@ -1,6 +1,6 @@
 import "mocha";
 
-import { DirectoryUpperCaseConverter } from "../../../../lib/Conversions/Casing/DirectoryUpperCaseConverter";
+import { DirectoryUpperCaseConverter } from "../../../../lib/Rendering/Casing/DirectoryUpperCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("DirectoryUpperCaseConverter", () => {

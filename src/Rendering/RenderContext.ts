@@ -1,19 +1,19 @@
-import { CaseStyleConverterBag } from "./Rendering/Casing/CaseStyleConverterBag";
-import { NameSplitter } from "./Rendering/Casing/NameSplitter";
-import { CommandsBagFactory } from "./Rendering/Commands/CommandsBagFactory";
-import { GlsNodeRenderer } from "./Rendering/GlsNodeRenderer";
-import { ImportsPrinter } from "./Rendering/Imports/ImportsPrinter";
-import { CaseStyle } from "./Rendering/Languages/Casing/CaseStyle";
-import { Language } from "./Rendering/Languages/Language";
-import { LineResults } from "./Rendering/LineResults";
-import { LineResultsGenerator } from "./Rendering/LineResultsGenerator";
-import { GlsFile } from "./Tokenization/GlsFile";
-import { CommandNode } from "./Tokenization/Nodes/CommandNode";
+import { GlsFile } from "../Tokenization/GlsFile";
+import { CommandNode } from "../Tokenization/Nodes/CommandNode";
+import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
+import { NameSplitter } from "./Casing/NameSplitter";
+import { CommandsBagFactory } from "./Commands/CommandsBagFactory";
+import { GlsNodeRenderer } from "./GlsNodeRenderer";
+import { ImportsPrinter } from "./Imports/ImportsPrinter";
+import { CaseStyle } from "./Languages/Casing/CaseStyle";
+import { Language } from "./Languages/Language";
+import { LineResults } from "./LineResults";
+import { LineResultsGenerator } from "./LineResultsGenerator";
 
 /**
  * Backing command context for converting GLS nodes to text.
  */
-export class ConversionContext {
+export class RenderContext {
     /**
      * Holds case style converters, keyed by their case style.
      */
@@ -45,7 +45,7 @@ export class ConversionContext {
     private nodeRenderer: GlsNodeRenderer;
 
     /**
-     * Initializes a new instance of the ConversionContext class.
+     * Initializes a new instance of the RenderContext class.
      *
      * @param language   The language this context is converting GLS code into.
      */

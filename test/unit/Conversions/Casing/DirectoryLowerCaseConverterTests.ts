@@ -1,6 +1,6 @@
 import "mocha";
 
-import { DirectoryLowerCaseConverter } from "../../../../lib/Conversions/Casing/DirectoryLowerCaseConverter";
+import { DirectoryLowerCaseConverter } from "../../../../lib/Rendering/Casing/DirectoryLowerCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("DirectoryLowerCaseConverter", () => {

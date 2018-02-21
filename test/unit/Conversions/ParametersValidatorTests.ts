@@ -1,11 +1,11 @@
 import { expect } from "chai";
 import "mocha";
 
-import { KeywordParameter } from "../../../lib/Commands/Metadata/Parameters/KeywordParameter";
-import { IParameter } from "../../../lib/Commands/Metadata/Parameters/Parameter";
-import { RepeatingParameters } from "../../../lib/Commands/Metadata/Parameters/RepeatingParameters";
-import { SingleParameter } from "../../../lib/Commands/Metadata/Parameters/SingleParameter";
-import { ParametersValidator } from "../../../lib/Conversions/ParametersValidator";
+import { KeywordParameter } from "../../../lib/Rendering/Commands/Metadata/Parameters/KeywordParameter";
+import { IParameter } from "../../../lib/Rendering/Commands/Metadata/Parameters/Parameter";
+import { RepeatingParameters } from "../../../lib/Rendering/Commands/Metadata/Parameters/RepeatingParameters";
+import { SingleParameter } from "../../../lib/Rendering/Commands/Metadata/Parameters/SingleParameter";
+import { ParametersValidator } from "../../../lib/Rendering/ParametersValidator";
 import { CommandNode } from "../../../lib/Tokenization/Nodes/CommandNode";
 import { TextNode } from "../../../lib/Tokenization/Nodes/TextNode";
 

@@ -1,6 +1,6 @@
-import { ConversionContext } from "../../ConversionContext";
 import { Language } from "../Languages/Language";
 import { LineResults } from "../LineResults";
+import { RenderContext } from "../RenderContext";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
@@ -11,7 +11,7 @@ export abstract class Command {
     /**
      * The driving context for converting the command.
      */
-    protected context: ConversionContext;
+    protected context: RenderContext;
 
     /**
      * A language to convert raw code into.
@@ -23,7 +23,7 @@ export abstract class Command {
      *
      * @param context   The driving context for converting the command.
      */
-    public constructor(context: ConversionContext) {
+    public constructor(context: RenderContext) {
         this.context = context;
         this.language = context.getLanguage();
     }

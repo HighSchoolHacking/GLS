@@ -1,6 +1,6 @@
-import { ConversionContext } from "../../ConversionContext";
 import { NewInstantiationSyntaxKind } from "../Languages/Properties/NewProperties";
 import { LineResults } from "../LineResults";
+import { RenderContext } from "../RenderContext";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
@@ -39,7 +39,7 @@ export class NewCommand extends Command {
      *
      * @param context   The driving context for converting the command.
      */
-    public constructor(context: ConversionContext) {
+    public constructor(context: RenderContext) {
         super(context);
 
         this.styleRenderers = {

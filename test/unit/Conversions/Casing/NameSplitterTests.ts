@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { NameSplitter } from "../../../../lib/Conversions/Casing/NameSplitter";
+import { NameSplitter } from "../../../../lib/Rendering/Casing/NameSplitter";
 
 describe("NameSplitter", () => {
     describe("split", () => {

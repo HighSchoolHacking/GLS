@@ -1,8 +1,8 @@
-import { ConversionContext } from "./ConversionContext";
 import { OutputMerger } from "./Merging/OutputGenerator";
 import { Language } from "./Rendering/Languages/Language";
 import { LanguagesBag } from "./Rendering/Languages/LanguagesBag";
 import { LineResults } from "./Rendering/LineResults";
+import { RenderContext } from "./Rendering/RenderContext";
 import { GlsFile } from "./Tokenization/GlsFile";
 import { SourceFileParser } from "./Tokenization/Parsers/SourceFileParser";
 
@@ -13,7 +13,7 @@ export class Gls {
     /**
      * Backing command context for converting GLS nodes to text.
      */
-    private conversionContext: ConversionContext;
+    private RenderContext: RenderContext;
 
     /**
      * The current language for conversion.
@@ -57,8 +57,8 @@ export class Gls {
         const glsFile: GlsFile = this.sourceFileParser.parseLines(input);
 
         // 2. Rendering
-        this.conversionContext.setDirectoryPath([]);
-        const fileLineResults: LineResults[] = this.conversionContext.convert(glsFile);
+        this.RenderContext.setDirectoryPath([]);
+        const fileLineResults: LineResults[] = this.RenderContext.convert(glsFile);
 
         // 3. Merging
         return this.outputMerger.mergeFileLineResults(fileLineResults);
@@ -79,7 +79,7 @@ export class Gls {
      */
     public setLanguage(name: string): Gls {
         this.language = this.languagesBag.getLanguageByName(name);
-        this.conversionContext = new ConversionContext(this.language);
+        this.RenderContext = new RenderContext(this.language);
         this.outputMerger = new OutputMerger(this.language.properties.style.semicolon);
 
         return this;

@@ -1,4 +1,4 @@
-import { ConversionContext } from "../../ConversionContext";
+import { RenderContext } from "../RenderContext";
 import { ArrayIndexCommand } from "./ArrayIndexCommand";
 import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
@@ -136,7 +136,7 @@ export class CommandsBagFactory {
      * @param context   Driving context for a conversion.
      * @returns CommandsBag instance for the conversion context.
      */
-    public static forContext(context: ConversionContext): CommandsBag {
+    public static forContext(context: RenderContext): CommandsBag {
         return new CommandsBag([
             new ArrayIndexCommand(context),
             new ArrayInitializeCommand(context),

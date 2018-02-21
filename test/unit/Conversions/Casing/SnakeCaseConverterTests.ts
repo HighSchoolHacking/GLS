@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { SnakeCaseConverter } from "../../../../lib/Conversions/Casing/SnakeCaseConverter";
+import { SnakeCaseConverter } from "../../../../lib/Rendering/Casing/SnakeCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("SnakeCaseConverter", () => {

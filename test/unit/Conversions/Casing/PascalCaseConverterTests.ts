@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PascalCaseConverter } from "../../../../lib/Conversions/Casing/PascalCaseConverter";
+import { PascalCaseConverter } from "../../../../lib/Rendering/Casing/PascalCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
 describe("PascalCaseConverter", () => {

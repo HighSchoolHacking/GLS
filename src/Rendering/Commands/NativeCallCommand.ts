@@ -1,7 +1,7 @@
-import { ConversionContext } from "../../ConversionContext";
 import { Import } from "../Languages/Imports/Import";
 import { NativeCallProperties, NativeCallScope } from "../Languages/Properties/NativeCallProperties";
 import { LineResults } from "../LineResults";
+import { RenderContext } from "../RenderContext";
 import { Command } from "./Command";
 import { NativeArrayRenderer } from "./NativeCallRendering/NativeArrayRenderer";
 import { NativeCallRenderer } from "./NativeCallRendering/NativeCallRenderer";
@@ -28,7 +28,7 @@ export abstract class NativeCallCommand extends Command {
      *
      * @param context   The driving context for converting the command.
      */
-    public constructor(context: ConversionContext) {
+    public constructor(context: RenderContext) {
         super(context);
 
         this.nativeCallProperties = this.retrieveNativeCallProperties();

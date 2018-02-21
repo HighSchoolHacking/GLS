@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import "mocha";
 
-import { MathOperation } from "../../../../lib/Commands/MathResolution/MathOperations";
-import { MathResolver } from "../../../../lib/Commands/MathResolution/MathResolver";
+import { MathOperation } from "../../../../lib/Rendering/Commands/MathResolution/MathOperations";
+import { MathResolver } from "../../../../lib/Rendering/Commands/MathResolution/MathResolver";
 
 describe("MathResolver", () => {
     describe("resolve", () => {

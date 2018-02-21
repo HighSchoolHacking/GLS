@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 
-import { ImportPathResolver } from "../../../../lib/Conversions/Imports/ImportPathResolver";
+import { ImportPathResolver } from "../../../../lib/Rendering/Imports/ImportPathResolver";
 
 describe("ImportPathResolver", () => {
     describe("resolve", () => {

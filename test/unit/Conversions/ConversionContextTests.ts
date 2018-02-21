@@ -1,14 +1,14 @@
 import { expect } from "chai";
 import "mocha";
 
-import { ConversionContext } from "../../../lib/Conversions/ConversionContext";
-import { TypeScript } from "../../../lib/Languages/TypeScript";
+import { TypeScript } from "../../../lib/Rendering/Languages/TypeScript";
+import { RenderContext } from "../../../lib/Rendering/RenderContext";
 
-describe("ConversionContext", () => {
+describe("RenderContext", () => {
     describe("getLanguage", () => {
         it("returns the language", () => {
             const language = new TypeScript();
-            const context = new ConversionContext(language);
+            const context = new RenderContext(language);
 
             // Act
             const retrievedLanguage = context.getLanguage();
