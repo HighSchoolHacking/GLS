@@ -3,7 +3,7 @@ import "mocha";
 import * as path from "path";
 
 import { Gls } from "../lib/Gls";
-import { LanguagesBag } from "../lib/Languages/LanguagesBag";
+import { LanguagesBag } from "../lib/Rendering/Languages/LanguagesBag";
 import { findGlsTestSourcesUnder } from "../util";
 import { FilesReader } from "./FilesReader";
 
@@ -74,10 +74,10 @@ export class ComparisonTestsRunner {
      *
      * @param command   A GLS command to be tested, such as "ArrayInitialize".
      * @param test   A test to be run for the command, such as "no values".
-     * @param language   The language the test is running as.
+     * @param languageName   Language name the test is running as.
      */
-    public runCommandTest(command: string, test: string, language: string): void {
-        const gls = new Gls().setLanguage(language);
+    public runCommandTest(command: string, test: string, languageName: string): void {
+        const gls = new Gls(languageName);
         const extension = gls.getLanguage().properties.general.extension;
 
         const source = this.filesReader.readCommandFile(command, test + ".gls");

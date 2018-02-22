@@ -297,7 +297,7 @@ gulp.task("util:new-language", function () {
         });
 });
 
-gulp.task("watch", ["default"], function () {
+gulp.task("watch", function () {
     gulp.watch("util/**/*.ts", ["src:build"]);
     gulp.watch("src/**/*.ts", ["src:tsc"]);
     gulp.watch("test/**/*.ts", ["test:tsc"]);

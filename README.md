@@ -34,11 +34,10 @@ See [gls-cli](https://github.com/HighSchoolHacking/gls-cli).
 ```javascript
 import { Gls } from "general-language-syntax";
 
-const gls = new Gls();
-gls.setLanguage("CSharp");
+const gls = new Gls("CSharp");
 
 // System.Console.WriteLine("Hello world!");
-console.log(gls.convert([`print : ("Hello world!")`]));
+gls.convert([`print : ("Hello world!")`]);
 ```
 
 

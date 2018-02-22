@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { LanguagesBag } from "../lib/Languages/LanguagesBag";
+import { LanguagesBag } from "../lib/Rendering/Languages/LanguagesBag";
 
 /**
  * Reads contents of test case files.

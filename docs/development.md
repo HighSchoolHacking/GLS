@@ -51,11 +51,30 @@ You can add a new language by running `gulp util:new-language --language-name <l
 
 Files and listings for a new language identical to the original language except for the name and extension will be added locally.
 
+### Unit Tests
+
+These are stored under `test/unit/**/*.ts` and compiled to equivalent files under `test/unit/**/*.js`.
+
+You can run them with `gulp test:unit`, or directly with the `mocha` CLI.
+Use `mocha` to specify tests:
+
+```shell
+mocha test/unit/Tokenization/Parsers/SourceLineParser.js
+mocha test/unit/Tokenization/Parsers/SourceLineParser.js -g "nested CommandNode"
+```
+
 ### Integration and End-To-End Tests
 
 Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).
 Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
 You can run specific suites of tests using `gulp test:integration` or `gulp test:end-to-end`.
+
+You can run a subset of commands by passing `--command`:
+
+```shell
+gulp test:integration --command *string*
+gulp test:end-to-end --command StringFormat
+```
 
 When adding a new command, _always_ add new integration tests for it.
 
