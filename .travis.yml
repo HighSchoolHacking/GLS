@@ -1,9 +1,9 @@
 language: node_js
 
 node_js:
+  - "10"
   - "8"
   - "5"
-  - "10"
 
 script:
   node_modules/gulp/bin/gulp.js
