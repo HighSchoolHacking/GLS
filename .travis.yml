@@ -1,8 +1,15 @@
+after_script: greenkeeper-lockfile-upload
+
+before_install: npm i -g greenkeeper-lockfile npm@latest
+
+before_script: greenkeeper-lockfile-update
+
+install: npm i && npm i general-language-syntax ts-gls typescript 
+
 language: node_js
 
 node_js:
-  - "8"
-  - "5"
+  - "node"
 
 script:
-  node_modules/gulp/bin/gulp.js
+  npm run verify
