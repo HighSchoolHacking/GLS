@@ -32,8 +32,8 @@ You can run them with `npm run test:unit`, or directly with the `mocha` CLI.
 Use `mocha` to specify tests:
 
 ```shell
-mocha test/unit/Tokenization/Parsers/SourceLineParser.js
-mocha test/unit/Tokenization/Parsers/SourceLineParser.js -g "nested CommandNode"
+mocha test/unit/Tokenization/Parsers/SourceLineParserTests.js
+mocha test/unit/Tokenization/Parsers/SourceLineParserTests.js -g "nested CommandNode"
 ```
 
 ### Integration and End-To-End Tests
