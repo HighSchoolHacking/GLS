@@ -74,6 +74,10 @@ It requires overriding the abstract `retrieveNativeCallProperties` instead of `r
 
 Languages are stored at runtime by their language name in a `LanguagesBag`.
 You can add a new language by running `npm run util:new-language`.
-For example: `npm run util:new-language -- --language-name PHP --language-extension .php --base-name Ruby --base-extension .rb`.
+For example:
+
+```shell
+npm run util:new-language -- --language-name PHP --language-extension .php --base-name Ruby --base-extension .rb
+```
 
 Files and listings for a new language identical to the original language except for the name and extension will be added locally.
