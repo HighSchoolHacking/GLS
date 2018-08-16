@@ -15,7 +15,9 @@
         "strict": true
     },
     "exclude": [
+        "../src/*.ts",
         "../src/**/*.ts",
+        "../util/*.ts",
         "../util/**/*.ts"
     ],
     "include": [
