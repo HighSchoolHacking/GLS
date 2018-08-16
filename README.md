@@ -100,5 +100,5 @@ GLS is just shy of **0.4**.
 
 If you'd like to contribute to GLS, see [Development.md](https://github.com/general-language-syntax/GLS/blob/master/docs/development.md).
 
-_Requires Node >=5_
+_Requires Node >=8_
 
