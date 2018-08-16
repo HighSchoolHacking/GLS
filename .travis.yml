@@ -4,7 +4,7 @@ before_install: npm i -g greenkeeper-lockfile npm@latest
 
 before_script: greenkeeper-lockfile-update
 
-install: npm i && npm i general-language-syntax ts-gls typescript 
+install: npm i
 
 language: node_js
 
