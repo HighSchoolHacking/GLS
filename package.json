@@ -11,10 +11,24 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:HighSchoolHacking/GLS.git"
+    "url": "ssh://git@github.com:general-language-syntax/gls.git"
   },
   "scripts": {
-    "gulp": "gulp"
+    "src": "npm run src:tsc && npm run src:tslint",
+    "src:tsc": "tsc -p .",
+    "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
+    "test": "npm run test:tsc && npm run test:tslint && npm run test:run",
+    "test:tsc": "tsc -p test",
+    "test:tslint": "tslint -c test/tslint.json -p test/tsconfig.json -t stylish",
+    "test:run": "npm run test:run:unit && npm run test:run:integration && npm run test:run:end-to-end",
+    "test:run:unit": "mocha test/unit/**/*.js",
+    "test:run:integration": "mocha test/integration.js",
+    "test:run:end-to-end": "mocha test/end-to-end.js",
+    "util": "npm run util:tsc && npm run util:tslint",
+    "util:new-language": "node util/createNewLanguage.js",
+    "util:tsc": "tsc -p util",
+    "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
+    "verify": "npm run src && npm run util && npm run test"
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -24,24 +38,13 @@
     "@types/minimatch": "^3.0.3",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.7.1",
-    "browserify": "^16.2.2",
+    "@types/yargs": "^11.1.1",
     "chai": "^4.1.2",
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-mocha": "^6.0.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-tslint": "^8.1.3",
-    "gulp-typescript": "^5.0.0-alpha.3",
-    "gulp-uglify": "^3.0.1",
-    "merge2": "^1.2.2",
     "minimatch": "^3.0.4",
     "mocha": "^5.2.0",
-    "run-sequence": "^2.2.1",
     "tsify": "^4.0.0",
     "tslint": "5.11.0",
     "typescript": "^3.0.1",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
     "yargs": "^12.0.1"
   }
 }

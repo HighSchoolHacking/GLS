@@ -5,7 +5,7 @@ import { findGlsFilesUnder } from "./findGlsFilesUnder";
 
 /**
  * Retrieves, for each command in a directory, tests under that command.
- * 
+ *
  * @param rootPath   An absolute path to a command's tests folder.
  * @param inclusions   Command groups to run, if not all.
  * @returns Tests for each command in a directory.

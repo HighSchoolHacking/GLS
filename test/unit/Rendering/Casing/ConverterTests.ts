@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 import { CaseStyleConverter } from "../../../../lib/Rendering/Casing/CaseStyleConverter";
 
-export interface ICaseStyleConverterCreator {
+interface ICaseStyleConverterCreator {
     new(): CaseStyleConverter;
 }
 
@@ -10,7 +10,8 @@ const itConvertsFromCaseSensitiveTo = (
     label: string,
     converterType: ICaseStyleConverterCreator,
     words: string[],
-    expected: string): void => {
+    expected: string,
+): void => {
     let descriptor = `converts ${words.length} word`;
     if (words.length > 1) {
         descriptor += "s";
@@ -34,7 +35,8 @@ const itConvertsFromCaseSensitiveTo = (
 export const itConvertsFromTo = (
     converterType: ICaseStyleConverterCreator,
     words: string[],
-    expected: string): void => {
+    expected: string,
+): void => {
     itConvertsFromCaseSensitiveTo("from lower case", converterType, words.map((word) => word.toLowerCase()), expected);
     itConvertsFromCaseSensitiveTo("from upper case", converterType, words.map((word) => word.toUpperCase()), expected);
 };

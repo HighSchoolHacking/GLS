@@ -2,7 +2,9 @@
     "extends": "tslint:all",
     "rules": {
         "array-type": [true, "array"],
+        "arrow-return-shorthand": false,
         "completed-docs": false,
+        "file-name-casing": false,
         "linebreak-style": false,
         "max-line-length": [true, 175],
         "member-ordering": false,
@@ -16,6 +18,7 @@
         "no-parameter-reassignment": false,
         "no-unsafe-any": false,
         "no-unnecessary-class": false,
+        "no-unused-variable": false,
         "prefer-conditional-expression": false,
         "prefer-function-over-method": false,
         "prefer-readonly": false,

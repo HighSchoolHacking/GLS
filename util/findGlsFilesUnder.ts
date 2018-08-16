@@ -3,7 +3,7 @@ import * as minimatch from "minimatch";
 
 /**
  * Retrieves, command names within a directory.
- * 
+ *
  * @param rootPath   An absolute path to a command's tests folder.
  * @param inclusions   Command groups to only include, if not all.
  * @returns Command names within the directory.

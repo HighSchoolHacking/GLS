@@ -3,9 +3,13 @@ lib
 node_modules/
 npm-debug.log
 test/*.js
+test/*.js.map
+test/**/*.js.map
 test/unit/**/*.js
 util/*.js
+util/*.js.map
 util/**/*.js
+util/**/*.js.map
 
 # TS-GLS testing will often add these unnecessary files under src/
 src/**/*.cs
