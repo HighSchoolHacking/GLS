@@ -38,6 +38,7 @@ export class SourceLineParser {
      * @param rawLine   Raw line containing the command.
      * @param start   Starting index of the args within the line.
      * @param nodes   Collection of nodes to add the command to.
+     * @param withinParenthesis   Whether this is within a ( parenthesis ) section
      * @returns Next starting index after the last added node.
      */
     private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
@@ -55,10 +56,6 @@ export class SourceLineParser {
                 // Parenthesis start
                 case "(":
                     i = this.parseParenthesis(rawLine, i + 1, nodes);
-                    break;
-
-                // Parenthesis end
-                case ")":
                     break;
 
                 // Space (do nothing)

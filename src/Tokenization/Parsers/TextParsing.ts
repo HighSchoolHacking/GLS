@@ -13,7 +13,7 @@ export class TextParsing {
      * Characters not considered to be pure text parts of words.
      */
     private static nonWordCharacters = new Set([
-        " ", "{", "(", ")", "}", ":",
+        " ", "{", "(", "}", ":",
     ]);
 
     /**

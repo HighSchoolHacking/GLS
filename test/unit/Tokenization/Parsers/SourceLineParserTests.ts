@@ -57,6 +57,34 @@ describe("SourceLineParser", () => {
                     ]),
             ),
             new TestCase(
+                "command name and blank string arg",
+                'abc : ""',
+                new CommandNode(
+                    "abc",
+                    [
+                        new TextNode('""'),
+                    ]),
+            ),
+            new TestCase(
+                "command name and quote-wrapped arg parenthesis",
+                'abc : ")"',
+                new CommandNode(
+                    "abc",
+                    [
+                        new TextNode('")"')
+                    ]),
+            ),
+            new TestCase(
+                "command name and quote-wrapped second arg parenthesis",
+                'abc : (def) ")"',
+                new CommandNode(
+                    "abc",
+                    [
+                        new TextNode("def"),
+                        new TextNode('")"')
+                    ]),
+            ),
+            new TestCase(
                 "nested standalone CommandNode arg",
                 "abc : { def }",
                 new CommandNode(
@@ -155,7 +183,7 @@ describe("SourceLineParser", () => {
                     "abc",
                     [
                         new TextNode("def ghi (jkl mno"),
-                        new TextNode("pqr"),
+                        new TextNode("pqr)"),
                     ]
                 ),
             ),
