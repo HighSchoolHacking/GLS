@@ -720,6 +720,11 @@ export class Java extends Language {
             "length",
             NativeCallScope.Member,
             NativeCallType.Function);
+
+        strings.trim = new NativeCallProperties(
+            "trim",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**

@@ -51,4 +51,10 @@ export class StringProperties {
      * Metadata on the language's string substrings.
      */
     public substrings: StringSubstringProperties = new StringSubstringProperties();
+
+    /**
+     * How to trim strings.
+     */
+    public trim: NativeCallProperties;
+
 }
