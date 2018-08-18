@@ -533,6 +533,16 @@ export class CommandNames {
     public static StaticVariableDeclare = "static variable declare";
 
     /**
+     * Name key for the StringCaseLower command.
+     */
+    public static StringCaseLower = "string case lower";
+
+    /**
+     * Name key for the StringCaseUpper command.
+     */
+    public static StringCaseUpper = "string case upper";
+
+    /**
      * Name key the StringFormat command.
      */
     public static StringFormat = "string format";
@@ -558,14 +568,9 @@ export class CommandNames {
     public static StringSubstringLength = "string substring length";
 
     /**
-     * Name key for the StringCaseLower command.
+     * Name key for the StringTrim command.
      */
-    public static StringCaseLower = "string case lower";
-
-    /**
-     * Name key for the StringCaseUpper command.
-     */
-    public static StringCaseUpper = "string case upper";
+    public static StringTrim = "string trim";
 
     /**
      * Name key for the SuperConstructor command.

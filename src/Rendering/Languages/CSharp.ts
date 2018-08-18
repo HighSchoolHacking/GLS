@@ -744,6 +744,11 @@ export class CSharp extends Language {
             "Length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.trim = new NativeCallProperties(
+            "Trim",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**

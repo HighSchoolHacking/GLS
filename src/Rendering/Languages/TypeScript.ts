@@ -671,6 +671,11 @@ export class TypeScript extends Language {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.trim = new NativeCallProperties(
+            "trim",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**

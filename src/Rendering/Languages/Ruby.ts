@@ -665,6 +665,11 @@ export class Ruby extends Language {
             "length",
             NativeCallScope.Member,
             NativeCallType.Property);
+
+        strings.trim = new NativeCallProperties(
+            "strip",
+            NativeCallScope.Member,
+            NativeCallType.Property);
     }
 
     /**

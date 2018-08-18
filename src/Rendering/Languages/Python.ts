@@ -669,6 +669,11 @@ export class Python extends Language {
             "len",
             NativeCallScope.Static,
             NativeCallType.Function);
+
+        strings.trim = new NativeCallProperties(
+            "strip",
+            NativeCallScope.Member,
+            NativeCallType.Function);
     }
 
     /**
