@@ -5,17 +5,17 @@ export enum NewInstantiationSyntaxKind {
     /**
      * Called as a member of an array containing the parameters.
      */
-    Prefix,
+    Prefix = "Prefix",
 
     /**
      * Called as a member of the calling object.
      */
-    MethodCall,
+    MethodCall = "MethodCall",
 
     /**
      * Called as an operator on or with the calling object.
      */
-    MemberMethodCall
+    MemberMethodCall = "MemberMethodCall"
 }
 
 /**

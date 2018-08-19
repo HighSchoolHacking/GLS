@@ -5,17 +5,17 @@ export enum StringSubstringSupport {
     /**
      * Both the length and index forms are supported.
      */
-    Both,
+    Both = "Both",
 
     /**
      * Just the index form is supported.
      */
-    Index,
+    Index = "Index",
 
     /**
      * Just the length form is supported.
      */
-    Length
+    Length = "Length"
 }
 
 /**

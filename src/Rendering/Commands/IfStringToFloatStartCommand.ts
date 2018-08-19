@@ -13,17 +13,17 @@ export enum StringToFloatStartConversionType {
     /**
      * Convert strings into float variables and validate the results.
      */
-    ConvertAndValidate,
+    ConvertAndValidate = "ConvertAndValidate",
 
     /**
      * Declare float variables, convert strings into them, and validate the results.
      */
-    PredeclareConvertAndValidate,
+    PredeclareConvertAndValidate = "PredeclareConvertAndValidate",
 
     /**
      * Directly validate calls to float conversions inline.
      */
-    ValidateDirectly,
+    ValidateDirectly = "ValidateDirectly",
 }
 
 /**

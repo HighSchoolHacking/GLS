@@ -7,22 +7,22 @@ export enum NativeCallScope {
     /**
      * Called as a member of an array containing the parameters.
      */
-    Array,
+    Array = "Array",
 
     /**
      * Called as a member of the calling object.
      */
-    Member,
+    Member = "Member",
 
     /**
      * Called as an operator on or with the calling object.
      */
-    Operator,
+    Operator = "Operator",
 
     /**
      * Called as a global static.
      */
-    Static
+    Static = "Static"
 }
 
 /**
@@ -32,22 +32,22 @@ export enum NativeCallType {
     /**
      * An operator floating to the left of its caller.
      */
-    FloatingLeft,
+    FloatingLeft = "FloatingLeft",
 
     /**
      * An operator floating to the right of its caller.
      */
-    FloatingRight,
+    FloatingRight = "FloatingRight",
 
     /**
      * An operation that exists as a function.
      */
-    Function,
+    Function = "Function",
 
     /**
      * An operation as a single property.
      */
-    Property
+    Property = "Property"
 }
 
 /**

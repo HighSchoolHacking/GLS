@@ -5,10 +5,10 @@ export enum MathOperation {
     /**
      * One number increased by another.
      */
-    Addition,
+    Addition = "Addition",
 
     /**
      * One number reduced by another.
      */
-    Subtraction
+    Subtraction = "Subtraction"
 }
