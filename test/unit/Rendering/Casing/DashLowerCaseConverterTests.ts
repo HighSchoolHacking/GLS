@@ -1,12 +1,12 @@
 import "mocha";
 
-import { DashLowerCaseConverter } from "../../../../lib/Rendering/Casing/DashLowerCaseConverter";
+import { DashLowerCaseTransformer } from "../../../../lib/Rendering/Casing/DashLowerCaseTransformer";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("DashLowerCaseConverter", () => {
+describe("DashLowerCaseTransformer", () => {
     describe("convert", () => {
-        itConvertsFromTo(DashLowerCaseConverter, ["abc"], "abc");
-        itConvertsFromTo(DashLowerCaseConverter, ["abc", "def"], "abc-def");
-        itConvertsFromTo(DashLowerCaseConverter, ["abc", "def", "ghi"], "abc-def-ghi");
+        itConvertsFromTo(DashLowerCaseTransformer, ["abc"], "abc");
+        itConvertsFromTo(DashLowerCaseTransformer, ["abc", "def"], "abc-def");
+        itConvertsFromTo(DashLowerCaseTransformer, ["abc", "def", "ghi"], "abc-def-ghi");
     });
 });

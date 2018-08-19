@@ -1,17 +1,17 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
-import { CamelCaseConverter } from "./CamelCaseConverter";
+import { CamelCaseTransformer } from "./CamelCaseTransformer";
 import { CaseStyleConverter } from "./CaseStyleConverter";
-import { DashLowerCaseConverter } from "./DashLowerCaseConverter";
-import { DashUpperCaseConverter } from "./DashUpperCaseConverter";
-import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
-import { DirectoryUpperCaseConverter } from "./DirectoryUpperCaseConverter";
-import { FileSystemLowerCaseConverter } from "./FileSystemLowerCaseConverter";
-import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
-import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
-import { PackageUpperCaseConverter } from "./PackageUpperCaseConverter";
-import { PascalCaseConverter } from "./PascalCaseConverter";
-import { PythonImportCaseConverter } from "./PythonImportCaseConverter";
-import { SnakeCaseConverter } from "./SnakeCaseConverter";
+import { DashLowerCaseTransformer } from "./DashLowerCaseTransformer";
+import { DashUpperCaseTransformer } from "./DashUpperCaseTransformer";
+import { DirectoryLowerCaseTransformer } from "./DirectoryLowerCaseTransformer";
+import { DirectoryUpperCaseTransformer } from "./DirectoryUpperCaseTransformer";
+import { FileSystemLowerCaseTransformer } from "./FileSystemLowerCaseTransformer";
+import { FileSystemUpperCaseTransformer } from "./FileSystemUpperCaseTransformer";
+import { PackageLowerCaseTransformer } from "./PackageLowerCaseTransformer";
+import { PackageUpperCaseTransformer } from "./PackageUpperCaseTransformer";
+import { PascalCaseTransformer } from "./PascalCaseTransformer";
+import { PythonImportCaseTransformer } from "./PythonImportCaseTransformer";
+import { SnakeCaseTransformer } from "./SnakeCaseTransformer";
 
 /**
  * Holds case style converters, keyed by their case style.
@@ -27,18 +27,18 @@ export class CaseStyleConverterBag {
      */
     public constructor() {
         this.converters = {
-            [CaseStyle.DashLowerCase]: new DashLowerCaseConverter(),
-            [CaseStyle.DashUpperCase]: new DashUpperCaseConverter(),
-            [CaseStyle.DirectoryLowerCase]: new DirectoryLowerCaseConverter(),
-            [CaseStyle.DirectoryUpperCase]: new DirectoryUpperCaseConverter(),
-            [CaseStyle.CamelCase]: new CamelCaseConverter(),
-            [CaseStyle.FileSystemLowerCase]: new FileSystemLowerCaseConverter(),
-            [CaseStyle.FileSystemUpperCase]: new FileSystemUpperCaseConverter(),
-            [CaseStyle.PackageLowerCase]: new PackageLowerCaseConverter(),
-            [CaseStyle.PackageUpperCase]: new PackageUpperCaseConverter(),
-            [CaseStyle.PascalCase]: new PascalCaseConverter(),
-            [CaseStyle.PythonImportCase]: new PythonImportCaseConverter(),
-            [CaseStyle.SnakeCase]: new SnakeCaseConverter()
+            [CaseStyle.DashLowerCase]: new CaseStyleConverter(new DashLowerCaseTransformer()),
+            [CaseStyle.DashUpperCase]: new CaseStyleConverter(new DashUpperCaseTransformer()),
+            [CaseStyle.DirectoryLowerCase]: new CaseStyleConverter(new DirectoryLowerCaseTransformer()),
+            [CaseStyle.DirectoryUpperCase]: new CaseStyleConverter(new DirectoryUpperCaseTransformer()),
+            [CaseStyle.CamelCase]: new CaseStyleConverter(new CamelCaseTransformer()),
+            [CaseStyle.FileSystemLowerCase]: new CaseStyleConverter(new FileSystemLowerCaseTransformer()),
+            [CaseStyle.FileSystemUpperCase]: new CaseStyleConverter(new FileSystemUpperCaseTransformer()),
+            [CaseStyle.PackageLowerCase]: new CaseStyleConverter(new PackageLowerCaseTransformer()),
+            [CaseStyle.PackageUpperCase]: new CaseStyleConverter(new PackageUpperCaseTransformer()),
+            [CaseStyle.PascalCase]: new CaseStyleConverter(new PascalCaseTransformer()),
+            [CaseStyle.PythonImportCase]: new CaseStyleConverter(new PythonImportCaseTransformer()),
+            [CaseStyle.SnakeCase]: new CaseStyleConverter(new SnakeCaseTransformer()),
         };
     }
 

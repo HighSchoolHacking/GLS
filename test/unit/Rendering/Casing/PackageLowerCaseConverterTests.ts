@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PackageLowerCaseConverter } from "../../../../lib/Rendering/Casing/PackageLowerCaseConverter";
+import { PackageLowerCaseTransformer } from "../../../../lib/Rendering/Casing/PackageLowerCaseTransformer";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("PackageLowerCaseConverter", () => {
+describe("PackageLowerCaseTransformer", () => {
     describe("convert", () => {
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc"], "abc");
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc", "def"], "abc.def");
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc", "def", "ghi"], "abc.def.ghi");
+        itConvertsFromTo(PackageLowerCaseTransformer, ["abc"], "abc");
+        itConvertsFromTo(PackageLowerCaseTransformer, ["abc", "def"], "abc.def");
+        itConvertsFromTo(PackageLowerCaseTransformer, ["abc", "def", "ghi"], "abc.def.ghi");
     });
 });

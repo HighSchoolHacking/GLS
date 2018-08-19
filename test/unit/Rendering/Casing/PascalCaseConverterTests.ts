@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import "mocha";
 
-import { PascalCaseConverter } from "../../../../lib/Rendering/Casing/PascalCaseConverter";
+import { PascalCaseTransformer } from "../../../../lib/Rendering/Casing/PascalCaseTransformer";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("PascalCaseConverter", () => {
+describe("PascalCaseTransformer", () => {
     describe("convert", () => {
-        itConvertsFromTo(PascalCaseConverter, ["abc"], "Abc");
-        itConvertsFromTo(PascalCaseConverter, ["abc", "def"], "AbcDef");
-        itConvertsFromTo(PascalCaseConverter, ["abc", "def", "ghi"], "AbcDefGhi");
+        itConvertsFromTo(PascalCaseTransformer, ["abc"], "Abc");
+        itConvertsFromTo(PascalCaseTransformer, ["abc", "def"], "AbcDef");
+        itConvertsFromTo(PascalCaseTransformer, ["abc", "def", "ghi"], "AbcDefGhi");
     });
 });

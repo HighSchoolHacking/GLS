@@ -1,7 +1,23 @@
+import { IWordTransformer } from "./WordTransformer";
+
 /**
  * Converts series of words to a case.
  */
-export abstract class CaseStyleConverter {
+export class CaseStyleConverter {
+    /**
+     * Transforms words for the case.
+     */
+    private wordTransformer: IWordTransformer;
+
+    /**
+     * Initializes a new instance of the CaseStyleConverter class.
+     *
+     * @param wordTransformer   Transforms words for the case.
+     */
+    public constructor(wordTransformer: IWordTransformer) {
+        this.wordTransformer = wordTransformer;
+    }
+
     /**
      * Combines a series of words to the equivalent case style.
      *
@@ -18,26 +34,12 @@ export abstract class CaseStyleConverter {
         for (let i = 0; i < words.length - 1; i += 1) {
             const word = words[i];
 
-            result += this.transformWord(word);
-            result += this.getBetweenWords();
+            result += this.wordTransformer.transformWord(word);
+            result += this.wordTransformer.getBetweenWords();
         }
 
-        result += this.transformWord(words[words.length - 1]);
-        return result;
-    }
+        result += this.wordTransformer.transformWord(words[words.length - 1]);
 
-    /**
-     * @returns Filler between words in a conversion (by default, nothing).
-     */
-    protected getBetweenWords(): string {
-        return "";
+        return this.wordTransformer.finalize(result);
     }
-
-    /**
-     * Applies this style's transformation to a word.
-     *
-     * @param word   A word to convert.
-     * @returns The word after this style's transformation.
-     */
-    protected abstract transformWord(word: string): string;
 }

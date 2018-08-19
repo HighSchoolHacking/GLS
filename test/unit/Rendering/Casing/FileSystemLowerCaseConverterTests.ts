@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import "mocha";
 
-import { FileSystemLowerCaseConverter } from "../../../../lib/Rendering/Casing/FileSystemLowerCaseConverter";
+import { FileSystemLowerCaseTransformer } from "../../../../lib/Rendering/Casing/FileSystemLowerCaseTransformer";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("FileSystemLowerCaseConverter", () => {
+describe("FileSystemLowerCaseTransformer", () => {
     describe("convert", () => {
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc"], "./abc");
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc", "def"], "./abc/def");
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc", "def", "ghi"], "./abc/def/ghi");
+        itConvertsFromTo(FileSystemLowerCaseTransformer, ["abc"], "./abc");
+        itConvertsFromTo(FileSystemLowerCaseTransformer, ["abc", "def"], "./abc/def");
+        itConvertsFromTo(FileSystemLowerCaseTransformer, ["abc", "def", "ghi"], "./abc/def/ghi");
     });
 });

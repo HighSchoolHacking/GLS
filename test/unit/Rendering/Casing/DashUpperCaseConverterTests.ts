@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import "mocha";
 
-import { DashUpperCaseConverter } from "../../../../lib/Rendering/Casing/DashUpperCaseConverter";
+import { DashUpperCaseTransformer } from "../../../../lib/Rendering/Casing/DashUpperCaseTransformer";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("DashUpperCaseConverter", () => {
+describe("DashUpperCaseTransformer", () => {
     describe("convert", () => {
-        itConvertsFromTo(DashUpperCaseConverter, ["abc"], "Abc");
-        itConvertsFromTo(DashUpperCaseConverter, ["abc", "def"], "Abc-Def");
-        itConvertsFromTo(DashUpperCaseConverter, ["abc", "def", "ghi"], "Abc-Def-Ghi");
+        itConvertsFromTo(DashUpperCaseTransformer, ["abc"], "Abc");
+        itConvertsFromTo(DashUpperCaseTransformer, ["abc", "def"], "Abc-Def");
+        itConvertsFromTo(DashUpperCaseTransformer, ["abc", "def", "ghi"], "Abc-Def-Ghi");
     });
 });

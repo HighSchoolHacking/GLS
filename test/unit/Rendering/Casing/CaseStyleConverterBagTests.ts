@@ -2,7 +2,6 @@ import { expect } from "chai";
 import "mocha";
 
 import { CaseStyleConverterBag } from "../../../../lib/Rendering/Casing/CaseStyleConverterBag";
-import { FileSystemLowerCaseConverter } from "../../../../lib/Rendering/Casing/FileSystemLowerCaseConverter";
 import { CaseStyle } from "../../../../lib/Rendering/Languages/Casing/CaseStyle";
 
 describe("CaseStyleConverterBag", () => {
@@ -10,12 +9,14 @@ describe("CaseStyleConverterBag", () => {
         it("retrieves a case style by its enum", () => {
             // Arrange
             const caseStyleConverterBag = new CaseStyleConverterBag();
+            const words = ["abc", "def"];
 
             // Act
             const command = caseStyleConverterBag.getConverter(CaseStyle.FileSystemLowerCase);
+            const result = command.convert(words);
 
             // Assert
-            expect(command).to.be.instanceof(FileSystemLowerCaseConverter);
+            expect(result).to.be.equal("./abc/def");
         });
 
         it("throws an error for an unknown case style", () => {

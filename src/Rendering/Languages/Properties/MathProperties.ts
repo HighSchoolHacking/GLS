@@ -1,4 +1,4 @@
-import { NativeCallProperties } from "../Properties/NativeCallProperties";
+import { NativeCallProperties } from "./NativeCallProperties";
 
 /**
  * Metadata on a language's math.
