@@ -53,7 +53,7 @@ export class LambdaBodyCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.properties.lambdas.returnTypeRequired) {
-            throw Error("returnTypeRequired=true not implemented");
+            throw new Error("returnTypeRequired=true not implemented");
         }
 
         let lambdaBody = "";
@@ -63,7 +63,7 @@ export class LambdaBodyCommand extends Command {
         if (parameters.length > 3) {
             lambdaBody += this.generateParameterVariable(parameters, 2);
 
-            for (let i = 4; (i + 1) < parameters.length; i += 2) {
+            for (let i = 4; i < parameters.length - 1; i += 2) {
                 lambdaBody += ", ";
                 lambdaBody += this.generateParameterVariable(parameters, i);
             }
