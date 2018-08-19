@@ -1,17 +1,17 @@
 import "mocha";
 
-import { PythonImportCaseTransformer } from "../../../../lib/Rendering/Casing/PythonImportCaseTransformer";
+import { PythonImportCaseConverter } from "../../../../lib/Rendering/Casing/PythonImportCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("PythonImportCaseTransformer", () => {
+describe("PythonImportCaseConverter", () => {
     describe("convert", () => {
         // Internal directories
-        itConvertsFromTo(PythonImportCaseTransformer, ["abc"], "abc");
-        itConvertsFromTo(PythonImportCaseTransformer, ["abc", "def"], "abc.def");
-        itConvertsFromTo(PythonImportCaseTransformer, ["abc", "def", "ghi"], "abc.def.ghi");
+        itConvertsFromTo(PythonImportCaseConverter, ["abc"], "abc");
+        itConvertsFromTo(PythonImportCaseConverter, ["abc", "def"], "abc.def");
+        itConvertsFromTo(PythonImportCaseConverter, ["abc", "def", "ghi"], "abc.def.ghi");
 
         // Parent directories
-        itConvertsFromTo(PythonImportCaseTransformer, ["..", "ghi"], ".ghi");
-        itConvertsFromTo(PythonImportCaseTransformer, ["..", "..", "ghi"], "..ghi");
+        itConvertsFromTo(PythonImportCaseConverter, ["..", "ghi"], ".ghi");
+        itConvertsFromTo(PythonImportCaseConverter, ["..", "..", "ghi"], "..ghi");
     });
 });

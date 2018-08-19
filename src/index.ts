@@ -1,5 +1,5 @@
 export { Gls } from "./Gls";
-export { CaseStyleConverter } from "./Rendering/Casing/CaseStyleConverter";
+export { ICaseStyleConverter } from "./Rendering/Casing/CaseStyleConverter";
 export { CaseStyleConverterBag } from "./Rendering/Casing/CaseStyleConverterBag";
 export { NameSplitter } from "./Rendering/Casing/NameSplitter";
 export { ImportPathResolver } from "./Rendering/Imports/ImportPathResolver";

@@ -1,12 +1,12 @@
 import "mocha";
 
-import { DirectoryUpperCaseTransformer } from "../../../../lib/Rendering/Casing/DirectoryUpperCaseTransformer";
+import { DirectoryUpperCaseConverter } from "../../../../lib/Rendering/Casing/DirectoryUpperCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("DirectoryUpperCaseTransformer", () => {
+describe("DirectoryUpperCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(DirectoryUpperCaseTransformer, ["abc"], "Abc");
-        itConvertsFromTo(DirectoryUpperCaseTransformer, ["abc", "def"], "Abc/Def");
-        itConvertsFromTo(DirectoryUpperCaseTransformer, ["abc", "def", "ghi"], "Abc/Def/Ghi");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc"], "Abc");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc", "def"], "Abc/Def");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc", "def", "ghi"], "Abc/Def/Ghi");
     });
 });

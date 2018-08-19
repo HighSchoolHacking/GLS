@@ -1,13 +1,12 @@
-import { expect } from "chai";
 import "mocha";
 
-import { CamelCaseTransformer } from "../../../../lib/Rendering/Casing/CamelCaseTransformer";
+import { CamelCaseConverter } from "../../../../lib/Rendering/Casing/CamelCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("CamelCaseTransformer", () => {
+describe("CamelCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(CamelCaseTransformer, ["abc"], "abc");
-        itConvertsFromTo(CamelCaseTransformer, ["abc", "def"], "abcDef");
-        itConvertsFromTo(CamelCaseTransformer, ["abc", "def", "ghi"], "abcDefGhi");
+        itConvertsFromTo(CamelCaseConverter, ["abc"], "abc");
+        itConvertsFromTo(CamelCaseConverter, ["abc", "def"], "abcDef");
+        itConvertsFromTo(CamelCaseConverter, ["abc", "def", "ghi"], "abcDefGhi");
     });
 });
