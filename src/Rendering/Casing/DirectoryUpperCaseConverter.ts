@@ -1,14 +1,30 @@
-import { CaseStyleConverter } from "./CaseStyleConverter";
+import { ICaseStyleConverter } from "./CaseStyleConverter";
 
 /**
  * Converts a series of words to Directory/Upper/Case.
  */
-export class DirectoryUpperCaseConverter extends CaseStyleConverter {
+export class DirectoryUpperCaseConverter implements ICaseStyleConverter {
     /**
-     * @returns Filler between words in a conversion.
+     * Combines a series of words to the equivalent case style.
+     *
+     * @param words   Words to convert.
+     * @returns The word's equivalent in this converter's case style.
      */
-    protected getBetweenWords(): string {
-        return "/";
+    public convert(words: string[]): string {
+        if (words.length === 0) {
+            return "";
+        }
+
+        let result = "";
+
+        for (let i = 0; i < words.length - 1; i += 1) {
+            const word = words[i];
+
+            result += this.transformWord(word) + "/";
+        }
+
+        result += this.transformWord(words[words.length - 1]);
+        return result;
     }
 
     /**
@@ -17,7 +33,7 @@ export class DirectoryUpperCaseConverter extends CaseStyleConverter {
      * @param word   A word to convert.
      * @returns The word after this style's transformation.
      */
-    protected transformWord(word: string): string {
+    public transformWord(word: string): string {
         return word[0].toUpperCase() + word.substring(1).toLowerCase();
     }
 }

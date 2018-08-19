@@ -1,23 +1,27 @@
-import { CaseStyleConverter } from "./CaseStyleConverter";
+import { ICaseStyleConverter } from "./CaseStyleConverter";
 
 /**
  * Converts a series of words to "package.lower.case".
  */
-export class PackageLowerCaseConverter extends CaseStyleConverter {
+export class PackageLowerCaseConverter implements ICaseStyleConverter {
     /**
-     * @returns Filler between words in a conversion.
-     */
-    protected getBetweenWords(): string {
-        return ".";
-    }
-
-    /**
-     * Applies this style's transformation to a word.
+     * Combines a series of words to the equivalent case style.
      *
-     * @param word   A word to convert.
-     * @returns The word after this style's transformation.
+     * @param words   Words to convert.
+     * @returns The word's equivalent in this converter's case style.
      */
-    protected transformWord(word: string): string {
-        return word.toLowerCase();
+    public convert(words: string[]): string {
+        if (words.length === 0) {
+            return "";
+        }
+
+        let result = "";
+
+        for (let i = 0; i < words.length - 1; i += 1) {
+            result += words[i].toLowerCase() + ".";
+        }
+
+        result += words[words.length - 1].toLowerCase();
+        return result;
     }
 }

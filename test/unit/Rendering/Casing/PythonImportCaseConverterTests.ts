@@ -1,10 +1,9 @@
-import { expect } from "chai";
 import "mocha";
 
 import { PythonImportCaseConverter } from "../../../../lib/Rendering/Casing/PythonImportCaseConverter";
 import { itConvertsFromTo } from "./ConverterTests";
 
-describe("PythonCaseConverter", () => {
+describe("PythonImportCaseConverter", () => {
     describe("convert", () => {
         // Internal directories
         itConvertsFromTo(PythonImportCaseConverter, ["abc"], "abc");

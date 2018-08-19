@@ -1,4 +1,4 @@
-import { CaseStyleConverter } from "../Casing/CaseStyleConverter";
+import { ICaseStyleConverter } from "../Casing/CaseStyleConverter";
 import { CommandResult } from "../Commands/CommandResult";
 import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
@@ -12,7 +12,7 @@ export class ImportsPrinter {
     /**
      * Converts series of words to a case.
      */
-    private caseStyleConverter: CaseStyleConverter;
+    private caseStyleConverter: ICaseStyleConverter;
 
     /**
      * Language to output line results in.
@@ -25,7 +25,7 @@ export class ImportsPrinter {
      * @param caseStyleConverter   Converts series of words to a case.
      * @param language   Language to output line results in.
      */
-    public constructor(language: Language, caseStyleConverter: CaseStyleConverter) {
+    public constructor(language: Language, caseStyleConverter: ICaseStyleConverter) {
         this.caseStyleConverter = caseStyleConverter;
         this.language = language;
     }

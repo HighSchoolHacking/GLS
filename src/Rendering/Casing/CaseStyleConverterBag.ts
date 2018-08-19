@@ -1,6 +1,6 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { CamelCaseConverter } from "./CamelCaseConverter";
-import { CaseStyleConverter } from "./CaseStyleConverter";
+import { ICaseStyleConverter } from "./CaseStyleConverter";
 import { DashLowerCaseConverter } from "./DashLowerCaseConverter";
 import { DashUpperCaseConverter } from "./DashUpperCaseConverter";
 import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
@@ -20,7 +20,7 @@ export class CaseStyleConverterBag {
     /**
      * Casing converters, keyed by their case style.
      */
-    private converters: { [i: number /* CaseStyle */]: CaseStyleConverter };
+    private converters: { [i: number /* CaseStyle */]: ICaseStyleConverter };
 
     /**
      * Initializes a new instance of the CaseStyleConverter class.
@@ -38,7 +38,7 @@ export class CaseStyleConverterBag {
             [CaseStyle.PackageUpperCase]: new PackageUpperCaseConverter(),
             [CaseStyle.PascalCase]: new PascalCaseConverter(),
             [CaseStyle.PythonImportCase]: new PythonImportCaseConverter(),
-            [CaseStyle.SnakeCase]: new SnakeCaseConverter()
+            [CaseStyle.SnakeCase]: new SnakeCaseConverter(),
         };
     }
 
@@ -48,7 +48,7 @@ export class CaseStyleConverterBag {
      * @param caseStyle   A casing style.
      * @returns The case converter under the given asing style.
      */
-    public getConverter(caseStyle: CaseStyle): CaseStyleConverter {
+    public getConverter(caseStyle: CaseStyle): ICaseStyleConverter {
         const caseStyleAlias = caseStyle;
 
         if (this.converters[caseStyle] === undefined) {

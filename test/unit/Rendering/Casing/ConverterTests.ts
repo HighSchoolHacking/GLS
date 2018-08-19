@@ -1,14 +1,14 @@
 import { expect } from "chai";
 
-import { CaseStyleConverter } from "../../../../lib/Rendering/Casing/CaseStyleConverter";
+import { ICaseStyleConverter } from "../../../../lib/Rendering/Casing/CaseStyleConverter";
 
 interface ICaseStyleConverterCreator {
-    new(): CaseStyleConverter;
+    new(): ICaseStyleConverter;
 }
 
 const itConvertsFromCaseSensitiveTo = (
     label: string,
-    converterType: ICaseStyleConverterCreator,
+    transformerType: ICaseStyleConverterCreator,
     words: string[],
     expected: string,
 ): void => {
@@ -21,7 +21,7 @@ const itConvertsFromCaseSensitiveTo = (
 
     it(descriptor, () => {
         // Arrange
-        const converter = new converterType();
+        const converter = new transformerType();
         const original = "abcDefGhi";
 
         // Act
@@ -33,10 +33,10 @@ const itConvertsFromCaseSensitiveTo = (
 };
 
 export const itConvertsFromTo = (
-    converterType: ICaseStyleConverterCreator,
+    transformerType: ICaseStyleConverterCreator,
     words: string[],
     expected: string,
 ): void => {
-    itConvertsFromCaseSensitiveTo("from lower case", converterType, words.map((word) => word.toLowerCase()), expected);
-    itConvertsFromCaseSensitiveTo("from upper case", converterType, words.map((word) => word.toUpperCase()), expected);
+    itConvertsFromCaseSensitiveTo("from lower case", transformerType, words.map((word) => word.toLowerCase()), expected);
+    itConvertsFromCaseSensitiveTo("from upper case", transformerType, words.map((word) => word.toUpperCase()), expected);
 };
