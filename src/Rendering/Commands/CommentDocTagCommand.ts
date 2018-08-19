@@ -214,7 +214,7 @@ export class CommentDocTagCommand extends Command {
      * @param length   A maximum length for lines.
      * @returns Lines of the original text.
      */
-    private splitTextToLength(text: string, length: number) {
+    private splitTextToLength(text: string, length: number): string[] {
         const textSplit: string[] = text.split(" ");
         const lines: string[] = [];
         let line = "";
