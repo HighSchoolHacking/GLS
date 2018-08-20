@@ -735,6 +735,13 @@ export class CSharp extends Language {
 
         strings.className = "string";
 
+        strings.indexOf = new NativeCallProperties(
+            "IndexOf",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.indexOfNotFound = "-1";
+
         strings.length = new NativeCallProperties(
             "Length",
             NativeCallScope.Member,

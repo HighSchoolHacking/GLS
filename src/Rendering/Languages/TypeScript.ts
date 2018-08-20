@@ -663,6 +663,13 @@ export class TypeScript extends Language {
 
         strings.className = "String";
 
+        strings.indexOf = new NativeCallProperties(
+            "indexOf",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.indexOfNotFound = "-1";
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,

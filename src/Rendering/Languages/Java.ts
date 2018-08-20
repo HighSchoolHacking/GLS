@@ -711,6 +711,13 @@ export class Java extends Language {
 
         strings.className = "string";
 
+        strings.indexOf = new NativeCallProperties(
+            "indexOf",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
+        strings.indexOfNotFound = "-1";
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,
