@@ -1,3 +1,4 @@
+import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
@@ -50,7 +51,7 @@ export class StringFormatCommand extends Command {
         for (let i = 0; i < inputsLength; i += 1) {
             const replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
 
-            output = output.replace(new RegExp(`\\{${i}\\}`, "gi"), replacement);
+            output = GlsUtilities.stringReplaceAll(output, `{${i}}`, replacement);
         }
 
         if (!this.language.properties.strings.formatting.useInterpolation) {

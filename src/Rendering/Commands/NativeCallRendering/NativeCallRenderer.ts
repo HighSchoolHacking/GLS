@@ -1,3 +1,4 @@
+import { GlsUtilities } from "../../../GlsUtilities";
 import { NativeCallProperties } from "../../Languages/Properties/NativeCallProperties";
 import { LineResults } from "../../LineResults";
 
@@ -36,6 +37,6 @@ export abstract class NativeCallRenderer {
      * @returns The argument, with the parameter formatted inside.
      */
     protected formatArgument(argument: string, firstParameter: string): string {
-        return argument.replace("{0}", firstParameter);
+        return GlsUtilities.stringReplaceAll(argument, "{0}", firstParameter);
     }
 }

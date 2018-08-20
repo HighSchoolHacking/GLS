@@ -1,3 +1,4 @@
+import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
@@ -139,9 +140,11 @@ export class IfStringToFloatStartCommand extends Command {
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
             const floatName = parameters[i + 1];
-            const comparison = this.language.properties.strings.toFloat.validationBlockComparison
-                .replace("{0}", stringName)
-                .replace("{1}", floatName);
+
+            let comparison = this.language.properties.strings.toFloat.validationBlockComparison;
+
+            comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
+            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", floatName);
 
             this.addLineEnder(lines, comparison, 0);
 
