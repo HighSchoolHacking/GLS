@@ -38,11 +38,6 @@ export class StringProperties {
     public formatting: StringFormatProperties = new StringFormatProperties();
 
     /**
-     * How to determine the index of a substring.
-     */
-    public index: NativeCallProperties;
-
-    /**
      * How to retrieve a string's length.
      */
     public length: NativeCallProperties;
