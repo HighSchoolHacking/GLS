@@ -553,6 +553,16 @@ export class CommandNames {
     public static StringIndex = "string index";
 
     /**
+     * Name key for the StringIndexOf command.
+     */
+    public static StringIndexOf = "string index of";
+
+    /**
+     * Name key for the StringIndexNotFound command.
+     */
+    public static StringIndexNotFound = "string index not found";
+
+    /**
      * Name key for the StringLength command.
      */
     public static StringLength = "string length";

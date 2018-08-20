@@ -110,6 +110,7 @@ import { StringCaseLowerCommand } from "./StringCaseLowerCommand";
 import { StringCaseUpperCommand } from "./StringCaseUpperCommand";
 import { StringFormatCommand } from "./StringFormatCommand";
 import { StringIndexCommand } from "./StringIndexCommand";
+import { StringIndexOfCommand } from "./StringIndexOfCommand";
 import { StringLengthCommand } from "./StringLengthCommand";
 import { StringSubstringIndexCommand } from "./StringSubstringIndexCommand";
 import { StringSubstringLengthCommand } from "./StringSubstringLengthCommand";
@@ -249,6 +250,7 @@ export class CommandsBagFactory {
             new StringCaseUpperCommand(context),
             new StringFormatCommand(context),
             new StringIndexCommand(context),
+            new StringIndexOfCommand(context),
             new StringLengthCommand(context),
             new StringSubstringIndexCommand(context),
             new StringSubstringLengthCommand(context),

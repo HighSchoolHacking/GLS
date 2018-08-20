@@ -657,6 +657,11 @@ export class Ruby extends Language {
 
         strings.className = "string";
 
+        strings.indexOf = new NativeCallProperties(
+            "index",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,

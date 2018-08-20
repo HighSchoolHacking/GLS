@@ -661,6 +661,11 @@ export class Python extends Language {
 
         strings.className = "string";
 
+        strings.indexOf = new NativeCallProperties(
+            "find",
+            NativeCallScope.Member,
+            NativeCallType.Function);
+
         strings.length = new NativeCallProperties(
             "len",
             NativeCallScope.Static,
