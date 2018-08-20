@@ -49,3 +49,53 @@ bar = 7
 
 Some languages, such as C\# and Python above, use string formatting with numeric insertion points into the template string. Some, such as JavaScript, boil down to concatenating them together. As a result, it is not allowed to use the same `{#}` number multiple times in the format string.
 
+### Searching
+
+The `string index of` command can be used to determine whether a substring exists within a string.
+It returns the index of the substring if found, or the equivalent of the `string index not found` command if not found.
+It may also take in an optional third parameter as an integer position within the string to start searching at, if not `0`.
+
+```gls
+variable : haystack string ("Hello, GLS!")
+variable : needle string "GLS"
+variable : firstIndexOf int { string index of : haystack needle }
+variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
+
+print : { string format : ("Found a first result at: {0}.") firstIndexOf int }
+
+if start : { operation : secondIndexOf (not equal to) { string index not found } }
+    print : { string format : ("Found a second result at: {0}.") secondIndexOf int }
+if end
+```
+
+In C\#:
+
+```csharp
+using System;
+
+string haystack = "Hello, GLS!";
+string needle = "GLS";
+int firstIndexOf = haystack.IndexOf(needle);
+int secondIndexOf = haystack.IndexOf(needle, firstIndexOf + needle.Length);
+
+Console.WriteLine(string.Format("Found a first result at: {0}.", firstIndexOf));
+
+if (secondIndexOf != -1)
+{
+    Console.WriteLine(string.Format("Found a second result at: {0}.", secondIndexOf));
+}
+```
+
+In Python:
+
+```python
+haystack = "Hello, GLS!"
+needle = "GLS"
+firstIndexOf = haystack.find(needle)
+secondIndexOf = haystack.find(needle, firstIndexOf + len(needle))
+
+print("Found a first result at: {0}.".format(firstIndexOf))
+
+if secondIndexOf != -1:
+    print("Found a second result at: {0}.".format(secondIndexOf))
+```
