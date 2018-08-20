@@ -1,3 +1,4 @@
+import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
@@ -49,8 +50,8 @@ export class FileStartCommand extends Command {
         const fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
 
         for (let line of source) {
-            line = line.replace("{0}", fileName);
-            line = line.replace("{1}", packagePathJoined);
+            line = GlsUtilities.stringReplaceAll(line, "{0}", fileName);
+            line = GlsUtilities.stringReplaceAll(line, "{1}", packagePathJoined);
 
             output.push(new CommandResult(line, 0));
         }
