@@ -716,6 +716,8 @@ export class Java extends Language {
             NativeCallScope.Member,
             NativeCallType.Function);
 
+        strings.indexOfNotFound = "-1";
+
         strings.length = new NativeCallProperties(
             "length",
             NativeCallScope.Member,

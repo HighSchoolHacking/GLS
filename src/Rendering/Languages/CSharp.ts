@@ -740,6 +740,8 @@ export class CSharp extends Language {
             NativeCallScope.Member,
             NativeCallType.Function);
 
+        strings.indexOfNotFound = "-1";
+
         strings.length = new NativeCallProperties(
             "Length",
             NativeCallScope.Member,

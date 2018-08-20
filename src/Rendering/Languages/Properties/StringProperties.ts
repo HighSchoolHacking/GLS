@@ -43,6 +43,11 @@ export class StringProperties {
     public indexOf: NativeCallProperties;
 
     /**
+     * The value returned by string searching when a substring isn't found.
+     */
+    public indexOfNotFound: string;
+
+    /**
      * How to retrieve a string's length.
      */
     public length: NativeCallProperties;
