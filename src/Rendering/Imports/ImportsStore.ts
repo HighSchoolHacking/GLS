@@ -56,12 +56,12 @@ export class ImportsStore {
      * @param addedImport   New import to store.
      */
     private addImport(addedImport: Import): void {
-        const packageName: string = ImportRelativity[addedImport.relativity] + addedImport.packagePath.join("/");
+        const internalPackageNameKey: string = addedImport.relativity + addedImport.packagePath.join("/");
 
-        if (packageName in this.imports) {
-            this.imports[packageName].addItems(addedImport.items);
+        if (internalPackageNameKey in this.imports) {
+            this.imports[internalPackageNameKey].addItems(addedImport.items);
         } else {
-            this.imports[packageName] = addedImport;
+            this.imports[internalPackageNameKey] = addedImport;
         }
     }
 }

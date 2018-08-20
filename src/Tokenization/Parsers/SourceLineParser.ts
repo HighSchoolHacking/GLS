@@ -43,29 +43,30 @@ export class SourceLineParser {
      */
     private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
         for (let i = start; i < rawLine.length; i += 1) {
-            switch (rawLine[i]) {
-                // Sub-command start
-                case "{":
-                    i = this.parseSubCommand(rawLine, i, nodes);
-                    break;
-
-                // Sub-command end
-                case "}":
-                    return i + 1;
-
-                // Parenthesis start
-                case "(":
-                    i = this.parseParenthesis(rawLine, i + 1, nodes);
-                    break;
-
-                // Space (do nothing)
-                case " ":
-                    break;
-
-                // Regular text start
-                default:
-                    i = this.parseTextCommand(rawLine, i, nodes);
+            // Sub-command start
+            if (rawLine[i] === "{") {
+                i = this.parseSubCommand(rawLine, i, nodes);
+                continue;
             }
+
+            // Sub-command end
+            if (rawLine[i] === "}") {
+                return i + 1;
+            }
+
+            // Parenthesis start
+            if (rawLine[i] === "(") {
+                i = this.parseParenthesis(rawLine, i + 1, nodes);
+                continue;
+            }
+
+            // Space (do nothing)
+            if (rawLine[i] === " ") {
+                continue;
+            }
+
+            // Regular text start
+            i = this.parseTextCommand(rawLine, i, nodes);
         }
 
         return rawLine.length;

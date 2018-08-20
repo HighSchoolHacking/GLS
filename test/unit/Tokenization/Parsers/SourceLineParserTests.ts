@@ -177,13 +177,12 @@ describe("SourceLineParser", () => {
                 ),
             ),
             new TestCase(
-                "command with sub-parenthesis as an args",
-                "abc : (def ghi (jkl mno) pqr)",
+                "command with sub-parenthesis as an escaped arg",
+                "abc : (def ghi (jkl mno\\) pqr)",
                 new CommandNode(
                     "abc",
                     [
-                        new TextNode("def ghi (jkl mno"),
-                        new TextNode("pqr)"),
+                        new TextNode("def ghi (jkl mno) pqr"),
                     ]
                 ),
             ),
