@@ -21,6 +21,11 @@ export class DictionaryProperties {
     public initializeAsNew: boolean;
 
     /**
+     * How dictionaries are initialized as raw variable types (without "new").
+     */
+    public initializeAsLiteral: string;
+
+    /**
      * How to end initializing a new dictionary's values.
      */
     public initializeEnd: string;

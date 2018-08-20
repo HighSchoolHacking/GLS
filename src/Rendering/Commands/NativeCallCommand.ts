@@ -21,7 +21,7 @@ export abstract class NativeCallCommand extends Command {
     /**
      * Renderers for each allowed scope.
      */
-    private scopeRenderers: { [i: number]: NativeCallRenderer };
+    private scopeRenderers: { [i: string]: NativeCallRenderer };
 
     /**
      * Initializes a new instance of the Command class.

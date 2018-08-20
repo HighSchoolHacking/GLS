@@ -33,10 +33,10 @@ export class DictionaryNewCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.properties.dictionaries.initializeAsNew) {
-            return LineResults.newSingleLine("{}", false);
+            return LineResults.newSingleLine(this.language.properties.dictionaries.initializeAsLiteral, false);
         }
 
-        let output = "new ";
+        let output = this.language.properties.classes.newStart;
         output += this.language.properties.dictionaries.className;
 
         if (this.language.properties.classes.generics.used) {

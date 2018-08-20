@@ -32,7 +32,7 @@ export class NewCommand extends Command {
     /**
      * Renderers for each possible render style.
      */
-    private styleRenderers: { [i: number]: NewRenderer };
+    private styleRenderers: { [i: string]: NewRenderer };
 
     /**
      * Initializes a new instance of the Command class.

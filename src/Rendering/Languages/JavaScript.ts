@@ -262,6 +262,7 @@ export class JavaScript extends Language {
             "hasOwnProperty",
             NativeCallScope.Member,
             NativeCallType.Function);
+        dictionaries.initializeAsLiteral = "{}";
         dictionaries.keys = new NativeCallProperties(
             "Object.keys",
             NativeCallScope.Static,

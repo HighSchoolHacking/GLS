@@ -24,7 +24,7 @@ describe("CaseStyleConverterBag", () => {
             const caseStyleConverterBag = new CaseStyleConverterBag();
 
             // Act
-            const action = () => caseStyleConverterBag.getConverter(-1);
+            const action = () => caseStyleConverterBag.getConverter("unknown" as CaseStyle);
 
             // Assert
             expect(action).to.throw(/Unknown case style requested(.*)/);
@@ -48,7 +48,7 @@ describe("CaseStyleConverterBag", () => {
             const caseStyleConverterBag = new CaseStyleConverterBag();
 
             // Act
-            const action = () => caseStyleConverterBag.convertToCase(-1, ["foo", "bar"]);
+            const action = () => caseStyleConverterBag.convertToCase("unknown" as CaseStyle, ["foo", "bar"]);
 
             // Assert
             expect(action).to.throw(/Unknown case style requested(.*)/);

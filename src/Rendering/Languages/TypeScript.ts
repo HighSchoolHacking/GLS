@@ -269,6 +269,7 @@ export class TypeScript extends Language {
             "Object.keys",
             NativeCallScope.Static,
             NativeCallType.Function);
+        dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
         dictionaries.initializePairLeft = "";

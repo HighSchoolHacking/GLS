@@ -10,7 +10,7 @@ export class MathResolver {
     /**
      * Actors to resolve operations, keyed by operation type.
      */
-    private static operationActors: { [i: number]: IMathOperationActor } = {
+    private static operationActors: { [i: string]: IMathOperationActor } = {
         [MathOperation.Addition]: new AdditionOperationActor(),
         [MathOperation.Subtraction]: new SubtractionOperationActor()
     };

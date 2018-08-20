@@ -20,7 +20,7 @@ export class CaseStyleConverterBag {
     /**
      * Casing converters, keyed by their case style.
      */
-    private converters: { [i: number /* CaseStyle */]: ICaseStyleConverter };
+    private converters: { [i: string /* CaseStyle */]: ICaseStyleConverter };
 
     /**
      * Initializes a new instance of the CaseStyleConverter class.

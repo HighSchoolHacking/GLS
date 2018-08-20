@@ -255,6 +255,7 @@ export class Python extends Language {
             " in ",
             NativeCallScope.Operator,
             NativeCallType.FloatingLeft);
+        dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
         dictionaries.initializePairLeft = "";
