@@ -37,6 +37,7 @@ import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
 import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
+import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
@@ -718,6 +719,16 @@ export class TypeScript extends Language {
      */
     protected generateStyleProperties(style: StyleProperties): void {
         style.semicolon = ";";
+    }
+
+    /**
+     * Generates metadata on unsupported complaints.
+     *
+     * @param style   A property container for metadata on unsupported complaints.
+     */
+    protected generateUnsupportedProperties(unsupported: UnsupportedProperties): void {
+        unsupported.complaintEnd = "*/";
+        unsupported.complaintStart = "/*";
     }
 
     /**

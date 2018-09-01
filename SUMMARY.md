@@ -17,5 +17,6 @@
     * [Static Functions](docs/static-functions.md)
   * [Files](docs/files.md)
   * [Imports](docs/imports.md)
+  * [Unsupported Commands](docs/unsupported-commands.md)
 * [Internals](docs/internals.md)
 * [Omissions](docs/omissions.md)

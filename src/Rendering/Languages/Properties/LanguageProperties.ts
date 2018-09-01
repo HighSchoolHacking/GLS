@@ -24,6 +24,7 @@ import { PrintingProperties } from "./PrintingProperties";
 import { SetProperties } from "./SetProperties";
 import { StringProperties } from "./StringProperties";
 import { StyleProperties } from "./StyleProperties";
+import { UnsupportedProperties } from "./UnsupportedProperties";
 import { VariableProperties } from "./VariableProperties";
 
 /**
@@ -161,6 +162,11 @@ export class LanguageProperties {
     public style: StyleProperties;
 
     /**
+     * Metadata on unsupported complaints.
+     */
+    public unsupported: UnsupportedProperties;
+
+    /**
      * Metadata on variables.
      */
     public variables: VariableProperties;
@@ -195,6 +201,7 @@ export class LanguageProperties {
         this.sets = new SetProperties();
         this.strings = new StringProperties();
         this.style = new StyleProperties();
+        this.unsupported = new UnsupportedProperties();
         this.variables = new VariableProperties();
     }
 }
