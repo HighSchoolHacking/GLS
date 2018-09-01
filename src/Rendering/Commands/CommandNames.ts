@@ -613,6 +613,11 @@ export class CommandNames {
     public static Type = "type";
 
     /**
+     * Name key for the Unsupported command.
+     */
+    public static Unsupported = "unsupported";
+
+    /**
      * Name key for the Value command.
      */
     public static Value = "value";
