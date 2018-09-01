@@ -14,14 +14,6 @@
         "sourceMap": true,
         "strict": true
     },
-    "exclude": [
-        "../src/*.ts",
-        "../src/**/*.ts",
-        "../util/*.ts",
-        "../util/**/*.ts"
-    ],
-    "include": [
-        "./*.ts",
-        "./unit/**/*.ts"
-    ]
+    "exclude": ["../src/*.ts", "../src/**/*.ts", "../util/*.ts", "../util/**/*.ts"],
+    "include": ["./*.ts", "./unit/**/*.ts"]
 }

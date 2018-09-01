@@ -1,8 +1,5 @@
 {
-    "extends": [
-        "tslint:all",
-        "tslint-config-prettier"
-    ],
+    "extends": ["tslint:all", "tslint-config-prettier"],
     "rules": {
         "array-type": [true, "array"],
         "arrow-return-shorthand": false,
@@ -11,6 +8,7 @@
         "file-name-casing": false,
         "linebreak-style": false,
         "member-ordering": false,
+        "newline-before-return": false,
         "no-empty-interface": false,
         "no-implicit-dependencies": false,
         "no-inferrable-types": false,

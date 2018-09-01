@@ -1,56 +1,57 @@
 {
-  "name": "general-language-syntax",
-  "author": {
-    "name": "Josh Goldberg",
-    "email": "jogol@microsoft.com"
-  },
-  "bugs": {
-    "url": "https://github.com/HighSchoolHacking/GLS/issues"
-  },
-  "description": "A unified syntax that compiles into your favorite OOP languages.",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com:general-language-syntax/gls.git"
-  },
-  "scripts": {
-    "precommit": "pretty-quick --staged --write",
-    "prettier:write": "prettier --config .prettierrc.json --write",
-    "prettier:write:all": "yarn run prettier:write ./{src,util}/**/*.ts",
-    "src": "npm run src:tsc && npm run src:tslint",
-    "src:tsc": "tsc -p .",
-    "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
-    "test": "npm run test:tsc && npm run test:tslint && npm run test:run",
-    "test:tsc": "tsc -p test",
-    "test:tslint": "tslint -c test/tslint.json -p test/tsconfig.json -t stylish",
-    "test:run": "npm run test:run:unit && npm run test:run:integration && npm run test:run:end-to-end",
-    "test:run:unit": "mocha test/unit/**/*.js",
-    "test:run:integration": "mocha test/integration.js",
-    "test:run:end-to-end": "mocha test/end-to-end.js",
-    "util": "npm run util:tsc && npm run util:tslint",
-    "util:new-language": "node util/createNewLanguage.js",
-    "util:tsc": "tsc -p util",
-    "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
-    "verify": "npm run src && npm run util && npm run test"
-  },
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "version": "0.3.24",
-  "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/minimatch": "^3.0.3",
-    "@types/mocha": "^5.2.5",
-    "@types/node": "^10.7.1",
-    "@types/yargs": "^11.1.1",
-    "chai": "^4.1.2",
-    "husky": "^0.14.3",
-    "minimatch": "^3.0.4",
-    "mocha": "^5.2.0",
-    "prettier": "^1.14.2",
-    "tsify": "^4.0.0",
-    "tslint": "5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.0.1",
-    "yargs": "^12.0.1"
-  }
+    "name": "general-language-syntax",
+    "author": {
+        "name": "Josh Goldberg",
+        "email": "jogol@microsoft.com"
+    },
+    "bugs": {
+        "url": "https://github.com/HighSchoolHacking/GLS/issues"
+    },
+    "description": "A unified syntax that compiles into your favorite OOP languages.",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com:general-language-syntax/gls.git"
+    },
+    "scripts": {
+        "precommit": "pretty-quick --staged --write",
+        "prettier:write": "prettier --config .prettierrc.json --write",
+        "prettier:write:all": "yarn run prettier:write ./{src,test,util}/**/*.{json,ts}",
+        "src": "npm run src:tsc && npm run src:tslint",
+        "src:tsc": "tsc -p .",
+        "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
+        "test": "npm run test:tsc && npm run test:tslint && npm run test:run",
+        "test:tsc": "tsc -p test",
+        "test:tslint": "tslint -c test/tslint.json -p test/tsconfig.json -t stylish",
+        "test:run": "npm run test:run:unit && npm run test:run:integration && npm run test:run:end-to-end",
+        "test:run:unit": "mocha test/unit/**/*.js",
+        "test:run:integration": "mocha test/integration.js",
+        "test:run:end-to-end": "mocha test/end-to-end.js",
+        "util": "npm run util:tsc && npm run util:tslint",
+        "util:new-language": "node util/createNewLanguage.js",
+        "util:tsc": "tsc -p util",
+        "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
+        "verify": "npm run src && npm run util && npm run test"
+    },
+    "main": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "version": "0.3.24",
+    "devDependencies": {
+        "@types/chai": "^4.1.4",
+        "@types/minimatch": "^3.0.3",
+        "@types/mocha": "^5.2.5",
+        "@types/node": "^10.7.1",
+        "@types/yargs": "^11.1.1",
+        "chai": "^4.1.2",
+        "husky": "^0.14.3",
+        "minimatch": "^3.0.4",
+        "mocha": "^5.2.0",
+        "prettier": "^1.14.2",
+        "pretty-quick": "^1.6.0",
+        "tsify": "^4.0.0",
+        "tslint": "5.11.0",
+        "tslint-config-prettier": "^1.15.0",
+        "typescript": "^3.0.1",
+        "yargs": "^12.0.1"
+    }
 }
