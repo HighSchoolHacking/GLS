@@ -17,7 +17,7 @@ export class CatchStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("exception", "Target exception.", true),
-            new SingleParameter("alias", "Alias for target exception.", true)
+            new SingleParameter("alias", "Alias for target exception.", true),
         ]);
 
     /**

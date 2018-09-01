@@ -66,10 +66,7 @@ export class Java extends Language {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        arrays.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -147,7 +144,7 @@ export class Java extends Language {
             boolean: "boolean",
             dictionary: "HashMap",
             list: "ArrayList",
-            number: "double"
+            number: "double",
         };
 
         classes.constructors.private = "private ";
@@ -158,10 +155,7 @@ export class Java extends Language {
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
 
-        classes.instanceOf = new NativeCallProperties(
-            " instanceof ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallProperties(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
 
@@ -228,7 +222,7 @@ export class Java extends Language {
             parameter: "param",
             returns: "returns",
             summary: "",
-            todo: "todo"
+            todo: "todo",
         };
         comments.docTagsWithParameters = {
             parameter: "",
@@ -264,14 +258,8 @@ export class Java extends Language {
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
         dictionaries.className = "HashMap";
-        dictionaries.containsKey = new NativeCallProperties(
-            "containsKey",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties(
-            "keySet",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        dictionaries.containsKey = new NativeCallProperties("containsKey", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
@@ -279,12 +267,7 @@ export class Java extends Language {
         dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
-        dictionaries.requiredImports = [
-            new Import(
-                ["java", "util"],
-                ["HashMap"],
-                ImportRelativity.Absolute)
-        ];
+        dictionaries.requiredImports = [new Import(["java", "util"], ["HashMap"], ImportRelativity.Absolute)];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -344,10 +327,7 @@ export class Java extends Language {
         files.endLines = [];
         files.indentation = 0;
         files.startCase = CaseStyle.PackageLowerCase;
-        files.startLines = [
-            "package {1};",
-            "",
-        ];
+        files.startLines = ["package {1};", ""];
     }
 
     /**
@@ -434,47 +414,18 @@ export class Java extends Language {
     protected generateListProperties(lists: ListProperties): void {
         lists.className = "ArrayList";
 
-        lists.addList = new NativeCallProperties(
-            "addAll",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.addList = new NativeCallProperties("addAll", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.length = new NativeCallProperties(
-            "size",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.length = new NativeCallProperties("size", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.pop = new NativeCallProperties(
-            "remove",
-            NativeCallScope.Member,
-            NativeCallType.Function)
-            .withArguments([
-                "{0}.size() - 1"
-            ]);
+        lists.pop = new NativeCallProperties("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
 
-        lists.popFront = new NativeCallProperties(
-            "remove",
-            NativeCallScope.Member,
-            NativeCallType.Function)
-            .withArguments([
-                "0"
-            ]);
+        lists.popFront = new NativeCallProperties("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
 
-        lists.push = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.push = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.requiredImports = [
-            new Import(
-                ["java", "util"],
-                ["ArrayList"],
-                ImportRelativity.Absolute)
-        ];
+        lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
     }
 
     /**
@@ -513,20 +464,12 @@ export class Java extends Language {
      * @param main   A property container for metadata on main execution areas.
      */
     protected generateMainProperties(main: MainProperties): void {
-        main.contextEndLines = [
-            "}"
-        ];
+        main.contextEndLines = ["}"];
         main.contextIndentation = 1;
-        main.contextStartLines = [
-            "class Program {"
-        ];
-        main.mainEndLines = [
-            "}"
-        ];
+        main.contextStartLines = ["class Program {"];
+        main.mainEndLines = ["}"];
         main.mainIndentation = 1;
-        main.mainStartLines = [
-            "public static void main(String[] args) {"
-        ];
+        main.mainStartLines = ["public static void main(String[] args) {"];
     }
 
     /**
@@ -535,30 +478,12 @@ export class Java extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.ceiling = new NativeCallProperties(
-            "Math.ceil",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "Math.floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "Math.max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "Math.min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.power = new NativeCallProperties(
-            "Math.pow",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        math.absolute = new NativeCallProperties("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.ceiling = new NativeCallProperties("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
+        math.floor = new NativeCallProperties("Math.floor", NativeCallScope.Static, NativeCallType.Function);
+        math.max = new NativeCallProperties("Math.max", NativeCallScope.Static, NativeCallType.Function);
+        math.min = new NativeCallProperties("Math.min", NativeCallScope.Static, NativeCallType.Function);
+        math.power = new NativeCallProperties("Math.pow", NativeCallScope.Static, NativeCallType.Function);
         math.mathName = "Math";
     }
 
@@ -638,30 +563,18 @@ export class Java extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "HashSet";
 
-        sets.contains = new NativeCallProperties(
-            "contains",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.contains = new NativeCallProperties("contains", NativeCallScope.Member, NativeCallType.Function);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties(
-            "toArray",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.toArray = new NativeCallProperties("toArray", NativeCallScope.Member, NativeCallType.Function);
 
-        sets.toList = new NativeCallProperties(
-            "new ArrayList<>",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        sets.toList = new NativeCallProperties("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
 
         sets.requiredImports = [];
         sets.startItemsLeft = "[";
@@ -676,9 +589,9 @@ export class Java extends Language {
      * @param strings   A property container for metadata on string formatting.
      */
     protected generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "String.format(\"";
-        formatting.formatMiddle = "\", ";
-        formatting.formatAbbreviated = "\"";
+        formatting.formatLeft = 'String.format("';
+        formatting.formatMiddle = '", ';
+        formatting.formatAbbreviated = '"';
         formatting.formatRight = ")";
         formatting.formatInputLeft = "%";
         formatting.formatInputRight = "";
@@ -700,34 +613,19 @@ export class Java extends Language {
     protected generateStringProperties(strings: StringProperties): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties(
-            "toLowerCase",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseLower = new NativeCallProperties("toLowerCase", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.caseUpper = new NativeCallProperties(
-            "toUpperCase",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseUpper = new NativeCallProperties("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties(
-            "indexOf",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.indexOf = new NativeCallProperties("indexOf", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "-1";
 
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.trim = new NativeCallProperties(
-            "trim",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.trim = new NativeCallProperties("trim", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -790,7 +688,7 @@ export class Java extends Language {
         variables.declarationRequired = true;
 
         variables.aliases = {
-            infinity: "double.POSITIVE_INFINITY"
+            infinity: "double.POSITIVE_INFINITY",
         };
         variables.castLeft = "(";
         variables.castRight = ")";

@@ -22,11 +22,9 @@ export class NewCommand extends Command {
         .withDescription("Instantiates a new class instance.")
         .withParameters([
             new SingleParameter("className", "Name of the class.", true),
-            new RepeatingParameters(
-                "Arguments to pass into the constructor",
-                [
-                    new SingleParameter("argument", "Argument to pass into the constructor", false)
-                ])
+            new RepeatingParameters("Arguments to pass into the constructor", [
+                new SingleParameter("argument", "Argument to pass into the constructor", false),
+            ]),
         ]);
 
     /**
@@ -45,7 +43,7 @@ export class NewCommand extends Command {
         this.styleRenderers = {
             [NewInstantiationSyntaxKind.MemberMethodCall]: new MemberMethodRenderer(this.language),
             [NewInstantiationSyntaxKind.MethodCall]: new MethodCallRenderer(this.language),
-            [NewInstantiationSyntaxKind.Prefix]: new PrefixRenderer(this.language)
+            [NewInstantiationSyntaxKind.Prefix]: new PrefixRenderer(this.language),
         };
     }
 

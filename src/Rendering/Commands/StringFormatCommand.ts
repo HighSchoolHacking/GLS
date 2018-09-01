@@ -18,12 +18,10 @@ export class StringFormatCommand extends Command {
         .withDescription("Concatenates multiple other values into a single string.")
         .withParameters([
             new SingleParameter("format", "String describing the format.", true),
-            new RepeatingParameters(
-                "Input pairs.",
-                [
-                    new SingleParameter("inputName", "Input pair name", true),
-                    new SingleParameter("inputType", "Input pair type", true)
-                ])
+            new RepeatingParameters("Input pairs.", [
+                new SingleParameter("inputName", "Input pair name", true),
+                new SingleParameter("inputType", "Input pair type", true),
+            ]),
         ]);
 
     /**
@@ -40,7 +38,7 @@ export class StringFormatCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (parameters[1][0] !== "\"") {
+        if (parameters[1][0] !== '"') {
             throw new Error("String formatting must be done with primitives.");
         }
 

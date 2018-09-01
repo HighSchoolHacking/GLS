@@ -19,7 +19,7 @@ export class MemberVariableDeclareCommand extends Command {
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the member variable.", true),
             new SingleParameter("name", "The name of the member variable.", true),
-            new SingleParameter("type", "The type of the variable.", true)
+            new SingleParameter("type", "The type of the variable.", true),
         ]);
 
     /**

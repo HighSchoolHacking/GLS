@@ -13,9 +13,7 @@ export class TypeCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Type)
         .withDescription("Parses a language's alias for a type.")
-        .withParameters([
-            new SingleParameter("type", "A type to parse.", true)
-        ]);
+        .withParameters([new SingleParameter("type", "A type to parse.", true)]);
 
     /**
      * @returns Metadata on the command.

@@ -16,7 +16,7 @@ export class VariableInlineCommand extends Command {
         .withParameters([
             new SingleParameter("name", "The name of the variable.", true),
             new SingleParameter("type", "The type of the variable.", true),
-            new SingleParameter("value", "The starting value of the variable.", false)
+            new SingleParameter("value", "The starting value of the variable.", false),
         ]);
 
     /**

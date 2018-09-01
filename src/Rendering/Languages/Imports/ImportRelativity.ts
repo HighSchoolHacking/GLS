@@ -10,5 +10,5 @@ export enum ImportRelativity {
     /**
      * The import is from a local file.
      */
-    Local = "Local"
+    Local = "Local",
 }

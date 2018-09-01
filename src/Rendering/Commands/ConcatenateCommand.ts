@@ -17,11 +17,9 @@ export class ConcatenateCommand extends Command {
         .withParameters([
             new SingleParameter("string", "A string to concatenate.", true),
             new SingleParameter("string", "A string to concatenate.", true),
-            new RepeatingParameters(
-                "Additional strings to concatenate.",
-                [
-                    new SingleParameter("string", "A string to concatenate.", false)
-                ])
+            new RepeatingParameters("Additional strings to concatenate.", [
+                new SingleParameter("string", "A string to concatenate.", false),
+            ]),
         ]);
 
     /**

@@ -125,9 +125,11 @@ export class ImportsPrinter {
     private renderPackagePath(addedImport: Import): string {
         let line = this.caseStyleConverter.convert(addedImport.packagePath);
 
-        if (addedImport.relativity === ImportRelativity.Local
-            && this.language.properties.imports.useLocalRelativePaths
-            && line[0] !== ".") {
+        if (
+            addedImport.relativity === ImportRelativity.Local &&
+            this.language.properties.imports.useLocalRelativePaths &&
+            line[0] !== "."
+        ) {
             line = "./" + line;
         }
 

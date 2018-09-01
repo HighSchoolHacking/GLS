@@ -5,16 +5,12 @@ export class TextParsing {
     /**
      * Characters not considered to be part of command names.
      */
-    private static nonCommandNameCharacters = new Set([
-        "}", ":",
-    ]);
+    private static nonCommandNameCharacters = new Set(["}", ":"]);
 
     /**
      * Characters not considered to be pure text parts of words.
      */
-    private static nonWordCharacters = new Set([
-        " ", "{", "(", "}", ":",
-    ]);
+    private static nonWordCharacters = new Set([" ", "{", "(", "}", ":"]);
 
     /**
      * Gets the next index of a non-space character in the text.

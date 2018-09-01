@@ -15,7 +15,7 @@ export enum NewInstantiationSyntaxKind {
     /**
      * Called as an operator on or with the calling object.
      */
-    MemberMethodCall = "MemberMethodCall"
+    MemberMethodCall = "MemberMethodCall",
 }
 
 /**

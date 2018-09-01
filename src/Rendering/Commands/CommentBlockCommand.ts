@@ -15,11 +15,7 @@ export class CommentBlockCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlock)
         .withDescription("A single line within a comment block.")
         .withParameters([
-            new RepeatingParameters(
-                "Contents of the comment block line",
-                [
-                    new SingleParameter("word", "A word in the line.", false)
-                ])
+            new RepeatingParameters("Contents of the comment block line", [new SingleParameter("word", "A word in the line.", false)]),
         ]);
 
     /**

@@ -16,7 +16,7 @@ export class ThrowExceptionCommand extends Command {
         .withDescription("Throws an exception.")
         .withParameters([
             new SingleParameter("exception", "Exception to throw.", true),
-            new SingleParameter("message", "Message to attach to the exception.", true)
+            new SingleParameter("message", "Message to attach to the exception.", true),
         ]);
 
     /**
@@ -36,7 +36,7 @@ export class ThrowExceptionCommand extends Command {
         let line: string = this.language.properties.exceptions.throw;
         line += " " + parameters[1];
         line += this.language.properties.exceptions.throwExceptionMiddle;
-        line += "\"" + parameters[2] + "\"";
+        line += '"' + parameters[2] + '"';
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.properties.exceptions.throwExceptionRight, 0);

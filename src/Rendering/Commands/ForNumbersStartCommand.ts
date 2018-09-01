@@ -20,7 +20,7 @@ export class ForNumbersStartCommand extends Command {
             new SingleParameter("type", "The type of the loop variable", true),
             new SingleParameter("start", "What the loop variable starts at.", true),
             new SingleParameter("end", "What the loop variable ends at.", true),
-            new SingleParameter("increment", "Increment to increase by, if not 1.", false)
+            new SingleParameter("increment", "Increment to increase by, if not 1.", false),
         ]);
 
     /**

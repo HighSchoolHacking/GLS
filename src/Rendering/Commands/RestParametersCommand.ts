@@ -15,7 +15,7 @@ export class RestParametersCommand extends Command {
         .withDescription("Creates an array for unassigned arguments.")
         .withParameters([
             new SingleParameter("name", "A name for the rest parameter array.", true),
-            new SingleParameter("type", "A type for the rest parameter array.", true)
+            new SingleParameter("type", "A type for the rest parameter array.", true),
         ]);
 
     /**

@@ -16,11 +16,7 @@ export class SetNewCommand extends Command {
         .withDescription("Initializes a new set.")
         .withParameters([
             new SingleParameter("itemType", "The type of the items.", true),
-            new RepeatingParameters(
-                "Items initially in the set.",
-                [
-                    new SingleParameter("item", "Item initially in the set.", false)
-                ])
+            new RepeatingParameters("Items initially in the set.", [new SingleParameter("item", "Item initially in the set.", false)]),
         ]);
 
     /**

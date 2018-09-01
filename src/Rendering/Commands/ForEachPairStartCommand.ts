@@ -21,7 +21,7 @@ export class ForEachPairStartCommand extends Command {
             new SingleParameter("keyName", "The name of the key variable.", true),
             new SingleParameter("keyType", "The type of the key variable.", true),
             new SingleParameter("valueName", "The name of the value variable.", true),
-            new SingleParameter("valueType", "The type of the value variable.", true)
+            new SingleParameter("valueType", "The type of the value variable.", true),
         ]);
 
     /**
@@ -134,10 +134,12 @@ export class ForEachPairStartCommand extends Command {
     private addKeyedValueLookup(parameters: string[], output: CommandResult[]): void {
         const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
-        const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryIndex, parameters[1], parameters[3]]).commandResults[0].text;
-        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0].text;
+        const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryIndex, parameters[1], parameters[3]])
+            .commandResults[0].text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
+            .text;
 
-        valueVariable  += this.language.properties.style.semicolon;
+        valueVariable += this.language.properties.style.semicolon;
 
         output.push(new CommandResult(valueVariable, 0));
     }
@@ -171,9 +173,10 @@ export class ForEachPairStartCommand extends Command {
         const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
         const valueLookup: string = parameters[2] + this.language.properties.loops.forEachPairsRetrieveValue;
-        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0].text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
+            .text;
 
-        valueVariable  += this.language.properties.style.semicolon;
+        valueVariable += this.language.properties.style.semicolon;
 
         output.push(new CommandResult(valueVariable, 0));
     }

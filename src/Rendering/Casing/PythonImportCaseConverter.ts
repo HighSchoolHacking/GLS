@@ -35,8 +35,6 @@ export class PythonImportCaseConverter implements ICaseStyleConverter {
      * @returns The word after this style's transformation.
      */
     public transformWord(word: string): string {
-        return word === ".."
-            ? "."
-            : word.toLowerCase();
+        return word === ".." ? "." : word.toLowerCase();
     }
 }

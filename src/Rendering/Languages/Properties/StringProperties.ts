@@ -61,5 +61,4 @@ export class StringProperties {
      * How to trim strings.
      */
     public trim: NativeCallProperties;
-
 }

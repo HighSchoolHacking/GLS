@@ -13,9 +13,7 @@ export class MathAbsoluteCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathAbsolute)
         .withDescription("Computes the absolute value of a number.")
-        .withParameters([
-            new SingleParameter("name", "The name of the variable.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**
      * @returns Metadata on the command.

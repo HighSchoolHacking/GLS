@@ -18,7 +18,7 @@ export class ForEachKeyStartCommand extends Command {
         .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),
             new SingleParameter("keyName", "The name of the iteration key variable.", true),
-            new SingleParameter("keyType", "The type of the iteration key variable.", true)
+            new SingleParameter("keyType", "The type of the iteration key variable.", true),
         ]);
 
     /**

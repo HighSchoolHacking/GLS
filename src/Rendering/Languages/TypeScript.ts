@@ -62,10 +62,7 @@ export class TypeScript extends Language {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "Array";
-        arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        arrays.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -143,7 +140,7 @@ export class TypeScript extends Language {
             dictionary: "object",
             double: "number",
             float: "number",
-            int: "number"
+            int: "number",
         };
 
         classes.constructors.private = "private ";
@@ -156,10 +153,7 @@ export class TypeScript extends Language {
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
 
-        classes.instanceOf = new NativeCallProperties(
-            " instanceof ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallProperties(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
 
@@ -226,7 +220,7 @@ export class TypeScript extends Language {
             parameter: "param",
             returns: "returns",
             summary: "",
-            todo: "todo"
+            todo: "todo",
         };
         comments.docTagsWithParameters = {
             parameter: "",
@@ -262,14 +256,8 @@ export class TypeScript extends Language {
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
         dictionaries.className = "Object";
-        dictionaries.containsKey = new NativeCallProperties(
-            "hasOwnProperty",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties(
-            "Object.keys",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        dictionaries.containsKey = new NativeCallProperties("hasOwnProperty", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties("Object.keys", NativeCallScope.Static, NativeCallType.Function);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -378,8 +366,8 @@ export class TypeScript extends Language {
         imports.itemsBeforePackage = true;
         imports.leftAbsolute = "import { ";
         imports.leftLocal = "import { ";
-        imports.middle = " } from \"";
-        imports.right = "\";";
+        imports.middle = ' } from "';
+        imports.right = '";';
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }
@@ -424,30 +412,12 @@ export class TypeScript extends Language {
      */
     protected generateListProperties(lists: ListProperties): void {
         lists.asArray = true;
-        lists.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.pop = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.popFront = new NativeCallProperties(
-            "shift",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.push = new NativeCallProperties(
-            "push",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.addList = new NativeCallProperties(
-            "concat",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
+        lists.pop = new NativeCallProperties("pop", NativeCallScope.Member, NativeCallType.Function);
+        lists.popFront = new NativeCallProperties("shift", NativeCallScope.Member, NativeCallType.Function);
+        lists.push = new NativeCallProperties("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallProperties("concat", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -497,30 +467,12 @@ export class TypeScript extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "Math.abs",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.ceiling = new NativeCallProperties(
-            "Math.ceil",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.floor = new NativeCallProperties(
-            "Math.floor",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.max = new NativeCallProperties(
-            "Math.max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "Math.min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.power = new NativeCallProperties(
-            "Math.pow",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        math.absolute = new NativeCallProperties("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.ceiling = new NativeCallProperties("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
+        math.floor = new NativeCallProperties("Math.floor", NativeCallScope.Static, NativeCallType.Function);
+        math.max = new NativeCallProperties("Math.max", NativeCallScope.Static, NativeCallType.Function);
+        math.min = new NativeCallProperties("Math.min", NativeCallScope.Static, NativeCallType.Function);
+        math.power = new NativeCallProperties("Math.pow", NativeCallScope.Static, NativeCallType.Function);
         math.mathName = "Math";
     }
 
@@ -601,25 +553,16 @@ export class TypeScript extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "Set";
 
-        sets.contains = new NativeCallProperties(
-            "has",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.contains = new NativeCallProperties("has", NativeCallScope.Member, NativeCallType.Function);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties(
-            "Array.from",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        sets.toArray = new NativeCallProperties("Array.from", NativeCallScope.Static, NativeCallType.Function);
 
         sets.toList = sets.toArray;
 
@@ -652,34 +595,19 @@ export class TypeScript extends Language {
     protected generateStringProperties(strings: StringProperties): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties(
-            "toLowerCase",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseLower = new NativeCallProperties("toLowerCase", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.caseUpper = new NativeCallProperties(
-            "toUpperCase",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseUpper = new NativeCallProperties("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
 
         strings.className = "String";
 
-        strings.indexOf = new NativeCallProperties(
-            "indexOf",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.indexOf = new NativeCallProperties("indexOf", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "-1";
 
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        strings.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.trim = new NativeCallProperties(
-            "trim",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.trim = new NativeCallProperties("trim", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -740,7 +668,7 @@ export class TypeScript extends Language {
         variables.declarationRequired = true;
 
         variables.aliases = {
-            infinity: "Infinity"
+            infinity: "Infinity",
         };
         variables.castLeft = "<";
         variables.castRight = ">";

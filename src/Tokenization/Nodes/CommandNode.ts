@@ -7,9 +7,7 @@ export class CommandNode implements IGlsNode {
     /**
      * Characters that indicate a command needs to be wrapped in parenthesis.
      */
-    private static readonly textWrapIndicators: string[] = [
-        "{", "(", " ",
-    ];
+    private static readonly textWrapIndicators: string[] = ["{", "(", " "];
 
     /**
      * GLS command name.

@@ -13,9 +13,7 @@ export class StringCaseUpperCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringCaseUpper)
         .withDescription("Creates a upper-case version of a string.")
-        .withParameters([
-            new SingleParameter("string", "A string to create a upper-case version of.", true)
-        ]);
+        .withParameters([new SingleParameter("string", "A string to create a upper-case version of.", true)]);
 
     /**
      * @returns Metadata on the command.

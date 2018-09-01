@@ -13,9 +13,7 @@ export class ListTypeCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListType)
         .withDescription("Declares a list type.")
-        .withParameters([
-            new SingleParameter("type", "The type of the list", true)
-        ]);
+        .withParameters([new SingleParameter("type", "The type of the list", true)]);
 
     /**
      * @returns Metadata on the command.

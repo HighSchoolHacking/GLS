@@ -16,11 +16,9 @@ export class FunctionCommand extends Command {
         .withDescription("Calls a function.")
         .withParameters([
             new SingleParameter("name", "The name of the function.", true),
-            new RepeatingParameters(
-                "Function parameters.",
-                [
-                    new SingleParameter("parameterName", "A named parameter for the function.", true),
-                ])
+            new RepeatingParameters("Function parameters.", [
+                new SingleParameter("parameterName", "A named parameter for the function.", true),
+            ]),
         ]);
 
     /**

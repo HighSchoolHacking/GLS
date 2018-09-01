@@ -18,12 +18,10 @@ export class FileStartCommand extends Command {
         .withDescription("Starts a file.")
         .withIndentation([1])
         .withParameters([
-            new RepeatingParameters(
-                "Directories leading to the file.",
-                [
-                    new SingleParameter("directory", "Directory leading to the file", false)
-                ]),
-            new SingleParameter("fileStart", "The name of the file.", true)
+            new RepeatingParameters("Directories leading to the file.", [
+                new SingleParameter("directory", "Directory leading to the file", false),
+            ]),
+            new SingleParameter("fileStart", "The name of the file.", true),
         ]);
 
     /**
@@ -44,9 +42,7 @@ export class FileStartCommand extends Command {
         const source: string[] = this.language.properties.files.startLines;
         const packagePathAndFileName: string[] = parameters.slice(1);
         const packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
-        const packagePathJoined: string = this.context.convertArrayToCase(
-            packagePath,
-            this.language.properties.files.startCase);
+        const packagePathJoined: string = this.context.convertArrayToCase(packagePath, this.language.properties.files.startCase);
         const fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
 
         for (let line of source) {

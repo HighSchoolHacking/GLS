@@ -21,12 +21,10 @@ export class ConstructorStartCommand extends Command {
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the constructor.", true),
             new SingleParameter("className", "The name of the class.", true),
-            new RepeatingParameters(
-                "Function parameters.",
-                [
-                    new SingleParameter("parameterName", "A named parameter for the constructor.", true),
-                    new SingleParameter("parameterType", "The type of the parameter.", true)
-                ])
+            new RepeatingParameters("Function parameters.", [
+                new SingleParameter("parameterName", "A named parameter for the constructor.", true),
+                new SingleParameter("parameterType", "The type of the parameter.", true),
+            ]),
         ]);
 
     /**

@@ -17,18 +17,10 @@ export class InterfaceMethodCommand extends Command {
         .withParameters([
             new SingleParameter("MethodName", "The method name.", true),
             new SingleParameter("returnType", "Return type of the method", true),
-            new RepeatingParameters(
-                "Method arguments.",
-                [
-                    new SingleParameter(
-                        "argumentName",
-                        "Name of argument.",
-                        true),
-                    new SingleParameter(
-                        "argumentType",
-                        "Type of argument.",
-                        true)
-                ])
+            new RepeatingParameters("Method arguments.", [
+                new SingleParameter("argumentName", "Name of argument.", true),
+                new SingleParameter("argumentType", "Type of argument.", true),
+            ]),
         ]);
 
     /**

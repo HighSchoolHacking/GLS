@@ -13,9 +13,7 @@ export class DictionaryKeysCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryKeys)
         .withDescription("Retrieves the keys of a dictionary.")
-        .withParameters([
-            new SingleParameter("dictionary", "A dictionary to retrieve the keys of.", true)
-        ]);
+        .withParameters([new SingleParameter("dictionary", "A dictionary to retrieve the keys of.", true)]);
 
     /**
      * @returns Metadata on the command.

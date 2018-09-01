@@ -17,9 +17,11 @@ export const findGlsTestSourcesUnder = (rootPath: string, inclusions?: Set<strin
     for (const childName of childrenNames) {
         tests.set(
             childName,
-            fs.readdirSync(path.resolve(rootPath, childName))
+            fs
+                .readdirSync(path.resolve(rootPath, childName))
                 .filter((testFileName) => testFileName.indexOf(".gls") !== -1)
-                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))));
+                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))),
+        );
     }
 
     return tests;

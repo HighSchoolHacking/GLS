@@ -11,8 +11,7 @@ export class MainContextStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainContextStart)
-        .withDescription("Starts a main context.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainContextStart).withDescription("Starts a main context.");
 
     /**
      * @returns Metadata on the command.

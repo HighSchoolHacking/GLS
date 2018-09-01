@@ -19,8 +19,11 @@ const addToIndex = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTempla
 
     fs.writeFileSync(
         filePath,
-        normalizeEndlines(fs.readFileSync(filePath).toString())
-            .replace(oldExportTemplate, `${oldExportTemplate}${os.EOL}${newExportTemplate}`));
+        normalizeEndlines(fs.readFileSync(filePath).toString()).replace(
+            oldExportTemplate,
+            `${oldExportTemplate}${os.EOL}${newExportTemplate}`,
+        ),
+    );
 };
 
 const addToLanguagesBag = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
@@ -34,24 +37,20 @@ const addToLanguagesBag = (newLanguage: ILanguageTemplate, oldLanguage: ILanguag
         filePath,
         normalizeEndlines(fs.readFileSync(filePath).toString())
             .replace(oldImportTemplate, `${oldImportTemplate}${os.EOL}${newImportTemplate}`)
-            .replace(oldMemberTemplate, `${oldMemberTemplate}${os.EOL}${newMemberTemplate}`));
+            .replace(oldMemberTemplate, `${oldMemberTemplate}${os.EOL}${newMemberTemplate}`),
+    );
 };
 
 const createLanguageFile = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate) => {
     const source = path.join(__dirname, `../src/Rendering/Languages/${oldLanguage.name}.ts`);
     const sink = path.join(__dirname, `../src/Rendering/Languages/${newLanguage.name}.ts`);
 
-    const sourceContents = fs.readFileSync(source)
+    const sourceContents = fs
+        .readFileSync(source)
         .toString()
-        .replace(
-            new RegExp(` ${oldLanguage.name} `, "gi"),
-            ` ${newLanguage.name} `)
-        .replace(
-            `.extension = "${oldLanguage.extension}"`,
-            `.extension = "${newLanguage.extension}"`)
-        .replace(
-            `.name = "${oldLanguage.name}"`,
-            `.name = "${newLanguage.name}"`);
+        .replace(new RegExp(` ${oldLanguage.name} `, "gi"), ` ${newLanguage.name} `)
+        .replace(`.extension = "${oldLanguage.extension}"`, `.extension = "${newLanguage.extension}"`)
+        .replace(`.name = "${oldLanguage.name}"`, `.name = "${newLanguage.name}"`);
     fs.writeFileSync(sink, sourceContents);
 };
 
@@ -88,34 +87,42 @@ const createYargsOption = (specifiedOptions: Partial<yargs.Options>) => {
         demandOption: true,
         nargs: 1,
     };
-    return {...defaultOptions, ...specifiedOptions};
+    return { ...defaultOptions, ...specifiedOptions };
 };
 
 // Ensures that an extension string passed in as an argument begins with a period
 const extensionFormatCheck = (extension: string): string => {
-    return (extension.charAt(0) !== ".")
-        ? "." + extension
-        : extension;
+    return extension.charAt(0) !== "." ? "." + extension : extension;
 };
 
 const main = () => {
     const program = yargs
-        .usage("Usage: gulp util:new-language --language-name <language-name> " +
-            "--language-extension <language-extension> --base-name <base-name>")
-        .option("language-name", createYargsOption({
-            alias: "n",
-            describe: "name of the language to add",
-        }))
-        .option("language-extension", createYargsOption({
-            alias: "e",
-            coerce: extensionFormatCheck,
-            describe: "extension for language files",
-        }))
-        .option("base-name", createYargsOption({
-            alias: "b",
-            describe: "pre-existing language to use as a base",
-        }))
-        .argv;
+        .usage(
+            "Usage: gulp util:new-language --language-name <language-name> " +
+                "--language-extension <language-extension> --base-name <base-name>",
+        )
+        .option(
+            "language-name",
+            createYargsOption({
+                alias: "n",
+                describe: "name of the language to add",
+            }),
+        )
+        .option(
+            "language-extension",
+            createYargsOption({
+                alias: "e",
+                coerce: extensionFormatCheck,
+                describe: "extension for language files",
+            }),
+        )
+        .option(
+            "base-name",
+            createYargsOption({
+                alias: "b",
+                describe: "pre-existing language to use as a base",
+            }),
+        ).argv;
 
     const name = program.languageName;
     const extension = program.languageExtension;
@@ -133,7 +140,8 @@ const main = () => {
         {
             extension: baseExtension,
             name: baseName,
-        });
+        },
+    );
 };
 
 main();

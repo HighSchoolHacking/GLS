@@ -10,8 +10,7 @@ export class ThisCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.This)
-        .withDescription("Prints the 'this' keyword.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.This).withDescription("Prints the 'this' keyword.");
 
     /**
      * @returns Metadata on the command.

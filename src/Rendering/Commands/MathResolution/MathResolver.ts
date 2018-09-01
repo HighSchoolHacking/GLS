@@ -12,7 +12,7 @@ export class MathResolver {
      */
     private static operationActors: { [i: string]: IMathOperationActor } = {
         [MathOperation.Addition]: new AdditionOperationActor(),
-        [MathOperation.Subtraction]: new SubtractionOperationActor()
+        [MathOperation.Subtraction]: new SubtractionOperationActor(),
     };
 
     /**

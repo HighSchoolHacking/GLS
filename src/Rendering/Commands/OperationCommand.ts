@@ -18,12 +18,10 @@ export class OperationCommand extends Command {
             new SingleParameter("value", "A value to work with.", true),
             new SingleParameter("operator", "The operation's operator.", true),
             new SingleParameter("value", "A value to work with.", true),
-            new RepeatingParameters(
-                "Additional values and operators",
-                [
-                    new SingleParameter("item", "An additional operator.", false),
-                    new SingleParameter("item", "An additional value to work with.", false)
-                ])
+            new RepeatingParameters("Additional values and operators", [
+                new SingleParameter("item", "An additional operator.", false),
+                new SingleParameter("item", "An additional value to work with.", false),
+            ]),
         ]);
 
     /**

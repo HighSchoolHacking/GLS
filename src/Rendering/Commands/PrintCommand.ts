@@ -13,9 +13,7 @@ export class PrintCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Print)
         .withDescription("Prints a string.")
-        .withParameters([
-            new SingleParameter("contents", "Contents to be printed.", false)
-        ]);
+        .withParameters([new SingleParameter("contents", "Contents to be printed.", false)]);
 
     /**
      * @returns Metadata on the command.

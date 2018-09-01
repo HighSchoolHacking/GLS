@@ -15,7 +15,7 @@ export class MathMinCommand extends NativeCallCommand {
         .withDescription("Gets the smaller of two numbers.")
         .withParameters([
             new SingleParameter("name", "The name of the first variable.", true),
-            new SingleParameter("name", "The name of the second variable.", true)
+            new SingleParameter("name", "The name of the second variable.", true),
         ]);
 
     /**

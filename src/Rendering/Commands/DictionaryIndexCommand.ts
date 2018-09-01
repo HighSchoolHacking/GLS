@@ -15,7 +15,7 @@ export class DictionaryIndexCommand extends Command {
         .withDescription("An indexed dictionary lookup.")
         .withParameters([
             new SingleParameter("dictionary", "A dictionary to look within.", true),
-            new SingleParameter("index", "The index within the dictionary.", true)
+            new SingleParameter("index", "The index within the dictionary.", true),
         ]);
 
     /**

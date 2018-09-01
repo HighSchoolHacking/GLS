@@ -13,9 +13,7 @@ export class ListPopCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPop)
         .withDescription("Pops the last item out of a list.")
-        .withParameters([
-            new SingleParameter("name", "The name of the list.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**
      * @returns Metadata on the command.

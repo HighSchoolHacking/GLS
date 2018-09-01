@@ -184,7 +184,7 @@ export class BannedKeywordsBag {
             "with",
             "write",
             "yield",
-            "zeros"
+            "zeros",
         ]);
     }
 
@@ -195,7 +195,6 @@ export class BannedKeywordsBag {
      * @returns A boolean determining the validity of the variable name.
      */
     public validateName(alias: string): boolean {
-
         return this.bannedKeywords.has(alias);
     }
 }

@@ -16,7 +16,7 @@ export class DictionaryPairCommand extends Command {
         .withParameters([
             new SingleParameter("key", "The pair key.", true),
             new SingleParameter("value", "The pair value", true),
-            new SingleParameter("comma", "Whether a comma is needed", false)
+            new SingleParameter("comma", "Whether a comma is needed", false),
         ]);
 
     /**

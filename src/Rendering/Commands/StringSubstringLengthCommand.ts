@@ -18,7 +18,7 @@ export class StringSubstringLengthCommand extends Command {
         .withDescription("Retrieves a section of a string of a length.")
         .withParameters([
             new SingleParameter("startIndex", "Starting index of the section.", true),
-            new SingleParameter("startIndex", "Length of the section.", false)
+            new SingleParameter("startIndex", "Length of the section.", false),
         ]);
 
     /**

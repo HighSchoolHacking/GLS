@@ -18,14 +18,9 @@ export class InterfaceStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("InterfaceName", "The Interface name.", true),
-            new RepeatingParameters(
-                "Parent interfaces.",
-                [
-                    new SingleParameter(
-                        "parentInterfaceName",
-                        "Names of parent interfaces.",
-                        true)
-                ])
+            new RepeatingParameters("Parent interfaces.", [
+                new SingleParameter("parentInterfaceName", "Names of parent interfaces.", true),
+            ]),
         ]);
 
     /**

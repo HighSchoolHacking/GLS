@@ -17,17 +17,9 @@ export abstract class ImportCommand extends Command {
      * Information on parameters import commands take in.
      */
     protected static parameters: IParameter[] = [
-        new RepeatingParameters(
-            "Path for the package to import from.",
-            [
-                new SingleParameter("path", "Part of the package path.", false)
-            ]),
+        new RepeatingParameters("Path for the package to import from.", [new SingleParameter("path", "Part of the package path.", false)]),
         new KeywordParameter([KeywordNames.Use], "Keyword to import items.", true),
-        new RepeatingParameters(
-            "items",
-            [
-                new SingleParameter("item", "An item to import from the package.", true)
-            ])
+        new RepeatingParameters("items", [new SingleParameter("item", "An item to import from the package.", true)]),
     ];
 
     /**
@@ -44,7 +36,7 @@ export abstract class ImportCommand extends Command {
     public render(parameters: string[]): LineResults {
         const usingSplit = parameters.indexOf("use");
         if (usingSplit === -1) {
-             throw new Error("A \"use\" parameter must be in import commands.");
+            throw new Error('A "use" parameter must be in import commands.');
         }
 
         const lineResults = new LineResults([], false);
@@ -56,9 +48,7 @@ export abstract class ImportCommand extends Command {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);
         }
 
-        lineResults.addImports([
-            new Import(packagePath, items, this.getRelativity())
-        ]);
+        lineResults.addImports([new Import(packagePath, items, this.getRelativity())]);
 
         return lineResults;
     }

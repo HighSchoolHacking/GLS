@@ -33,5 +33,4 @@ export class SourceFileParser {
 
         return new GlsFile(nodes);
     }
-
 }
