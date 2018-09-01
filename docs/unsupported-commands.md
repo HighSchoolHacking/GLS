@@ -18,8 +18,11 @@ class Suffixer
             case 2:
                 return "nd";
 
-            default:
+            case 3:
                 return "rd";
+
+            default:
+                return "th";
         }
     }
 }
