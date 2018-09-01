@@ -34,6 +34,7 @@ import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
 import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
 import { StyleProperties } from "./Properties/StyleProperties";
+import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
 import { VariableProperties } from "./Properties/VariableProperties";
 
 /**
@@ -85,6 +86,7 @@ export abstract class Language {
         this.generateStringSubstringProperties(this.properties.strings.substrings);
         this.generateStringToFloatProperties(this.properties.strings.toFloat);
         this.generateStyleProperties(this.properties.style);
+        this.generateUnsupportedProperties(this.properties.unsupported);
         this.generateVariableProperties(this.properties.variables);
 
         this.properties.operators.generateAliases();
@@ -337,6 +339,13 @@ export abstract class Language {
      * @param style   A property container for metadata on style.
      */
     protected abstract generateStyleProperties(style: StyleProperties): void;
+
+    /**
+     * Generates metadata on unsupported complaints.
+     *
+     * @param style   A property container for metadata on unsupported complaints.
+     */
+    protected abstract generateUnsupportedProperties(style: UnsupportedProperties): void;
 
     /**
      * Generates metadata on variables.
