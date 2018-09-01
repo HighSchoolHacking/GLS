@@ -3,20 +3,18 @@ name: Command request
 about: You'd like a command or set of commands to be added to GLS.
 ---
 
-<em>
-👋 Hi friend, thanks for filing an issue on GLS!
-Please read our [CONTRIBUTING.md](https://github.com/general-language-syntax/GLS/blob/master/CONTRIBUTING.md) if you haven't yet.
+_👋 Hi friend, thanks for filing an issue on GLS!_
+_Please read our [CONTRIBUTING.md](https://github.com/general-language-syntax/GLS/blob/master/CONTRIBUTING.md) if you haven't yet._
 
-This issue template is for **requesting a new command**.
-Try to fill out as much as you can.
-Don't sweat it if not everything can be filled out! 👍
+_This issue template is for **requesting a new command**._
+_Try to fill out as much as you can._
+_Don't sweat it if not everything can be filled out! 👍_
 
 See [this issue](https://github.com/general-language-syntax/GLS/issues/450) for an example of the fields all filled out.
 
-When you're ready to submit the new issue, delete this `em` section.
+When you're ready to submit the new issue, delete this section.
 
-Enjoy!
-</em>
+_Enjoy!_
 
 ## What command(s) would you like to add?
 

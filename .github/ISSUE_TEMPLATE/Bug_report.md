@@ -3,16 +3,16 @@ name: Bug report
 about: Something in GLS is wrong, and should be fixed! 🚨
 ---
 
-<em>
-👋 Hi friend, thanks for filing an issue on GLS!
-Please read our [CONTRIBUTING.md](https://github.com/general-language-syntax/GLS/blob/master/CONTRIBUTING.md) if you haven't yet.
+_👋 Hi friend, thanks for filing an issue on GLS!_
+_Please read our [CONTRIBUTING.md](https://github.com/general-language-syntax/GLS/blob/master/CONTRIBUTING.md) if you haven't yet._
 
-This issue template is for **reporting a bug**.
-Try to fill out as much as you can.
-Don't sweat it if not everything can be filled out! 👍
+_This issue template is for **reporting a bug**._
+_Try to fill out as much as you can._
+_Don't sweat it if not everything can be filled out! 👍_
 
-Enjoy!
-</em>
+When you're ready to submit the new issue, delete this section.
+
+_Enjoy!_
 
 ## What's going on?
 
