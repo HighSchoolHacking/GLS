@@ -107,25 +107,25 @@ export class OperatorProperties {
      */
     public generateAliases(): void {
         this.aliases = {
-            "and": this.and,
+            and: this.and,
             "decrease by": this.decreaseBy,
-            "divide": this.divide,
+            divide: this.divide,
             "divide by": this.divideBy,
             "equal to": this.equalTo,
-            "equals": this.equals,
+            equals: this.equals,
             "greater than": this.greaterThan,
             "greater than or equal to": this.greaterThanOrEqualTo,
             "increase by": this.increaseBy,
             "less than": this.lessThan,
             "less than or equal to": this.lessThanOrEqualTo,
-            "minus": this.minus,
-            "mod": this.mod,
+            minus: this.minus,
+            mod: this.mod,
             "multiply by": this.multiplyBy,
-            "not": this.not,
+            not: this.not,
             "not equal to": this.notEqualTo,
-            "or": this.or,
-            "plus": this.plus,
-            "times": this.times
+            or: this.or,
+            plus: this.plus,
+            times: this.times,
         };
     }
 }

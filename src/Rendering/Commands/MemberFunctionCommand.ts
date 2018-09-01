@@ -21,11 +21,9 @@ export class MemberFunctionCommand extends Command {
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "Return type of the member function", true),
-            new RepeatingParameters(
-                "Function parameters.",
-                [
-                    new SingleParameter("parameterName", "A named parameter for the function.", true),
-                ])
+            new RepeatingParameters("Function parameters.", [
+                new SingleParameter("parameterName", "A named parameter for the function.", true),
+            ]),
         ]);
 
     /**

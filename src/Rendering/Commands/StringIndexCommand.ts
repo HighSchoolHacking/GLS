@@ -15,7 +15,7 @@ export class StringIndexCommand extends Command {
         .withDescription("An indexed string lookup.")
         .withParameters([
             new SingleParameter("string", "A string to look within.", true),
-            new SingleParameter("index", "The index within the string.", true)
+            new SingleParameter("index", "The index within the string.", true),
         ]);
 
     /**

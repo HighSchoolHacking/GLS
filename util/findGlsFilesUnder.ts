@@ -16,10 +16,11 @@ export const findGlsFilesUnder = (rootPath: string, inclusions?: Set<string>) =>
 
     const inclusionMatchers = Array.from(inclusions.keys());
 
-    return childrenNames
-        .filter(
-            (childName) => inclusionMatchers.some(
-                (inclusionMatcher) => minimatch(childName, inclusionMatcher, {
-                    nocase: true
-                })));
+    return childrenNames.filter((childName) =>
+        inclusionMatchers.some((inclusionMatcher) =>
+            minimatch(childName, inclusionMatcher, {
+                nocase: true,
+            }),
+        ),
+    );
 };

@@ -62,10 +62,7 @@ export class Python extends Language {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "list";
-        arrays.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        arrays.length = new NativeCallProperties("len", NativeCallScope.Static, NativeCallType.Function);
     }
 
     /**
@@ -136,7 +133,7 @@ export class Python extends Language {
         classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "dict",
-            number: "float"
+            number: "float",
         };
 
         classes.constructors.keyword = "def __init__";
@@ -148,10 +145,7 @@ export class Python extends Language {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = ":";
 
-        classes.instanceOf = new NativeCallProperties(
-            "isinstance",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        classes.instanceOf = new NativeCallProperties("isinstance", NativeCallScope.Static, NativeCallType.Function);
 
         classes.statics.labelBeforePublicity = true;
 
@@ -202,24 +196,24 @@ export class Python extends Language {
      * @param comments   A property container for metadata on comments.
      */
     protected generateCommentProperties(comments: CommentProperties): void {
-        comments.blockEnd = "\"\"\"";
+        comments.blockEnd = '"""';
         comments.blockLineLeft = "";
         comments.blockLineRight = "";
-        comments.blockStart = "\"\"\"";
+        comments.blockStart = '"""';
 
-        comments.docEnd = "\"\"\"";
+        comments.docEnd = '"""';
         comments.docLineEnd = "";
         comments.docLineStart = "";
-        comments.docStart = "\"\"\"";
+        comments.docStart = '"""';
         comments.docTagAliases = {
             note: "remarks",
             parameter: "param",
             returns: "returns",
             summary: "",
-            todo: "todo"
+            todo: "todo",
         };
         comments.docTagsWithParameters = {
-            parameter: ""
+            parameter: "",
         };
         comments.docTagEnd = " ";
         comments.docTagSpaceAfter = "  ";
@@ -252,10 +246,7 @@ export class Python extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.containsKey = new NativeCallProperties(
-            " in ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingLeft);
+        dictionaries.containsKey = new NativeCallProperties(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -265,10 +256,7 @@ export class Python extends Language {
         dictionaries.initializeStart = "{";
 
         dictionaries.className = "dict";
-        dictionaries.keys = new NativeCallProperties(
-            "keys",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        dictionaries.keys = new NativeCallProperties("keys", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -397,34 +385,14 @@ export class Python extends Language {
     protected generateListProperties(lists: ListProperties): void {
         lists.asArray = true;
 
-        lists.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        lists.pop = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.popFront = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.popFront.withArguments([
-            "0"
-        ]);
+        lists.length = new NativeCallProperties("len", NativeCallScope.Static, NativeCallType.Function);
+        lists.pop = new NativeCallProperties("pop", NativeCallScope.Member, NativeCallType.Function);
+        lists.popFront = new NativeCallProperties("pop", NativeCallScope.Member, NativeCallType.Function);
+        lists.popFront.withArguments(["0"]);
 
-        lists.push = new NativeCallProperties(
-            "append",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.addList = new NativeCallProperties(
-            "extend",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.push = new NativeCallProperties("append", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallProperties("extend", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -470,7 +438,7 @@ export class Python extends Language {
         main.contextStartLines = [];
         main.mainEndLines = [];
         main.mainIndentation = 1;
-        main.mainStartLines = ["if __name__ == \"__main__\":"];
+        main.mainStartLines = ['if __name__ == "__main__":'];
     }
 
     /**
@@ -479,34 +447,20 @@ export class Python extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "fabs",
-            NativeCallScope.Static,
-            NativeCallType.Function)
-            .withImports([new Import(["math"], ["fabs"], ImportRelativity.Absolute)]);
-        math.ceiling = new NativeCallProperties(
-            "ceil",
-            NativeCallScope.Static,
-            NativeCallType.Function)
-            .withImports([new Import(["math"], ["ceil"], ImportRelativity.Absolute)]);
-        math.floor = new NativeCallProperties(
-            "floor",
-            NativeCallScope.Static,
-            NativeCallType.Function)
-            .withImports([new Import(["math"], ["floor"], ImportRelativity.Absolute)]);
-        math.max = new NativeCallProperties(
-            "max",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "min",
-            NativeCallScope.Static,
-            NativeCallType.Function);
-        math.power = new NativeCallProperties(
-            "pow",
-            NativeCallScope.Static,
-            NativeCallType.Function)
-            .withImports([new Import(["math"], ["pow"], ImportRelativity.Absolute)]);
+        math.absolute = new NativeCallProperties("fabs", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["fabs"], ImportRelativity.Absolute),
+        ]);
+        math.ceiling = new NativeCallProperties("ceil", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["ceil"], ImportRelativity.Absolute),
+        ]);
+        math.floor = new NativeCallProperties("floor", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["floor"], ImportRelativity.Absolute),
+        ]);
+        math.max = new NativeCallProperties("max", NativeCallScope.Static, NativeCallType.Function);
+        math.min = new NativeCallProperties("min", NativeCallScope.Static, NativeCallType.Function);
+        math.power = new NativeCallProperties("pow", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["pow"], ImportRelativity.Absolute),
+        ]);
         math.mathName = "Math";
     }
 
@@ -585,25 +539,16 @@ export class Python extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "Set";
 
-        sets.contains = new NativeCallProperties(
-            " in ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingLeft);
+        sets.contains = new NativeCallProperties(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
 
         sets.initializeAsNew = false;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties(
-            "list",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        sets.toArray = new NativeCallProperties("list", NativeCallScope.Static, NativeCallType.Function);
 
         sets.toList = sets.toArray;
 
@@ -618,9 +563,9 @@ export class Python extends Language {
      * @param strings   A property container for metadata on string formatting.
      */
     protected generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "\"";
-        formatting.formatMiddle = "\".format(";
-        formatting.formatAbbreviated = "\".format(";
+        formatting.formatLeft = '"';
+        formatting.formatMiddle = '".format(';
+        formatting.formatAbbreviated = '".format(';
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";
@@ -650,34 +595,19 @@ export class Python extends Language {
     protected generateStringProperties(strings: StringProperties): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties(
-            "lower",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseLower = new NativeCallProperties("lower", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.caseUpper = new NativeCallProperties(
-            "upper",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.caseUpper = new NativeCallProperties("upper", NativeCallScope.Member, NativeCallType.Function);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties(
-            "find",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.indexOf = new NativeCallProperties("find", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "-1";
 
-        strings.length = new NativeCallProperties(
-            "len",
-            NativeCallScope.Static,
-            NativeCallType.Function);
+        strings.length = new NativeCallProperties("len", NativeCallScope.Static, NativeCallType.Function);
 
-        strings.trim = new NativeCallProperties(
-            "strip",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.trim = new NativeCallProperties("strip", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -728,7 +658,7 @@ export class Python extends Language {
         variables.aliases = {
             false: "False",
             infinity: "inf",
-            true: "True"
+            true: "True",
         };
         variables.null = "None";
         variables.isNullLeft = "";

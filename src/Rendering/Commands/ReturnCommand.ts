@@ -14,9 +14,7 @@ export class ReturnCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Return)
         .withDescription("Returns a value.")
-        .withParameters([
-            new SingleParameter("value", "A value to return.", false)
-        ]);
+        .withParameters([new SingleParameter("value", "A value to return.", false)]);
 
     /**
      * @returns Metadata on the command.

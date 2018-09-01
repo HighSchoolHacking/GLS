@@ -18,7 +18,7 @@ export class ForEachStartCommand extends Command {
         .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),
             new SingleParameter("valueType", "The type of the container's values.", true),
-            new SingleParameter("value", "The iteration variable.", true)
+            new SingleParameter("value", "The iteration variable.", true),
         ]);
 
     /**
@@ -44,7 +44,7 @@ export class ForEachStartCommand extends Command {
             line += this.language.properties.variables.declaration;
         }
         if (this.language.properties.variables.explicitTypes && !this.language.properties.variables.typesAfterName) {
-                line += parameters[2] + " ";
+            line += parameters[2] + " ";
         }
 
         line += parameters[3];

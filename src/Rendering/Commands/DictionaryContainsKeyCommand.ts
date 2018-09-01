@@ -15,7 +15,7 @@ export class DictionaryContainsKeyCommand extends NativeCallCommand {
         .withDescription("Retrieves the length of an string.")
         .withParameters([
             new SingleParameter("dictionary", "A dictionary to check for key membership.", true),
-            new SingleParameter("key", "A key to check for membership in the dictionary.", true)
+            new SingleParameter("key", "A key to check for membership in the dictionary.", true),
         ]);
 
     /**

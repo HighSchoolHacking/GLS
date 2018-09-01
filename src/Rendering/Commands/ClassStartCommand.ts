@@ -25,11 +25,7 @@ export class ClassStartCommand extends Command {
             new KeywordParameter([KeywordNames.Extends], "Keyword to extend from a parent class.", false),
             new SingleParameter("parentClassDescriptor", "A parent class name and optional generics.", false),
             new KeywordParameter([KeywordNames.Implements], "Keyword to implement from parent interface(s).", false),
-            new RepeatingParameters(
-                "Parent interfaces",
-                [
-                    new SingleParameter("interfaceName", "Names of parent interfaces.", false)
-                ])
+            new RepeatingParameters("Parent interfaces", [new SingleParameter("interfaceName", "Names of parent interfaces.", false)]),
         ]);
 
     /**
@@ -64,9 +60,11 @@ export class ClassStartCommand extends Command {
 
         line += forExtends;
 
-        if (this.language.properties.interfaces.supported
-            && forImplements !== ""
-            && !this.language.properties.interfaces.declareImplementsExplicit) {
+        if (
+            this.language.properties.interfaces.supported &&
+            forImplements !== "" &&
+            !this.language.properties.interfaces.declareImplementsExplicit
+        ) {
             if (forExtends === "") {
                 line += this.language.properties.interfaces.declareExtendsLeft;
             } else {

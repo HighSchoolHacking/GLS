@@ -16,11 +16,7 @@ export class ListInitializeCommand extends Command {
         .withDescription("Initializes a new list.")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
-            new RepeatingParameters(
-                "Items initially in the list.",
-                [
-                    new SingleParameter("item", "An item initially in the list.", false)
-                ])
+            new RepeatingParameters("Items initially in the list.", [new SingleParameter("item", "An item initially in the list.", false)]),
         ]);
 
     /**

@@ -26,11 +26,7 @@ export class CommentDocTagCommand extends Command {
         .withParameters([
             new SingleParameter("tag", "The name of the tag.", true),
             new SingleParameter("parameter", "An optional descriptor for the tag.", false),
-            new RepeatingParameters(
-                "Comments regarding the tag",
-                [
-                    new SingleParameter("contents", "Contents of the comment", true)
-                ])
+            new RepeatingParameters("Comments regarding the tag", [new SingleParameter("contents", "Contents of the comment", true)]),
         ]);
 
     /**
@@ -181,9 +177,9 @@ export class CommentDocTagCommand extends Command {
         let starter: string = lineStart + "<" + tag;
 
         if (this.language.properties.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
-            starter += " " + this.parseTagParameter(tagRaw, parameters[2]) + "=\"";
+            starter += " " + this.parseTagParameter(tagRaw, parameters[2]) + '="';
             starter += parameters[2];
-            starter += "\">";
+            starter += '">';
 
             contentsRaw = parameters.slice(3).join(" ");
         } else {
@@ -245,9 +241,8 @@ export class CommentDocTagCommand extends Command {
      * @param contentsRaw   The raw information content.
      */
     private wrapTagContents(tag: string, contentsRaw: string): string[] {
-        let maximumContentsLength: number = CommentDocTagCommand.maximumLineLength
-            - tag.length
-            - this.language.properties.comments.docLineEnd.length;
+        let maximumContentsLength: number =
+            CommentDocTagCommand.maximumLineLength - tag.length - this.language.properties.comments.docLineEnd.length;
 
         if (!this.language.properties.comments.docAsXml) {
             maximumContentsLength -= this.language.properties.comments.docLineStart.length;

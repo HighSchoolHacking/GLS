@@ -10,8 +10,9 @@ export class CommentBlockStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlockStart)
-        .withDescription("Starts a comment block.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlockStart).withDescription(
+        "Starts a comment block.",
+    );
 
     /**
      * @returns Metadata on the command.

@@ -18,7 +18,7 @@ export class StringSubstringIndexCommand extends Command {
         .withDescription("Retrieves a section of a string until an index.")
         .withParameters([
             new SingleParameter("startIndex", "Starting index of the section.", true),
-            new SingleParameter("startIndex", "Ending index of the section.", false)
+            new SingleParameter("startIndex", "Ending index of the section.", false),
         ]);
 
     /**

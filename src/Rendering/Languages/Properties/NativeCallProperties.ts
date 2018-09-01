@@ -22,7 +22,7 @@ export enum NativeCallScope {
     /**
      * Called as a global static.
      */
-    Static = "Static"
+    Static = "Static",
 }
 
 /**
@@ -47,7 +47,7 @@ export enum NativeCallType {
     /**
      * An operation as a single property.
      */
-    Property = "Property"
+    Property = "Property",
 }
 
 /**

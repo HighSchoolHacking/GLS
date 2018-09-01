@@ -1,0 +1,7 @@
+{
+	"arrowParens": "always",
+	"parser": "typescript",
+	"printWidth": 140,
+	"tabWidth": 4,
+	"trailingComma": "all"
+}

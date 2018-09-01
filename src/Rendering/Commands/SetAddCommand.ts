@@ -15,7 +15,7 @@ export class SetAddCommand extends NativeCallCommand {
         .withDescription("Adds an item to a set.")
         .withParameters([
             new SingleParameter("set", "A set to add an item to.", true),
-            new SingleParameter("item", "An item to add to the set.", true)
+            new SingleParameter("item", "An item to add to the set.", true),
         ]);
 
     /**

@@ -16,7 +16,7 @@ export class EnumMemberCommand extends Command {
         .withParameters([
             new SingleParameter("memberName", "A member of the container enum.", true),
             new SingleParameter("memberValue", "A value for the enum member.", true),
-            new SingleParameter("comma", "Whether a comma is needed.", false)
+            new SingleParameter("comma", "Whether a comma is needed.", false),
         ]);
 
     /**

@@ -2,7 +2,6 @@
  * Metadata on a language's in depth parameter properties.
  */
 export class ParameterProperties {
-
     /**
      * Whether type declaration occurs after the array name.
      */

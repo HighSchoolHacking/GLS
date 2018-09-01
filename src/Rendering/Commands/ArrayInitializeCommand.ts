@@ -16,11 +16,9 @@ export class ArrayInitializeCommand extends Command {
         .withDescription("Initializes a new array.")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
-            new RepeatingParameters(
-                "Items initially in the array.",
-                [
-                    new SingleParameter("item", "An item initially in the array.", false)
-                ])
+            new RepeatingParameters("Items initially in the array.", [
+                new SingleParameter("item", "An item initially in the array.", false),
+            ]),
         ]);
 
     /**

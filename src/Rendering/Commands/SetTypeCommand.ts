@@ -13,9 +13,7 @@ export class SetTypeCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.SetType)
         .withDescription("Declares a set type.")
-        .withParameters([
-            new SingleParameter("itemType", "The type of the items.", true)
-        ]);
+        .withParameters([new SingleParameter("itemType", "The type of the items.", true)]);
 
     /**
      * @returns Metadata on the command.

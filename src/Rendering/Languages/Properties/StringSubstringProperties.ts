@@ -15,7 +15,7 @@ export enum StringSubstringSupport {
     /**
      * Just the length form is supported.
      */
-    Length = "Length"
+    Length = "Length",
 }
 
 /**

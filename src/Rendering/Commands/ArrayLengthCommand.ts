@@ -13,9 +13,7 @@ export class ArrayLengthCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayLength)
         .withDescription("Retrieves the length of an array.")
-        .withParameters([
-            new SingleParameter("name", "The name of the variable.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**
      * @returns Metadata on the command.

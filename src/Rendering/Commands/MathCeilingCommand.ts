@@ -13,21 +13,19 @@ export class MathCeilingCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathCeiling)
         .withDescription("Rounds a number up to the nearest integer.")
-        .withParameters([
-          new SingleParameter("name", "The name of the variable.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-      return MathCeilingCommand.metadata;
+        return MathCeilingCommand.metadata;
     }
 
     /**
      * @returns Metadata on how to perform the native call.
      */
     protected retrieveNativeCallProperties(): NativeCallProperties {
-      return this.language.properties.math.ceiling;
+        return this.language.properties.math.ceiling;
     }
 }

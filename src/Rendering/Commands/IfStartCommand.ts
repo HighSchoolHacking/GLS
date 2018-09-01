@@ -15,9 +15,7 @@ export class IfStartCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStart)
         .withDescription("Starts an if statement.")
         .withIndentation([1])
-        .withParameters([
-            new SingleParameter("conditional", "A conditional to check.", true)
-        ]);
+        .withParameters([new SingleParameter("conditional", "A conditional to check.", true)]);
 
     /**
      * @returns Metadata on the command.

@@ -10,8 +10,7 @@ export class CommentBlockEndCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlockEnd)
-        .withDescription("Ends a comment block.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentBlockEnd).withDescription("Ends a comment block.");
 
     /**
      * @returns Metadata on the command.

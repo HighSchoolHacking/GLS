@@ -20,11 +20,9 @@ export class StaticFunctionCommand extends Command {
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
             new SingleParameter("className", "The name of the class the function is on.", true),
-            new RepeatingParameters(
-                "Function parameters.",
-                [
-                    new SingleParameter("parameterName", "A named parameter for the function.", true),
-                ])
+            new RepeatingParameters("Function parameters.", [
+                new SingleParameter("parameterName", "A named parameter for the function.", true),
+            ]),
         ]);
 
     /**

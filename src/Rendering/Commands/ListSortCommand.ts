@@ -13,9 +13,7 @@ export class ListSortCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSort)
         .withDescription("Sorts a list in-place.")
-        .withParameters([
-            new SingleParameter("name", "The name of the list.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**
      * @returns Metadata on the command.

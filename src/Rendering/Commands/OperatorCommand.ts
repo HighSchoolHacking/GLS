@@ -13,9 +13,7 @@ export class OperatorCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Operator)
         .withDescription("Prints a mathematical operator.")
-        .withParameters([
-            new SingleParameter("operator", "An operator to alias.", true)
-        ]);
+        .withParameters([new SingleParameter("operator", "An operator to alias.", true)]);
 
     /**
      * @returns Metadata on the command.

@@ -10,5 +10,5 @@ export enum MathOperation {
     /**
      * One number reduced by another.
      */
-    Subtraction = "Subtraction"
+    Subtraction = "Subtraction",
 }

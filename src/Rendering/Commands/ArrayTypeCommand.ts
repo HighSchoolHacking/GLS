@@ -13,9 +13,7 @@ export class ArrayTypeCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayType)
         .withDescription("Declares an array type.")
-        .withParameters([
-            new SingleParameter("type", "The type of object.", true)
-        ]);
+        .withParameters([new SingleParameter("type", "The type of object.", true)]);
 
     /**
      * @returns Metadata on the command.

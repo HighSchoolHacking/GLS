@@ -15,7 +15,7 @@ export class DictionaryNewCommand extends Command {
         .withDescription("Initializes a new dictionary.")
         .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),
-            new SingleParameter("valueType", "The type of the values", true)
+            new SingleParameter("valueType", "The type of the values", true),
         ]);
 
     /**

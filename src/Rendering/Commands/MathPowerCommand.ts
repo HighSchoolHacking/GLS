@@ -15,7 +15,7 @@ export class MathPowerCommand extends NativeCallCommand {
         .withDescription("Calculates a number to the power of another number.")
         .withParameters([
             new SingleParameter("name", "The name of the first variable.", true),
-            new SingleParameter("name", "The name of the second variable.", true)
+            new SingleParameter("name", "The name of the second variable.", true),
         ]);
 
     /**

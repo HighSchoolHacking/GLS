@@ -15,7 +15,7 @@ export class ArrayIndexCommand extends Command {
         .withDescription("An indexed array lookup.")
         .withParameters([
             new SingleParameter("array", "An array to look within.", true),
-            new SingleParameter("index", "The index within the array.", true)
+            new SingleParameter("index", "The index within the array.", true),
         ]);
 
     /**

@@ -39,7 +39,7 @@ export class IfStringToFloatStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("stringName", "Name of a string to try converting.", true),
-            new SingleParameter("floatName", "What to call the string in float form.", true)
+            new SingleParameter("floatName", "What to call the string in float form.", true),
         ]);
 
     /**

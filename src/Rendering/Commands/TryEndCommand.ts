@@ -30,4 +30,4 @@ export class TryEndCommand extends BlockEndCommand {
     public render(parameters: string[]): LineResults {
         return LineResults.newBlockLine("\0", -1);
     }
- }
+}

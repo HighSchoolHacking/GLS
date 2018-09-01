@@ -17,7 +17,7 @@ export class DictionaryNewStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),
-            new SingleParameter("valueType", "Tye type of the values", true)
+            new SingleParameter("valueType", "Tye type of the values", true),
         ]);
 
     /**

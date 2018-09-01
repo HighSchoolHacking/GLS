@@ -10,8 +10,9 @@ export class StringIndexNotFoundCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringIndexNotFound)
-        .withDescription("The value returned by string searching when a substring isn't found.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringIndexNotFound).withDescription(
+        "The value returned by string searching when a substring isn't found.",
+    );
 
     /**
      * @returns Metadata on the command.

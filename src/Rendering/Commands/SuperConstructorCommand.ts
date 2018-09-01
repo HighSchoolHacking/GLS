@@ -15,11 +15,9 @@ export class SuperConstructorCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.SuperConstructor)
         .withDescription("Calls a parent class constructor.")
         .withParameters([
-            new RepeatingParameters(
-                "Function arguments.",
-                [
-                    new SingleParameter("argument", "An argument for the super constructor.", true),
-                ])
+            new RepeatingParameters("Function arguments.", [
+                new SingleParameter("argument", "An argument for the super constructor.", true),
+            ]),
         ]);
 
     /**

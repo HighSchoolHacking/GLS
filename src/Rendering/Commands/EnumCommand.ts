@@ -15,7 +15,7 @@ export class EnumCommand extends Command {
         .withDescription("Retrieves an enum value by name.")
         .withParameters([
             new SingleParameter("enumName", "A container enum.", true),
-            new SingleParameter("memberName", "A member of the container enum.", true)
+            new SingleParameter("memberName", "A member of the container enum.", true),
         ]);
 
     /**

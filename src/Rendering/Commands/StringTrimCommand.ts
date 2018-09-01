@@ -11,8 +11,9 @@ export class StringTrimCommand extends NativeCallCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringTrim)
-        .withDescription("Creates a copy of a string without leading or trailing whitespace.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringTrim).withDescription(
+        "Creates a copy of a string without leading or trailing whitespace.",
+    );
 
     /**
      * @returns Metadata on the command.

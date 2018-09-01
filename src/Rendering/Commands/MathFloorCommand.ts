@@ -13,9 +13,7 @@ export class MathFloorCommand extends NativeCallCommand {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathFloor)
         .withDescription("Rounds a number down to the nearest integer.")
-        .withParameters([
-            new SingleParameter("name", "The name of the variable.", true)
-        ]);
+        .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**
      * @returns Metadata on the command.

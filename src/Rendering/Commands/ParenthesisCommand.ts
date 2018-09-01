@@ -15,11 +15,9 @@ export class ParenthesisCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Parenthesis)
         .withDescription("Wraps contents with parenthesis.")
         .withParameters([
-            new RepeatingParameters(
-                "Contents within the parenthesis.",
-                [
-                    new SingleParameter("contents", "Contents within the parenthesis.", false)
-                ])
+            new RepeatingParameters("Contents within the parenthesis.", [
+                new SingleParameter("contents", "Contents within the parenthesis.", false),
+            ]),
         ]);
 
     /**

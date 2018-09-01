@@ -60,5 +60,5 @@ export enum CaseStyle {
     /**
      * Snake case, such as abc_def.
      */
-    SnakeCase = "SnakeCase"
+    SnakeCase = "SnakeCase",
 }

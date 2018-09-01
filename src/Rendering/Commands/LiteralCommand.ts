@@ -14,13 +14,7 @@ export class LiteralCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Literal)
         .withDescription("Prints the input parameters directly.")
-        .withParameters([
-            new RepeatingParameters(
-                "Contents to print.",
-                [
-                    new SingleParameter("word", "A word to print.", false)
-                ])
-        ]);
+        .withParameters([new RepeatingParameters("Contents to print.", [new SingleParameter("word", "A word to print.", false)])]);
 
     /**
      * @returns Metadata on the command.

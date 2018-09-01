@@ -11,8 +11,7 @@ export class MainStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainStart)
-        .withDescription("Starts a main function.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainStart).withDescription("Starts a main function.");
 
     /**
      * @returns Metadata on the command.

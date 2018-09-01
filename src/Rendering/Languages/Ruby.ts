@@ -60,10 +60,7 @@ export class Ruby extends Language {
      */
     protected generateArrayProperties(arrays: ArrayProperties): void {
         arrays.className = "Array";
-        arrays.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        arrays.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -138,7 +135,7 @@ export class Ruby extends Language {
         classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "Hash",
-            number: "Float"
+            number: "Float",
         };
 
         classes.constructors.keyword = "def initialize";
@@ -150,10 +147,7 @@ export class Ruby extends Language {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = "";
 
-        classes.instanceOf = new NativeCallProperties(
-            ".kind_of? ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallProperties(".kind_of? ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.statics.labelBeforePublicity = false;
 
@@ -218,10 +212,10 @@ export class Ruby extends Language {
             parameter: "\0",
             returns: "returns",
             summary: "",
-            todo: "todo"
+            todo: "todo",
         };
         comments.docTagsWithParameters = {
-            parameter: ""
+            parameter: "",
         };
         comments.docTagEnd = "] ";
         comments.docTagSpaceAfter = "  ";
@@ -255,10 +249,7 @@ export class Ruby extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.containsKey = new NativeCallProperties(
-            " in ",
-            NativeCallScope.Operator,
-            NativeCallType.FloatingLeft);
+        dictionaries.containsKey = new NativeCallProperties(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -268,10 +259,7 @@ export class Ruby extends Language {
         dictionaries.initializeStart = "{";
 
         dictionaries.className = "hash";
-        dictionaries.keys = new NativeCallProperties(
-            "keys",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        dictionaries.keys = new NativeCallProperties("keys", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -361,9 +349,9 @@ export class Ruby extends Language {
      */
     protected generateImportProperties(imports: ImportProperties): void {
         imports.case = CaseStyle.DirectoryLowerCase;
-        imports.leftAbsolute = "require \"";
-        imports.leftLocal = "require_relative \"";
-        imports.right = "\"";
+        imports.leftAbsolute = 'require "';
+        imports.leftLocal = 'require_relative "';
+        imports.right = '"';
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }
@@ -399,30 +387,12 @@ export class Ruby extends Language {
     protected generateListProperties(lists: ListProperties): void {
         lists.asArray = true;
 
-        lists.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.pop = new NativeCallProperties(
-            "pop",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.popFront = new NativeCallProperties(
-            "shift",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        lists.push = new NativeCallProperties(
-            "push",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.addList = new NativeCallProperties(
-            "concat",
-            NativeCallScope.Member,
-            NativeCallType.Function);
-        lists.sort = new NativeCallProperties(
-            "sort",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        lists.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
+        lists.pop = new NativeCallProperties("pop", NativeCallScope.Member, NativeCallType.Property);
+        lists.popFront = new NativeCallProperties("shift", NativeCallScope.Member, NativeCallType.Property);
+        lists.push = new NativeCallProperties("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallProperties("concat", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -486,30 +456,12 @@ export class Ruby extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties(
-            "abs",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        math.ceiling = new NativeCallProperties(
-            "ceil",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        math.floor = new NativeCallProperties(
-            "floor",
-            NativeCallScope.Member,
-            NativeCallType.Property);
-        math.max = new NativeCallProperties(
-            "max",
-            NativeCallScope.Array,
-            NativeCallType.Function);
-        math.min = new NativeCallProperties(
-            "min",
-            NativeCallScope.Array,
-            NativeCallType.Function);
-        math.power = new NativeCallProperties(
-            "pow",
-            NativeCallScope.Array,
-            NativeCallType.Function);
+        math.absolute = new NativeCallProperties("abs", NativeCallScope.Member, NativeCallType.Property);
+        math.ceiling = new NativeCallProperties("ceil", NativeCallScope.Member, NativeCallType.Property);
+        math.floor = new NativeCallProperties("floor", NativeCallScope.Member, NativeCallType.Property);
+        math.max = new NativeCallProperties("max", NativeCallScope.Array, NativeCallType.Function);
+        math.min = new NativeCallProperties("min", NativeCallScope.Array, NativeCallType.Function);
+        math.power = new NativeCallProperties("pow", NativeCallScope.Array, NativeCallType.Function);
         math.mathName = "Math";
     }
 
@@ -589,25 +541,16 @@ export class Ruby extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties(
-            "add",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "Set";
 
-        sets.contains = new NativeCallProperties(
-            "include?",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.contains = new NativeCallProperties("include?", NativeCallScope.Member, NativeCallType.Function);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties(
-            "to_a",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        sets.toArray = new NativeCallProperties("to_a", NativeCallScope.Member, NativeCallType.Function);
 
         sets.toList = sets.toArray;
 
@@ -622,9 +565,9 @@ export class Ruby extends Language {
      * @param strings   A property container for metadata on string formatting.
      */
     protected generateStringFormatProperties(formatting: StringFormatProperties): void {
-        formatting.formatLeft = "\"";
-        formatting.formatMiddle = "\" % [";
-        formatting.formatAbbreviated = "\" % [";
+        formatting.formatLeft = '"';
+        formatting.formatMiddle = '" % [';
+        formatting.formatAbbreviated = '" % [';
         formatting.formatRight = "]";
         formatting.formatInputLeft = "$";
         formatting.formatInputRight = "";
@@ -646,34 +589,19 @@ export class Ruby extends Language {
     protected generateStringProperties(strings: StringProperties): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties(
-            "downcase",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        strings.caseLower = new NativeCallProperties("downcase", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.caseUpper = new NativeCallProperties(
-            "upcase",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        strings.caseUpper = new NativeCallProperties("upcase", NativeCallScope.Member, NativeCallType.Property);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties(
-            "index",
-            NativeCallScope.Member,
-            NativeCallType.Function);
+        strings.indexOf = new NativeCallProperties("index", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "nil";
 
-        strings.length = new NativeCallProperties(
-            "length",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        strings.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.trim = new NativeCallProperties(
-            "strip",
-            NativeCallScope.Member,
-            NativeCallType.Property);
+        strings.trim = new NativeCallProperties("strip", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**

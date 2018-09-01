@@ -15,9 +15,7 @@ export class WhileStartCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.WhileStart)
         .withDescription("Starts a while loop.")
         .withIndentation([1])
-        .withParameters([
-            new SingleParameter("conditional", "A conditional to check.", true)
-        ]);
+        .withParameters([new SingleParameter("conditional", "A conditional to check.", true)]);
 
     /**
      * @returns Metadata on the command.

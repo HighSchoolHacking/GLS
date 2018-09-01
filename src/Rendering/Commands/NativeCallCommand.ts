@@ -37,7 +37,7 @@ export abstract class NativeCallCommand extends Command {
             [NativeCallScope.Array]: new NativeArrayRenderer(this.nativeCallProperties),
             [NativeCallScope.Member]: new NativeMemberRenderer(this.nativeCallProperties),
             [NativeCallScope.Operator]: new NativeOperatorRenderer(this.nativeCallProperties),
-            [NativeCallScope.Static]: new NativeStaticRenderer(this.nativeCallProperties)
+            [NativeCallScope.Static]: new NativeStaticRenderer(this.nativeCallProperties),
         };
     }
 

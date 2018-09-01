@@ -13,9 +13,7 @@ export class ValueCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Value)
         .withDescription("Parses a language's alias for a value.")
-        .withParameters([
-            new SingleParameter("value", "A value to parse.", true)
-        ]);
+        .withParameters([new SingleParameter("value", "A value to parse.", true)]);
 
     /**
      * @returns Metadata on the command.

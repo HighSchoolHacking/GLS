@@ -64,7 +64,12 @@ export class RepeatingParameters implements IParameter {
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns Index of a matched keyword parameter, or -1 if no match is found.
      */
-    private doesNextCommandMatchKeywordParameter(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+    private doesNextCommandMatchKeywordParameter(
+        args: IGlsNode[],
+        inputPosition: number,
+        requirements: IParameter[],
+        requirementPosition: number,
+    ): number {
         const nextRequirement = requirements[requirementPosition + 1];
 
         if (nextRequirement instanceof KeywordParameter) {
