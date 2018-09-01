@@ -122,6 +122,7 @@ import { ThrowExceptionCommand } from "./ThrowExceptionCommand";
 import { TryEndCommand } from "./TryEndCommand";
 import { TryStartCommand } from "./TryStartCommand";
 import { TypeCommand } from "./TypeCommand";
+import { UnsupportedCommand } from "./UnsupportedCommand";
 import { ValueCommand } from "./ValueCommand";
 import { VariableCommand } from "./VariableCommand";
 import { VariableInlineCommand } from "./VariableInlineCommand";
@@ -263,6 +264,7 @@ export class CommandsBagFactory {
             new TryEndCommand(context),
             new TryStartCommand(context),
             new TypeCommand(context),
+            new UnsupportedCommand(context),
             new ValueCommand(context),
             new VariableCommand(context),
             new VariableInlineCommand(context),
