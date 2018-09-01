@@ -17,45 +17,27 @@ describe("ImportPathResolver", () => {
         };
 
         it("resolves a sibling path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb"],
-                ["aaa", "bbb", "ccc"],
-                ["ccc"]);
+            itResolvesFromTo(["aaa", "bbb"], ["aaa", "bbb", "ccc"], ["ccc"]);
         });
 
         it("resolves a parent path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb"],
-                ["aaa"],
-                [".."]);
+            itResolvesFromTo(["aaa", "bbb"], ["aaa"], [".."]);
         });
 
         it("resolves a distant parent path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb", "ccc"],
-                ["aaa"],
-                ["..", ".."]);
+            itResolvesFromTo(["aaa", "bbb", "ccc"], ["aaa"], ["..", ".."]);
         });
 
         it("resolves a parent sibling path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb", "ccc"],
-                ["aaa", "ddd"],
-                ["..", "..", "ddd"]);
+            itResolvesFromTo(["aaa", "bbb", "ccc"], ["aaa", "ddd"], ["..", "..", "ddd"]);
         });
 
         it("resolves a cousin path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb"],
-                ["aaa", "ccc"],
-                ["..", "ccc"]);
+            itResolvesFromTo(["aaa", "bbb"], ["aaa", "ccc"], ["..", "ccc"]);
         });
 
         it("resolves a distant cousin path", () => {
-            itResolvesFromTo(
-                ["aaa", "bbb", "ccc"],
-                ["aaa", "ddd", "eee"],
-                ["..", "..", "ddd", "eee"]);
+            itResolvesFromTo(["aaa", "bbb", "ccc"], ["aaa", "ddd", "eee"], ["..", "..", "ddd", "eee"]);
         });
     });
 });

@@ -1,10 +1,7 @@
 {
     "extends": "../tslint.json",
     "linterOptions": {
-        "exclude": [
-            "../src/**/*",
-            "../util/**/*"
-        ]
+        "exclude": ["../src/**/*", "../util/**/*"]
     },
     "rules": {
         "no-shadowed-variable": false

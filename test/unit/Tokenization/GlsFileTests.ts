@@ -23,11 +23,7 @@ describe("GlsFile", () => {
 
         it("gives nodes when there are nodes in the file", () => {
             // Arrange
-            const expected: IGlsNode[] = [
-                new BlankNode(),
-                new TextNode("abc"),
-                new CommandNode("def", [new TextNode("ghi")]),
-            ];
+            const expected: IGlsNode[] = [new BlankNode(), new TextNode("abc"), new CommandNode("def", [new TextNode("ghi")])];
             const file = new GlsFile(expected);
 
             // Act

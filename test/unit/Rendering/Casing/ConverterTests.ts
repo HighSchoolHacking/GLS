@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { ICaseStyleConverter } from "../../../../lib/Rendering/Casing/CaseStyleConverter";
 
 interface ICaseStyleConverterCreator {
-    new(): ICaseStyleConverter;
+    new (): ICaseStyleConverter;
 }
 
 const itConvertsFromCaseSensitiveTo = (
@@ -32,11 +32,7 @@ const itConvertsFromCaseSensitiveTo = (
     });
 };
 
-export const itConvertsFromTo = (
-    transformerType: ICaseStyleConverterCreator,
-    words: string[],
-    expected: string,
-): void => {
+export const itConvertsFromTo = (transformerType: ICaseStyleConverterCreator, words: string[], expected: string): void => {
     itConvertsFromCaseSensitiveTo("from lower case", transformerType, words.map((word) => word.toLowerCase()), expected);
     itConvertsFromCaseSensitiveTo("from upper case", transformerType, words.map((word) => word.toUpperCase()), expected);
 };

@@ -37,7 +37,11 @@ export class FilesReader {
      */
     public readCommandFile(command: string, name: string): string[] {
         const filePath = path.resolve(this.rootPath, command, name);
-        const lines = fs.readFileSync(filePath).toString().replace(/\r/g, "").split("\n");
+        const lines = fs
+            .readFileSync(filePath)
+            .toString()
+            .replace(/\r/g, "")
+            .split("\n");
         const extension = name.substring(name.indexOf("."));
         const comment = this.getCommentMarker(extension);
 

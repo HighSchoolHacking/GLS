@@ -61,11 +61,13 @@ export class ComparisonTestsRunner {
      */
     public run(): void {
         describe(this.section, () => {
-            this.commandTests.forEach((tests: string[], command: string): void => {
-                describe(command, () => {
-                    this.runCommandTests(command, tests);
-                });
-            });
+            this.commandTests.forEach(
+                (tests: string[], command: string): void => {
+                    describe(command, () => {
+                        this.runCommandTests(command, tests);
+                    });
+                },
+            );
         });
     }
 
