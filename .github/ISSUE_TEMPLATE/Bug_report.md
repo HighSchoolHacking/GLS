@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Something in GLS is wrong, and should be fixed
+about: Something in GLS is wrong, and should be fixed! 🚨
 ---
 
 <em>
