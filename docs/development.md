@@ -3,7 +3,10 @@
 To build from scratch, install [Node.js](http://node.js.org) and run `npm install` to install development dependencies.
 GLS is written in [TypeScript](http://typescriptlang.org).
 
-The recommended setup is [Visual Studio Code](https://code.visualstudio.com) with the [TSLint extension](https://marketplace.visualstudio.com/items?itemName=eg2.tslint).
+The recommended setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:
+
+* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
 
 To run a full build+lint+test, run `npm run verify`.
 
