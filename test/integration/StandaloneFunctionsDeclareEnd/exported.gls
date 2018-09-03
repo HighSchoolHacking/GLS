@@ -1,0 +1,4 @@
+-
+standalone functions declare start : export Abc
+standalone functions declare end
+-

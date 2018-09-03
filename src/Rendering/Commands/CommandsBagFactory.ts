@@ -44,9 +44,6 @@ import { ForEachPairStartCommand } from "./ForEachPairStartCommand";
 import { ForEachStartCommand } from "./ForEachStartCommand";
 import { ForNumbersEndCommand } from "./ForNumbersEndCommand";
 import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
-import { FunctionCommand } from "./FunctionCommand";
-import { FunctionEndCommand } from "./FunctionEndCommand";
-import { FunctionStartCommand } from "./FunctionStartCommand";
 import { GenericTypeCommand } from "./GenericTypeCommand";
 import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
@@ -54,6 +51,7 @@ import { IfStringToFloatEndCommand } from "./IfStringToFloatEndCommand";
 import { IfStringToFloatStartCommand } from "./IfStringToFloatStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
+// import { ImportStandaloneFunctionsCommand } from "./ImportStandaloneFunctionsCommand";
 import { InstanceOfCommand } from "./InstanceOfCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
@@ -74,6 +72,7 @@ import { LiteralCommand } from "./LiteralCommand";
 import { MainContextEndCommand } from "./MainContextEndCommand";
 import { MainContextStartCommand } from "./MainContextStartCommand";
 import { MainEndCommand } from "./MainEndCommand";
+import { MainGroupCommand } from "./MainGroupCommand";
 import { MainStartCommand } from "./MainStartCommand";
 import { MathAbsoluteCommand } from "./MathAbsoluteCommand";
 import { MathCeilingCommand } from "./MathCeilingCommand";
@@ -101,6 +100,11 @@ import { SetNewCommand } from "./SetNewCommand";
 import { SetToArrayCommand } from "./SetToArrayCommand";
 import { SetToListCommand } from "./SetToListCommand";
 import { SetTypeCommand } from "./SetTypeCommand";
+import { StandaloneFunctionCommand } from "./StandaloneFunctionCommand";
+import { StandaloneFunctionDeclareEndCommand } from "./StandaloneFunctionDeclareEndCommand";
+import { StandaloneFunctionDeclareStartCommand } from "./StandaloneFunctionDeclareStartCommand";
+import { StandaloneFunctionsDeclareEndCommand } from "./StandaloneFunctionsDeclareEndCommand";
+import { StandaloneFunctionsDeclareStartCommand } from "./StandaloneFunctionsDeclareStartCommand";
 import { StaticFunctionCommand } from "./StaticFunctionCommand";
 import { StaticFunctionDeclareEndCommand } from "./StaticFunctionDeclareEndCommand";
 import { StaticFunctionDeclareStartCommand } from "./StaticFunctionDeclareStartCommand";
@@ -186,9 +190,6 @@ export class CommandsBagFactory {
             new ForEachStartCommand(context),
             new ForNumbersEndCommand(context),
             new ForNumbersStartCommand(context),
-            new FunctionCommand(context),
-            new FunctionEndCommand(context),
-            new FunctionStartCommand(context),
             new GenericTypeCommand(context),
             new IfEndCommand(context),
             new IfStartCommand(context),
@@ -196,6 +197,7 @@ export class CommandsBagFactory {
             new IfStringToFloatStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
+            // new ImportStandaloneFunctionsCommand(context),
             new InstanceOfCommand(context),
             new InterfaceEndCommand(context),
             new InterfaceMethodCommand(context),
@@ -216,6 +218,7 @@ export class CommandsBagFactory {
             new MainContextEndCommand(context),
             new MainContextStartCommand(context),
             new MainEndCommand(context),
+            new MainGroupCommand(context),
             new MainStartCommand(context),
             new MathAbsoluteCommand(context),
             new MathCeilingCommand(context),
@@ -243,6 +246,11 @@ export class CommandsBagFactory {
             new SetToArrayCommand(context),
             new SetToListCommand(context),
             new SetTypeCommand(context),
+            new StandaloneFunctionCommand(context),
+            new StandaloneFunctionDeclareEndCommand(context),
+            new StandaloneFunctionDeclareStartCommand(context),
+            new StandaloneFunctionsDeclareEndCommand(context),
+            new StandaloneFunctionsDeclareStartCommand(context),
             new StaticFunctionCommand(context),
             new StaticFunctionDeclareEndCommand(context),
             new StaticFunctionDeclareStartCommand(context),

@@ -3,14 +3,14 @@ using System;
 
 class Program
 {
-    void SayHello(string name)
+    private static void SayHello(string name)
     {
         Console.WriteLine("Hello, " + name + "!");
     }
 
     public static void Main()
     {
-        SayHello("GLS");
+        Program.SayHello("GLS");
     }
 }
 //

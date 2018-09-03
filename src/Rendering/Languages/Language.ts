@@ -29,6 +29,7 @@ import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { SetProperties } from "./Properties/SetProperties";
+import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
@@ -81,8 +82,9 @@ export abstract class Language {
         this.generateParameterProperties(this.properties.parameters);
         this.generatePrintingProperties(this.properties.printing);
         this.generateSetProperties(this.properties.sets);
-        this.generateStringProperties(this.properties.strings);
+        this.generateStandaloneFunctionProperties(this.properties.standaloneFunctions);
         this.generateStringFormatProperties(this.properties.strings.formatting);
+        this.generateStringProperties(this.properties.strings);
         this.generateStringSubstringProperties(this.properties.strings.substrings);
         this.generateStringToFloatProperties(this.properties.strings.toFloat);
         this.generateStyleProperties(this.properties.style);
@@ -304,6 +306,13 @@ export abstract class Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected abstract generateSetProperties(sets: SetProperties): void;
+
+    /**
+     * Generates metadata on standalone functions.
+     *
+     * @param parameters   A property container for metadata on standalone functions.
+     */
+    protected abstract generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void;
 
     /**
      * Generates metadata on string formatting.
