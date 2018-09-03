@@ -34,6 +34,7 @@ import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { SetProperties } from "./Properties/SetProperties";
+import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
@@ -466,6 +467,7 @@ export class CSharp extends Language {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
         main.contextStartLines = ["class Program", "{"];
+        main.group = "Program";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
         main.mainStartLines = ["public static void Main()", "{"];
@@ -587,6 +589,15 @@ export class CSharp extends Language {
         sets.startItemsRight = "]";
         sets.typeLeft = "<";
         sets.typeRight = ">";
+    }
+
+    /**
+     * Generates metadata on standalone functions.
+     *
+     * @param parameters   A property container for metadata on standalone functions.
+     */
+    protected generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void {
+        standaloneFunctions.withinStaticClass = true;
     }
 
     /**

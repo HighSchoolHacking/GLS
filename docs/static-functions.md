@@ -9,7 +9,8 @@ class start : Utilities
 
         for each start : words string word
             if start : { operation : { string length : word } (greater than) { string length : longest } }
-            operation : longest equals word
+                operation : longest equals word
+            if end
         for each end
 
         static function : public Utilities log word
@@ -26,8 +27,6 @@ class end
 In C\#:
 
 ```csharp
-using System;
-
 using System;
 
 class Utilities

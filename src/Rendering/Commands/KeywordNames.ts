@@ -48,9 +48,19 @@ export class KeywordNames {
     public static Privacies: string[] = [KeywordNames.Public, KeywordNames.Protected, KeywordNames.Private];
 
     /**
-     * Name keys for abstract-compatiblepublicity keywords.
+     * Name keys for abstract-compatible publicity keywords.
      */
-    public static AbstractPrivacies: string[] = [KeywordNames.Public, KeywordNames.Protected];
+    public static PrivaciesAbstract: string[] = [KeywordNames.Public, KeywordNames.Protected];
+
+    /**
+     * Name keys for standalone function-compatible publicity keywords.
+     */
+    public static PrivaciesStandalone: string[] = [KeywordNames.Public, KeywordNames.Private];
+
+    /**
+     * Name key for the "static" keyword.
+     */
+    public static Static = "static";
 
     /**
      * Name key for the "string" keyword.

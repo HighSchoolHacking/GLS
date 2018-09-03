@@ -32,6 +32,7 @@ import { OperatorProperties } from "./Properties/OperatorProperties";
 import { ParameterProperties } from "./Properties/ParameterProperties";
 import { PrintingProperties } from "./Properties/PrintingProperties";
 import { SetProperties } from "./Properties/SetProperties";
+import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
 import { StringFormatProperties } from "./Properties/StringFormatProperties";
 import { StringProperties } from "./Properties/StringProperties";
 import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
@@ -436,6 +437,7 @@ export class JavaScript extends Language {
         main.contextEndLines = [];
         main.contextIndentation = 0;
         main.contextStartLines = [];
+        main.group = "";
         main.mainEndLines = [];
         main.mainIndentation = 0;
         main.mainStartLines = [];
@@ -549,6 +551,15 @@ export class JavaScript extends Language {
         sets.requiredImports = [];
         sets.startItemsLeft = "[";
         sets.startItemsRight = "]";
+    }
+
+    /**
+     * Generates metadata on standalone functions.
+     *
+     * @param parameters   A property container for metadata on standalone functions.
+     */
+    protected generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void {
+        standaloneFunctions.withinStaticClass = false;
     }
 
     /**

@@ -1,11 +1,11 @@
 -
 main context start
-    function start : SayHello void name string
+    standalone function declare start : private SayHello void name string
         print : { concatenate : ("Hello, ") name "!" }
-    function end
+    standalone function declare end
 
     main start
-        function : SayHello "GLS"
+        standalone function : private { main group } SayHello "GLS"
     main end
 main context end
 -

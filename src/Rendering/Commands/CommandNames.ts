@@ -223,21 +223,6 @@ export class CommandNames {
     public static ForNumbersStart = "for numbers start";
 
     /**
-     * Name key for the Function command.
-     */
-    public static Function = "function";
-
-    /**
-     * Name key for the FunctionEnd command.
-     */
-    public static FunctionEnd = "function end";
-
-    /**
-     * Name key for the FunctionStart command.
-     */
-    public static FunctionStart = "function start";
-
-    /**
      * Name key for the GenericType command.
      */
     public static GenericType = "generic type";
@@ -271,6 +256,11 @@ export class CommandNames {
      * Name key for the ImportPackage command.
      */
     public static ImportPackage = "import package";
+
+    /**
+     * Name key for the ImportStandaloneFunctions command.
+     */
+    public static ImportStandaloneFunctions = "import standalone functions";
 
     /**
      * Name key for the InstanceOf command.
@@ -371,6 +361,11 @@ export class CommandNames {
      * Name key for the MainEnd command.
      */
     public static MainEnd = "main end";
+
+    /**
+     * Name key for the MainGroup command.
+     */
+    public static MainGroup = "main group";
 
     /**
      * Name key for the MainStart command.
@@ -506,6 +501,31 @@ export class CommandNames {
      * Name key for the SetType command.
      */
     public static SetType = "set type";
+
+    /**
+     * Name key for the StandaloneFunction command.
+     */
+    public static StandaloneFunction = "standalone function";
+
+    /**
+     * Name key for the StandaloneFunctionDeclareEnd command.
+     */
+    public static StandaloneFunctionDeclareEnd = "standalone function declare end";
+
+    /**
+     * Name key for the StandaloneFunctionDeclareStart command.
+     */
+    public static StandaloneFunctionDeclareStart = "standalone function declare start";
+
+    /**
+     * Name key for the StandaloneFunctionsDeclareEnd command.
+     */
+    public static StandaloneFunctionsDeclareEnd = "standalone functions declare end";
+
+    /**
+     * Name key for the StandaloneFunctionsDeclareStart command.
+     */
+    public static StandaloneFunctionsDeclareStart = "standalone functions declare start";
 
     /**
      * Name key for the StaticFunction command.

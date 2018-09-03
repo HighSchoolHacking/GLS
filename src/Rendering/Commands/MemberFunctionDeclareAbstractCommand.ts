@@ -17,7 +17,7 @@ export class MemberFunctionDeclareAbstractCommand extends MemberFunctionDeclareC
         .withDescription("Declares an abstract member function.")
         .withIndentation([0])
         .withParameters([
-            new KeywordParameter(KeywordNames.AbstractPrivacies, "The privacy of the function.", true),
+            new KeywordParameter(KeywordNames.PrivaciesAbstract, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),
             new RepeatingParameters("Function parameters.", [

@@ -18,6 +18,11 @@ export class MainProperties {
     public contextStartLines: string[];
 
     /**
+     * Name of the language's main standalone functions group.
+     */
+    public group: string;
+
+    /**
      * Lines at the end of a main function.
      */
     public mainEndLines: string[];

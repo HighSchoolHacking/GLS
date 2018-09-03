@@ -22,6 +22,7 @@ import { OperatorProperties } from "./OperatorProperties";
 import { ParameterProperties } from "./ParameterProperties";
 import { PrintingProperties } from "./PrintingProperties";
 import { SetProperties } from "./SetProperties";
+import { StandaloneFunctionProperties } from "./StandaloneFunctionProperties";
 import { StringProperties } from "./StringProperties";
 import { StyleProperties } from "./StyleProperties";
 import { UnsupportedProperties } from "./UnsupportedProperties";
@@ -152,6 +153,11 @@ export class LanguageProperties {
     public sets: SetProperties;
 
     /**
+     * Metadata on sets.
+     */
+    public standaloneFunctions: StandaloneFunctionProperties;
+
+    /**
      * Metadata on strings.
      */
     public strings: StringProperties;
@@ -199,6 +205,7 @@ export class LanguageProperties {
         this.parameters = new ParameterProperties();
         this.printing = new PrintingProperties();
         this.sets = new SetProperties();
+        this.standaloneFunctions = new StandaloneFunctionProperties();
         this.strings = new StringProperties();
         this.style = new StyleProperties();
         this.unsupported = new UnsupportedProperties();
