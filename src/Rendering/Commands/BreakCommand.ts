@@ -10,7 +10,7 @@ export class BreakCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Break).withDescription("Prints the 'break' keyword.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Break).withDescription("Prints the 'break' keyword");
 
     /**
      * @returns Metadata on the command.

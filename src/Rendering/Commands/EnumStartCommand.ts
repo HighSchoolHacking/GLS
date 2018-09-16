@@ -13,7 +13,7 @@ export class EnumStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumStart)
-        .withDescription("Starts an enum declaration.")
+        .withDescription("Starts an enum declaration")
         .withIndentation([1])
         .withParameters([new SingleParameter("name", "The name of the enum.", true)]);
 

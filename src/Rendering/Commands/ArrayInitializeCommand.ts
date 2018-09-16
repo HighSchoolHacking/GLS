@@ -13,10 +13,10 @@ export class ArrayInitializeCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayInitialize)
-        .withDescription("Initializes a new array.")
+        .withDescription("Initializes a new array")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
-            new RepeatingParameters("Items initially in the array.", [
+            new RepeatingParameters("Items initially in the array", [
                 new SingleParameter("item", "An item initially in the array.", false),
             ]),
         ]);

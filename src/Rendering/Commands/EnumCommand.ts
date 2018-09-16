@@ -12,7 +12,7 @@ export class EnumCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Enum)
-        .withDescription("Retrieves an enum value by name.")
+        .withDescription("Retrieves an enum value by name")
         .withParameters([
             new SingleParameter("enumName", "A container enum.", true),
             new SingleParameter("memberName", "A member of the container enum.", true),

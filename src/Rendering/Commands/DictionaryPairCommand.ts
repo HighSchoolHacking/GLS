@@ -12,7 +12,7 @@ export class DictionaryPairCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryPair)
-        .withDescription("An in-place dictionary initialization pair.")
+        .withDescription("An in-place dictionary initialization pair")
         .withParameters([
             new SingleParameter("key", "The pair key.", true),
             new SingleParameter("value", "The pair value", true),
@@ -64,13 +64,13 @@ export class DictionaryPairCommand extends Command {
         }
 
         if (firstCharacter === '"') {
-            throw new Error("Dictionary pair keys that start with quotes must end with quotes.");
+            throw new Error("Dictionary pair keys that start with quotes must end with quotes");
         }
 
         if (lastCharacter === '"') {
-            throw new Error("Dictionary pair keys that end with quotes must start with quotes.");
+            throw new Error("Dictionary pair keys that end with quotes must start with quotes");
         }
 
-        throw new Error("Variables as dictionary keys are not supported at this time.");
+        throw new Error("Variables as dictionary keys are not supported at this time");
     }
 }

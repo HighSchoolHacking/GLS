@@ -12,7 +12,7 @@ export class DictionaryTypeCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryType)
-        .withDescription("Declares a dictionary type.")
+        .withDescription("Declares a dictionary type")
         .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),
             new SingleParameter("valueType", "The type of the values", true),

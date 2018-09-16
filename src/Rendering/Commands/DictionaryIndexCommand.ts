@@ -12,7 +12,7 @@ export class DictionaryIndexCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryIndex)
-        .withDescription("An indexed dictionary lookup.")
+        .withDescription("An indexed dictionary lookup")
         .withParameters([
             new SingleParameter("dictionary", "A dictionary to look within.", true),
             new SingleParameter("index", "The index within the dictionary.", true),

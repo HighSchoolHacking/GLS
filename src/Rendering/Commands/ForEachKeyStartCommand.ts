@@ -13,7 +13,7 @@ export class ForEachKeyStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachKeyStart)
-        .withDescription("Starts a foreach loop over a container's keys.")
+        .withDescription("Starts a foreach loop over a container's keys")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),

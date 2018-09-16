@@ -10,7 +10,7 @@ export class InterfaceEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceEnd)
-        .withDescription("Ends an interface declaration.")
+        .withDescription("Ends an interface declaration")
         .withIndentation([-1]);
 
     /**

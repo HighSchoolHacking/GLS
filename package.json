@@ -15,6 +15,7 @@
     },
     "scripts": {
         "precommit": "pretty-quick --staged --write",
+        "prepublish": "npm run util:refresh-docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
         "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
         "src": "npm run src:tsc && npm run src:tslint",
@@ -29,9 +30,10 @@
         "test:run:end-to-end": "mocha test/end-to-end.js",
         "util": "npm run util:tsc && npm run util:tslint",
         "util:new-language": "node util/createNewLanguage.js",
+        "util:refresh-docs": "node util/docs/refresh.js",
         "util:tsc": "tsc -p util",
         "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
-        "verify": "npm run src && npm run util && npm run test"
+        "verify": "npm run src && npm run util && npm run test && npm run util:refresh-docs"
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",

@@ -12,7 +12,7 @@ export class FinallyStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FinallyStart)
-        .withDescription("Starts a finally block.")
+        .withDescription("Starts a finally block")
         .withIndentation([1]);
 
     /**

@@ -12,7 +12,7 @@ export class UnsupportedCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Unsupported)
-        .withDescription("Complains on unsupported syntax.")
+        .withDescription("Complains on unsupported syntax")
         .withParameters([new SingleParameter("reason", "Explanation for why the syntax is unsupported.", true)]);
 
     /**

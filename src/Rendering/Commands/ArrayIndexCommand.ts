@@ -12,7 +12,7 @@ export class ArrayIndexCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayIndex)
-        .withDescription("An indexed array lookup.")
+        .withDescription("An indexed array lookup")
         .withParameters([
             new SingleParameter("array", "An array to look within.", true),
             new SingleParameter("index", "The index within the array.", true),

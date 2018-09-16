@@ -10,7 +10,7 @@ export class ClassEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ClassEnd)
-        .withDescription("Ends a class declaration.")
+        .withDescription("Ends a class declaration")
         .withIndentation([-1]);
 
     /**

@@ -10,7 +10,7 @@ export class IfStringToFloatEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToFloatEnd)
-        .withDescription("Ends a block to be executed if a string can be converted to a float.")
+        .withDescription("Ends a block to be executed if a string can be converted to a float")
         .withIndentation([-1]);
 
     /**

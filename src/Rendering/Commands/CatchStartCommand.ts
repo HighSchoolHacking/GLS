@@ -13,7 +13,7 @@ export class CatchStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CatchStart)
-        .withDescription("Starts a catch block.")
+        .withDescription("Starts a catch block")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("exception", "Target exception.", true),

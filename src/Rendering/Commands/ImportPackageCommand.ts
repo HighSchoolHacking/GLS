@@ -11,7 +11,7 @@ export class ImportPackageCommand extends ImportCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ImportPackage)
-        .withDescription("Imports items from an absolute package.")
+        .withDescription("Imports items from an absolute package")
         .withParameters(ImportCommand.parameters);
 
     /**

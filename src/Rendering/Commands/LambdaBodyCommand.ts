@@ -14,10 +14,10 @@ export class LambdaBodyCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.LambdaBody)
-        .withDescription("The body of a lambda function.")
+        .withDescription("The body of a lambda function")
         .withParameters([
             new SingleParameter("returnType", "Return type of the lambda function", true),
-            new RepeatingParameters("Lambda function parameters.", [
+            new RepeatingParameters("Lambda function parameters", [
                 new SingleParameter("parameterName", "A named parameter for the lambda function.", true),
                 new SingleParameter("parameterType", "The type of the parameter.", true),
             ]),

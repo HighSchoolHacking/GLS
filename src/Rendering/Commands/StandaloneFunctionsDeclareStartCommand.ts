@@ -14,7 +14,7 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StandaloneFunctionsDeclareStart)
-        .withDescription("Starts a group of standalone function declarations.")
+        .withDescription("Starts a group of standalone function declarations")
         .withIndentation([1])
         .withParameters([
             new KeywordParameter([KeywordNames.Export], "Keyword to export this class publicly.", false),

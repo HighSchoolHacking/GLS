@@ -13,7 +13,7 @@ export class OperationCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Operation)
-        .withDescription("One or more mathematical operations.")
+        .withDescription("One or more mathematical operations")
         .withParameters([
             new SingleParameter("value", "A value to work with.", true),
             new SingleParameter("operator", "The operation's operator.", true),

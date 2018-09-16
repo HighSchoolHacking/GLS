@@ -13,7 +13,7 @@ export class ReturnCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Return)
-        .withDescription("Returns a value.")
+        .withDescription("Returns a value")
         .withParameters([new SingleParameter("value", "A value to return.", false)]);
 
     /**

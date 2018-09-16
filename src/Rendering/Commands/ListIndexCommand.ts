@@ -12,7 +12,7 @@ export class ListIndexCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListIndex)
-        .withDescription("An indexed list lookup.")
+        .withDescription("An indexed list lookup")
         .withParameters([
             new SingleParameter("list", "A list to look within.", true),
             new SingleParameter("index", "The list within the container.", true),

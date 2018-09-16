@@ -10,7 +10,7 @@ export class StandaloneFunctionDeclareEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StandaloneFunctionDeclareEnd)
-        .withDescription("Ends a standalone function.")
+        .withDescription("Ends a standalone function")
         .withIndentation([-1]);
 
     /**

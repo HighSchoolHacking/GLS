@@ -10,7 +10,7 @@ export class ConstructorEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ConstructorEnd)
-        .withDescription("Ends a constructor.")
+        .withDescription("Ends a constructor")
         .withIndentation([-1]);
 
     /**

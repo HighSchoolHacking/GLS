@@ -14,19 +14,19 @@ export class MemberFunctionDeclareAbstractCommand extends MemberFunctionDeclareC
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareAbstract)
-        .withDescription("Declares an abstract member function.")
+        .withDescription("Declares an abstract member function")
         .withIndentation([0])
         .withParameters([
             new KeywordParameter(KeywordNames.PrivaciesAbstract, "The privacy of the function.", true),
             new SingleParameter("name", "The name of the function.", true),
             new SingleParameter("returnType", "The return type of the function.", true),
-            new RepeatingParameters("Function parameters.", [
+            new RepeatingParameters("Function parameters", [
                 new SingleParameter("parameterName", "A named parameter for the function.", true),
                 new SingleParameter("parameterType", "The type of the parameter.", true),
             ]),
             new KeywordParameter([KeywordNames.Throws], "Keyword to list possible exceptions", false),
-            new RepeatingParameters("Possible exceptions.", [
-                new SingleParameter("possibleException", "A possible exceptions thrown by this function.", true),
+            new RepeatingParameters("Possible exceptions", [
+                new SingleParameter("possibleException", "A possible exception thrown by this function.", true),
             ]),
         ]);
 

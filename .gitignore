@@ -2,14 +2,17 @@ dist
 lib
 node_modules/
 npm-debug.log
+docs/all-commands.md
+docs/commands/*.md
+src/**/*.map
 test/*.js
-test/*.js.map
-test/**/*.js.map
+test/*.map
+test/**/*.map
 test/unit/**/*.js
 util/*.js
-util/*.js.map
+util/*.map
 util/**/*.js
-util/**/*.js.map
+util/**/*.map
 
 # TS-GLS testing will often add these unnecessary files under src/
 src/**/*.cs

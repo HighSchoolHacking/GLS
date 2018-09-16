@@ -12,7 +12,7 @@ export class OperatorCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Operator)
-        .withDescription("Prints a mathematical operator.")
+        .withDescription("Prints a mathematical operator")
         .withParameters([new SingleParameter("operator", "An operator to alias.", true)]);
 
     /**

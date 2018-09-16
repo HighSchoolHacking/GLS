@@ -14,13 +14,11 @@ export class InterfaceStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceStart)
-        .withDescription("Starts an interface declaration.")
+        .withDescription("Starts an interface declaration")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("InterfaceName", "The Interface name.", true),
-            new RepeatingParameters("Parent interfaces.", [
-                new SingleParameter("parentInterfaceName", "Names of parent interfaces.", true),
-            ]),
+            new RepeatingParameters("Parent interfaces", [new SingleParameter("parentInterfaceName", "Names of parent interfaces.", true)]),
         ]);
 
     /**

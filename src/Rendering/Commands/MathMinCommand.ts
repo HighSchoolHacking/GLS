@@ -12,7 +12,7 @@ export class MathMinCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathMin)
-        .withDescription("Gets the smaller of two numbers.")
+        .withDescription("Gets the smaller of two numbers")
         .withParameters([
             new SingleParameter("name", "The name of the first variable.", true),
             new SingleParameter("name", "The name of the second variable.", true),

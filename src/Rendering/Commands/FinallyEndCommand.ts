@@ -10,7 +10,7 @@ export class FinallyEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FinallyEnd)
-        .withDescription("Ends a finally block.")
+        .withDescription("Ends a finally block")
         .withIndentation([-1]);
 
     /**

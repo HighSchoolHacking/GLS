@@ -12,7 +12,7 @@ export class ValueCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Value)
-        .withDescription("Parses a language's alias for a value.")
+        .withDescription("Parses a language's alias for a value")
         .withParameters([new SingleParameter("value", "A value to parse.", true)]);
 
     /**

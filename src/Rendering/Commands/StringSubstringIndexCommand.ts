@@ -15,7 +15,7 @@ export class StringSubstringIndexCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringSubstringIndex)
-        .withDescription("Retrieves a section of a string until an index.")
+        .withDescription("Retrieves a section of a string until an index")
         .withParameters([
             new SingleParameter("startIndex", "Starting index of the section.", true),
             new SingleParameter("startIndex", "Ending index of the section.", false),

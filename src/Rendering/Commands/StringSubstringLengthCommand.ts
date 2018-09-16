@@ -15,7 +15,7 @@ export class StringSubstringLengthCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringSubstringLength)
-        .withDescription("Retrieves a section of a string of a length.")
+        .withDescription("Retrieves a section of a string of a length")
         .withParameters([
             new SingleParameter("startIndex", "Starting index of the section.", true),
             new SingleParameter("startIndex", "Length of the section.", false),

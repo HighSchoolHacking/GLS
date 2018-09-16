@@ -10,7 +10,7 @@ export class IfEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfEnd)
-        .withDescription("Ends an if statement.")
+        .withDescription("Ends an if statement")
         .withIndentation([-1]);
 
     /**

@@ -12,7 +12,7 @@ export class StringCaseLowerCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringCaseLower)
-        .withDescription("Creates a lower-case version of a string.")
+        .withDescription("Creates a lower-case version of a string")
         .withParameters([new SingleParameter("string", "A string to create a lower-case version of.", true)]);
 
     /**

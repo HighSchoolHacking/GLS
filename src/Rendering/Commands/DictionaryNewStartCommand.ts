@@ -13,7 +13,7 @@ export class DictionaryNewStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryNewStart)
-        .withDescription("Starts to initialize a new dictionary.")
+        .withDescription("Starts to initialize a new dictionary")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("keyType", "The type of the keys.", true),

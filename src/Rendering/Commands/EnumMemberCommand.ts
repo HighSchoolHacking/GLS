@@ -12,7 +12,7 @@ export class EnumMemberCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumMember)
-        .withDescription("Adds a member to an enum.")
+        .withDescription("Adds a member to an enum")
         .withParameters([
             new SingleParameter("memberName", "A member of the container enum.", true),
             new SingleParameter("memberValue", "A value for the enum member.", true),

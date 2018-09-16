@@ -13,7 +13,7 @@ export class ElseIfStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ElseIfStart)
-        .withDescription("Starts an elif statement.")
+        .withDescription("Starts an elif statement")
         .withIndentation([-1, 1])
         .withParameters([new SingleParameter("conditional", "A conditional to check.", true)]);
 

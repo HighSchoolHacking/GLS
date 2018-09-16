@@ -12,7 +12,7 @@ export class MathPowerCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathPower)
-        .withDescription("Calculates a number to the power of another number.")
+        .withDescription("Calculates a number to the power of another number")
         .withParameters([
             new SingleParameter("name", "The name of the first variable.", true),
             new SingleParameter("name", "The name of the second variable.", true),

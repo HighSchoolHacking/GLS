@@ -10,7 +10,7 @@ export class ForNumbersEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForNumbersEnd)
-        .withDescription("Ends a for loop over numbers.")
+        .withDescription("Ends a for loop over numbers")
         .withIndentation([-1]);
 
     /**

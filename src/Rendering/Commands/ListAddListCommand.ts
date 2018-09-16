@@ -12,7 +12,7 @@ export class ListAddListCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListAddList)
-        .withDescription("Adds everything in one list to another.")
+        .withDescription("Adds everything in one list to another")
         .withParameters([
             new SingleParameter("first", "A container list.", true),
             new SingleParameter("second", "Items to add to the first list.", true),
