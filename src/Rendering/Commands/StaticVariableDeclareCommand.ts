@@ -37,7 +37,7 @@ export class StaticVariableDeclareCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.classes.statics.variables.skipStaticVariables && parameters.length < 5) {
+        if (this.language.syntax.classes.statics.variables.skipStaticVariables && parameters.length < 5) {
             return LineResults.newSingleLine("\0", false);
         }
 
@@ -48,17 +48,17 @@ export class StaticVariableDeclareCommand extends Command {
         let casingStyle: CaseStyle;
 
         if (privacy === KeywordNames.Protected) {
-            output += this.language.properties.classes.statics.variables.protected;
-            output += this.language.properties.classes.statics.variables.protectedPrefix;
-            casingStyle = this.language.properties.classes.statics.variables.protectedCase;
+            output += this.language.syntax.classes.statics.variables.protected;
+            output += this.language.syntax.classes.statics.variables.protectedPrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.protectedCase;
         } else if (privacy === KeywordNames.Private) {
-            output += this.language.properties.classes.statics.variables.private;
-            output += this.language.properties.classes.statics.variables.privatePrefix;
-            casingStyle = this.language.properties.classes.statics.variables.privateCase;
+            output += this.language.syntax.classes.statics.variables.private;
+            output += this.language.syntax.classes.statics.variables.privatePrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.privateCase;
         } else {
-            output += this.language.properties.classes.statics.variables.public;
-            output += this.language.properties.classes.statics.variables.publicPrefix;
-            casingStyle = this.language.properties.classes.statics.variables.publicCase;
+            output += this.language.syntax.classes.statics.variables.public;
+            output += this.language.syntax.classes.statics.variables.publicPrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.publicCase;
         }
 
         variableName = this.context.convertStringToCase(variableName, casingStyle);
@@ -68,7 +68,7 @@ export class StaticVariableDeclareCommand extends Command {
             inlineParameters.push(parameters[4]);
         }
 
-        output += this.language.properties.classes.statics.variables.label;
+        output += this.language.syntax.classes.statics.variables.label;
         output += this.context.convertParsed(inlineParameters).commandResults[0].text;
 
         return LineResults.newSingleLine(output, true);

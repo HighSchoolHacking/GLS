@@ -80,7 +80,7 @@ export class ComparisonTestsRunner {
      */
     public runCommandTest(command: string, test: string, languageName: string): void {
         const gls = new Gls(languageName);
-        const extension = gls.getLanguage().properties.general.extension;
+        const extension = gls.getLanguage().general.extension;
 
         const source = this.filesReader.readCommandFile(command, test + ".gls");
         const expected = this.filesReader.readCommandFile(command, test + extension);

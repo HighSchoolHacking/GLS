@@ -26,7 +26,7 @@ export class ContinueCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const output: string = this.language.properties.loops.continue;
+        const output: string = this.language.syntax.loops.continue;
 
         return LineResults.newSingleLine(output, true);
     }

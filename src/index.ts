@@ -22,6 +22,7 @@ export { JavaScript } from "./Rendering/Languages/JavaScript";
 export { Python } from "./Rendering/Languages/Python";
 export { Ruby } from "./Rendering/Languages/Ruby";
 export { TypeScript } from "./Rendering/Languages/TypeScript";
+export { IGlsProjectMetadata } from "./Rendering/Languages/Properties/ProjectProperties";
 export { RenderContext } from "./Rendering/RenderContext";
 export { GlsFile } from "./Tokenization/GlsFile";
 export { IGlsNode } from "./Tokenization/Nodes/IGlsNode";

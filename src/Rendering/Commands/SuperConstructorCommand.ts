@@ -36,7 +36,7 @@ export class SuperConstructorCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        output += this.language.properties.classes.superConstructor;
+        output += this.language.syntax.classes.superConstructor;
         output += "(";
 
         if (parameters.length > 1) {

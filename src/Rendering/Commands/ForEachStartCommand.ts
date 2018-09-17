@@ -35,25 +35,25 @@ export class ForEachStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.forEachStartLeft;
+        let line: string = this.language.syntax.loops.forEachStartLeft;
         let output: CommandResult[];
 
-        line += this.language.properties.loops.forEachStartIteration;
+        line += this.language.syntax.loops.forEachStartIteration;
 
-        if (this.language.properties.variables.declarationRequired) {
-            line += this.language.properties.variables.declaration;
+        if (this.language.syntax.variables.declarationRequired) {
+            line += this.language.syntax.variables.declaration;
         }
-        if (this.language.properties.variables.explicitTypes && !this.language.properties.variables.typesAfterName) {
+        if (this.language.syntax.variables.explicitTypes && !this.language.syntax.variables.typesAfterName) {
             line += parameters[2] + " ";
         }
 
         line += parameters[3];
 
-        line += this.language.properties.loops.forEachStartSeparator;
+        line += this.language.syntax.loops.forEachStartSeparator;
         line += parameters[1];
 
         output = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.properties.loops.forEachStartRight, 1);
+        this.addLineEnder(output, this.language.syntax.loops.forEachStartRight, 1);
 
         return new LineResults(output, false);
     }

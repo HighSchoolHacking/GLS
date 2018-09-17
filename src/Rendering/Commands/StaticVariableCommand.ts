@@ -45,14 +45,14 @@ export class StaticVariableCommand extends Command {
         let casingStyle: CaseStyle;
 
         if (privacy === KeywordNames.Protected) {
-            variablePrefix = this.language.properties.classes.statics.variables.protectedPrefix;
-            casingStyle = this.language.properties.classes.statics.variables.protectedCase;
+            variablePrefix = this.language.syntax.classes.statics.variables.protectedPrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.protectedCase;
         } else if (privacy === KeywordNames.Private) {
-            variablePrefix = this.language.properties.classes.statics.variables.privatePrefix;
-            casingStyle = this.language.properties.classes.statics.variables.privateCase;
+            variablePrefix = this.language.syntax.classes.statics.variables.privatePrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.privateCase;
         } else {
-            variablePrefix = this.language.properties.classes.statics.variables.publicPrefix;
-            casingStyle = this.language.properties.classes.statics.variables.publicCase;
+            variablePrefix = this.language.syntax.classes.statics.variables.publicPrefix;
+            casingStyle = this.language.syntax.classes.statics.variables.publicCase;
         }
 
         variableName = this.context.convertStringToCase(variableName, casingStyle);

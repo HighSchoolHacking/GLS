@@ -11,7 +11,11 @@ util/*.js.map
 util/**/*.js
 util/**/*.js.map
 
-# TS-GLS testing will often add these unnecessary files under src/
+# TS-GLS testing will often add these unnecessary files
+*.nuspec
+Gemfile
+pom.xml
+requirements.txt
 src/**/*.cs
 src/**/*.gls
 src/**/*.java

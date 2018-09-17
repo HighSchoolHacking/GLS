@@ -1,4 +1,4 @@
-import { StringSubstringSupport } from "../Languages/Properties/StringSubstringProperties";
+import { StringSubstringSupport } from "../Languages/Properties/Syntax/StringSubstringSyntax";
 import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 import { CommandNames } from "./CommandNames";
@@ -43,17 +43,17 @@ export class StringSubstringLengthCommand extends Command {
         let results = "";
 
         results += parameters[1];
-        results += this.language.properties.strings.substrings.leftLength;
+        results += this.language.syntax.strings.substrings.leftLength;
         results += parameters[2];
 
         if (parameters.length === 4) {
-            results += this.language.properties.strings.substrings.middle;
+            results += this.language.syntax.strings.substrings.middle;
             results += this.renderSecondParameter(parameters);
         } else {
-            results += this.language.properties.strings.substrings.defaultEnd;
+            results += this.language.syntax.strings.substrings.defaultEnd;
         }
 
-        results += this.language.properties.strings.substrings.right;
+        results += this.language.syntax.strings.substrings.right;
 
         return LineResults.newSingleLine(results, true);
     }
@@ -65,7 +65,7 @@ export class StringSubstringLengthCommand extends Command {
      * @returns The simplest possible form of the second parameter.
      */
     private renderSecondParameter(parameters: string[]): string {
-        const support = this.language.properties.strings.substrings.support;
+        const support = this.language.syntax.strings.substrings.support;
         if (support === StringSubstringSupport.Both || support === StringSubstringSupport.Length) {
             return parameters[3];
         }

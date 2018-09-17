@@ -28,14 +28,14 @@ export class MainContextStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const startLines: string[] = this.language.properties.main.contextStartLines;
+        const startLines: string[] = this.language.syntax.main.contextStartLines;
 
         for (const startLine of startLines) {
             output.push(new CommandResult(startLine, 0));
         }
 
         if (output.length !== 0) {
-            output[output.length - 1].indentation = this.language.properties.main.contextIndentation;
+            output[output.length - 1].indentation = this.language.syntax.main.contextIndentation;
         }
 
         return new LineResults(output, false);

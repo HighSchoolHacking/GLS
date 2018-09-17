@@ -33,7 +33,7 @@ export class VariableInlineCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (parameters.length === 3 && !this.language.properties.variables.declarationRequired) {
+        if (parameters.length === 3 && !this.language.syntax.variables.declarationRequired) {
             return LineResults.newSingleLine("\0", false);
         }
 
@@ -41,9 +41,9 @@ export class VariableInlineCommand extends Command {
         const typeName: string = this.context.convertCommon(CommandNames.Type, parameters[2]);
         let output = "";
 
-        if (this.language.properties.variables.explicitTypes) {
-            if (this.language.properties.variables.typesAfterName) {
-                output += name + this.language.properties.variables.typeLeft;
+        if (this.language.syntax.variables.explicitTypes) {
+            if (this.language.syntax.variables.typesAfterName) {
+                output += name + this.language.syntax.variables.typeLeft;
                 output += typeName;
             } else {
                 output += typeName + " " + name;

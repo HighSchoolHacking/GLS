@@ -39,10 +39,10 @@ export class ValueCommand extends Command {
      * @returns The equivalent converted value.
      */
     private convertValue(valueRaw: string): string {
-        if (!this.language.properties.variables.aliases.hasOwnProperty(valueRaw)) {
+        if (!this.language.syntax.variables.aliases.hasOwnProperty(valueRaw)) {
             return valueRaw;
         }
 
-        return this.language.properties.variables.aliases[valueRaw];
+        return this.language.syntax.variables.aliases[valueRaw];
     }
 }

@@ -28,7 +28,7 @@ export class StandaloneFunctionsDeclareEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (!this.language.properties.standaloneFunctions.withinStaticClass) {
+        if (!this.language.syntax.standaloneFunctions.withinStaticClass) {
             return new LineResults([], false);
         }
 

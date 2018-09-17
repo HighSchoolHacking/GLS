@@ -72,7 +72,7 @@ export class FilesReader {
         }
 
         const language = this.languagesBag.getLanguageByExtension(extension);
-        const comment = language.properties.comments.lineLeft;
+        const comment = language.syntax.comments.lineLeft;
 
         return comment.trim();
     }

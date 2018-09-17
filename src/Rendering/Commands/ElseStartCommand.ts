@@ -31,21 +31,21 @@ export class ElseStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const lines = [new CommandResult("", -1)];
 
-        if (!this.language.properties.style.separateBraceLines) {
+        if (!this.language.syntax.style.separateBraceLines) {
             lines[0].text = "\0";
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.properties.conditionals.continueLeft, 0);
-        lines[lines.length - 1].text += this.language.properties.conditionals.else;
+        this.addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
+        lines[lines.length - 1].text += this.language.syntax.conditionals.else;
 
-        if (this.language.properties.style.separateBraceLines) {
+        if (this.language.syntax.style.separateBraceLines) {
             lines.push(new CommandResult("", 1));
         } else {
             lines[lines.length - 1].indentation = 1;
         }
 
-        lines[lines.length - 1].text += this.language.properties.conditionals.continueRight;
+        lines[lines.length - 1].text += this.language.syntax.conditionals.continueRight;
 
         return new LineResults(lines, false);
     }

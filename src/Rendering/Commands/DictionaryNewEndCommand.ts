@@ -29,7 +29,7 @@ export class DictionaryNewEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const ender: string = this.language.properties.dictionaries.initializeEnd;
+        const ender: string = this.language.syntax.dictionaries.initializeEnd;
 
         return new LineResults([new CommandResult(ender, -1)], true);
     }

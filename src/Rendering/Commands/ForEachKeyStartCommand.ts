@@ -35,7 +35,7 @@ export class ForEachKeyStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.loops.forEachAsMethod) {
+        if (this.language.syntax.loops.forEachAsMethod) {
             return this.renderForEachAsMethod(parameters);
         }
 
@@ -50,27 +50,27 @@ export class ForEachKeyStartCommand extends Command {
      * @remarks Usage: (container, keyName, keyType).
      */
     public renderForEachAsLoop(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.foreach;
+        let line: string = this.language.syntax.loops.foreach;
         let output: CommandResult[];
 
-        line += this.language.properties.conditionals.startLeft;
+        line += this.language.syntax.conditionals.startLeft;
 
-        if (this.language.properties.variables.declarationRequired) {
+        if (this.language.syntax.variables.declarationRequired) {
             const variableInline = this.context.convertParsed([CommandNames.VariableInline, parameters[2], parameters[3]]);
 
-            line += this.language.properties.variables.declaration;
+            line += this.language.syntax.variables.declaration;
             line += variableInline.commandResults[0].text;
         } else {
             line += parameters[2];
         }
 
-        line += this.language.properties.loops.forEachMiddle;
+        line += this.language.syntax.loops.forEachMiddle;
         line += parameters[1];
-        line += this.language.properties.loops.forEachGetKeys;
-        line += this.language.properties.loops.forEachRight;
+        line += this.language.syntax.loops.forEachGetKeys;
+        line += this.language.syntax.loops.forEachRight;
 
         output = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(output, false);
     }
@@ -84,9 +84,9 @@ export class ForEachKeyStartCommand extends Command {
      */
     public renderForEachAsMethod(parameters: string[]): LineResults {
         let output: string = parameters[1];
-        output += this.language.properties.loops.forEachGetKeys;
+        output += this.language.syntax.loops.forEachGetKeys;
         output += parameters[2];
-        output += this.language.properties.loops.forEachRight;
+        output += this.language.syntax.loops.forEachRight;
 
         return new LineResults([new CommandResult(output, 1)], false);
     }

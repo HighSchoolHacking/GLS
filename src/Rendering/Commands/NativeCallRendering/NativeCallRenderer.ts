@@ -1,5 +1,5 @@
 import { GlsUtilities } from "../../../GlsUtilities";
-import { NativeCallProperties } from "../../Languages/Properties/NativeCallProperties";
+import { NativeCallSyntax } from "../../Languages/Properties/Syntax/NativeCallSyntax";
 import { LineResults } from "../../LineResults";
 
 /**
@@ -7,17 +7,17 @@ import { LineResults } from "../../LineResults";
  */
 export abstract class NativeCallRenderer {
     /**
-     * Properties for the native call.
+     * Syntax for the native call.
      */
-    protected nativeCallProperties: NativeCallProperties;
+    protected nativeCallSyntax: NativeCallSyntax;
 
     /**
      * Initializes a new instance of the NativeCallRenderer class.
      *
-     * @param nativeCallProperties   Properties for the native call.
+     * @param nativeCallSyntax   Syntax for the native call.
      */
-    public constructor(nativeCallProperties: NativeCallProperties) {
-        this.nativeCallProperties = nativeCallProperties;
+    public constructor(nativeCallSyntax: NativeCallSyntax) {
+        this.nativeCallSyntax = nativeCallSyntax;
     }
 
     /**

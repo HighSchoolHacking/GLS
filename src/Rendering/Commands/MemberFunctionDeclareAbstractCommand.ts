@@ -41,20 +41,20 @@ export class MemberFunctionDeclareAbstractCommand extends MemberFunctionDeclareC
      * @returns Whether this is able to render any output.
      */
     protected canRender(): boolean {
-        return this.language.properties.classes.abstractsSupported;
+        return this.language.syntax.classes.abstractsSupported;
     }
 
     /**
      * @returns Text after the publicity keyword.
      */
     protected getAfterPublicity(): string {
-        return this.language.properties.classes.members.functions.abstractDeclaration;
+        return this.language.syntax.classes.members.functions.abstractDeclaration;
     }
 
     /**
      * @returns Text to end the declaration.
      */
     protected getEnder(): string {
-        return this.language.properties.style.semicolon;
+        return this.language.syntax.style.semicolon;
     }
 }

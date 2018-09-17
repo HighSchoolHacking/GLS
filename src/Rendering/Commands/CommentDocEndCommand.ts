@@ -28,6 +28,6 @@ export class CommentDocEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.language.properties.comments.docEnd, false);
+        return LineResults.newSingleLine(this.language.syntax.comments.docEnd, false);
     }
 }

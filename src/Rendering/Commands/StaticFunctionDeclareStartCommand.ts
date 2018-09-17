@@ -52,17 +52,17 @@ export class StaticFunctionDeclareStartCommand extends Command {
         let declaration = "";
         let output: CommandResult[];
 
-        if (this.language.properties.classes.statics.labelBeforePublicity) {
-            declaration += this.language.properties.classes.statics.functions.label;
+        if (this.language.syntax.classes.statics.labelBeforePublicity) {
+            declaration += this.language.syntax.classes.statics.functions.label;
         }
 
         declaration += this.getPublicity(publicity);
 
-        if (!this.language.properties.classes.statics.labelBeforePublicity) {
-            declaration += this.language.properties.classes.statics.functions.label;
+        if (!this.language.syntax.classes.statics.labelBeforePublicity) {
+            declaration += this.language.syntax.classes.statics.functions.label;
         }
 
-        if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
+        if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
             declaration += returnType + " ";
         }
 
@@ -81,14 +81,14 @@ export class StaticFunctionDeclareStartCommand extends Command {
 
         declaration += ")";
 
-        if (this.language.properties.functions.explicitReturns && this.language.properties.functions.returnTypeAfterName) {
-            declaration += this.language.properties.functions.returnTypeMarker;
+        if (this.language.syntax.functions.explicitReturns && this.language.syntax.functions.returnTypeAfterName) {
+            declaration += this.language.syntax.functions.returnTypeMarker;
             declaration += returnType;
         }
 
         output = [new CommandResult("", 0)];
         this.addLineEnder(output, declaration, 0);
-        this.addLineEnder(output, this.language.properties.functions.defineStartRight, 1);
+        this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
 
         return new LineResults(output, false);
     }
@@ -101,7 +101,7 @@ export class StaticFunctionDeclareStartCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.variables.declarationRequired) {
+        if (!this.language.syntax.variables.declarationRequired) {
             return parameters[i];
         }
 
@@ -119,14 +119,14 @@ export class StaticFunctionDeclareStartCommand extends Command {
      */
     private getPublicity(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.statics.functions.private;
+            return this.language.syntax.classes.statics.functions.private;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.statics.functions.protected;
+            return this.language.syntax.classes.statics.functions.protected;
         }
 
-        return this.language.properties.classes.statics.functions.public;
+        return this.language.syntax.classes.statics.functions.public;
     }
 
     /**
@@ -137,14 +137,14 @@ export class StaticFunctionDeclareStartCommand extends Command {
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.statics.functions.privateCase;
+            return this.language.syntax.classes.statics.functions.privateCase;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.statics.functions.protectedCase;
+            return this.language.syntax.classes.statics.functions.protectedCase;
         }
 
-        return this.language.properties.classes.statics.functions.publicCase;
+        return this.language.syntax.classes.statics.functions.publicCase;
     }
 
     /**
@@ -155,13 +155,13 @@ export class StaticFunctionDeclareStartCommand extends Command {
      */
     private getPublicityPrefix(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.statics.functions.privatePrefix;
+            return this.language.syntax.classes.statics.functions.privatePrefix;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.statics.functions.protectedPrefix;
+            return this.language.syntax.classes.statics.functions.protectedPrefix;
         }
 
-        return this.language.properties.classes.statics.functions.publicPrefix;
+        return this.language.syntax.classes.statics.functions.publicPrefix;
     }
 }

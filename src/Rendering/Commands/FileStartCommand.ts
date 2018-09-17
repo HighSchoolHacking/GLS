@@ -39,10 +39,10 @@ export class FileStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const source: string[] = this.language.properties.files.startLines;
+        const source: string[] = this.language.syntax.files.startLines;
         const packagePathAndFileName: string[] = parameters.slice(1);
         const packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
-        const packagePathJoined: string = this.context.convertArrayToCase(packagePath, this.language.properties.files.startCase);
+        const packagePathJoined: string = this.context.convertArrayToCase(packagePath, this.language.syntax.files.startCase);
         const fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
 
         for (let line of source) {
@@ -53,7 +53,7 @@ export class FileStartCommand extends Command {
         }
 
         if (output.length !== 0) {
-            output[output.length - 1].indentation = this.language.properties.files.indentation;
+            output[output.length - 1].indentation = this.language.syntax.files.indentation;
         }
 
         this.context.setDirectoryPath(packagePath);

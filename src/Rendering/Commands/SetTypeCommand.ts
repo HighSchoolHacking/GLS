@@ -31,19 +31,19 @@ export class SetTypeCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        if (this.language.properties.sets.initializeAsNew) {
-            output += this.language.properties.sets.className;
+        if (this.language.syntax.sets.initializeAsNew) {
+            output += this.language.syntax.sets.className;
         }
 
-        if (this.language.properties.variables.explicitTypes) {
-            output += this.language.properties.sets.typeLeft;
+        if (this.language.syntax.variables.explicitTypes) {
+            output += this.language.syntax.sets.typeLeft;
             output += this.context.convertCommon(CommandNames.Type, parameters[1]);
-            output += this.language.properties.sets.typeRight;
+            output += this.language.syntax.sets.typeRight;
         }
 
         const results = LineResults.newSingleLine(output, false);
 
-        results.addImports(this.language.properties.sets.requiredImports);
+        results.addImports(this.language.syntax.sets.requiredImports);
 
         return results;
     }

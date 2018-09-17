@@ -43,14 +43,14 @@ export class MemberVariableCommand extends Command {
         let casingStyle: CaseStyle;
 
         if (privacy === KeywordNames.Protected) {
-            variablePrefix = this.language.properties.classes.members.variables.protectedPrefix;
-            casingStyle = this.language.properties.classes.members.variables.protectedCase;
+            variablePrefix = this.language.syntax.classes.members.variables.protectedPrefix;
+            casingStyle = this.language.syntax.classes.members.variables.protectedCase;
         } else if (privacy === KeywordNames.Private) {
-            variablePrefix = this.language.properties.classes.members.variables.privatePrefix;
-            casingStyle = this.language.properties.classes.members.variables.privateCase;
+            variablePrefix = this.language.syntax.classes.members.variables.privatePrefix;
+            casingStyle = this.language.syntax.classes.members.variables.privateCase;
         } else {
-            variablePrefix = this.language.properties.classes.members.variables.publicPrefix;
-            casingStyle = this.language.properties.classes.members.variables.publicCase;
+            variablePrefix = this.language.syntax.classes.members.variables.publicPrefix;
+            casingStyle = this.language.syntax.classes.members.variables.publicCase;
         }
 
         variableName = this.context.convertStringToCase(variableName, casingStyle);

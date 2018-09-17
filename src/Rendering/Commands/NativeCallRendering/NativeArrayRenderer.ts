@@ -19,7 +19,7 @@ export class NativeArrayRenderer extends NativeCallRenderer {
             result += ", " + parameters[i];
         }
 
-        result += "]." + this.nativeCallProperties.name;
+        result += "]." + this.nativeCallSyntax.name;
 
         return LineResults.newSingleLine(result, true);
     }

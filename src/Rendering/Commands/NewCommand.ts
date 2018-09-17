@@ -1,4 +1,4 @@
-import { NewInstantiationSyntaxKind } from "../Languages/Properties/NewProperties";
+import { NewInstantiationSyntaxKind } from "../Languages/Properties/Syntax/NewSyntax";
 import { LineResults } from "../LineResults";
 import { RenderContext } from "../RenderContext";
 import { Command } from "./Command";
@@ -62,7 +62,7 @@ export class NewCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const instantationKind = this.language.properties.newProp.instantiationKind;
+        const instantationKind = this.language.syntax.newProp.instantiationKind;
 
         return this.styleRenderers[instantationKind].render(parameters);
     }

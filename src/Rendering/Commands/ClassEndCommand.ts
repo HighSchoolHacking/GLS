@@ -26,6 +26,6 @@ export class ClassEndCommand extends BlockEndCommand {
      * @returns The end block for class declarations.
      */
     protected renderBlockEnd(): string {
-        return this.language.properties.classes.declareEnd;
+        return this.language.syntax.classes.declareEnd;
     }
 }

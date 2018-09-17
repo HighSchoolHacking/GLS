@@ -15,7 +15,7 @@ export class PrefixRenderer extends NewRenderer {
         const typeName: string = parameters[1];
         let result = "";
 
-        result += this.language.properties.newProp.keyword;
+        result += this.language.syntax.newProp.keyword;
         result += " ";
         result += typeName;
         result += "(";

@@ -39,13 +39,13 @@ export class InterfaceMethodCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line = "";
 
-        if (!this.language.properties.interfaces.supported) {
+        if (!this.language.syntax.interfaces.supported) {
             return LineResults.newSingleLine(line, false);
         }
 
-        if (this.language.properties.interfaces.methodTypeAfter) {
+        if (this.language.syntax.interfaces.methodTypeAfter) {
             line += parameters[1];
-            line += this.language.properties.interfaces.declareMethodMiddle;
+            line += this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length; i++) {
                 if (i % 2 !== 0) {
@@ -57,10 +57,10 @@ export class InterfaceMethodCommand extends Command {
                 }
             }
 
-            line += this.language.properties.interfaces.declareMethodRight + ": " + parameters[2];
+            line += this.language.syntax.interfaces.declareMethodRight + ": " + parameters[2];
         } else {
-            line += this.language.properties.interfaces.declareMethodLeft;
-            line += parameters[2] + " " + parameters[1] + this.language.properties.interfaces.declareMethodMiddle;
+            line += this.language.syntax.interfaces.declareMethodLeft;
+            line += parameters[2] + " " + parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length - 1; i += 2) {
                 line += parameters[i + 1] + " " + parameters[i];
@@ -69,7 +69,7 @@ export class InterfaceMethodCommand extends Command {
                 }
             }
 
-            line += this.language.properties.interfaces.declareMethodRight;
+            line += this.language.syntax.interfaces.declareMethodRight;
         }
 
         return LineResults.newSingleLine(line, true);

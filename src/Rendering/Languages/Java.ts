@@ -3,56 +3,93 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
-import { ArrayProperties } from "./Properties/ArrayProperties";
-import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassExportProperties } from "./Properties/ClassExportProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
-import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
-import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
-import { CommentProperties } from "./Properties/CommentProperties";
-import { ConditionalProperties } from "./Properties/ConditionalProperties";
-import { DictionaryProperties } from "./Properties/DictionaryProperties";
-import { EnumProperties } from "./Properties/EnumProperties";
-import { ExceptionProperties } from "./Properties/ExceptionProperties";
-import { FileProperties } from "./Properties/FileProperties";
-import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
-import { ImportProperties } from "./Properties/ImportProperties";
-import { InterfaceProperties } from "./Properties/InterfaceProperties";
-import { LambdaProperties } from "./Properties/LambdaProperties";
-import { ListProperties } from "./Properties/ListProperties";
-import { LoopProperties } from "./Properties/LoopProperties";
-import { MainProperties } from "./Properties/MainProperties";
-import { MathProperties } from "./Properties/MathProperties";
-import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
-import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
-import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
-import { PrintingProperties } from "./Properties/PrintingProperties";
-import { SetProperties } from "./Properties/SetProperties";
-import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
-import { StringFormatProperties } from "./Properties/StringFormatProperties";
-import { StringProperties } from "./Properties/StringProperties";
-import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
-import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
-import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
-import { VariableProperties } from "./Properties/VariableProperties";
+import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
+import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
+import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
+import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
+import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
+import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
+import { ClassStaticFunctionSyntax } from "./Properties/Syntax/ClassStaticFunctionSyntax";
+import { ClassStaticVariableSyntax } from "./Properties/Syntax/ClassStaticVariableSyntax";
+import { ClassSyntax } from "./Properties/Syntax/ClassSyntax";
+import { CommentSyntax } from "./Properties/Syntax/CommentSyntax";
+import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
+import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
+import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
+import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { FileSyntax } from "./Properties/Syntax/FileSyntax";
+import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
+import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
+import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
+import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListSyntax } from "./Properties/Syntax/ListSyntax";
+import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
+import { MainSyntax } from "./Properties/Syntax/MainSyntax";
+import { MathSyntax } from "./Properties/Syntax/MathSyntax";
+import { NativeCallScope, NativeCallSyntax, NativeCallType } from "./Properties/Syntax/NativeCallSyntax";
+import { NewInstantiationSyntaxKind, NewSyntax } from "./Properties/Syntax/NewSyntax";
+import { OperatorSyntax } from "./Properties/Syntax/OperatorSyntax";
+import { ParameterSyntax } from "./Properties/Syntax/ParameterSyntax";
+import { PrintingSyntax } from "./Properties/Syntax/PrintingSyntax";
+import { SetSyntax } from "./Properties/Syntax/SetSyntax";
+import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunctionSyntax";
+import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
+import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
+import { StringSyntax } from "./Properties/Syntax/StringSyntax";
+import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
+import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
+import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
 
 /**
  * A summary of information for the Java language.
  */
 export class Java extends Language {
     /**
+     * Generates project-scale metadata.
+     *
+     * @param projects   A property container for project-scale metadata.
+     */
+    protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.fileFormat = [
+            `<?xml version="1.0" encoding="UTF-8"?>`,
+            `<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">`,
+            `    <modelVersion>4.0.0</modelVersion>`,
+            ``,
+            `    <licenses>`,
+            `        <license>`,
+            `            <name>{license}</name>`,
+            `            <distribution>repo</distribution>`,
+            `        </license>`,
+            `    </licenses>`,
+            ``,
+            `    <scm>`,
+            `        <url>{url}</url>`,
+            `    </scm>`,
+            `</project>`,
+        ];
+        projects.fileName = "pom.xml";
+        projects.nameFormat = CaseStyle.PackageLowerCase;
+    }
+
+    /**
+     * Generates general metadata.
+     *
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.name = "Java";
+        general.extension = ".java";
+    }
+
+    /**
      * Generates metadata on class generics.
      *
      * @param members   A property container for metadata on class generics.
      */
-    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+    protected generateClassGenericSyntax(generics: ClassGenericSyntax): void {
         generics.left = "<";
         generics.middle = ", ";
         generics.right = ">";
@@ -63,11 +100,11 @@ export class Java extends Language {
      *
      * @param arrays   A property container for metadata on arrays.
      */
-    protected generateArrayProperties(arrays: ArrayProperties): void {
+    protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Function);
+        arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -75,7 +112,7 @@ export class Java extends Language {
      *
      * @param booleans   A property container for metadata on booleans.
      */
-    protected generateBooleanProperties(booleans: BooleanProperties): void {
+    protected generateBooleanSyntax(booleans: BooleanSyntax): void {
         booleans.className = "boolean";
     }
 
@@ -84,7 +121,7 @@ export class Java extends Language {
      *
      * @param members   A property container for metadata on exported classes.
      */
-    protected generateClassExportProperties(exports: ClassExportProperties): void {
+    protected generateClassExportSyntax(exports: ClassExportSyntax): void {
         exports.exported = "public ";
         exports.internal = "";
     }
@@ -94,7 +131,7 @@ export class Java extends Language {
      *
      * @param functions   A property container for metadata on class member functions.
      */
-    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+    protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
         functions.privatePrefix = "";
         functions.protectedPrefix = "";
         functions.publicPrefix = "";
@@ -113,7 +150,7 @@ export class Java extends Language {
      *
      * @param members   A property container for metadata on class member variables.
      */
-    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
+    protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
         variables.protectedPrefix = "";
@@ -131,7 +168,7 @@ export class Java extends Language {
      *
      * @param classes   A property container for metadata on classes.
      */
-    protected generateClassProperties(classes: ClassProperties): void {
+    protected generateClassSyntax(classes: ClassSyntax): void {
         classes.declareEnd = "}";
         classes.declareExtendsRight = "";
         classes.declareStartLeft = "class ";
@@ -156,7 +193,7 @@ export class Java extends Language {
         classes.declareImplementsLeft = " implements ";
         classes.declareStartRight = " {";
 
-        classes.instanceOf = new NativeCallProperties(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallSyntax(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
 
@@ -168,7 +205,7 @@ export class Java extends Language {
      *
      * @param functions   A property container for metadata on class static functions.
      */
-    protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+    protected generateClassStaticFunctionSyntax(functions: ClassStaticFunctionSyntax): void {
         functions.label = "static ";
         functions.privatePrefix = "";
         functions.protectedPrefix = "";
@@ -187,7 +224,7 @@ export class Java extends Language {
      *
      * @param members   A property container for metadata on class static variables.
      */
-    protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
+    protected generateClassStaticVariableSyntax(variables: ClassStaticVariableSyntax): void {
         variables.label = "static ";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
@@ -207,7 +244,7 @@ export class Java extends Language {
      *
      * @param comments   A property container for metadata on comments.
      */
-    protected generateCommentProperties(comments: CommentProperties): void {
+    protected generateCommentSyntax(comments: CommentSyntax): void {
         comments.blockEnd = "*/";
         comments.blockLineLeft = "";
         comments.blockLineRight = "";
@@ -240,7 +277,7 @@ export class Java extends Language {
      *
      * @param conditionals   A property container for metadata on conditionals.
      */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+    protected generateConditionalSyntax(conditionals: ConditionalSyntax): void {
         conditionals.elif = "else if";
         conditionals.else = "else";
         conditionals.end = "}";
@@ -257,10 +294,10 @@ export class Java extends Language {
      *
      * @param dictionaries   A property container for metadata on dictionaries.
      */
-    protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
+    protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "HashMap";
-        dictionaries.containsKey = new NativeCallProperties("containsKey", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties("keySet", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
@@ -279,7 +316,7 @@ export class Java extends Language {
      *
      * @param enums   A property container for metadata on enums.
      */
-    protected generateEnumProperties(enums: EnumProperties): void {
+    protected generateEnumSyntax(enums: EnumSyntax): void {
         enums.declareStartLeft = "enum ";
         enums.declareValueLeft = " = ";
         enums.declareValueRight = "";
@@ -300,7 +337,7 @@ export class Java extends Language {
      *
      * @param exceptions   A property container for metadata on exceptions.
      */
-    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+    protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
         exceptions.catch = "catch";
         exceptions.finally = "finally";
         exceptions.throw = "throw new";
@@ -324,7 +361,7 @@ export class Java extends Language {
      *
      * @param files   The property container for metadata on file contents.
      */
-    protected generateFileProperties(files: FileProperties): void {
+    protected generateFileSyntax(files: FileSyntax): void {
         files.endLines = [];
         files.indentation = 0;
         files.startCase = CaseStyle.PackageLowerCase;
@@ -336,7 +373,7 @@ export class Java extends Language {
      *
      * @param functions   A property container for metadata on functions.
      */
-    protected generateFunctionProperties(functions: FunctionProperties): void {
+    protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.defineEnd = "}";
         functions.explicitReturns = true;
 
@@ -350,21 +387,11 @@ export class Java extends Language {
     }
 
     /**
-     * Generates general metadata.
-     *
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "Java";
-        general.extension = ".java";
-    }
-
-    /**
      * Generates metadata on imports.
      *
      * @param imports   A property container for metadata on imports.
      */
-    protected generateImportProperties(imports: ImportProperties): void {
+    protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PackageLowerCase;
         imports.explicit = true;
         imports.explicitLines = true;
@@ -379,7 +406,7 @@ export class Java extends Language {
      *
      * @param interfaces   A property container for metadata on interfaces.
      */
-    protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
+    protected generateInterfaceSyntax(interfaces: InterfaceSyntax): void {
         interfaces.declareStartLeft = "interface ";
         interfaces.declareStartRight = " {";
         interfaces.declareExtendsLeft = " extends ";
@@ -398,7 +425,7 @@ export class Java extends Language {
      *
      * @param lambdas   A property container for metadata on lambdas.
      */
-    protected generateLambdaProperties(lambdas: LambdaProperties): void {
+    protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
         lambdas.functionLeft = "(";
         lambdas.functionRight = "";
         lambdas.parameterTypeRequired = false;
@@ -412,19 +439,19 @@ export class Java extends Language {
      *
      * @param lists   A property container for metadata on lists.
      */
-    protected generateListProperties(lists: ListProperties): void {
+    protected generateListSyntax(lists: ListSyntax): void {
         lists.className = "ArrayList";
 
-        lists.addList = new NativeCallProperties("addAll", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallSyntax("addAll", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.length = new NativeCallProperties("size", NativeCallScope.Member, NativeCallType.Function);
+        lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.pop = new NativeCallProperties("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
+        lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
 
-        lists.popFront = new NativeCallProperties("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
+        lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
 
-        lists.push = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.push = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
 
         lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
     }
@@ -434,7 +461,7 @@ export class Java extends Language {
      *
      * @param loops   A property container for metadata on loops.
      */
-    protected generateLoopProperties(loops: LoopProperties): void {
+    protected generateLoopSyntax(loops: LoopSyntax): void {
         loops.break = "break";
         loops.continue = "continue";
         loops.for = "for";
@@ -464,7 +491,7 @@ export class Java extends Language {
      *
      * @param main   A property container for metadata on main execution areas.
      */
-    protected generateMainProperties(main: MainProperties): void {
+    protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
         main.contextStartLines = ["class Program {"];
@@ -479,13 +506,13 @@ export class Java extends Language {
      *
      * @param math   A property container for metadata on math.
      */
-    protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties("Math.abs", NativeCallScope.Static, NativeCallType.Function);
-        math.ceiling = new NativeCallProperties("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
-        math.floor = new NativeCallProperties("Math.floor", NativeCallScope.Static, NativeCallType.Function);
-        math.max = new NativeCallProperties("Math.max", NativeCallScope.Static, NativeCallType.Function);
-        math.min = new NativeCallProperties("Math.min", NativeCallScope.Static, NativeCallType.Function);
-        math.power = new NativeCallProperties("Math.pow", NativeCallScope.Static, NativeCallType.Function);
+    protected generateMathSyntax(math: MathSyntax): void {
+        math.absolute = new NativeCallSyntax("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.ceiling = new NativeCallSyntax("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
+        math.floor = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
+        math.max = new NativeCallSyntax("Math.max", NativeCallScope.Static, NativeCallType.Function);
+        math.min = new NativeCallSyntax("Math.min", NativeCallScope.Static, NativeCallType.Function);
+        math.power = new NativeCallSyntax("Math.pow", NativeCallScope.Static, NativeCallType.Function);
         math.mathName = "Math";
     }
 
@@ -494,18 +521,9 @@ export class Java extends Language {
      *
      * @param newProp   A property container for metadata on new object instantiation.
      */
-    protected generateNewProperties(newProp: NewProperties): void {
+    protected generateNewSyntax(newProp: NewSyntax): void {
         newProp.instantiationKind = NewInstantiationSyntaxKind.Prefix;
         newProp.keyword = "new";
-    }
-
-    /**
-     * Generates metadata on numbers.
-     *
-     * @param numbers   A property container for metadata on numbers.
-     */
-    protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "double";
     }
 
     /**
@@ -513,7 +531,7 @@ export class Java extends Language {
      *
      * @param operators   A property container for metadata on operators.
      */
-    protected generateOperatorProperties(operators: OperatorProperties): void {
+    protected generateOperatorSyntax(operators: OperatorSyntax): void {
         operators.and = "&&";
         operators.decreaseBy = "-=";
         operators.divide = "/";
@@ -540,7 +558,7 @@ export class Java extends Language {
      *
      * @param parameters    A property container for metadata on parameters
      */
-    protected generateParameterProperties(parameters: ParameterProperties): void {
+    protected generateParameterSyntax(parameters: ParameterSyntax): void {
         parameters.restDeclarationAfter = false;
         parameters.restDeclarationType = true;
         parameters.restKeywordLeft = "";
@@ -553,7 +571,7 @@ export class Java extends Language {
      *
      * @param parameters    A property container for metadata on printing.
      */
-    protected generatePrintingProperties(printing: PrintingProperties): void {
+    protected generatePrintingSyntax(printing: PrintingSyntax): void {
         printing.end = ")";
         printing.requiredImports = [];
         printing.start = "System.out.println(";
@@ -564,19 +582,19 @@ export class Java extends Language {
      *
      * @param parameters   A property container for metadata on sets.
      */
-    protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
+    protected generateSetSyntax(sets: SetSyntax): void {
+        sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "HashSet";
 
-        sets.contains = new NativeCallProperties("contains", NativeCallScope.Member, NativeCallType.Function);
+        sets.contains = new NativeCallSyntax("contains", NativeCallScope.Member, NativeCallType.Function);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties("toArray", NativeCallScope.Member, NativeCallType.Function);
+        sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
 
-        sets.toList = new NativeCallProperties("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
+        sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
 
         sets.requiredImports = [];
         sets.startItemsLeft = "[";
@@ -590,7 +608,7 @@ export class Java extends Language {
      *
      * @param parameters   A property container for metadata on standalone functions.
      */
-    protected generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void {
+    protected generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void {
         standaloneFunctions.withinStaticClass = true;
     }
 
@@ -599,7 +617,7 @@ export class Java extends Language {
      *
      * @param strings   A property container for metadata on string formatting.
      */
-    protected generateStringFormatProperties(formatting: StringFormatProperties): void {
+    protected generateStringFormatSyntax(formatting: StringFormatSyntax): void {
         formatting.formatLeft = 'String.format("';
         formatting.formatMiddle = '", ';
         formatting.formatAbbreviated = '"';
@@ -621,22 +639,22 @@ export class Java extends Language {
      *
      * @param strings   A property container for metadata on strings.
      */
-    protected generateStringProperties(strings: StringProperties): void {
+    protected generateStringSyntax(strings: StringSyntax): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties("toLowerCase", NativeCallScope.Member, NativeCallType.Function);
+        strings.caseLower = new NativeCallSyntax("toLowerCase", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.caseUpper = new NativeCallProperties("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
+        strings.caseUpper = new NativeCallSyntax("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties("indexOf", NativeCallScope.Member, NativeCallType.Function);
+        strings.indexOf = new NativeCallSyntax("indexOf", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "-1";
 
-        strings.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Function);
+        strings.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.trim = new NativeCallProperties("trim", NativeCallScope.Member, NativeCallType.Function);
+        strings.trim = new NativeCallSyntax("trim", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -644,7 +662,7 @@ export class Java extends Language {
      *
      * @param strings   A property container for metadata on string substrings.
      */
-    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+    protected generateStringSubstringSyntax(substrings: StringSubstringSyntax): void {
         substrings.defaultEnd = "";
         substrings.leftIndex = ".substring(";
         substrings.leftLength = ".substring(";
@@ -658,7 +676,7 @@ export class Java extends Language {
      *
      * @param toFloat   A property container for metadata on string-to-float conversions.
      */
-    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
         toFloat.conversionType = StringToFloatStartConversionType.PredeclareConvertAndValidate;
         toFloat.initialVariableValues = "null";
         toFloat.initializeVariablesEnd = "\n\ntry {\n";
@@ -676,7 +694,7 @@ export class Java extends Language {
      *
      * @param style   A property container for metadata on style.
      */
-    protected generateStyleProperties(style: StyleProperties): void {
+    protected generateStyleSyntax(style: StyleSyntax): void {
         style.semicolon = ";";
     }
 
@@ -685,7 +703,7 @@ export class Java extends Language {
      *
      * @param style   A property container for metadata on unsupported complaints.
      */
-    protected generateUnsupportedProperties(unsupported: UnsupportedProperties): void {
+    protected generateUnsupportedSyntax(unsupported: UnsupportedSyntax): void {
         unsupported.complaintEnd = "*/";
         unsupported.complaintStart = "/*";
     }
@@ -695,7 +713,7 @@ export class Java extends Language {
      *
      * @param variables   A property container for metadata on variables.
      */
-    protected generateVariableProperties(variables: VariableProperties): void {
+    protected generateVariableSyntax(variables: VariableSyntax): void {
         variables.declarationRequired = true;
 
         variables.aliases = {

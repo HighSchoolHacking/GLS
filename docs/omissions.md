@@ -32,4 +32,3 @@ Not all languages work similarly to the supported ones. These will likely never 
 | Rust | ✓ |  |  |  |
 
 This list will grow as languages are requested.
-

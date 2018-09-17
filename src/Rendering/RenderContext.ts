@@ -59,7 +59,7 @@ export class RenderContext {
         this.nodeRenderer = new GlsNodeRenderer(CommandsBagFactory.forContext(this));
 
         this.lineResultsGenerator = new LineResultsGenerator(
-            new ImportsPrinter(language, this.caseStyleConverterBag.getConverter(language.properties.imports.case)),
+            new ImportsPrinter(language, this.caseStyleConverterBag.getConverter(language.syntax.imports.case)),
             this.nodeRenderer,
         );
     }

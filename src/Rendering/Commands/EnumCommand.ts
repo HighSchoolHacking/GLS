@@ -34,11 +34,11 @@ export class EnumCommand extends Command {
     public render(parameters: string[]): LineResults {
         let result = "";
 
-        result += this.language.properties.enums.valueLeft;
+        result += this.language.syntax.enums.valueLeft;
         result += parameters[1];
-        result += this.language.properties.enums.valueMiddle;
+        result += this.language.syntax.enums.valueMiddle;
         result += parameters[2];
-        result += this.language.properties.enums.valueRight;
+        result += this.language.syntax.enums.valueRight;
 
         return LineResults.newSingleLine(result, true);
     }

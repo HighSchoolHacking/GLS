@@ -36,14 +36,14 @@ export class EnumMemberCommand extends Command {
         let result = "";
 
         result += parameters[1];
-        result += this.language.properties.enums.declareValueLeft;
+        result += this.language.syntax.enums.declareValueLeft;
         result += parameters[2];
-        result += this.language.properties.enums.declareValueRight;
+        result += this.language.syntax.enums.declareValueRight;
 
         if (parameters.length === 4) {
-            result += this.language.properties.enums.declareCommaRight;
+            result += this.language.syntax.enums.declareCommaRight;
         } else {
-            result += this.language.properties.enums.declareLastRight;
+            result += this.language.syntax.enums.declareLastRight;
         }
 
         return LineResults.newSingleLine(result, false);

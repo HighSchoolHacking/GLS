@@ -35,25 +35,25 @@ export class SetNewCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        if (this.language.properties.sets.initializeAsNew) {
+        if (this.language.syntax.sets.initializeAsNew) {
             output += "new ";
-            output += this.language.properties.sets.className;
+            output += this.language.syntax.sets.className;
         }
 
-        if (this.language.properties.classes.generics.used) {
-            output += this.language.properties.classes.generics.left;
+        if (this.language.syntax.classes.generics.used) {
+            output += this.language.syntax.classes.generics.left;
             output += this.context.convertCommon(CommandNames.Type, parameters[1]);
-            output += this.language.properties.classes.generics.middle;
+            output += this.language.syntax.classes.generics.middle;
             output += this.context.convertCommon(CommandNames.Type, parameters[2]);
-            output += this.language.properties.classes.generics.right;
+            output += this.language.syntax.classes.generics.right;
         }
 
         output += "(";
 
         if (parameters.length > 3) {
-            output += this.language.properties.sets.startItemsLeft;
+            output += this.language.syntax.sets.startItemsLeft;
             output += parameters.slice(3).join(", ");
-            output += this.language.properties.sets.startItemsRight;
+            output += this.language.syntax.sets.startItemsRight;
         }
 
         output += ")";

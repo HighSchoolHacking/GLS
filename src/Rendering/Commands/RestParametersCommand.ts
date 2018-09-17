@@ -32,19 +32,19 @@ export class RestParametersCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const left: string = this.language.properties.parameters.restKeywordLeft;
+        const left: string = this.language.syntax.parameters.restKeywordLeft;
         let middle = "";
-        const right: string = this.language.properties.parameters.restKeywordRight;
+        const right: string = this.language.syntax.parameters.restKeywordRight;
 
-        if (this.language.properties.parameters.restDeclarationType) {
-            if (!this.language.properties.parameters.restDeclarationAfter) {
-                middle = parameters[2] + this.language.properties.parameters.restKeywordMiddle + parameters[1];
+        if (this.language.syntax.parameters.restDeclarationType) {
+            if (!this.language.syntax.parameters.restDeclarationAfter) {
+                middle = parameters[2] + this.language.syntax.parameters.restKeywordMiddle + parameters[1];
             }
-            if (this.language.properties.parameters.restDeclarationAfter) {
-                middle = parameters[1] + this.language.properties.parameters.restKeywordMiddle + parameters[2];
+            if (this.language.syntax.parameters.restDeclarationAfter) {
+                middle = parameters[1] + this.language.syntax.parameters.restKeywordMiddle + parameters[2];
             }
         } else {
-            middle = this.language.properties.parameters.restKeywordMiddle + parameters[1];
+            middle = this.language.syntax.parameters.restKeywordMiddle + parameters[1];
         }
 
         return LineResults.newSingleLine(left + middle + right, false);

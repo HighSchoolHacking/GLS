@@ -35,7 +35,7 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (!this.language.properties.standaloneFunctions.withinStaticClass) {
+        if (!this.language.syntax.standaloneFunctions.withinStaticClass) {
             return new LineResults([], false);
         }
 
@@ -57,7 +57,7 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
         results.commandResults[0].text = KeywordNames.Static + " " + results.commandResults[0].text;
 
         if (parameters[1] === KeywordNames.Export) {
-            results.commandResults[0].text = this.language.properties.classes.exports.exported + results.commandResults[0].text;
+            results.commandResults[0].text = this.language.syntax.classes.exports.exported + results.commandResults[0].text;
         }
 
         return results;

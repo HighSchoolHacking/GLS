@@ -30,14 +30,14 @@ export class MainEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const endLines: string[] = this.language.properties.main.mainEndLines;
+        const endLines: string[] = this.language.syntax.main.mainEndLines;
 
         for (const endLine of endLines) {
             output.push(new CommandResult(endLine, 0));
         }
 
         if (output.length !== 0) {
-            output[0].indentation = -this.language.properties.main.mainIndentation;
+            output[0].indentation = -this.language.syntax.main.mainIndentation;
         }
 
         return new LineResults(output, false);

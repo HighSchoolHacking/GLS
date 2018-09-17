@@ -1,4 +1,4 @@
-import { NativeCallType } from "../../Languages/Properties/NativeCallProperties";
+import { NativeCallType } from "../../Languages/Properties/Syntax/NativeCallSyntax";
 import { LineResults } from "../../LineResults";
 import { NativeCallRenderer } from "./NativeCallRenderer";
 
@@ -15,13 +15,13 @@ export class NativeOperatorRenderer extends NativeCallRenderer {
     public render(parameters: string[]): LineResults {
         let result = "";
 
-        if (this.nativeCallProperties.type === NativeCallType.FloatingLeft) {
+        if (this.nativeCallSyntax.type === NativeCallType.FloatingLeft) {
             result += parameters[2];
-            result += this.nativeCallProperties.name;
+            result += this.nativeCallSyntax.name;
             result += parameters[1];
         } else {
             result += parameters[1];
-            result += this.nativeCallProperties.name;
+            result += this.nativeCallSyntax.name;
             result += parameters[2];
 
             if (parameters.length === 4) {

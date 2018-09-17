@@ -29,9 +29,9 @@ export class IsNotNullCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const left: string = this.language.properties.variables.isNotNullLeft;
-        const middle: string = this.language.properties.variables.isNotNullMiddle;
-        const right: string = this.language.properties.variables.nullRight;
+        const left: string = this.language.syntax.variables.isNotNullLeft;
+        const middle: string = this.language.syntax.variables.isNotNullMiddle;
+        const right: string = this.language.syntax.variables.nullRight;
 
         return LineResults.newSingleLine(left + parameters[1] + middle + right, false);
     }

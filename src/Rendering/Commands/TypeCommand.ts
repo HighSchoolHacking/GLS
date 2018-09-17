@@ -56,7 +56,7 @@ export class TypeCommand extends Command {
         const bracketStartIndex: number = typeNameRaw.indexOf("<");
         const containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
 
-        if (!this.language.properties.classes.generics.used) {
+        if (!this.language.syntax.classes.generics.used) {
             return this.convertType(containerTypeName);
         }
 
@@ -64,9 +64,9 @@ export class TypeCommand extends Command {
         const genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
         let output: string = containerTypeName;
 
-        output += this.language.properties.classes.generics.left;
+        output += this.language.syntax.classes.generics.left;
         output += genericTypeName;
-        output += this.language.properties.classes.generics.right;
+        output += this.language.syntax.classes.generics.right;
 
         return output;
     }
@@ -80,8 +80,8 @@ export class TypeCommand extends Command {
     private convertType(typeNameRaw: string): string {
         let typeName: string = typeNameRaw;
 
-        if (this.language.properties.classes.aliases.hasOwnProperty(typeName)) {
-            typeName = this.language.properties.classes.aliases[typeName];
+        if (this.language.syntax.classes.aliases.hasOwnProperty(typeName)) {
+            typeName = this.language.syntax.classes.aliases[typeName];
         }
 
         if (this.typeContainsArray(typeNameRaw)) {

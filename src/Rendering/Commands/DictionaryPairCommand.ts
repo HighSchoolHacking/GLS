@@ -35,14 +35,14 @@ export class DictionaryPairCommand extends Command {
     public render(parameters: string[]): LineResults {
         let results = "";
 
-        results += this.language.properties.dictionaries.initializePairLeft;
+        results += this.language.syntax.dictionaries.initializePairLeft;
         results += this.renderKey(parameters[1]);
-        results += this.language.properties.dictionaries.initializePairMiddle;
+        results += this.language.syntax.dictionaries.initializePairMiddle;
         results += parameters[2];
-        results += this.language.properties.dictionaries.initializePairRight;
+        results += this.language.syntax.dictionaries.initializePairRight;
 
         if (parameters.length === 4) {
-            results += this.language.properties.dictionaries.initializePairComma;
+            results += this.language.syntax.dictionaries.initializePairComma;
         }
 
         return LineResults.newSingleLine(results, false);

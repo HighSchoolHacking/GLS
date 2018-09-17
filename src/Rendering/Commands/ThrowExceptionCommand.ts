@@ -33,13 +33,13 @@ export class ThrowExceptionCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.exceptions.throw;
+        let line: string = this.language.syntax.exceptions.throw;
         line += " " + parameters[1];
-        line += this.language.properties.exceptions.throwExceptionMiddle;
+        line += this.language.syntax.exceptions.throwExceptionMiddle;
         line += '"' + parameters[2] + '"';
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.exceptions.throwExceptionRight, 0);
+        this.addLineEnder(lines, this.language.syntax.exceptions.throwExceptionRight, 0);
         return new LineResults(lines, true);
     }
 }

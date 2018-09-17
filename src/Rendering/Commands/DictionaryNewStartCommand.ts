@@ -34,7 +34,7 @@ export class DictionaryNewStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (!this.language.properties.dictionaries.initializeAsNew) {
+        if (!this.language.syntax.dictionaries.initializeAsNew) {
             return LineResults.newSingleLine("{", false);
         }
 
@@ -43,7 +43,7 @@ export class DictionaryNewStartCommand extends Command {
         output += this.context.convertParsed([CommandNames.DictionaryType, parameters[1], parameters[2]]).commandResults[0].text;
 
         const results: CommandResult[] = [new CommandResult(output, 0)];
-        this.addLineEnder(results, this.language.properties.dictionaries.initializeStart, 1);
+        this.addLineEnder(results, this.language.syntax.dictionaries.initializeStart, 1);
 
         return new LineResults(results, false);
     }

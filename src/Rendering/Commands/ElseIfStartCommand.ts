@@ -34,19 +34,19 @@ export class ElseIfStartCommand extends Command {
         const lines = [new CommandResult("", -1)];
         let line: CommandResult;
 
-        if (!this.language.properties.style.separateBraceLines) {
+        if (!this.language.syntax.style.separateBraceLines) {
             lines[0].text = "\0";
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.properties.conditionals.continueLeft, 0);
+        this.addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
 
         line = lines[lines.length - 1];
-        line.text += this.language.properties.conditionals.elif;
-        line.text += this.language.properties.conditionals.startLeft;
+        line.text += this.language.syntax.conditionals.elif;
+        line.text += this.language.syntax.conditionals.startLeft;
         line.text += parameters[1];
 
-        this.addLineEnder(lines, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(lines, false);
     }

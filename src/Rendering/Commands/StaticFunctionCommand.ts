@@ -70,14 +70,14 @@ export class StaticFunctionCommand extends Command {
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.statics.functions.privateCase;
+            return this.language.syntax.classes.statics.functions.privateCase;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.statics.functions.protectedCase;
+            return this.language.syntax.classes.statics.functions.protectedCase;
         }
 
-        return this.language.properties.classes.statics.functions.publicCase;
+        return this.language.syntax.classes.statics.functions.publicCase;
     }
 
     /**
@@ -88,13 +88,13 @@ export class StaticFunctionCommand extends Command {
      */
     private getPublicityPrefix(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.statics.functions.privatePrefix;
+            return this.language.syntax.classes.statics.functions.privatePrefix;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.statics.functions.protectedPrefix;
+            return this.language.syntax.classes.statics.functions.protectedPrefix;
         }
 
-        return this.language.properties.classes.statics.functions.publicPrefix;
+        return this.language.syntax.classes.statics.functions.publicPrefix;
     }
 }

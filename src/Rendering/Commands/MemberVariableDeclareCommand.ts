@@ -36,7 +36,7 @@ export class MemberVariableDeclareCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.classes.members.variables.skipMemberVariables) {
+        if (this.language.syntax.classes.members.variables.skipMemberVariables) {
             return LineResults.newSingleLine("\0", false);
         }
 
@@ -47,17 +47,17 @@ export class MemberVariableDeclareCommand extends Command {
         let casingStyle: CaseStyle;
 
         if (privacy === KeywordNames.Protected) {
-            output += this.language.properties.classes.members.variables.protected;
-            output += this.language.properties.classes.members.variables.protectedPrefix;
-            casingStyle = this.language.properties.classes.members.variables.protectedCase;
+            output += this.language.syntax.classes.members.variables.protected;
+            output += this.language.syntax.classes.members.variables.protectedPrefix;
+            casingStyle = this.language.syntax.classes.members.variables.protectedCase;
         } else if (privacy === KeywordNames.Private) {
-            output += this.language.properties.classes.members.variables.private;
-            output += this.language.properties.classes.members.variables.privatePrefix;
-            casingStyle = this.language.properties.classes.members.variables.privateCase;
+            output += this.language.syntax.classes.members.variables.private;
+            output += this.language.syntax.classes.members.variables.privatePrefix;
+            casingStyle = this.language.syntax.classes.members.variables.privateCase;
         } else {
-            output += this.language.properties.classes.members.variables.public;
-            output += this.language.properties.classes.members.variables.publicPrefix;
-            casingStyle = this.language.properties.classes.members.variables.publicCase;
+            output += this.language.syntax.classes.members.variables.public;
+            output += this.language.syntax.classes.members.variables.publicPrefix;
+            casingStyle = this.language.syntax.classes.members.variables.publicCase;
         }
 
         variableName = this.context.convertStringToCase(variableName, casingStyle);

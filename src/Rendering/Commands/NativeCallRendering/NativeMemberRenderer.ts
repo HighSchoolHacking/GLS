@@ -1,4 +1,4 @@
-import { NativeCallType } from "../../Languages/Properties/NativeCallProperties";
+import { NativeCallType } from "../../Languages/Properties/Syntax/NativeCallSyntax";
 import { LineResults } from "../../LineResults";
 import { NativeCallRenderer } from "./NativeCallRenderer";
 
@@ -16,21 +16,21 @@ export class NativeMemberRenderer extends NativeCallRenderer {
         let result = "";
 
         result += parameters[1] + ".";
-        result += this.nativeCallProperties.name;
+        result += this.nativeCallSyntax.name;
 
-        if (this.nativeCallProperties.type === NativeCallType.Function) {
+        if (this.nativeCallSyntax.type === NativeCallType.Function) {
             result += "(";
 
-            if (this.nativeCallProperties.arguments.length > 0) {
-                result += this.formatArgument(this.nativeCallProperties.arguments[0], parameters[1]);
+            if (this.nativeCallSyntax.arguments.length > 0) {
+                result += this.formatArgument(this.nativeCallSyntax.arguments[0], parameters[1]);
 
-                for (let i = 1; i < this.nativeCallProperties.arguments.length; i += 1) {
-                    result += ", " + this.formatArgument(this.nativeCallProperties.arguments[i], parameters[1]);
+                for (let i = 1; i < this.nativeCallSyntax.arguments.length; i += 1) {
+                    result += ", " + this.formatArgument(this.nativeCallSyntax.arguments[i], parameters[1]);
                 }
             }
 
             if (parameters.length > 2) {
-                if (this.nativeCallProperties.arguments.length > 0) {
+                if (this.nativeCallSyntax.arguments.length > 0) {
                     result += ", ";
                 }
 

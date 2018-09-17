@@ -70,14 +70,14 @@ export class MemberFunctionCommand extends Command {
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.members.functions.privateCase;
+            return this.language.syntax.classes.members.functions.privateCase;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.members.functions.protectedCase;
+            return this.language.syntax.classes.members.functions.protectedCase;
         }
 
-        return this.language.properties.classes.members.functions.publicCase;
+        return this.language.syntax.classes.members.functions.publicCase;
     }
 
     /**
@@ -88,13 +88,13 @@ export class MemberFunctionCommand extends Command {
      */
     private getPublicityPrefix(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.members.functions.privatePrefix;
+            return this.language.syntax.classes.members.functions.privatePrefix;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.members.functions.protectedPrefix;
+            return this.language.syntax.classes.members.functions.protectedPrefix;
         }
 
-        return this.language.properties.classes.members.functions.publicPrefix;
+        return this.language.syntax.classes.members.functions.publicPrefix;
     }
 }

@@ -1,0 +1,10 @@
+{
+    "author": "Josh Goldberg",
+    "description": "A unified syntax that compiles into your favorite OOP languages.",
+    "email": "me@joshuakgodlberg.com",
+    "license": "MIT",
+    "name": "Gls",
+    "repositoryType": "git",
+    "url": "https://github.com/general-language-syntax/GLS",
+    "version": "0.3.24"
+}
