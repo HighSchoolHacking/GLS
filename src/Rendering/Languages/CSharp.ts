@@ -3,56 +3,91 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
-import { ArrayProperties } from "./Properties/ArrayProperties";
-import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassExportProperties } from "./Properties/ClassExportProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
-import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
-import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
-import { CommentProperties } from "./Properties/CommentProperties";
-import { ConditionalProperties } from "./Properties/ConditionalProperties";
-import { DictionaryProperties } from "./Properties/DictionaryProperties";
-import { EnumProperties } from "./Properties/EnumProperties";
-import { ExceptionProperties } from "./Properties/ExceptionProperties";
-import { FileProperties } from "./Properties/FileProperties";
-import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
-import { ImportProperties } from "./Properties/ImportProperties";
-import { InterfaceProperties } from "./Properties/InterfaceProperties";
-import { LambdaProperties } from "./Properties/LambdaProperties";
-import { ListProperties } from "./Properties/ListProperties";
-import { LoopProperties } from "./Properties/LoopProperties";
-import { MainProperties } from "./Properties/MainProperties";
-import { MathProperties } from "./Properties/MathProperties";
-import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
-import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
-import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
-import { PrintingProperties } from "./Properties/PrintingProperties";
-import { SetProperties } from "./Properties/SetProperties";
-import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
-import { StringFormatProperties } from "./Properties/StringFormatProperties";
-import { StringProperties } from "./Properties/StringProperties";
-import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
-import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
-import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
-import { VariableProperties } from "./Properties/VariableProperties";
+import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
+import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
+import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
+import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
+import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
+import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
+import { ClassStaticFunctionSyntax } from "./Properties/Syntax/ClassStaticFunctionSyntax";
+import { ClassStaticVariableSyntax } from "./Properties/Syntax/ClassStaticVariableSyntax";
+import { ClassSyntax } from "./Properties/Syntax/ClassSyntax";
+import { CommentSyntax } from "./Properties/Syntax/CommentSyntax";
+import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
+import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
+import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
+import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { FileSyntax } from "./Properties/Syntax/FileSyntax";
+import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
+import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
+import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
+import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListSyntax } from "./Properties/Syntax/ListSyntax";
+import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
+import { MainSyntax } from "./Properties/Syntax/MainSyntax";
+import { MathSyntax } from "./Properties/Syntax/MathSyntax";
+import { NativeCallScope, NativeCallSyntax, NativeCallType } from "./Properties/Syntax/NativeCallSyntax";
+import { NewInstantiationSyntaxKind, NewSyntax } from "./Properties/Syntax/NewSyntax";
+import { OperatorSyntax } from "./Properties/Syntax/OperatorSyntax";
+import { ParameterSyntax } from "./Properties/Syntax/ParameterSyntax";
+import { PrintingSyntax } from "./Properties/Syntax/PrintingSyntax";
+import { SetSyntax } from "./Properties/Syntax/SetSyntax";
+import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunctionSyntax";
+import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
+import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
+import { StringSyntax } from "./Properties/Syntax/StringSyntax";
+import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
+import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
+import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
 
 /**
  * A summary of information for the C# language.
  */
 export class CSharp extends Language {
     /**
+     * Generates general metadata.
+     *
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.name = "C#";
+        general.extension = ".cs";
+    }
+
+    /**
+     * Generates project-scale metadata.
+     *
+     * @param projects   A property container for project-scale metadata.
+     */
+    protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.fileFormat = [
+            `<?xml version="1.0"?>`,
+            `<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">`,
+            `  <metadata>`,
+            `    <id>{name}</id>`,
+            `    <title>{name}</title>`,
+            `    <version>{version}</version>`,
+            `    <licenseUrl>{url}/blob/master/LICENSE.md</licenseUrl>`,
+            `    <projectUrl>{url}</projectUrl>`,
+            `    <description>`,
+            `      {description}`,
+            `    </description>`,
+            `  </metadata>`,
+            `</package>`,
+        ];
+        projects.fileName = "{name}.nuspec";
+        projects.nameFormat = CaseStyle.PackageUpperCase;
+    }
+
+    /**
      * Generates metadata on class generics.
      *
      * @param members   A property container for metadata on class generics.
      */
-    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+    protected generateClassGenericSyntax(generics: ClassGenericSyntax): void {
         generics.left = "<";
         generics.middle = ", ";
         generics.right = ">";
@@ -63,11 +98,11 @@ export class CSharp extends Language {
      *
      * @param arrays   A property container for metadata on arrays.
      */
-    protected generateArrayProperties(arrays: ArrayProperties): void {
+    protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallProperties("Length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -75,7 +110,7 @@ export class CSharp extends Language {
      *
      * @param booleans   A property container for metadata on booleans.
      */
-    protected generateBooleanProperties(booleans: BooleanProperties): void {
+    protected generateBooleanSyntax(booleans: BooleanSyntax): void {
         booleans.className = "bool";
     }
 
@@ -84,7 +119,7 @@ export class CSharp extends Language {
      *
      * @param members   A property container for metadata on exported classes.
      */
-    protected generateClassExportProperties(exports: ClassExportProperties): void {
+    protected generateClassExportSyntax(exports: ClassExportSyntax): void {
         exports.exported = "public ";
         exports.internal = "";
     }
@@ -94,7 +129,7 @@ export class CSharp extends Language {
      *
      * @param functions   A property container for metadata on class member functions.
      */
-    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+    protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
         functions.privatePrefix = "";
         functions.protectedPrefix = "";
         functions.publicPrefix = "";
@@ -113,7 +148,7 @@ export class CSharp extends Language {
      *
      * @param members   A property container for metadata on class member variables.
      */
-    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
+    protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
         variables.protectedPrefix = "";
@@ -131,7 +166,7 @@ export class CSharp extends Language {
      *
      * @param classes   A property container for metadata on classes.
      */
-    protected generateClassProperties(classes: ClassProperties): void {
+    protected generateClassSyntax(classes: ClassSyntax): void {
         classes.declareEnd = "}";
         classes.declareExtendsRight = "";
         classes.declareStartLeft = "class ";
@@ -156,7 +191,7 @@ export class CSharp extends Language {
         classes.declareImplementsLeft = " : ";
         classes.declareStartRight = "\n{";
 
-        classes.instanceOf = new NativeCallProperties(" is ", NativeCallScope.Operator, NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallSyntax(" is ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.superConstructor = "base";
 
@@ -168,7 +203,7 @@ export class CSharp extends Language {
      *
      * @param functions   A property container for metadata on class static functions.
      */
-    protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+    protected generateClassStaticFunctionSyntax(functions: ClassStaticFunctionSyntax): void {
         functions.label = "static ";
         functions.privatePrefix = "";
         functions.protectedPrefix = "";
@@ -187,7 +222,7 @@ export class CSharp extends Language {
      *
      * @param members   A property container for metadata on class static variables.
      */
-    protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
+    protected generateClassStaticVariableSyntax(variables: ClassStaticVariableSyntax): void {
         variables.label = "static ";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
@@ -207,7 +242,7 @@ export class CSharp extends Language {
      *
      * @param comments   A property container for metadata on comments.
      */
-    protected generateCommentProperties(comments: CommentProperties): void {
+    protected generateCommentSyntax(comments: CommentSyntax): void {
         comments.blockEnd = "*/";
         comments.blockLineLeft = "";
         comments.blockLineRight = "";
@@ -237,7 +272,7 @@ export class CSharp extends Language {
      *
      * @param conditionals   A property container for metadata on conditionals.
      */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+    protected generateConditionalSyntax(conditionals: ConditionalSyntax): void {
         conditionals.elif = "else if";
         conditionals.else = "else";
         conditionals.end = "}";
@@ -254,10 +289,10 @@ export class CSharp extends Language {
      *
      * @param dictionaries   A property container for metadata on dictionaries.
      */
-    protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
+    protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "Dictionary";
-        dictionaries.containsKey = new NativeCallProperties("ContainsKey", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.keys = new NativeCallProperties("Keys", NativeCallScope.Member, NativeCallType.Property);
+        dictionaries.containsKey = new NativeCallSyntax("ContainsKey", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.keys = new NativeCallSyntax("Keys", NativeCallScope.Member, NativeCallType.Property);
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -276,7 +311,7 @@ export class CSharp extends Language {
      *
      * @param enums   A property container for metadata on enums.
      */
-    protected generateEnumProperties(enums: EnumProperties): void {
+    protected generateEnumSyntax(enums: EnumSyntax): void {
         enums.declareStartLeft = "enum ";
         enums.declareValueLeft = " = ";
         enums.declareValueRight = "";
@@ -295,7 +330,7 @@ export class CSharp extends Language {
      *
      * @param exceptions   A property container for metadata on exceptions.
      */
-    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+    protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
         exceptions.catch = "catch";
         exceptions.finally = "finally";
         exceptions.throw = "throw new";
@@ -325,7 +360,7 @@ export class CSharp extends Language {
      *
      * @param files   The property container for metadata on file contents.
      */
-    protected generateFileProperties(files: FileProperties): void {
+    protected generateFileSyntax(files: FileSyntax): void {
         files.endLines = ["}"];
         files.indentation = 1;
         files.startCase = CaseStyle.PackageUpperCase;
@@ -337,7 +372,7 @@ export class CSharp extends Language {
      *
      * @param functions   A property container for metadata on functions.
      */
-    protected generateFunctionProperties(functions: FunctionProperties): void {
+    protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.defineEnd = "}";
         functions.explicitReturns = true;
         functions.requiresExceptions = false;
@@ -349,21 +384,11 @@ export class CSharp extends Language {
     }
 
     /**
-     * Generates general metadata.
-     *
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "C#";
-        general.extension = ".cs";
-    }
-
-    /**
      * Generates metadata on imports.
      *
      * @param imports   A property container for metadata on imports.
      */
-    protected generateImportProperties(imports: ImportProperties): void {
+    protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PackageUpperCase;
         imports.explicit = false;
         imports.leftAbsolute = "using ";
@@ -376,7 +401,7 @@ export class CSharp extends Language {
      *
      * @param interfaces   A property container for metadata on interfaces.
      */
-    protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
+    protected generateInterfaceSyntax(interfaces: InterfaceSyntax): void {
         interfaces.declareStartLeft = "interface ";
         interfaces.declareStartRight = "\n{";
         interfaces.declareExtendsLeft = " : ";
@@ -395,7 +420,7 @@ export class CSharp extends Language {
      *
      * @param lambdas   A property container for metadata on lambdas.
      */
-    protected generateLambdaProperties(lambdas: LambdaProperties): void {
+    protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
         lambdas.functionLeft = "(";
         lambdas.functionRight = "";
         lambdas.parameterTypeRequired = false;
@@ -409,19 +434,19 @@ export class CSharp extends Language {
      *
      * @param lists   A property container for metadata on lists.
      */
-    protected generateListProperties(lists: ListProperties): void {
+    protected generateListSyntax(lists: ListSyntax): void {
         lists.className = "List";
 
-        lists.addList = new NativeCallProperties("AddRange", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallSyntax("AddRange", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.length = new NativeCallProperties("Count", NativeCallScope.Member, NativeCallType.Property);
+        lists.length = new NativeCallSyntax("Count", NativeCallScope.Member, NativeCallType.Property);
 
-        lists.pop = new NativeCallProperties("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
+        lists.pop = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
 
-        lists.popFront = new NativeCallProperties("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
+        lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
 
-        lists.push = new NativeCallProperties("Add", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallProperties("Sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
 
         lists.requiredImports = [new Import(["system", "collections", "generic"], ["List"], ImportRelativity.Absolute)];
     }
@@ -431,7 +456,7 @@ export class CSharp extends Language {
      *
      * @param loops   A property container for metadata on loops.
      */
-    protected generateLoopProperties(loops: LoopProperties): void {
+    protected generateLoopSyntax(loops: LoopSyntax): void {
         loops.break = "break";
         loops.continue = "continue";
         loops.for = "for";
@@ -463,7 +488,7 @@ export class CSharp extends Language {
      *
      * @param main   A property container for metadata on main execution areas.
      */
-    protected generateMainProperties(main: MainProperties): void {
+    protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
         main.contextStartLines = ["class Program", "{"];
@@ -478,17 +503,15 @@ export class CSharp extends Language {
      *
      * @param math   A property container for metadata on math.
      */
-    protected generateMathProperties(math: MathProperties): void {
+    protected generateMathSyntax(math: MathSyntax): void {
         const requiredImports = [new Import(["system"], ["Math"], ImportRelativity.Absolute)];
 
-        math.absolute = new NativeCallProperties("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
-        math.ceiling = new NativeCallProperties("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(
-            requiredImports,
-        );
-        math.floor = new NativeCallProperties("Math.Floor", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
-        math.max = new NativeCallProperties("Math.Max", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
-        math.min = new NativeCallProperties("Math.Min", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
-        math.power = new NativeCallProperties("Math.Pow", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.absolute = new NativeCallSyntax("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.ceiling = new NativeCallSyntax("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.floor = new NativeCallSyntax("Math.Floor", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.max = new NativeCallSyntax("Math.Max", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.min = new NativeCallSyntax("Math.Min", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.power = new NativeCallSyntax("Math.Pow", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
 
         math.mathName = "Math";
     }
@@ -498,18 +521,9 @@ export class CSharp extends Language {
      *
      * @param newProp   A property container for metadata on new object instantiation.
      */
-    protected generateNewProperties(newProp: NewProperties): void {
+    protected generateNewSyntax(newProp: NewSyntax): void {
         newProp.instantiationKind = NewInstantiationSyntaxKind.Prefix;
         newProp.keyword = "new";
-    }
-
-    /**
-     * Generates metadata on numbers.
-     *
-     * @param numbers   A property container for metadata on numbers.
-     */
-    protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "float";
     }
 
     /**
@@ -517,7 +531,7 @@ export class CSharp extends Language {
      *
      * @param operators   A property container for metadata on operators.
      */
-    protected generateOperatorProperties(operators: OperatorProperties): void {
+    protected generateOperatorSyntax(operators: OperatorSyntax): void {
         operators.and = "&&";
         operators.decreaseBy = "-=";
         operators.divide = "/";
@@ -544,7 +558,7 @@ export class CSharp extends Language {
      *
      * @param parameters    A property container for metadata on parameters
      */
-    protected generateParameterProperties(parameters: ParameterProperties): void {
+    protected generateParameterSyntax(parameters: ParameterSyntax): void {
         parameters.restDeclarationAfter = false;
         parameters.restDeclarationType = true;
         parameters.restKeywordLeft = "params ";
@@ -557,7 +571,7 @@ export class CSharp extends Language {
      *
      * @param parameters    A property container for metadata on printing.
      */
-    protected generatePrintingProperties(printing: PrintingProperties): void {
+    protected generatePrintingSyntax(printing: PrintingSyntax): void {
         printing.end = ")";
         printing.requiredImports = [new Import(["system"], ["Dictionary"], ImportRelativity.Absolute)];
         printing.start = "Console.WriteLine(";
@@ -568,21 +582,21 @@ export class CSharp extends Language {
      *
      * @param parameters   A property container for metadata on sets.
      */
-    protected generateSetProperties(sets: SetProperties): void {
+    protected generateSetSyntax(sets: SetSyntax): void {
         const requiredImports: Import[] = [new Import(["system", "collections", "generic"], ["Dictionary"], ImportRelativity.Absolute)];
 
-        sets.add = new NativeCallProperties("Add", NativeCallScope.Member, NativeCallType.Function);
+        sets.add = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "HashSet";
 
-        sets.contains = new NativeCallProperties("Contains", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
+        sets.contains = new NativeCallSyntax("Contains", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
+        sets.toArray = new NativeCallSyntax("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
 
-        sets.toList = new NativeCallProperties("ToList", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
+        sets.toList = new NativeCallSyntax("ToList", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
 
         sets.requiredImports = requiredImports;
         sets.startItemsLeft = "[";
@@ -596,7 +610,7 @@ export class CSharp extends Language {
      *
      * @param parameters   A property container for metadata on standalone functions.
      */
-    protected generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void {
+    protected generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void {
         standaloneFunctions.withinStaticClass = true;
     }
 
@@ -605,7 +619,7 @@ export class CSharp extends Language {
      *
      * @param strings   A property container for metadata on string formatting.
      */
-    protected generateStringFormatProperties(formatting: StringFormatProperties): void {
+    protected generateStringFormatSyntax(formatting: StringFormatSyntax): void {
         formatting.formatLeft = 'string.Format("';
         formatting.formatMiddle = '", ';
         formatting.formatAbbreviated = '"';
@@ -621,22 +635,22 @@ export class CSharp extends Language {
      *
      * @param strings   A property container for metadata on strings.
      */
-    protected generateStringProperties(strings: StringProperties): void {
+    protected generateStringSyntax(strings: StringSyntax): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties("ToLower", NativeCallScope.Member, NativeCallType.Function);
+        strings.caseLower = new NativeCallSyntax("ToLower", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.caseUpper = new NativeCallProperties("ToUpper", NativeCallScope.Member, NativeCallType.Function);
+        strings.caseUpper = new NativeCallSyntax("ToUpper", NativeCallScope.Member, NativeCallType.Function);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties("IndexOf", NativeCallScope.Member, NativeCallType.Function);
+        strings.indexOf = new NativeCallSyntax("IndexOf", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "-1";
 
-        strings.length = new NativeCallProperties("Length", NativeCallScope.Member, NativeCallType.Property);
+        strings.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.trim = new NativeCallProperties("Trim", NativeCallScope.Member, NativeCallType.Function);
+        strings.trim = new NativeCallSyntax("Trim", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -644,7 +658,7 @@ export class CSharp extends Language {
      *
      * @param strings   A property container for metadata on string substrings.
      */
-    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+    protected generateStringSubstringSyntax(substrings: StringSubstringSyntax): void {
         substrings.defaultEnd = "";
         substrings.leftIndex = ".SubString(";
         substrings.leftLength = ".SubString(";
@@ -658,7 +672,7 @@ export class CSharp extends Language {
      *
      * @param toFloat   A property container for metadata on string-to-float conversions.
      */
-    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
         toFloat.conversionType = StringToFloatStartConversionType.ValidateDirectly;
 
         toFloat.requiredImports = [new Import(["system"], ["Float"], ImportRelativity.Absolute)];
@@ -674,7 +688,7 @@ export class CSharp extends Language {
      *
      * @param style   A property container for metadata on style.
      */
-    protected generateStyleProperties(style: StyleProperties): void {
+    protected generateStyleSyntax(style: StyleSyntax): void {
         style.semicolon = ";";
         style.separateBraceLines = true;
     }
@@ -684,7 +698,7 @@ export class CSharp extends Language {
      *
      * @param style   A property container for metadata on unsupported complaints.
      */
-    protected generateUnsupportedProperties(unsupported: UnsupportedProperties): void {
+    protected generateUnsupportedSyntax(unsupported: UnsupportedSyntax): void {
         unsupported.complaintEnd = "*/";
         unsupported.complaintStart = "/*";
     }
@@ -694,7 +708,7 @@ export class CSharp extends Language {
      *
      * @param variables   A property container for metadata on variables.
      */
-    protected generateVariableProperties(variables: VariableProperties): void {
+    protected generateVariableSyntax(variables: VariableSyntax): void {
         variables.declarationRequired = true;
 
         variables.aliases = {

@@ -38,7 +38,7 @@ export class ForEachPairStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.loops.forEachAsMethod) {
+        if (this.language.syntax.loops.forEachAsMethod) {
             return this.renderForEachAsMethod(parameters);
         }
 
@@ -53,53 +53,53 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     public renderForEachAsLoop(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.foreach;
+        let line: string = this.language.syntax.loops.foreach;
         let output: CommandResult[];
 
-        line += this.language.properties.conditionals.startLeft;
+        line += this.language.syntax.conditionals.startLeft;
 
         // This assumes that all languages that require declared variables (like C#) use
         // KeyValuePair<T, U> while languages that don't (like Python) use key, value
-        if (this.language.properties.variables.declarationRequired) {
+        if (this.language.syntax.variables.declarationRequired) {
             let typeName: string;
             let iteratorName: string;
 
-            if (this.language.properties.loops.forEachPairsAsKeys) {
+            if (this.language.syntax.loops.forEachPairsAsKeys) {
                 iteratorName = parameters[3];
             } else {
                 iteratorName = parameters[2];
             }
 
-            if (this.language.properties.loops.forEachPairsAsPair) {
-                typeName = this.language.properties.loops.forEachPairsPairClass;
+            if (this.language.syntax.loops.forEachPairsAsPair) {
+                typeName = this.language.syntax.loops.forEachPairsPairClass;
                 typeName += "<" + parameters[4];
                 typeName += ", " + parameters[6] + ">";
             } else {
                 typeName = parameters[4];
             }
 
-            line += this.language.properties.variables.declaration;
+            line += this.language.syntax.variables.declaration;
             line += this.context.convertParsed([CommandNames.VariableInline, iteratorName, typeName]).commandResults[0].text;
         } else {
             line += parameters[3];
 
-            if (this.language.properties.loops.forEachPairsAsPair) {
+            if (this.language.syntax.loops.forEachPairsAsPair) {
                 line += ", " + parameters[5];
             }
         }
 
-        line += this.language.properties.loops.forEachMiddle;
+        line += this.language.syntax.loops.forEachMiddle;
         line += parameters[1];
-        line += this.language.properties.loops.forEachGetPairs;
-        line += this.language.properties.loops.forEachRight;
+        line += this.language.syntax.loops.forEachGetPairs;
+        line += this.language.syntax.loops.forEachRight;
 
         output = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
-        if (this.language.properties.loops.forEachPairsAsPair && this.language.properties.variables.declarationRequired) {
+        if (this.language.syntax.loops.forEachPairsAsPair && this.language.syntax.variables.declarationRequired) {
             this.addPairKeyLookup(parameters, output);
             this.addPairValueLookup(parameters, output);
-        } else if (this.language.properties.loops.forEachPairsAsKeys) {
+        } else if (this.language.syntax.loops.forEachPairsAsKeys) {
             this.addKeyedValueLookup(parameters, output);
         }
 
@@ -115,11 +115,11 @@ export class ForEachPairStartCommand extends Command {
      */
     public renderForEachAsMethod(parameters: string[]): LineResults {
         let output: string = parameters[1];
-        output += this.language.properties.loops.forEachGetPairs;
+        output += this.language.syntax.loops.forEachGetPairs;
         output += parameters[3];
         output += ", ";
         output += parameters[5];
-        output += this.language.properties.loops.forEachRight;
+        output += this.language.syntax.loops.forEachRight;
 
         return new LineResults([new CommandResult(output, 1)], false);
     }
@@ -139,7 +139,7 @@ export class ForEachPairStartCommand extends Command {
         let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
             .text;
 
-        valueVariable += this.language.properties.style.semicolon;
+        valueVariable += this.language.syntax.style.semicolon;
 
         output.push(new CommandResult(valueVariable, 0));
     }
@@ -154,10 +154,10 @@ export class ForEachPairStartCommand extends Command {
     private addPairKeyLookup(parameters: string[], output: CommandResult[]): void {
         const keyName: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
         const keyType: string = parameters[4];
-        const keyLookup: string = parameters[2] + this.language.properties.loops.forEachPairsRetrieveKey;
+        const keyLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveKey;
         let keyVariable: string = this.context.convertParsed([CommandNames.Variable, keyName, keyType, keyLookup]).commandResults[0].text;
 
-        keyVariable += this.language.properties.style.semicolon;
+        keyVariable += this.language.syntax.style.semicolon;
 
         output.push(new CommandResult(keyVariable, 0));
     }
@@ -172,11 +172,11 @@ export class ForEachPairStartCommand extends Command {
     private addPairValueLookup(parameters: string[], output: CommandResult[]): void {
         const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
         const valueType: string = parameters[6];
-        const valueLookup: string = parameters[2] + this.language.properties.loops.forEachPairsRetrieveValue;
+        const valueLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveValue;
         let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
             .text;
 
-        valueVariable += this.language.properties.style.semicolon;
+        valueVariable += this.language.syntax.style.semicolon;
 
         output.push(new CommandResult(valueVariable, 0));
     }

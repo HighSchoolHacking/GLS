@@ -30,14 +30,14 @@ export class MainContextEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const endLines: string[] = this.language.properties.main.contextEndLines;
+        const endLines: string[] = this.language.syntax.main.contextEndLines;
 
         for (const endLine of endLines) {
             output.push(new CommandResult(endLine, 0));
         }
 
         if (output.length !== 0) {
-            output[0].indentation = -this.language.properties.main.contextIndentation;
+            output[0].indentation = -this.language.syntax.main.contextIndentation;
         }
 
         return new LineResults(output, false);

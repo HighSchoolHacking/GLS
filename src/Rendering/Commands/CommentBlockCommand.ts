@@ -34,9 +34,9 @@ export class CommentBlockCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        output += this.language.properties.comments.blockLineLeft;
+        output += this.language.syntax.comments.blockLineLeft;
         output += parameters.slice(1).join(" ");
-        output += this.language.properties.comments.blockLineRight;
+        output += this.language.syntax.comments.blockLineRight;
 
         return LineResults.newSingleLine(output, false);
     }

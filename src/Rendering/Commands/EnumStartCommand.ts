@@ -33,11 +33,11 @@ export class EnumStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line = "";
 
-        line += this.language.properties.enums.declareStartLeft;
+        line += this.language.syntax.enums.declareStartLeft;
         line += parameters[1];
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.enums.declareStartRight, 1);
+        this.addLineEnder(lines, this.language.syntax.enums.declareStartRight, 1);
 
         return new LineResults(lines, false);
     }

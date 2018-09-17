@@ -47,7 +47,7 @@ export class ClassStartCommand extends Command {
 
         line += this.getForExport(remainingParameters);
         line += this.getForAbstract(remainingParameters);
-        line += this.language.properties.classes.declareStartLeft;
+        line += this.language.syntax.classes.declareStartLeft;
 
         line += this.getForClassName(remainingParameters);
 
@@ -55,27 +55,27 @@ export class ClassStartCommand extends Command {
         const forImplements: string = this.getForImplements(remainingParameters);
 
         if (forExtends !== "") {
-            line += this.language.properties.classes.declareExtendsLeft;
+            line += this.language.syntax.classes.declareExtendsLeft;
         }
 
         line += forExtends;
 
         if (
-            this.language.properties.interfaces.supported &&
+            this.language.syntax.interfaces.supported &&
             forImplements !== "" &&
-            !this.language.properties.interfaces.declareImplementsExplicit
+            !this.language.syntax.interfaces.declareImplementsExplicit
         ) {
             if (forExtends === "") {
-                line += this.language.properties.interfaces.declareExtendsLeft;
+                line += this.language.syntax.interfaces.declareExtendsLeft;
             } else {
-                line += this.language.properties.interfaces.declareExtendsRight;
+                line += this.language.syntax.interfaces.declareExtendsRight;
             }
         }
 
         line += forImplements;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.classes.declareStartRight, 1);
+        this.addLineEnder(lines, this.language.syntax.classes.declareStartRight, 1);
 
         return new LineResults(lines, false);
     }
@@ -88,11 +88,11 @@ export class ClassStartCommand extends Command {
      */
     private getForExport(remainingParameters: string[]): string {
         if (remainingParameters[0] !== KeywordNames.Export) {
-            return this.language.properties.classes.exports.internal;
+            return this.language.syntax.classes.exports.internal;
         }
 
         remainingParameters.shift();
-        return this.language.properties.classes.exports.exported;
+        return this.language.syntax.classes.exports.exported;
     }
 
     /**
@@ -107,7 +107,7 @@ export class ClassStartCommand extends Command {
         }
 
         remainingParameters.shift();
-        return this.language.properties.classes.abstractDeclaration;
+        return this.language.syntax.classes.abstractDeclaration;
     }
 
     /**
@@ -137,7 +137,7 @@ export class ClassStartCommand extends Command {
         }
 
         section += this.context.convertCommon(CommandNames.Type, remainingParameters[1]);
-        section += this.language.properties.classes.declareExtendsRight;
+        section += this.language.syntax.classes.declareExtendsRight;
 
         remainingParameters.shift();
         remainingParameters.shift();
@@ -152,14 +152,14 @@ export class ClassStartCommand extends Command {
      * @returns Language output equivalent for the removed parameters.
      */
     private getForImplements(remainingParameters: string[]): string {
-        if (!this.language.properties.interfaces.supported || remainingParameters[0] !== KeywordNames.Implements) {
+        if (!this.language.syntax.interfaces.supported || remainingParameters[0] !== KeywordNames.Implements) {
             return "";
         }
 
         let section = "";
 
-        if (this.language.properties.interfaces.declareImplementsExplicit) {
-            section += this.language.properties.classes.declareImplementsLeft;
+        if (this.language.syntax.interfaces.declareImplementsExplicit) {
+            section += this.language.syntax.classes.declareImplementsLeft;
         }
 
         section += remainingParameters.slice(1).join(", ");

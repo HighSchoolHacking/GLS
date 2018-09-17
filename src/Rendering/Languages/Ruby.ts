@@ -1,56 +1,77 @@
 import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
-import { ArrayProperties } from "./Properties/ArrayProperties";
-import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassExportProperties } from "./Properties/ClassExportProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
-import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
-import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
-import { CommentProperties } from "./Properties/CommentProperties";
-import { ConditionalProperties } from "./Properties/ConditionalProperties";
-import { DictionaryProperties } from "./Properties/DictionaryProperties";
-import { EnumProperties } from "./Properties/EnumProperties";
-import { ExceptionProperties } from "./Properties/ExceptionProperties";
-import { FileProperties } from "./Properties/FileProperties";
-import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
-import { ImportProperties } from "./Properties/ImportProperties";
-import { InterfaceProperties } from "./Properties/InterfaceProperties";
-import { LambdaProperties } from "./Properties/LambdaProperties";
-import { ListProperties } from "./Properties/ListProperties";
-import { LoopProperties } from "./Properties/LoopProperties";
-import { MainProperties } from "./Properties/MainProperties";
-import { MathProperties } from "./Properties/MathProperties";
-import { NativeCallProperties, NativeCallScope, NativeCallType } from "./Properties/NativeCallProperties";
-import { NewInstantiationSyntaxKind, NewProperties } from "./Properties/NewProperties";
-import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
-import { PrintingProperties } from "./Properties/PrintingProperties";
-import { SetProperties } from "./Properties/SetProperties";
-import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
-import { StringFormatProperties } from "./Properties/StringFormatProperties";
-import { StringProperties } from "./Properties/StringProperties";
-import { StringSubstringProperties, StringSubstringSupport } from "./Properties/StringSubstringProperties";
-import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
-import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
-import { VariableProperties } from "./Properties/VariableProperties";
+import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
+import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
+import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
+import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
+import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
+import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
+import { ClassStaticFunctionSyntax } from "./Properties/Syntax/ClassStaticFunctionSyntax";
+import { ClassStaticVariableSyntax } from "./Properties/Syntax/ClassStaticVariableSyntax";
+import { ClassSyntax } from "./Properties/Syntax/ClassSyntax";
+import { CommentSyntax } from "./Properties/Syntax/CommentSyntax";
+import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
+import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
+import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
+import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { FileSyntax } from "./Properties/Syntax/FileSyntax";
+import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
+import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
+import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
+import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListSyntax } from "./Properties/Syntax/ListSyntax";
+import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
+import { MainSyntax } from "./Properties/Syntax/MainSyntax";
+import { MathSyntax } from "./Properties/Syntax/MathSyntax";
+import { NativeCallScope, NativeCallSyntax, NativeCallType } from "./Properties/Syntax/NativeCallSyntax";
+import { NewInstantiationSyntaxKind, NewSyntax } from "./Properties/Syntax/NewSyntax";
+import { OperatorSyntax } from "./Properties/Syntax/OperatorSyntax";
+import { ParameterSyntax } from "./Properties/Syntax/ParameterSyntax";
+import { PrintingSyntax } from "./Properties/Syntax/PrintingSyntax";
+import { SetSyntax } from "./Properties/Syntax/SetSyntax";
+import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunctionSyntax";
+import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
+import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
+import { StringSyntax } from "./Properties/Syntax/StringSyntax";
+import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
+import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
+import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
 
 /**
  * A summary of information for the Ruby language.
  */
 export class Ruby extends Language {
     /**
+     * Generates general metadata.
+     *
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.extension = ".rb";
+        general.name = "Ruby";
+    }
+
+    /**
+     * Generates project-scale metadata.
+     *
+     * @param projects   A property container for project-scale metadata.
+     */
+    protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.fileFormat = [`source "https://rubygems.org"`];
+        projects.fileName = "Gemfile";
+        projects.nameFormat = CaseStyle.DashLowerCase;
+    }
+
+    /**
      * Generates metadata on class generics.
      *
      * @param generics   The property container for metadata on class generics.
      */
-    protected generateClassGenericProperties(generics: ClassGenericProperties): void {
+    protected generateClassGenericSyntax(generics: ClassGenericSyntax): void {
         // Unused
     }
 
@@ -59,9 +80,9 @@ export class Ruby extends Language {
      *
      * @param arrays   A property container for metadata on arrays.
      */
-    protected generateArrayProperties(arrays: ArrayProperties): void {
+    protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
-        arrays.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -69,7 +90,7 @@ export class Ruby extends Language {
      *
      * @param booleans   A property container for metadata on booleans.
      */
-    protected generateBooleanProperties(booleans: BooleanProperties): void {
+    protected generateBooleanSyntax(booleans: BooleanSyntax): void {
         booleans.className = "";
     }
 
@@ -78,7 +99,7 @@ export class Ruby extends Language {
      *
      * @param members   A property container for metadata on exported classes.
      */
-    protected generateClassExportProperties(exports: ClassExportProperties): void {
+    protected generateClassExportSyntax(exports: ClassExportSyntax): void {
         exports.exported = "";
         exports.internal = "";
     }
@@ -88,7 +109,7 @@ export class Ruby extends Language {
      *
      * @param functions   A property container for metadata on class member functions.
      */
-    protected generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void {
+    protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "";
@@ -105,7 +126,7 @@ export class Ruby extends Language {
      *
      * @param members   A property container for metadata on class member variables.
      */
-    protected generateClassMemberVariableProperties(variables: ClassMemberVariableProperties): void {
+    protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.publicPrefix = "";
         variables.skipMemberVariables = true;
 
@@ -125,7 +146,7 @@ export class Ruby extends Language {
      *
      * @param classes   A property container for metadata on classes.
      */
-    protected generateClassProperties(classes: ClassProperties): void {
+    protected generateClassSyntax(classes: ClassSyntax): void {
         classes.constructors.private = "";
         classes.constructors.protected = "";
         classes.constructors.public = "";
@@ -148,7 +169,7 @@ export class Ruby extends Language {
         classes.declareStartLeft = "class ";
         classes.declareStartRight = "";
 
-        classes.instanceOf = new NativeCallProperties(".kind_of? ", NativeCallScope.Operator, NativeCallType.FloatingRight);
+        classes.instanceOf = new NativeCallSyntax(".kind_of? ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.statics.labelBeforePublicity = false;
 
@@ -160,7 +181,7 @@ export class Ruby extends Language {
      *
      * @param functions   A property container for metadata on class static functions.
      */
-    protected generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void {
+    protected generateClassStaticFunctionSyntax(functions: ClassStaticFunctionSyntax): void {
         functions.label = "self.";
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
@@ -178,7 +199,7 @@ export class Ruby extends Language {
      *
      * @param members   A property container for metadata on class static variables.
      */
-    protected generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void {
+    protected generateClassStaticVariableSyntax(variables: ClassStaticVariableSyntax): void {
         variables.private = "";
         variables.protected = "";
         variables.public = "";
@@ -198,7 +219,7 @@ export class Ruby extends Language {
      *
      * @param comments   A property container for metadata on comments.
      */
-    protected generateCommentProperties(comments: CommentProperties): void {
+    protected generateCommentSyntax(comments: CommentSyntax): void {
         comments.blockEnd = "=end";
         comments.blockLineLeft = "";
         comments.blockLineRight = "";
@@ -231,7 +252,7 @@ export class Ruby extends Language {
      *
      * @param conditionals   A property container for metadata on conditionals.
      */
-    protected generateConditionalProperties(conditionals: ConditionalProperties): void {
+    protected generateConditionalSyntax(conditionals: ConditionalSyntax): void {
         conditionals.continueLeft = "";
         conditionals.else = "else";
         conditionals.end = "\0";
@@ -249,8 +270,8 @@ export class Ruby extends Language {
      *
      * @param dictionaries   The property container for metadata on dictionaries.
      */
-    protected generateDictionaryProperties(dictionaries: DictionaryProperties): void {
-        dictionaries.containsKey = new NativeCallProperties(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
+    protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
+        dictionaries.containsKey = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -260,7 +281,7 @@ export class Ruby extends Language {
         dictionaries.initializeStart = "{";
 
         dictionaries.className = "hash";
-        dictionaries.keys = new NativeCallProperties("keys", NativeCallScope.Member, NativeCallType.Property);
+        dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -268,7 +289,7 @@ export class Ruby extends Language {
      *
      * @param enums   A property container for metadata on enums.
      */
-    protected generateEnumProperties(enums: EnumProperties): void {
+    protected generateEnumSyntax(enums: EnumSyntax): void {
         enums.declareStartLeft = "class ";
         enums.declareValueRight = "";
         enums.declareCommaRight = "";
@@ -287,7 +308,7 @@ export class Ruby extends Language {
      *
      * @param exceptions   A property container for metadata on exceptions.
      */
-    protected generateExceptionProperties(exceptions: ExceptionProperties): void {
+    protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
         exceptions.throw = "raise";
         exceptions.variablePrefix = "";
         exceptions.blockEnd = "";
@@ -312,7 +333,7 @@ export class Ruby extends Language {
      *
      * @param file   The property container for metadata on contents.
      */
-    protected generateFileProperties(files: FileProperties): void {
+    protected generateFileSyntax(files: FileSyntax): void {
         files.endLines = [];
         files.indentation = 0;
         files.startCase = CaseStyle.FileSystemLowerCase;
@@ -324,7 +345,7 @@ export class Ruby extends Language {
      *
      * @param functions   The property container for metadata on functions.
      */
-    protected generateFunctionProperties(functions: FunctionProperties): void {
+    protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.SnakeCase;
         functions.defineStartLeft = "def ";
         functions.requiresExceptions = false;
@@ -334,21 +355,11 @@ export class Ruby extends Language {
     }
 
     /**
-     * Generates general metadata.
-     *
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.extension = ".rb";
-        general.name = "Ruby";
-    }
-
-    /**
      * Generates metadata on imports.
      *
      * @param imports   A property container for metadata on imports.
      */
-    protected generateImportProperties(imports: ImportProperties): void {
+    protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.leftAbsolute = 'require "';
         imports.leftLocal = 'require_relative "';
@@ -362,7 +373,7 @@ export class Ruby extends Language {
      *
      * @param interfaces   A property container for metadata on interfaces.
      */
-    protected generateInterfaceProperties(interfaces: InterfaceProperties): void {
+    protected generateInterfaceSyntax(interfaces: InterfaceSyntax): void {
         interfaces.supported = false;
     }
 
@@ -371,7 +382,7 @@ export class Ruby extends Language {
      *
      * @param lambdas   A property container for metadata on lambdas.
      */
-    protected generateLambdaProperties(lambdas: LambdaProperties): void {
+    protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
         lambdas.parameterTypeRequired = false;
         lambdas.returnTypeRequired = false;
 
@@ -385,15 +396,15 @@ export class Ruby extends Language {
      *
      * @param lists   A property container for metadata on loops.
      */
-    protected generateListProperties(lists: ListProperties): void {
+    protected generateListSyntax(lists: ListSyntax): void {
         lists.asArray = true;
 
-        lists.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
-        lists.pop = new NativeCallProperties("pop", NativeCallScope.Member, NativeCallType.Property);
-        lists.popFront = new NativeCallProperties("shift", NativeCallScope.Member, NativeCallType.Property);
-        lists.push = new NativeCallProperties("push", NativeCallScope.Member, NativeCallType.Function);
-        lists.addList = new NativeCallProperties("concat", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallProperties("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
+        lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
+        lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -401,7 +412,7 @@ export class Ruby extends Language {
      *
      * @param loops   A property container for metadata on loops.
      */
-    protected generateLoopProperties(loops: LoopProperties): void {
+    protected generateLoopSyntax(loops: LoopSyntax): void {
         loops.break = "break";
         loops.continue = "continue";
         loops.for = "for";
@@ -442,7 +453,7 @@ export class Ruby extends Language {
      *
      * @param math   A property container for metadata on main execution areas.
      */
-    protected generateMainProperties(main: MainProperties): void {
+    protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = [];
         main.contextIndentation = 0;
         main.contextStartLines = [];
@@ -457,13 +468,13 @@ export class Ruby extends Language {
      *
      * @param math   A property container for metadata on math.
      */
-    protected generateMathProperties(math: MathProperties): void {
-        math.absolute = new NativeCallProperties("abs", NativeCallScope.Member, NativeCallType.Property);
-        math.ceiling = new NativeCallProperties("ceil", NativeCallScope.Member, NativeCallType.Property);
-        math.floor = new NativeCallProperties("floor", NativeCallScope.Member, NativeCallType.Property);
-        math.max = new NativeCallProperties("max", NativeCallScope.Array, NativeCallType.Function);
-        math.min = new NativeCallProperties("min", NativeCallScope.Array, NativeCallType.Function);
-        math.power = new NativeCallProperties("pow", NativeCallScope.Array, NativeCallType.Function);
+    protected generateMathSyntax(math: MathSyntax): void {
+        math.absolute = new NativeCallSyntax("abs", NativeCallScope.Member, NativeCallType.Property);
+        math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Member, NativeCallType.Property);
+        math.floor = new NativeCallSyntax("floor", NativeCallScope.Member, NativeCallType.Property);
+        math.max = new NativeCallSyntax("max", NativeCallScope.Array, NativeCallType.Function);
+        math.min = new NativeCallSyntax("min", NativeCallScope.Array, NativeCallType.Function);
+        math.power = new NativeCallSyntax("pow", NativeCallScope.Array, NativeCallType.Function);
         math.mathName = "Math";
     }
 
@@ -472,18 +483,9 @@ export class Ruby extends Language {
      *
      * @param newProp   A property container for metadata on new object instantiation.
      */
-    protected generateNewProperties(newProp: NewProperties): void {
+    protected generateNewSyntax(newProp: NewSyntax): void {
         newProp.instantiationKind = NewInstantiationSyntaxKind.MemberMethodCall;
         newProp.keyword = "new";
-    }
-
-    /**
-     * Generates metadata on numbers.
-     *
-     * @param numbers   A property container for metadata on numbers.
-     */
-    protected generateNumberProperties(numbers: NumberProperties): void {
-        numbers.className = "float";
     }
 
     /**
@@ -491,7 +493,7 @@ export class Ruby extends Language {
      *
      * @param operators   The property container for metadata on operators.
      */
-    protected generateOperatorProperties(operators: OperatorProperties): void {
+    protected generateOperatorSyntax(operators: OperatorSyntax): void {
         operators.and = "&&";
         operators.decreaseBy = "-=";
         operators.divide = "/";
@@ -518,7 +520,7 @@ export class Ruby extends Language {
      *
      * @param parameters    A property container for metadata on parameters
      */
-    protected generateParameterProperties(parameters: ParameterProperties): void {
+    protected generateParameterSyntax(parameters: ParameterSyntax): void {
         parameters.restDeclarationAfter = false;
         parameters.restDeclarationType = false;
         parameters.restKeywordLeft = "*";
@@ -531,7 +533,7 @@ export class Ruby extends Language {
      *
      * @param parameters    A property container for metadata on printing.
      */
-    protected generatePrintingProperties(printing: PrintingProperties): void {
+    protected generatePrintingSyntax(printing: PrintingSyntax): void {
         printing.end = "";
         printing.requiredImports = [];
         printing.start = "puts ";
@@ -542,17 +544,17 @@ export class Ruby extends Language {
      *
      * @param parameters   A property container for metadata on sets.
      */
-    protected generateSetProperties(sets: SetProperties): void {
-        sets.add = new NativeCallProperties("add", NativeCallScope.Member, NativeCallType.Function);
+    protected generateSetSyntax(sets: SetSyntax): void {
+        sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
 
         sets.className = "Set";
 
-        sets.contains = new NativeCallProperties("include?", NativeCallScope.Member, NativeCallType.Function);
+        sets.contains = new NativeCallSyntax("include?", NativeCallScope.Member, NativeCallType.Function);
 
         sets.initializeAsNew = true;
         sets.initializeStart = "";
 
-        sets.toArray = new NativeCallProperties("to_a", NativeCallScope.Member, NativeCallType.Function);
+        sets.toArray = new NativeCallSyntax("to_a", NativeCallScope.Member, NativeCallType.Function);
 
         sets.toList = sets.toArray;
 
@@ -566,7 +568,7 @@ export class Ruby extends Language {
      *
      * @param parameters   A property container for metadata on standalone functions.
      */
-    protected generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void {
+    protected generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void {
         standaloneFunctions.withinStaticClass = false;
     }
 
@@ -575,7 +577,7 @@ export class Ruby extends Language {
      *
      * @param strings   A property container for metadata on string formatting.
      */
-    protected generateStringFormatProperties(formatting: StringFormatProperties): void {
+    protected generateStringFormatSyntax(formatting: StringFormatSyntax): void {
         formatting.formatLeft = '"';
         formatting.formatMiddle = '" % [';
         formatting.formatAbbreviated = '" % [';
@@ -597,22 +599,22 @@ export class Ruby extends Language {
      *
      * @param strings   A property container for metadata on strings.
      */
-    protected generateStringProperties(strings: StringProperties): void {
+    protected generateStringSyntax(strings: StringSyntax): void {
         strings.concatenate = " + ";
 
-        strings.caseLower = new NativeCallProperties("downcase", NativeCallScope.Member, NativeCallType.Property);
+        strings.caseLower = new NativeCallSyntax("downcase", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.caseUpper = new NativeCallProperties("upcase", NativeCallScope.Member, NativeCallType.Property);
+        strings.caseUpper = new NativeCallSyntax("upcase", NativeCallScope.Member, NativeCallType.Property);
 
         strings.className = "string";
 
-        strings.indexOf = new NativeCallProperties("index", NativeCallScope.Member, NativeCallType.Function);
+        strings.indexOf = new NativeCallSyntax("index", NativeCallScope.Member, NativeCallType.Function);
 
         strings.indexOfNotFound = "nil";
 
-        strings.length = new NativeCallProperties("length", NativeCallScope.Member, NativeCallType.Property);
+        strings.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
 
-        strings.trim = new NativeCallProperties("strip", NativeCallScope.Member, NativeCallType.Property);
+        strings.trim = new NativeCallSyntax("strip", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -620,7 +622,7 @@ export class Ruby extends Language {
      *
      * @param strings   A property container for metadata on string substrings.
      */
-    protected generateStringSubstringProperties(substrings: StringSubstringProperties): void {
+    protected generateStringSubstringSyntax(substrings: StringSubstringSyntax): void {
         substrings.defaultEnd = "..-1";
         substrings.leftIndex = "[";
         substrings.leftLength = "[";
@@ -634,7 +636,7 @@ export class Ruby extends Language {
      *
      * @param toFloat   A property container for metadata on string-to-float conversions.
      */
-    protected generateStringToFloatProperties(toFloat: StringToFloatProperties): void {
+    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
         toFloat.conversionType = StringToFloatStartConversionType.ConvertAndValidate;
         toFloat.perVariableConversionStartLeft = "";
         toFloat.perVariableConversionStartMiddle = " = ";
@@ -650,7 +652,7 @@ export class Ruby extends Language {
      *
      * @param style   The property container for metadata on style.
      */
-    protected generateStyleProperties(style: StyleProperties): void {
+    protected generateStyleSyntax(style: StyleSyntax): void {
         style.semicolon = "";
     }
 
@@ -659,7 +661,7 @@ export class Ruby extends Language {
      *
      * @param style   A property container for metadata on unsupported complaints.
      */
-    protected generateUnsupportedProperties(unsupported: UnsupportedProperties): void {
+    protected generateUnsupportedSyntax(unsupported: UnsupportedSyntax): void {
         unsupported.complaintEnd = "=begin\n";
         unsupported.complaintStart = "\nend";
     }
@@ -669,7 +671,7 @@ export class Ruby extends Language {
      *
      * @param variables   A property container for metadata on variables.
      */
-    protected generateVariableProperties(variables: VariableProperties): void {
+    protected generateVariableSyntax(variables: VariableSyntax): void {
         variables.declaration = "";
 
         variables.aliases = {

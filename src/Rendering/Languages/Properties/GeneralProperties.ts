@@ -3,12 +3,12 @@
  */
 export class GeneralProperties {
     /**
-     * The file extension.
+     * The language's file extension.
      */
     public extension: string;
 
     /**
-     * The common name.
+     * The common name of the language.
      */
     public name: string;
 }

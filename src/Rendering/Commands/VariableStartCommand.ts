@@ -44,7 +44,7 @@ export class VariableStartCommand extends Command {
         output.addSemicolon = false;
 
         // Languages like C# might need to pass a separate "{" through on the next line
-        if (this.language.properties.style.separateBraceLines) {
+        if (this.language.syntax.style.separateBraceLines) {
             if (parameters.length === 5) {
                 output.commandResults.push(new CommandResult(parameters[4], 1));
             }

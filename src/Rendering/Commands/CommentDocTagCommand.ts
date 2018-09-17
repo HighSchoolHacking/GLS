@@ -43,7 +43,7 @@ export class CommentDocTagCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.comments.docAsXml) {
+        if (this.language.syntax.comments.docAsXml) {
             return this.renderXmlDoc(parameters);
         }
 
@@ -60,7 +60,7 @@ export class CommentDocTagCommand extends Command {
      */
     private padContentsWithTag(tag: string, contents: string[]): string[] {
         const results: string[] = [];
-        const starter: string = this.language.properties.comments.docLineStart;
+        const starter: string = this.language.syntax.comments.docLineStart;
 
         results.push(starter + tag + contents[0]);
 
@@ -93,8 +93,8 @@ export class CommentDocTagCommand extends Command {
      * @returns An alias for tag if it exists, or the tag otherwise.
      */
     private parseTag(tagRaw: string): string {
-        if (this.language.properties.comments.docTagAliases.hasOwnProperty(tagRaw)) {
-            return this.language.properties.comments.docTagAliases[tagRaw];
+        if (this.language.syntax.comments.docTagAliases.hasOwnProperty(tagRaw)) {
+            return this.language.syntax.comments.docTagAliases[tagRaw];
         }
 
         return tagRaw;
@@ -105,8 +105,8 @@ export class CommentDocTagCommand extends Command {
      * @returns An alias for parameter if it exists, or the parameter otherwise.
      */
     private parseTagParameter(tag: string, parameter: string): string {
-        if (this.language.properties.comments.docTagsWithParameters.hasOwnProperty(tag)) {
-            return this.language.properties.comments.docTagsWithParameters[tag];
+        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tag)) {
+            return this.language.syntax.comments.docTagsWithParameters[tag];
         }
 
         return parameter;
@@ -121,17 +121,17 @@ export class CommentDocTagCommand extends Command {
     private renderJsDoc(parameters: string[]): LineResults {
         const tagRaw: string = parameters[1];
         const tagParsed: string = this.parseTag(tagRaw);
-        let tag: string = tagParsed + this.language.properties.comments.docTagEnd;
+        let tag: string = tagParsed + this.language.syntax.comments.docTagEnd;
         let contentsRaw: string;
 
         if (tagParsed === "\0") {
-            tag = this.language.properties.comments.docTagStart;
+            tag = this.language.syntax.comments.docTagStart;
         } else if (tagParsed !== "") {
-            tag = this.language.properties.comments.docTagStart + tag;
+            tag = this.language.syntax.comments.docTagStart + tag;
         }
 
-        if (this.language.properties.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
-            const parameterInfo = this.language.properties.comments.docTagsWithParameters[tagRaw];
+        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
+            const parameterInfo = this.language.syntax.comments.docTagsWithParameters[tagRaw];
 
             if (parameterInfo === "\0") {
                 contentsRaw = parameters.slice(2).join(" ");
@@ -139,14 +139,14 @@ export class CommentDocTagCommand extends Command {
             } else {
                 contentsRaw = parameters.slice(3).join(" ");
                 tag += parameters[2];
-                tag += this.language.properties.comments.docTagEnd;
-                tag += this.language.properties.comments.docTagSpaceAfter;
+                tag += this.language.syntax.comments.docTagEnd;
+                tag += this.language.syntax.comments.docTagSpaceAfter;
             }
         } else {
             contentsRaw = parameters.slice(2).join(" ");
         }
 
-        if (tag === this.language.properties.comments.docTagEnd) {
+        if (tag === this.language.syntax.comments.docTagEnd) {
             tag = "";
         }
 
@@ -168,7 +168,7 @@ export class CommentDocTagCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderXmlDoc(parameters: string[]): LineResults {
-        const lineStart: string = this.language.properties.comments.docLineStart;
+        const lineStart: string = this.language.syntax.comments.docLineStart;
         const tagRaw: string = parameters[1];
         const tag: string = this.parseTag(tagRaw);
         const commandResults: CommandResult[] = [];
@@ -176,7 +176,7 @@ export class CommentDocTagCommand extends Command {
 
         let starter: string = lineStart + "<" + tag;
 
-        if (this.language.properties.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
+        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
             starter += " " + this.parseTagParameter(tagRaw, parameters[2]) + '="';
             starter += parameters[2];
             starter += '">';
@@ -196,7 +196,7 @@ export class CommentDocTagCommand extends Command {
             commandResults.push(new CommandResult(contentPadded, 0));
         }
 
-        let ender: string = this.language.properties.comments.docLineStart;
+        let ender: string = this.language.syntax.comments.docLineStart;
         ender += "</" + tag + ">";
         commandResults.push(new CommandResult(ender, 0));
 
@@ -242,10 +242,10 @@ export class CommentDocTagCommand extends Command {
      */
     private wrapTagContents(tag: string, contentsRaw: string): string[] {
         let maximumContentsLength: number =
-            CommentDocTagCommand.maximumLineLength - tag.length - this.language.properties.comments.docLineEnd.length;
+            CommentDocTagCommand.maximumLineLength - tag.length - this.language.syntax.comments.docLineEnd.length;
 
-        if (!this.language.properties.comments.docAsXml) {
-            maximumContentsLength -= this.language.properties.comments.docLineStart.length;
+        if (!this.language.syntax.comments.docAsXml) {
+            maximumContentsLength -= this.language.syntax.comments.docLineStart.length;
         }
 
         if (contentsRaw.length <= maximumContentsLength) {

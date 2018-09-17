@@ -13,7 +13,7 @@ describe("LanguagesBag", () => {
             const language = bag.getLanguageByExtension(".ts");
 
             // Assert
-            expect(language.properties.general.extension).to.be.equal(".ts");
+            expect(language.general.extension).to.be.equal(".ts");
         });
     });
 
@@ -26,7 +26,7 @@ describe("LanguagesBag", () => {
             const language = bag.getLanguageByName("TypeScript");
 
             // Assert
-            expect(language.properties.general.name).to.be.equal("TypeScript");
+            expect(language.general.name).to.be.equal("TypeScript");
         });
     });
 });

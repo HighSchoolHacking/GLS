@@ -29,7 +29,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         declaration += this.getPublicity(publicity);
         declaration += this.getAfterPublicity();
 
-        if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
+        if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
             declaration += returnType + " ";
         }
 
@@ -48,8 +48,8 @@ export abstract class MemberFunctionDeclareCommand extends Command {
 
         declaration += ")";
 
-        if (this.language.properties.functions.explicitReturns && this.language.properties.functions.returnTypeAfterName) {
-            declaration += this.language.properties.functions.returnTypeMarker;
+        if (this.language.syntax.functions.explicitReturns && this.language.syntax.functions.returnTypeAfterName) {
+            declaration += this.language.syntax.functions.returnTypeMarker;
             declaration += returnType;
         }
 
@@ -82,7 +82,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.variables.declarationRequired) {
+        if (!this.language.syntax.variables.declarationRequired) {
             return parameters[i];
         }
 
@@ -100,14 +100,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      */
     private getPublicity(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.members.functions.private;
+            return this.language.syntax.classes.members.functions.private;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.members.functions.protected;
+            return this.language.syntax.classes.members.functions.protected;
         }
 
-        return this.language.properties.classes.members.functions.public;
+        return this.language.syntax.classes.members.functions.public;
     }
 
     /**
@@ -118,14 +118,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      */
     private getPublicityCase(publicity: string): CaseStyle {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.members.functions.privateCase;
+            return this.language.syntax.classes.members.functions.privateCase;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.members.functions.protectedCase;
+            return this.language.syntax.classes.members.functions.protectedCase;
         }
 
-        return this.language.properties.classes.members.functions.publicCase;
+        return this.language.syntax.classes.members.functions.publicCase;
     }
 
     /**
@@ -136,13 +136,13 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      */
     private getPublicityPrefix(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.members.functions.privatePrefix;
+            return this.language.syntax.classes.members.functions.privatePrefix;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.members.functions.protectedPrefix;
+            return this.language.syntax.classes.members.functions.protectedPrefix;
         }
 
-        return this.language.properties.classes.members.functions.publicPrefix;
+        return this.language.syntax.classes.members.functions.publicPrefix;
     }
 }

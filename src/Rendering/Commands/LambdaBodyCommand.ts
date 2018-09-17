@@ -38,13 +38,13 @@ export class LambdaBodyCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.lambdas.returnTypeRequired) {
+        if (this.language.syntax.lambdas.returnTypeRequired) {
             throw new Error("returnTypeRequired=true not implemented");
         }
 
         let lambdaBody = "";
 
-        lambdaBody += this.language.properties.lambdas.functionLeft;
+        lambdaBody += this.language.syntax.lambdas.functionLeft;
 
         if (parameters.length > 3) {
             lambdaBody += this.generateParameterVariable(parameters, 2);
@@ -55,9 +55,9 @@ export class LambdaBodyCommand extends Command {
             }
         }
 
-        lambdaBody += this.language.properties.lambdas.functionMiddle;
+        lambdaBody += this.language.syntax.lambdas.functionMiddle;
         lambdaBody += parameters[parameters.length - 1];
-        lambdaBody += this.language.properties.lambdas.functionRight;
+        lambdaBody += this.language.syntax.lambdas.functionRight;
 
         const output = [new CommandResult(lambdaBody, 0)];
         return new LineResults(output, false);
@@ -71,7 +71,7 @@ export class LambdaBodyCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.lambdas.parameterTypeRequired) {
+        if (!this.language.syntax.lambdas.parameterTypeRequired) {
             return parameters[i];
         }
 

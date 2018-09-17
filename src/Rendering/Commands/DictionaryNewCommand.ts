@@ -32,19 +32,19 @@ export class DictionaryNewCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (!this.language.properties.dictionaries.initializeAsNew) {
-            return LineResults.newSingleLine(this.language.properties.dictionaries.initializeAsLiteral, false);
+        if (!this.language.syntax.dictionaries.initializeAsNew) {
+            return LineResults.newSingleLine(this.language.syntax.dictionaries.initializeAsLiteral, false);
         }
 
-        let output = this.language.properties.classes.newStart;
-        output += this.language.properties.dictionaries.className;
+        let output = this.language.syntax.classes.newStart;
+        output += this.language.syntax.dictionaries.className;
 
-        if (this.language.properties.classes.generics.used) {
-            output += this.language.properties.classes.generics.left;
+        if (this.language.syntax.classes.generics.used) {
+            output += this.language.syntax.classes.generics.left;
             output += this.context.convertCommon(CommandNames.Type, parameters[1]);
-            output += this.language.properties.classes.generics.middle;
+            output += this.language.syntax.classes.generics.middle;
             output += this.context.convertCommon(CommandNames.Type, parameters[2]);
-            output += this.language.properties.classes.generics.right;
+            output += this.language.syntax.classes.generics.right;
         }
 
         output += "()";

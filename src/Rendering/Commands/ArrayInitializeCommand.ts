@@ -39,11 +39,11 @@ export class ArrayInitializeCommand extends Command {
         const typeName: string = this.context.convertCommon(CommandNames.Type, parameters[1]);
         let output = "";
 
-        if (this.language.properties.arrays.initializeAsNew) {
+        if (this.language.syntax.arrays.initializeAsNew) {
             output += "new ";
         }
 
-        if (this.language.properties.arrays.initializeByType) {
+        if (this.language.syntax.arrays.initializeByType) {
             if (parameters.length === 2) {
                 output += typeName + "[0]";
                 return LineResults.newSingleLine(output, false);
@@ -52,7 +52,7 @@ export class ArrayInitializeCommand extends Command {
             output += this.context.convertCommon(CommandNames.Type, typeName + "[]");
         }
 
-        if (this.language.properties.arrays.initializeByType) {
+        if (this.language.syntax.arrays.initializeByType) {
             output += " { ";
         } else {
             output += "[";
@@ -60,7 +60,7 @@ export class ArrayInitializeCommand extends Command {
 
         output += parameters.slice(2).join(", ");
 
-        if (this.language.properties.arrays.initializeByType) {
+        if (this.language.syntax.arrays.initializeByType) {
             output += " }";
         } else {
             output += "]";

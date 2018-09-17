@@ -43,7 +43,7 @@ export class StringFormatCommand extends Command {
         }
 
         let output: string = parameters[1].substring(1, parameters[1].length - 1);
-        output = this.language.properties.strings.formatting.formatLeft + output;
+        output = this.language.syntax.strings.formatting.formatLeft + output;
 
         const inputsLength: number = parameters.length / 2 - 1;
         for (let i = 0; i < inputsLength; i += 1) {
@@ -52,9 +52,9 @@ export class StringFormatCommand extends Command {
             output = GlsUtilities.stringReplaceAll(output, `{${i}}`, replacement);
         }
 
-        if (!this.language.properties.strings.formatting.useInterpolation) {
+        if (!this.language.syntax.strings.formatting.useInterpolation) {
             if (parameters.length > 2) {
-                output += this.language.properties.strings.formatting.formatMiddle;
+                output += this.language.syntax.strings.formatting.formatMiddle;
 
                 for (let i = 2; i < parameters.length - 3; i += 2) {
                     output += parameters[i] += ", ";
@@ -62,11 +62,11 @@ export class StringFormatCommand extends Command {
 
                 output += parameters[parameters.length - 2];
             } else {
-                output += this.language.properties.strings.formatting.formatAbbreviated;
+                output += this.language.syntax.strings.formatting.formatAbbreviated;
             }
         }
 
-        output += this.language.properties.strings.formatting.formatRight;
+        output += this.language.syntax.strings.formatting.formatRight;
 
         return new LineResults([new CommandResult(output, 0)], true);
     }
@@ -80,25 +80,25 @@ export class StringFormatCommand extends Command {
      * @returns A replacement string wrapping the input.
      */
     private formatReplacement(i: number, inputName: string, inputType: string): string {
-        let output: string = this.language.properties.strings.formatting.formatInputLeft;
+        let output: string = this.language.syntax.strings.formatting.formatInputLeft;
 
-        if (!this.language.properties.strings.formatting.useInterpolation) {
+        if (!this.language.syntax.strings.formatting.useInterpolation) {
             output += i;
         }
 
-        if (this.language.properties.strings.formatting.inputTypes) {
-            if (this.language.properties.strings.formatting.typeCodes[inputType] !== undefined) {
-                output += this.language.properties.strings.formatting.typeCodes[inputType];
+        if (this.language.syntax.strings.formatting.inputTypes) {
+            if (this.language.syntax.strings.formatting.typeCodes[inputType] !== undefined) {
+                output += this.language.syntax.strings.formatting.typeCodes[inputType];
             } else {
                 output += inputType;
             }
         }
 
-        if (this.language.properties.strings.formatting.useInterpolation) {
+        if (this.language.syntax.strings.formatting.useInterpolation) {
             output += inputName;
         }
 
-        output += this.language.properties.strings.formatting.formatInputRight;
+        output += this.language.syntax.strings.formatting.formatInputRight;
         return output;
     }
 }

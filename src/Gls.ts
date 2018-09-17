@@ -80,7 +80,7 @@ export class Gls {
     public setLanguage(name: string): Gls {
         this.language = this.languagesBag.getLanguageByName(name);
         this.renderContext = new RenderContext(this.language);
-        this.outputMerger = new OutputMerger(this.language.properties.style.semicolon);
+        this.outputMerger = new OutputMerger(this.language.syntax.style.semicolon);
 
         return this;
     }

@@ -1,210 +1,112 @@
-import { ArrayProperties } from "./Properties/ArrayProperties";
-import { BooleanProperties } from "./Properties/BooleanProperties";
-import { ClassExportProperties } from "./Properties/ClassExportProperties";
-import { ClassGenericProperties } from "./Properties/ClassGenericProperties";
-import { ClassMemberFunctionProperties } from "./Properties/ClassMemberFunctionProperties";
-import { ClassMemberVariableProperties } from "./Properties/ClassMemberVariableProperties";
-import { ClassProperties } from "./Properties/ClassProperties";
-import { ClassStaticFunctionProperties } from "./Properties/ClassStaticFunctionProperties";
-import { ClassStaticVariableProperties } from "./Properties/ClassStaticVariableProperties";
-import { CommentProperties } from "./Properties/CommentProperties";
-import { ConditionalProperties } from "./Properties/ConditionalProperties";
-import { DictionaryProperties } from "./Properties/DictionaryProperties";
-import { EnumProperties } from "./Properties/EnumProperties";
-import { ExceptionProperties } from "./Properties/ExceptionProperties";
-import { FileProperties } from "./Properties/FileProperties";
-import { FunctionProperties } from "./Properties/FunctionProperties";
 import { GeneralProperties } from "./Properties/GeneralProperties";
-import { ImportProperties } from "./Properties/ImportProperties";
-import { InterfaceProperties } from "./Properties/InterfaceProperties";
-import { LambdaProperties } from "./Properties/LambdaProperties";
-import { LanguageProperties } from "./Properties/LanguageProperties";
-import { ListProperties } from "./Properties/ListProperties";
-import { LoopProperties } from "./Properties/LoopProperties";
-import { MainProperties } from "./Properties/MainProperties";
-import { MathProperties } from "./Properties/MathProperties";
-import { NewProperties } from "./Properties/NewProperties";
-import { NumberProperties } from "./Properties/NumberProperties";
-import { OperatorProperties } from "./Properties/OperatorProperties";
-import { ParameterProperties } from "./Properties/ParameterProperties";
-import { PrintingProperties } from "./Properties/PrintingProperties";
-import { SetProperties } from "./Properties/SetProperties";
-import { StandaloneFunctionProperties } from "./Properties/StandaloneFunctionProperties";
-import { StringFormatProperties } from "./Properties/StringFormatProperties";
-import { StringProperties } from "./Properties/StringProperties";
-import { StringSubstringProperties } from "./Properties/StringSubstringProperties";
-import { StringToFloatProperties } from "./Properties/StringToFloatProperties";
-import { StyleProperties } from "./Properties/StyleProperties";
-import { UnsupportedProperties } from "./Properties/UnsupportedProperties";
-import { VariableProperties } from "./Properties/VariableProperties";
+import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
+import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
+import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
+import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
+import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
+import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
+import { ClassStaticFunctionSyntax } from "./Properties/Syntax/ClassStaticFunctionSyntax";
+import { ClassStaticVariableSyntax } from "./Properties/Syntax/ClassStaticVariableSyntax";
+import { ClassSyntax } from "./Properties/Syntax/ClassSyntax";
+import { CommentSyntax } from "./Properties/Syntax/CommentSyntax";
+import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
+import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
+import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
+import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { FileSyntax } from "./Properties/Syntax/FileSyntax";
+import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
+import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
+import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
+import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListSyntax } from "./Properties/Syntax/ListSyntax";
+import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
+import { MainSyntax } from "./Properties/Syntax/MainSyntax";
+import { MathSyntax } from "./Properties/Syntax/MathSyntax";
+import { NewSyntax } from "./Properties/Syntax/NewSyntax";
+import { OperatorSyntax } from "./Properties/Syntax/OperatorSyntax";
+import { ParameterSyntax } from "./Properties/Syntax/ParameterSyntax";
+import { PrintingSyntax } from "./Properties/Syntax/PrintingSyntax";
+import { SetSyntax } from "./Properties/Syntax/SetSyntax";
+import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunctionSyntax";
+import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
+import { StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
+import { StringSyntax } from "./Properties/Syntax/StringSyntax";
+import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
+import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
+import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
+import { SyntaxProperties } from "./Properties/SyntaxProperties";
 
 /**
  * A summary of information for a single language.
  */
 export abstract class Language {
     /**
-     * Metadata about the language syntax.
+     * Metadata on the language's general properties.
      */
-    public properties: LanguageProperties;
+    public general: GeneralProperties;
+
+    /**
+     * Metadata on a language's project schemas.
+     */
+    public projects: ProjectProperties;
+
+    /**
+     * Metadata about the language's syntax.
+     */
+    public syntax: SyntaxProperties;
 
     /**
      * Initializes a new instance of the Language class.
      */
     public constructor() {
-        this.properties = new LanguageProperties();
-        this.generateArrayProperties(this.properties.arrays);
-        this.generateBooleanProperties(this.properties.booleans);
-        this.generateClassProperties(this.properties.classes);
-        this.generateClassExportProperties(this.properties.classes.exports);
-        this.generateClassGenericProperties(this.properties.classes.generics);
-        this.generateClassMemberFunctionProperties(this.properties.classes.members.functions);
-        this.generateClassMemberVariableProperties(this.properties.classes.members.variables);
-        this.generateClassStaticFunctionProperties(this.properties.classes.statics.functions);
-        this.generateClassStaticVariableProperties(this.properties.classes.statics.variables);
-        this.generateCommentProperties(this.properties.comments);
-        this.generateConditionalProperties(this.properties.conditionals);
-        this.generateDictionaryProperties(this.properties.dictionaries);
-        this.generateEnumProperties(this.properties.enums);
-        this.generateExceptionProperties(this.properties.exceptions);
-        this.generateFileProperties(this.properties.files);
-        this.generateFunctionProperties(this.properties.functions);
-        this.generateGeneralProperties(this.properties.general);
-        this.generateImportProperties(this.properties.imports);
-        this.generateInterfaceProperties(this.properties.interfaces);
-        this.generateLambdaProperties(this.properties.lambdas);
-        this.generateListProperties(this.properties.lists);
-        this.generateLoopProperties(this.properties.loops);
-        this.generateMainProperties(this.properties.main);
-        this.generateMathProperties(this.properties.math);
-        this.generateNewProperties(this.properties.newProp);
-        this.generateNumberProperties(this.properties.numbers);
-        this.generateOperatorProperties(this.properties.operators);
-        this.generateParameterProperties(this.properties.parameters);
-        this.generatePrintingProperties(this.properties.printing);
-        this.generateSetProperties(this.properties.sets);
-        this.generateStandaloneFunctionProperties(this.properties.standaloneFunctions);
-        this.generateStringFormatProperties(this.properties.strings.formatting);
-        this.generateStringProperties(this.properties.strings);
-        this.generateStringSubstringProperties(this.properties.strings.substrings);
-        this.generateStringToFloatProperties(this.properties.strings.toFloat);
-        this.generateStyleProperties(this.properties.style);
-        this.generateUnsupportedProperties(this.properties.unsupported);
-        this.generateVariableProperties(this.properties.variables);
+        this.general = new GeneralProperties();
+        this.generateGeneralProperties(this.general);
 
-        this.properties.operators.generateAliases();
+        this.projects = new ProjectProperties();
+        this.generateProjectProperties(this.projects);
+
+        this.syntax = new SyntaxProperties();
+        this.generateArraySyntax(this.syntax.arrays);
+        this.generateBooleanSyntax(this.syntax.booleans);
+        this.generateClassSyntax(this.syntax.classes);
+        this.generateClassExportSyntax(this.syntax.classes.exports);
+        this.generateClassGenericSyntax(this.syntax.classes.generics);
+        this.generateClassMemberFunctionSyntax(this.syntax.classes.members.functions);
+        this.generateClassMemberVariableSyntax(this.syntax.classes.members.variables);
+        this.generateClassStaticFunctionSyntax(this.syntax.classes.statics.functions);
+        this.generateClassStaticVariableSyntax(this.syntax.classes.statics.variables);
+        this.generateCommentSyntax(this.syntax.comments);
+        this.generateConditionalSyntax(this.syntax.conditionals);
+        this.generateDictionarySyntax(this.syntax.dictionaries);
+        this.generateEnumSyntax(this.syntax.enums);
+        this.generateExceptionSyntax(this.syntax.exceptions);
+        this.generateFileSyntax(this.syntax.files);
+        this.generateFunctionSyntax(this.syntax.functions);
+        this.generateImportSyntax(this.syntax.imports);
+        this.generateInterfaceSyntax(this.syntax.interfaces);
+        this.generateLambdaSyntax(this.syntax.lambdas);
+        this.generateListSyntax(this.syntax.lists);
+        this.generateLoopSyntax(this.syntax.loops);
+        this.generateMainSyntax(this.syntax.main);
+        this.generateMathSyntax(this.syntax.math);
+        this.generateNewSyntax(this.syntax.newProp);
+        this.generateOperatorSyntax(this.syntax.operators);
+        this.generateParameterSyntax(this.syntax.parameters);
+        this.generatePrintingSyntax(this.syntax.printing);
+        this.generateSetSyntax(this.syntax.sets);
+        this.generateStandaloneFunctionSyntax(this.syntax.standaloneFunctions);
+        this.generateStringFormatSyntax(this.syntax.strings.formatting);
+        this.generateStringSyntax(this.syntax.strings);
+        this.generateStringSubstringSyntax(this.syntax.strings.substrings);
+        this.generateStringToFloatSyntax(this.syntax.strings.toFloat);
+        this.generateStyleSyntax(this.syntax.style);
+        this.generateUnsupportedSyntax(this.syntax.unsupported);
+        this.generateVariableSyntax(this.syntax.variables);
+
+        this.syntax.operators.generateAliases();
     }
-
-    /**
-     * Generates metadata on arrays.
-     *
-     * @param arrays   A property container for metadata on arrays.
-     */
-    protected abstract generateArrayProperties(arrays: ArrayProperties): void;
-
-    /**
-     * Generates metadata on booleans.
-     *
-     * @param booleans   A property container for metadata on booleans.
-     */
-    protected abstract generateBooleanProperties(booleans: BooleanProperties): void;
-
-    /**
-     * Generates metadata on exported classes.
-     *
-     * @param members   A property container for metadata on exported classes.
-     */
-    protected abstract generateClassExportProperties(exports: ClassExportProperties): void;
-
-    /**
-     * Generates metadata on class generics.
-     *
-     * @param members   A property container for metadata on class generics.
-     */
-    protected abstract generateClassGenericProperties(generics: ClassGenericProperties): void;
-
-    /**
-     * Generates metadata on class member functions.
-     *
-     * @param functions   A property container for metadata on class member functions.
-     */
-    protected abstract generateClassMemberFunctionProperties(functions: ClassMemberFunctionProperties): void;
-
-    /**
-     * Generates metadata on class member variables.
-     *
-     * @param members   A property container for metadata on class member variables.
-     */
-    protected abstract generateClassMemberVariableProperties(members: ClassMemberVariableProperties): void;
-
-    /**
-     * Generates metadata on classes.
-     *
-     * @param classes   A property container for metadata on classes.
-     */
-    protected abstract generateClassProperties(classes: ClassProperties): void;
-
-    /**
-     * Generates metadata on class static functions.
-     *
-     * @param functions   A property container for metadata on class static functions.
-     */
-    protected abstract generateClassStaticFunctionProperties(functions: ClassStaticFunctionProperties): void;
-
-    /**
-     * Generates metadata on class static variables.
-     *
-     * @param members   A property container for metadata on class static variables.
-     */
-    protected abstract generateClassStaticVariableProperties(variables: ClassStaticVariableProperties): void;
-
-    /**
-     * Generates metadata on comments.
-     *
-     * @param comments   A property container for metadata on comments.
-     */
-    protected abstract generateCommentProperties(comments: CommentProperties): void;
-
-    /**
-     * Generates metadata on conditionals.
-     *
-     * @param conditionals   A property container for metadata on conditionals.
-     */
-    protected abstract generateConditionalProperties(conditionals: ConditionalProperties): void;
-
-    /**
-     * Generates metadata on dictionaries.
-     *
-     * @param dictionaries   A property container for metadata on dictionaries.
-     */
-    protected abstract generateDictionaryProperties(dictionaries: DictionaryProperties): void;
-
-    /**
-     * Generates metadata on enums.
-     *
-     * @param enums   A property container for metadata on enums.
-     */
-    protected abstract generateEnumProperties(enums: EnumProperties): void;
-
-    /**
-     * Generates metadata on exceptions.
-     *
-     * @param exceptions   A property container for metadata on exceptions.
-     */
-    protected abstract generateExceptionProperties(exceptions: ExceptionProperties): void;
-
-    /**
-     * Generates metadata on file contents.
-     *
-     * @param exceptions   A property container for metadata on file contents.
-     */
-    protected abstract generateFileProperties(files: FileProperties): void;
-
-    /**
-     * Generates metadata on functions.
-     *
-     * @param functions   A property container for metadata on functions.
-     */
-    protected abstract generateFunctionProperties(functions: FunctionProperties): void;
 
     /**
      * Fills out metadata on general properties.
@@ -212,154 +114,266 @@ export abstract class Language {
     protected abstract generateGeneralProperties(general: GeneralProperties): void;
 
     /**
+     * Generates project-scale metadata.
+     *
+     * @param projects   A property container for project-scale metadata.
+     */
+    protected abstract generateProjectProperties(projects: ProjectProperties): void;
+
+    /**
+     * Generates metadata on arrays.
+     *
+     * @param arrays   A property container for metadata on arrays.
+     */
+    protected abstract generateArraySyntax(arrays: ArraySyntax): void;
+
+    /**
+     * Generates metadata on booleans.
+     *
+     * @param booleans   A property container for metadata on booleans.
+     */
+    protected abstract generateBooleanSyntax(booleans: BooleanSyntax): void;
+
+    /**
+     * Generates metadata on exported classes.
+     *
+     * @param members   A property container for metadata on exported classes.
+     */
+    protected abstract generateClassExportSyntax(exports: ClassExportSyntax): void;
+
+    /**
+     * Generates metadata on class generics.
+     *
+     * @param members   A property container for metadata on class generics.
+     */
+    protected abstract generateClassGenericSyntax(generics: ClassGenericSyntax): void;
+
+    /**
+     * Generates metadata on class member functions.
+     *
+     * @param functions   A property container for metadata on class member functions.
+     */
+    protected abstract generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void;
+
+    /**
+     * Generates metadata on class member variables.
+     *
+     * @param members   A property container for metadata on class member variables.
+     */
+    protected abstract generateClassMemberVariableSyntax(members: ClassMemberVariableSyntax): void;
+
+    /**
+     * Generates metadata on classes.
+     *
+     * @param classes   A property container for metadata on classes.
+     */
+    protected abstract generateClassSyntax(classes: ClassSyntax): void;
+
+    /**
+     * Generates metadata on class static functions.
+     *
+     * @param functions   A property container for metadata on class static functions.
+     */
+    protected abstract generateClassStaticFunctionSyntax(functions: ClassStaticFunctionSyntax): void;
+
+    /**
+     * Generates metadata on class static variables.
+     *
+     * @param members   A property container for metadata on class static variables.
+     */
+    protected abstract generateClassStaticVariableSyntax(variables: ClassStaticVariableSyntax): void;
+
+    /**
+     * Generates metadata on comments.
+     *
+     * @param comments   A property container for metadata on comments.
+     */
+    protected abstract generateCommentSyntax(comments: CommentSyntax): void;
+
+    /**
+     * Generates metadata on conditionals.
+     *
+     * @param conditionals   A property container for metadata on conditionals.
+     */
+    protected abstract generateConditionalSyntax(conditionals: ConditionalSyntax): void;
+
+    /**
+     * Generates metadata on dictionaries.
+     *
+     * @param dictionaries   A property container for metadata on dictionaries.
+     */
+    protected abstract generateDictionarySyntax(dictionaries: DictionarySyntax): void;
+
+    /**
+     * Generates metadata on enums.
+     *
+     * @param enums   A property container for metadata on enums.
+     */
+    protected abstract generateEnumSyntax(enums: EnumSyntax): void;
+
+    /**
+     * Generates metadata on exceptions.
+     *
+     * @param exceptions   A property container for metadata on exceptions.
+     */
+    protected abstract generateExceptionSyntax(exceptions: ExceptionSyntax): void;
+
+    /**
+     * Generates metadata on file contents.
+     *
+     * @param exceptions   A property container for metadata on file contents.
+     */
+    protected abstract generateFileSyntax(files: FileSyntax): void;
+
+    /**
+     * Generates metadata on functions.
+     *
+     * @param functions   A property container for metadata on functions.
+     */
+    protected abstract generateFunctionSyntax(functions: FunctionSyntax): void;
+
+    /**
      * Generates metadata on imports.
      *
      * @param imports   A property container for metadata on imports.
      */
-    protected abstract generateImportProperties(lambdas: ImportProperties): void;
+    protected abstract generateImportSyntax(lambdas: ImportSyntax): void;
 
     /**
      * Generates metadata on interfaces.
      *
      * @param interfaces   A property container for metadata on interfaces.
      */
-    protected abstract generateInterfaceProperties(lambdas: InterfaceProperties): void;
+    protected abstract generateInterfaceSyntax(lambdas: InterfaceSyntax): void;
 
     /**
      * Generates metadata on lambdas.
      *
      * @param lambdas   A property container for metadata on lambdas.
      */
-    protected abstract generateLambdaProperties(lambdas: LambdaProperties): void;
+    protected abstract generateLambdaSyntax(lambdas: LambdaSyntax): void;
 
     /**
      * Fills out metadata on lists.
      */
-    protected abstract generateListProperties(lists: ListProperties): void;
+    protected abstract generateListSyntax(lists: ListSyntax): void;
 
     /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
      */
-    protected abstract generateLoopProperties(loops: LoopProperties): void;
+    protected abstract generateLoopSyntax(loops: LoopSyntax): void;
 
     /**
      * Generates metadata on main execution areas.
      *
      * @param main   A property container for metadata on main execution areas.
      */
-    protected abstract generateMainProperties(main: MainProperties): void;
+    protected abstract generateMainSyntax(main: MainSyntax): void;
 
     /**
      * Generates metadata on math.
      *
      * @param math   A property container for metadata on math.
      */
-    protected abstract generateMathProperties(math: MathProperties): void;
+    protected abstract generateMathSyntax(math: MathSyntax): void;
 
     /**
      * Generates metadata on new object instantiation.
      *
      * @param newProp   A property container for metadata on new object instantiation.
      */
-    protected abstract generateNewProperties(newProp: NewProperties): void;
+    protected abstract generateNewSyntax(newProp: NewSyntax): void;
 
     /**
      * Generates metadata on numbers.
      *
      * @param numbers   A property container for metadata on numbers.
      */
-    protected abstract generateNewProperties(newProp: NewProperties): void;
-
-    /**
-     * Generates metadata on numbers.
-     *
-     * @param numbers   A property container for metadata on numbers.
-     */
-    protected abstract generateNumberProperties(numbers: NumberProperties): void;
+    protected abstract generateNewSyntax(newProp: NewSyntax): void;
 
     /**
      * Generates metadata on operators.
      *
      * @param operators   A property container for metadata on operators.
      */
-    protected abstract generateOperatorProperties(operators: OperatorProperties): void;
+    protected abstract generateOperatorSyntax(operators: OperatorSyntax): void;
 
     /**
      * Generates metadata on parameters.
      *
      * @param parameters    A property container for metadata on parameters.
      */
-    protected abstract generateParameterProperties(parameters: ParameterProperties): void;
+    protected abstract generateParameterSyntax(parameters: ParameterSyntax): void;
 
     /**
      * Generates metadata on printing.
      *
      * @param parameters    A property container for metadata on printing.
      */
-    protected abstract generatePrintingProperties(printing: PrintingProperties): void;
+    protected abstract generatePrintingSyntax(printing: PrintingSyntax): void;
 
     /**
      * Generates metadata on sets.
      *
      * @param parameters   A property container for metadata on sets.
      */
-    protected abstract generateSetProperties(sets: SetProperties): void;
+    protected abstract generateSetSyntax(sets: SetSyntax): void;
 
     /**
      * Generates metadata on standalone functions.
      *
      * @param parameters   A property container for metadata on standalone functions.
      */
-    protected abstract generateStandaloneFunctionProperties(standaloneFunctions: StandaloneFunctionProperties): void;
+    protected abstract generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void;
 
     /**
      * Generates metadata on string formatting.
      *
      * @param strings   A property container for metadata on string formatting.
      */
-    protected abstract generateStringFormatProperties(formatting: StringFormatProperties): void;
+    protected abstract generateStringFormatSyntax(formatting: StringFormatSyntax): void;
 
     /**
      * Generates metadata on strings.
      *
      * @param strings   A property container for metadata on strings.
      */
-    protected abstract generateStringProperties(strings: StringProperties): void;
+    protected abstract generateStringSyntax(strings: StringSyntax): void;
 
     /**
      * Generates metadata on string substrings.
      *
      * @param strings   A property container for metadata on string substrings.
      */
-    protected abstract generateStringSubstringProperties(substrings: StringSubstringProperties): void;
+    protected abstract generateStringSubstringSyntax(substrings: StringSubstringSyntax): void;
 
     /**
      * Generates metadata on string-to-float conversions.
      *
      * @param toFloat   A property container for metadata on string-to-float conversions.
      */
-    protected abstract generateStringToFloatProperties(toFloat: StringToFloatProperties): void;
+    protected abstract generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void;
 
     /**
      * Generates metadata on style.
      *
      * @param style   A property container for metadata on style.
      */
-    protected abstract generateStyleProperties(style: StyleProperties): void;
+    protected abstract generateStyleSyntax(style: StyleSyntax): void;
 
     /**
      * Generates metadata on unsupported complaints.
      *
      * @param style   A property container for metadata on unsupported complaints.
      */
-    protected abstract generateUnsupportedProperties(style: UnsupportedProperties): void;
+    protected abstract generateUnsupportedSyntax(style: UnsupportedSyntax): void;
 
     /**
      * Generates metadata on variables.
      *
      * @param variables   A property container for metadata on variables.
      */
-    protected abstract generateVariableProperties(variables: VariableProperties): void;
+    protected abstract generateVariableSyntax(variables: VariableSyntax): void;
 }

@@ -28,7 +28,7 @@ export class StringIndexNotFoundCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const output: string = this.language.properties.strings.indexOfNotFound;
+        const output: string = this.language.syntax.strings.indexOfNotFound;
 
         return LineResults.newSingleLine(output, false);
     }

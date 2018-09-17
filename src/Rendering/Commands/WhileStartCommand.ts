@@ -31,12 +31,12 @@ export class WhileStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.loops.whileStartLeft;
-        line += this.language.properties.loops.whileStartMiddle;
+        let line: string = this.language.syntax.loops.whileStartLeft;
+        line += this.language.syntax.loops.whileStartMiddle;
         line += this.context.convertCommon(CommandNames.Value, parameters[1]);
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.loops.whileStartRight, 1);
+        this.addLineEnder(lines, this.language.syntax.loops.whileStartRight, 1);
 
         return new LineResults(lines, false);
     }

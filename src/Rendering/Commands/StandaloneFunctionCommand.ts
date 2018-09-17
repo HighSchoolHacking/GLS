@@ -38,7 +38,7 @@ export class StandaloneFunctionCommand extends Command {
      * @param parameters   The command's name, followed by any parameters.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.standaloneFunctions.withinStaticClass) {
+        if (this.language.syntax.standaloneFunctions.withinStaticClass) {
             return this.renderWithinStaticClass(parameters);
         }
 
@@ -53,7 +53,7 @@ export class StandaloneFunctionCommand extends Command {
      */
     private renderFloating(parameters: string[]): LineResults {
         let output = "";
-        output += this.context.convertStringToCase(parameters[3], this.language.properties.functions.case);
+        output += this.context.convertStringToCase(parameters[3], this.language.syntax.functions.case);
         output += "(";
 
         if (parameters.length > 4) {

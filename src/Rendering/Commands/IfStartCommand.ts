@@ -31,12 +31,12 @@ export class IfStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line: string = this.language.properties.conditionals.if;
-        line += this.language.properties.conditionals.startLeft;
+        let line: string = this.language.syntax.conditionals.if;
+        line += this.language.syntax.conditionals.startLeft;
         line += parameters[1];
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(lines, false);
     }

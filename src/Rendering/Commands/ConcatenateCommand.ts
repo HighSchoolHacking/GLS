@@ -39,7 +39,7 @@ export class ConcatenateCommand extends Command {
         let result = parameters[1];
 
         for (let i = 2; i < parameters.length; i += 1) {
-            result += this.language.properties.strings.concatenate + parameters[i];
+            result += this.language.syntax.strings.concatenate + parameters[i];
         }
 
         return LineResults.newSingleLine(result, false);

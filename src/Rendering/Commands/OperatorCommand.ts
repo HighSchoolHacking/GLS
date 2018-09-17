@@ -39,10 +39,10 @@ export class OperatorCommand extends Command {
      * @returns The equivalent converted operator.
      */
     private convertOperator(operatorRaw: string): string {
-        if (!this.language.properties.operators.aliases.hasOwnProperty(operatorRaw)) {
+        if (!this.language.syntax.operators.aliases.hasOwnProperty(operatorRaw)) {
             return operatorRaw;
         }
 
-        return this.language.properties.operators.aliases[operatorRaw];
+        return this.language.syntax.operators.aliases[operatorRaw];
     }
 }

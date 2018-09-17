@@ -26,8 +26,8 @@ export class InterfaceEndCommand extends BlockEndCommand {
      * @returns The end block for interface declarations.
      */
     protected renderBlockEnd(): string {
-        if (this.language.properties.interfaces.supported) {
-            return this.language.properties.interfaces.declareEnd;
+        if (this.language.syntax.interfaces.supported) {
+            return this.language.syntax.interfaces.declareEnd;
         }
 
         return "";

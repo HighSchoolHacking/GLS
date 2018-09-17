@@ -37,23 +37,23 @@ export class CatchStartCommand extends Command {
         const lines = [new CommandResult("", -1)];
         let line: CommandResult;
 
-        if (!this.language.properties.style.separateBraceLines) {
+        if (!this.language.syntax.style.separateBraceLines) {
             lines[0].text = "\0";
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.properties.exceptions.blockEnd, 0);
+        this.addLineEnder(lines, this.language.syntax.exceptions.blockEnd, 0);
 
         line = lines[lines.length - 1];
-        line.text += this.language.properties.exceptions.catch;
-        line.text += this.language.properties.exceptions.catchStartMiddle;
-        if (this.language.properties.exceptions.requiresExceptionType) {
+        line.text += this.language.syntax.exceptions.catch;
+        line.text += this.language.syntax.exceptions.catchStartMiddle;
+        if (this.language.syntax.exceptions.requiresExceptionType) {
             line.text += parameters[1];
-            line.text += this.language.properties.exceptions.catchStartLink;
+            line.text += this.language.syntax.exceptions.catchStartLink;
         }
         line.text += parameters[2];
 
-        this.addLineEnder(lines, this.language.properties.exceptions.catchStartRight, 2);
+        this.addLineEnder(lines, this.language.syntax.exceptions.catchStartRight, 2);
 
         return new LineResults(lines, false);
     }

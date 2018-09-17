@@ -5,13 +5,13 @@
         "email": "jogol@microsoft.com"
     },
     "bugs": {
-        "url": "https://github.com/HighSchoolHacking/GLS/issues"
+        "url": "https://github.com/general-language-syntax/GLS/issues"
     },
     "description": "A unified syntax that compiles into your favorite OOP languages.",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com:general-language-syntax/gls.git"
+        "url": "ssh://git@github.com:general-language-syntax/GLS.git"
     },
     "scripts": {
         "precommit": "pretty-quick --staged --write",
@@ -52,5 +52,6 @@
         "tslint-config-prettier": "^1.15.0",
         "typescript": "^3.0.1",
         "yargs": "^12.0.1"
-    }
+    },
+    "dependencies": {}
 }

@@ -27,6 +27,6 @@ export abstract class BlockEndCommand extends Command {
      * @returns The default end block for conditionals.
      */
     protected renderBlockEnd(): string {
-        return this.language.properties.conditionals.end;
+        return this.language.syntax.conditionals.end;
     }
 }

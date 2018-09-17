@@ -55,6 +55,6 @@ export class MemberFunctionDeclareStartCommand extends MemberFunctionDeclareComm
      * @returns Text to end the declaration.
      */
     protected getEnder(): string {
-        return this.language.properties.functions.defineStartRight;
+        return this.language.syntax.functions.defineStartRight;
     }
 }

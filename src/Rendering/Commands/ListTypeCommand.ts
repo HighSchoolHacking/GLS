@@ -31,7 +31,7 @@ export class ListTypeCommand extends Command {
     public render(parameters: string[]): LineResults {
         let typeName: string;
 
-        if (this.language.properties.lists.asArray) {
+        if (this.language.syntax.lists.asArray) {
             typeName = parameters[1] + "[]";
         } else {
             typeName = "list<" + parameters[1] + ">";
@@ -41,7 +41,7 @@ export class ListTypeCommand extends Command {
 
         const results = LineResults.newSingleLine(typeName, false);
 
-        results.addImports(this.language.properties.lists.requiredImports);
+        results.addImports(this.language.syntax.lists.requiredImports);
 
         return results;
     }

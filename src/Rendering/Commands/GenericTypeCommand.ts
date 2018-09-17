@@ -32,7 +32,7 @@ export class GenericTypeCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = parameters[1];
 
-        if (this.language.properties.variables.explicitTypes) {
+        if (this.language.syntax.variables.explicitTypes) {
             output += "<" + parameters.slice(2).join(", ") + ">";
         }
 

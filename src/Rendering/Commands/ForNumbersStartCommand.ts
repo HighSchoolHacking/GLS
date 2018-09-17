@@ -39,16 +39,16 @@ export class ForNumbersStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         let starter: string;
 
-        if (parameters.length === 6 && this.language.properties.loops.rangedForLoopsFunctionalIncrementor) {
+        if (parameters.length === 6 && this.language.syntax.loops.rangedForLoopsFunctionalIncrementor) {
             starter = this.renderStartFunctional(parameters);
-        } else if (this.language.properties.loops.rangedForLoops) {
+        } else if (this.language.syntax.loops.rangedForLoops) {
             starter = this.renderStartRanged(parameters);
         } else {
             starter = this.renderStartLoop(parameters);
         }
 
         const lines: CommandResult[] = [new CommandResult(starter, 0)];
-        this.addLineEnder(lines, this.language.properties.conditionals.startRight, 1);
+        this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(lines, false);
     }
@@ -62,15 +62,15 @@ export class ForNumbersStartCommand extends Command {
     private renderStartFunctional(parameters: string[]): string {
         let output = "";
 
-        output += this.language.properties.loops.rangedForLoopsFunctionalLeft;
+        output += this.language.syntax.loops.rangedForLoopsFunctionalLeft;
         output += parameters[3];
-        output += this.language.properties.loops.rangedForLoopsFunctionalMiddleLeft;
+        output += this.language.syntax.loops.rangedForLoopsFunctionalMiddleLeft;
         output += parameters[4];
-        output += this.language.properties.loops.rangedForLoopsFunctionalMiddleMiddle;
+        output += this.language.syntax.loops.rangedForLoopsFunctionalMiddleMiddle;
         output += parameters[5];
-        output += this.language.properties.loops.rangedForLoopsFunctionalMiddleRight;
+        output += this.language.syntax.loops.rangedForLoopsFunctionalMiddleRight;
         output += parameters[1];
-        output += this.language.properties.loops.rangedForLoopsFunctionalRight;
+        output += this.language.syntax.loops.rangedForLoopsFunctionalRight;
 
         return output;
     }
@@ -82,7 +82,7 @@ export class ForNumbersStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderStartLoop(parameters: string[]): string {
-        let output: string = this.language.properties.loops.for;
+        let output: string = this.language.syntax.loops.for;
 
         let incrementor: string;
         if (parameters.length === 6) {
@@ -91,11 +91,11 @@ export class ForNumbersStartCommand extends Command {
             incrementor = "1";
         }
 
-        output += this.language.properties.conditionals.startLeft;
+        output += this.language.syntax.conditionals.startLeft;
         output += this.context.convertParsed([CommandNames.Variable, parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
-        output += this.language.properties.style.semicolon + " ";
+        output += this.language.syntax.style.semicolon + " ";
         output += this.context.convertParsed([CommandNames.Operation, parameters[1], "less than", parameters[4]]).commandResults[0].text;
-        output += this.language.properties.style.semicolon + " ";
+        output += this.language.syntax.style.semicolon + " ";
         output += this.context.convertParsed([CommandNames.Operation, parameters[1], "increase by", incrementor]).commandResults[0].text;
 
         return output;
@@ -108,21 +108,21 @@ export class ForNumbersStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderStartRanged(parameters: string[]): string {
-        let output: string = this.language.properties.loops.for;
+        let output: string = this.language.syntax.loops.for;
 
-        output += this.language.properties.conditionals.startLeft;
+        output += this.language.syntax.conditionals.startLeft;
         output += parameters[1];
-        output += this.language.properties.loops.rangedForLoopsLeft;
+        output += this.language.syntax.loops.rangedForLoopsLeft;
         output += parameters[3];
-        output += this.language.properties.loops.rangedForLoopsMiddle;
+        output += this.language.syntax.loops.rangedForLoopsMiddle;
         output += parameters[4];
 
         if (parameters.length === 6) {
-            output += this.language.properties.loops.rangedForLoopsMiddle;
+            output += this.language.syntax.loops.rangedForLoopsMiddle;
             output += parameters[5];
         }
 
-        output += this.language.properties.loops.rangedForLoopsRight;
+        output += this.language.syntax.loops.rangedForLoopsRight;
 
         return output;
     }

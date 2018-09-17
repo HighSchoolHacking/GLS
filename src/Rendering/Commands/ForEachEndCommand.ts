@@ -29,7 +29,7 @@ export class ForEachEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const ender: string = this.language.properties.loops.forEachEnd;
+        const ender: string = this.language.syntax.loops.forEachEnd;
 
         return new LineResults([new CommandResult(ender, -1)], false);
     }

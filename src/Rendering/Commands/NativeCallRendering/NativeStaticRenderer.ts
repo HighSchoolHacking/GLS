@@ -14,10 +14,10 @@ export class NativeStaticRenderer extends NativeCallRenderer {
     public render(parameters: string[]): LineResults {
         let result = "";
 
-        result += this.nativeCallProperties.name;
+        result += this.nativeCallSyntax.name;
         result += "(" + parameters[1];
 
-        for (const arg of this.nativeCallProperties.arguments) {
+        for (const arg of this.nativeCallSyntax.arguments) {
             result += ", " + this.formatArgument(arg, parameters[1]);
         }
 

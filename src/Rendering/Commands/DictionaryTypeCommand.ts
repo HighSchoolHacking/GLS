@@ -34,21 +34,21 @@ export class DictionaryTypeCommand extends Command {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        if (this.language.properties.dictionaries.initializeAsNew) {
-            output += this.language.properties.dictionaries.className;
+        if (this.language.syntax.dictionaries.initializeAsNew) {
+            output += this.language.syntax.dictionaries.className;
         }
 
-        if (this.language.properties.variables.explicitTypes) {
-            output += this.language.properties.dictionaries.typeLeft;
+        if (this.language.syntax.variables.explicitTypes) {
+            output += this.language.syntax.dictionaries.typeLeft;
             output += this.context.convertCommon(CommandNames.Type, parameters[1]);
-            output += this.language.properties.dictionaries.typeMiddle;
+            output += this.language.syntax.dictionaries.typeMiddle;
             output += this.context.convertCommon(CommandNames.Type, parameters[2]);
-            output += this.language.properties.dictionaries.typeRight;
+            output += this.language.syntax.dictionaries.typeRight;
         }
 
         const results = LineResults.newSingleLine(output, false);
 
-        results.addImports(this.language.properties.dictionaries.requiredImports);
+        results.addImports(this.language.syntax.dictionaries.requiredImports);
 
         return results;
     }

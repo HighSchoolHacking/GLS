@@ -43,10 +43,10 @@ export class EnumEndCommand extends Command {
      * @returns The end block for enums.
      */
     protected renderEnumEnd(): string {
-        if (this.language.properties.enums.isObject) {
-            return this.language.properties.conditionals.end + ";";
+        if (this.language.syntax.enums.isObject) {
+            return this.language.syntax.conditionals.end + ";";
         }
 
-        return this.language.properties.conditionals.end;
+        return this.language.syntax.conditionals.end;
     }
 }

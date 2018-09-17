@@ -1,4 +1,4 @@
-import { NativeCallProperties } from "../Languages/Properties/NativeCallProperties";
+import { NativeCallSyntax } from "../Languages/Properties/Syntax/NativeCallSyntax";
 import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
@@ -25,7 +25,7 @@ export class StringCaseUpperCommand extends NativeCallCommand {
     /**
      * @returns Metadata on how to perform the native call.
      */
-    protected retrieveNativeCallProperties(): NativeCallProperties {
-        return this.language.properties.strings.caseUpper;
+    protected retrieveNativeCallSyntax(): NativeCallSyntax {
+        return this.language.syntax.strings.caseUpper;
     }
 }

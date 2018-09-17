@@ -1,5 +1,5 @@
 import { Import } from "../Languages/Imports/Import";
-import { NativeCallProperties, NativeCallScope } from "../Languages/Properties/NativeCallProperties";
+import { NativeCallScope, NativeCallSyntax } from "../Languages/Properties/Syntax/NativeCallSyntax";
 import { LineResults } from "../LineResults";
 import { RenderContext } from "../RenderContext";
 import { Command } from "./Command";
@@ -16,7 +16,7 @@ export abstract class NativeCallCommand extends Command {
     /**
      * Metadata on how to perform the native call.
      */
-    protected nativeCallProperties: NativeCallProperties;
+    protected nativeCallSyntax: NativeCallSyntax;
 
     /**
      * Renderers for each allowed scope.
@@ -31,13 +31,13 @@ export abstract class NativeCallCommand extends Command {
     public constructor(context: RenderContext) {
         super(context);
 
-        this.nativeCallProperties = this.retrieveNativeCallProperties();
+        this.nativeCallSyntax = this.retrieveNativeCallSyntax();
 
         this.scopeRenderers = {
-            [NativeCallScope.Array]: new NativeArrayRenderer(this.nativeCallProperties),
-            [NativeCallScope.Member]: new NativeMemberRenderer(this.nativeCallProperties),
-            [NativeCallScope.Operator]: new NativeOperatorRenderer(this.nativeCallProperties),
-            [NativeCallScope.Static]: new NativeStaticRenderer(this.nativeCallProperties),
+            [NativeCallScope.Array]: new NativeArrayRenderer(this.nativeCallSyntax),
+            [NativeCallScope.Member]: new NativeMemberRenderer(this.nativeCallSyntax),
+            [NativeCallScope.Operator]: new NativeOperatorRenderer(this.nativeCallSyntax),
+            [NativeCallScope.Static]: new NativeStaticRenderer(this.nativeCallSyntax),
         };
     }
 
@@ -49,7 +49,7 @@ export abstract class NativeCallCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const scope: NativeCallScope = this.nativeCallProperties.scope;
+        const scope: NativeCallScope = this.nativeCallSyntax.scope;
         const results: LineResults = this.scopeRenderers[scope].render(parameters);
 
         results.addImports(this.retrieveImports());
@@ -61,11 +61,11 @@ export abstract class NativeCallCommand extends Command {
      * @returns Any imports this native command requires.
      */
     protected retrieveImports(): Import[] {
-        return this.nativeCallProperties.imports;
+        return this.nativeCallSyntax.imports;
     }
 
     /**
      * @returns Metadata on how to perform the native call.
      */
-    protected abstract retrieveNativeCallProperties(): NativeCallProperties;
+    protected abstract retrieveNativeCallSyntax(): NativeCallSyntax;
 }

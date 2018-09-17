@@ -46,7 +46,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.standaloneFunctions.withinStaticClass) {
+        if (this.language.syntax.standaloneFunctions.withinStaticClass) {
             return this.renderWithinStaticClass(parameters);
         }
 
@@ -64,16 +64,16 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
         let declaration = "";
         let output: CommandResult[];
 
-        if (this.language.properties.functions.explicitReturns && !this.language.properties.functions.returnTypeAfterName) {
+        if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
             declaration += returnType;
         }
 
         if (parameters[1] === KeywordNames.Public) {
-            declaration += this.language.properties.classes.exports.exported;
+            declaration += this.language.syntax.classes.exports.exported;
         }
 
-        declaration += this.language.properties.functions.defineStartLeft;
-        declaration += this.context.convertStringToCase(parameters[2], this.language.properties.functions.case);
+        declaration += this.language.syntax.functions.defineStartLeft;
+        declaration += this.context.convertStringToCase(parameters[2], this.language.syntax.functions.case);
         declaration += "(";
 
         if (parameters.length > 5) {
@@ -87,13 +87,13 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
 
         declaration += ")";
 
-        if (this.language.properties.functions.explicitReturns && this.language.properties.functions.returnTypeAfterName) {
-            declaration += this.language.properties.functions.returnTypeMarker;
+        if (this.language.syntax.functions.explicitReturns && this.language.syntax.functions.returnTypeAfterName) {
+            declaration += this.language.syntax.functions.returnTypeMarker;
             declaration += returnType;
         }
 
         output = [new CommandResult(declaration, 0)];
-        this.addLineEnder(output, this.language.properties.functions.defineStartRight, 1);
+        this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
 
         return new LineResults(output, false);
     }
@@ -106,7 +106,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.variables.declarationRequired) {
+        if (!this.language.syntax.variables.declarationRequired) {
             return parameters[i];
         }
 

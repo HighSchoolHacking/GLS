@@ -34,7 +34,7 @@ export class ListInitializeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (this.language.properties.lists.asArray) {
+        if (this.language.syntax.lists.asArray) {
             parameters[0] = CommandNames.ArrayInitialize;
             return this.context.convertParsed(parameters);
         }

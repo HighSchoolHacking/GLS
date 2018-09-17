@@ -39,7 +39,7 @@ export class ImportsPrinter {
     public render(addedImport: Import): LineResults {
         let lines: CommandResult[];
 
-        if (this.language.properties.imports.explicitLines) {
+        if (this.language.syntax.imports.explicitLines) {
             lines = this.renderMultipleLines(addedImport);
         } else {
             lines = [this.renderCombinedLine(addedImport)];
@@ -64,10 +64,10 @@ export class ImportsPrinter {
      */
     private renderImportLeft(relativity: ImportRelativity): string {
         if (relativity === ImportRelativity.Absolute) {
-            return this.language.properties.imports.leftAbsolute;
+            return this.language.syntax.imports.leftAbsolute;
         }
 
-        return this.language.properties.imports.leftLocal;
+        return this.language.syntax.imports.leftLocal;
     }
 
     /**
@@ -80,23 +80,23 @@ export class ImportsPrinter {
     private renderLine(addedImport: Import, item: string): CommandResult {
         let line: string = this.renderImportLeft(addedImport.relativity);
 
-        if (this.language.properties.imports.itemsBeforePackage) {
-            if (this.language.properties.imports.explicit) {
+        if (this.language.syntax.imports.itemsBeforePackage) {
+            if (this.language.syntax.imports.explicit) {
                 line += item;
-                line += this.language.properties.imports.middle;
+                line += this.language.syntax.imports.middle;
             }
 
             line += this.renderPackagePath(addedImport);
         } else {
             line += this.renderPackagePath(addedImport);
 
-            if (this.language.properties.imports.explicit) {
-                line += this.language.properties.imports.middle;
+            if (this.language.syntax.imports.explicit) {
+                line += this.language.syntax.imports.middle;
                 line += item;
             }
         }
 
-        line += this.language.properties.imports.right;
+        line += this.language.syntax.imports.right;
         return new CommandResult(line, 0);
     }
 
@@ -125,11 +125,7 @@ export class ImportsPrinter {
     private renderPackagePath(addedImport: Import): string {
         let line = this.caseStyleConverter.convert(addedImport.packagePath);
 
-        if (
-            addedImport.relativity === ImportRelativity.Local &&
-            this.language.properties.imports.useLocalRelativePaths &&
-            line[0] !== "."
-        ) {
+        if (addedImport.relativity === ImportRelativity.Local && this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
             line = "./" + line;
         }
 

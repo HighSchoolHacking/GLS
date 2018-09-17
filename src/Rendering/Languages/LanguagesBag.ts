@@ -40,8 +40,8 @@ export class LanguagesBag {
      * @param language   The language to add.
      */
     public addLanguage(language: Language): void {
-        this.languagesByExtension[language.properties.general.extension] = language;
-        this.languagesByName[language.properties.general.name] = language;
+        this.languagesByExtension[language.general.extension] = language;
+        this.languagesByName[language.general.name] = language;
     }
 
     /**

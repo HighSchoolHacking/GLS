@@ -29,7 +29,7 @@ export class NotCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const not = this.language.properties.operators.not;
+        const not = this.language.syntax.operators.not;
 
         return LineResults.newSingleLine(not + parameters[1], false);
     }

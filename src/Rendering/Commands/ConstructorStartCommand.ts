@@ -46,16 +46,16 @@ export class ConstructorStartCommand extends Command {
 
         declaration += this.getPublicity(parameters[1]);
 
-        if (this.language.properties.classes.constructors.useKeyword) {
-            declaration += this.language.properties.classes.constructors.keyword;
+        if (this.language.syntax.classes.constructors.useKeyword) {
+            declaration += this.language.syntax.classes.constructors.keyword;
         } else {
             declaration += parameters[2];
         }
 
         declaration += "(";
 
-        if (this.language.properties.classes.constructors.takeThis) {
-            declaration += this.language.properties.classes.this;
+        if (this.language.syntax.classes.constructors.takeThis) {
+            declaration += this.language.syntax.classes.this;
 
             if (parameters.length > 4) {
                 declaration += ", ";
@@ -74,7 +74,7 @@ export class ConstructorStartCommand extends Command {
         declaration += ")";
 
         output = [new CommandResult(declaration, 0)];
-        this.addLineEnder(output, this.language.properties.functions.defineStartRight, 1);
+        this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
 
         return new LineResults(output, false);
     }
@@ -87,7 +87,7 @@ export class ConstructorStartCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): string {
-        if (!this.language.properties.variables.declarationRequired) {
+        if (!this.language.syntax.variables.declarationRequired) {
             return parameters[i];
         }
 
@@ -105,13 +105,13 @@ export class ConstructorStartCommand extends Command {
      */
     private getPublicity(publicity: string): string {
         if (publicity === KeywordNames.Private) {
-            return this.language.properties.classes.constructors.private;
+            return this.language.syntax.classes.constructors.private;
         }
 
         if (publicity === KeywordNames.Protected) {
-            return this.language.properties.classes.constructors.protected;
+            return this.language.syntax.classes.constructors.protected;
         }
 
-        return this.language.properties.classes.constructors.public;
+        return this.language.syntax.classes.constructors.public;
     }
 }

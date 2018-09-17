@@ -33,11 +33,11 @@ export class VariableCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (parameters.length === 3 && !this.language.properties.variables.declarationRequired) {
+        if (parameters.length === 3 && !this.language.syntax.variables.declarationRequired) {
             return LineResults.newSingleLine("\0", false);
         }
 
-        const starter: string = this.language.properties.variables.declaration;
+        const starter: string = this.language.syntax.variables.declaration;
         const newParameters: string[] = parameters.slice();
         newParameters[0] = CommandNames.VariableInline;
 

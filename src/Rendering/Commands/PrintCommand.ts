@@ -31,17 +31,17 @@ export class PrintCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line = "";
 
-        line += this.language.properties.printing.start;
+        line += this.language.syntax.printing.start;
 
         if (parameters.length > 1) {
             line += parameters[1];
         }
 
-        line += this.language.properties.printing.end;
+        line += this.language.syntax.printing.end;
 
         const results = LineResults.newSingleLine(line, true);
 
-        results.addImports(this.language.properties.printing.requiredImports);
+        results.addImports(this.language.syntax.printing.requiredImports);
 
         return results;
     }

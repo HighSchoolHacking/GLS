@@ -56,7 +56,7 @@ export class IfStringToFloatStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const conversionType: StringToFloatStartConversionType = this.language.properties.strings.toFloat.conversionType;
+        const conversionType: StringToFloatStartConversionType = this.language.syntax.strings.toFloat.conversionType;
         const lines: CommandResult[] = [];
 
         if (conversionType === StringToFloatStartConversionType.PredeclareConvertAndValidate) {
@@ -71,7 +71,7 @@ export class IfStringToFloatStartCommand extends Command {
 
         const results: LineResults = new LineResults(lines, false);
 
-        results.addImports(this.language.properties.strings.toFloat.requiredImports);
+        results.addImports(this.language.syntax.strings.toFloat.requiredImports);
         results.commandResults[results.commandResults.length - 1].indentation = 1;
 
         return results;
@@ -84,7 +84,7 @@ export class IfStringToFloatStartCommand extends Command {
      * @param lines   Output lines of rendered language code.
      */
     private predeclareVariables(parameters: string[], lines: CommandResult[]): void {
-        const initialValue = this.language.properties.strings.toFloat.initialVariableValues;
+        const initialValue = this.language.syntax.strings.toFloat.initialVariableValues;
 
         for (let i = 1; i < parameters.length; i += 2) {
             const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Float];
@@ -94,11 +94,11 @@ export class IfStringToFloatStartCommand extends Command {
             }
 
             const declaration = this.context.convertParsed(declarationParameters).commandResults[0];
-            declaration.text += this.language.properties.style.semicolon;
+            declaration.text += this.language.syntax.style.semicolon;
             lines.push(declaration);
         }
 
-        this.addLineEnder(lines, this.language.properties.strings.toFloat.initializeVariablesEnd, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toFloat.initializeVariablesEnd, 0);
     }
 
     /**
@@ -116,11 +116,11 @@ export class IfStringToFloatStartCommand extends Command {
             const stringName = parameters[i];
             const floatName = parameters[i + 1];
 
-            this.addLineEnder(lines, this.language.properties.strings.toFloat.perVariableConversionStartLeft, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartLeft, 0);
             this.addLineEnder(lines, floatName, 0);
-            this.addLineEnder(lines, this.language.properties.strings.toFloat.perVariableConversionStartMiddle, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartMiddle, 0);
             this.addLineEnder(lines, stringName, 0);
-            this.addLineEnder(lines, this.language.properties.strings.toFloat.perVariableConversionStartRight, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartRight, 0);
         }
     }
 
@@ -135,13 +135,13 @@ export class IfStringToFloatStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.properties.strings.toFloat.validationBlockLeft, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockLeft, 0);
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
             const floatName = parameters[i + 1];
 
-            let comparison = this.language.properties.strings.toFloat.validationBlockComparison;
+            let comparison = this.language.syntax.strings.toFloat.validationBlockComparison;
 
             comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
             comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", floatName);
@@ -149,10 +149,10 @@ export class IfStringToFloatStartCommand extends Command {
             this.addLineEnder(lines, comparison, 0);
 
             if (i < parameters.length - 2) {
-                this.addLineEnder(lines, this.language.properties.strings.toFloat.validationBlockMiddle, 0);
+                this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockMiddle, 0);
             }
         }
 
-        this.addLineEnder(lines, this.language.properties.strings.toFloat.validationBlockRight, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockRight, 0);
     }
 }

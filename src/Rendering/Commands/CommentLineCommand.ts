@@ -36,9 +36,9 @@ export class CommentLineCommand extends Command {
         const language: Language = this.language;
         let result = "";
 
-        result += language.properties.comments.lineLeft;
+        result += language.syntax.comments.lineLeft;
         result += parameters.slice(1).join(" ");
-        result += language.properties.comments.lineRight;
+        result += language.syntax.comments.lineRight;
 
         return LineResults.newSingleLine(result, false);
     }

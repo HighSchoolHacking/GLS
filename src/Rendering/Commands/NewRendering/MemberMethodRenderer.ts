@@ -17,7 +17,7 @@ export class MemberMethodRenderer extends NewRenderer {
         const typeName: string = parameters[1];
         result += typeName;
         result += ".";
-        result += this.language.properties.newProp.keyword;
+        result += this.language.syntax.newProp.keyword;
         result += "(";
         if (parameters.length > 2) {
             result += parameters[2];

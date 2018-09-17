@@ -30,14 +30,14 @@ export class FileEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
-        const endLines: string[] = this.language.properties.files.endLines;
+        const endLines: string[] = this.language.syntax.files.endLines;
 
         for (const line of endLines) {
             output.push(new CommandResult(line, 0));
         }
 
         if (output.length !== 0) {
-            output[0].indentation = -this.language.properties.files.indentation;
+            output[0].indentation = -this.language.syntax.files.indentation;
         }
 
         return new LineResults(output, false);
