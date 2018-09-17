@@ -80,6 +80,7 @@ export class CSharp extends Language {
         ];
         projects.fileName = "{name}.nuspec";
         projects.nameFormat = CaseStyle.PackageUpperCase;
+        projects.usesRootExportsFile = false;
     }
 
     /**

@@ -66,6 +66,7 @@ export class Python extends Language {
         projects.fileFormat = [`{name}`];
         projects.fileName = "requirements.txt";
         projects.nameFormat = CaseStyle.DashLowerCase;
+        projects.usesRootExportsFile = true;
     }
 
     /**

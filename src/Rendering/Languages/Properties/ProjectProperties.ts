@@ -60,4 +60,14 @@ export class ProjectProperties {
      * How to represent the name in project metadata.
      */
     public nameFormat: CaseStyle;
+
+    /**
+     * File path to place root exports files, if usesRootExportsFile is true.
+     */
+    public rootExportsFileName: string;
+
+    /**
+     * Whether projects explicitly export objects through a root file.
+     */
+    public usesRootExportsFile: boolean;
 }

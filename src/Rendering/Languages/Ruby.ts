@@ -64,6 +64,7 @@ export class Ruby extends Language {
         projects.fileFormat = [`source "https://rubygems.org"`];
         projects.fileName = "Gemfile";
         projects.nameFormat = CaseStyle.DashLowerCase;
+        projects.usesRootExportsFile = true;
     }
 
     /**

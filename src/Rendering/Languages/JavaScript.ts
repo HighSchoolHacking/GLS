@@ -84,6 +84,8 @@ export class JavaScript extends Language {
         ];
         projects.fileName = "package.json";
         projects.nameFormat = CaseStyle.DashLowerCase;
+        projects.rootExportsFileName = "src/index.js";
+        projects.usesRootExportsFile = true;
     }
 
     /**

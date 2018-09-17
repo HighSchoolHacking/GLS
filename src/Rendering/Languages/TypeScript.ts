@@ -84,6 +84,8 @@ export class TypeScript extends Language {
         ];
         projects.fileName = "package.json";
         projects.nameFormat = CaseStyle.DashLowerCase;
+        projects.rootExportsFileName = "src/index.ts";
+        projects.usesRootExportsFile = true;
     }
 
     /**

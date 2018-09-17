@@ -72,6 +72,7 @@ export class Java extends Language {
         ];
         projects.fileName = "pom.xml";
         projects.nameFormat = CaseStyle.PackageLowerCase;
+        projects.usesRootExportsFile = false;
     }
 
     /**
