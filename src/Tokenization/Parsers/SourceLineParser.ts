@@ -85,8 +85,9 @@ export class SourceLineParser {
         i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1);
 
         // Command name
-        const commandNameEnd = TextParsing.getNextEndOfCommandNameIndex(rawLine, i);
-        const commandName = rawLine.substring(i, commandNameEnd).trim();
+        const commandNameEnd: number = TextParsing.getNextEndOfCommandNameIndex(rawLine, i);
+        const commandNameRaw: string = rawLine.substring(i, commandNameEnd);
+        const commandName: string = commandNameRaw.trim();
 
         // Either "}" (command end) or ":" (command args start)
         i = TextParsing.getNextNonSpaceIndex(rawLine, commandNameEnd);

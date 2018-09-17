@@ -2,6 +2,7 @@ import { IGlsNode } from "../Tokenization/Nodes/IGlsNode";
 import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
+import { Import } from "./Languages/Imports/Import";
 import { LineResults } from "./LineResults";
 
 /**
@@ -46,12 +47,17 @@ export class LineResultsGenerator {
             importsStore.addImports(lineResults.addedImports);
         }
 
-        if (importsStore.hasAnyImports()) {
-            allLineResults.unshift(LineResults.newSingleLine("", false));
+        if (!importsStore.hasAnyImports()) {
+            return allLineResults;
+        }
 
-            for (const addedImport of importsStore.getAllImportStores()) {
-                allLineResults.unshift(this.importsPrinter.render(addedImport));
-            }
+        const newLine: LineResults = LineResults.newSingleLine("", false);
+        allLineResults.unshift(newLine);
+
+        const allImportStores: Import[] = importsStore.getAllImportStores();
+        for (const addedImport of allImportStores) {
+            const rendered: LineResults = this.importsPrinter.render(addedImport);
+            allLineResults.unshift(rendered);
         }
 
         return allLineResults;

@@ -1,3 +1,4 @@
+import { CommandResult } from "../Rendering/Commands/CommandResult";
 import { LineResults } from "../Rendering/LineResults";
 
 /**
@@ -29,7 +30,9 @@ export class OutputMerger {
         let indentation = 0;
 
         for (const lineResults of fileLineResults) {
-            for (const result of lineResults.commandResults) {
+            const commandResults: CommandResult[] = lineResults.commandResults;
+
+            for (const result of commandResults) {
                 if (result.indentation < 0) {
                     indentation += result.indentation;
                 }
