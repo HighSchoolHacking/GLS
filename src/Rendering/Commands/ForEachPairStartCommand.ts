@@ -13,7 +13,7 @@ export class ForEachPairStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachPairStart)
-        .withDescription("Starts a foreach loop over a container's pairs.")
+        .withDescription("Starts a foreach loop over a container's pairs")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),

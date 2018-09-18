@@ -35,7 +35,7 @@ export class IfStringToFloatStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToFloatStart)
-        .withDescription("Starts a block to be executed if a string can be converted to a float.")
+        .withDescription("Starts a block to be executed if a string can be converted to a float")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("stringName", "Name of a string to try converting.", true),

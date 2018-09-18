@@ -12,7 +12,7 @@ export class TryStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryStart)
-        .withDescription("Starts a try block.")
+        .withDescription("Starts a try block")
         .withIndentation([1]);
 
     /**

@@ -13,8 +13,8 @@ export class GenericTypeCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.GenericType)
-        .withDescription("Declares generic types.")
-        .withParameters([new RepeatingParameters("Generic types.", [new SingleParameter("type", "A type of object.", true)])]);
+        .withDescription("Declares generic types")
+        .withParameters([new RepeatingParameters("Generic types", [new SingleParameter("type", "A type of object.", true)])]);
 
     /**
      * @returns Metadata on the command.

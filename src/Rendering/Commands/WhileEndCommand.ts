@@ -10,7 +10,7 @@ export class WhileEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.WhileEnd)
-        .withDescription("Ends a while loop.")
+        .withDescription("Ends a while loop")
         .withIndentation([-1]);
 
     /**

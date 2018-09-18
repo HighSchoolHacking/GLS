@@ -12,7 +12,7 @@ export class ListLengthCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListLength)
-        .withDescription("Retrieves the length of a list.")
+        .withDescription("Retrieves the length of a list")
         .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**

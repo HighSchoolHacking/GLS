@@ -12,7 +12,7 @@ export class IsNullCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IsNull)
-        .withDescription("Checks whether a variable is null.")
+        .withDescription("Checks whether a variable is null")
         .withParameters([new SingleParameter("value", "A value to check against null.", true)]);
 
     /**

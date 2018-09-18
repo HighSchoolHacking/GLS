@@ -12,7 +12,7 @@ export class MainEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainEnd)
-        .withDescription("Ends a main function.")
+        .withDescription("Ends a main function")
         .withIndentation([-1]);
 
     /**

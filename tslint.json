@@ -19,6 +19,7 @@
         "no-unsafe-any": false,
         "no-unnecessary-class": false,
         "no-unused-variable": false,
+        "no-use-before-declare": false,
         "prefer-conditional-expression": false,
         "prefer-function-over-method": false,
         "prefer-readonly": false,

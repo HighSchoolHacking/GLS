@@ -12,7 +12,7 @@ export class InstanceOfCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InstanceOf)
-        .withDescription("Declares a method within an interface.")
+        .withDescription("Declares a method within an interface")
         .withParameters([
             new SingleParameter("variableName", "Variable to check.", true),
             new SingleParameter("className", "Class the variable might be an instance of", true),

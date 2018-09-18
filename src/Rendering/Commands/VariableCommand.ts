@@ -12,7 +12,7 @@ export class VariableCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Variable)
-        .withDescription("Declares a variable.")
+        .withDescription("Declares a variable")
         .withParameters([
             new SingleParameter("name", "The name of the variable.", true),
             new SingleParameter("type", "The type of the variable.", true),

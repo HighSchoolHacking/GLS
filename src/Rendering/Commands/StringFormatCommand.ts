@@ -15,10 +15,10 @@ export class StringFormatCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringFormat)
-        .withDescription("Concatenates multiple other values into a single string.")
+        .withDescription("Concatenates multiple other values into a single string")
         .withParameters([
             new SingleParameter("format", "String describing the format.", true),
-            new RepeatingParameters("Input pairs.", [
+            new RepeatingParameters("Input pairs", [
                 new SingleParameter("inputName", "Input pair name", true),
                 new SingleParameter("inputType", "Input pair type", true),
             ]),
@@ -39,7 +39,7 @@ export class StringFormatCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (parameters[1][0] !== '"') {
-            throw new Error("String formatting must be done with primitives.");
+            throw new Error("String formatting must be done with primitives");
         }
 
         let output: string = parameters[1].substring(1, parameters[1].length - 1);

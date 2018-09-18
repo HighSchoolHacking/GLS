@@ -12,7 +12,7 @@ export class DictionaryNewEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryNewEnd)
-        .withDescription("Ends a new dictionary.")
+        .withDescription("Ends a new dictionary")
         .withIndentation([-1]);
 
     /**

@@ -11,7 +11,7 @@ export class ImportLocalCommand extends ImportCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ImportLocal)
-        .withDescription("Imports items from a local file.")
+        .withDescription("Imports items from a local file")
         .withParameters(ImportCommand.parameters);
 
     /**

@@ -12,7 +12,7 @@ export class NotCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Not)
-        .withDescription("Logically inverts a value.")
+        .withDescription("Logically inverts a value")
         .withParameters([new SingleParameter("value", "A value to inverse.", true)]);
 
     /**

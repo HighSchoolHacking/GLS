@@ -16,7 +16,7 @@ export class ClassStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ClassStart)
-        .withDescription("Starts a class declaration.")
+        .withDescription("Starts a class declaration")
         .withIndentation([1])
         .withParameters([
             new KeywordParameter([KeywordNames.Export], "Keyword to export this class publicly.", false),

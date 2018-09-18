@@ -10,7 +10,7 @@ export class MemberFunctionDeclareEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberFunctionDeclareEnd)
-        .withDescription("Ends a member function.")
+        .withDescription("Ends a member function")
         .withIndentation([-1]);
 
     /**

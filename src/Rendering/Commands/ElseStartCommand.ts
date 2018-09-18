@@ -12,7 +12,7 @@ export class ElseStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ElseStart)
-        .withDescription("Starts an else statement.")
+        .withDescription("Starts an else statement")
         .withIndentation([-1, 1]);
 
     /**

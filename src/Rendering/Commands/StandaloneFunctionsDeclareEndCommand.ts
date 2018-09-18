@@ -11,7 +11,7 @@ export class StandaloneFunctionsDeclareEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StandaloneFunctionsDeclareEnd)
-        .withDescription("Ends a group of standalone function declarations.")
+        .withDescription("Ends a group of standalone function declarations")
         .withIndentation([-1]);
 
     /**

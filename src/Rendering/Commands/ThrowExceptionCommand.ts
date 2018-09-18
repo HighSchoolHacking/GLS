@@ -13,7 +13,7 @@ export class ThrowExceptionCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ThrowException)
-        .withDescription("Throws an exception.")
+        .withDescription("Throws an exception")
         .withParameters([
             new SingleParameter("exception", "Exception to throw.", true),
             new SingleParameter("message", "Message to attach to the exception.", true),

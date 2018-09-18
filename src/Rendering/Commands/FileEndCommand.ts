@@ -12,7 +12,7 @@ export class FileEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FileEnd)
-        .withDescription("Ends a file.")
+        .withDescription("Ends a file")
         .withIndentation([-1]);
 
     /**

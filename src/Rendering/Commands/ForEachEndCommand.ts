@@ -12,7 +12,7 @@ export class ForEachEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForEachEnd)
-        .withDescription("Ends a foreach loop.")
+        .withDescription("Ends a foreach loop")
         .withIndentation([-1]);
 
     /**

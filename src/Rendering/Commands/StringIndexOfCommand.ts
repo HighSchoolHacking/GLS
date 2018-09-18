@@ -12,7 +12,7 @@ export class StringIndexOfCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringIndexOf)
-        .withDescription("Returns the first index where the substring can be found within a string.")
+        .withDescription("Returns the first index where the substring can be found within a string")
         .withParameters([
             new SingleParameter("string", "Text to search within.", true),
             new SingleParameter("string", "Value to find within the text.", true),

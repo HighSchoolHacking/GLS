@@ -12,7 +12,7 @@ export class RestParametersCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.RestParameters)
-        .withDescription("Creates an array for unassigned arguments.")
+        .withDescription("Creates an array for unassigned arguments")
         .withParameters([
             new SingleParameter("name", "A name for the rest parameter array.", true),
             new SingleParameter("type", "A type for the rest parameter array.", true),

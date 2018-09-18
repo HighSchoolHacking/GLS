@@ -17,7 +17,7 @@ export abstract class ImportCommand extends Command {
      * Information on parameters import commands take in.
      */
     protected static parameters: IParameter[] = [
-        new RepeatingParameters("Path for the package to import from.", [new SingleParameter("path", "Part of the package path.", false)]),
+        new RepeatingParameters("Path for the package to import from", [new SingleParameter("path", "Part of the package path.", false)]),
         new KeywordParameter([KeywordNames.Use], "Keyword to import items.", true),
         new RepeatingParameters("items", [new SingleParameter("item", "An item to import from the package.", true)]),
     ];

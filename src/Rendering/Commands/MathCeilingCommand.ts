@@ -12,7 +12,7 @@ export class MathCeilingCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MathCeiling)
-        .withDescription("Rounds a number up to the nearest integer.")
+        .withDescription("Rounds a number up to the nearest integer")
         .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**

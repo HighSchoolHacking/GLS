@@ -12,7 +12,7 @@ export class StringIndexCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringIndex)
-        .withDescription("An indexed string lookup.")
+        .withDescription("An indexed string lookup")
         .withParameters([
             new SingleParameter("string", "A string to look within.", true),
             new SingleParameter("index", "The index within the string.", true),

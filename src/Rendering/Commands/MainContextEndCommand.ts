@@ -12,7 +12,7 @@ export class MainContextEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MainContextEnd)
-        .withDescription("Ends a main context.")
+        .withDescription("Ends a main context")
         .withIndentation([-1]);
 
     /**

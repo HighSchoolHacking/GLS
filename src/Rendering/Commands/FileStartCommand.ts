@@ -15,10 +15,10 @@ export class FileStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.FileStart)
-        .withDescription("Starts a file.")
+        .withDescription("Starts a file")
         .withIndentation([1])
         .withParameters([
-            new RepeatingParameters("Directories leading to the file.", [
+            new RepeatingParameters("Directories leading to the file", [
                 new SingleParameter("directory", "Directory leading to the file", false),
             ]),
             new SingleParameter("fileStart", "The name of the file.", true),

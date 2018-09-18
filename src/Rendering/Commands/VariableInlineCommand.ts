@@ -12,7 +12,7 @@ export class VariableInlineCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableInline)
-        .withDescription("Declares a variable inline (without a preceding 'var ' equivalent).")
+        .withDescription("Declares a variable inline (without a preceding 'var ' equivalent)")
         .withParameters([
             new SingleParameter("name", "The name of the variable.", true),
             new SingleParameter("type", "The type of the variable.", true),

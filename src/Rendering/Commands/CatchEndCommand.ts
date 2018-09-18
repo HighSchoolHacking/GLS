@@ -11,7 +11,7 @@ export class CatchEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CatchEnd)
-        .withDescription("Ends a catch block.")
+        .withDescription("Ends a catch block")
         .withIndentation([-1]);
 
     /**

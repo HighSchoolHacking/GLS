@@ -16,12 +16,12 @@ export class ConstructorStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ConstructorStart)
-        .withDescription("Starts a constructor.")
+        .withDescription("Starts a constructor")
         .withIndentation([1])
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the constructor.", true),
             new SingleParameter("className", "The name of the class.", true),
-            new RepeatingParameters("Function parameters.", [
+            new RepeatingParameters("Function parameters", [
                 new SingleParameter("parameterName", "A named parameter for the constructor.", true),
                 new SingleParameter("parameterType", "The type of the parameter.", true),
             ]),

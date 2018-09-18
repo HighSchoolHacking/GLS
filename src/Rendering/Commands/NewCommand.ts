@@ -19,7 +19,7 @@ export class NewCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.New)
-        .withDescription("Instantiates a new class instance.")
+        .withDescription("Instantiates a new class instance")
         .withParameters([
             new SingleParameter("className", "Name of the class.", true),
             new RepeatingParameters("Arguments to pass into the constructor", [

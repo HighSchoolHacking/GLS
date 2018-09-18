@@ -15,12 +15,12 @@ export class StandaloneFunctionCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StandaloneFunction)
-        .withDescription("Calls a standalone function.")
+        .withDescription("Calls a standalone function")
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the function.", true),
             new SingleParameter("className", "The name of the group the function is on.", true),
             new SingleParameter("functionName", "The name of the function.", true),
-            new RepeatingParameters("Function parameters.", [
+            new RepeatingParameters("Function parameters", [
                 new SingleParameter("parameterName", "A named parameter for the function.", true),
             ]),
         ]);

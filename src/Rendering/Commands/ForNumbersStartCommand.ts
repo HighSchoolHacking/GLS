@@ -13,7 +13,7 @@ export class ForNumbersStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ForNumbersStart)
-        .withDescription("Starts a for loop over numbers.")
+        .withDescription("Starts a for loop over numbers")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("name", "The name of the loop variable.", true),

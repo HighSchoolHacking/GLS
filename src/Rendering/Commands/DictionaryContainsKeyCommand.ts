@@ -12,7 +12,7 @@ export class DictionaryContainsKeyCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryContainsKey)
-        .withDescription("Retrieves the length of an string.")
+        .withDescription("Retrieves the length of an string")
         .withParameters([
             new SingleParameter("dictionary", "A dictionary to check for key membership.", true),
             new SingleParameter("key", "A key to check for membership in the dictionary.", true),

@@ -11,7 +11,7 @@ export class TryEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.TryEnd)
-        .withDescription("Ends a try block.")
+        .withDescription("Ends a try block")
         .withIndentation([-1]);
 
     /**

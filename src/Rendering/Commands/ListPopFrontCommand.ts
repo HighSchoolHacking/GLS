@@ -12,7 +12,7 @@ export class ListPopFrontCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPopFront)
-        .withDescription("Pops the first item from a list.")
+        .withDescription("Pops the first item from a list")
         .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**

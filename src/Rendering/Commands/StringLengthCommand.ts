@@ -12,7 +12,7 @@ export class StringLengthCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StringLength)
-        .withDescription("Retrieves the length of an string.")
+        .withDescription("Retrieves the length of an string")
         .withParameters([new SingleParameter("string", "A string to retrieve the length of.", true)]);
 
     /**

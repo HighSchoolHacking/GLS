@@ -10,7 +10,7 @@ export class ContinueCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Continue).withDescription("Prints the 'continue' keyword.");
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Continue).withDescription("Prints the 'continue' keyword");
 
     /**
      * @returns Metadata on the command.

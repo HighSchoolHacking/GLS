@@ -12,7 +12,7 @@ export class SetToListCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.SetToList)
-        .withDescription("Retrieves the items of a set as a list.")
+        .withDescription("Retrieves the items of a set as a list")
         .withParameters([new SingleParameter("set", "A set to retrieve the items of.", true)]);
 
     /**

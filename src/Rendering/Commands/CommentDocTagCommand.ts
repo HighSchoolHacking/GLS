@@ -22,7 +22,7 @@ export class CommentDocTagCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CommentDocTag)
-        .withDescription("Line within a documentation tag.")
+        .withDescription("Line within a documentation tag")
         .withParameters([
             new SingleParameter("tag", "The name of the tag.", true),
             new SingleParameter("parameter", "An optional descriptor for the tag.", false),

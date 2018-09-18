@@ -13,11 +13,11 @@ export class ConcatenateCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Concatenate)
-        .withDescription("Concatenates strings with primitives.")
+        .withDescription("Concatenates strings with primitives")
         .withParameters([
             new SingleParameter("string", "A string to concatenate.", true),
             new SingleParameter("string", "A string to concatenate.", true),
-            new RepeatingParameters("Additional strings to concatenate.", [
+            new RepeatingParameters("Additional strings to concatenate", [
                 new SingleParameter("string", "A string to concatenate.", false),
             ]),
         ]);

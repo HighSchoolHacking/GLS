@@ -13,7 +13,7 @@ export class VariableStartCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableStart)
-        .withDescription("Starts a variable declaration.")
+        .withDescription("Starts a variable declaration")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("name", "The name of the variable.", true),

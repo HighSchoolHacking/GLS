@@ -12,7 +12,7 @@ export class SetContainsCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.SetContains)
-        .withDescription("Determines whether an item exists in a set.")
+        .withDescription("Determines whether an item exists in a set")
         .withParameters([
             new SingleParameter("set", "A set to check for key membership.", true),
             new SingleParameter("key", "A key to check for membership in the set.", true),

@@ -15,7 +15,7 @@ export class MemberVariableDeclareCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.MemberVariableDeclare)
-        .withDescription("Declares a member variable.")
+        .withDescription("Declares a member variable")
         .withParameters([
             new KeywordParameter(KeywordNames.Privacies, "The privacy of the member variable.", true),
             new SingleParameter("name", "The name of the member variable.", true),

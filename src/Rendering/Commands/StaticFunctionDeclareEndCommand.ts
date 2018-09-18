@@ -10,7 +10,7 @@ export class StaticFunctionDeclareEndCommand extends BlockEndCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.StaticFunctionDeclareEnd)
-        .withDescription("Ends a static function.")
+        .withDescription("Ends a static function")
         .withIndentation([-1]);
 
     /**

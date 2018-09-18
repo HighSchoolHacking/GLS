@@ -11,7 +11,7 @@ export class EnumEndCommand extends Command {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumEnd)
-        .withDescription("Ends an enum declaration.")
+        .withDescription("Ends an enum declaration")
         .withIndentation([-1]);
 
     /**

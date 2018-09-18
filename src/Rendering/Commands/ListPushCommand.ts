@@ -12,7 +12,7 @@ export class ListPushCommand extends NativeCallCommand {
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListPush)
-        .withDescription("Adds an item to a list.")
+        .withDescription("Adds an item to a list")
         .withParameters([
             new SingleParameter("name", "The name of the list.", true),
             new SingleParameter("value", "An item to push into the list.", true),
