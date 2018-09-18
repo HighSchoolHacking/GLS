@@ -61,8 +61,29 @@ export class Ruby extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
-        projects.fileFormat = [`source "https://rubygems.org"`];
-        projects.fileName = "Gemfile";
+        projects.metadataFiles = {
+            Gemfile: [`source "https://rubygems.org"`, ``, `gemspec`],
+            "{name}.gemspec": [
+                `# encoding: utf-8`,
+                ``,
+                `Gem::Specification.new do |spec|`,
+                `    spec.author = ["{author}"]`,
+                `    spec.description = "{description}"`,
+                `    spec.email = "{email}"`,
+                `    spec.files = Dir[`,
+                `        *.md,`,
+                `        {{#exports}},`,
+                `        {file}`,
+                `        {{/exports}},`,
+                `    ]`,
+                `    spec.homepage = "{homepage}"`,
+                `    spec.license = "{license}"`,
+                `    spec.name = "{name}"`,
+                `    spec.summary = spec.description`,
+                `    spec.version = "{version}"`,
+                ``,
+            ],
+        };
         projects.nameFormat = CaseStyle.DashLowerCase;
     }
 

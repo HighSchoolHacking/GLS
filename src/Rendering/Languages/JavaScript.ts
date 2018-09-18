@@ -61,28 +61,30 @@ export class JavaScript extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
-        projects.fileFormat = [
-            `{`,
-            `    "name": "{name}",`,
-            `    "author": {`,
-            `        "name": "{author.name}",`,
-            `        "email": "{author.email}"`,
-            `    },`,
-            `    "bugs": {`,
-            `        "url": "{repository.url}/issues"`,
-            `    },`,
-            `    "description": "{description}",`,
-            `    "license": "{license}",`,
-            `    "repository": {`,
-            `        "type": "{repository.type}",`,
-            `        "url": "{repository.url}"`,
-            `    },`,
-            `    "main": "{main}.js",`,
-            `    "typings": "{typings}.d.ts",`,
-            `    "version": "{version}"`,
-            `}`,
-        ];
-        projects.fileName = "package.json";
+        projects.metadataFiles = {
+            "package.json": [
+                `{`,
+                `    "name": "{name}",`,
+                `    "author": {`,
+                `        "name": "{author.name}",`,
+                `        "email": "{author.email}"`,
+                `    },`,
+                `    "bugs": {`,
+                `        "url": "{repository.url}/issues"`,
+                `    },`,
+                `    "description": "{description}",`,
+                `    "license": "{license}",`,
+                `    "repository": {`,
+                `        "type": "{repository.type}",`,
+                `        "url": "{repository.url}"`,
+                `    },`,
+                `    "main": "{main}.js",`,
+                `    "typings": "{typings}.d.ts",`,
+                `    "version": "{version}"`,
+                `}`,
+            ],
+            "src/index.js": [`{{#exports}}`, `export \\{{name}\\} from "{file}";`, `{{/exports}}`],
+        };
         projects.nameFormat = CaseStyle.DashLowerCase;
     }
 
