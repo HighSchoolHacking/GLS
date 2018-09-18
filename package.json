@@ -15,7 +15,7 @@
     },
     "scripts": {
         "precommit": "pretty-quick --staged --write",
-        "prepublish": "npm run util:refresh-docs",
+        "prepublishOnly": "npm run util:refresh-docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
         "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
         "src": "npm run src:tsc && npm run src:tslint",
