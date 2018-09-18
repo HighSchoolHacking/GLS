@@ -37,7 +37,9 @@ export class VariableStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const newParameters: string[] = ["variable"];
         for (let i = 1; i < parameters.length; i += 1) {
-            newParameters.push(parameters[i].split("\n")[0]);
+            const parametersSplit: string[] = parameters[i].split("\n");
+
+            newParameters.push(parametersSplit[0]);
         }
 
         const output = this.context.convertParsed(newParameters);

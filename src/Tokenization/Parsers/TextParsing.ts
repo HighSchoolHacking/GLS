@@ -73,7 +73,7 @@ export class TextParsing {
      * Gets the next ending index of a command name in the text.
      *
      * @param text   Text to search through.
-     * @param start   Starting index in the text.
+     * @param i   Starting index in the text.
      * @returns Index of the next end of a command name in the text.
      */
     public static getNextEndOfWordIndex(text: string, i: number): number {
