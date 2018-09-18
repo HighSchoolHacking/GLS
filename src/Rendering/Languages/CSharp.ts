@@ -63,22 +63,23 @@ export class CSharp extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
-        projects.fileFormat = [
-            `<?xml version="1.0"?>`,
-            `<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">`,
-            `  <metadata>`,
-            `    <id>{name}</id>`,
-            `    <title>{name}</title>`,
-            `    <version>{version}</version>`,
-            `    <licenseUrl>{url}/blob/master/LICENSE.md</licenseUrl>`,
-            `    <projectUrl>{url}</projectUrl>`,
-            `    <description>`,
-            `      {description}`,
-            `    </description>`,
-            `  </metadata>`,
-            `</package>`,
-        ];
-        projects.fileName = "{name}.nuspec";
+        projects.metadataFiles = {
+            "{name}.nuspec": [
+                `<?xml version="1.0"?>`,
+                `<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">`,
+                `  <metadata>`,
+                `    <id>{name}</id>`,
+                `    <title>{name}</title>`,
+                `    <version>{version}</version>`,
+                `    <licenseUrl>{url}/blob/master/LICENSE.md</licenseUrl>`,
+                `    <projectUrl>{url}</projectUrl>`,
+                `    <description>`,
+                `      {description}`,
+                `    </description>`,
+                `  </metadata>`,
+                `</package>`,
+            ],
+        };
         projects.nameFormat = CaseStyle.PackageUpperCase;
     }
 

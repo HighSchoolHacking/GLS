@@ -22,7 +22,7 @@ export interface IGlsProjectMetadata {
     license: string;
 
     /**
-     * UpperCamelCase name of the project with periods between words.
+     * Package.Upper.Case name of the project.
      */
     name: string;
 
@@ -47,17 +47,12 @@ export interface IGlsProjectMetadata {
  */
 export class ProjectProperties {
     /**
-     * Lines of text in the root project file name.
+     * Lines of text in each generated root file, keyed by name.
      */
-    public fileFormat: string[];
+    public metadataFiles: { [i: string]: string[] };
 
     /**
-     * Root file name storing project metadata fields.
-     */
-    public fileName: string;
-
-    /**
-     * How to represent the name in project metadata.
+     * How to represent a project's name in metadata files.
      */
     public nameFormat: CaseStyle;
 }

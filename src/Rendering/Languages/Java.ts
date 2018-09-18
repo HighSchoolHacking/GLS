@@ -53,24 +53,25 @@ export class Java extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
-        projects.fileFormat = [
-            `<?xml version="1.0" encoding="UTF-8"?>`,
-            `<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">`,
-            `    <modelVersion>4.0.0</modelVersion>`,
-            ``,
-            `    <licenses>`,
-            `        <license>`,
-            `            <name>{license}</name>`,
-            `            <distribution>repo</distribution>`,
-            `        </license>`,
-            `    </licenses>`,
-            ``,
-            `    <scm>`,
-            `        <url>{url}</url>`,
-            `    </scm>`,
-            `</project>`,
-        ];
-        projects.fileName = "pom.xml";
+        projects.metadataFiles = {
+            "pom.xml": [
+                `<?xml version="1.0" encoding="UTF-8"?>`,
+                `<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">`,
+                `    <modelVersion>4.0.0</modelVersion>`,
+                ``,
+                `    <licenses>`,
+                `        <license>`,
+                `            <name>{license}</name>`,
+                `            <distribution>repo</distribution>`,
+                `        </license>`,
+                `    </licenses>`,
+                ``,
+                `    <scm>`,
+                `        <url>{url}</url>`,
+                `    </scm>`,
+                `</project>`,
+            ],
+        };
         projects.nameFormat = CaseStyle.PackageLowerCase;
     }
 
