@@ -1,7 +1,7 @@
 import { LineResults } from "../LineResults";
 import { Command } from "./Command";
 
-import { CommandNames } from "./CommandNames";
+import { CommandNames } from "../Names/CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 

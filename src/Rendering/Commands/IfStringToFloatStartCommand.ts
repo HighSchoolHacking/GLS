@@ -1,9 +1,9 @@
 import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
+import { CommandNames } from "../Names/CommandNames";
+import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
-import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
-import { KeywordNames } from "./KeywordNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
