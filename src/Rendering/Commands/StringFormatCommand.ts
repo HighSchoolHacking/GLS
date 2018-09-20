@@ -1,7 +1,7 @@
 import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
+import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
-import { CommandNames } from "./CommandNames";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";

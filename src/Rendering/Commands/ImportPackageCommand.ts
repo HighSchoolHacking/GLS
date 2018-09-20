@@ -1,5 +1,5 @@
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
-import { CommandNames } from "./CommandNames";
+import { CommandNames } from "../Names/CommandNames";
 import { ImportCommand } from "./ImportCommand";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 

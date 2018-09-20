@@ -1,5 +1,5 @@
-import { CommandNames } from "./CommandNames";
-import { KeywordNames } from "./KeywordNames";
+import { CommandNames } from "../Names/CommandNames";
+import { KeywordNames } from "../Names/KeywordNames";
 import { MemberFunctionDeclareCommand } from "./MemberFunctionDeclareCommand";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";

@@ -1,3 +1,5 @@
+import { OperatorNames } from "../../../Names/OperatorNames";
+
 /**
  * Metadata on a language's operator syntax.
  */
@@ -107,25 +109,25 @@ export class OperatorSyntax {
      */
     public generateAliases(): void {
         this.aliases = {
-            and: this.and,
-            "decrease by": this.decreaseBy,
-            divide: this.divide,
-            "divide by": this.divideBy,
-            "equal to": this.equalTo,
-            equals: this.equals,
-            "greater than": this.greaterThan,
-            "greater than or equal to": this.greaterThanOrEqualTo,
-            "increase by": this.increaseBy,
-            "less than": this.lessThan,
-            "less than or equal to": this.lessThanOrEqualTo,
-            minus: this.minus,
-            mod: this.mod,
-            "multiply by": this.multiplyBy,
-            not: this.not,
-            "not equal to": this.notEqualTo,
-            or: this.or,
-            plus: this.plus,
-            times: this.times,
+            [OperatorNames.And]: this.and,
+            [OperatorNames.DecreaseBy]: this.decreaseBy,
+            [OperatorNames.Divide]: this.divide,
+            [OperatorNames.DivideBy]: this.divideBy,
+            [OperatorNames.EqualTo]: this.equalTo,
+            [OperatorNames.Equals]: this.equals,
+            [OperatorNames.GreaterThan]: this.greaterThan,
+            [OperatorNames.GreaterThanOrEqualTo]: this.greaterThanOrEqualTo,
+            [OperatorNames.IncreaseBy]: this.increaseBy,
+            [OperatorNames.LessThan]: this.lessThan,
+            [OperatorNames.LessThanOrEqualTo]: this.lessThanOrEqualTo,
+            [OperatorNames.Minus]: this.minus,
+            [OperatorNames.Mod]: this.mod,
+            [OperatorNames.MultiplyBy]: this.multiplyBy,
+            [OperatorNames.Not]: this.not,
+            [OperatorNames.NotEqualTo]: this.notEqualTo,
+            [OperatorNames.Or]: this.or,
+            [OperatorNames.Plus]: this.plus,
+            [OperatorNames.Times]: this.times,
         };
     }
 }
