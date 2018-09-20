@@ -1,8 +1,8 @@
 import { NewInstantiationSyntaxKind } from "../Languages/Properties/Syntax/NewSyntax";
 import { LineResults } from "../LineResults";
+import { CommandNames } from "../Names/CommandNames";
 import { RenderContext } from "../RenderContext";
 import { Command } from "./Command";
-import { CommandNames } from "./CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";

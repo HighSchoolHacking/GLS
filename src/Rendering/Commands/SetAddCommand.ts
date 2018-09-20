@@ -1,5 +1,5 @@
 import { NativeCallSyntax } from "../Languages/Properties/Syntax/NativeCallSyntax";
-import { CommandNames } from "./CommandNames";
+import { CommandNames } from "../Names/CommandNames";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
