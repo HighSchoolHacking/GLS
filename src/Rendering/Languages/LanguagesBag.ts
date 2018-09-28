@@ -51,7 +51,7 @@ export class LanguagesBag {
      * @returns The language under the extension.
      */
     public getLanguageByExtension(extension: string): Language {
-        if (!this.languagesByExtension.hasOwnProperty(extension)) {
+        if (!{}.hasOwnProperty.call(this.languagesByExtension, extension)) {
             throw new Error(`Unknown language extension: '${extension}'.'`);
         }
 
@@ -65,7 +65,7 @@ export class LanguagesBag {
      * @returns The language under the name.
      */
     public getLanguageByName(name: string): Language {
-        if (!this.languagesByName.hasOwnProperty(name)) {
+        if (!{}.hasOwnProperty.call(this.languagesByName, name)) {
             throw new Error(`Unknown language name: '${name}'.'`);
         }
 

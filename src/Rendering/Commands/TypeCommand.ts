@@ -80,7 +80,7 @@ export class TypeCommand extends Command {
     private convertType(typeNameRaw: string): string {
         let typeName: string = typeNameRaw;
 
-        if (this.language.syntax.classes.aliases.hasOwnProperty(typeName)) {
+        if ({}.hasOwnProperty.call(this.language.syntax.classes.aliases, typeName)) {
             typeName = this.language.syntax.classes.aliases[typeName];
         }
 
