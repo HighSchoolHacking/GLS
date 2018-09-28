@@ -93,7 +93,7 @@ export class CommentDocTagCommand extends Command {
      * @returns An alias for tag if it exists, or the tag otherwise.
      */
     private parseTag(tagRaw: string): string {
-        if (this.language.syntax.comments.docTagAliases.hasOwnProperty(tagRaw)) {
+        if ({}.hasOwnProperty.call(this.language.syntax.comments.docTagAliases, tagRaw)) {
             return this.language.syntax.comments.docTagAliases[tagRaw];
         }
 
@@ -105,7 +105,7 @@ export class CommentDocTagCommand extends Command {
      * @returns An alias for parameter if it exists, or the parameter otherwise.
      */
     private parseTagParameter(tag: string, parameter: string): string {
-        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tag)) {
+        if ({}.hasOwnProperty.call(this.language.syntax.comments.docTagsWithParameters, tag)) {
             return this.language.syntax.comments.docTagsWithParameters[tag];
         }
 
@@ -130,7 +130,7 @@ export class CommentDocTagCommand extends Command {
             tag = this.language.syntax.comments.docTagStart + tag;
         }
 
-        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
+        if ({}.hasOwnProperty.call(this.language.syntax.comments.docTagsWithParameters, tagRaw)) {
             const parameterInfo = this.language.syntax.comments.docTagsWithParameters[tagRaw];
 
             if (parameterInfo === "\0") {
@@ -176,7 +176,7 @@ export class CommentDocTagCommand extends Command {
 
         let starter: string = lineStart + "<" + tag;
 
-        if (this.language.syntax.comments.docTagsWithParameters.hasOwnProperty(tagRaw)) {
+        if ({}.hasOwnProperty.call(this.language.syntax.comments.docTagsWithParameters, tagRaw)) {
             starter += " " + this.parseTagParameter(tagRaw, parameters[2]) + '="';
             starter += parameters[2];
             starter += '">';

@@ -29,12 +29,13 @@ export class CommandsBag {
      */
     public addCommand(command: Command): void {
         const metadata = command.getMetadata();
+        const name = metadata.name;
 
-        if (this.commands.hasOwnProperty(metadata.name)) {
-            throw new Error(`Cannot add duplicate command: '${metadata.name}'.`);
+        if ({}.hasOwnProperty.call(this.commands, name)) {
+            throw new Error(`Cannot add duplicate command: '${name}'.`);
         }
 
-        this.commands[metadata.name] = command;
+        this.commands[name] = command;
     }
 
     /**
@@ -44,7 +45,7 @@ export class CommandsBag {
      * @returns The command under the given alias.
      */
     public getCommand(name: string): Command {
-        if (!this.commands.hasOwnProperty(name)) {
+        if (!{}.hasOwnProperty.call(this.commands, name)) {
             throw new Error(`Unknown command requested: '${name}'.`);
         }
 
