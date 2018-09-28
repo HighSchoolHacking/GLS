@@ -305,21 +305,21 @@ export class Python extends Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
-        exceptions.finally = "finally";
-        exceptions.throw = "raise";
-        exceptions.try = "try";
-        exceptions.variablePrefix = "";
         exceptions.blockEnd = "";
-        exceptions.tryStartRight = ":";
-        exceptions.finallyStartRight = ":";
-        exceptions.catchStartMiddle = " ";
-        exceptions.catchStartLink = " as ";
-        exceptions.catchStartRight = ":";
-        exceptions.throwExceptionMiddle = "(";
-        exceptions.throwExceptionRight = ")";
-        exceptions.requiresExceptionType = true;
-
         exceptions.catch = "except";
+        exceptions.className = "Exception";
+        exceptions.catchStartLink = " as ";
+        exceptions.catchStartMiddle = " ";
+        exceptions.catchStartRight = ":";
+        exceptions.finally = "finally";
+        exceptions.finallyStartRight = ":";
+        exceptions.requiresExceptionType = true;
+        exceptions.throw = "raise";
+        exceptions.throwMiddle = "(";
+        exceptions.throwRight = ")";
+        exceptions.try = "try";
+        exceptions.tryStartRight = ":";
+        exceptions.variablePrefix = "";
     }
 
     /**

@@ -8,14 +8,14 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 /**
  * Throws an exception.
  */
-export class ThrowExceptionCommand extends Command {
+export class ThrowCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ThrowException)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Throw)
         .withDescription("Throws an exception")
         .withParameters([
-            new SingleParameter("exception", "Exception to throw.", true),
+            new SingleParameter("exception", "Exception type to throw.", true),
             new SingleParameter("message", "Message to attach to the exception.", true),
         ]);
 
@@ -23,7 +23,7 @@ export class ThrowExceptionCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ThrowExceptionCommand.metadata;
+        return ThrowCommand.metadata;
     }
 
     /**
@@ -35,11 +35,11 @@ export class ThrowExceptionCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line: string = this.language.syntax.exceptions.throw;
         line += " " + parameters[1];
-        line += this.language.syntax.exceptions.throwExceptionMiddle;
-        line += '"' + parameters[2] + '"';
+        line += this.language.syntax.exceptions.throwMiddle;
+        line += parameters[2];
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.exceptions.throwExceptionRight, 0);
+        this.addLineEnder(lines, this.language.syntax.exceptions.throwRight, 0);
         return new LineResults(lines, true);
     }
 }

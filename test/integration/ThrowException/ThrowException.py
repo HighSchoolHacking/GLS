@@ -1,3 +1,0 @@
-#
-raise ExceptionType("foo")
-#

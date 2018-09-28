@@ -332,28 +332,25 @@ export class CSharp extends Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
-        exceptions.catch = "catch";
-        exceptions.finally = "finally";
-        exceptions.throw = "throw new";
-        exceptions.try = "try";
-        exceptions.variablePrefix = "";
         exceptions.blockEnd = "} ";
-        exceptions.tryStartRight = " {";
-        exceptions.finallyStartRight = " {";
-        exceptions.catchStartMiddle = " (";
-        exceptions.catchStartLink = " ";
-        exceptions.catchStartRight = ") {";
-        exceptions.throwExceptionMiddle = "(";
-        exceptions.throwExceptionRight = ")";
-        exceptions.requiresExceptionType = true;
-
-        exceptions.className = "Error";
-
-        exceptions.tryStartRight = "\n{";
-        exceptions.finallyStartRight = "\n{";
-        exceptions.catchStartRight = ")\n{";
-
         exceptions.blockEnd = "}\n";
+        exceptions.catch = "catch";
+        exceptions.catchStartLink = " ";
+        exceptions.catchStartMiddle = " (";
+        exceptions.catchStartRight = ") {";
+        exceptions.catchStartRight = ")\n{";
+        exceptions.className = "Exception";
+        exceptions.finally = "finally";
+        exceptions.finallyStartRight = " {";
+        exceptions.finallyStartRight = "\n{";
+        exceptions.requiresExceptionType = true;
+        exceptions.throw = "throw new";
+        exceptions.throwMiddle = "(";
+        exceptions.throwRight = ")";
+        exceptions.try = "try";
+        exceptions.tryStartRight = " {";
+        exceptions.tryStartRight = "\n{";
+        exceptions.variablePrefix = "";
     }
 
     /**

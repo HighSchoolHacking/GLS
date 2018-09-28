@@ -16,6 +16,7 @@
     * [Static Functions](docs/syntax/classes/static-functions.md)
   * [Standalone Functions](docs/syntax/classes/standalone-functions.md)
     * [Main](docs/syntax/standalone-functions/main.md)
+  * [Exceptions](docs/syntax/exceptions.md)
   * [Files](docs/syntax/files.md)
   * [Imports](docs/syntax/imports.md)
   * [Unsupported Commands](docs/syntax/unsupported-commands.md)

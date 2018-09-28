@@ -15,10 +15,7 @@ export class CatchStartCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.CatchStart)
         .withDescription("Starts a catch block")
         .withIndentation([1])
-        .withParameters([
-            new SingleParameter("exception", "Target exception.", true),
-            new SingleParameter("alias", "Alias for target exception.", true),
-        ]);
+        .withParameters([new SingleParameter("name", "Name for the caught target exception.", true)]);
 
     /**
      * @returns Metadata on the command.
@@ -48,10 +45,10 @@ export class CatchStartCommand extends Command {
         line.text += this.language.syntax.exceptions.catch;
         line.text += this.language.syntax.exceptions.catchStartMiddle;
         if (this.language.syntax.exceptions.requiresExceptionType) {
-            line.text += parameters[1];
+            line.text += this.language.syntax.exceptions.className;
             line.text += this.language.syntax.exceptions.catchStartLink;
         }
-        line.text += parameters[2];
+        line.text += parameters[1];
 
         this.addLineEnder(lines, this.language.syntax.exceptions.catchStartRight, 2);
 

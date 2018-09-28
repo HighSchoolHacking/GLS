@@ -53,14 +53,14 @@ export class ExceptionSyntax {
     public throw: string;
 
     /**
-     * Middle of throwexception command.
+     * Middle of a throw line.
      */
-    public throwExceptionMiddle: string;
+    public throwMiddle: string;
 
     /**
-     * End of throwexception line;
+     * End of a throw line.
      */
-    public throwExceptionRight: string;
+    public throwRight: string;
 
     /**
      * The keyword used for "try".
