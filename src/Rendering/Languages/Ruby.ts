@@ -330,23 +330,21 @@ export class Ruby extends Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
-        exceptions.throw = "raise";
-        exceptions.variablePrefix = "";
         exceptions.blockEnd = "";
-        exceptions.throwExceptionRight = ")";
-        exceptions.requiresExceptionType = true;
-
-        exceptions.try = "begin";
         exceptions.catch = "rescue";
-        exceptions.finally = "ensure";
-        exceptions.catchStartMiddle = " ";
-
-        exceptions.tryStartRight = "";
-        exceptions.finallyStartRight = "";
-        exceptions.catchStartRight = "";
         exceptions.catchStartLink = " => ";
-
-        exceptions.throwExceptionMiddle = ".new(";
+        exceptions.catchStartMiddle = " ";
+        exceptions.catchStartRight = "";
+        exceptions.className = "Exception";
+        exceptions.finally = "ensure";
+        exceptions.finallyStartRight = "";
+        exceptions.requiresExceptionType = true;
+        exceptions.throw = "raise";
+        exceptions.throwMiddle = ".new(";
+        exceptions.throwRight = ")";
+        exceptions.try = "begin";
+        exceptions.tryStartRight = "";
+        exceptions.variablePrefix = "";
     }
 
     /**

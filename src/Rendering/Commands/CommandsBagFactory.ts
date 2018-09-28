@@ -34,6 +34,7 @@ import { EnumCommand } from "./EnumCommand";
 import { EnumEndCommand } from "./EnumEndCommand";
 import { EnumMemberCommand } from "./EnumMemberCommand";
 import { EnumStartCommand } from "./EnumStartCommand";
+import { ExceptionCommand } from "./ExceptionCommand";
 import { FileEndCommand } from "./FileEndCommand";
 import { FileStartCommand } from "./FileStartCommand";
 import { FinallyEndCommand } from "./FinallyEndCommand";
@@ -51,7 +52,6 @@ import { IfStringToFloatEndCommand } from "./IfStringToFloatEndCommand";
 import { IfStringToFloatStartCommand } from "./IfStringToFloatStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
-// import { ImportStandaloneFunctionsCommand } from "./ImportStandaloneFunctionsCommand";
 import { InstanceOfCommand } from "./InstanceOfCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
@@ -122,7 +122,7 @@ import { StringSubstringLengthCommand } from "./StringSubstringLengthCommand";
 import { StringTrimCommand } from "./StringTrimCommand";
 import { SuperConstructorCommand } from "./SuperConstructorCommand";
 import { ThisCommand } from "./ThisCommand";
-import { ThrowExceptionCommand } from "./ThrowExceptionCommand";
+import { ThrowCommand } from "./ThrowCommand";
 import { TryEndCommand } from "./TryEndCommand";
 import { TryStartCommand } from "./TryStartCommand";
 import { TypeCommand } from "./TypeCommand";
@@ -180,6 +180,7 @@ export class CommandsBagFactory {
             new EnumEndCommand(context),
             new EnumMemberCommand(context),
             new EnumStartCommand(context),
+            new ExceptionCommand(context),
             new FileEndCommand(context),
             new FileStartCommand(context),
             new FinallyEndCommand(context),
@@ -197,7 +198,6 @@ export class CommandsBagFactory {
             new IfStringToFloatStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
-            // new ImportStandaloneFunctionsCommand(context),
             new InstanceOfCommand(context),
             new InterfaceEndCommand(context),
             new InterfaceMethodCommand(context),
@@ -268,7 +268,7 @@ export class CommandsBagFactory {
             new StringTrimCommand(context),
             new SuperConstructorCommand(context),
             new ThisCommand(context),
-            new ThrowExceptionCommand(context),
+            new ThrowCommand(context),
             new TryEndCommand(context),
             new TryStartCommand(context),
             new TypeCommand(context),

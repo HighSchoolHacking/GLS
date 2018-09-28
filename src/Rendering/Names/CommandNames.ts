@@ -173,6 +173,11 @@ export class CommandNames {
     public static EnumStart = "enum start";
 
     /**
+     * Name key the Exception command.
+     */
+    public static Exception = "exception";
+
+    /**
      * Name key for the FileEnd command.
      */
     public static FileEnd = "file end";
@@ -613,9 +618,9 @@ export class CommandNames {
     public static This = "this";
 
     /**
-     * Name key for the ThrowException command.
+     * Name key for the Throw command.
      */
-    public static ThrowException = "throw exception";
+    public static Throw = "throw";
 
     /**
      * Name key for the TryEnd command.

@@ -333,23 +333,21 @@ export class JavaScript extends Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
-        exceptions.catch = "catch";
-        exceptions.finally = "finally";
-        exceptions.throw = "throw new";
-        exceptions.try = "try";
-        exceptions.variablePrefix = "";
         exceptions.blockEnd = "} ";
-        exceptions.tryStartRight = " {";
-        exceptions.finallyStartRight = " {";
-        exceptions.catchStartMiddle = " (";
+        exceptions.catch = "catch";
         exceptions.catchStartLink = " ";
+        exceptions.catchStartMiddle = " (";
         exceptions.catchStartRight = ") {";
-        exceptions.throwExceptionMiddle = "(";
-        exceptions.throwExceptionRight = ")";
-
         exceptions.className = "Error";
-
+        exceptions.finally = "finally";
+        exceptions.finallyStartRight = " {";
         exceptions.requiresExceptionType = false;
+        exceptions.throw = "throw new";
+        exceptions.throwMiddle = "(";
+        exceptions.throwRight = ")";
+        exceptions.try = "try";
+        exceptions.tryStartRight = " {";
+        exceptions.variablePrefix = "";
     }
 
     /**

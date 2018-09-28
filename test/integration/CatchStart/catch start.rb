@@ -1,0 +1,3 @@
+#
+rescue Exception => abc
+#

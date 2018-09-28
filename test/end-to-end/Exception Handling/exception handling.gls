@@ -1,9 +1,9 @@
 -
 try start
-    comment line : ...
+    throw : { exception } ("Oh no!")
 try end
-catch start : ExceptionType foo
-    comment line : ...
+catch start : error
+    print : ("Found an error.")
 catch end
 finally start
     comment line : ...
