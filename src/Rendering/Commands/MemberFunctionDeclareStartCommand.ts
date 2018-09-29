@@ -57,4 +57,11 @@ export class MemberFunctionDeclareStartCommand extends MemberFunctionDeclareComm
     protected getEnder(): string {
         return this.language.syntax.functions.defineStartRight;
     }
+
+    /**
+     * @returns How much indentation to add after the last command line.
+     */
+    protected getIndentation(): number {
+        return 1;
+    }
 }
