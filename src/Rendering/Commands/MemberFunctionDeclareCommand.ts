@@ -54,7 +54,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         }
 
         output = [new CommandResult(declaration, 0)];
-        this.addLineEnder(output, this.getEnder(), 1);
+        this.addLineEnder(output, this.getEnder(), this.getIndentation());
 
         return new LineResults(output, false);
     }
@@ -73,6 +73,11 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      * @returns Text to end the declaration.
      */
     protected abstract getEnder(): string;
+
+    /**
+     * @returns How much indentation to add after the last command line.
+     */
+    protected abstract getIndentation(): number;
 
     /**
      * Generates a string for a parameter.
