@@ -13,22 +13,22 @@ export class NativeOperatorRenderer extends NativeCallRenderer {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
         if (this.nativeCallSyntax.type === NativeCallType.FloatingLeft) {
-            result += parameters[2];
-            result += this.nativeCallSyntax.name;
-            result += parameters[1];
+            output += parameters[2];
+            output += this.nativeCallSyntax.name;
+            output += parameters[1];
         } else {
-            result += parameters[1];
-            result += this.nativeCallSyntax.name;
-            result += parameters[2];
+            output += parameters[1];
+            output += this.nativeCallSyntax.name;
+            output += parameters[2];
 
             if (parameters.length === 4) {
-                result += parameters[3];
+                output += parameters[3];
             }
         }
 
-        return LineResults.newSingleLine(result, true);
+        return LineResults.newSingleLine(output, true);
     }
 }

@@ -13,20 +13,20 @@ export class PrefixRenderer extends NewRenderer {
      */
     public render(parameters: string[]): LineResults {
         const typeName: string = parameters[1];
-        let result = "";
+        let output = "";
 
-        result += this.language.syntax.newProp.keyword;
-        result += " ";
-        result += typeName;
-        result += "(";
+        output += this.language.syntax.newProp.keyword;
+        output += " ";
+        output += typeName;
+        output += "(";
         if (parameters.length > 2) {
-            result += parameters[2];
+            output += parameters[2];
             for (let i = 3; i < parameters.length; i += 1) {
-                result += ", " + parameters[i];
+                output += ", " + parameters[i];
             }
         }
-        result += ")";
+        output += ")";
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }

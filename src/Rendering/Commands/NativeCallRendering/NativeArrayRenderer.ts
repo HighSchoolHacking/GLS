@@ -12,15 +12,15 @@ export class NativeArrayRenderer extends NativeCallRenderer {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += "[" + parameters[1];
+        output += "[" + parameters[1];
         for (let i = 2; i < parameters.length; i += 1) {
-            result += ", " + parameters[i];
+            output += ", " + parameters[i];
         }
 
-        result += "]." + this.nativeCallSyntax.name;
+        output += "]." + this.nativeCallSyntax.name;
 
-        return LineResults.newSingleLine(result, true);
+        return LineResults.newSingleLine(output, true);
     }
 }
