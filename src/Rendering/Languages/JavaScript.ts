@@ -320,7 +320,7 @@ export class JavaScript extends Language {
         enums.valueMiddle = ".";
         enums.valueRight = "";
 
-        enums.declareStartLeft = "let ";
+        enums.declareStartLeft = "const ";
         enums.declareStartRight = " = {";
         enums.declareValueLeft = ": ";
         enums.declareLastRight = "";

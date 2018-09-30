@@ -71,6 +71,6 @@ export class DictionaryPairCommand extends Command {
             throw new Error("Dictionary pair keys that end with quotes must start with quotes");
         }
 
-        throw new Error("Variables as dictionary keys are not supported at this time");
+        return keyRaw;
     }
 }

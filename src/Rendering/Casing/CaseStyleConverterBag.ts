@@ -46,7 +46,7 @@ export class CaseStyleConverterBag {
      * Retrieves the case converter for the given casing style.
      *
      * @param caseStyle   A casing style.
-     * @returns The case converter under the given asing style.
+     * @returns The case converter under the given case style.
      */
     public getConverter(caseStyle: CaseStyle): ICaseStyleConverter {
         const caseStyleAlias = caseStyle;
