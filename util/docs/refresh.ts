@@ -85,10 +85,7 @@ const createTableOfContents = (commandNames: [string, string][]): string => {
 
 const createAllCommandsMarkdown = (commandNamesAndMarkdowns: [string, string][]): string => {
     const allcommandNamesAndMarkdowns = commandNamesAndMarkdowns
-        .map(
-            ([commandName, commandMarkdown]) =>
-                `${commandMarkdown}See [${commandName}.md](./commands/${commandName.replace(/ /g, "%20")}.md).\n\n`,
-        )
+        .map(([commandName, commandMarkdown]) => `${commandMarkdown}See [${commandName}.md](./${commandName.replace(/ /g, "%20")}.md).\n\n`)
         .join("\n")
         .replace(/\# /g, "## ");
 
@@ -112,10 +109,10 @@ const refreshCommands = () => {
         const commandMarkdown = createCommandMarkdown(metadata);
 
         commandNamesAndMarkdowns.push([commandName, commandMarkdown]);
-        fs.writeFileSync(`./docs/commands/all/${commandName}.md`, commandMarkdown);
+        fs.writeFileSync(`./docs/commands/${commandName}.md`, commandMarkdown);
     }
 
-    fs.writeFileSync(`./docs/commands/all-commands.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
+    fs.writeFileSync(`./docs/commands/README.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
 };
 
 for (const directory of ["./docs/commands", "./docs/commands/all"]) {
