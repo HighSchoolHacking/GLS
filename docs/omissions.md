@@ -6,7 +6,7 @@ GLS intentionally targets a "lowest common denominator" of features for common O
 
 If any target language doesn't reasonably support a feature, GLS cannot support that feature.
 
-| Feature | C\# | Java | JavaScript | Python | Ruby | TypeScript |
+| Feature | C# | Java | JavaScript | Python | Ruby | TypeScript |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | async/await |  | _Missing_ |  |  | _Missing_ |  |
 | Default Member Variable Values |  |  |  |  | _Missing_ |  |
@@ -20,7 +20,8 @@ If any target language doesn't reasonably support a feature, GLS cannot support 
 
 ## Intentionally Unsupported Languages
 
-Not all languages work similarly to the supported ones. These will likely never receive GLS support, for the following common reasons \(among others\):
+Not all languages work similarly to the supported ones.
+These will likely never receive GLS support, for the following common reasons (among others):
 
 | Language | Manual Pointers | Pass-By-Value | Unusual Classes | Unusual Returns |
 | :--- | :--- | :--- | :--- | :--- |

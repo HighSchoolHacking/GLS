@@ -12,7 +12,7 @@ These functions, similar to static functions, are referenced in GLS code as memb
 Declaring a standalone function requires placing it within a group of them, similar to a static class declaration.
 
 * `standalone functions declare start` takes a single parameter as the name of the group in PascalCase, which will become the class name in static languages.
-It may take in the `export` keyword before the name of the group to indicate the group being available to import in other files.
+  It may take in the `export` keyword before the name of the group to indicate the group being available to import in other files.
 * `standalone functions declare end` closes the group and takes no parameters.
 * `standalone function declare start` takes in either `public` or `private` to indicate its availability outside of the group, the function name in PascalCase, return type, and any number of (name, type) pairs of parameters.
 * `standalone function declare end` closes a function and takes no parameters.
@@ -78,7 +78,8 @@ def repeat_text(text, times):
 
 ## Importing Standalone Functions
 
-The `import standalone functions` command must be used after the `use` in import declarations because different languages will import either the container group (static class) or individual functions.
+The `import standalone functions` command must be used after the `use` in import declarations.
+Different languages will import either the container group (static class) or individual functions.
 It takes in the name of the group in PascalCase followed by any number of standalone function names in PascalCase to import.
 
 ```gls

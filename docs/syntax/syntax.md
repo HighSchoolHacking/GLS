@@ -12,7 +12,7 @@ print : "GLS!"
 
 This will compile to:
 
-* In C\#: `System.Console.WriteLine("GLS!");` 
+* In C#: `System.Console.WriteLine("GLS!");`
 * In Python: `print("GLS!")`
 
 Many commands, including `print`, may take in multiple arguments:
@@ -24,9 +24,10 @@ print : "First" "second"
 * Function: `print`
 * Arguments: `"First"`, `"second"`
 
-### Parenthesis
+## Parenthesis
 
-You can keep spaces inside your arguments by wrapping characters in parenthesis. This tells the compiler to treat the space as part of the argument instead of a separator.
+You can keep spaces inside your arguments by wrapping characters in parenthesis.
+This tells the compiler to treat the space as part of the argument instead of a separator.
 
 ```gls
 print : ("Hello world!")
@@ -35,7 +36,7 @@ print : ("Hello world!")
 * Function: `print`
 * Argument: `"Hello world!"`
 
-### Recursion
+## Recursion
 
 To pipe the output of one command into another, wrap the inner command with`{}`brackets.
 

@@ -1,6 +1,7 @@
 # Static Functions
 
-As with static variables, GLS syntax for static functions behaves almost identically to the member equivalents. The only difference is that accessing them takes in the class name instead of an instance reference.
+As with static variables, GLS syntax for static functions behaves almost identically to the member equivalents.
+The only difference is that accessing them takes in the class name instead of an instance reference.
 
 ```gls
 class start : Utilities
@@ -24,7 +25,7 @@ class start : Utilities
 class end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 using System;

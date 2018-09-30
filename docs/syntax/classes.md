@@ -2,7 +2,9 @@
 
 The concept of creating instances of classes with access to member variables and methods is common across languages.
 
-Create a class with `class start`. It takes in, at the very least, the name of the class \(in PascalCase as with functions\). You can then also provide `extends` and a name of a class to indicate a single class to inherit from.
+Create a class with `class start`.
+It takes in, at the very least, the name of the class (in PascalCase as with functions).
+You can then also provide `extends` and a name of a class to indicate a single class to inherit from.
 
 End it with `class end`.
 
@@ -16,7 +18,7 @@ class start : Noun extends Word
 class end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 class Word
@@ -40,9 +42,10 @@ class Noun(Word):
     # ...
 ```
 
-### Constructors
+## Constructors
 
-Constructors, or initialization methods, are called when a new instance of a class is created. It's declared with `constructor start`, which takes the publicity of the constructor, the name of the class, and any number of \(name, type\) arguments, and `constructor end`.
+Constructors, or initialization methods, are called when a new instance of a class is created.
+It's declared with `constructor start`, which takes the publicity of the constructor, the name of the class, and any number of (name, type) arguments, and `constructor end`.
 
 Inherited classes may use `super constructor` to call to their parent class' constructor.
 
@@ -55,7 +58,7 @@ class start : Noun extends Word
 class end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 class Noun : Word
@@ -77,7 +80,7 @@ class Noun(Word):
         print("Creating " + name)
 ```
 
-### This
+## This
 
 You can pass a reference to the current class using the `this` command.
 
@@ -85,19 +88,17 @@ You can pass a reference to the current class using the `this` command.
 this
 ```
 
-* In C\#: `this`
+* In C#: `this`
 * In Python: `self`
 
-### New
+## New
 
-Create new instances of classes with the `new` command. It takes in the name of the class and any number of arguments to pass to the parameter.
+Create new instances of classes with the `new` command.
+It takes in the name of the class and any number of arguments to pass to the parameter.
 
 ```gls
 variable : fruit Noun { new : Noun "apple" }
 ```
 
-* In C\#: `Noun fruit = new Noun("apple");`
+* In C#: `Noun fruit = new Noun("apple");`
 * In Python: `fruit = Noun("apple")`
-
-
-

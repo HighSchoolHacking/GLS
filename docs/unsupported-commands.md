@@ -1,6 +1,7 @@
 # Unsupported Commands
 
-When compilers such as [CS-GLS](https://general-language-syntax/CS-GLS) or [ts-gls](https://general-language-syntax/ts-gls) find code that cannot be converted to GLS, they emit a complaint via the `unsupported` command.
+When compilers such as [CS-GLS](https://general-language-syntax/CS-GLS) or [ts-gls](https://general-language-syntax/ts-gls)
+find code that cannot be converted to GLS, they emit a complaint via the `unsupported` command.
 GLS will complain during compilation if it sees one of these commands.
 
 For example, in attempting to convert this C# `switch` statement to GLS with CS-GLS:
@@ -14,7 +15,7 @@ class Suffixer
         {
             case 1:
                 return "st";
-            
+
             case 2:
                 return "nd";
 

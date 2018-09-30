@@ -112,7 +112,6 @@ Each `Command` stores a `CommandMetadata` member with some basic information on 
 The metadata also includes the expected parameters the command takes in as an. `IParameter` array.
 These are validated by the `GlsNodeRenderer` against what the command is passed before commands are rendered.
 
-
 ## 3. Merging
 
 Once a file's `LineResults` are collected into an array, they're conglomerated into a `string[]` of output language lines.

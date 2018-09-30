@@ -1,10 +1,11 @@
 # Strings
 
-Strings in GLS are denoted with _double_ apostrophes \(`"`\). Do not use single apostrophes or back-ticks.
+Strings in GLS are denoted with _double_ apostrophes (`"`).
+Do not use single apostrophes or back-ticks.
 
-> Some languages, such as C\#, use single apostrophes to denote single characters and not strings.
+> Some languages, such as C#, use single apostrophes to denote single characters and not strings.
 
-### Concatenation
+## Concatenation
 
 The `concatenate` command appends two or more strings together.
 
@@ -12,12 +13,14 @@ The `concatenate` command appends two or more strings together.
 concatenate : "abc" def "ghi"
 ```
 
-* In C\#: `"abc" + def + "ghi"`
+* In C#: `"abc" + def + "ghi"`
 * In Python: `"abc" + def + "ghi"`
 
-### Formatting
+## Formatting
 
-The `string format` command allows inserting primitives into a format string. It takes in a single format string, then any number of input name & type pairs. Format strings are string literals with any number of bracket-surrounded numbers inside, with the format `{#}`.
+The `string format` command allows inserting primitives into a format string.
+It takes in a single format string, then any number of input name & type pairs.
+Format strings are string literals with any number of bracket-surrounded numbers inside, with the format `{#}`.
 
 ```gls
 variable : foo string "foo"
@@ -27,7 +30,7 @@ string format : ("Foo: {0}") foo
 string format : ("Foo: {0}; Bar: {1}") foo bar
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 string foo = "foo";
@@ -47,9 +50,11 @@ bar = 7
 "Foo: {0}; Bar: {1}".format(foo, bar)
 ```
 
-Some languages, such as C\# and Python above, use string formatting with numeric insertion points into the template string. Some, such as JavaScript, boil down to concatenating them together. As a result, it is not allowed to use the same `{#}` number multiple times in the format string.
+Some languages, such as C# and Python above, use string formatting with numeric insertion points into the template string.
+Some, such as JavaScript, boil down to concatenating them together.
+As a result, it is not allowed to use the same `{#}` number multiple times in the format string.
 
-### Searching
+## Searching
 
 The `string index of` command can be used to determine whether a substring exists within a string.
 It returns the index of the substring if found, or the equivalent of the `string index not found` command if not found.
@@ -68,7 +73,7 @@ if start : { operation : secondIndexOf (not equal to) { string index not found }
 if end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 using System;

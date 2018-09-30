@@ -2,7 +2,8 @@
 
 All languages provide some way to execute code immediately.
 
-Scripting languages such as Python and Ruby will execute all code in order immediately, whereas class-based languages such as C\# and Java require a class wrapping a static method akin to C/C++'s "main" function.
+Scripting languages such as Python and Ruby will execute all code in order immediately,
+whereas class-based languages such as C# and Java require a class wrapping a static method akin to C/C++'s "main" function.
 
 GLS resolves the differences by declaring an area as a "main context".
 A main function may be declared within that context.
@@ -15,7 +16,7 @@ main context start
 main context end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 using System;
@@ -53,7 +54,7 @@ main context start
 main context end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 using System;
@@ -82,7 +83,5 @@ if __name__ == "__main__":
     say_hello("GLS")
 ```
 
-> Function names must be given in PascalCase so that GLS can transform them into the appropriate case for the output language. JavaScript, for example, prefers camelCase, while Python prefers snake\_case.
-
-
-
+> Function names must be given in PascalCase so that GLS can transform them into the appropriate case for the output language.
+> JavaScript, for example, prefers camelCase, while Python prefers snake\_case.

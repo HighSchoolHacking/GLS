@@ -1,6 +1,7 @@
 # Static Variables
 
-GLS syntax for static variables behaves almost identically to the member equivalents. Accessing them takes in the class name instead of an instance reference.
+GLS syntax for static variables behaves almost identically to the member equivalents.
+Accessing them takes in the class name instead of an instance reference.
 
 Additionally, static members may declare an initial value as a final parameter.
 
@@ -19,7 +20,7 @@ class start : AnglePrinter
 class end
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 class AnglePrinter
