@@ -112,16 +112,18 @@ const refreshCommands = () => {
         const commandMarkdown = createCommandMarkdown(metadata);
 
         commandNamesAndMarkdowns.push([commandName, commandMarkdown]);
-        fs.writeFileSync(`./docs/commands/${commandName}.md`, commandMarkdown);
+        fs.writeFileSync(`./docs/commands/all/${commandName}.md`, commandMarkdown);
     }
 
-    fs.writeFileSync(`./docs/all-commands.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
+    fs.writeFileSync(`./docs/commands/all-commands.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
 };
 
-try {
-    fs.mkdirSync("./docs/commands");
-} catch {
-    /* The directory will almost always already exist */
+for (const directory of ["./docs/commands", "./docs/commands/all"]) {
+    try {
+        fs.mkdirSync(directory);
+    } catch {
+        /* The directory will almost always already exist */
+    }
 }
 
 refreshCommands();

@@ -15,7 +15,7 @@
     },
     "scripts": {
         "docs": "npm run docs:refresh-docs && npm run docs:markdownlint",
-        "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/all-commands.md --ignore docs/commands/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
+        "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
         "precommit": "pretty-quick --staged --write",
         "prepublishOnly": "npm run util:refresh-docs",
