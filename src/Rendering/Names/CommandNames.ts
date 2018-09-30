@@ -453,6 +453,11 @@ export class CommandNames {
     public static Operation = "operation";
 
     /**
+     * Name key for the OperationStart command.
+     */
+    public static OperationStart = "operation start";
+
+    /**
      * Name key for the Operator command.
      */
     public static Operator = "operator";
