@@ -34,12 +34,12 @@ export class CommentLineCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const language: Language = this.language;
-        let result = "";
+        let output = "";
 
-        result += language.syntax.comments.lineLeft;
-        result += parameters.slice(1).join(" ");
-        result += language.syntax.comments.lineRight;
+        output += language.syntax.comments.lineLeft;
+        output += parameters.slice(1).join(" ");
+        output += language.syntax.comments.lineRight;
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }

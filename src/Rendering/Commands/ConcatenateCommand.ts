@@ -36,12 +36,12 @@ export class ConcatenateCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = parameters[1];
+        let output = parameters[1];
 
         for (let i = 2; i < parameters.length; i += 1) {
-            result += this.language.syntax.strings.concatenate + parameters[i];
+            output += this.language.syntax.strings.concatenate + parameters[i];
         }
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }

@@ -12,21 +12,21 @@ export class MemberMethodRenderer extends NewRenderer {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
         const typeName: string = parameters[1];
-        result += typeName;
-        result += ".";
-        result += this.language.syntax.newProp.keyword;
-        result += "(";
+        output += typeName;
+        output += ".";
+        output += this.language.syntax.newProp.keyword;
+        output += "(";
         if (parameters.length > 2) {
-            result += parameters[2];
+            output += parameters[2];
             for (let i = 3; i < parameters.length; i += 1) {
-                result += ", " + parameters[i];
+                output += ", " + parameters[i];
             }
         }
-        result += ")";
+        output += ")";
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }

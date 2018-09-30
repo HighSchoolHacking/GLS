@@ -12,21 +12,21 @@ export class NativeStaticRenderer extends NativeCallRenderer {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += this.nativeCallSyntax.name;
-        result += "(" + parameters[1];
+        output += this.nativeCallSyntax.name;
+        output += "(" + parameters[1];
 
         for (const arg of this.nativeCallSyntax.arguments) {
-            result += ", " + this.formatArgument(arg, parameters[1]);
+            output += ", " + this.formatArgument(arg, parameters[1]);
         }
 
         for (let i = 2; i < parameters.length; i += 1) {
-            result += ", " + parameters[i];
+            output += ", " + parameters[i];
         }
 
-        result += ")";
+        output += ")";
 
-        return LineResults.newSingleLine(result, true);
+        return LineResults.newSingleLine(output, true);
     }
 }

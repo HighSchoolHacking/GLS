@@ -33,19 +33,19 @@ export class DictionaryPairCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let results = "";
+        let output = "";
 
-        results += this.language.syntax.dictionaries.initializePairLeft;
-        results += this.renderKey(parameters[1]);
-        results += this.language.syntax.dictionaries.initializePairMiddle;
-        results += parameters[2];
-        results += this.language.syntax.dictionaries.initializePairRight;
+        output += this.language.syntax.dictionaries.initializePairLeft;
+        output += this.renderKey(parameters[1]);
+        output += this.language.syntax.dictionaries.initializePairMiddle;
+        output += parameters[2];
+        output += this.language.syntax.dictionaries.initializePairRight;
 
         if (parameters.length === 4) {
-            results += this.language.syntax.dictionaries.initializePairComma;
+            output += this.language.syntax.dictionaries.initializePairComma;
         }
 
-        return LineResults.newSingleLine(results, false);
+        return LineResults.newSingleLine(output, false);
     }
 
     /**

@@ -13,37 +13,37 @@ export class NativeMemberRenderer extends NativeCallRenderer {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += parameters[1] + ".";
-        result += this.nativeCallSyntax.name;
+        output += parameters[1] + ".";
+        output += this.nativeCallSyntax.name;
 
         if (this.nativeCallSyntax.type === NativeCallType.Function) {
-            result += "(";
+            output += "(";
 
             if (this.nativeCallSyntax.arguments.length > 0) {
-                result += this.formatArgument(this.nativeCallSyntax.arguments[0], parameters[1]);
+                output += this.formatArgument(this.nativeCallSyntax.arguments[0], parameters[1]);
 
                 for (let i = 1; i < this.nativeCallSyntax.arguments.length; i += 1) {
-                    result += ", " + this.formatArgument(this.nativeCallSyntax.arguments[i], parameters[1]);
+                    output += ", " + this.formatArgument(this.nativeCallSyntax.arguments[i], parameters[1]);
                 }
             }
 
             if (parameters.length > 2) {
                 if (this.nativeCallSyntax.arguments.length > 0) {
-                    result += ", ";
+                    output += ", ";
                 }
 
-                result += parameters[2];
+                output += parameters[2];
 
                 for (let i = 3; i < parameters.length; i += 1) {
-                    result += ", " + parameters[i];
+                    output += ", " + parameters[i];
                 }
             }
 
-            result += ")";
+            output += ")";
         }
 
-        return LineResults.newSingleLine(result, true);
+        return LineResults.newSingleLine(output, true);
     }
 }

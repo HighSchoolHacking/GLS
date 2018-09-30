@@ -40,22 +40,22 @@ export class StringSubstringIndexCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let results = "";
+        let output = "";
 
-        results += parameters[1];
-        results += this.language.syntax.strings.substrings.leftIndex;
-        results += parameters[2];
+        output += parameters[1];
+        output += this.language.syntax.strings.substrings.leftIndex;
+        output += parameters[2];
 
         if (parameters.length === 4) {
-            results += this.language.syntax.strings.substrings.middle;
-            results += this.renderSecondParameter(parameters);
+            output += this.language.syntax.strings.substrings.middle;
+            output += this.renderSecondParameter(parameters);
         } else {
-            results += this.language.syntax.strings.substrings.defaultEnd;
+            output += this.language.syntax.strings.substrings.defaultEnd;
         }
 
-        results += this.language.syntax.strings.substrings.right;
+        output += this.language.syntax.strings.substrings.right;
 
-        return LineResults.newSingleLine(results, true);
+        return LineResults.newSingleLine(output, true);
     }
 
     /**

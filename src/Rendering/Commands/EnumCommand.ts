@@ -32,14 +32,14 @@ export class EnumCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += this.language.syntax.enums.valueLeft;
-        result += parameters[1];
-        result += this.language.syntax.enums.valueMiddle;
-        result += parameters[2];
-        result += this.language.syntax.enums.valueRight;
+        output += this.language.syntax.enums.valueLeft;
+        output += parameters[1];
+        output += this.language.syntax.enums.valueMiddle;
+        output += parameters[2];
+        output += this.language.syntax.enums.valueRight;
 
-        return LineResults.newSingleLine(result, true);
+        return LineResults.newSingleLine(output, true);
     }
 }

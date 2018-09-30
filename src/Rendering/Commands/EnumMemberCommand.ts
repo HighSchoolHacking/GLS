@@ -33,19 +33,19 @@ export class EnumMemberCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += parameters[1];
-        result += this.language.syntax.enums.declareValueLeft;
-        result += parameters[2];
-        result += this.language.syntax.enums.declareValueRight;
+        output += parameters[1];
+        output += this.language.syntax.enums.declareValueLeft;
+        output += parameters[2];
+        output += this.language.syntax.enums.declareValueRight;
 
         if (parameters.length === 4) {
-            result += this.language.syntax.enums.declareCommaRight;
+            output += this.language.syntax.enums.declareCommaRight;
         } else {
-            result += this.language.syntax.enums.declareLastRight;
+            output += this.language.syntax.enums.declareLastRight;
         }
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }

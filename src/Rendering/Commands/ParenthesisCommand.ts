@@ -34,12 +34,12 @@ export class ParenthesisCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let result = "";
+        let output = "";
 
-        result += "(";
-        result += parameters.slice(1).join(" ");
-        result += ")";
+        output += "(";
+        output += parameters.slice(1).join(" ");
+        output += ")";
 
-        return LineResults.newSingleLine(result, false);
+        return LineResults.newSingleLine(output, false);
     }
 }
