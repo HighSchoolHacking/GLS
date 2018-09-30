@@ -89,6 +89,7 @@ import { MemberVariableDeclareCommand } from "./MemberVariableDeclareCommand";
 import { NewCommand } from "./NewCommand";
 import { NotCommand } from "./NotCommand";
 import { OperationCommand } from "./OperationCommand";
+import { OperationStartCommand } from "./OperationStartCommand";
 import { OperatorCommand } from "./OperatorCommand";
 import { ParenthesisCommand } from "./ParenthesisCommand";
 import { PrintCommand } from "./PrintCommand";
@@ -235,6 +236,7 @@ export class CommandsBagFactory {
             new NewCommand(context),
             new NotCommand(context),
             new OperationCommand(context),
+            new OperationStartCommand(context),
             new OperatorCommand(context),
             new ParenthesisCommand(context),
             new PrintCommand(context),
