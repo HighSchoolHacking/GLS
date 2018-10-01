@@ -1,6 +1,7 @@
 # Variables
 
-GLS allows for creating variables with the `variable` command. It requires the variable name, the type of the variable, and an optional default value.
+GLS allows for creating variables with the `variable` command.
+It requires the variable name, the type of the variable, and an optional default value.
 
 > Untyped languages such as JavaScript will skip printing the variable type.
 >
@@ -20,7 +21,7 @@ variable : quux number infinity
 variable : corge boolean true
 ```
 
-In C\#:
+In C#:
 
 ```csharp
 // Simple declarations
@@ -51,9 +52,9 @@ quux = inf
 corge = True
 ```
 
-### Types
+## Types
 
 As you saw from the interesting values above, some types such as infinity or true/false have aliases per language.
 
-Built-in types will always be lower-case in GLS. Uppercase types will always refer to user-defined classes.
-
+Built-in types will always be lower-case in GLS.
+Uppercase types will always refer to user-defined classes.

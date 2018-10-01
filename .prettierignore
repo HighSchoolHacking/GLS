@@ -1,4 +1,4 @@
 test/end-to-end/**
 test/integration/**
 *.md
-docs/*.md
+docs/**/*.md

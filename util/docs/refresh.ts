@@ -85,10 +85,7 @@ const createTableOfContents = (commandNames: [string, string][]): string => {
 
 const createAllCommandsMarkdown = (commandNamesAndMarkdowns: [string, string][]): string => {
     const allcommandNamesAndMarkdowns = commandNamesAndMarkdowns
-        .map(
-            ([commandName, commandMarkdown]) =>
-                `${commandMarkdown}See [${commandName}.md](./commands/${commandName.replace(/ /g, "%20")}.md).\n\n`,
-        )
+        .map(([commandName, commandMarkdown]) => `${commandMarkdown}See [${commandName}.md](./${commandName.replace(/ /g, "%20")}.md).\n\n`)
         .join("\n")
         .replace(/\# /g, "## ");
 
@@ -115,13 +112,15 @@ const refreshCommands = () => {
         fs.writeFileSync(`./docs/commands/${commandName}.md`, commandMarkdown);
     }
 
-    fs.writeFileSync(`./docs/all-commands.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
+    fs.writeFileSync(`./docs/commands/README.md`, createAllCommandsMarkdown(commandNamesAndMarkdowns));
 };
 
-try {
-    fs.mkdirSync("./docs/commands");
-} catch {
-    /* The directory will almost always already exist */
+for (const directory of ["./docs/commands", "./docs/commands/all"]) {
+    try {
+        fs.mkdirSync(directory);
+    } catch {
+        /* The directory will almost always already exist */
+    }
 }
 
 refreshCommands();

@@ -2,8 +2,7 @@ dist
 lib
 node_modules/
 npm-debug.log
-docs/all-commands.md
-docs/commands/*.md
+docs/commands/**/*.md
 src/**/*.map
 test/*.js
 test/*.map
