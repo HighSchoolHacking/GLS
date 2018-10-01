@@ -3,5 +3,6 @@
     "line-length": {
         "line_length": 280
     },
-    "no-inline-html": false
+    "no-inline-html": false,
+    "no-trailing-punctuation": false
 }

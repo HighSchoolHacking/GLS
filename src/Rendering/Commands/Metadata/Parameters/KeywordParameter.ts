@@ -1,3 +1,4 @@
+import { CommandNode } from "../../../../Tokenization/Nodes/CommandNode";
 import { IGlsNode } from "../../../../Tokenization/Nodes/IGlsNode";
 import { TextNode } from "../../../../Tokenization/Nodes/TextNode";
 import { IParameter } from "./Parameter";
@@ -44,17 +45,17 @@ export class KeywordParameter implements IParameter {
     /**
      * Validates whether a command's args match this requirement.
      *
-     * @param args   All args of a command.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    public validate(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        const inputArg = args[inputPosition];
+    public validate(node: CommandNode, inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+        const inputArg = node.args[inputPosition];
         if (!(inputArg instanceof TextNode)) {
             if (this.required) {
-                throw new Error("Parameter must be a text keyword.");
+                throw new Error(`${node.command}: Parameter must be a text keyword.`);
             }
 
             return inputPosition;
@@ -65,7 +66,7 @@ export class KeywordParameter implements IParameter {
         }
 
         if (this.required) {
-            throw new Error(`Missing required parameter: must be one of: '${Array.from(this.literals).join("', '")}'`);
+            throw new Error(`${node.command}: Missing required parameter: must be one of: '${Array.from(this.literals).join("', '")}'`);
         }
 
         return inputPosition;

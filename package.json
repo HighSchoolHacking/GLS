@@ -14,7 +14,8 @@
         "url": "ssh://git@github.com:general-language-syntax/GLS.git"
     },
     "scripts": {
-        "docs": "npm run docs:refresh-docs && npm run docs:markdownlint",
+        "docs": "npm run docs:refresh-docs && npm run docs:gls && npm run docs:markdownlint",
+        "docs:gls": "node util/docs/compileGls.js",
         "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
         "precommit": "pretty-quick --staged --write",

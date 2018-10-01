@@ -22,4 +22,5 @@
   * [Unsupported Commands](docs/syntax/unsupported-commands.md)
 * [Projects](docs/projects.md)
 * [Internals](docs/internals.md)
+* [Languages](docs/languages.md)
 * [Omissions](docs/omissions.md)

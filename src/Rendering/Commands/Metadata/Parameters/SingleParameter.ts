@@ -1,3 +1,4 @@
+import { CommandNode } from "../../../../Tokenization/Nodes/CommandNode";
 import { IParameter } from "./Parameter";
 
 /**
@@ -42,15 +43,15 @@ export class SingleParameter implements IParameter {
     /**
      * Validates whether parameter inputs match this requirement.
      *
-     * @param inputs   All raw parameter inputs.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    public validate(inputs: string[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        if (this.required && inputPosition >= inputs.length) {
-            throw new Error(`Missing parameter: '${this.name}'`);
+    public validate(node: CommandNode, inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+        if (this.required && inputPosition >= node.args.length) {
+            throw new Error(`${node.command}: Missing parameter: '${this.name}'`);
         }
 
         return inputPosition + 1;

@@ -6,30 +6,97 @@ GLS intentionally targets a "lowest common denominator" of features for common O
 
 If any target language doesn't reasonably support a feature, GLS cannot support that feature.
 
-| Feature | C# | Java | JavaScript | Python | Ruby | TypeScript |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| async/await |  | _Missing_ |  |  | _Missing_ |  |
-| Default Member Variable Values |  |  |  |  | _Missing_ |  |
-| Do/While Loops |  |  |  | _Missing_ |  |  |
-| Enums Without Values |  |  |  |  | _Missing_ |  |
-| Multiline Lambdas |  |  |  | _Missing_ |  |  |
-| Optional Parameters |  | _Missing_ |  |  |  |  |
-| Overloaded Functions |  |  | _Missing_ | _Missing_ | _Missing_ | _Missing_ |
-| String.Replace |  |  | _Abnormal_ |  |  | _Abnormal_ |
-| Switch Statements |  |  |  | _Missing_ |  |  |
-
-## Intentionally Unsupported Languages
-
-Not all languages work similarly to the supported ones.
-These will likely never receive GLS support, for the following common reasons (among others):
-
-| Language | Manual Pointers | Pass-By-Value | Unusual Classes | Unusual Returns |
-| :--- | :--- | :--- | :--- | :--- |
-| C | ✓ | ✓ | ✓ |  |
-| C++ | ✓ |  |  |  |
-| Go |  |  | ✓ |  |
-| Matlab |  |  |  | ✓ |
-| R |  | ✓ |  |  |
-| Rust | ✓ |  |  |  |
-
-This list will grow as languages are requested.
+<table>
+    <thead>
+        <th>Feature</th>
+        <th>C#</th>
+        <th>Java</th>
+        <th>JavaScript</th>
+        <th>Python</th>
+        <th>Ruby</th>
+        <th>TypeScript</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>async/await</th>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Default Member Variable Values</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Do/While Loops</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Enums Without Values</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Multiline Lambdas</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Optional Parameters</th>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Optional Parameters</th>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td><em>Missing</em></td>
+            <td><em>Missing</em></td>
+            <td><em>Missing</em></td>
+        </tr>
+        <tr>
+            <th>Optional Parameters</th>
+            <td></td>
+            <td></td>
+            <td><em>Abnormal</em></td>
+            <td></td>
+            <td></td>
+            <td><em>Abnormal</em></td>
+        </tr>
+        <tr>
+            <th>Switch Statements</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

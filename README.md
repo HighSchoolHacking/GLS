@@ -5,11 +5,11 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/general-language-syntax/GLS.svg)](https://greenkeeper.io/)
 
 A unified syntax that compiles into a number of OOP languages.
+
 * Read the docs at **[glslang.org](https://glslang.org)**.
 * Try it at **[aka.ms/gls-demo](https://aka.ms/gls-demo)**.
 
-***GLS is still under development. Don't expect everything to work!***
-
+> **GLS is still under development. Don't expect everything to work!**
 
 ## Usage
 
@@ -34,12 +34,11 @@ See [gls-cli](https://github.com/HighSchoolHacking/gls-cli).
 ```javascript
 import { Gls } from "general-language-syntax";
 
-const gls = new Gls("CSharp");
+const gls = new Gls("C#");
 
 // System.Console.WriteLine("Hello world!");
 gls.convert([`print : ("Hello world!")`]);
 ```
-
 
 ## Status
 
@@ -95,10 +94,8 @@ GLS is just shy of **0.4**.
     </tbody>
 </table>
 
-
 ## Development
 
 If you'd like to contribute to GLS, see [Development.md](https://github.com/general-language-syntax/GLS/blob/master/docs/development.md).
 
-_Requires Node >=8_
-
+> Requires Node >=8

@@ -18,7 +18,7 @@ export class ParametersValidator {
         for (let i = 0; i < requirements.length; i += 1) {
             const requirement = requirements[i];
 
-            inputPosition = requirement.validate(node.args, inputPosition, requirements, i);
+            inputPosition = requirement.validate(node, inputPosition, requirements, i);
         }
     }
 }

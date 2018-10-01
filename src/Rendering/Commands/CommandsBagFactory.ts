@@ -52,6 +52,7 @@ import { IfStringToFloatEndCommand } from "./IfStringToFloatEndCommand";
 import { IfStringToFloatStartCommand } from "./IfStringToFloatStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
+import { ImportStandaloneFunctionsCommand } from "./ImportStandaloneFunctionsCommand";
 import { InstanceOfCommand } from "./InstanceOfCommand";
 import { InterfaceEndCommand } from "./InterfaceEndCommand";
 import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
@@ -199,6 +200,7 @@ export class CommandsBagFactory {
             new IfStringToFloatStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
+            new ImportStandaloneFunctionsCommand(context),
             new InstanceOfCommand(context),
             new InterfaceEndCommand(context),
             new InterfaceMethodCommand(context),

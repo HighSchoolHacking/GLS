@@ -1,3 +1,4 @@
+import { CommandNode } from "../../../../Tokenization/Nodes/CommandNode";
 import { IGlsNode } from "../../../../Tokenization/Nodes/IGlsNode";
 import { TextNode } from "../../../../Tokenization/Nodes/TextNode";
 import { KeywordParameter } from "./KeywordParameter";
@@ -38,18 +39,20 @@ export class RepeatingParameters implements IParameter {
     /**
      * Validates whether a command's args match this requirement.
      *
-     * @param args   All args of a command.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    public validate(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
-        const endIndex = this.getEndingIndex(args, inputPosition, requirements, requirementPosition);
+    public validate(node: CommandNode, inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+        const endIndex = this.getEndingIndex(node, inputPosition, requirements, requirementPosition);
         const repeatedCount = endIndex - inputPosition;
 
         if (repeatedCount % this.parameters.length !== 0) {
-            throw new Error(`Expected a multiple of ${this.parameters.length} repeating parameters but got ${repeatedCount}.`);
+            throw new Error(
+                `${node.command}: Expected a multiple of ${this.parameters.length} repeating parameters but got ${repeatedCount}.`,
+            );
         }
 
         return endIndex;
@@ -58,14 +61,14 @@ export class RepeatingParameters implements IParameter {
     /**
      * Finds an index of a matched keyword parameter following a repeating parameter.
      *
-     * @param inputs   All args of a command.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns Index of a matched keyword parameter, or -1 if no match is found.
      */
     private doesNextCommandMatchKeywordParameter(
-        args: IGlsNode[],
+        node: CommandNode,
         inputPosition: number,
         requirements: IParameter[],
         requirementPosition: number,
@@ -73,8 +76,8 @@ export class RepeatingParameters implements IParameter {
         const nextRequirement = requirements[requirementPosition + 1];
 
         if (nextRequirement instanceof KeywordParameter) {
-            for (let i = inputPosition; i < args.length; i += 1) {
-                const arg = args[i];
+            for (let i = inputPosition; i < node.args.length; i += 1) {
+                const arg = node.args[i];
 
                 if (arg instanceof TextNode && nextRequirement.literals.has(arg.text)) {
                     return i;
@@ -88,26 +91,26 @@ export class RepeatingParameters implements IParameter {
     /**
      * Computes when repeating parameter inputs end.
      *
-     * @param inputs   All args of a command.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    private getEndingIndex(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
+    private getEndingIndex(node: CommandNode, inputPosition: number, requirements: IParameter[], requirementPosition: number): number {
         // If the last requirement is a repeating parameter, all subsequent inputs are acceptable
         if (requirementPosition === requirements.length - 1) {
-            return args.length;
+            return node.args.length;
         }
 
         // Termination case: if the next command is a KeywordParameter
-        const keywordMatchIndex = this.doesNextCommandMatchKeywordParameter(args, inputPosition, requirements, requirementPosition);
+        const keywordMatchIndex = this.doesNextCommandMatchKeywordParameter(node, inputPosition, requirements, requirementPosition);
         if (keywordMatchIndex !== -1) {
             return keywordMatchIndex;
         }
 
         // Termination case: there are too many remaining required parameters
-        return args.length - this.getRemainingRequiredParameters(requirements, requirementPosition);
+        return node.args.length - this.getRemainingRequiredParameters(requirements, requirementPosition);
     }
 
     /**
