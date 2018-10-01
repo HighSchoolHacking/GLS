@@ -74,11 +74,6 @@ These languages each need to be investigated and assigned a higher tier.
 
 ## Unsupported
 
-Some languages will enver be able to be accurately compiled to by GLS because of severe structural abnormalities in the language's design.
-These languages are so different from the norm that any attempt to output them from GLS would be horrendously overcomplicated and inaccurate.
-
-These languages will never be output by GLS for the following common reasons _(among others)_:
-
 <table>
     <thead>
         <th>Language</th>
@@ -101,6 +96,11 @@ These languages will never be output by GLS for the following common reasons _(a
         <td>✓</td>
     </tr>
 </table>
+
+Some languages will enver be able to be accurately compiled to by GLS because of severe structural abnormalities in the language's design.
+These languages are so different from the norm that any attempt to output them from GLS would be horrendously overcomplicated and inaccurate.
+
+These languages will never be output by GLS for the following common reasons _(among others)_:
 
 ## Best Guess
 
@@ -129,8 +129,6 @@ For example, when using GLS for snippets of code as sample answer guidelines to 
 
 ## Output Only
 
-These languages can be fully output by GLS but don't provide rich enough type information in their syntax to be statically converted to GLS.
-
 <table>
     <thead>
         <th>Language</th>
@@ -148,10 +146,9 @@ These languages can be fully output by GLS but don't provide rich enough type in
     </tbody>
 </table>
 
-## Partial Input
+These languages can be fully output by GLS but don't provide rich enough type information in their syntax to be statically converted to GLS.
 
-These languages may be generally compiled from their native source code to GLS with a "best guess" approximation of the equivalent GLS code.
-They must have some kind of gradual or even static typing, but are not required to fully support differences between all GLS types.
+## Partial Input
 
 <table>
     <thead>
@@ -170,14 +167,10 @@ They must have some kind of gradual or even static typing, but are not required 
     </tbody>
 </table>
 
+These languages may be generally compiled from their native source code to GLS with a "best guess" approximation of the equivalent GLS code.
+They must have some kind of gradual or even static typing, but are not required to fully support differences between all GLS types.
+
 ## Full
-
-These languages are capable of being compiled from their native source code to GLS and then back out to any supported language.
-
-In order for a language to be fully supported, it must:
-
-* Completely support static typings via a programmable AST.
-* Recognize differences between all GLS types, including `int` vs. `float`.
 
 <table>
     <thead>
@@ -194,4 +187,9 @@ In order for a language to be fully supported, it must:
     </tr>
 </table>
 
-language / compiler / comments
+These languages are capable of being compiled from their native source code to GLS and then back out to any supported language.
+
+In order for a language to be fully supported, it must:
+
+* Completely support static typings via a programmable AST.
+* Recognize differences between all GLS types, including `int` vs. `float`.
