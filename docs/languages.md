@@ -97,7 +97,7 @@ These languages each need to be investigated and assigned a higher tier.
     </tr>
 </table>
 
-Some languages will enver be able to be accurately compiled to by GLS because of severe structural abnormalities in the language's design.
+Some languages will never be able to be accurately compiled to by GLS because of severe structural abnormalities in the language's design.
 These languages are so different from the norm that any attempt to output them from GLS would be horrendously overcomplicated and inaccurate.
 
 These languages will never be output by GLS for the following common reasons _(among others)_:
