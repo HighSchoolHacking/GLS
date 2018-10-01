@@ -48,8 +48,8 @@ You can run specific suites of tests using `npm run test:integration` or `npm ru
 You can run a subset of commands in either by passing `--command`:
 
 ```shell
-npm run test:integration --command *string*
-npm run test:end-to-end --command StringFormat
+npm run test:run:integration --command *string*
+npm run test:run:end-to-end --command StringFormat
 ```
 
 When adding a new command, _always_ add new integration tests for it.

@@ -7,15 +7,6 @@ Although some output languages don't consider there to be a difference between a
 
 GLS considers the two to be two different data structures and has mostly separate commands for each.
 
-The only shared command between the two is `index`, which takes in a name of a container and an integer index.
-
-```gls
-index : container 1
-```
-
-* In C#: `container[1]`
-* In Python: `container[1]`
-
 ## Arrays
 
 Because arrays are fixed-length, there are very few operations available on them.
@@ -23,13 +14,22 @@ Because arrays are fixed-length, there are very few operations available on them
 Create new arrays with `array initialize`, which takes in the type of array and any number of initial items in the array.
 For variables, declare the type of the array with `array type`, which takes in the type of the array.
 
+Retrieve a single member of an array with `array index`, which takes in a name of a container and an integer index.
+
+```gls
+array index : container 1
+```
+
+* In C#: `container[1]`
+* In Python: `container[1]`
+
 Get the length of an array with `array length`, which takes in a name of an array.
 
 ```gls
 variable : fruits { array type : string } { array initialize : string "apple" "banana" "cherry" }
 
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
-print : { string format : ("The first fruit is {0}.") { index : fruits 0 } string }
+print : { string format : ("The first fruit is {0}.") { array index : fruits 0 } string }
 ```
 
 In C#:
@@ -55,6 +55,15 @@ print("The first fruit is {0}.".format(fruits[0]))
 GLS lists are much more flexible than arrays.
 They can be dynamically resized, added onto one another, and sort _\(for primitive types\)_.
 
+Retrieve a single member of a list with `list index`, which takes in a name of a container and an integer index.
+
+```gls
+list index : container 1
+```
+
+* In C#: `container[1]`
+* In Python: `container[1]`
+
 Similar to arrays, create a new list with `list initialize`, declare a list type with `list type`, and get a list's length with `list length`.
 Add a single item to a list with `list pop`, which takes in a name of a list and a new item, or add a full list to another list with `list add list`, which takes in the name of an existing list and a second list to add to the existing list.
 
@@ -65,8 +74,8 @@ list push : fruits "dragonberry"
 list add list : fruits { list initialize : string "elderberry" "fig" }
 
 print : { string format : ("There are {0} fruits.") { list length : fruits } int }
-print : { string format : ("The first fruit is {0}.") { index : fruits 0 } string }
-print : { string format : ("The last fruit is {0}.") { index : fruits { operation : { list length : fruits } minus 1 } } string }
+print : { string format : ("The first fruit is {0}.") { list index : fruits 0 } string }
+print : { string format : ("The last fruit is {0}.") { list index : fruits { operation : { list length : fruits } minus 1 } } string }
 ```
 
 In C#:

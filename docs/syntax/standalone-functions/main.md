@@ -5,8 +5,8 @@ All languages provide some way to execute code immediately.
 Scripting languages such as Python and Ruby will execute all code in order immediately,
 whereas class-based languages such as C# and Java require a class wrapping a static method akin to C/C++'s "main" function.
 
-GLS resolves the differences by declaring an area as a "main context".
-A main function may be declared within that context.
+GLS resolves the differences by declaring an area as a "main context" with `main context start` and `main context end`.
+A main function may be declared within that context with `main start` and `main end`.
 
 ```gls
 main context start
@@ -40,11 +40,11 @@ if __name__ == "__main__":
 ## Functions
 
 Main contexts, other than the way they're declared, are functionally identically to standalone function groups.
-Use the `main group` command to refer to the group name.
+That means you can still declare standalone functions within them.
 
 ```gls
 main context start
-    standalone function declare start : private { main group } SayHello void name string
+    standalone function declare start : private SayHello void name string
         print : { concatenate : ("Hello, ") name "!" }
     standalone function declare end
 
@@ -61,7 +61,7 @@ using System;
 
 class Program
 {
-    void SayHello(string name)
+    private void SayHello(string name)
     {
         Console.WriteLine("Hello, " + name + "!");
     }

@@ -13,7 +13,7 @@ class start : Announcer
         print : { concatenate : { member variable : private { this } greeting } ", " name "!" }
     member function declare end
 
-    constructor start : Announcer greeting string
+    constructor start : public Announcer greeting string
         operation : { member variable : private { this } greeting } equals greeting
     constructor end
 class end

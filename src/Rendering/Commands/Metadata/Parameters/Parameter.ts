@@ -1,4 +1,4 @@
-import { IGlsNode } from "../../../../Tokenization/Nodes/IGlsNode";
+import { CommandNode } from "../../../../Tokenization/Nodes/CommandNode";
 
 /**
  * Some parameter(s) to be passed to a command.
@@ -12,11 +12,11 @@ export interface IParameter {
     /**
      * Validates whether a command's args match this requirement.
      *
-     * @param args   All args of a command.
+     * @param node   Command node with args from a source file.
      * @param inputPosition   Index of a starting input under test.
      * @param requirements   All parameter requirements.
      * @param requirementPosition   Index of the parameter requirement under test.
      * @returns A new input position following all valid inputs.
      */
-    validate(args: IGlsNode[], inputPosition: number, requirements: IParameter[], requirementPosition: number): number;
+    validate(command: CommandNode, inputPosition: number, requirements: IParameter[], requirementPosition: number): number;
 }
