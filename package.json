@@ -18,7 +18,6 @@
         "docs:gls": "node util/docs/compileGls.js",
         "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
-        "precommit": "pretty-quick --staged --write",
         "prepublishOnly": "npm run util:refresh-docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
         "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
@@ -60,5 +59,10 @@
         "tslint-config-prettier": "^1.15.0",
         "typescript": "^3.1.1",
         "yargs": "^12.0.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged --write"
+        }
     }
 }
