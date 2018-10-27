@@ -1,3 +1,3 @@
 //
-public static string aaa;
+public static String aaa;
 //

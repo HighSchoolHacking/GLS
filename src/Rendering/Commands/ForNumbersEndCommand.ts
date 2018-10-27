@@ -19,4 +19,13 @@ export class ForNumbersEndCommand extends BlockEndCommand {
     public getMetadata(): CommandMetadata {
         return ForNumbersEndCommand.metadata;
     }
+
+    /**
+     * Renders the end block string.
+     *
+     * @returns The end block string.
+     */
+    protected renderBlockEnd(): string {
+        return this.language.syntax.loops.forNumbersEnd;
+    }
 }

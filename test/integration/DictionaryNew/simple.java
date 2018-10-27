@@ -1,3 +1,3 @@
 //
-new HashMap<string, int>()
+new HashMap<String, int>()
 //

@@ -1,3 +1,3 @@
 //
-public string aaa;
+public String aaa;
 //

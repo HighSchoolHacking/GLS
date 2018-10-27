@@ -1,4 +1,4 @@
 //
 class Abc {
-    public abstract string defGhi(float jkl);
+    public abstract String defGhi(float jkl);
 //

@@ -44,7 +44,7 @@ export class ForEachStartCommand extends Command {
             line += this.language.syntax.variables.declaration;
         }
         if (this.language.syntax.variables.explicitTypes && !this.language.syntax.variables.typesAfterName) {
-            line += parameters[2] + " ";
+            line += this.context.convertCommon(CommandNames.Type, parameters[2]) + " ";
         }
 
         line += parameters[3];

@@ -33,6 +33,11 @@ export class StringFormatSyntax {
     public formatRight: string;
 
     /**
+     * Whether input replacement formats include the printed index.
+     */
+    public includeIndexInFormatting: boolean;
+
+    /**
      * Whether to include C-syle type descriptors in format string inputs.
      */
     public inputTypes: boolean;

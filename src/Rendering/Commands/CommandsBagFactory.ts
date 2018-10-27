@@ -40,7 +40,9 @@ import { FileStartCommand } from "./FileStartCommand";
 import { FinallyEndCommand } from "./FinallyEndCommand";
 import { FinallyStartCommand } from "./FinallyStartCommand";
 import { ForEachEndCommand } from "./ForEachEndCommand";
+import { ForEachKeyEndCommand } from "./ForEachKeyEndCommand";
 import { ForEachKeyStartCommand } from "./ForEachKeyStartCommand";
+import { ForEachPairEndCommand } from "./ForEachPairEndCommand";
 import { ForEachPairStartCommand } from "./ForEachPairStartCommand";
 import { ForEachStartCommand } from "./ForEachStartCommand";
 import { ForNumbersEndCommand } from "./ForNumbersEndCommand";
@@ -188,7 +190,9 @@ export class CommandsBagFactory {
             new FinallyEndCommand(context),
             new FinallyStartCommand(context),
             new ForEachEndCommand(context),
+            new ForEachKeyEndCommand(context),
             new ForEachKeyStartCommand(context),
+            new ForEachPairEndCommand(context),
             new ForEachPairStartCommand(context),
             new ForEachStartCommand(context),
             new ForNumbersEndCommand(context),

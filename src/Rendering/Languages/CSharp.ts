@@ -121,7 +121,7 @@ export class CSharp extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "public ";
+        exports.exportedLeft = "public ";
         exports.internal = "";
     }
 
@@ -459,6 +459,9 @@ export class CSharp extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " (";
         loops.whileStartRight = ") {";
@@ -624,6 +627,7 @@ export class CSharp extends Language {
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";
+        formatting.includeIndexInFormatting = true;
         formatting.inputTypes = false;
         formatting.useInterpolation = false;
     }

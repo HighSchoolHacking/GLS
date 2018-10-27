@@ -33,6 +33,16 @@ export class LoopSyntax {
     public forEachEnd: string;
 
     /**
+     * How to end a keys foreach loop.
+     */
+    public forEachKeyEnd: string;
+
+    /**
+     * How to end a pairs foreach loop.
+     */
+    public forEachPairEnd: string;
+
+    /**
      * How objects may give their listing of keys, such as ".Keys".
      */
     public forEachGetKeys: string;
@@ -96,6 +106,11 @@ export class LoopSyntax {
      * Separates iteration variable and array in a foreach loop's initial line.
      */
     public forEachStartSeparator: string;
+
+    /**
+     * How to end a numbers loop.
+     */
+    public forNumbersEnd: string;
 
     /**
      * Whether Pythonic ranged loops are used, rather than traditional C-like ones.

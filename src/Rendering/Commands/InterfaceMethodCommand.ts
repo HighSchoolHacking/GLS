@@ -15,7 +15,7 @@ export class InterfaceMethodCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceMethod)
         .withDescription("Declares a method within an interface")
         .withParameters([
-            new SingleParameter("MethodName", "The method name.", true),
+            new SingleParameter("methodName", "The method name.", true),
             new SingleParameter("returnType", "Return type of the method", true),
             new RepeatingParameters("Method arguments", [
                 new SingleParameter("argumentName", "Name of argument.", true),
@@ -60,10 +60,11 @@ export class InterfaceMethodCommand extends Command {
             line += this.language.syntax.interfaces.declareMethodRight + ": " + parameters[2];
         } else {
             line += this.language.syntax.interfaces.declareMethodLeft;
-            line += parameters[2] + " " + parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
+            line += this.context.convertCommon(CommandNames.Type, parameters[2]) + " ";
+            line += parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length - 1; i += 2) {
-                line += parameters[i + 1] + " " + parameters[i];
+                line += this.context.convertCommon(CommandNames.Type, parameters[i + 1]) + " " + parameters[i];
                 if (i !== parameters.length - 2) {
                     line += ", ";
                 }

@@ -1,3 +1,3 @@
 //
-public static string aaa = "bbb";
+public static String aaa = "bbb";
 //

@@ -92,7 +92,19 @@ export class ClassStartCommand extends Command {
         }
 
         remainingParameters.shift();
-        return this.language.syntax.classes.exports.exported;
+        let exported = this.language.syntax.classes.exports.exportedLeft;
+
+        if (this.language.syntax.classes.exports.exportedIncludesName) {
+            if (remainingParameters[0] === KeywordNames.Abstract) {
+                exported += remainingParameters[1];
+            } else {
+                exported += remainingParameters[0];
+            }
+
+            exported += this.language.syntax.classes.exports.exportedMiddle;
+        }
+
+        return exported;
     }
 
     /**

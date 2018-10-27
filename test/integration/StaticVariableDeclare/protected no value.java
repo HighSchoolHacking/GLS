@@ -1,3 +1,3 @@
 //
-protected static string aaa;
+protected static String aaa;
 //

@@ -1,4 +1,4 @@
 //
-for (let key: string in container) {
+for (let fruit of basket) {
 }
 //

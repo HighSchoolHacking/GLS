@@ -72,8 +72,8 @@ export class ForEachPairStartCommand extends Command {
 
             if (this.language.syntax.loops.forEachPairsAsPair) {
                 typeName = this.language.syntax.loops.forEachPairsPairClass;
-                typeName += "<" + parameters[4];
-                typeName += ", " + parameters[6] + ">";
+                typeName += "<" + this.context.convertCommon(CommandNames.Type, parameters[4]);
+                typeName += ", " + this.context.convertCommon(CommandNames.Type, parameters[6]) + ">";
             } else {
                 typeName = parameters[4];
             }

@@ -1,3 +1,3 @@
 #
-"Foo: $0%s; Bar: $1%d" % [foo, bar]
+"Foo: %s; Bar: %d" % [foo, bar]
 #

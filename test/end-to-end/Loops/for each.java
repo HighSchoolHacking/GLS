@@ -1,12 +1,12 @@
 //
 // Keys
-for (string key : container.keySet()) {
+for (String key : container.keySet()) {
     // ...
 }
 
 // Pairs
-for (Map.Entry<string, int> pair : container.entrySet()) {
-    string key = pair.getKey();
+for (Map.Entry<String, int> pair : container.entrySet()) {
+    String key = pair.getKey();
     int value = pair.getValue();
     // ...
 }

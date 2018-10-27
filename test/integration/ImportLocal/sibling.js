@@ -1,3 +1,3 @@
 //
-import { fff, ggg } from "./eee";
+const { fff, ggg } = require("./eee");
 //

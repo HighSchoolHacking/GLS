@@ -1,3 +1,3 @@
 //
-protected static string aaa = "bbb";
+protected static String aaa = "bbb";
 //

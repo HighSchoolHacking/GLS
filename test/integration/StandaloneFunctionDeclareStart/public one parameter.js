@@ -1,3 +1,3 @@
 //
-export function abc(def) {
+exports.abc = function abc(def) {
 //

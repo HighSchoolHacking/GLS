@@ -1,4 +1,4 @@
 //
 class Abc {
-    private static string defGhi(float jkl) {
+    private static String defGhi(float jkl) {
 //

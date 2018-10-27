@@ -1,26 +1,25 @@
 import * as fs from "fs";
-import * as minimatch from "minimatch";
+import * as path from "path";
 
 /**
- * Retrieves, command names within a directory.
+ * Retrieves child .gls files within directories.
  *
- * @param rootPath   An absolute path to a command's tests folder.
- * @param inclusions   Command groups to only include, if not all.
- * @returns Command names within the directory.
+ * @param rootPath   Absolute path to directories.
+ * @param directoryNames   Directory names to search within.
+ * @returns Child .gls files within the directories.
  */
-export const findGlsFilesUnder = (rootPath: string, inclusions?: Set<string>) => {
-    const childrenNames = fs.readdirSync(rootPath);
-    if (inclusions === undefined) {
-        return childrenNames;
+export const findGlsFilesUnder = (rootPath: string, directoryNames: string[]) => {
+    const tests = new Map<string, string[]>();
+
+    for (const childName of directoryNames) {
+        tests.set(
+            childName,
+            fs
+                .readdirSync(path.resolve(rootPath, childName))
+                .filter((testFileName) => testFileName.indexOf(".gls") !== -1)
+                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))),
+        );
     }
 
-    const inclusionMatchers = Array.from(inclusions.keys());
-
-    return childrenNames.filter((childName) =>
-        inclusionMatchers.some((inclusionMatcher) =>
-            minimatch(childName, inclusionMatcher, {
-                nocase: true,
-            }),
-        ),
-    );
+    return tests;
 };

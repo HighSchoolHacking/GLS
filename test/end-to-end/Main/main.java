@@ -1,6 +1,6 @@
 //
 class Program {
-    private static void sayHello(string name) {
+    private static void sayHello(String name) {
         System.out.println("Hello, " + name + "!");
     }
 

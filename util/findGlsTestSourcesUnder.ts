@@ -1,7 +1,6 @@
 import * as fs from "fs";
+import * as minimatch from "minimatch";
 import * as path from "path";
-
-import { findGlsFilesUnder } from "./findGlsFilesUnder";
 
 /**
  * Retrieves, for each command in a directory, tests under that command.
@@ -10,8 +9,8 @@ import { findGlsFilesUnder } from "./findGlsFilesUnder";
  * @param inclusions   Command groups to run, if not all.
  * @returns Tests for each command in a directory.
  */
-export const findGlsTestSourcesUnder = (rootPath: string, inclusions?: Set<string>): Map<string, string[]> => {
-    const childrenNames = findGlsFilesUnder(rootPath, inclusions);
+export const findGlsTestSourcesUnder = (rootPath: string): Map<string, string[]> => {
+    const childrenNames = fs.readdirSync(rootPath);
     const tests = new Map<string, string[]>();
 
     for (const childName of childrenNames) {

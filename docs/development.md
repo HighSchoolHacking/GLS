@@ -3,7 +3,15 @@
 To build from scratch, install [Node.js](http://node.js.org) and run `npm install` to install development dependencies.
 GLS is written in [TypeScript](http://typescriptlang.org).
 
-The recommended setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:
+To run end-to-end tests, you'll need the following installed globally:
+
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads)
+  * [_Windows: with `java.exe` on your path_](https://stackoverflow.com/questions/16137713/how-do-i-run-a-java-program-from-the-command-line-on-windows)
+* [.NET Core SDK](https://microsoft.com/net/core)
+* [Python 3](https://www.python.org/downloads)
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation)
+
+The recommended development setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:
 
 * [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 * [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
@@ -39,22 +47,37 @@ mocha test/unit/Tokenization/Parsers/SourceLineParserTests.js
 mocha test/unit/Tokenization/Parsers/SourceLineParserTests.js -g "nested CommandNode"
 ```
 
-### Integration and End-To-End Tests
+### Integration Tests
 
-Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration) and [test/end-to-end](https://github.com/general-language-syntax/GLS/tree/master/test/end-to-end).
+Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration).
+These integration tests each take in a `.gls` file, compile it to each supported language, and validate the output is the same as the expected outputs contained in the folder.
+
 Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
-You can run specific suites of tests using `npm run test:integration` or `npm run test:end-to-end`.
 
-You can run a subset of commands in either by passing `--command`:
+Run integration tests with `npm run test:integration`.
+You can run a subset of commands by passing `-- --include=` with a case-insensitive glob to include test names:
 
 ```shell
-npm run test:run:integration --command *string*
-npm run test:run:end-to-end --command StringFormat
+npm run test:run:integration -- --include=StringFormat
+npm run test:run:integration -- --include=*dictionary* --include=*string*
 ```
 
 When adding a new command, _always_ add new integration tests for it.
 
-When adding a new set of commands around a feature, add an end-to-end test for it.
+### End-to-End Tests
+
+End-to-end tests are similar to integration tests, but each test folder contains a group of files as a project.
+Test projects that also contain an `output.txt` have their "index" (main) files run in each supported language and the console output validated to be the same.
+
+Run integration tests with `npm run test:end-to-end`.
+You can run a subset of commands by passing `-- --include=` with a case-insensitive glob to include test names:
+
+```shell
+npm run test:run:end-to-end -- --include=Array
+npm run test:run:end-to-end -- --include=*array* --include=*list*
+```
+
+When adding a new command or fixing a bug, you should generally add or improve end-to-end tests to cover the change.
 
 ## Adding Commands
 

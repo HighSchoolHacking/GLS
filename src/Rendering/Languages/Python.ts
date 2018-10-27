@@ -101,7 +101,7 @@ export class Python extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "";
+        exports.exportedLeft = "";
         exports.internal = "";
     }
 
@@ -358,7 +358,7 @@ export class Python extends Language {
         imports.case = CaseStyle.PythonImportCase;
         imports.explicit = true;
         imports.leftAbsolute = "from ";
-        imports.leftLocal = "from .";
+        imports.leftLocal = "from ";
         imports.middle = " import ";
         imports.right = "";
         imports.useLocalRelativeImports = true;
@@ -426,8 +426,11 @@ export class Python extends Language {
         loops.forEachEnd = "\0";
         loops.forEachGetKeys = "";
         loops.forEachGetPairs = ".iteritems()";
+        loops.forEachKeyEnd = "\0";
+        loops.forEachPairEnd = "\0";
         loops.forEachPairsAsPair = true;
         loops.forEachRight = "";
+        loops.forNumbersEnd = "\0";
 
         loops.forEachStartLeft = "for";
         loops.forEachStartSeparator = " in ";
@@ -581,6 +584,7 @@ export class Python extends Language {
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";
+        formatting.includeIndexInFormatting = true;
         formatting.inputTypes = false;
         formatting.useInterpolation = false;
     }

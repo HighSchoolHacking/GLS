@@ -61,6 +61,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
      */
     private renderFloating(parameters: string[]): LineResults {
         const returnType: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
+        const functionName: string = this.context.convertStringToCase(parameters[2], this.language.syntax.functions.case);
         let declaration = "";
         let output: CommandResult[];
 
@@ -69,11 +70,16 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
         }
 
         if (parameters[1] === KeywordNames.Public) {
-            declaration += this.language.syntax.classes.exports.exported;
+            declaration += this.language.syntax.classes.exports.exportedLeft;
+
+            if (this.language.syntax.classes.exports.exportedIncludesName) {
+                declaration += functionName;
+                declaration += this.language.syntax.classes.exports.exportedMiddle;
+            }
         }
 
         declaration += this.language.syntax.functions.defineStartLeft;
-        declaration += this.context.convertStringToCase(parameters[2], this.language.syntax.functions.case);
+        declaration += functionName;
         declaration += "(";
 
         if (parameters.length > 5) {

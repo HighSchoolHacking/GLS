@@ -1,3 +1,3 @@
 #
-aaa.sort()
+aaa.sort!()
 #

@@ -1,3 +1,3 @@
 //
-public Foo(string name) {
+public Foo(String name) {
 //

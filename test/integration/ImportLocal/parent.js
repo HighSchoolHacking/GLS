@@ -1,3 +1,3 @@
 //
-import { eee, fff } from "..";
+const { eee, fff } = require("..");
 //

@@ -105,7 +105,7 @@ export class Java extends Language {
         arrays.className = "Array";
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
-        arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Function);
+        arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
     }
 
     /**
@@ -123,7 +123,7 @@ export class Java extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "public ";
+        exports.exportedLeft = "public ";
         exports.internal = "";
     }
 
@@ -184,6 +184,7 @@ export class Java extends Language {
             dictionary: "HashMap",
             list: "ArrayList",
             number: "double",
+            string: "String",
         };
 
         classes.constructors.private = "private ";
@@ -466,6 +467,9 @@ export class Java extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " (";
         loops.whileStartRight = ") {";
@@ -624,6 +628,7 @@ export class Java extends Language {
         formatting.formatRight = ")";
         formatting.formatInputLeft = "%";
         formatting.formatInputRight = "";
+        formatting.includeIndexInFormatting = true;
         formatting.inputTypes = true;
         formatting.useInterpolation = false;
 

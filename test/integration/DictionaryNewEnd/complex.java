@@ -1,4 +1,4 @@
 //
-new HashMap<string, HashMap<string, int>>() {{
+new HashMap<String, HashMap<String, int>>() {{
 }};
 //

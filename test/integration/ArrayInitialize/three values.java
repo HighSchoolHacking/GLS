@@ -1,3 +1,3 @@
 //
-new string[] { "aaa", bbb, "ccc" }
+new String[] { "aaa", bbb, "ccc" }
 //

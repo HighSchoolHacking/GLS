@@ -1,3 +1,3 @@
 //
-export function abc(def, ghi) {
+exports.abc = function abc(def, ghi) {
 //

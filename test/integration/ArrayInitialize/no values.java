@@ -1,3 +1,3 @@
 //
-new string[0]
+new String[0]
 //
