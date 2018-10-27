@@ -40,6 +40,6 @@ export class FileEndCommand extends Command {
             output[0].indentation = -this.language.syntax.files.indentation;
         }
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

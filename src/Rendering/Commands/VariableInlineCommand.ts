@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -34,12 +35,16 @@ export class VariableInlineCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (parameters.length === 3 && !this.language.syntax.variables.declarationRequired) {
-            return LineResults.newSingleLine("\0", false);
+            return LineResults.newSingleLine("\0");
         }
 
+        const imports: Import[] = [];
         const name: string = parameters[1];
-        const typeName: string = this.context.convertCommon(CommandNames.Type, parameters[2]);
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+        const typeName: string = typeNameLine.commandResults[0].text;
         let output = "";
+
+        imports.push(...typeNameLine.addedImports);
 
         if (this.language.syntax.variables.explicitTypes) {
             if (this.language.syntax.variables.typesAfterName) {
@@ -53,22 +58,15 @@ export class VariableInlineCommand extends Command {
         }
 
         if (parameters.length > 3) {
-            output += " " + this.renderVariableValue(parameters[3]);
+            const operatorLine = this.context.convertParsed([CommandNames.Operator, "equals"]);
+            const valueLine = this.context.convertParsed([CommandNames.Value, parameters[3]]);
+
+            imports.push(...operatorLine.addedImports);
+            imports.push(...valueLine.addedImports);
+
+            output += " " + operatorLine.commandResults[0].text + " " + valueLine.commandResults[0].text;
         }
 
-        return LineResults.newSingleLine(output, false);
-    }
-
-    /**
-     * Renders the "= value" part of a command.
-     *
-     * @param valueRaw   The raw value of a variable.
-     * @returns   The "= value" part of a command.
-     */
-    private renderVariableValue(valueRaw: string): string {
-        const operator = this.context.convertCommon(CommandNames.Operator, "equals");
-        const value = this.context.convertCommon(CommandNames.Value, valueRaw);
-
-        return operator + " " + value;
+        return LineResults.newSingleLine(output).withImports(imports);
     }
 }

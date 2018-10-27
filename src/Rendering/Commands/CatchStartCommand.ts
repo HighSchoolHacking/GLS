@@ -52,6 +52,6 @@ export class CatchStartCommand extends Command {
 
         this.addLineEnder(lines, this.language.syntax.exceptions.catchStartRight, 2);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 }

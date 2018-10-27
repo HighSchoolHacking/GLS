@@ -4,6 +4,7 @@ import { IGlsNode } from "../Tokenization/Nodes/IGlsNode";
 import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { Command } from "./Commands/Command";
 import { CommandsBag } from "./Commands/CommandsBag";
+import { Import } from "./Languages/Imports/Import";
 import { LineResults } from "./LineResults";
 import { ParametersValidator } from "./ParametersValidator";
 
@@ -39,11 +40,11 @@ export class GlsNodeRenderer {
      */
     public renderNode(node: IGlsNode): LineResults {
         if (node instanceof BlankNode) {
-            return LineResults.newSingleLine("", false);
+            return LineResults.newSingleLine("");
         }
 
         if (node instanceof TextNode) {
-            return LineResults.newSingleLine(node.text, false);
+            return LineResults.newSingleLine(node.text);
         }
 
         if (node instanceof CommandNode) {
@@ -64,15 +65,18 @@ export class GlsNodeRenderer {
 
         this.parametersValidator.validate(node, command.getMetadata().parameters);
 
+        const imports: Import[] = [];
         const parameters = [node.command];
 
         for (const arg of node.args) {
-            const subResults = this.renderNode(arg).commandResults;
-            for (const subResult of subResults) {
+            const subResults = this.renderNode(arg);
+            imports.push(...subResults.addedImports);
+
+            for (const subResult of subResults.commandResults) {
                 parameters.push(subResult.text);
             }
         }
 
-        return command.render(parameters);
+        return command.render(parameters).withImports(imports);
     }
 }

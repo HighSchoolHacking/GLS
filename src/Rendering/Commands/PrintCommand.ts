@@ -39,10 +39,8 @@ export class PrintCommand extends Command {
 
         line += this.language.syntax.printing.end;
 
-        const results = LineResults.newSingleLine(line, true);
-
-        results.addImports(this.language.syntax.printing.requiredImports);
-
-        return results;
+        return LineResults.newSingleLine(line)
+            .withAddSemicolon(true)
+            .withImports(this.language.syntax.printing.requiredImports);
     }
 }

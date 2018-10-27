@@ -39,13 +39,10 @@ export class OperationStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output = this.context.convertCommon(CommandNames.Value, parameters[1]);
+        const operationParameters = parameters.slice();
 
-        for (let i = 2; i < parameters.length - 1; i += 2) {
-            output += " " + this.context.convertCommon(CommandNames.Operator, parameters[i]);
-            output += " " + this.context.convertCommon(CommandNames.Value, parameters[i + 1]);
-        }
+        operationParameters[0] = CommandNames.Operation;
 
-        return LineResults.newSingleLine(output, false);
+        return this.context.convertParsed(operationParameters).withAddSemicolon(false);
     }
 }

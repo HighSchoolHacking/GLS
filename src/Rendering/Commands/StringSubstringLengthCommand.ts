@@ -55,7 +55,7 @@ export class StringSubstringLengthCommand extends Command {
 
         output += this.language.syntax.strings.substrings.right;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 
     /**

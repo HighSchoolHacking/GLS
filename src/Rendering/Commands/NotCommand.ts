@@ -31,6 +31,6 @@ export class NotCommand extends Command {
     public render(parameters: string[]): LineResults {
         const not = this.language.syntax.operators.not;
 
-        return LineResults.newSingleLine(not + parameters[1], false);
+        return LineResults.newSingleLine(not + parameters[1]);
     }
 }

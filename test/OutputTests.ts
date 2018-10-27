@@ -2,29 +2,8 @@ import { expect } from "chai";
 import * as fs from "mz/fs";
 import * as path from "path";
 
+import { IOutputGenerator } from "../util/OutputGenerators";
 import { runCommandComparisonTest } from "./ComparisonTests";
-import { testCSharpGenerator } from "../util/OutputGenerators/CSharpOutputGenerator";
-import { testJavaScriptGenerator } from "../util/OutputGenerators/JavaScriptOutputGenerator";
-import { testJavaGenerator } from "../util/OutputGenerators/JavaOutputGenerator";
-import { testPythonGenerator } from "../util/OutputGenerators/PythonOutputGenerator";
-import { testRubyGenerator } from "../util/OutputGenerators/RubyOutputGenerator";
-import { testTypeScriptGenerator } from "../util/OutputGenerators/TypeScriptOutputGenerator";
-
-export interface IOutputGeneratorArgs {
-    files: string[];
-    projectPath: string;
-}
-
-export type IOutputGenerator = (args: IOutputGeneratorArgs) => Promise<string[]>;
-
-export const outputGenerators: { [i: string]: IOutputGenerator } = {
-    "C#": testCSharpGenerator,
-    Java: testJavaGenerator,
-    JavaScript: testJavaScriptGenerator,
-    Python: testPythonGenerator,
-    Ruby: testRubyGenerator,
-    TypeScript: testTypeScriptGenerator,
-};
 
 export const ensureSameFileComparisons = async (projectPath: string, files: string[], languageName: string) => {
     for (const file of files) {

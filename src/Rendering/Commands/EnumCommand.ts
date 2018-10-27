@@ -40,6 +40,6 @@ export class EnumCommand extends Command {
         output += parameters[2];
         output += this.language.syntax.enums.valueRight;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

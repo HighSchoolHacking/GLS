@@ -40,6 +40,6 @@ export class CommentLineCommand extends Command {
         output += parameters.slice(1).join(" ");
         output += language.syntax.comments.lineRight;
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

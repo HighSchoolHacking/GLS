@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -42,16 +43,20 @@ export class LambdaBodyCommand extends Command {
             throw new Error("returnTypeRequired=true not implemented");
         }
 
+        const imports: Import[] = [];
         let lambdaBody = "";
 
         lambdaBody += this.language.syntax.lambdas.functionLeft;
 
         if (parameters.length > 3) {
-            lambdaBody += this.generateParameterVariable(parameters, 2);
+            const typeLine = this.generateParameterVariable(parameters, 2);
+            lambdaBody += typeLine.commandResults[0].text;
+            imports.push(...typeLine.addedImports);
 
             for (let i = 4; i < parameters.length - 1; i += 2) {
-                lambdaBody += ", ";
-                lambdaBody += this.generateParameterVariable(parameters, i);
+                const nextTypeLine = this.generateParameterVariable(parameters, i);
+                lambdaBody += ", " + nextTypeLine.commandResults[0].text;
+                imports.push(...nextTypeLine.addedImports);
             }
         }
 
@@ -60,24 +65,27 @@ export class LambdaBodyCommand extends Command {
         lambdaBody += this.language.syntax.lambdas.functionRight;
 
         const output = [new CommandResult(lambdaBody, 0)];
-        return new LineResults(output, false);
+        return new LineResults(output).withImports(imports);
     }
 
     /**
-     * Generates a string for a parameter.
+     * Generates line results for a parameter.
      *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
-    private generateParameterVariable(parameters: string[], i: number): string {
+    private generateParameterVariable(parameters: string[], i: number): LineResults {
         if (!this.language.syntax.lambdas.parameterTypeRequired) {
-            return parameters[i];
+            return LineResults.newSingleLine(parameters[i]);
         }
 
         const parameterName: string = parameters[i];
-        const parameterType: string = this.context.convertCommon(CommandNames.Type, parameters[i + 1]);
+        const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
+        const parameterType = parameterTypeLine.commandResults[0].text;
 
-        return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]).commandResults[0].text;
+        return this.context
+            .convertParsed([CommandNames.VariableInline, parameterName, parameterType])
+            .withImports(parameterTypeLine.addedImports);
     }
 }

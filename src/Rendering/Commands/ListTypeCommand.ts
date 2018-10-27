@@ -29,19 +29,19 @@ export class ListTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let typeName: string;
+        let typeNameRaw: string;
 
         if (this.language.syntax.lists.asArray) {
-            typeName = parameters[1] + "[]";
+            typeNameRaw = parameters[1] + "[]";
         } else {
-            typeName = "list<" + parameters[1] + ">";
+            typeNameRaw = "list<" + parameters[1] + ">";
         }
 
-        typeName = this.context.convertCommon(CommandNames.Type, typeName);
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, typeNameRaw]);
+        const results = LineResults.newSingleLine(typeNameLine.commandResults[0].text);
 
-        const results = LineResults.newSingleLine(typeName, false);
-
-        results.addImports(this.language.syntax.lists.requiredImports);
+        results.withImports(this.language.syntax.lists.requiredImports);
+        results.withImports(typeNameLine.addedImports);
 
         return results;
     }

@@ -26,6 +26,6 @@ export class ThisCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.language.syntax.classes.this, false);
+        return LineResults.newSingleLine(this.language.syntax.classes.this);
     }
 }

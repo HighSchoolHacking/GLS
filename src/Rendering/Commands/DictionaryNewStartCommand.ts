@@ -35,16 +35,15 @@ export class DictionaryNewStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.dictionaries.initializeAsNew) {
-            return LineResults.newSingleLine("{", false);
+            return LineResults.newSingleLine("{");
         }
 
-        let output = "new ";
-
-        output += this.context.convertParsed([CommandNames.DictionaryType, parameters[1], parameters[2]]).commandResults[0].text;
-
+        const typeLine = this.context.convertParsed([CommandNames.DictionaryType, parameters[1], parameters[2]]);
+        const output = "new " + typeLine.commandResults[0].text;
         const results: CommandResult[] = [new CommandResult(output, 0)];
+
         this.addLineEnder(results, this.language.syntax.dictionaries.initializeStart, 1);
 
-        return new LineResults(results, false);
+        return new LineResults(results).withImports(this.language.syntax.dictionaries.requiredImports).withImports(typeLine.addedImports);
     }
 }

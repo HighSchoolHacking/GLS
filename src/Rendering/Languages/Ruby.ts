@@ -104,6 +104,7 @@ export class Ruby extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**

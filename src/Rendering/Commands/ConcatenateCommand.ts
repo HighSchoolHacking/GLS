@@ -42,6 +42,6 @@ export class ConcatenateCommand extends Command {
             output += this.language.syntax.strings.concatenate + parameters[i];
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

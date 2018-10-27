@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -35,6 +36,7 @@ export class ForEachStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         let line: string = this.language.syntax.loops.forEachStartLeft;
         let output: CommandResult[];
 
@@ -44,7 +46,10 @@ export class ForEachStartCommand extends Command {
             line += this.language.syntax.variables.declaration;
         }
         if (this.language.syntax.variables.explicitTypes && !this.language.syntax.variables.typesAfterName) {
-            line += this.context.convertCommon(CommandNames.Type, parameters[2]) + " ";
+            const typeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+
+            line += typeLine.commandResults[0].text + " ";
+            imports.push(...typeLine.addedImports);
         }
 
         line += parameters[3];
@@ -55,6 +60,6 @@ export class ForEachStartCommand extends Command {
         output = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.syntax.loops.forEachStartRight, 1);
 
-        return new LineResults(output, false);
+        return new LineResults(output).withImports(imports);
     }
 }

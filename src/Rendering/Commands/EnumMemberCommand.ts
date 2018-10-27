@@ -46,6 +46,6 @@ export class EnumMemberCommand extends Command {
             output += this.language.syntax.enums.declareLastRight;
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

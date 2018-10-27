@@ -59,7 +59,7 @@ export class StaticFunctionCommand extends Command {
 
         output += ")";
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 
     /**

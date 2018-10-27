@@ -67,7 +67,7 @@ export class StandaloneFunctionCommand extends Command {
 
         output += ")";
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 
     /**

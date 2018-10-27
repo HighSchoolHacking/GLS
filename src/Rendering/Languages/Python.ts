@@ -84,6 +84,7 @@ export class Python extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "list";
         arrays.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
+        arrays.requiredImports = [];
     }
 
     /**

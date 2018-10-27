@@ -1,8 +1,7 @@
 //
-import classes.point.Point;
-
 package classes;
 
+import classes.point.Point;
 
 class Program {
     public static void main(String[] args) {

@@ -29,7 +29,7 @@ export class ValueCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.convertValue(parameters[1]), false);
+        return LineResults.newSingleLine(this.convertValue(parameters[1]));
     }
 
     /**

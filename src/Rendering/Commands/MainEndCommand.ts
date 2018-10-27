@@ -40,6 +40,6 @@ export class MainEndCommand extends Command {
             output[0].indentation = -this.language.syntax.main.mainIndentation;
         }
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

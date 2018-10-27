@@ -68,7 +68,7 @@ export class StringFormatCommand extends Command {
 
         output += this.language.syntax.strings.formatting.formatRight;
 
-        return new LineResults([new CommandResult(output, 0)], true);
+        return new LineResults([new CommandResult(output, 0)]).withAddSemicolon(true);
     }
 
     /**

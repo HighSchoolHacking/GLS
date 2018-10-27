@@ -45,7 +45,7 @@ export class DictionaryPairCommand extends Command {
             output += this.language.syntax.dictionaries.initializePairComma;
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 
     /**

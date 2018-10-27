@@ -3,12 +3,18 @@ import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
 import { Import } from "./Languages/Imports/Import";
+import { FileSyntax } from "./Languages/Properties/Syntax/FileSyntax";
 import { LineResults } from "./LineResults";
 
 /**
  * Generates line results from raw GLS.
  */
 export class LineResultsGenerator {
+    /**
+     * Metadata on a language's file content syntax.
+     */
+    private fileSyntax: FileSyntax;
+
     /**
      * Renders imports to output line results.
      */
@@ -22,10 +28,12 @@ export class LineResultsGenerator {
     /**
      * Initializes a new instance of the LineResultsGenerator class.
      *
+     * @param fileSyntax   Metadata on a language's file content syntax.
      * @param importsPrinter   Renders imports to output line results.
      * @param nodeRenderer   Parses raw GLS syntax into line results.
      */
-    public constructor(importsPrinter: ImportsPrinter, nodeRenderer: GlsNodeRenderer) {
+    public constructor(fileSyntax: FileSyntax, importsPrinter: ImportsPrinter, nodeRenderer: GlsNodeRenderer) {
+        this.fileSyntax = fileSyntax;
         this.importsPrinter = importsPrinter;
         this.nodeRenderer = nodeRenderer;
     }
@@ -34,41 +42,36 @@ export class LineResultsGenerator {
      * Generates line results from raw GLS.
      *
      * @param glsLines   Raw lines of GLS syntax being converted.
+     * @param asFullFile   Whether a `file start` command indicated this is a full GLS file.
      * @return Clusters of code returned from parsing raw GLS.
      * @remarks This consists of two steps described inline.
      */
-    public generateLineResults(nodes: IGlsNode[]): LineResults[] {
-        const allLineResults: LineResults[] = [];
-        const importsStore: ImportsStore = new ImportsStore();
+    public generateLineResults(allLineResults: LineResults[], importsStore: ImportsStore, asFullFile: boolean): LineResults[] {
+        // 2. If any imports were added, insert them either before or after the file start.
+        if (importsStore.hasAnyImports()) {
+            // 2.1. Imports are inserted either at index 0 or just after file start command's lines.
+            let importInsertionIndex: number;
+            if (asFullFile && this.fileSyntax.importsAfterStartLines) {
+                importInsertionIndex = 1;
+            } else {
+                importInsertionIndex = 0;
+            }
 
-        // 1. Add line results in order, recording any added imports they need.
-        for (const node of nodes) {
-            const lineResults: LineResults = this.nodeRenderer.renderNode(node);
+            // 2.2. Add collected imports at the imports insertion point.
+            const allImportStores = importsStore.getAllImportStores();
+            for (const addedImport of allImportStores) {
+                allLineResults.splice(importInsertionIndex, 0, this.importsPrinter.render(addedImport));
+            }
 
-            allLineResults.push(lineResults);
-            importsStore.addImports(lineResults.addedImports);
-        }
-
-        // If we don't have any imports, step 2 is unnecessary.
-        if (!importsStore.hasAnyImports()) {
-            return allLineResults;
-        }
-
-        // If there isn't yet a blank line after imports, manually add one in for appearance.
-        if (
-            allLineResults.length !== 0 &&
-            allLineResults[0].commandResults.length !== 0 &&
-            allLineResults[0].commandResults[0].text !== ""
-        ) {
-            const newLine: LineResults = LineResults.newSingleLine("", false);
-            allLineResults.unshift(newLine);
-        }
-
-        // 2. Add collected imports to the top of the file.
-        const allImportStores: Import[] = importsStore.getAllImportStores();
-        for (const addedImport of allImportStores) {
-            const rendered: LineResults = this.importsPrinter.render(addedImport);
-            allLineResults.unshift(rendered);
+            // 2.3. If there isn't yet a blank line after imports, manually add one in for appearance.
+            const blankLineInsertionIndex = importInsertionIndex + allImportStores.length;
+            if (
+                allLineResults.length > blankLineInsertionIndex &&
+                allLineResults[blankLineInsertionIndex].commandResults.length !== 0 &&
+                allLineResults[blankLineInsertionIndex].commandResults[0].text !== ""
+            ) {
+                allLineResults.splice(blankLineInsertionIndex, 0, LineResults.newSingleLine(""));
+            }
         }
 
         return allLineResults;

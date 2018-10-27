@@ -28,6 +28,6 @@ export class ContinueCommand extends Command {
     public render(parameters: string[]): LineResults {
         const output: string = this.language.syntax.loops.continue;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

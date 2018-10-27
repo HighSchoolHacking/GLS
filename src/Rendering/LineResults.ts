@@ -13,18 +13,17 @@ export class LineResults {
      * @returns A new block-changing line result.
      */
     public static newBlockLine(text: string, indentation: number): LineResults {
-        return new LineResults([new CommandResult(text, indentation)], false);
+        return new LineResults([new CommandResult(text, indentation)]);
     }
 
     /**
      * Creates a new result containing a single line with a semicolon.
      *
      * @param text   The contents of the line.
-     * @param addSemicolon   Whether the line should end with a semicolon.
      * @returns A new single line result.
      */
-    public static newSingleLine(text: string, addSemicolon: boolean): LineResults {
-        return new LineResults([new CommandResult(text, 0)], addSemicolon);
+    public static newSingleLine(text: string): LineResults {
+        return new LineResults([new CommandResult(text, 0)]);
     }
 
     /**
@@ -45,21 +44,34 @@ export class LineResults {
     /**
      * Initializes a new instance of the LineResults class.
      *
-     * @param commandResults   Lines of code converted fromthe GLS syntax.
+     * @param commandResults   Lines of code converted from GLS syntax.
      * @param addsSemicolon   Whether this should end with a semicolon.
      */
-    public constructor(commandResults: CommandResult[], addSemicolon: boolean) {
+    public constructor(commandResults: CommandResult[]) {
         this.commandResults = commandResults;
-        this.addSemicolon = addSemicolon;
+        this.addSemicolon = false;
         this.addedImports = [];
+    }
+
+    /**
+     * Sets whether this should end with a semicolon.
+     *
+     * @param addSemicolon   Whether this should end with a semicolon.
+     * @returns this
+     */
+    public withAddSemicolon(addSemicolon: boolean): LineResults {
+        this.addSemicolon = addSemicolon;
+        return this;
     }
 
     /**
      * Adds a series of imports to the results.
      *
      * @param imports   Requested package imports.
+     * @returns this
      */
-    public addImports(imports: Import[]): void {
+    public withImports(imports: Import[]): LineResults {
         this.addedImports.push(...imports);
+        return this;
     }
 }

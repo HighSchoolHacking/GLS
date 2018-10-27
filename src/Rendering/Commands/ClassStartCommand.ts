@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
@@ -42,6 +43,7 @@ export class ClassStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         const remainingParameters = parameters.slice(1);
         let line = "";
 
@@ -49,9 +51,24 @@ export class ClassStartCommand extends Command {
         line += this.getForAbstract(remainingParameters);
         line += this.language.syntax.classes.declareStartLeft;
 
-        line += this.getForClassName(remainingParameters);
+        // Class name
+        const classNameLine = this.context.convertParsed([CommandNames.Type, remainingParameters[0]]);
+        line += classNameLine.commandResults[0].text;
+        imports.push(...classNameLine.addedImports);
+        remainingParameters.shift();
 
-        const forExtends: string = this.getForExtends(remainingParameters);
+        // Extends clause(s)
+        let forExtends: string = "";
+        if (remainingParameters[0] === KeywordNames.Extends) {
+            const extendsLine = this.context.convertParsed([CommandNames.Type, remainingParameters[1]]);
+            forExtends += extendsLine.commandResults[0].text;
+            imports.push(...extendsLine.addedImports);
+            forExtends += this.language.syntax.classes.declareExtendsRight;
+
+            remainingParameters.shift();
+            remainingParameters.shift();
+        }
+
         const forImplements: string = this.getForImplements(remainingParameters);
 
         if (forExtends !== "") {
@@ -77,7 +94,7 @@ export class ClassStartCommand extends Command {
         const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.syntax.classes.declareStartRight, 1);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines).withImports(imports);
     }
 
     /**
@@ -120,41 +137,6 @@ export class ClassStartCommand extends Command {
 
         remainingParameters.shift();
         return this.language.syntax.classes.abstractDeclaration;
-    }
-
-    /**
-     * Removes any parameters for the class name.
-     *
-     * @param remainingParameters   Remaining input parameters.
-     * @returns Language output equivalent for the removed parameters.
-     */
-    private getForClassName(remainingParameters: string[]): string {
-        const className = this.context.convertCommon(CommandNames.Type, remainingParameters[0]);
-
-        remainingParameters.shift();
-
-        return className;
-    }
-
-    /**
-     * Removes any parameters for extending a class.
-     *
-     * @param remainingParameters   Remaining input parameters.
-     * @returns Language output equivalent for the removed parameters.
-     */
-    private getForExtends(remainingParameters: string[]): string {
-        let section = "";
-        if (remainingParameters[0] !== KeywordNames.Extends) {
-            return section;
-        }
-
-        section += this.context.convertCommon(CommandNames.Type, remainingParameters[1]);
-        section += this.language.syntax.classes.declareExtendsRight;
-
-        remainingParameters.shift();
-        remainingParameters.shift();
-
-        return section;
     }
 
     /**

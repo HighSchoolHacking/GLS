@@ -37,7 +37,7 @@ export class MemberVariableDeclareCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.syntax.classes.members.variables.skipMemberVariables) {
-            return LineResults.newSingleLine("\0", false);
+            return LineResults.newSingleLine("\0");
         }
 
         let output = "";
@@ -66,6 +66,6 @@ export class MemberVariableDeclareCommand extends Command {
 
         output += this.context.convertParsed(inlineParameters).commandResults[0].text;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

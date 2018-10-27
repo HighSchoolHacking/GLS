@@ -3,9 +3,10 @@ import * as path from "path";
 
 import { filterFoldersUnder } from "../util/filterFoldersUnder";
 import { findGlsFilesUnder } from "../util/findGlsFilesUnder";
+import { outputGenerators } from "../util/OutputGenerators";
 import { parseTestArguments } from "./ArgvParsing";
 import { testLanguagesBag } from "./FileReading";
-import { ensureSameFileComparisons, outputGenerators, runProjectOutputTest } from "./OutputTests";
+import { ensureSameFileComparisons, runProjectOutputTest } from "./OutputTests";
 
 const rootPath = path.resolve("test/end-to-end");
 const { inclusions, languages } = parseTestArguments(process.argv);

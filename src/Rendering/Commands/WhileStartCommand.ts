@@ -33,11 +33,13 @@ export class WhileStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line: string = this.language.syntax.loops.whileStartLeft;
         line += this.language.syntax.loops.whileStartMiddle;
-        line += this.context.convertCommon(CommandNames.Value, parameters[1]);
+
+        const valueLine = this.context.convertParsed([CommandNames.Value, parameters[1]]);
+        line += valueLine.commandResults[0].text;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.syntax.loops.whileStartRight, 1);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines).withImports(valueLine.addedImports);
     }
 }

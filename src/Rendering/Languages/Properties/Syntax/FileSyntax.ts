@@ -10,6 +10,11 @@ export class FileSyntax {
     public endLines: string[];
 
     /**
+     * Whether imports should be shifted to after startLines.
+     */
+    public importsAfterStartLines: boolean;
+
+    /**
      * How indented each file's contents should be.
      */
     public indentation: number;

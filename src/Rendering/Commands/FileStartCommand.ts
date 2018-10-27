@@ -58,6 +58,6 @@ export class FileStartCommand extends Command {
 
         this.context.setDirectoryPath(packagePath);
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

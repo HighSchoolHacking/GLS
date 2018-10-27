@@ -1,4 +1,6 @@
 //
+import java.util.HashMap;
+
 // Dictionary types
 HashMap<String, int> foo = new HashMap<String, int>();
 HashMap<String, HashMap<String, int>> bar = new HashMap<String, new HashMap<String, int>>();

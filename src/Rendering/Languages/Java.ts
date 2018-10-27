@@ -106,6 +106,7 @@ export class Java extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [new Import(["java", "util"], ["Arrays"], ImportRelativity.Absolute)];
     }
 
     /**
@@ -364,6 +365,7 @@ export class Java extends Language {
      */
     protected generateFileSyntax(files: FileSyntax): void {
         files.endLines = [];
+        files.importsAfterStartLines = true;
         files.indentation = 0;
         files.startCase = CaseStyle.PackageLowerCase;
         files.startLines = ["package {1};", ""];

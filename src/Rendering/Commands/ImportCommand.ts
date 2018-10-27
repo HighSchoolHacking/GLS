@@ -47,8 +47,8 @@ export abstract class ImportCommand extends Command {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);
         }
 
-        const lineResults = new LineResults([], false);
-        lineResults.addImports([new Import(packagePath, items, this.getRelativity())]);
+        const lineResults = new LineResults([]);
+        lineResults.withImports([new Import(packagePath, items, this.getRelativity())]);
 
         return lineResults;
     }

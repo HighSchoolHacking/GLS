@@ -1,4 +1,5 @@
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
@@ -18,13 +19,17 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         let declaration = "";
 
         if (!this.canRender()) {
-            return LineResults.newSingleLine(declaration, false);
+            return LineResults.newSingleLine(declaration);
         }
 
+        const imports: Import[] = [];
         const publicity: string = parameters[1];
         const functionName: string = parameters[2];
-        const returnType: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
+        const returnTypeLine = this.context.convertParsed([CommandNames.Type, parameters[3]]);
+        const returnType: string = returnTypeLine.commandResults[0].text;
         let output: CommandResult[];
+
+        imports.push(...returnTypeLine.addedImports);
 
         declaration += this.getPublicity(publicity);
         declaration += this.getAfterPublicity();
@@ -38,11 +43,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         declaration += "(";
 
         if (parameters.length > 4) {
-            declaration += this.generateParameterVariable(parameters, 4);
+            const typeLine = this.generateParameterVariable(parameters, 4);
+            declaration += typeLine.commandResults[0].text;
+            imports.push(...typeLine.addedImports);
 
             for (let i = 6; i < parameters.length; i += 2) {
-                declaration += ", ";
-                declaration += this.generateParameterVariable(parameters, i);
+                const nextTypeLine = this.generateParameterVariable(parameters, i);
+                declaration += ", " + nextTypeLine.commandResults[0].text;
+                imports.push(...nextTypeLine.addedImports);
             }
         }
 
@@ -56,7 +64,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         output = [new CommandResult(declaration, 0)];
         this.addLineEnder(output, this.getEnder(), this.getIndentation());
 
-        return new LineResults(output, false);
+        return new LineResults(output).withImports(imports);
     }
 
     /**
@@ -80,21 +88,24 @@ export abstract class MemberFunctionDeclareCommand extends Command {
     protected abstract getIndentation(): number;
 
     /**
-     * Generates a string for a parameter.
+     * Generates line results for a parameter.
      *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
-    private generateParameterVariable(parameters: string[], i: number): string {
+    private generateParameterVariable(parameters: string[], i: number): LineResults {
         if (!this.language.syntax.variables.declarationRequired) {
-            return parameters[i];
+            return LineResults.newSingleLine(parameters[i]);
         }
 
         const parameterName: string = parameters[i];
-        const parameterType: string = this.context.convertCommon(CommandNames.Type, parameters[i + 1]);
+        const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
+        const parameterType = parameterTypeLine.commandResults[0].text;
 
-        return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]).commandResults[0].text;
+        return this.context
+            .convertParsed([CommandNames.VariableInline, parameterName, parameterType])
+            .withImports(parameterTypeLine.addedImports);
     }
 
     /**

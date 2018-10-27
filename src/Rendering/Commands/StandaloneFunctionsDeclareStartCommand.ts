@@ -36,7 +36,7 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.standaloneFunctions.withinStaticClass) {
-            return new LineResults([], false);
+            return new LineResults([]);
         }
 
         const nextParameters: string[] = [CommandNames.ClassStart];

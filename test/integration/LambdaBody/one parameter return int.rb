@@ -1,3 +1,3 @@
 #
-lambda { |aaa| aaa + 5 }
+lambda { |abc| abc }
 #

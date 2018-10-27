@@ -104,6 +104,7 @@ export class CSharp extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**

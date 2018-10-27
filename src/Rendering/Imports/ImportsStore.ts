@@ -1,5 +1,4 @@
 import { Import } from "../Languages/Imports/Import";
-import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 
 /**
  * Holds accumulated package imports during a conversion.

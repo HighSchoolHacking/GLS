@@ -38,6 +38,6 @@ export class MainContextStartCommand extends Command {
             output[output.length - 1].indentation = this.language.syntax.main.contextIndentation;
         }
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

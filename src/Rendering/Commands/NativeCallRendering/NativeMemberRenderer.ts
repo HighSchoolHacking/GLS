@@ -44,6 +44,6 @@ export class NativeMemberRenderer extends NativeCallRenderer {
             output += ")";
         }
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

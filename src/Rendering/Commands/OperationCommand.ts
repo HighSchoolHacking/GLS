@@ -38,13 +38,22 @@ export class OperationCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output = this.context.convertCommon(CommandNames.Value, parameters[1]);
+        const leftValueLine = this.context.convertParsed([CommandNames.Value, parameters[1]]);
+        const imports = leftValueLine.addedImports;
+        let output = leftValueLine.commandResults[0].text;
 
         for (let i = 2; i < parameters.length; i += 2) {
-            output += " " + this.context.convertCommon(CommandNames.Operator, parameters[i]);
-            output += " " + this.context.convertCommon(CommandNames.Value, parameters[i + 1]);
+            const operatorLine = this.context.convertParsed([CommandNames.Operator, parameters[i]]);
+            output += " " + operatorLine.commandResults[0].text;
+            imports.push(...operatorLine.addedImports);
+
+            const rightValueLine = this.context.convertParsed([CommandNames.Value, parameters[i + 1]]);
+            output += " " + rightValueLine.commandResults[0].text;
+            imports.push(...operatorLine.addedImports);
         }
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output)
+            .withAddSemicolon(true)
+            .withImports(imports);
     }
 }

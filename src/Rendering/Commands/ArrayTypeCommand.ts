@@ -29,6 +29,6 @@ export class ArrayTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[]", false);
+        return LineResults.newSingleLine(parameters[1] + "[]").withImports(this.language.syntax.arrays.requiredImports);
     }
 }

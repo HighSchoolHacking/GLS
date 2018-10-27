@@ -1,6 +1,8 @@
 //
 package arrays;
 
+import java.util.Arrays;
+
 class Program {
     public static void main(String[] args) {
         // Initialization

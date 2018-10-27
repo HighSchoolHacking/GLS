@@ -26,6 +26,6 @@ export class CommentBlockEndCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.language.syntax.comments.blockEnd, false);
+        return LineResults.newSingleLine(this.language.syntax.comments.blockEnd);
     }
 }

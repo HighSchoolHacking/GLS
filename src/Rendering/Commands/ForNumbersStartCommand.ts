@@ -50,7 +50,7 @@ export class ForNumbersStartCommand extends Command {
         const lines: CommandResult[] = [new CommandResult(starter, 0)];
         this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 
     /**

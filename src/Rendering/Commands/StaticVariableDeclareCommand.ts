@@ -38,7 +38,7 @@ export class StaticVariableDeclareCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.syntax.classes.statics.variables.skipStaticVariables && parameters.length < 5) {
-            return LineResults.newSingleLine("\0", false);
+            return LineResults.newSingleLine("\0");
         }
 
         let output = "";
@@ -71,6 +71,6 @@ export class StaticVariableDeclareCommand extends Command {
         output += this.language.syntax.classes.statics.variables.label;
         output += this.context.convertParsed(inlineParameters).commandResults[0].text;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }
