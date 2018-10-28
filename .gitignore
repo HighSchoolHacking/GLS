@@ -10,6 +10,7 @@ test/**/*.map
 test/end-to-end/*/__pycache_/
 test/end-to-end/*/bin/
 test/end-to-end/*/obj/
+test/end-to-end/*/*.class
 test/unit/**/*.js
 util/*.js
 util/*.map
