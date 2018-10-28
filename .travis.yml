@@ -6,10 +6,12 @@ before_script: greenkeeper-lockfile-update
 
 install: npm i
 
-language: node_js
+language:
+  - csharp
+  - java
+  - node_js
 
 node_js:
-  - "node"
   - "8"
 
 script:
