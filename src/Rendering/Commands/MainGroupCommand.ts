@@ -19,7 +19,7 @@ export class MainGroupCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return /* */ MainGroupCommand.metadata;
+        return MainGroupCommand.metadata;
     }
 
     /**
