@@ -1,8 +1,8 @@
-import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
+import { GlsUtilities } from "../../GlsUtilities";
+import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
-import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * Prints the name of the language's main standalone functions group.
@@ -19,7 +19,7 @@ export class MainGroupCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return MainGroupCommand.metadata;
+        return /* */ MainGroupCommand.metadata;
     }
 
     /**
