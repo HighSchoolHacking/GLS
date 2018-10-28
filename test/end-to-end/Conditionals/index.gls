@@ -1,0 +1,26 @@
+-
+file start : Conditionals Index
+    main context start
+        main start
+            if start : true
+                print : ("if true")
+            if end
+
+            variable : second boolean false
+            if start : second
+                print : ("wrong if variable")
+            else start
+                print : ("if false else")
+            if end
+
+            if start : { operation : 1 plus 1 (equal to) 3 }
+                print : ("wrong if operation")
+            else if start : { operation : 2 plus 2 (equal to) 3 }
+                print : ("wrong else if")
+            else start
+                print : ("else if else")
+            if end
+        main end
+    main context end
+file end
+-
