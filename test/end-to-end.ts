@@ -24,9 +24,11 @@ const runProjectLanguageTests = (languageName: string, projectPath: string, file
     it(languageName, async () => {
         await ensureSameFileComparisons(projectPath, files, languageName);
 
+        // todo: Java will mean all languages have this
+        const outputGenerator = outputGenerators.get(languageName);
         // Todo: always exist!
-        if (fs.existsSync(path.join(projectPath, "output.txt"))) {
-            await runProjectOutputTest(projectPath, files, languageName, outputGenerators[languageName]);
+        if (outputGenerator !== undefined && fs.existsSync(path.join(projectPath, "output.txt"))) {
+            await runProjectOutputTest(projectPath, files, languageName, outputGenerator);
         }
     });
 };

@@ -1,5 +1,4 @@
 import { testCSharpGenerator } from "./CSharpOutputGenerator";
-import { testJavaGenerator } from "./JavaOutputGenerator";
 import { testJavaScriptGenerator } from "./JavaScriptOutputGenerator";
 import { testPythonGenerator } from "./PythonOutputGenerator";
 import { testRubyGenerator } from "./RubyOutputGenerator";
@@ -12,11 +11,10 @@ export interface IOutputGeneratorArgs {
 
 export type IOutputGenerator = (args: IOutputGeneratorArgs) => Promise<string[]>;
 
-export const outputGenerators: { [i: string]: IOutputGenerator } = {
-    "C#": testCSharpGenerator,
-    Java: testJavaGenerator,
-    JavaScript: testJavaScriptGenerator,
-    Python: testPythonGenerator,
-    Ruby: testRubyGenerator,
-    TypeScript: testTypeScriptGenerator,
-};
+export const outputGenerators = new Map<string, IOutputGenerator>([
+    ["C#", testCSharpGenerator],
+    ["JavaScript", testJavaScriptGenerator],
+    ["Python", testPythonGenerator],
+    ["Ruby", testRubyGenerator],
+    ["TypeScript", testTypeScriptGenerator],
+]);

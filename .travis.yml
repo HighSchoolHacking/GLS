@@ -11,7 +11,6 @@ mono: none
 
 language:
   - csharp
-  - java
   - node_js
 
 node_js:
