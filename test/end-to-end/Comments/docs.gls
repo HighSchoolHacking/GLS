@@ -1,9 +1,0 @@
--
-comment line : Docs
-comment doc start
-    comment doc tag : summary aaa bbb ccc
-    comment doc tag : parameter ddd eee fff ggg
-    comment doc tag : remarks hhhhhhh iiiiiii jjjjjjj kkkkkkk lllllll mmmmmmm nnnnnnn
-    comment doc tag : todo ooooooooooooooooooooooooooooooooooooooooooooooooo
-comment doc end
--
