@@ -8,6 +8,8 @@ install: npm i
 
 language:
   - csharp
+    mono: none
+    dotnet: 2.1.300
   - java
   - node_js
 
