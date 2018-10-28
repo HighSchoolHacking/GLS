@@ -8,7 +8,7 @@ import { spawnAndCaptureOutput } from "./Spawning";
  */
 export const testJavaGenerator: IOutputGenerator = async ({ projectPath }): Promise<string[]> => {
     // tslint:disable
-    const version = await spawnAndCaptureOutput("java", "--version");
+    const version = await spawnAndCaptureOutput("java", "-version");
 
     console.log({ version });
     return spawnAndCaptureOutput("java", path.join(projectPath, "index.java"));
