@@ -33,11 +33,13 @@ export class IfStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         let line: string = this.language.syntax.conditionals.if;
         line += this.language.syntax.conditionals.startLeft;
-        line += parameters[1];
+
+        const typeLine = this.context.convertParsed([CommandNames.Value, parameters[1]]);
+        line += typeLine.commandResults[0].text;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
-        return new LineResults(lines);
+        return new LineResults(lines).withImports(typeLine.addedImports);
     }
 }
