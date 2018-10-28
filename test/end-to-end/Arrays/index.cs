@@ -3,7 +3,7 @@ using System;
 
 namespace Arrays
 {
-    class Program
+    class Index
     {
         public static void Main()
         {

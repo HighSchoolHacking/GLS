@@ -4,6 +4,7 @@ import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
 import { CommandsBagFactory } from "./Commands/CommandsBagFactory";
+import { FileMetadata } from "./FileMetadata";
 import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
@@ -22,9 +23,9 @@ export class RenderContext {
     private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
-     * Directory path for the rendering file.
+     * Name and path for the rendering file.
      */
-    private directoryPath: string[];
+    private fileMetadata: FileMetadata;
 
     /**
      * The language this context is converting GLS code into.
@@ -55,7 +56,7 @@ export class RenderContext {
         this.language = language;
 
         this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.directoryPath = [];
+        this.fileMetadata = FileMetadata.defaultFileMetadata;
         this.nameSplitter = new NameSplitter();
         this.nodeRenderer = new GlsNodeRenderer(CommandsBagFactory.forContext(this));
 
@@ -84,7 +85,7 @@ export class RenderContext {
             importsStore.addImports(lineResults.addedImports);
         }
 
-        return this.lineResultsGenerator.generateLineResults(allLineResults, importsStore, this.directoryPath.length !== 0);
+        return this.lineResultsGenerator.generateLineResults(allLineResults, importsStore, this.fileMetadata.getPackagePath().length !== 0);
     }
 
     /**
@@ -127,10 +128,10 @@ export class RenderContext {
     }
 
     /**
-     * @returns Directory path for the rendering file.
+     * @returns Name and path for the rendering file.
      */
-    public getDirectoryPath(): string[] {
-        return this.directoryPath;
+    public getFileMetadata(): FileMetadata {
+        return this.fileMetadata;
     }
 
     /**
@@ -141,11 +142,11 @@ export class RenderContext {
     }
 
     /**
-     * Sets the current file's directory path.
+     * Sets the current file name and path.
      *
-     * @param fileDirectory   Directory path for the rendering file.
+     * @param fileDirectory   Name and path for the rendering file.
      */
-    public setDirectoryPath(directoryPath: string[]): void {
-        this.directoryPath = directoryPath;
+    public setFileMetadata(fileMetadata: FileMetadata): void {
+        this.fileMetadata = fileMetadata;
     }
 }

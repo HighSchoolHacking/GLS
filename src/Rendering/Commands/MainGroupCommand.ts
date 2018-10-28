@@ -1,3 +1,4 @@
+import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -28,6 +29,9 @@ export class MainGroupCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.language.syntax.main.group);
+        const fileName = this.context.getFileMetadata().getFileName();
+        const group = GlsUtilities.stringReplaceAll(this.language.syntax.main.group, "{0}", fileName);
+
+        return LineResults.newSingleLine(group);
     }
 }

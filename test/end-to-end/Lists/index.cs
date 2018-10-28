@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Lists
 {
-    class Program
+    class Index
     {
         public static void Main()
         {

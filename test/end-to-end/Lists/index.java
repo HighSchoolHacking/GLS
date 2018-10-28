@@ -3,7 +3,7 @@ package lists;
 
 import java.util.ArrayList;
 
-class Program {
+class Index {
     public static void main(String[] args) {
         // Initialization
         ArrayList<String> aaa = new ArrayList<String>();

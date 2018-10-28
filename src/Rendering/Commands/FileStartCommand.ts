@@ -1,4 +1,6 @@
 import { GlsUtilities } from "../../GlsUtilities";
+import { FileMetadata } from "../FileMetadata";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -43,7 +45,10 @@ export class FileStartCommand extends Command {
         const packagePathAndFileName: string[] = parameters.slice(1);
         const packagePath: string[] = packagePathAndFileName.slice(0, packagePathAndFileName.length - 1);
         const packagePathJoined: string = this.context.convertArrayToCase(packagePath, this.language.syntax.files.startCase);
-        const fileName: string = packagePathAndFileName[packagePathAndFileName.length - 1];
+        const fileName: string = this.context.convertStringToCase(
+            packagePathAndFileName[packagePathAndFileName.length - 1],
+            CaseStyle.PascalCase,
+        );
 
         for (let line of source) {
             line = GlsUtilities.stringReplaceAll(line, "{0}", fileName);
@@ -56,7 +61,7 @@ export class FileStartCommand extends Command {
             output[output.length - 1].indentation = this.language.syntax.files.indentation;
         }
 
-        this.context.setDirectoryPath(packagePath);
+        this.context.setFileMetadata(new FileMetadata(fileName, packagePath));
 
         return new LineResults(output);
     }

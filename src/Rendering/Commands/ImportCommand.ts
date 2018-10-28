@@ -44,7 +44,7 @@ export abstract class ImportCommand extends Command {
         let packagePath: string[] = parameters.slice(1, usingSplit);
 
         if (relativity === ImportRelativity.Local) {
-            packagePath = ImportCommand.pathResolver.resolve(this.context.getDirectoryPath(), packagePath);
+            packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
         }
 
         const lineResults = new LineResults([]);

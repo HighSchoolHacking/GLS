@@ -3,7 +3,7 @@ package classes;
 
 import classes.point.Point;
 
-class Program {
+class Index {
     public static void main(String[] args) {
         Point point = new Point(1, 2);
 

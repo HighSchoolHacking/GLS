@@ -1,3 +1,5 @@
+import { GlsUtilities } from "../../GlsUtilities";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -29,9 +31,11 @@ export class MainContextStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
         const startLines: string[] = this.language.syntax.main.contextStartLines;
+        const fileName = this.context.getFileMetadata().getFileName();
 
         for (const startLine of startLines) {
-            output.push(new CommandResult(startLine, 0));
+            const line = GlsUtilities.stringReplaceAll(startLine, "{0}", fileName);
+            output.push(new CommandResult(line, 0));
         }
 
         if (output.length !== 0) {

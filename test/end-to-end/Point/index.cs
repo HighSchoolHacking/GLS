@@ -5,7 +5,7 @@ using Classes.Point;
 namespace Classes
 {
 
-    class Program
+    class Index
     {
         public static void Main()
         {

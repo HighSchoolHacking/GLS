@@ -493,8 +493,8 @@ export class CSharp extends Language {
     protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
-        main.contextStartLines = ["class Program", "{"];
-        main.group = "Program";
+        main.contextStartLines = ["class {0}", "{"];
+        main.group = "{0}";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
         main.mainStartLines = ["public static void Main()", "{"];

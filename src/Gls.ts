@@ -1,4 +1,5 @@
 import { OutputMerger } from "./Merging/OutputGenerator";
+import { FileMetadata } from "./Rendering/FileMetadata";
 import { Language } from "./Rendering/Languages/Language";
 import { LanguagesBag } from "./Rendering/Languages/LanguagesBag";
 import { LineResults } from "./Rendering/LineResults";
@@ -57,7 +58,7 @@ export class Gls {
         const glsFile: GlsFile = this.sourceFileParser.parseLines(input);
 
         // 2. Rendering
-        this.renderContext.setDirectoryPath([]);
+        this.renderContext.setFileMetadata(FileMetadata.defaultFileMetadata);
         const fileLineResults: LineResults[] = this.renderContext.convert(glsFile);
 
         // 3. Merging
