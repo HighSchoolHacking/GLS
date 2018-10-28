@@ -42,8 +42,7 @@ export class VariableStartCommand extends Command {
             newParameters.push(parametersSplit[0]);
         }
 
-        const output = this.context.convertParsed(newParameters);
-        output.addSemicolon = false;
+        const output = this.context.convertParsed(newParameters).withAddSemicolon(false);
 
         // Languages like C# might need to pass a separate "{" through on the next line
         if (this.language.syntax.style.separateBraceLines) {

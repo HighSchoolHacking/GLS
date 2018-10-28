@@ -40,8 +40,8 @@ export class ListInitializeCommand extends Command {
         }
 
         const typeNameRaw: string = "list<" + parameters[1] + ">";
-        const typeName: string = this.context.convertCommon(CommandNames.Type, typeNameRaw);
-        let output: string = "new " + typeName;
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, typeNameRaw]);
+        let output: string = "new " + typeNameLine.commandResults[0].text;
 
         if (parameters.length > 2) {
             output += " { ";
@@ -51,6 +51,6 @@ export class ListInitializeCommand extends Command {
             output += "()";
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output).withImports(typeNameLine.addedImports);
     }
 }

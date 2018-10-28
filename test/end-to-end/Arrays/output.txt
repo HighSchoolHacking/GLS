@@ -1,0 +1,2 @@
+The first fruit is apple.
+There are 3 fruits.

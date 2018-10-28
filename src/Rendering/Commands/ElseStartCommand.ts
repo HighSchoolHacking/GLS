@@ -47,6 +47,6 @@ export class ElseStartCommand extends Command {
 
         lines[lines.length - 1].text += this.language.syntax.conditionals.continueRight;
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 }

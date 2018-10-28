@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -32,6 +33,7 @@ export class DictionaryTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         let output = "";
 
         if (this.language.syntax.dictionaries.initializeAsNew) {
@@ -40,15 +42,23 @@ export class DictionaryTypeCommand extends Command {
 
         if (this.language.syntax.variables.explicitTypes) {
             output += this.language.syntax.dictionaries.typeLeft;
-            output += this.context.convertCommon(CommandNames.Type, parameters[1]);
+
+            const leftTypeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+            output += leftTypeLine.commandResults[0].text;
+            imports.push(...leftTypeLine.addedImports);
+
             output += this.language.syntax.dictionaries.typeMiddle;
-            output += this.context.convertCommon(CommandNames.Type, parameters[2]);
+
+            const rightTypeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+            output += rightTypeLine.commandResults[0].text;
+            imports.push(...rightTypeLine.addedImports);
+
             output += this.language.syntax.dictionaries.typeRight;
         }
 
-        const results = LineResults.newSingleLine(output, false);
+        const results = LineResults.newSingleLine(output);
 
-        results.addImports(this.language.syntax.dictionaries.requiredImports);
+        results.withImports(this.language.syntax.dictionaries.requiredImports);
 
         return results;
     }

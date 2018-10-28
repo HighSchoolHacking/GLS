@@ -29,7 +29,7 @@ export class StandaloneFunctionsDeclareEndCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.standaloneFunctions.withinStaticClass) {
-            return new LineResults([], false);
+            return new LineResults([]);
         }
 
         return this.context.convertParsed([CommandNames.ClassEnd]);

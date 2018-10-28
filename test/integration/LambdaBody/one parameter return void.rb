@@ -1,3 +1,0 @@
-#
-lambda { |aaa| puts aaa }
-#

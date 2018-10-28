@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
@@ -41,6 +42,7 @@ export class ConstructorStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         let declaration = "";
         let output: CommandResult[];
 
@@ -63,11 +65,14 @@ export class ConstructorStartCommand extends Command {
         }
 
         if (parameters.length > 4) {
-            declaration += this.generateParameterVariable(parameters, 3);
+            const declarationLine = this.generateParameterVariable(parameters, 3);
+            declaration += declarationLine.commandResults[0].text;
+            imports.push(...declarationLine.addedImports);
 
             for (let i = 5; i < parameters.length; i += 2) {
-                declaration += ", ";
-                declaration += this.generateParameterVariable(parameters, i);
+                const nextDeclarationLine = this.generateParameterVariable(parameters, i);
+                declaration += ", " + nextDeclarationLine.commandResults[0].text;
+                imports.push(...nextDeclarationLine.addedImports);
             }
         }
 
@@ -76,25 +81,26 @@ export class ConstructorStartCommand extends Command {
         output = [new CommandResult(declaration, 0)];
         this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
 
-        return new LineResults(output, false);
+        return new LineResults(output).withImports(imports);
     }
 
     /**
-     * Generates a string for a parameter.
+     * Generates a line result for a parameter.
      *
      * @param parameters   An ordered sequence of [parameterName, parameterType, ...].
      * @param i   An index in the parameters of a parameterName.
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
-    private generateParameterVariable(parameters: string[], i: number): string {
+    private generateParameterVariable(parameters: string[], i: number): LineResults {
         if (!this.language.syntax.variables.declarationRequired) {
-            return parameters[i];
+            return LineResults.newSingleLine(parameters[i]);
         }
 
         const parameterName: string = parameters[i];
-        const parameterType: string = this.context.convertCommon(CommandNames.Type, parameters[i + 1]);
+        const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
+        const parameterType = parameterTypeLine.commandResults[0].text;
 
-        return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]).commandResults[0].text;
+        return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]);
     }
 
     /**

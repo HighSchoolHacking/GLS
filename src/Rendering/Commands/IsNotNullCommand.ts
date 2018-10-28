@@ -33,6 +33,6 @@ export class IsNotNullCommand extends Command {
         const middle: string = this.language.syntax.variables.isNotNullMiddle;
         const right: string = this.language.syntax.variables.nullRight;
 
-        return LineResults.newSingleLine(left + parameters[1] + middle + right, false);
+        return LineResults.newSingleLine(left + parameters[1] + middle + right);
     }
 }

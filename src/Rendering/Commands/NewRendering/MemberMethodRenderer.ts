@@ -27,6 +27,6 @@ export class MemberMethodRenderer extends NewRenderer {
         }
         output += ")";
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

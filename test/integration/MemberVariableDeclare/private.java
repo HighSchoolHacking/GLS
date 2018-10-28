@@ -1,3 +1,3 @@
 //
-private string aaa;
+private String aaa;
 //

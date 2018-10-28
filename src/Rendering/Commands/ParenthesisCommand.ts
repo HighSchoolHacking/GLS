@@ -40,6 +40,6 @@ export class ParenthesisCommand extends Command {
         output += parameters.slice(1).join(" ");
         output += ")";
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

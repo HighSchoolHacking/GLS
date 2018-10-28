@@ -1,3 +1,5 @@
+import { GlsUtilities } from "../../GlsUtilities";
+import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -29,15 +31,17 @@ export class MainStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const output: CommandResult[] = [];
         const startLines: string[] = this.language.syntax.main.mainStartLines;
+        const fileName = this.context.getFileMetadata().getFileName();
 
         for (const startLine of startLines) {
-            output.push(new CommandResult(startLine, 0));
+            const line = GlsUtilities.stringReplaceAll(startLine, "{0}", fileName);
+            output.push(new CommandResult(line, 0));
         }
 
         if (output.length !== 0) {
             output[output.length - 1].indentation = this.language.syntax.main.mainIndentation;
         }
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

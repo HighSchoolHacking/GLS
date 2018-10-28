@@ -16,6 +16,7 @@
         "no-magic-numbers": false,
         "no-import-side-effect": false,
         "no-parameter-reassignment": false,
+        "no-submodule-imports": false,
         "no-unsafe-any": false,
         "no-unnecessary-class": false,
         "no-unused-variable": false,

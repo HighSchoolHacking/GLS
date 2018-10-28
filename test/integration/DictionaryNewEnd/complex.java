@@ -1,4 +1,6 @@
 //
-new HashMap<string, HashMap<string, int>>() {{
+import java.util.HashMap;
+
+new HashMap<String, HashMap<String, int>>() {{
 }};
 //

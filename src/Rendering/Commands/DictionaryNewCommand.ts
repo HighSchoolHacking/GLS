@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -33,22 +34,34 @@ export class DictionaryNewCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.dictionaries.initializeAsNew) {
-            return LineResults.newSingleLine(this.language.syntax.dictionaries.initializeAsLiteral, false);
+            return LineResults.newSingleLine(this.language.syntax.dictionaries.initializeAsLiteral).withImports(
+                this.language.syntax.dictionaries.requiredImports,
+            );
         }
+
+        const imports: Import[] = [];
 
         let output = this.language.syntax.classes.newStart;
         output += this.language.syntax.dictionaries.className;
 
         if (this.language.syntax.classes.generics.used) {
             output += this.language.syntax.classes.generics.left;
-            output += this.context.convertCommon(CommandNames.Type, parameters[1]);
+
+            const leftTypeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+            output += leftTypeLine.commandResults[0].text;
+            imports.push(...leftTypeLine.addedImports);
+
             output += this.language.syntax.classes.generics.middle;
-            output += this.context.convertCommon(CommandNames.Type, parameters[2]);
+
+            const rightTypeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+            output += rightTypeLine.commandResults[0].text;
+            imports.push(...rightTypeLine.addedImports);
+
             output += this.language.syntax.classes.generics.right;
         }
 
         output += "()";
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output).withImports(this.language.syntax.dictionaries.requiredImports);
     }
 }

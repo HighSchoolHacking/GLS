@@ -30,6 +30,6 @@ export class LiteralCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters.slice(1).join(" "), false);
+        return LineResults.newSingleLine(parameters.slice(1).join(" "));
     }
 }

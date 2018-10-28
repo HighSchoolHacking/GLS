@@ -1,3 +1,3 @@
 #
-lambda aaa, bbb, ccc: aaa * 7
+lambda abc, def, ghi: abc + def + ghi
 #

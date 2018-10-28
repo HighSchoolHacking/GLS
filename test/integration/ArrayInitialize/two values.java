@@ -1,3 +1,5 @@
 //
-new string[] { "aaa", bbb }
+import java.util.Arrays;
+
+new String[] { "aaa", bbb }
 //

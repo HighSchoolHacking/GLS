@@ -2,10 +2,10 @@
 comment line : Keys
 for each key start : container key string
     comment line: ...
-for each end
+for each key end
 
 comment line : Pairs
 for each pair start : container pair key string value int
     comment line: ...
-for each end
+for each key end
 -

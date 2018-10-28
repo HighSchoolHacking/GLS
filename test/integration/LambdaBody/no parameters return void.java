@@ -1,3 +1,0 @@
-//
-() -> System.out.println("test")
-//

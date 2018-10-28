@@ -1,5 +1,5 @@
 //
 import utilities.text.TextUtilities;
 
-string repeated = TextUtilities.repeatText("foo", 7);
+String repeated = TextUtilities.repeatText("foo", 7);
 //

@@ -36,7 +36,7 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.standaloneFunctions.withinStaticClass) {
-            return new LineResults([], false);
+            return new LineResults([]);
         }
 
         const nextParameters: string[] = [CommandNames.ClassStart];
@@ -57,7 +57,15 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
         results.commandResults[0].text = KeywordNames.Static + " " + results.commandResults[0].text;
 
         if (parameters[1] === KeywordNames.Export) {
-            results.commandResults[0].text = this.language.syntax.classes.exports.exported + results.commandResults[0].text;
+            let declaration: string = this.language.syntax.classes.exports.exportedLeft;
+            declaration += results.commandResults[0].text;
+
+            if (this.language.syntax.classes.exports.exportedIncludesName) {
+                declaration += this.language.syntax.classes.exports.exportedMiddle;
+                declaration += results.commandResults[0].text;
+            }
+
+            results.commandResults[0].text = declaration;
         }
 
         return results;

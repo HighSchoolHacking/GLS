@@ -1,4 +1,5 @@
 test/end-to-end/**
 test/integration/**
 *.md
+*.yml
 docs/**/*.md

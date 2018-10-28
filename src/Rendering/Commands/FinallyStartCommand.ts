@@ -44,6 +44,6 @@ export class FinallyStartCommand extends Command {
 
         this.addLineEnder(lines, this.language.syntax.exceptions.finallyStartRight, 2);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 }

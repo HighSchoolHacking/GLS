@@ -1,3 +1,3 @@
 #
-lambda aaa, bbb: aaa + bbb
+lambda abc, def: abc + def
 #

@@ -1,3 +1,3 @@
 //
-protected string aaa;
+protected String aaa;
 //

@@ -1,0 +1,21 @@
+-
+class start : Utilities
+    static function declare start : public GetLongest string words { array type : string }
+        variable : longest string ""
+
+        for each start : words string word
+            if start : { operation : { string length : word } (greater than) { string length : longest } }
+                operation : longest equals word
+            if end
+        for each end
+        
+        static function : public Utilities log longest
+        
+        return : longest
+    static function declare end
+    
+    static function declare start : public log void word string
+        print : { concatenate : ("Logging: ") word }
+    static function declare end
+class end
+-

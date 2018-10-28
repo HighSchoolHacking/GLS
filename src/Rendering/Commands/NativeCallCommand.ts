@@ -52,7 +52,7 @@ export abstract class NativeCallCommand extends Command {
         const scope: NativeCallScope = this.nativeCallSyntax.scope;
         const results: LineResults = this.scopeRenderers[scope].render(parameters);
 
-        results.addImports(this.retrieveImports());
+        results.withImports(this.retrieveImports());
 
         return results;
     }

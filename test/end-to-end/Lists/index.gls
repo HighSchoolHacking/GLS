@@ -1,0 +1,45 @@
+-
+file start : Lists index
+    main context start
+        main start
+            comment line : Initialization
+            variable : aaa { list type : string } { list initialize : string }
+            variable : bbb { list type : int } { list initialize : int 1 2 3 }
+            variable : ccc { list type : { list type : string } } { list initialize : { list type : string } aaa { list initialize : string "eee" "fff" "ggg" } }
+
+            comment line : Members
+            variable : fruits { list type : string } { list initialize : string "apple" "banana" "cherry" }
+            print : { string format : ("There are {0} fruits.") { list length : fruits } int }
+            print : { string format : ("The first fruit is {0}.") { list index : fruits 0 } string }
+
+            comment line : Popping
+            variable : colors { list type : string } { list initialize : string "red" "orange" "yellow" "green" }
+            list pop : colors
+            print : { string format : ("The last color is {0}.") { list index : colors { operation : { list length : colors } minus 1 } } string }
+
+            list pop front : colors
+            print : { string format : ("The first color is {0}.") { list index : colors 0 } string }
+
+            comment line : Pushing
+            variable : pets { list type : string } { list initialize : string "bird" "cat" }
+            list push : pets "dog"
+            print : { string format : ("The last pet is {0}.") { list index : pets { operation : { list length : pets } minus 1 } } string }
+
+            comment line : Sorting
+            variable : flavors { list type : string } { list initialize : string "plain" "chocolate" "vanilla" "strawberry" }
+            list sort : flavors
+            print : { string format : ("The first flavor is {0}.") { list index : flavors 0 } string }
+            print : { string format : ("The last flavor is {0}.") { list index : flavors { operation : { list length : flavors } minus 1 } } string }
+
+            comment line : Looping
+            for each start : flavors string flavor
+                print : { string format : ("Flavor: {0}.") flavor string }
+            for each end
+
+            for numbers start : i int 0 { list length : flavors }
+                print : { string format : ("Flavor {0}: {1}.") i int { list index : flavors i } string }
+            for each end
+        main end
+    main context end
+file end
+-

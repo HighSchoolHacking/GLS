@@ -104,6 +104,7 @@ export class CSharp extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**
@@ -121,7 +122,7 @@ export class CSharp extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "public ";
+        exports.exportedLeft = "public ";
         exports.internal = "";
     }
 
@@ -459,6 +460,9 @@ export class CSharp extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " (";
         loops.whileStartRight = ") {";
@@ -489,8 +493,8 @@ export class CSharp extends Language {
     protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
-        main.contextStartLines = ["class Program", "{"];
-        main.group = "Program";
+        main.contextStartLines = ["class {0}", "{"];
+        main.group = "{0}";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
         main.mainStartLines = ["public static void Main()", "{"];
@@ -624,6 +628,7 @@ export class CSharp extends Language {
         formatting.formatRight = ")";
         formatting.formatInputLeft = "{";
         formatting.formatInputRight = "}";
+        formatting.includeIndexInFormatting = true;
         formatting.inputTypes = false;
         formatting.useInterpolation = false;
     }

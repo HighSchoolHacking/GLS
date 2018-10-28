@@ -36,6 +36,6 @@ export class ReturnCommand extends Command {
             output += " " + parameters[1];
         }
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

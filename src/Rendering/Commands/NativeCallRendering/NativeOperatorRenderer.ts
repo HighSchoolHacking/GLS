@@ -29,6 +29,6 @@ export class NativeOperatorRenderer extends NativeCallRenderer {
             }
         }
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

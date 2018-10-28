@@ -107,6 +107,7 @@ export class JavaScript extends Language {
         arrays.initializeAsNew = false;
         arrays.initializeViaStatic = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**
@@ -124,7 +125,9 @@ export class JavaScript extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "export ";
+        exports.exportedIncludesName = true;
+        exports.exportedLeft = "exports.";
+        exports.exportedMiddle = " = ";
         exports.internal = "";
     }
 
@@ -386,10 +389,10 @@ export class JavaScript extends Language {
         imports.case = CaseStyle.DirectoryLowerCase;
         imports.explicit = true;
         imports.itemsBeforePackage = true;
-        imports.leftAbsolute = "import { ";
-        imports.leftLocal = "import { ";
-        imports.middle = ' } from "';
-        imports.right = '";';
+        imports.leftAbsolute = "const { ";
+        imports.leftLocal = "const { ";
+        imports.middle = ' } = require("';
+        imports.right = '");';
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }
@@ -442,6 +445,9 @@ export class JavaScript extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " (";
         loops.whileStartRight = ") {";

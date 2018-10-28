@@ -29,7 +29,7 @@ export class TypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.convertType(parameters[1]), false);
+        return this.convertType(parameters[1]);
     }
 
     /**
@@ -38,11 +38,12 @@ export class TypeCommand extends Command {
      * @param typeNameRaw   A raw type to convert.
      * @returns The equivalent converted type name.
      */
-    private convertArrayType(typeNameRaw: string): string {
+    private convertArrayType(typeNameRaw: string): LineResults {
         const bracketIndex: number = typeNameRaw.indexOf("[");
-        const typeName: string = this.convertType(typeNameRaw.substring(0, bracketIndex));
+        const subTypeNameLine = this.convertType(typeNameRaw.substring(0, bracketIndex));
+        const typeName = subTypeNameLine.commandResults[0].text + typeNameRaw.substring(bracketIndex);
 
-        return typeName + typeNameRaw.substring(bracketIndex);
+        return LineResults.newSingleLine(typeName).withImports(subTypeNameLine.addedImports);
     }
 
     /**
@@ -52,23 +53,25 @@ export class TypeCommand extends Command {
      * @returns The equivalent converted type name.
      * @todo Support multiple generics (commas inside the <>s).
      */
-    private convertGenericType(typeNameRaw: string): string {
+    private convertGenericType(typeNameRaw: string): LineResults {
         const bracketStartIndex: number = typeNameRaw.indexOf("<");
-        const containerTypeName: string = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
+        const subContainerTypeLine = this.convertType(typeNameRaw.substring(0, bracketStartIndex));
 
         if (!this.language.syntax.classes.generics.used) {
-            return this.convertType(containerTypeName);
+            return subContainerTypeLine;
         }
 
         const bracketEndIndex: number = typeNameRaw.lastIndexOf(">");
-        const genericTypeName: string = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
-        let output: string = containerTypeName;
+        const genericTypeNameLine = this.convertType(typeNameRaw.substring(bracketStartIndex + 1, bracketEndIndex));
+        let output: string = subContainerTypeLine.commandResults[0].text;
 
         output += this.language.syntax.classes.generics.left;
-        output += genericTypeName;
+        output += genericTypeNameLine.commandResults[0].text;
         output += this.language.syntax.classes.generics.right;
 
-        return output;
+        return LineResults.newSingleLine(output)
+            .withImports(subContainerTypeLine.addedImports)
+            .withImports(genericTypeNameLine.addedImports);
     }
 
     /**
@@ -77,7 +80,7 @@ export class TypeCommand extends Command {
      * @param typeNameRaw   A raw type to convert.
      * @returns The equivalent converted type name.
      */
-    private convertType(typeNameRaw: string): string {
+    private convertType(typeNameRaw: string): LineResults {
         let typeName: string = typeNameRaw;
 
         if ({}.hasOwnProperty.call(this.language.syntax.classes.aliases, typeName)) {
@@ -92,7 +95,7 @@ export class TypeCommand extends Command {
             return this.convertGenericType(typeNameRaw);
         }
 
-        return typeName;
+        return LineResults.newSingleLine(typeName);
     }
 
     /**

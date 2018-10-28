@@ -203,6 +203,16 @@ export class CommandNames {
     public static ForEachEnd = "for each end";
 
     /**
+     * Name key for the ForEachKeyEnd command.
+     */
+    public static ForEachKeyEnd = "for each key end";
+
+    /**
+     * Name key for the ForEachPairEnd command.
+     */
+    public static ForEachPairEnd = "for each pair end";
+
+    /**
      * Name key for the ForEachKeyStart command.
      */
     public static ForEachKeyStart = "for each key start";

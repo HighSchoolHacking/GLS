@@ -40,6 +40,6 @@ export class ThrowCommand extends Command {
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(lines, this.language.syntax.exceptions.throwRight, 0);
-        return new LineResults(lines, true);
+        return new LineResults(lines).withAddSemicolon(true);
     }
 }

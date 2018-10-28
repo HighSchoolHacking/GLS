@@ -48,6 +48,6 @@ export class ElseIfStartCommand extends Command {
 
         this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 }

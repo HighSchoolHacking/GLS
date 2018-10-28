@@ -72,7 +72,7 @@ export class ForEachKeyStartCommand extends Command {
         output = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 
     /**
@@ -88,6 +88,6 @@ export class ForEachKeyStartCommand extends Command {
         output += parameters[2];
         output += this.language.syntax.loops.forEachRight;
 
-        return new LineResults([new CommandResult(output, 1)], false);
+        return new LineResults([new CommandResult(output, 1)]);
     }
 }

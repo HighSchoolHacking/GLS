@@ -69,9 +69,9 @@ export class IfStringToFloatStartCommand extends Command {
 
         this.validateFloats(parameters, lines);
 
-        const results: LineResults = new LineResults(lines, false);
+        const results: LineResults = new LineResults(lines);
 
-        results.addImports(this.language.syntax.strings.toFloat.requiredImports);
+        results.withImports(this.language.syntax.strings.toFloat.requiredImports);
         results.commandResults[results.commandResults.length - 1].indentation = 1;
 
         return results;

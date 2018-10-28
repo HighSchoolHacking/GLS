@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -36,8 +37,13 @@ export class ArrayInitializeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const typeName: string = this.context.convertCommon(CommandNames.Type, parameters[1]);
+        const imports: Import[] = [];
+        const typeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+        const typeName: string = typeLine.commandResults[0].text;
         let output = "";
+
+        imports.push(...this.language.syntax.arrays.requiredImports);
+        imports.push(...typeLine.addedImports);
 
         if (this.language.syntax.arrays.initializeAsNew) {
             output += "new ";
@@ -46,10 +52,12 @@ export class ArrayInitializeCommand extends Command {
         if (this.language.syntax.arrays.initializeByType) {
             if (parameters.length === 2) {
                 output += typeName + "[0]";
-                return LineResults.newSingleLine(output, false);
+                return LineResults.newSingleLine(output).withImports(imports);
             }
 
-            output += this.context.convertCommon(CommandNames.Type, typeName + "[]");
+            const arrayTypeLine = this.context.convertParsed([CommandNames.Type, typeName + "[]"]);
+            output += arrayTypeLine.commandResults[0].text;
+            imports.push(...arrayTypeLine.addedImports);
         }
 
         if (this.language.syntax.arrays.initializeByType) {
@@ -66,6 +74,6 @@ export class ArrayInitializeCommand extends Command {
             output += "]";
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output).withImports(imports);
     }
 }

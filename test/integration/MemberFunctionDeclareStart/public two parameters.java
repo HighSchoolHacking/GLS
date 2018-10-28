@@ -1,4 +1,4 @@
 //
 class Abc {
-    public string defGhi(float jkl, boolean mno) {
+    public String defGhi(float jkl, boolean mno) {
 //

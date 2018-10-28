@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -53,6 +54,7 @@ export class ForEachPairStartCommand extends Command {
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
     public renderForEachAsLoop(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         let line: string = this.language.syntax.loops.foreach;
         let output: CommandResult[];
 
@@ -72,8 +74,8 @@ export class ForEachPairStartCommand extends Command {
 
             if (this.language.syntax.loops.forEachPairsAsPair) {
                 typeName = this.language.syntax.loops.forEachPairsPairClass;
-                typeName += "<" + parameters[4];
-                typeName += ", " + parameters[6] + ">";
+                typeName += "<" + this.addTypeNameType(parameters[4], imports);
+                typeName += ", " + this.addTypeNameType(parameters[6], imports) + ">";
             } else {
                 typeName = parameters[4];
             }
@@ -97,13 +99,21 @@ export class ForEachPairStartCommand extends Command {
         this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
         if (this.language.syntax.loops.forEachPairsAsPair && this.language.syntax.variables.declarationRequired) {
-            this.addPairKeyLookup(parameters, output);
-            this.addPairValueLookup(parameters, output);
+            this.addPairKeyLookup(parameters, imports, output);
+            this.addPairValueLookup(parameters, imports, output);
         } else if (this.language.syntax.loops.forEachPairsAsKeys) {
-            this.addKeyedValueLookup(parameters, output);
+            this.addKeyedValueLookup(parameters, imports, output);
         }
 
-        return new LineResults(output, false);
+        return new LineResults(output).withImports(imports);
+    }
+
+    private addTypeNameType(rawType: string, imports: Import[]): string {
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, rawType]);
+
+        imports.push(...typeNameLine.addedImports);
+
+        return typeNameLine.commandResults[0].text;
     }
 
     /**
@@ -121,18 +131,20 @@ export class ForEachPairStartCommand extends Command {
         output += parameters[5];
         output += this.language.syntax.loops.forEachRight;
 
-        return new LineResults([new CommandResult(output, 1)], false);
+        return new LineResults([new CommandResult(output, 1)]);
     }
 
     /**
      * Adds the retrieval of a container's value from a key.
      *
      * @param parameters   The command's name, followed by any parameters.
+     * @param imports   Collection array for added imports.
      * @param output Line(s) of code in the language.
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
-    private addKeyedValueLookup(parameters: string[], output: CommandResult[]): void {
-        const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
+    private addKeyedValueLookup(parameters: string[], imports: Import[], output: CommandResult[]): void {
+        const valueNameLine = this.context.convertParsed([CommandNames.Type, parameters[5]]);
+        const valueName: string = valueNameLine.commandResults[0].text;
         const valueType: string = parameters[6];
         const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryIndex, parameters[1], parameters[3]])
             .commandResults[0].text;
@@ -141,6 +153,7 @@ export class ForEachPairStartCommand extends Command {
 
         valueVariable += this.language.syntax.style.semicolon;
 
+        imports.push(...valueNameLine.addedImports);
         output.push(new CommandResult(valueVariable, 0));
     }
 
@@ -148,17 +161,20 @@ export class ForEachPairStartCommand extends Command {
      * Adds the retrieval of a pair's key.
      *
      * @param parameters   The command's name, followed by any parameters.
+     * @param imports   Collection array for added imports.
      * @param output Line(s) of code in the language.
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
-    private addPairKeyLookup(parameters: string[], output: CommandResult[]): void {
-        const keyName: string = this.context.convertCommon(CommandNames.Type, parameters[3]);
+    private addPairKeyLookup(parameters: string[], imports: Import[], output: CommandResult[]): void {
+        const keyNameLine = this.context.convertParsed([CommandNames.Type, parameters[3]]);
+        const keyName = keyNameLine.commandResults[0].text;
         const keyType: string = parameters[4];
         const keyLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveKey;
         let keyVariable: string = this.context.convertParsed([CommandNames.Variable, keyName, keyType, keyLookup]).commandResults[0].text;
 
         keyVariable += this.language.syntax.style.semicolon;
 
+        imports.push(...keyNameLine.addedImports);
         output.push(new CommandResult(keyVariable, 0));
     }
 
@@ -166,11 +182,13 @@ export class ForEachPairStartCommand extends Command {
      * Adds the retrieval of a pair's key and value.
      *
      * @param parameters   The command's name, followed by any parameters.
+     * @param imports   Collection array for added imports.
      * @param output Line(s) of code in the language.
      * @remarks Usage: (container, pairName, keyName, keyType, valueName, valueType).
      */
-    private addPairValueLookup(parameters: string[], output: CommandResult[]): void {
-        const valueName: string = this.context.convertCommon(CommandNames.Type, parameters[5]);
+    private addPairValueLookup(parameters: string[], imports: Import[], output: CommandResult[]): void {
+        const valueNameLine = this.context.convertParsed([CommandNames.Type, parameters[5]]);
+        const valueName: string = valueNameLine.commandResults[0].text;
         const valueType: string = parameters[6];
         const valueLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveValue;
         let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
@@ -178,6 +196,7 @@ export class ForEachPairStartCommand extends Command {
 
         valueVariable += this.language.syntax.style.semicolon;
 
+        imports.push(...valueNameLine.addedImports);
         output.push(new CommandResult(valueVariable, 0));
     }
 }

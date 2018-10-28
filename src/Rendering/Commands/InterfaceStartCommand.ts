@@ -38,7 +38,7 @@ export class InterfaceStartCommand extends Command {
         let line = "";
 
         if (!this.language.syntax.interfaces.supported) {
-            return LineResults.newSingleLine(line, false);
+            return LineResults.newSingleLine(line);
         }
 
         line += this.language.syntax.interfaces.declareStartLeft;
@@ -58,6 +58,6 @@ export class InterfaceStartCommand extends Command {
         const output: CommandResult[] = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.syntax.interfaces.declareStartRight, 1);
 
-        return new LineResults(output, false);
+        return new LineResults(output);
     }
 }

@@ -62,6 +62,6 @@ export class StaticVariableCommand extends Command {
         output += variablePrefix;
         output += variableName;
 
-        return LineResults.newSingleLine(output, true);
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

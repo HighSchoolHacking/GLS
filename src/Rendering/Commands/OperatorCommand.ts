@@ -29,7 +29,7 @@ export class OperatorCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(this.convertOperator(parameters[1]), false);
+        return LineResults.newSingleLine(this.convertOperator(parameters[1]));
     }
 
     /**

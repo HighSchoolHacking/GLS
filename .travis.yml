@@ -6,10 +6,14 @@ before_script: greenkeeper-lockfile-update
 
 install: npm i
 
-language: node_js
+dotnet: 2.1.300
+mono: none
+
+language:
+  - csharp
+  - node_js
 
 node_js:
-  - "node"
   - "8"
 
 script:

@@ -36,6 +36,6 @@ export class GenericTypeCommand extends Command {
             output += "<" + parameters.slice(2).join(", ") + ">";
         }
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

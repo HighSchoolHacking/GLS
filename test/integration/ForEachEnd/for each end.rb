@@ -1,4 +1,4 @@
 #
-container.each_key { |key|
-}
+for fruit in basket
+end
 #

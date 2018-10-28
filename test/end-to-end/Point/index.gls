@@ -1,0 +1,14 @@
+-
+file start : Classes index
+    import local : Classes Point use Point
+
+    main context start
+        main start
+            variable : point Point { new : Point 1 2 }
+
+            print : { member variable : public point X }
+            print : { member variable : public point Y }
+        main end
+    main context end
+file end
+-

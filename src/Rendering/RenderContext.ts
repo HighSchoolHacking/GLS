@@ -4,8 +4,10 @@ import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
 import { CommandsBagFactory } from "./Commands/CommandsBagFactory";
+import { FileMetadata } from "./FileMetadata";
 import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
+import { ImportsStore } from "./Imports/ImportsStore";
 import { CaseStyle } from "./Languages/Casing/CaseStyle";
 import { Language } from "./Languages/Language";
 import { LineResults } from "./LineResults";
@@ -21,9 +23,9 @@ export class RenderContext {
     private caseStyleConverterBag: CaseStyleConverterBag;
 
     /**
-     * Directories leading to the current file.
+     * Name and path for the rendering file.
      */
-    private directories: string[];
+    private fileMetadata: FileMetadata;
 
     /**
      * The language this context is converting GLS code into.
@@ -54,12 +56,13 @@ export class RenderContext {
         this.language = language;
 
         this.caseStyleConverterBag = new CaseStyleConverterBag();
-        this.directories = [];
+        this.fileMetadata = FileMetadata.defaultFileMetadata;
         this.nameSplitter = new NameSplitter();
         this.nodeRenderer = new GlsNodeRenderer(CommandsBagFactory.forContext(this));
 
         this.lineResultsGenerator = new LineResultsGenerator(
-            new ImportsPrinter(language, this.caseStyleConverterBag.getConverter(language.syntax.imports.case)),
+            this.language.syntax.files,
+            new ImportsPrinter(this.language, this.caseStyleConverterBag.getConverter(this.language.syntax.imports.case)),
             this.nodeRenderer,
         );
     }
@@ -71,21 +74,18 @@ export class RenderContext {
      * @returns Equivalent lines of code in the context language.
      */
     public convert(glsFile: GlsFile): LineResults[] {
-        return this.lineResultsGenerator.generateLineResults(glsFile.getNodes());
-    }
+        const allLineResults: LineResults[] = [];
+        const importsStore = new ImportsStore();
 
-    /**
-     * Converts a single-line command with a single argument.
-     *
-     * @param command   The name of the command.
-     * @param argumentRaw   A raw argument for the command.
-     * @returns An equivalent line of code in the context language.
-     */
-    public convertCommon(command: string, argumentRaw: string): string {
-        const commandNode = new CommandNode(command, [new TextNode(argumentRaw)]);
-        const lineResults: LineResults = this.nodeRenderer.renderNode(commandNode);
+        // 1. Add line results in order, recording any added imports they need.
+        for (const node of glsFile.getNodes()) {
+            const lineResults: LineResults = this.nodeRenderer.renderNode(node);
 
-        return lineResults.commandResults[0].text;
+            allLineResults.push(lineResults);
+            importsStore.addImports(lineResults.addedImports);
+        }
+
+        return this.lineResultsGenerator.generateLineResults(allLineResults, importsStore, this.fileMetadata.getPackagePath().length !== 0);
     }
 
     /**
@@ -128,10 +128,10 @@ export class RenderContext {
     }
 
     /**
-     * @returns Directories leading up to the current file.
+     * @returns Name and path for the rendering file.
      */
-    public getDirectoryPath(): string[] {
-        return this.directories;
+    public getFileMetadata(): FileMetadata {
+        return this.fileMetadata;
     }
 
     /**
@@ -142,11 +142,11 @@ export class RenderContext {
     }
 
     /**
-     * Sets the current file's directory path.
+     * Sets the current file name and path.
      *
-     * @param directories   Directories leading up to the current file.
+     * @param fileDirectory   Name and path for the rendering file.
      */
-    public setDirectoryPath(directories: string[]): void {
-        this.directories = directories;
+    public setFileMetadata(fileMetadata: FileMetadata): void {
+        this.fileMetadata = fileMetadata;
     }
 }

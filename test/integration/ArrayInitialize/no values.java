@@ -1,3 +1,5 @@
 //
-new string[0]
+import java.util.Arrays;
+
+new String[0]
 //

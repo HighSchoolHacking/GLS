@@ -107,6 +107,7 @@ export class TypeScript extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**
@@ -124,7 +125,7 @@ export class TypeScript extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "export ";
+        exports.exportedLeft = "export ";
         exports.internal = "";
     }
 
@@ -464,6 +465,9 @@ export class TypeScript extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " (";
         loops.whileStartRight = ") {";
@@ -618,6 +622,7 @@ export class TypeScript extends Language {
         formatting.formatRight = "`";
         formatting.formatInputLeft = "${";
         formatting.formatInputRight = "}";
+        formatting.includeIndexInFormatting = false;
         formatting.inputTypes = false;
         formatting.useInterpolation = true;
     }

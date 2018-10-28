@@ -15,7 +15,7 @@ export class InterfaceMethodCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.InterfaceMethod)
         .withDescription("Declares a method within an interface")
         .withParameters([
-            new SingleParameter("MethodName", "The method name.", true),
+            new SingleParameter("methodName", "The method name.", true),
             new SingleParameter("returnType", "Return type of the method", true),
             new RepeatingParameters("Method arguments", [
                 new SingleParameter("argumentName", "Name of argument.", true),
@@ -40,8 +40,11 @@ export class InterfaceMethodCommand extends Command {
         let line = "";
 
         if (!this.language.syntax.interfaces.supported) {
-            return LineResults.newSingleLine(line, false);
+            return LineResults.newSingleLine(line);
         }
+
+        const typeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+        const imports = typeLine.addedImports;
 
         if (this.language.syntax.interfaces.methodTypeAfter) {
             line += parameters[1];
@@ -50,28 +53,38 @@ export class InterfaceMethodCommand extends Command {
             for (let i = 3; i < parameters.length; i++) {
                 if (i % 2 !== 0) {
                     line += parameters[i] + ": ";
-                } else if (i !== parameters.length - 1) {
-                    line += parameters[i] + ", ";
                 } else {
-                    line += parameters[i];
+                    const nextTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i]]);
+                    line += nextTypeLine.commandResults[0].text;
+                    imports.push(...nextTypeLine.addedImports);
+
+                    if (i !== parameters.length - 1) {
+                        line += ", ";
+                    }
                 }
             }
 
-            line += this.language.syntax.interfaces.declareMethodRight + ": " + parameters[2];
+            line += this.language.syntax.interfaces.declareMethodRight + ": " + typeLine.commandResults[0].text;
         } else {
             line += this.language.syntax.interfaces.declareMethodLeft;
-            line += parameters[2] + " " + parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
+            line += typeLine.commandResults[0].text + " ";
+            line += parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length - 1; i += 2) {
-                line += parameters[i + 1] + " " + parameters[i];
+                const nextTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
+                line += nextTypeLine.commandResults[0].text + " " + parameters[i];
                 if (i !== parameters.length - 2) {
                     line += ", ";
                 }
+
+                imports.push(...nextTypeLine.addedImports);
             }
 
             line += this.language.syntax.interfaces.declareMethodRight;
         }
 
-        return LineResults.newSingleLine(line, true);
+        return LineResults.newSingleLine(line)
+            .withAddSemicolon(true)
+            .withImports(imports);
     }
 }

@@ -47,6 +47,6 @@ export class RestParametersCommand extends Command {
             middle = this.language.syntax.parameters.restKeywordMiddle + parameters[1];
         }
 
-        return LineResults.newSingleLine(left + middle + right, false);
+        return LineResults.newSingleLine(left + middle + right);
     }
 }

@@ -31,6 +31,6 @@ export class DictionaryNewEndCommand extends Command {
     public render(parameters: string[]): LineResults {
         const ender: string = this.language.syntax.dictionaries.initializeEnd;
 
-        return new LineResults([new CommandResult(ender, -1)], true);
+        return new LineResults([new CommandResult(ender, -1)]).withAddSemicolon(true);
     }
 }

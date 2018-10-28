@@ -45,7 +45,7 @@ export class ImportsPrinter {
             lines = [this.renderCombinedLine(addedImport)];
         }
 
-        return new LineResults(lines, false);
+        return new LineResults(lines);
     }
 
     /**

@@ -30,6 +30,6 @@ export class StringIndexNotFoundCommand extends Command {
     public render(parameters: string[]): LineResults {
         const output: string = this.language.syntax.strings.indexOfNotFound;
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

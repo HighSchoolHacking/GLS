@@ -1,3 +1,3 @@
 //
-public string aaa(string bbb, string ccc);
+public String aaa(String bbb, String ccc);
 //

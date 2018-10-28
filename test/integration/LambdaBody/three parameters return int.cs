@@ -1,3 +1,3 @@
 //
-(aaa, bbb, ccc) => aaa * 7
+(abc, def, ghi) => abc + def + ghi
 //

@@ -34,15 +34,18 @@ export class VariableCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (parameters.length === 3 && !this.language.syntax.variables.declarationRequired) {
-            return LineResults.newSingleLine("\0", false);
+            return LineResults.newSingleLine("\0");
         }
 
         const starter: string = this.language.syntax.variables.declaration;
         const newParameters: string[] = parameters.slice();
         newParameters[0] = CommandNames.VariableInline;
 
-        const ender: string = this.context.convertParsed(newParameters).commandResults[0].text;
+        const enderLine = this.context.convertParsed(newParameters);
+        const line = starter + enderLine.commandResults[0].text;
 
-        return LineResults.newSingleLine(starter + ender, true);
+        return LineResults.newSingleLine(line)
+            .withAddSemicolon(true)
+            .withImports(enderLine.addedImports);
     }
 }

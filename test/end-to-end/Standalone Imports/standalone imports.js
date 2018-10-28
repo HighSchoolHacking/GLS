@@ -1,5 +1,5 @@
 //
-import { repeatText } from "./utilities/text";
+const { repeatText } = require("./utilities/text");
 
 let repeated = repeatText("foo", 7);
 //

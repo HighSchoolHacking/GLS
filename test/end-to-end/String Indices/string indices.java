@@ -1,9 +1,9 @@
 //
 // Initialization
-string haystack = "Hello, GLS!";
+String haystack = "Hello, GLS!";
 
 // Searching
-string needle = "GLS";
+String needle = "GLS";
 int firstIndexOf = haystack.indexOf(needle);
 int secondIndexOf = haystack.indexOf(needle, firstIndexOf + needle.length());
 

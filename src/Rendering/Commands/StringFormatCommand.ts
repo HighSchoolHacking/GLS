@@ -68,7 +68,7 @@ export class StringFormatCommand extends Command {
 
         output += this.language.syntax.strings.formatting.formatRight;
 
-        return new LineResults([new CommandResult(output, 0)], true);
+        return new LineResults([new CommandResult(output, 0)]).withAddSemicolon(true);
     }
 
     /**
@@ -82,7 +82,7 @@ export class StringFormatCommand extends Command {
     private formatReplacement(i: number, inputName: string, inputType: string): string {
         let output: string = this.language.syntax.strings.formatting.formatInputLeft;
 
-        if (!this.language.syntax.strings.formatting.useInterpolation) {
+        if (this.language.syntax.strings.formatting.includeIndexInFormatting) {
             output += i;
         }
 

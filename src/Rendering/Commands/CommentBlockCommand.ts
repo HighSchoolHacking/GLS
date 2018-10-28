@@ -38,6 +38,6 @@ export class CommentBlockCommand extends Command {
         output += parameters.slice(1).join(" ");
         output += this.language.syntax.comments.blockLineRight;
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output);
     }
 }

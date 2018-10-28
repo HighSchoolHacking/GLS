@@ -1,4 +1,6 @@
 //
+using System.Collections.Generic;
+
 // Dictionary types
 Dictionary<string, int> foo = new Dictionary<string, int>();
 Dictionary<string, Dictionary<string, int>> bar = new Dictionary<string, new Dictionary<string, int>>();

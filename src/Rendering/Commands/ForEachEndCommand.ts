@@ -1,13 +1,11 @@
-import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
-import { Command } from "./Command";
-import { CommandResult } from "./CommandResult";
+import { BlockEndCommand } from "./BlockEndCommand";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 
 /**
  * Ends a foreach loop.
  */
-export class ForEachEndCommand extends Command {
+export class ForEachEndCommand extends BlockEndCommand {
     /**
      * Metadata on the command.
      */
@@ -23,14 +21,11 @@ export class ForEachEndCommand extends Command {
     }
 
     /**
-     * Renders the command for a language with the given parameters.
+     * Renders the end block string.
      *
-     * @param parameters   The command's name, followed by any parameters.
-     * @returns Line(s) of code in the language.
+     * @returns The end block string.
      */
-    public render(parameters: string[]): LineResults {
-        const ender: string = this.language.syntax.loops.forEachEnd;
-
-        return new LineResults([new CommandResult(ender, -1)], false);
+    protected renderBlockEnd(): string {
+        return this.language.syntax.loops.forEachEnd;
     }
 }

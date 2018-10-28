@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -33,6 +34,7 @@ export class SetNewCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
+        const imports: Import[] = [];
         let output = "";
 
         if (this.language.syntax.sets.initializeAsNew) {
@@ -41,10 +43,11 @@ export class SetNewCommand extends Command {
         }
 
         if (this.language.syntax.classes.generics.used) {
+            const typeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+            imports.push(...typeLine.addedImports);
+
             output += this.language.syntax.classes.generics.left;
-            output += this.context.convertCommon(CommandNames.Type, parameters[1]);
-            output += this.language.syntax.classes.generics.middle;
-            output += this.context.convertCommon(CommandNames.Type, parameters[2]);
+            output += typeLine.commandResults[0].text;
             output += this.language.syntax.classes.generics.right;
         }
 
@@ -58,6 +61,6 @@ export class SetNewCommand extends Command {
 
         output += ")";
 
-        return LineResults.newSingleLine(output, false);
+        return LineResults.newSingleLine(output).withImports(imports);
     }
 }

@@ -1,3 +1,3 @@
 //
-export class Aaa {
+exports.Aaa = class Aaa {
 //

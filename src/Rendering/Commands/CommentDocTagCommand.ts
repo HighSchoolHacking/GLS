@@ -158,7 +158,7 @@ export class CommentDocTagCommand extends Command {
             commandResults.push(new CommandResult(contentPadded, 0));
         }
 
-        return new LineResults(commandResults, false);
+        return new LineResults(commandResults);
     }
 
     /**
@@ -200,7 +200,7 @@ export class CommentDocTagCommand extends Command {
         ender += "</" + tag + ">";
         commandResults.push(new CommandResult(ender, 0));
 
-        return new LineResults(commandResults, false);
+        return new LineResults(commandResults);
     }
 
     /**

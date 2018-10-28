@@ -104,6 +104,7 @@ export class Ruby extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.requiredImports = [];
     }
 
     /**
@@ -121,7 +122,7 @@ export class Ruby extends Language {
      * @param members   A property container for metadata on exported classes.
      */
     protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exported = "";
+        exports.exportedLeft = "";
         exports.internal = "";
     }
 
@@ -423,7 +424,7 @@ export class Ruby extends Language {
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
         lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sort = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -436,18 +437,21 @@ export class Ruby extends Language {
         loops.continue = "continue";
         loops.for = "for";
         loops.forEachMiddle = " in ";
-        loops.rangedForLoops = true;
         loops.forEachStartIteration = " ";
+        loops.rangedForLoops = true;
         loops.whileStartLeft = "while";
         loops.whileStartMiddle = " ";
         loops.whileStartRight = ":";
 
         loops.foreach = "foreach";
         loops.forEachAsMethod = true;
-        loops.forEachEnd = "}";
+        loops.forEachEnd = "end";
+        loops.forEachKeyEnd = "}";
         loops.forEachGetKeys = ".each_key { |";
         loops.forEachGetPairs = ".each { |";
+        loops.forEachPairEnd = "}";
         loops.forEachRight = "|";
+        loops.forNumbersEnd = "end";
 
         loops.forEachStartLeft = "for";
         loops.forEachStartSeparator = " in ";
@@ -461,7 +465,7 @@ export class Ruby extends Language {
         loops.rangedForLoopsFunctionalRight = "|";
 
         loops.rangedForLoopsLeft = " in ";
-        loops.rangedForLoopsMiddle = "..";
+        loops.rangedForLoopsMiddle = "...";
         loops.rangedForLoopsRight = "";
 
         loops.whileStartRight = "";
@@ -601,8 +605,9 @@ export class Ruby extends Language {
         formatting.formatMiddle = '" % [';
         formatting.formatAbbreviated = '" % [';
         formatting.formatRight = "]";
-        formatting.formatInputLeft = "$";
+        formatting.formatInputLeft = "";
         formatting.formatInputRight = "";
+        formatting.includeIndexInFormatting = false;
         formatting.inputTypes = true;
         formatting.useInterpolation = false;
 
