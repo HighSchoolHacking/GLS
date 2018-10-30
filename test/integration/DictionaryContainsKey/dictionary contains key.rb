@@ -1,3 +1,3 @@
 #
-bbb in aaa
+aaa.key?(bbb)
 #

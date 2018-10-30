@@ -301,7 +301,7 @@ export class TypeScript extends Language {
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "Object";
-        dictionaries.containsKey = new NativeCallSyntax("hasOwnProperty", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.containsKey = new NativeCallSyntax("{}.hasOwnProperty.call", NativeCallScope.Static, NativeCallType.Function);
         dictionaries.keys = new NativeCallSyntax("Object.keys", NativeCallScope.Static, NativeCallType.Function);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";

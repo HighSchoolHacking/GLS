@@ -293,12 +293,12 @@ export class Ruby extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
-        dictionaries.containsKey = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
+        dictionaries.containsKey = new NativeCallSyntax("key?", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
         dictionaries.initializePairLeft = "";
-        dictionaries.initializePairMiddle = ": ";
+        dictionaries.initializePairMiddle = " => ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
 

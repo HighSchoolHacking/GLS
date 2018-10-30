@@ -83,6 +83,11 @@ export class LoopSyntax {
     public forEachPairsRetrieveValue: string;
 
     /**
+     * Whether pairs should include explicit types.
+     */
+    public forEachPairsTypedPair: boolean;
+
+    /**
      * How to end a foreach loop's initial line.
      */
     public forEachRight: string;

@@ -475,6 +475,7 @@ export class CSharp extends Language {
         loops.forEachPairsPairClass = "KeyValuePair";
         loops.forEachPairsRetrieveKey = ".Key";
         loops.forEachPairsRetrieveValue = ".Value";
+        loops.forEachPairsTypedPair = true;
         loops.forEachRight = "";
 
         loops.forEachStartLeft = "foreach";
