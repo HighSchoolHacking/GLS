@@ -32,7 +32,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -100,7 +100,7 @@ export abstract class Language {
         this.generateStringFormatSyntax(this.syntax.strings.formatting);
         this.generateStringSyntax(this.syntax.strings);
         this.generateStringSubstringSyntax(this.syntax.strings.substrings);
-        this.generateStringToFloatSyntax(this.syntax.strings.toFloat);
+        this.generateStringToDoubleSyntax(this.syntax.strings.toDouble);
         this.generateStyleSyntax(this.syntax.style);
         this.generateUnsupportedSyntax(this.syntax.unsupported);
         this.generateVariableSyntax(this.syntax.variables);
@@ -350,11 +350,11 @@ export abstract class Language {
     protected abstract generateStringSubstringSyntax(substrings: StringSubstringSyntax): void;
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected abstract generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void;
+    protected abstract generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void;
 
     /**
      * Generates metadata on style.

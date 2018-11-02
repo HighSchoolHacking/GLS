@@ -155,7 +155,7 @@ These languages can be fully output by GLS but don't provide rich enough type in
         <th>Language</th>
         <th>Compiler</th>
         <th>
-            <code>int</code> vs <code>float</code>
+            <code>int</code> vs <code>double</code>
         </th>
     </thead>
     <tbody>
@@ -192,4 +192,4 @@ These languages are capable of being compiled from their native source code to G
 In order for a language to be fully supported, it must:
 
 * Completely support static typings via a programmable AST.
-* Recognize differences between all GLS types, including `int` vs. `float`.
+* Recognize differences between all GLS types, including `int` vs. `double`.

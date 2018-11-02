@@ -1,7 +1,7 @@
 //
 using System;
 
-if (float.TryParse(aaa, out var bbb))
+if (double.TryParse(aaa, out var bbb))
 {
     // ...
 }

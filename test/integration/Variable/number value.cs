@@ -1,3 +1,3 @@
 //
-float aaa = 0.0;
+double aaa = 0.0;
 //

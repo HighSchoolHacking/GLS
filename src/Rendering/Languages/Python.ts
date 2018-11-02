@@ -1,4 +1,4 @@
-import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -38,7 +38,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -155,7 +155,7 @@ export class Python extends Language {
         classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "dict",
-            number: "float",
+            number: "double",
         };
 
         classes.constructors.keyword = "def __init__";
@@ -628,21 +628,21 @@ export class Python extends Language {
     }
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
-        toFloat.conversionType = StringToFloatStartConversionType.PredeclareConvertAndValidate;
-        toFloat.initialVariableValues = "None";
-        toFloat.initializeVariablesEnd = "\n\ntry:\n";
-        toFloat.perVariableConversionStartLeft = "    ";
-        toFloat.perVariableConversionStartMiddle = " = float(";
-        toFloat.perVariableConversionStartRight = ")\n";
-        toFloat.validationBlockComparison = "{1} is not None";
-        toFloat.validationBlockLeft = "except:\n    pass\n\nif ";
-        toFloat.validationBlockMiddle = " and ";
-        toFloat.validationBlockRight = ":";
+    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
+        toDouble.conversionType = StringToDoubleStartConversionType.PredeclareConvertAndValidate;
+        toDouble.initialVariableValues = "None";
+        toDouble.initializeVariablesEnd = "\n\ntry:\n";
+        toDouble.perVariableConversionStartLeft = "    ";
+        toDouble.perVariableConversionStartMiddle = " = float(";
+        toDouble.perVariableConversionStartRight = ")\n";
+        toDouble.validationBlockComparison = "{1} is not None";
+        toDouble.validationBlockLeft = "except:\n    pass\n\nif ";
+        toDouble.validationBlockMiddle = " and ";
+        toDouble.validationBlockRight = ":";
     }
 
     /**
