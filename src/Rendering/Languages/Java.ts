@@ -484,6 +484,7 @@ export class Java extends Language {
         loops.forEachPairsPairClass = "Map.Entry";
         loops.forEachPairsRetrieveKey = ".getKey()";
         loops.forEachPairsRetrieveValue = ".getValue()";
+        loops.forEachPairsTypedPair = true;
         loops.forEachRight = "";
 
         loops.forEachStartLeft = "for";

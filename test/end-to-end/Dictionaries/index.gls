@@ -1,0 +1,40 @@
+-
+file start : Dictionaries index
+    main context start
+        main start
+            comment line : Types
+            variable : foo { dictionary type : string int } { dictionary initialize : string int }
+            variable : bar { dictionary type : string { dictionary type : string int } } { dictionary initialize : string { dictionary type : string int } }
+
+            comment line : Indices
+            operation : { dictionary index : foo "baz" } equals 7
+            variable : qux int { dictionary index : foo "baz" }
+            print : { string format : ("baz is {0}") { dictionary index : foo "baz" } int }
+            print : { string format : ("qux is {0}") qux int }
+
+            comment line : Initialization
+            variable start : aaa { dictionary type : string int } { dictionary initialize start : string int }
+                dictionary pair : "bbb" 1 ,
+                dictionary pair : "ccc" 2 ,
+                dictionary pair : "ddd" 3
+            dictionary initialize end
+
+            comment line : Contains Key
+            variable : containsFalse boolean { dictionary contains key : aaa "aaa" }
+
+            if start : containsFalse
+                print : "wrong"
+            if end
+
+            if start : { dictionary contains key : aaa "bbb" }
+                print : ("contains bbb")
+            if end
+
+            comment line : Pair Iteration
+            for each pair start : aaa pair key string value int
+                print : { string format : ("{0} has {1}") key string value int }
+            for each pair end
+        main end
+    main context end
+file end
+-
