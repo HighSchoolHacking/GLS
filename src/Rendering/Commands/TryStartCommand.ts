@@ -3,6 +3,7 @@ import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a try block.
@@ -32,7 +33,7 @@ export class TryStartCommand extends Command {
         const line: string = this.language.syntax.exceptions.try;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.exceptions.tryStartRight, 1);
+        addLineEnder(lines, this.language.syntax.exceptions.tryStartRight, 1);
 
         return new LineResults(lines);
     }

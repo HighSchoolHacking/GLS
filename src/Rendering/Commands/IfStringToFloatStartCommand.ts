@@ -6,6 +6,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * How a language attempts to convert strings to floats.
@@ -98,7 +99,7 @@ export class IfStringToFloatStartCommand extends Command {
             lines.push(declaration);
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.initializeVariablesEnd, 0);
+        addLineEnder(lines, this.language.syntax.strings.toFloat.initializeVariablesEnd, 0);
     }
 
     /**
@@ -116,11 +117,11 @@ export class IfStringToFloatStartCommand extends Command {
             const stringName = parameters[i];
             const floatName = parameters[i + 1];
 
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartLeft, 0);
-            this.addLineEnder(lines, floatName, 0);
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartMiddle, 0);
-            this.addLineEnder(lines, stringName, 0);
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartRight, 0);
+            addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartLeft, 0);
+            addLineEnder(lines, floatName, 0);
+            addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartMiddle, 0);
+            addLineEnder(lines, stringName, 0);
+            addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartRight, 0);
         }
     }
 
@@ -135,7 +136,7 @@ export class IfStringToFloatStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockLeft, 0);
+        addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockLeft, 0);
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
@@ -146,13 +147,13 @@ export class IfStringToFloatStartCommand extends Command {
             comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
             comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", floatName);
 
-            this.addLineEnder(lines, comparison, 0);
+            addLineEnder(lines, comparison, 0);
 
             if (i < parameters.length - 2) {
-                this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockMiddle, 0);
+                addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockMiddle, 0);
             }
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockRight, 0);
+        addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockRight, 0);
     }
 }

@@ -3,6 +3,7 @@ import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a finally block.
@@ -37,12 +38,12 @@ export class FinallyStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.exceptions.blockEnd, 0);
+        addLineEnder(lines, this.language.syntax.exceptions.blockEnd, 0);
 
         line = lines[lines.length - 1];
         line.text += this.language.syntax.exceptions.finally;
 
-        this.addLineEnder(lines, this.language.syntax.exceptions.finallyStartRight, 2);
+        addLineEnder(lines, this.language.syntax.exceptions.finallyStartRight, 2);
 
         return new LineResults(lines);
     }

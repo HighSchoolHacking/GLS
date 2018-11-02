@@ -8,6 +8,7 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a class declaration.
@@ -92,7 +93,7 @@ export class ClassStartCommand extends Command {
         line += forImplements;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.classes.declareStartRight, 1);
+        addLineEnder(lines, this.language.syntax.classes.declareStartRight, 1);
 
         return new LineResults(lines).withImports(imports);
     }

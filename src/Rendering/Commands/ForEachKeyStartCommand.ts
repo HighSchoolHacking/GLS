@@ -5,6 +5,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a foreach loop over a container's keys.
@@ -78,7 +79,7 @@ export class ForEachKeyStartCommand extends Command {
         line += this.language.syntax.loops.forEachRight;
 
         output = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
+        addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(output).withImports(imports);
     }

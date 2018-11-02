@@ -5,6 +5,7 @@ import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts any kind of member function.
@@ -62,7 +63,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         }
 
         output = [new CommandResult(declaration, 0)];
-        this.addLineEnder(output, this.getEnder(), this.getIndentation());
+        addLineEnder(output, this.getEnder(), this.getIndentation());
 
         return new LineResults(output).withImports(imports);
     }

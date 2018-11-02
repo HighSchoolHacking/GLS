@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts an enum declaration.
@@ -37,7 +38,7 @@ export class EnumStartCommand extends Command {
         line += parameters[1];
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.enums.declareStartRight, 1);
+        addLineEnder(lines, this.language.syntax.enums.declareStartRight, 1);
 
         return new LineResults(lines);
     }
