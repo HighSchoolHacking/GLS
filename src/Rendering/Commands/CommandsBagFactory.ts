@@ -50,8 +50,8 @@ import { ForNumbersStartCommand } from "./ForNumbersStartCommand";
 import { GenericTypeCommand } from "./GenericTypeCommand";
 import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
-import { IfStringToFloatEndCommand } from "./IfStringToFloatEndCommand";
-import { IfStringToFloatStartCommand } from "./IfStringToFloatStartCommand";
+import { IfStringToDoubleEndCommand } from "./IfStringToDoubleEndCommand";
+import { IfStringToDoubleStartCommand } from "./IfStringToDoubleStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
 import { ImportStandaloneFunctionsCommand } from "./ImportStandaloneFunctionsCommand";
@@ -200,8 +200,8 @@ export class CommandsBagFactory {
             new GenericTypeCommand(context),
             new IfEndCommand(context),
             new IfStartCommand(context),
-            new IfStringToFloatEndCommand(context),
-            new IfStringToFloatStartCommand(context),
+            new IfStringToDoubleEndCommand(context),
+            new IfStringToDoubleStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
             new ImportStandaloneFunctionsCommand(context),

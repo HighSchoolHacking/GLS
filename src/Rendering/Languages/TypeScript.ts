@@ -1,4 +1,4 @@
-import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
@@ -36,7 +36,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -665,19 +665,19 @@ export class TypeScript extends Language {
     }
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
-        toFloat.conversionType = StringToFloatStartConversionType.ConvertAndValidate;
-        toFloat.perVariableConversionStartLeft = "let ";
-        toFloat.perVariableConversionStartMiddle = ": number = parseFloat(";
-        toFloat.perVariableConversionStartRight = ");\n";
-        toFloat.validationBlockComparison = "!isNaN({1})";
-        toFloat.validationBlockLeft = "\nif (";
-        toFloat.validationBlockMiddle = " && ";
-        toFloat.validationBlockRight = ") {";
+    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
+        toDouble.conversionType = StringToDoubleStartConversionType.ConvertAndValidate;
+        toDouble.perVariableConversionStartLeft = "let ";
+        toDouble.perVariableConversionStartMiddle = ": number = parseFloat(";
+        toDouble.perVariableConversionStartRight = ");\n";
+        toDouble.validationBlockComparison = "!isNaN({1})";
+        toDouble.validationBlockLeft = "\nif (";
+        toDouble.validationBlockMiddle = " && ";
+        toDouble.validationBlockRight = ") {";
     }
 
     /**

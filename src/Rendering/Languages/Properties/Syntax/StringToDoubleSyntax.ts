@@ -1,14 +1,14 @@
-import { StringToFloatStartConversionType } from "../../../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../../../Commands/IfStringToDoubleStartCommand";
 import { Import } from "../../Imports/Import";
 
 /**
- * Metadata on a language's string-to-float conversion syntax.
+ * Metadata on a language's string-to-double conversion syntax.
  */
-export class StringToFloatSyntax {
+export class StringToDoubleSyntax {
     /**
-     * How the language attempts to convert a strings to floats.
+     * How the language attempts to convert a strings to doubles.
      */
-    public conversionType: StringToFloatStartConversionType;
+    public conversionType: StringToDoubleStartConversionType;
 
     /**
      * Initial value for each variable, if not "".
@@ -36,7 +36,7 @@ export class StringToFloatSyntax {
     public perVariableConversionStartRight: string;
 
     /**
-     * Any imports required to convert strings to floats.
+     * Any imports required to convert strings to doubles.
      */
     public requiredImports: Import[];
 
@@ -46,17 +46,17 @@ export class StringToFloatSyntax {
     public validationBlockComparison: string;
 
     /**
-     * Text before validating float variables.
+     * Text before validating double variables.
      */
     public validationBlockLeft: string;
 
     /**
-     * Text between each float variable validation.
+     * Text between each double variable validation.
      */
     public validationBlockMiddle: string;
 
     /**
-     * Text after valiating float variables.
+     * Text after valiating double variables.
      */
     public validationBlockRight: string;
 }

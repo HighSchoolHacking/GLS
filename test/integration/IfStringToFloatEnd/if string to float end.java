@@ -1,8 +1,8 @@
 //
-float bbb = null;
+double bbb = null;
 
 try {
-    bbb = Float.parseFloat(aaa);
+    bbb = Double.parseDouble(aaa);
 } catch (NumberFormatException e) { }
 
 if (bbb != null) {

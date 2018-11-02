@@ -1,4 +1,4 @@
-import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
@@ -36,7 +36,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -179,7 +179,7 @@ export class Ruby extends Language {
         classes.abstractDeclaration = "";
         classes.aliases = {
             dictionary: "Hash",
-            number: "Float",
+            number: "Double",
         };
 
         classes.constructors.keyword = "def initialize";
@@ -434,7 +434,7 @@ export class Ruby extends Language {
      */
     protected generateLoopSyntax(loops: LoopSyntax): void {
         loops.break = "break";
-        loops.continue = "continue";
+        loops.continue = "next";
         loops.for = "for";
         loops.forEachMiddle = " in ";
         loops.forEachStartIteration = " ";
@@ -459,7 +459,7 @@ export class Ruby extends Language {
 
         loops.rangedForLoopsFunctionalIncrementor = true;
         loops.rangedForLoopsFunctionalLeft = "(";
-        loops.rangedForLoopsFunctionalMiddleLeft = "..";
+        loops.rangedForLoopsFunctionalMiddleLeft = "...";
         loops.rangedForLoopsFunctionalMiddleMiddle = ").step(";
         loops.rangedForLoopsFunctionalMiddleRight = ") do |";
         loops.rangedForLoopsFunctionalRight = "|";
@@ -612,7 +612,7 @@ export class Ruby extends Language {
         formatting.useInterpolation = false;
 
         formatting.typeCodes = {
-            float: "%f",
+            double: "%f",
             int: "%d",
             string: "%s",
         };
@@ -656,19 +656,19 @@ export class Ruby extends Language {
     }
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
-        toFloat.conversionType = StringToFloatStartConversionType.ConvertAndValidate;
-        toFloat.perVariableConversionStartLeft = "";
-        toFloat.perVariableConversionStartMiddle = " = ";
-        toFloat.perVariableConversionStartRight = ".to_f\n";
-        toFloat.validationBlockComparison = "{1} != nil";
-        toFloat.validationBlockLeft = "\nif (";
-        toFloat.validationBlockMiddle = " && ";
-        toFloat.validationBlockRight = ")";
+    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
+        toDouble.conversionType = StringToDoubleStartConversionType.ConvertAndValidate;
+        toDouble.perVariableConversionStartLeft = "";
+        toDouble.perVariableConversionStartMiddle = " = ";
+        toDouble.perVariableConversionStartRight = ".to_f\n";
+        toDouble.validationBlockComparison = "{1} != nil";
+        toDouble.validationBlockLeft = "\nif (";
+        toDouble.validationBlockMiddle = " && ";
+        toDouble.validationBlockRight = ")";
     }
 
     /**
@@ -699,7 +699,7 @@ export class Ruby extends Language {
         variables.declaration = "";
 
         variables.aliases = {
-            infinity: "float::Infinity",
+            infinity: "double::Infinity",
         };
         variables.null = "Nil";
         variables.isNullLeft = "";

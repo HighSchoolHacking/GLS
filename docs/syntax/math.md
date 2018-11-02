@@ -98,7 +98,7 @@ It takes a single argument and wraps it in `()` parentheses.
 ```gls
 operation : foo times 2
 operation : foo (decrease by) bar times { parenthesis : { operation : bar minus 3 } }
-variable : bar number { operation : foo (divide by) 3 plus 4 times foo }
+variable : bar double { operation : foo (divide by) 3 plus 4 times foo }
 ```
 
 In C#:
@@ -106,7 +106,7 @@ In C#:
 ```csharp
 foo *= 2;
 foo -= bar * (bar - 3);
-float bar = foo /= 3 + 4 * foo;
+double bar = foo /= 3 + 4 * foo;
 ```
 
 In Python:
@@ -121,8 +121,8 @@ bar = foo /= 3 + 4 * foo
 
 Some languages recognize a difference between integers, doubles, floats, and other number types.
 Some do not.
-For feature parity between other languages, GLS recognizes only `int` and `float` as valid number types.
-`double`, `long`, `ushort`, and so on are not supported.
+For feature parity between other languages, GLS recognizes only `int` and `double` as valid number types.
+`float`, `long`, `ushort`, and so on are not supported.
 
 ## Native Commands
 

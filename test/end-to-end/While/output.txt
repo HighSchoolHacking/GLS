@@ -1,0 +1,4 @@
+Near-infinite
+count is 1
+count is 3
+count is 5

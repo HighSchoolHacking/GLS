@@ -1,6 +1,6 @@
 //
 using System;
 
-if (float.TryParse(aaa, out var bbb) && float.TryParse(ccc, out var ddd))
+if (double.TryParse(aaa, out var bbb) && double.TryParse(ccc, out var ddd))
 {
 //

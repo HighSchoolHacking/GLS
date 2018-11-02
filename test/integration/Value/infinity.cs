@@ -1,3 +1,3 @@
 //
-float.PositiveInfinity
+double.PositiveInfinity
 //
