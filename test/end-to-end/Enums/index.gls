@@ -1,0 +1,22 @@
+-
+file start : Enums Index
+    enum start : Direction
+        enum member : Unknown 0 ,
+        enum member : Horizontal 1 ,
+        enum member : Vertical 2
+    enum end
+
+    main context start
+        main start
+            print : { string format : ("Unknown by lookup is {0}") { enum : Direction Unknown } int }
+            print : { string format : ("Horizontal by lookup is {0}") { enum : Direction Horizontal } int }
+            print : { string format : ("Vertical by lookup is {0}") { enum : Direction Vertical } int }
+
+            variable : direction Direction
+            variable : unknown Direction { enum : Direction Unknown }
+
+            print : { string format : ("unknown variable is {0}") unknown int }
+        main end
+    main context end
+file end
+-
