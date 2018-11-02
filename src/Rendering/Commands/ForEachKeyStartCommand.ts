@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -52,14 +53,21 @@ export class ForEachKeyStartCommand extends Command {
     public renderForEachAsLoop(parameters: string[]): LineResults {
         let line: string = this.language.syntax.loops.foreach;
         let output: CommandResult[];
+        const imports: Import[] = [];
 
         line += this.language.syntax.conditionals.startLeft;
 
         if (this.language.syntax.variables.declarationRequired) {
-            const variableInline = this.context.convertParsed([CommandNames.VariableInline, parameters[2], parameters[3]]);
-
             line += this.language.syntax.variables.declaration;
-            line += variableInline.commandResults[0].text;
+
+            if (this.language.syntax.loops.forEachPairsTypedPair) {
+                const variableInline = this.context.convertParsed([CommandNames.VariableInline, parameters[2], parameters[3]]);
+
+                line += variableInline.commandResults[0].text;
+                imports.push(...variableInline.addedImports);
+            } else {
+                line += parameters[2];
+            }
         } else {
             line += parameters[2];
         }
@@ -72,7 +80,7 @@ export class ForEachKeyStartCommand extends Command {
         output = [new CommandResult(line, 0)];
         this.addLineEnder(output, this.language.syntax.conditionals.startRight, 1);
 
-        return new LineResults(output);
+        return new LineResults(output).withImports(imports);
     }
 
     /**

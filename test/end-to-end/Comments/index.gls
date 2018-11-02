@@ -1,0 +1,15 @@
+-
+file start : Comments Index
+    main context start
+        main start
+            comment block start
+                comment block
+                comment block : aaa bbb ccc
+            comment block end
+
+            comment line : { print : ("Hello, world!") }
+            print : ("Hello, world!")
+        main end
+    main context end
+file end
+-

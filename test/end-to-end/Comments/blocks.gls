@@ -1,7 +1,0 @@
--
-comment line : Blocks
-comment block start
-    comment block
-    comment block : aaa bbb ccc
-comment block end
--

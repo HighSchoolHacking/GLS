@@ -426,7 +426,7 @@ export class Python extends Language {
 
         loops.forEachEnd = "\0";
         loops.forEachGetKeys = "";
-        loops.forEachGetPairs = ".iteritems()";
+        loops.forEachGetPairs = ".items()";
         loops.forEachKeyEnd = "\0";
         loops.forEachPairEnd = "\0";
         loops.forEachPairsAsPair = true;

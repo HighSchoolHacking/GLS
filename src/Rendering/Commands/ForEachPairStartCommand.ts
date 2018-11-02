@@ -81,7 +81,14 @@ export class ForEachPairStartCommand extends Command {
             }
 
             line += this.language.syntax.variables.declaration;
-            line += this.context.convertParsed([CommandNames.VariableInline, iteratorName, typeName]).commandResults[0].text;
+
+            if (this.language.syntax.loops.forEachPairsTypedPair) {
+                const typedLine = this.context.convertParsed([CommandNames.VariableInline, iteratorName, typeName]);
+                line += typedLine.commandResults[0].text;
+                imports.push(...typedLine.addedImports);
+            } else {
+                line += iteratorName;
+            }
         } else {
             line += parameters[3];
 
