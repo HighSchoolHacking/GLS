@@ -1,0 +1,15 @@
+-
+file start : ForNumbers Index
+    main context start
+        main start
+            for numbers start : aaa int 0 10
+                print : { string format : ("aaa is {0}") aaa int }
+            for numbers end
+
+            for numbers start : bbb int 3 15 2
+                print : { string format : ("bbb is {0}") bbb int }
+            for numbers end
+        main end
+    main context end
+file end
+-

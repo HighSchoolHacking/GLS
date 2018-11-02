@@ -8,45 +8,45 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * How a language attempts to convert strings to floats.
+ * How a language attempts to convert strings to doubles.
  */
-export enum StringToFloatStartConversionType {
+export enum StringToDoubleStartConversionType {
     /**
-     * Convert strings into float variables and validate the results.
+     * Convert strings into double variables and validate the results.
      */
     ConvertAndValidate = "ConvertAndValidate",
 
     /**
-     * Declare float variables, convert strings into them, and validate the results.
+     * Declare double variables, convert strings into them, and validate the results.
      */
     PredeclareConvertAndValidate = "PredeclareConvertAndValidate",
 
     /**
-     * Directly validate calls to float conversions inline.
+     * Directly validate calls to double conversions inline.
      */
     ValidateDirectly = "ValidateDirectly",
 }
 
 /**
- * Starts a block to be executed if a string can be converted to a float.
+ * Starts a block to be executed if a string can be converted to a double.
  */
-export class IfStringToFloatStartCommand extends Command {
+export class IfStringToDoubleStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToFloatStart)
-        .withDescription("Starts a block to be executed if a string can be converted to a float")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToDoubleStart)
+        .withDescription("Starts a block to be executed if a string can be converted to a double")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("stringName", "Name of a string to try converting.", true),
-            new SingleParameter("floatName", "What to call the string in float form.", true),
+            new SingleParameter("doubleName", "What to call the string in double form.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return IfStringToFloatStartCommand.metadata;
+        return IfStringToDoubleStartCommand.metadata;
     }
 
     /**
@@ -56,22 +56,22 @@ export class IfStringToFloatStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const conversionType: StringToFloatStartConversionType = this.language.syntax.strings.toFloat.conversionType;
+        const conversionType: StringToDoubleStartConversionType = this.language.syntax.strings.toDouble.conversionType;
         const lines: CommandResult[] = [];
 
-        if (conversionType === StringToFloatStartConversionType.PredeclareConvertAndValidate) {
+        if (conversionType === StringToDoubleStartConversionType.PredeclareConvertAndValidate) {
             this.predeclareVariables(parameters, lines);
         }
 
-        if (conversionType !== StringToFloatStartConversionType.ValidateDirectly) {
+        if (conversionType !== StringToDoubleStartConversionType.ValidateDirectly) {
             this.convertStrings(parameters, lines);
         }
 
-        this.validateFloats(parameters, lines);
+        this.validateDoubles(parameters, lines);
 
         const results: LineResults = new LineResults(lines);
 
-        results.withImports(this.language.syntax.strings.toFloat.requiredImports);
+        results.withImports(this.language.syntax.strings.toDouble.requiredImports);
         results.commandResults[results.commandResults.length - 1].indentation = 1;
 
         return results;
@@ -84,10 +84,10 @@ export class IfStringToFloatStartCommand extends Command {
      * @param lines   Output lines of rendered language code.
      */
     private predeclareVariables(parameters: string[], lines: CommandResult[]): void {
-        const initialValue = this.language.syntax.strings.toFloat.initialVariableValues;
+        const initialValue = this.language.syntax.strings.toDouble.initialVariableValues;
 
         for (let i = 1; i < parameters.length; i += 2) {
-            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Float];
+            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Double];
 
             if (initialValue !== "") {
                 declarationParameters.push(initialValue);
@@ -98,11 +98,11 @@ export class IfStringToFloatStartCommand extends Command {
             lines.push(declaration);
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.initializeVariablesEnd, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toDouble.initializeVariablesEnd, 0);
     }
 
     /**
-     * Adds string-to-float conversions to the output lines.
+     * Adds string-to-double conversions to the output lines.
      *
      * @param parameters   The command's name, followed by any parameters.
      * @param lines   Output lines of rendered language code.
@@ -114,45 +114,45 @@ export class IfStringToFloatStartCommand extends Command {
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
-            const floatName = parameters[i + 1];
+            const doubleName = parameters[i + 1];
 
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartLeft, 0);
-            this.addLineEnder(lines, floatName, 0);
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartMiddle, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartLeft, 0);
+            this.addLineEnder(lines, doubleName, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartMiddle, 0);
             this.addLineEnder(lines, stringName, 0);
-            this.addLineEnder(lines, this.language.syntax.strings.toFloat.perVariableConversionStartRight, 0);
+            this.addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartRight, 0);
         }
     }
 
     /**
-     * Adds float validation checks to the output lines.
+     * Adds double validation checks to the output lines.
      *
      * @param parameters   The command's name, followed by any parameters.
      * @param lines   Output lines of rendered language code.
      */
-    private validateFloats(parameters: string[], lines: CommandResult[]): void {
+    private validateDoubles(parameters: string[], lines: CommandResult[]): void {
         if (lines.length === 0) {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockLeft, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockLeft, 0);
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
-            const floatName = parameters[i + 1];
+            const doubleName = parameters[i + 1];
 
-            let comparison = this.language.syntax.strings.toFloat.validationBlockComparison;
+            let comparison = this.language.syntax.strings.toDouble.validationBlockComparison;
 
             comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
-            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", floatName);
+            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", doubleName);
 
             this.addLineEnder(lines, comparison, 0);
 
             if (i < parameters.length - 2) {
-                this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockMiddle, 0);
+                this.addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockMiddle, 0);
             }
         }
 
-        this.addLineEnder(lines, this.language.syntax.strings.toFloat.validationBlockRight, 0);
+        this.addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockRight, 0);
     }
 }

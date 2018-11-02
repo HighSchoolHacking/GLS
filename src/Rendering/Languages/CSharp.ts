@@ -1,4 +1,4 @@
-import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -38,7 +38,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -182,7 +182,7 @@ export class CSharp extends Language {
             boolean: "bool",
             dictionary: "Dictionary",
             list: "List",
-            number: "float",
+            number: "double",
         };
 
         classes.constructors.private = "private ";
@@ -672,19 +672,19 @@ export class CSharp extends Language {
     }
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
-        toFloat.conversionType = StringToFloatStartConversionType.ValidateDirectly;
+    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
+        toDouble.conversionType = StringToDoubleStartConversionType.ValidateDirectly;
 
-        toFloat.requiredImports = [new Import(["system"], ["Float"], ImportRelativity.Absolute)];
+        toDouble.requiredImports = [new Import(["system"], ["Double"], ImportRelativity.Absolute)];
 
-        toFloat.validationBlockComparison = "float.TryParse({0}, out var {1})";
-        toFloat.validationBlockLeft = "if (";
-        toFloat.validationBlockMiddle = " && ";
-        toFloat.validationBlockRight = ")\n{";
+        toDouble.validationBlockComparison = "double.TryParse({0}, out var {1})";
+        toDouble.validationBlockLeft = "if (";
+        toDouble.validationBlockMiddle = " && ";
+        toDouble.validationBlockRight = ")\n{";
     }
 
     /**
@@ -716,7 +716,7 @@ export class CSharp extends Language {
         variables.declarationRequired = true;
 
         variables.aliases = {
-            infinity: "float.PositiveInfinity",
+            infinity: "double.PositiveInfinity",
         };
         variables.castLeft = "(";
         variables.castRight = ")";

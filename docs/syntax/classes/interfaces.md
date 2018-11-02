@@ -10,11 +10,11 @@ Declare public methods on an interface with `interface method`, which takes the 
 
 ```gls
 interface start : IShape
-    interface method : GetArea float
+    interface method : GetArea double
 interface end
 
 interface start : IPolygon IShape
-    interface method : GetPerimeter float
+    interface method : GetPerimeter double
 interface end
 ```
 
@@ -23,11 +23,11 @@ In C#:
 ```csharp
 interface IShape
 {
-    float GetArea();
+    double GetArea();
 }
 
 interface IPolygon : IShape
 {
-    float GetPerimeter();
+    double GetPerimeter();
 }
 ```

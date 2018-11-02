@@ -1,4 +1,4 @@
-import { StringToFloatStartConversionType } from "../Commands/IfStringToFloatStartCommand";
+import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -38,7 +38,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToFloatSyntax } from "./Properties/Syntax/StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -636,7 +636,7 @@ export class Java extends Language {
         formatting.useInterpolation = false;
 
         formatting.typeCodes = {
-            float: "$f",
+            double: "$f",
             int: "$d",
             string: "$s",
         };
@@ -680,21 +680,21 @@ export class Java extends Language {
     }
 
     /**
-     * Generates metadata on string-to-float conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toFloat   A property container for metadata on string-to-float conversions.
+     * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToFloatSyntax(toFloat: StringToFloatSyntax): void {
-        toFloat.conversionType = StringToFloatStartConversionType.PredeclareConvertAndValidate;
-        toFloat.initialVariableValues = "null";
-        toFloat.initializeVariablesEnd = "\n\ntry {\n";
-        toFloat.perVariableConversionStartLeft = "    ";
-        toFloat.perVariableConversionStartMiddle = " = Float.parseFloat(";
-        toFloat.perVariableConversionStartRight = ");\n";
-        toFloat.validationBlockComparison = "{1} != null";
-        toFloat.validationBlockLeft = "} catch (NumberFormatException e) { }\n\nif (";
-        toFloat.validationBlockMiddle = " && ";
-        toFloat.validationBlockRight = ") {";
+    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
+        toDouble.conversionType = StringToDoubleStartConversionType.PredeclareConvertAndValidate;
+        toDouble.initialVariableValues = "null";
+        toDouble.initializeVariablesEnd = "\n\ntry {\n";
+        toDouble.perVariableConversionStartLeft = "    ";
+        toDouble.perVariableConversionStartMiddle = " = Double.parseDouble(";
+        toDouble.perVariableConversionStartRight = ");\n";
+        toDouble.validationBlockComparison = "{1} != null";
+        toDouble.validationBlockLeft = "} catch (NumberFormatException e) { }\n\nif (";
+        toDouble.validationBlockMiddle = " && ";
+        toDouble.validationBlockRight = ") {";
     }
 
     /**

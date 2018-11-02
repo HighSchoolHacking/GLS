@@ -1,10 +1,10 @@
 //
-float bbb = null;
-float ddd = null;
+double bbb = null;
+double ddd = null;
 
 try {
-    bbb = Float.parseFloat(aaa);
-    ddd = Float.parseFloat(ccc);
+    bbb = Double.parseDouble(aaa);
+    ddd = Double.parseDouble(ccc);
 } catch (NumberFormatException e) { }
 
 if (bbb != null && ddd != null) {

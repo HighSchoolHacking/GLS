@@ -1,16 +1,16 @@
 import { NativeCallSyntax } from "./NativeCallSyntax";
 import { StringFormatSyntax } from "./StringFormatSyntax";
 import { StringSubstringSyntax } from "./StringSubstringSyntax";
-import { StringToFloatSyntax } from "./StringToFloatSyntax";
+import { StringToDoubleSyntax } from "./StringToDoubleSyntax";
 
 /**
  * Metadata on a language's string syntax.
  */
 export class StringSyntax {
     /**
-     * How to make a block to be executed if a string can be converted to a float.
+     * How to make a block to be executed if a string can be converted to a double.
      */
-    public toFloat: StringToFloatSyntax = new StringToFloatSyntax();
+    public toDouble: StringToDoubleSyntax = new StringToDoubleSyntax();
 
     /**
      * How to create a lower-case copy of a string.

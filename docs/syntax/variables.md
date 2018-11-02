@@ -26,14 +26,14 @@ In C#:
 ```csharp
 // Simple declarations
 string foo;
-float bar = 7;
+double bar = 7;
 
 // Assignments
 string qux = foo;
-float baz = bar;
+double baz = bar;
 
 // Interesting values
-float quux = float.PositiveInfinity;
+double quux = double.PositiveInfinity;
 bool corge = true;
 ```
 

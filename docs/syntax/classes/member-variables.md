@@ -13,9 +13,9 @@ Member variables can then be accessed with `member variable`, which takes in the
 ```gls
 class start : Person
     member variable declare : private name string
-    member variable declare : private age float
+    member variable declare : private age double
 
-    constructor start : public Person name string age float
+    constructor start : public Person name string age double
         operation : { member variable : private { this } name } equals name
         operation : { member variable : private { this } age } equals age
     constructor end
@@ -28,9 +28,9 @@ In C#:
 class Person
 {
     private string name;
-    private float age;
+    private double age;
 
-    Person(string name, float age)
+    Person(string name, double age)
     {
         this.name = name;
         this.age = age;

@@ -1,0 +1,24 @@
+-
+file start : While Index
+    main context start
+        main start
+            while start : true
+                print : ("Near-infinite")
+                break
+            while end
+
+            variable : count int 0
+
+            while start : { operation : count (less than) 5 }
+                operation : count (increase by) 1
+
+                if start : { operation : count mod 2 (equal to) 0 }
+                    continue
+                if end
+
+                print : { string format : ("count is {0}") count int }
+            while end
+        main end
+    main context end
+file end
+-
