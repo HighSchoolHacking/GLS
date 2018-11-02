@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts to initialize a new dictionary.
@@ -42,7 +43,7 @@ export class DictionaryNewStartCommand extends Command {
         const output = "new " + typeLine.commandResults[0].text;
         const results: CommandResult[] = [new CommandResult(output, 0)];
 
-        this.addLineEnder(results, this.language.syntax.dictionaries.initializeStart, 1);
+        addLineEnder(results, this.language.syntax.dictionaries.initializeStart, 1);
 
         return new LineResults(results).withImports(this.language.syntax.dictionaries.requiredImports).withImports(typeLine.addedImports);
     }

@@ -8,6 +8,7 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a stadnalone function.
@@ -108,7 +109,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
         }
 
         output = [new CommandResult(declaration, 0)];
-        this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
+        addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
 
         return new LineResults(output).withImports(imports);
     }

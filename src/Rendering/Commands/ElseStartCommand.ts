@@ -3,6 +3,7 @@ import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts an else statement.
@@ -36,7 +37,7 @@ export class ElseStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
+        addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
         lines[lines.length - 1].text += this.language.syntax.conditionals.else;
 
         if (this.language.syntax.style.separateBraceLines) {

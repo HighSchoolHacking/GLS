@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a while loop.
@@ -38,7 +39,7 @@ export class WhileStartCommand extends Command {
         line += valueLine.commandResults[0].text;
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.loops.whileStartRight, 1);
+        addLineEnder(lines, this.language.syntax.loops.whileStartRight, 1);
 
         return new LineResults(lines).withImports(valueLine.addedImports);
     }

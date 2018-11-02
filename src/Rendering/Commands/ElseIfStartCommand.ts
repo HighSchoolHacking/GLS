@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts an elif statement.
@@ -39,14 +40,14 @@ export class ElseIfStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
+        addLineEnder(lines, this.language.syntax.conditionals.continueLeft, 0);
 
         line = lines[lines.length - 1];
         line.text += this.language.syntax.conditionals.elif;
         line.text += this.language.syntax.conditionals.startLeft;
         line.text += parameters[1];
 
-        this.addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
+        addLineEnder(lines, this.language.syntax.conditionals.startRight, 1);
 
         return new LineResults(lines);
     }

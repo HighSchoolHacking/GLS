@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Throws an exception.
@@ -39,7 +40,7 @@ export class ThrowCommand extends Command {
         line += parameters[2];
 
         const lines: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(lines, this.language.syntax.exceptions.throwRight, 0);
+        addLineEnder(lines, this.language.syntax.exceptions.throwRight, 0);
         return new LineResults(lines).withAddSemicolon(true);
     }
 }
