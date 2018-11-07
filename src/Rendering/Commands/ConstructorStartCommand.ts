@@ -8,6 +8,7 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a constructor.
@@ -97,7 +98,7 @@ export class ConstructorStartCommand extends Command {
         // Case: no super
         if (baseIndex === -1) {
             // public MyClass(self, a, b, c) {
-            this.addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
+            addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
         }
         // Case: super with the ": base(...)" shorthand
         else if (this.language.syntax.classes.constructors.baseShorthand) {
@@ -120,13 +121,13 @@ export class ConstructorStartCommand extends Command {
             // public MyClass(self, a, b, c)
             //     : base(a, b, c)
             nextLine += ")";
-            this.addLineEnder(output, nextLine, 1);
+            addLineEnder(output, nextLine, 1);
 
             // public MyClass(self, a, b, c)
             //     : base(a, b, c)
             // {
             output[output.length - 1].indentation -= 1;
-            this.addLineEnder(output, "\n{", 1);
+            addLineEnder(output, "\n{", 1);
         }
         // Case: super as the first line in the constructor
         else {
@@ -137,7 +138,7 @@ export class ConstructorStartCommand extends Command {
 
             // public MyClass(self, a, b, c) {
             //     super(
-            this.addLineEnder(output, startLine, 0);
+            addLineEnder(output, startLine, 0);
             output[output.length - 2].indentation += 1;
 
             let nextLine: string = "";
@@ -156,7 +157,7 @@ export class ConstructorStartCommand extends Command {
 
             // public MyClass(self, a, b, c) {
             //     super(a, b, c)
-            this.addLineEnder(output, nextLine + ")", 0);
+            addLineEnder(output, nextLine + ")", 0);
         }
 
         return new LineResults(output).withAddSemicolon(addSemicolon).withImports(imports);

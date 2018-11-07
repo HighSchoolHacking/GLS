@@ -4,6 +4,7 @@ import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts a catch block.
@@ -39,7 +40,7 @@ export class CatchStartCommand extends Command {
             lines.push(new CommandResult("", 0));
         }
 
-        this.addLineEnder(lines, this.language.syntax.exceptions.blockEnd, 0);
+        addLineEnder(lines, this.language.syntax.exceptions.blockEnd, 0);
 
         line = lines[lines.length - 1];
         line.text += this.language.syntax.exceptions.catch;
@@ -50,7 +51,7 @@ export class CatchStartCommand extends Command {
         }
         line.text += parameters[1];
 
-        this.addLineEnder(lines, this.language.syntax.exceptions.catchStartRight, 2);
+        addLineEnder(lines, this.language.syntax.exceptions.catchStartRight, 2);
 
         return new LineResults(lines);
     }

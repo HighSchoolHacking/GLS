@@ -5,6 +5,7 @@ import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
+import { addLineEnder } from "./Utilities";
 
 /**
  * Starts an interface declaration.
@@ -56,7 +57,7 @@ export class InterfaceStartCommand extends Command {
         }
 
         const output: CommandResult[] = [new CommandResult(line, 0)];
-        this.addLineEnder(output, this.language.syntax.interfaces.declareStartRight, 1);
+        addLineEnder(output, this.language.syntax.interfaces.declareStartRight, 1);
 
         return new LineResults(output);
     }
