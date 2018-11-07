@@ -397,7 +397,7 @@ export class TypeScript extends Language {
      * @param imports   A property container for metadata on imports.
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
-        imports.case = CaseStyle.DirectoryLowerCase;
+        imports.case = CaseStyle.DirectoryUpperCase;
         imports.explicit = true;
         imports.itemsBeforePackage = true;
         imports.leftAbsolute = "import { ";
