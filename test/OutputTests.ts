@@ -3,22 +3,35 @@ import * as fs from "mz/fs";
 import * as path from "path";
 
 import { IOutputGenerator } from "../util/OutputGenerators";
-import { runCommandComparisonTest } from "./ComparisonTests";
+import { runCommandComparison } from "./ComparisonTests";
 
-export const ensureSameFileComparisons = async (projectPath: string, files: string[], languageName: string) => {
+export interface IProjectOutputTestSettings {
+    accept: boolean;
+    files: string[];
+    languageName: string;
+    outputGenerator: IOutputGenerator;
+    projectPath: string;
+}
+
+export interface IFileComparisonSettings {
+    accept: boolean;
+    files: string[];
+    languageName: string;
+    projectPath: string;
+}
+
+export const ensureSameFileComparisons = async ({ accept, files, languageName, projectPath }: IFileComparisonSettings) => {
     for (const file of files) {
-        await runCommandComparisonTest(languageName, path.join(projectPath, file));
+        await runCommandComparison({
+            accept,
+            filePath: path.join(projectPath, file),
+            languageName,
+        });
     }
 };
 
-export const runProjectOutputTest = async (
-    projectPath: string,
-    files: string[],
-    languageName: string,
-    outputGenerator: IOutputGenerator,
-): Promise<void> => {
+export const runProjectOutputTest = async ({ files, outputGenerator, projectPath }: IProjectOutputTestSettings): Promise<void> => {
     // Arrange
-    await ensureSameFileComparisons(projectPath, files, languageName);
     const expected = (await fs.readFile(path.join(projectPath, "output.txt"))).toString().split(/\r\n|\r|\n/g);
 
     // Act
