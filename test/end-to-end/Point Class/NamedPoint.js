@@ -1,5 +1,5 @@
 //
-const { Point } = require("./point");
+const { Point } = require("./Point");
 
 exports.NamedPoint = class NamedPoint extends Point {
 
