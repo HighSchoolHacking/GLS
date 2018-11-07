@@ -1,0 +1,4 @@
+//
+private Foo() {
+    super(abc);
+//

@@ -132,6 +132,7 @@ export class Ruby extends Language {
      * @param functions   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
+        functions.includeThisReference = false;
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "";
@@ -150,15 +151,15 @@ export class Ruby extends Language {
      */
     protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.publicPrefix = "";
-        variables.skipMemberVariables = true;
+        variables.skipMemberVariables = false;
 
-        variables.private = "";
+        variables.private = "attr_accessor :";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
-        variables.protected = "";
+        variables.protected = "attr_accessor :";
         variables.protectedCase = CaseStyle.CamelCase;
         variables.protectedPrefix = "";
-        variables.public = "";
+        variables.public = "attr_accessor :";
         variables.publicCase = CaseStyle.CamelCase;
         variables.publicPrefix = "";
     }
@@ -182,6 +183,7 @@ export class Ruby extends Language {
             number: "Double",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.keyword = "def initialize";
         classes.constructors.takeThis = false;
 
@@ -194,8 +196,6 @@ export class Ruby extends Language {
         classes.instanceOf = new NativeCallSyntax(".kind_of? ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.statics.labelBeforePublicity = false;
-
-        classes.superConstructor = "super";
     }
 
     /**

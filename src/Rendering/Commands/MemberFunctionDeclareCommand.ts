@@ -42,6 +42,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         declaration += this.context.convertStringToCase(functionName, this.getPublicityCase(publicity));
         declaration += "(";
 
+        if (this.language.syntax.classes.members.functions.includeThisReference) {
+            declaration += this.language.syntax.classes.this;
+
+            if (parameters.length > 4) {
+                declaration += ", ";
+            }
+        }
+
         if (parameters.length > 4) {
             const typeLine = this.generateParameterVariable(parameters, 4);
             declaration += typeLine.commandResults[0].text;

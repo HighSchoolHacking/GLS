@@ -140,6 +140,7 @@ export class TypeScript extends Language {
         functions.publicPrefix = "";
 
         functions.abstractDeclaration = "abstract ";
+        functions.includeThisReference = false;
         functions.private = "private ";
         functions.privateCase = CaseStyle.CamelCase;
         functions.protected = "protected ";
@@ -188,6 +189,7 @@ export class TypeScript extends Language {
             int: "number",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.private = "private ";
         classes.constructors.protected = "protected ";
         classes.constructors.public = "public ";
@@ -201,8 +203,6 @@ export class TypeScript extends Language {
         classes.instanceOf = new NativeCallSyntax(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
-
-        classes.superConstructor = "super";
     }
 
     /**

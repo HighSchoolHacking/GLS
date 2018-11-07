@@ -59,8 +59,8 @@ export class LineResultsGenerator {
 
             // 2.2. Add collected imports at the imports insertion point.
             const allImportStores = importsStore.getAllImportStores();
-            for (const addedImport of allImportStores) {
-                allLineResults.splice(importInsertionIndex, 0, this.importsPrinter.render(addedImport));
+            for (let i = allImportStores.length - 1; i >= 0; i -= 1) {
+                allLineResults.splice(importInsertionIndex, 0, this.importsPrinter.render(allImportStores[i]));
             }
 
             // 2.3. If there isn't yet a blank line after imports, manually add one in for appearance.

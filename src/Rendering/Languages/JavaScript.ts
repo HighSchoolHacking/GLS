@@ -141,6 +141,7 @@ export class JavaScript extends Language {
         functions.protectedPrefix = "";
         functions.publicPrefix = "";
 
+        functions.includeThisReference = false;
         functions.private = "";
         functions.privateCase = CaseStyle.CamelCase;
         functions.protected = "";
@@ -186,6 +187,7 @@ export class JavaScript extends Language {
             int: "number",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.private = "";
         classes.constructors.protected = "";
         classes.constructors.public = "";
@@ -197,8 +199,6 @@ export class JavaScript extends Language {
         classes.declareStartRight = " {";
 
         classes.instanceOf = new NativeCallSyntax(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
-
-        classes.superConstructor = "super";
 
         classes.generics.used = false;
     }

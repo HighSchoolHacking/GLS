@@ -137,6 +137,7 @@ export class CSharp extends Language {
         functions.publicPrefix = "";
 
         functions.abstractDeclaration = "abstract ";
+        functions.includeThisReference = false;
         functions.private = "private ";
         functions.privateCase = CaseStyle.PascalCase;
         functions.protected = "protected ";
@@ -185,6 +186,8 @@ export class CSharp extends Language {
             number: "double",
         };
 
+        classes.constructors.baseConstructor = "base";
+        classes.constructors.baseShorthand = true;
         classes.constructors.private = "private ";
         classes.constructors.protected = "protected ";
         classes.constructors.public = "public ";
@@ -194,8 +197,6 @@ export class CSharp extends Language {
         classes.declareStartRight = "\n{";
 
         classes.instanceOf = new NativeCallSyntax(" is ", NativeCallScope.Operator, NativeCallType.FloatingRight);
-
-        classes.superConstructor = "base";
 
         classes.generics.used = true;
     }

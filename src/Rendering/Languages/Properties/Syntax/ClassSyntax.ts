@@ -90,11 +90,6 @@ export class ClassSyntax {
     public statics: ClassStaticSyntax = new ClassStaticSyntax();
 
     /**
-     * The keyword for calling a parent class constructor.
-     */
-    public superConstructor: string;
-
-    /**
      * The keyword used for "this".
      */
     public this: string;

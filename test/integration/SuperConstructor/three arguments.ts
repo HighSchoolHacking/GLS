@@ -1,3 +1,0 @@
-//
-super(aaa, bbb, ccc);
-//

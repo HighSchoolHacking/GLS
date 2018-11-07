@@ -1,0 +1,4 @@
+//
+protected Foo() {
+    super();
+//

@@ -112,6 +112,7 @@ export class Python extends Language {
      * @param members   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
+        functions.includeThisReference = true;
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "__";
@@ -145,6 +146,7 @@ export class Python extends Language {
      * @param classes   A property container for metadata on classes.
      */
     protected generateClassSyntax(classes: ClassSyntax): void {
+        classes.constructors.baseConstructor = "super().__init__";
         classes.constructors.private = "";
         classes.constructors.protected = "";
         classes.constructors.public = "";
@@ -170,8 +172,6 @@ export class Python extends Language {
         classes.instanceOf = new NativeCallSyntax("isinstance", NativeCallScope.Static, NativeCallType.Function);
 
         classes.statics.labelBeforePublicity = true;
-
-        classes.superConstructor = "super().__init__";
     }
 
     /**
