@@ -52,6 +52,7 @@ export class JavaScript extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".js";
+        general.fileCasing = CaseStyle.PascalCase;
         general.name = "JavaScript";
     }
 

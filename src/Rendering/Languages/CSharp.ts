@@ -53,8 +53,9 @@ export class CSharp extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "C#";
         general.extension = ".cs";
+        general.fileCasing = CaseStyle.PascalCase;
+        general.name = "C#";
     }
 
     /**

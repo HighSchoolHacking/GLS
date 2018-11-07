@@ -38,6 +38,11 @@ export enum CaseStyle {
     FileSystemUpperCase = "FileSystemUpperCase",
 
     /**
+     * Plain strings in lower case, such as abcdef.
+     */
+    LowerCase = "LowerCase",
+
+    /**
      * Packages in lower case, such as abc.def.
      */
     PackageLowerCase = "PackageLowerCase",

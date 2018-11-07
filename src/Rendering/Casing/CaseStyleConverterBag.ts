@@ -7,6 +7,7 @@ import { DirectoryLowerCaseConverter } from "./DirectoryLowerCaseConverter";
 import { DirectoryUpperCaseConverter } from "./DirectoryUpperCaseConverter";
 import { FileSystemLowerCaseConverter } from "./FileSystemLowerCaseConverter";
 import { FileSystemUpperCaseConverter } from "./FileSystemUpperCaseConverter";
+import { LowerCaseConverter } from "./LowerCaseConverter";
 import { PackageLowerCaseConverter } from "./PackageLowerCaseConverter";
 import { PackageUpperCaseConverter } from "./PackageUpperCaseConverter";
 import { PascalCaseConverter } from "./PascalCaseConverter";
@@ -34,6 +35,7 @@ export class CaseStyleConverterBag {
             [CaseStyle.CamelCase]: new CamelCaseConverter(),
             [CaseStyle.FileSystemLowerCase]: new FileSystemLowerCaseConverter(),
             [CaseStyle.FileSystemUpperCase]: new FileSystemUpperCaseConverter(),
+            [CaseStyle.LowerCase]: new LowerCaseConverter(),
             [CaseStyle.PackageLowerCase]: new PackageLowerCaseConverter(),
             [CaseStyle.PackageUpperCase]: new PackageUpperCaseConverter(),
             [CaseStyle.PascalCase]: new PascalCaseConverter(),

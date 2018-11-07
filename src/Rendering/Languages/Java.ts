@@ -48,6 +48,17 @@ import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
  */
 export class Java extends Language {
     /**
+     * Generates general metadata.
+     *
+     * @param general   A property container for general metadata.
+     */
+    protected generateGeneralProperties(general: GeneralProperties): void {
+        general.extension = ".java";
+        general.fileCasing = CaseStyle.PascalCase;
+        general.name = "Java";
+    }
+
+    /**
      * Generates project-scale metadata.
      *
      * @param projects   A property container for project-scale metadata.
@@ -73,16 +84,6 @@ export class Java extends Language {
             ],
         };
         projects.nameFormat = CaseStyle.PackageLowerCase;
-    }
-
-    /**
-     * Generates general metadata.
-     *
-     * @param general   A property container for general metadata.
-     */
-    protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "Java";
-        general.extension = ".java";
     }
 
     /**
