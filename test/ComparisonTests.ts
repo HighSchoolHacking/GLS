@@ -3,6 +3,9 @@ import { expect } from "chai";
 import { Gls } from "../lib/Gls";
 import { readCommandFile, writeBaselineFile } from "./Files";
 
+/**
+ * Settings to run a comparison test.
+ */
 export interface ICommandComparisonTestSettings {
     /**
      * Whether to overwrite baselines with generated contents instead of asserting equality.

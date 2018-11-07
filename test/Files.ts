@@ -50,6 +50,14 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
     return lines.slice(1, lines.length - 2);
 };
 
+/**
+ * Writes acceptance of a baseline file, borded by comment markers.
+ *
+ * @param filePath   Path to the file.
+ * @param commentMarker   Comment marker for the test language.
+ * @param contents   Lines of content to add between comment markers.
+ * @returns Promise for writing to the file.
+ */
 export const writeBaselineFile = async (filePath: string, commentMarker: string, contents: string[]): Promise<void> => {
     const lines = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
 

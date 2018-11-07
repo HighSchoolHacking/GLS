@@ -32,7 +32,6 @@ export const ensureSameFileComparisons = async ({ accept, files, languageName, p
 
 export const runProjectOutputTest = async ({ files, outputGenerator, projectPath }: IProjectOutputTestSettings): Promise<void> => {
     // Arrange
-
     const expected = (await fs.readFile(path.join(projectPath, "output.txt"))).toString().split(/\r\n|\r|\n/g);
 
     // Act

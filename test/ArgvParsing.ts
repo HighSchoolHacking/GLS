@@ -1,10 +1,20 @@
+/**
+ * Test settings parsed from the CLI.
+ */
 export interface ITestArguments {
     /**
      * Whether to overwrite baselines with generated contents instead of asserting equality.
      */
     accept: boolean;
 
+    /**
+     * Globs of tests to include, if not all.
+     */
     inclusions: ReadonlySet<string> | undefined;
+
+    /**
+     * Languages to include, if not all.
+     */
     languages: ReadonlySet<string> | undefined;
 }
 
