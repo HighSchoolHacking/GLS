@@ -17,8 +17,9 @@ util/*.map
 util/**/*.js
 util/**/*.map
 
-# TS-GLS testing will often add these unnecessary files
+# Language testing will often add these unnecessary files
 *.nuspec
+.pyc
 Gemfile
 pom.xml
 requirements.txt

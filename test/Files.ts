@@ -36,7 +36,7 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
     const comment = getCommentMarker(extension);
 
     if (lines[0] !== comment) {
-        throw new Error(`The first line in '${filePath}' should be a '${comment}' comment.`);
+        throw new Error(`The first line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
     }
 
     if (lines[lines.length - 1] !== "") {
@@ -44,8 +44,14 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
     }
 
     if (lines[lines.length - 2] !== comment) {
-        throw new Error(`The last line in '${filePath}' should be a '${comment}' comment.`);
+        throw new Error(`The last line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
     }
 
     return lines.slice(1, lines.length - 2);
+};
+
+export const writeBaselineFile = async (filePath: string, commentMarker: string, contents: string[]): Promise<void> => {
+    const lines = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
+
+    await fs.writeFile(filePath, lines.join("\n"));
 };

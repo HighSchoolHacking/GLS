@@ -3,11 +3,11 @@ import * as path from "path";
 import { filterFoldersUnder } from "../util/filterFoldersUnder";
 import { findGlsFilesUnder } from "../util/findGlsFilesUnder";
 import { parseTestArguments } from "./ArgvParsing";
-import { runCommandComparisonTest } from "./ComparisonTests";
-import { testLanguagesBag } from "./FileReading";
+import { runCommandComparison } from "./ComparisonTests";
+import { testLanguagesBag } from "./Files";
 
 const rootPath = path.resolve("test/integration");
-const { languages, inclusions } = parseTestArguments(process.argv);
+const { accept, inclusions, languages } = parseTestArguments(process.argv);
 const testNames = filterFoldersUnder(rootPath, inclusions);
 const commandTests = findGlsFilesUnder(rootPath, testNames);
 
@@ -21,7 +21,11 @@ const runFileComparisonTests = (directory: string, testFile: string) => {
     for (const languageName of testLanguagesBag.getLanguageNames()) {
         if (languages === undefined || languages.has(languageName)) {
             it(languageName, async () => {
-                await runCommandComparisonTest(languageName, path.join(directory, testFile));
+                await runCommandComparison({
+                    accept,
+                    filePath: path.join(directory, testFile),
+                    languageName,
+                });
             });
         }
     }

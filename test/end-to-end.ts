@@ -5,11 +5,11 @@ import { filterFoldersUnder } from "../util/filterFoldersUnder";
 import { findGlsFilesUnder } from "../util/findGlsFilesUnder";
 import { outputGenerators } from "../util/OutputGenerators";
 import { parseTestArguments } from "./ArgvParsing";
-import { testLanguagesBag } from "./FileReading";
+import { testLanguagesBag } from "./Files";
 import { ensureSameFileComparisons, runProjectOutputTest } from "./OutputTests";
 
 const rootPath = path.resolve("test/end-to-end");
-const { inclusions, languages } = parseTestArguments(process.argv);
+const { accept, inclusions, languages } = parseTestArguments(process.argv);
 const testNames = filterFoldersUnder(rootPath, inclusions);
 const projectTests = findGlsFilesUnder(rootPath, testNames);
 
@@ -22,13 +22,12 @@ const projectTests = findGlsFilesUnder(rootPath, testNames);
  */
 const runProjectLanguageTests = (languageName: string, projectPath: string, files: string[]) => {
     it(languageName, async () => {
-        await ensureSameFileComparisons(projectPath, files, languageName);
+        await ensureSameFileComparisons({ accept, files, languageName, projectPath });
 
-        // todo: Java will mean all languages have this
         const outputGenerator = outputGenerators.get(languageName);
-        // Todo: always exist!
+
         if (outputGenerator !== undefined && fs.existsSync(path.join(projectPath, "output.txt"))) {
-            await runProjectOutputTest(projectPath, files, languageName, outputGenerator);
+            await runProjectOutputTest({ accept, projectPath, files, languageName, outputGenerator });
         }
     });
 };
