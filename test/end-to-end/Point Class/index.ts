@@ -1,6 +1,6 @@
 //
-import { NamedPoint } from "./namedpoint";
-import { Point } from "./point";
+import { NamedPoint } from "./Namedpoint";
+import { Point } from "./Point";
 
 let point: Point = new Point(1, 2);
 

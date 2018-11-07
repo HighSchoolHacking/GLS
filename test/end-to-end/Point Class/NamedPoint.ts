@@ -1,5 +1,5 @@
 //
-import { Point } from "./point";
+import { Point } from "./Point";
 
 export class NamedPoint extends Point {
     private name: string;
