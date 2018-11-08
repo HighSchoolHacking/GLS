@@ -137,6 +137,7 @@ export class CSharp extends Language {
         functions.publicPrefix = "";
 
         functions.abstractDeclaration = "abstract ";
+        functions.includeThisReference = false;
         functions.private = "private ";
         functions.privateCase = CaseStyle.PascalCase;
         functions.protected = "protected ";

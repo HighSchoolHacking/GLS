@@ -141,6 +141,7 @@ export class JavaScript extends Language {
         functions.protectedPrefix = "";
         functions.publicPrefix = "";
 
+        functions.includeThisReference = false;
         functions.private = "";
         functions.privateCase = CaseStyle.CamelCase;
         functions.protected = "";

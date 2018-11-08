@@ -10,6 +10,11 @@ export class ClassMemberFunctionSyntax {
     public abstractDeclaration: string;
 
     /**
+     * Whether member function implementations take in a 'this' first.
+     */
+    public includeThisReference: boolean;
+
+    /**
      * Decorator for private member functions.
      */
     public private: string;
