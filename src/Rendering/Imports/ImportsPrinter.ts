@@ -143,7 +143,7 @@ export class ImportsPrinter {
      * @returns The import's rendered package path.
      */
     private renderPackagePath(addedImport: Import): string {
-        const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 2);
+        const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 1);
         const lastComponent = addedImport.packagePath[addedImport.packagePath.length - 1];
 
         if (this.language.syntax.imports.transformFileNames) {
@@ -156,10 +156,8 @@ export class ImportsPrinter {
 
         let line = this.directoryCaseStyleConverter.convert(pathComponents);
 
-        if (this.language.syntax.imports.useLocalRelativePaths) {
-            if (addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {
-                line = "./" + line;
-            }
+        if (this.language.syntax.imports.useLocalRelativePaths && addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {
+            line = "./" + line;
         }
 
         return line;
