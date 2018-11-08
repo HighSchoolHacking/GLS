@@ -52,6 +52,7 @@ export class TypeScript extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".ts";
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "TypeScript";
     }
 

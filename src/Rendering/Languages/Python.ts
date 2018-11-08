@@ -54,6 +54,7 @@ export class Python extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".py";
+        general.fileCase = CaseStyle.SnakeCase;
         general.name = "Python";
     }
 

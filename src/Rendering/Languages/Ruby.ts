@@ -52,6 +52,7 @@ export class Ruby extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".rb";
+        general.fileCase = CaseStyle.SnakeCase;
         general.name = "Ruby";
     }
 
