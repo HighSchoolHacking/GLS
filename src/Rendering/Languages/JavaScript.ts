@@ -186,6 +186,7 @@ export class JavaScript extends Language {
             int: "number",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.private = "";
         classes.constructors.protected = "";
         classes.constructors.public = "";
@@ -197,8 +198,6 @@ export class JavaScript extends Language {
         classes.declareStartRight = " {";
 
         classes.instanceOf = new NativeCallSyntax(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
-
-        classes.superConstructor = "super";
 
         classes.generics.used = false;
     }

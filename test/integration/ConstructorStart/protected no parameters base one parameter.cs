@@ -1,0 +1,5 @@
+//
+protected Foo()
+    : base(abc)
+{
+//

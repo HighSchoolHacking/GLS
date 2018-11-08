@@ -188,6 +188,7 @@ export class Java extends Language {
             string: "String",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.private = "private ";
         classes.constructors.protected = "protected ";
         classes.constructors.public = "public ";
@@ -199,8 +200,6 @@ export class Java extends Language {
         classes.instanceOf = new NativeCallSyntax(" instanceof ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
-
-        classes.superConstructor = "super";
     }
 
     /**

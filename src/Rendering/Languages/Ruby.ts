@@ -182,6 +182,7 @@ export class Ruby extends Language {
             number: "Double",
         };
 
+        classes.constructors.baseConstructor = "super";
         classes.constructors.keyword = "def initialize";
         classes.constructors.takeThis = false;
 
@@ -194,8 +195,6 @@ export class Ruby extends Language {
         classes.instanceOf = new NativeCallSyntax(".kind_of? ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.statics.labelBeforePublicity = false;
-
-        classes.superConstructor = "super";
     }
 
     /**

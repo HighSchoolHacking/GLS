@@ -27,6 +27,9 @@ export class ConstructorStartCommand extends Command {
                 new SingleParameter("parameterName", "A named parameter for the constructor.", true),
                 new SingleParameter("parameterType", "The type of the parameter.", true),
             ]),
+            new KeywordParameter([KeywordNames.Base], "Keyword to call a base class constructor.", false),
+            new SingleParameter("parentClassName", "Name of the parent class.", false),
+            new RepeatingParameters("Function parameters", [new SingleParameter("parameter", "Argument for the base constructor.", true)]),
         ]);
 
     /**
@@ -44,45 +47,139 @@ export class ConstructorStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const imports: Import[] = [];
-        let declaration = "";
-        let output: CommandResult[];
+        const privacy: string = parameters[1];
+        const className: string = parameters[2];
+        const baseIndex: number = parameters.indexOf(KeywordNames.Base);
 
-        declaration += this.getPublicity(parameters[1]);
+        // public
+        let declaration = this.getPublicity(privacy);
 
         if (this.language.syntax.classes.constructors.useKeyword) {
+            // public constructor
             declaration += this.language.syntax.classes.constructors.keyword;
         } else {
-            declaration += parameters[2];
+            // public MyClass
+            declaration += className;
         }
 
+        // public MyClass(
         declaration += "(";
 
+        let endOfParameters = baseIndex;
+        if (endOfParameters === -1) {
+            endOfParameters = parameters.length;
+        }
+
         if (this.language.syntax.classes.constructors.takeThis) {
+            // public MyClass(self
             declaration += this.language.syntax.classes.this;
 
-            if (parameters.length > 4) {
+            if (endOfParameters > 3) {
+                // public MyClass(self,
                 declaration += ", ";
             }
         }
 
-        if (parameters.length > 4) {
-            const declarationLine = this.generateParameterVariable(parameters, 3);
-            declaration += declarationLine.commandResults[0].text;
-            imports.push(...declarationLine.addedImports);
+        for (let i = 3; i < endOfParameters; i += 2) {
+            // public MyClass(self, a
+            const parameterLine = this.generateParameterVariable(parameters, i);
+            declaration += parameterLine.commandResults[0].text;
+            imports.push(...parameterLine.addedImports);
 
-            for (let i = 5; i < parameters.length; i += 2) {
-                const nextDeclarationLine = this.generateParameterVariable(parameters, i);
-                declaration += ", " + nextDeclarationLine.commandResults[0].text;
-                imports.push(...nextDeclarationLine.addedImports);
+            // public MyClass(self, a, b, c
+            if (i !== endOfParameters - 2) {
+                declaration += ", ";
             }
         }
 
-        declaration += ")";
+        // public MyClass(self, a, b, c)
+        const output = [new CommandResult(declaration + ")", 0)];
+        let addSemicolon = false;
 
-        output = [new CommandResult(declaration, 0)];
-        addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
+        // Case: no super
+        if (baseIndex === -1) {
+            // public MyClass(self, a, b, c) {
+            addLineEnder(output, this.language.syntax.functions.defineStartRight, 1);
+        }
+        // Case: super with the ": base(...)" shorthand
+        else if (this.language.syntax.classes.constructors.baseShorthand) {
+            // public MyClass(self, a, b, c)
+            //     : base(
+            let nextLine = "\n    : " + this.language.syntax.classes.constructors.baseConstructor + "(";
 
-        return new LineResults(output).withImports(imports);
+            // public MyClass(self, a, b, c)
+            //     : base(a
+            for (let i = baseIndex + 1; i < parameters.length; i += 1) {
+                nextLine += parameters[i];
+
+                // public MyClass(self, a, b, c)
+                //     : base(a, b, c
+                if (i !== parameters.length - 1) {
+                    nextLine += ", ";
+                }
+            }
+
+            // public MyClass(self, a, b, c)
+            //     : base(a, b, c)
+            nextLine += ")";
+            addLineEnder(output, nextLine, 1);
+
+            // public MyClass(self, a, b, c)
+            //     : base(a, b, c)
+            // {
+            output[output.length - 1].indentation -= 1;
+            addLineEnder(output, "\n{", 1);
+        }
+        // Case: super as the first line in the constructor
+        else {
+            addSemicolon = true;
+
+            let startLine = this.language.syntax.functions.defineStartRight + "\n";
+            startLine += this.language.syntax.classes.constructors.baseConstructor + "(";
+
+            // public MyClass(self, a, b, c) {
+            //     super(
+            addLineEnder(output, startLine, 0);
+            output[output.length - 2].indentation += 1;
+
+            let nextLine: string = "";
+
+            // public MyClass(self, a, b, c) {
+            //     super(a
+            for (let i = baseIndex + 1; i < parameters.length; i += 1) {
+                nextLine += parameters[i];
+
+                // public MyClass(self, a, b, c) {
+                //     super(a, b, c
+                if (i !== parameters.length - 1) {
+                    nextLine += ", ";
+                }
+            }
+
+            // public MyClass(self, a, b, c) {
+            //     super(a, b, c)
+            addLineEnder(output, nextLine + ")", 0);
+        }
+
+        return new LineResults(output).withAddSemicolon(addSemicolon).withImports(imports);
+    }
+
+    /**
+     * Determines the name prefix for a constructor.
+     *
+     * @param publicity   Publicity of the constructor.
+     * @returns Name prefix for the publicity.
+     */
+    private getPublicity(publicity: string): string {
+        if (publicity === KeywordNames.Private) {
+            return this.language.syntax.classes.constructors.private;
+        }
+
+        if (publicity === KeywordNames.Protected) {
+            return this.language.syntax.classes.constructors.protected;
+        }
+
+        return this.language.syntax.classes.constructors.public;
     }
 
     /**
@@ -102,23 +199,5 @@ export class ConstructorStartCommand extends Command {
         const parameterType = parameterTypeLine.commandResults[0].text;
 
         return this.context.convertParsed([CommandNames.VariableInline, parameterName, parameterType]);
-    }
-
-    /**
-     * Determines the name prefix for a constructor.
-     *
-     * @param publicity   Publicity of the constructor.
-     * @returns Name prefix for the publicity.
-     */
-    private getPublicity(publicity: string): string {
-        if (publicity === KeywordNames.Private) {
-            return this.language.syntax.classes.constructors.private;
-        }
-
-        if (publicity === KeywordNames.Protected) {
-            return this.language.syntax.classes.constructors.protected;
-        }
-
-        return this.language.syntax.classes.constructors.public;
     }
 }
