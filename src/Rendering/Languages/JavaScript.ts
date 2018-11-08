@@ -61,6 +61,7 @@ export class JavaScript extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "index.js";
         projects.metadataFiles = {
             "package.json": [
                 `{`,

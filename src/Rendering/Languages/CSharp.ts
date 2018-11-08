@@ -63,6 +63,7 @@ export class CSharp extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "Main.cs";
         projects.metadataFiles = {
             "{name}.nuspec": [
                 `<?xml version="1.0"?>`,

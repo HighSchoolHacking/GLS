@@ -53,6 +53,7 @@ export class Java extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "Main.java";
         projects.metadataFiles = {
             "pom.xml": [
                 `<?xml version="1.0" encoding="UTF-8"?>`,

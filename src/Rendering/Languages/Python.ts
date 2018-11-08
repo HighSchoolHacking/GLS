@@ -63,6 +63,7 @@ export class Python extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "main.py";
         projects.metadataFiles = {};
         projects.nameFormat = CaseStyle.DashLowerCase;
     }
