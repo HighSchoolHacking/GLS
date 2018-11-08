@@ -1,4 +1,4 @@
 #
 class Abc:
-    def __def_ghi(jkl):
+    def __def_ghi(self, jkl):
 #

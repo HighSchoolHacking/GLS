@@ -132,6 +132,7 @@ export class Ruby extends Language {
      * @param functions   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
+        functions.includeThisReference = false;
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "";

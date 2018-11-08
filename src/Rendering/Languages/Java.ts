@@ -139,6 +139,7 @@ export class Java extends Language {
         functions.publicPrefix = "";
 
         functions.abstractDeclaration = "abstract ";
+        functions.includeThisReference = false;
         functions.private = "private ";
         functions.privateCase = CaseStyle.CamelCase;
         functions.protected = "protected ";
