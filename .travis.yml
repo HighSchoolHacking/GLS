@@ -12,6 +12,10 @@ mono: none
 language:
   - csharp
   - node_js
+  - python
+
+python:
+  - "3.7"
 
 node_js:
   - "8"
