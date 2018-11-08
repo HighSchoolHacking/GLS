@@ -1,8 +1,5 @@
-import { IGlsNode } from "../Tokenization/Nodes/IGlsNode";
-import { GlsNodeRenderer } from "./GlsNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
-import { Import } from "./Languages/Imports/Import";
 import { FileSyntax } from "./Languages/Properties/Syntax/FileSyntax";
 import { LineResults } from "./LineResults";
 
@@ -21,21 +18,14 @@ export class LineResultsGenerator {
     private importsPrinter: ImportsPrinter;
 
     /**
-     * Transform raw GLS syntax into line results.
-     */
-    private nodeRenderer: GlsNodeRenderer;
-
-    /**
      * Initializes a new instance of the LineResultsGenerator class.
      *
      * @param fileSyntax   Metadata on a language's file content syntax.
      * @param importsPrinter   Renders imports to output line results.
-     * @param nodeRenderer   Parses raw GLS syntax into line results.
      */
-    public constructor(fileSyntax: FileSyntax, importsPrinter: ImportsPrinter, nodeRenderer: GlsNodeRenderer) {
+    public constructor(fileSyntax: FileSyntax, importsPrinter: ImportsPrinter) {
         this.fileSyntax = fileSyntax;
         this.importsPrinter = importsPrinter;
-        this.nodeRenderer = nodeRenderer;
     }
 
     /**
@@ -59,8 +49,8 @@ export class LineResultsGenerator {
 
             // 2.2. Add collected imports at the imports insertion point.
             const allImportStores = importsStore.getAllImportStores();
-            for (const addedImport of allImportStores) {
-                allLineResults.splice(importInsertionIndex, 0, this.importsPrinter.render(addedImport));
+            for (let i = allImportStores.length - 1; i >= 0; i -= 1) {
+                allLineResults.splice(importInsertionIndex, 0, this.importsPrinter.render(allImportStores[i]));
             }
 
             // 2.3. If there isn't yet a blank line after imports, manually add one in for appearance.

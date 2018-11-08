@@ -68,7 +68,6 @@ export class RenderContext {
                 this.caseStyleConverterBag.getConverter(this.language.general.fileCase),
                 this.nameSplitter,
             ),
-            this.nodeRenderer,
         );
     }
 
