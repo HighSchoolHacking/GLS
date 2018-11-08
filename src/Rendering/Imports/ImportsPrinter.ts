@@ -1,4 +1,5 @@
 import { ICaseStyleConverter } from "../Casing/CaseStyleConverter";
+import { NameSplitter } from "../Casing/NameSplitter";
 import { CommandResult } from "../Commands/CommandResult";
 import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
@@ -10,9 +11,14 @@ import { LineResults } from "../LineResults";
  */
 export class ImportsPrinter {
     /**
-     * Converts series of words to a case.
+     * Converts directory path components to a case.
      */
-    private caseStyleConverter: ICaseStyleConverter;
+    private directoryCaseStyleConverter: ICaseStyleConverter;
+
+    /**
+     * Converts file names to a case.
+     */
+    private fileCaseStyleConverter: ICaseStyleConverter;
 
     /**
      * Language to output line results in.
@@ -20,14 +26,28 @@ export class ImportsPrinter {
     private language: Language;
 
     /**
+     * Splits name strings into words.
+     */
+    private nameSplitter: NameSplitter;
+
+    /**
      * Initializes a new instance of the ImportsPrinter class.
      *
-     * @param caseStyleConverter   Converts series of words to a case.
+     * @param directoryCaseStyleConverter   Converts directory path components to a case.
+     * @param fileCaseStyleConverter   Converts file names to a case.
      * @param language   Language to output line results in.
+     * @param nameSplitter   Splits name strings into words.
      */
-    public constructor(language: Language, caseStyleConverter: ICaseStyleConverter) {
-        this.caseStyleConverter = caseStyleConverter;
+    public constructor(
+        language: Language,
+        directoryCaseStyleConverter: ICaseStyleConverter,
+        fileCaseStyleConverter: ICaseStyleConverter,
+        nameSplitter: NameSplitter,
+    ) {
+        this.directoryCaseStyleConverter = directoryCaseStyleConverter;
+        this.fileCaseStyleConverter = fileCaseStyleConverter;
         this.language = language;
+        this.nameSplitter = nameSplitter;
     }
 
     /**
@@ -123,9 +143,20 @@ export class ImportsPrinter {
      * @returns The import's rendered package path.
      */
     private renderPackagePath(addedImport: Import): string {
-        let line = this.caseStyleConverter.convert(addedImport.packagePath);
+        const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 1);
+        const lastComponent = addedImport.packagePath[addedImport.packagePath.length - 1];
 
-        if (addedImport.relativity === ImportRelativity.Local && this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
+        if (this.language.syntax.imports.transformFileNames && lastComponent[0] !== ".") {
+            const lastComponentSplit = this.nameSplitter.split(lastComponent);
+            const fileName = this.fileCaseStyleConverter.convert(lastComponentSplit);
+            pathComponents.push(fileName);
+        } else {
+            pathComponents.push(lastComponent);
+        }
+
+        let line = this.directoryCaseStyleConverter.convert(pathComponents);
+
+        if (this.language.syntax.imports.useLocalRelativePaths && addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {
             line = "./" + line;
         }
 

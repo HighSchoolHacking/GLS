@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("PackageLowerCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc"], "abc");
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc", "def"], "abc.def");
-        itConvertsFromTo(PackageLowerCaseConverter, ["abc", "def", "ghi"], "abc.def.ghi");
+        itConvertsFromTo(PackageLowerCaseConverter, ["Abc"], "abc");
+        itConvertsFromTo(PackageLowerCaseConverter, ["Abc", "Def"], "abc.def");
+        itConvertsFromTo(PackageLowerCaseConverter, ["Abc", "Def", "Ghi"], "abc.def.ghi");
     });
 });

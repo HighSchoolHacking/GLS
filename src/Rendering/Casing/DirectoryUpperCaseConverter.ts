@@ -34,6 +34,6 @@ export class DirectoryUpperCaseConverter implements ICaseStyleConverter {
      * @returns The word after this style's transformation.
      */
     public transformWord(word: string): string {
-        return word[0].toUpperCase() + word.substring(1).toLowerCase();
+        return word[0].toUpperCase() + word.substring(1);
     }
 }

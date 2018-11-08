@@ -4,6 +4,9 @@ Output languages commonly define the group of files in a repository as a bundled
 Those projects will normally contain a metadata file at the root to describe the project, such as with JavaScript's `package.json`.
 GLS allows defining a `gls.json` at the root of a project to define fields common to those metadata files.
 
+The root "main" file of each project must be named `Main.gls`.
+Languages will output an equivalent file name, such as `index.js` for JavaScript.
+
 ## Fields
 
 Projects may define each of the following fields:

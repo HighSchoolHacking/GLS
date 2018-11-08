@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("FileSystemUpperCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(FileSystemUpperCaseConverter, ["abc"], "./Abc");
-        itConvertsFromTo(FileSystemUpperCaseConverter, ["abc", "def"], "./Abc/Def");
-        itConvertsFromTo(FileSystemUpperCaseConverter, ["abc", "def", "ghi"], "./Abc/Def/Ghi");
+        itConvertsFromTo(FileSystemUpperCaseConverter, ["Abc"], "./Abc");
+        itConvertsFromTo(FileSystemUpperCaseConverter, ["Abc", "Def"], "./Abc/Def");
+        itConvertsFromTo(FileSystemUpperCaseConverter, ["Abc", "Def", "Ghi"], "./Abc/Def/Ghi");
     });
 });

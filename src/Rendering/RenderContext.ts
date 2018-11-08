@@ -62,7 +62,12 @@ export class RenderContext {
 
         this.lineResultsGenerator = new LineResultsGenerator(
             this.language.syntax.files,
-            new ImportsPrinter(this.language, this.caseStyleConverterBag.getConverter(this.language.syntax.imports.case)),
+            new ImportsPrinter(
+                this.language,
+                this.caseStyleConverterBag.getConverter(this.language.syntax.imports.case),
+                this.caseStyleConverterBag.getConverter(this.language.general.fileCase),
+                this.nameSplitter,
+            ),
             this.nodeRenderer,
         );
     }
