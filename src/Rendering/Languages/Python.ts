@@ -163,6 +163,7 @@ export class Python extends Language {
             number: "double",
         };
 
+        classes.constructors.baseConstructor = "super().__init__";
         classes.constructors.keyword = "def __init__";
         classes.constructors.takeThis = true;
 

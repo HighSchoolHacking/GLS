@@ -47,11 +47,11 @@ class Noun(Word):
 Constructors, or initialization methods, are called when a new instance of a class is created.
 It's declared with `constructor start`, which takes the publicity of the constructor, the name of the class, and any number of (name, type) arguments, and `constructor end`.
 
-Inherited classes that define a constructor must provide an additional `base` argument along with any parameters to call to their parent class' constructor.
+Inherited classes that define a constructor must provide an additional `base` argument along with the name of the base class and any parameters to call to their parent class' constructor.
 
 ```gls
 class start : Noun extends Word
-    constructor start : public Noun name string base
+    constructor start : public Noun name string base Word
         print : { concatenate : ("Creating ") name }
     constructor end
 class end

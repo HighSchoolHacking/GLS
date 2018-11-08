@@ -28,6 +28,7 @@ export class ConstructorStartCommand extends Command {
                 new SingleParameter("parameterType", "The type of the parameter.", true),
             ]),
             new KeywordParameter([KeywordNames.Base], "Keyword to call a base class constructor.", false),
+            new SingleParameter("parentClassName", "Name of the parent class.", false),
             new RepeatingParameters("Function parameters", [new SingleParameter("parameter", "Argument for the base constructor.", true)]),
         ]);
 
