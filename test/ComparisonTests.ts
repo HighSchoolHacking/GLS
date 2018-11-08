@@ -1,6 +1,10 @@
 import { expect } from "chai";
+import * as path from "path";
 
 import { Gls } from "../lib/Gls";
+import { CaseStyleConverterBag } from "../lib/Rendering/Casing/CaseStyleConverterBag";
+import { NameSplitter } from "../lib/Rendering/Casing/NameSplitter";
+import { Language } from "../lib/Rendering/Languages/Language";
 import { readCommandFile, writeBaselineFile } from "./Files";
 
 /**
@@ -21,37 +25,65 @@ export interface ICommandComparisonTestSettings {
      * Name of the language to test in.
      */
     languageName: string;
+
+    /**
+     * Whether to transform output file paths to language-style names.
+     */
+    transformFilePath?: boolean;
 }
 
-const acceptCommandComparisonBaseline = async (filePath: string, languageName: string): Promise<void> => {
-    const gls = new Gls(languageName);
-    const extension = gls.getLanguage().general.extension;
-    const commentMarker = gls.getLanguage().syntax.comments.lineLeft;
-    const source = await readCommandFile(filePath + ".gls");
-    const baseline = gls.convert(source);
+const caseStyleConverterBag = new CaseStyleConverterBag();
+const nameSplitter = new NameSplitter();
 
-    await writeBaselineFile(filePath + extension, commentMarker, baseline);
+const createLanguageFilePath = (settings: ICommandComparisonTestSettings, language: Language): string => {
+    if (!settings.transformFilePath) {
+        return settings.filePath + language.general.extension;
+    }
+
+    const basename = path.basename(settings.filePath);
+    const projectPath = settings.filePath.substring(0, settings.filePath.length - basename.length);
+    if (basename === "Main") {
+        return projectPath + language.projects.mainFile;
+    }
+
+    const { extension, fileCase } = language.general;
+    const nameSplit = nameSplitter.split(basename);
+    const fileName = caseStyleConverterBag.convertToCase(fileCase, nameSplit) + extension;
+
+    return projectPath + fileName;
 };
 
-const runCommandComparisonTest = async (filePath: string, languageName: string): Promise<void> => {
+const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestSettings): Promise<void> => {
+    const gls = new Gls(settings.languageName);
+    const language = gls.getLanguage();
+    const commentMarker = language.syntax.comments.lineLeft;
+    const source = await readCommandFile(settings.filePath + ".gls");
+    const baseline = gls.convert(source);
+    const languagePath = createLanguageFilePath(settings, language);
+
+    await writeBaselineFile(languagePath, commentMarker, baseline);
+};
+
+const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings): Promise<void> => {
     // Arrange
-    const gls = new Gls(languageName);
-    const extension = gls.getLanguage().general.extension;
+    const gls = new Gls(settings.languageName);
+    const language = gls.getLanguage();
+    const languagePath = createLanguageFilePath(settings, language);
 
     // Act
-    const [expected, source] = await Promise.all([readCommandFile(filePath + extension), readCommandFile(filePath + ".gls")]);
+    const [expected, source] = await Promise.all([readCommandFile(languagePath), readCommandFile(settings.filePath + ".gls")]);
 
     // Assert
-    expect(gls.convert(source)).to.be.deep.equal(expected, `${filePath}${extension}`);
+    expect(gls.convert(source)).to.be.deep.equal(expected, languagePath);
 };
 
 /**
  * Runs tests for a single command scenario in a language.
  */
-export const runCommandComparison = async ({ accept, filePath, languageName }: ICommandComparisonTestSettings): Promise<void> => {
-    if (accept) {
-        await acceptCommandComparisonBaseline(filePath, languageName);
+export const runCommandComparison = async (settings: ICommandComparisonTestSettings): Promise<void> => {
+    if (settings.accept) {
+        await acceptCommandComparisonBaseline(settings);
     } else {
-        await runCommandComparisonTest(filePath, languageName);
+        await runCommandComparisonTest(settings);
     }
 };

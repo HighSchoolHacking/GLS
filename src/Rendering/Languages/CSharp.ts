@@ -53,8 +53,9 @@ export class CSharp extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
-        general.name = "C#";
         general.extension = ".cs";
+        general.fileCase = CaseStyle.PascalCase;
+        general.name = "C#";
     }
 
     /**
@@ -63,6 +64,7 @@ export class CSharp extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "Main.cs";
         projects.metadataFiles = {
             "{name}.nuspec": [
                 `<?xml version="1.0"?>`,

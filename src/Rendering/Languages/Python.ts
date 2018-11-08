@@ -54,6 +54,7 @@ export class Python extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".py";
+        general.fileCase = CaseStyle.SnakeCase;
         general.name = "Python";
     }
 
@@ -63,6 +64,7 @@ export class Python extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "main.py";
         projects.metadataFiles = {};
         projects.nameFormat = CaseStyle.DashLowerCase;
     }

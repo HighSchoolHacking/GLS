@@ -52,6 +52,7 @@ export class TypeScript extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".ts";
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "TypeScript";
     }
 
@@ -61,6 +62,7 @@ export class TypeScript extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "index.ts";
         projects.metadataFiles = {
             "package.json": [
                 `{`,

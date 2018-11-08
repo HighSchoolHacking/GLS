@@ -26,6 +26,7 @@
         "prefer-readonly": false,
         "prefer-switch": false,
         "prefer-template": false,
+        "strict-boolean-expressions": [true, "allow-boolean-or-undefined"],
         "strict-type-predicates": false,
         "typedef": false,
         "variable-name": false

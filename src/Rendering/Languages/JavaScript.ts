@@ -52,6 +52,7 @@ export class JavaScript extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".js";
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "JavaScript";
     }
 
@@ -61,6 +62,7 @@ export class JavaScript extends Language {
      * @param projects   A property container for project-scale metadata.
      */
     protected generateProjectProperties(projects: ProjectProperties): void {
+        projects.mainFile = "index.js";
         projects.metadataFiles = {
             "package.json": [
                 `{`,

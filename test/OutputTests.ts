@@ -26,6 +26,7 @@ export const ensureSameFileComparisons = async ({ accept, files, languageName, p
             accept,
             filePath: path.join(projectPath, file),
             languageName,
+            transformFilePath: true,
         });
     }
 };

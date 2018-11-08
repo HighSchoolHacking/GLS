@@ -5,6 +5,11 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ProjectProperties {
     /**
+     * Output name to transform from Main.gls.
+     */
+    public mainFile: string;
+
+    /**
      * Lines of text in each generated root file, keyed by name.
      */
     public metadataFiles: { [i: string]: string[] };
