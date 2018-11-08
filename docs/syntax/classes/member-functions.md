@@ -39,3 +39,14 @@ class Announcer
     }
 }
 ```
+
+In Python:
+
+```python
+class Announcer:
+    def greet(self, name):
+        print(self.__greeting + ", + " + name + "!")
+
+    def __init__(self, Announcer, string):
+        self.__greeting = greeting
+```

@@ -112,7 +112,7 @@ export class Python extends Language {
      * @param members   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
-        functions.includeThisReference = false;
+        functions.includeThisReference = true;
         functions.private = "def ";
         functions.privateCase = CaseStyle.SnakeCase;
         functions.privatePrefix = "__";

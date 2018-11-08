@@ -47,7 +47,7 @@ class AnglePrinter:
     __right_alias = "right"
     __right_amount = 90
 
-    def print_angle(angle):
+    def print_angle(self, angle):
         if angle == AnglePrinter.__right_amount:
             return AnglePrinter.__right_alias
 
