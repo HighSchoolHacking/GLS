@@ -12,7 +12,7 @@ export class GeneralProperties {
     /**
      * What case style files should be saved as.
      */
-    public fileCasing: CaseStyle;
+    public fileCase: CaseStyle;
 
     /**
      * The common name of the language.
