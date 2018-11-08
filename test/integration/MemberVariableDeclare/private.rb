@@ -1,2 +1,3 @@
 #
+attr_accessor: aaa
 #
