@@ -63,9 +63,17 @@ export class MemberVariableDeclareCommand extends Command {
         variableName = this.context.convertStringToCase(variableName, casingStyle);
 
         const inlineParameters = [CommandNames.VariableInline, variableName, type];
+        const variableLine = this.context.convertParsed(inlineParameters);
+        const variableText = variableLine.commandResults[0].text;
 
-        output += this.context.convertParsed(inlineParameters).commandResults[0].text;
+        if (variableText === "\0") {
+            output += variableName;
+        } else {
+            output += variableText;
+        }
 
-        return LineResults.newSingleLine(output).withAddSemicolon(true);
+        return LineResults.newSingleLine(output)
+            .withAddSemicolon(true)
+            .withImports(variableLine.addedImports);
     }
 }

@@ -153,15 +153,15 @@ export class Ruby extends Language {
      */
     protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.publicPrefix = "";
-        variables.skipMemberVariables = true;
+        variables.skipMemberVariables = false;
 
-        variables.private = "";
+        variables.private = "attr_accessor: ";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
-        variables.protected = "";
+        variables.protected = "attr_accessor: ";
         variables.protectedCase = CaseStyle.CamelCase;
         variables.protectedPrefix = "";
-        variables.public = "";
+        variables.public = "attr_accessor: ";
         variables.publicCase = CaseStyle.CamelCase;
         variables.publicPrefix = "";
     }
