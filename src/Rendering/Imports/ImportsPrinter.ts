@@ -146,7 +146,7 @@ export class ImportsPrinter {
         const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 1);
         const lastComponent = addedImport.packagePath[addedImport.packagePath.length - 1];
 
-        if (this.language.syntax.imports.transformFileNames) {
+        if (this.language.syntax.imports.transformFileNames && lastComponent[0] !== ".") {
             const lastComponentSplit = this.nameSplitter.split(lastComponent);
             const fileName = this.fileCaseStyleConverter.convert(lastComponentSplit);
             pathComponents.push(fileName);
