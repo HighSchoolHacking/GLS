@@ -5,8 +5,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("DirectoryUpperCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc"], "Abc");
-        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc", "def"], "Abc/Def");
-        itConvertsFromTo(DirectoryUpperCaseConverter, ["abc", "def", "ghi"], "Abc/Def/Ghi");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["Abc"], "Abc");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["Abc", "Def"], "Abc/Def");
+        itConvertsFromTo(DirectoryUpperCaseConverter, ["Abc", "Def", "Ghi"], "Abc/Def/Ghi");
     });
 });

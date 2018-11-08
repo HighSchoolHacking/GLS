@@ -1,17 +1,15 @@
 //
-package classes;
+package pointclass;
 
 public class Point {
     public int x;
     public int y;
-    protected int square;
-    private String name;
+    protected int vector;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
-        this.square = x * y;
-        this.name = "";
+        this.vector = x * y;
     }
 }
 //

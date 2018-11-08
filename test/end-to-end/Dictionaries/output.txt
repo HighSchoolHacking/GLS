@@ -1,6 +1,3 @@
 baz is 7
 qux is 7
 contains bbb
-bbb has 1
-ccc has 2
-ddd has 3

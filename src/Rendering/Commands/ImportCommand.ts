@@ -34,27 +34,63 @@ export abstract class ImportCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const usingSplit = parameters.indexOf("use");
+        const usingSplit = parameters.indexOf(KeywordNames.Use);
         if (usingSplit === -1) {
-            throw new Error('A "use" parameter must be in import commands.');
+            throw new Error(`A "${KeywordNames.Use}" parameter must be in import commands.`);
         }
 
         const items: string[] = parameters.slice(usingSplit + 1);
         const relativity: ImportRelativity = this.getRelativity();
         let packagePath: string[] = parameters.slice(1, usingSplit);
 
+        const lineResults = new LineResults([]);
+        const contextPackagePath = this.context.getFileMetadata().getPackagePath();
+        const relativePackagePath = ImportCommand.pathResolver.resolve(contextPackagePath, packagePath);
+
         if (relativity === ImportRelativity.Local) {
-            packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
+            packagePath = relativePackagePath;
+        } else if (!this.language.syntax.imports.useLocalRelativePaths && !this.language.syntax.imports.explicit) {
+            if (
+                this.isPackagePathOnlyParents(relativePackagePath.slice(0, relativePackagePath.length - 1)) ||
+                this.isPackagePathSubset(packagePath.slice(0, packagePath.length - 1), contextPackagePath)
+            ) {
+                return lineResults;
+            }
         }
 
-        const lineResults = new LineResults([]);
-        lineResults.withImports([new Import(packagePath, items, this.getRelativity())]);
-
-        return lineResults;
+        return lineResults.withImports([new Import(packagePath, items, this.getRelativity())]);
     }
 
     /**
      * @returns Whether this is from an absolute package or local file.
      */
     protected abstract getRelativity(): ImportRelativity;
+
+    private isPackagePathOnlyParents(relativePackagePath: string[]): boolean {
+        for (const component of relativePackagePath) {
+            if (component !== "..") {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private isPackagePathSubset(packagePath: string[], contextPackagePath: string[]): boolean {
+        if (packagePath.length > contextPackagePath.length) {
+            return false;
+        }
+
+        if (packagePath[0] === "..") {
+            return false;
+        }
+
+        for (let i = 0; i < packagePath.length; i += 1) {
+            if (packagePath[i] !== contextPackagePath[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

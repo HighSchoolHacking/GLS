@@ -1,16 +1,14 @@
 -
-file start : Classes Point
+file start : PointClass Point
     class start : export Point
         member variable declare : public X int
         member variable declare : public Y int
-        member variable declare : protected Square int
-        member variable declare : private Name string
+        member variable declare : protected Vector int
 
         constructor start : public Point x int y int
             operation : { member variable : public { this } X } equals x
             operation : { member variable : public { this } Y } equals y
-            operation : { member variable : protected { this } Square } equals { operation : x times y }
-            operation : { member variable : private { this } Name } equals ""
+            operation : { member variable : protected { this } Vector } equals { operation : x times y }
         constructor end
     class end
 file end

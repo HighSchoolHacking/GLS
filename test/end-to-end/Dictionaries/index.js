@@ -26,10 +26,4 @@ if (containsFalse) {
 if ({}.hasOwnProperty.call(aaa, "bbb")) {
     console.log("contains bbb");
 }
-
-// Pair Iteration
-for (let key in aaa) {
-    let value = aaa[key];
-    console.log(`${key} has ${value}`);
-}
 //

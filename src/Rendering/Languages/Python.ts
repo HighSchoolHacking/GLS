@@ -364,6 +364,7 @@ export class Python extends Language {
         imports.leftLocal = "from ";
         imports.middle = " import ";
         imports.right = "";
+        imports.transformFileNames = true;
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = false;
     }

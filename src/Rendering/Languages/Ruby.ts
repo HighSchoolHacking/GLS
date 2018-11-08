@@ -155,13 +155,13 @@ export class Ruby extends Language {
         variables.publicPrefix = "";
         variables.skipMemberVariables = false;
 
-        variables.private = "attr_accessor: ";
+        variables.private = "attr_accessor :";
         variables.privateCase = CaseStyle.CamelCase;
         variables.privatePrefix = "";
-        variables.protected = "attr_accessor: ";
+        variables.protected = "attr_accessor :";
         variables.protectedCase = CaseStyle.CamelCase;
         variables.protectedPrefix = "";
-        variables.public = "attr_accessor: ";
+        variables.public = "attr_accessor :";
         variables.publicCase = CaseStyle.CamelCase;
         variables.publicPrefix = "";
     }
@@ -386,6 +386,7 @@ export class Ruby extends Language {
         imports.leftAbsolute = 'require "';
         imports.leftLocal = 'require_relative "';
         imports.right = '"';
+        imports.transformFileNames = true;
         imports.useLocalRelativeImports = true;
         imports.useLocalRelativePaths = true;
     }

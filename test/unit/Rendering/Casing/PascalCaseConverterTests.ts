@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("PascalCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(PascalCaseConverter, ["abc"], "Abc");
-        itConvertsFromTo(PascalCaseConverter, ["abc", "def"], "AbcDef");
-        itConvertsFromTo(PascalCaseConverter, ["abc", "def", "ghi"], "AbcDefGhi");
+        itConvertsFromTo(PascalCaseConverter, ["Abc"], "Abc");
+        itConvertsFromTo(PascalCaseConverter, ["Abc", "Def"], "AbcDef");
+        itConvertsFromTo(PascalCaseConverter, ["Abc", "Def", "Ghi"], "AbcDefGhi");
     });
 });

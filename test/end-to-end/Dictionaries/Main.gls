@@ -29,11 +29,6 @@ file start : Dictionaries index
             if start : { dictionary contains key : aaa "bbb" }
                 print : ("contains bbb")
             if end
-
-            comment line : Pair Iteration
-            for each pair start : aaa pair key string value int
-                print : { string format : ("{0} has {1}") key string value int }
-            for each pair end
         main end
     main context end
 file end

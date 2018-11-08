@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("DashUpperCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(DashUpperCaseConverter, ["abc"], "Abc");
-        itConvertsFromTo(DashUpperCaseConverter, ["abc", "def"], "Abc-Def");
-        itConvertsFromTo(DashUpperCaseConverter, ["abc", "def", "ghi"], "Abc-Def-Ghi");
+        itConvertsFromTo(DashUpperCaseConverter, ["Abc"], "Abc");
+        itConvertsFromTo(DashUpperCaseConverter, ["Abc", "Def"], "Abc-Def");
+        itConvertsFromTo(DashUpperCaseConverter, ["Abc", "Def", "Ghi"], "Abc-Def-Ghi");
     });
 });

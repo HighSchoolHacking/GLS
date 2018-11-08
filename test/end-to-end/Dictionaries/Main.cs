@@ -1,6 +1,6 @@
 //
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace Dictionaries
 {
@@ -37,14 +37,6 @@ namespace Dictionaries
             if (aaa.ContainsKey("bbb"))
             {
                 Console.WriteLine("contains bbb");
-            }
-
-            // Pair Iteration
-            foreach (KeyValuePair<string, int> pair in aaa)
-            {
-                string key = pair.Key;
-                int value = pair.Value;
-                Console.WriteLine(string.Format("{0} has {1}", key, value));
             }
         }
     }

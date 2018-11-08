@@ -25,8 +25,4 @@ if __name__ == "__main__":
 
     if "bbb" in aaa:
         print("contains bbb")
-
-    # Pair Iteration
-    for key, value in aaa.items():
-        print("{0} has {1}".format(key, value))
 #

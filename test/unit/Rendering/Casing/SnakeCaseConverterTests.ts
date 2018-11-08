@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("SnakeCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(SnakeCaseConverter, ["abc"], "abc");
-        itConvertsFromTo(SnakeCaseConverter, ["abc", "def"], "abc_def");
-        itConvertsFromTo(SnakeCaseConverter, ["abc", "def", "ghi"], "abc_def_ghi");
+        itConvertsFromTo(SnakeCaseConverter, ["Abc"], "abc");
+        itConvertsFromTo(SnakeCaseConverter, ["Abc", "Def"], "abc_def");
+        itConvertsFromTo(SnakeCaseConverter, ["Abc", "Def", "Ghi"], "abc_def_ghi");
     });
 });

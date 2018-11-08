@@ -1,3 +1,3 @@
 #
-attr_accessor: aaa
+attr_accessor :aaa
 #

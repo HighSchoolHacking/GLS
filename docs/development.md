@@ -11,6 +11,9 @@ To run end-to-end tests, you'll need the following installed globally:
 * [Python 3](https://www.python.org/downloads)
 * [Ruby](https://www.ruby-lang.org/en/documentation/installation)
 
+> Python must be available globally as `python3`.
+> On Windows, you may need to copy & paste `python.exe` to create an identical `python3.exe`.
+
 The recommended development setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:
 
 * [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)

@@ -1,8 +1,7 @@
 //
 using System;
-using Classes.Point;
 
-namespace Classes
+namespace Pointclass
 {
 
     class Index
@@ -13,6 +12,10 @@ namespace Classes
 
             Console.WriteLine(point.X);
             Console.WriteLine(point.Y);
+
+            NamedPoint named = new NamedPoint(3, 4, "My Point");
+
+            Console.WriteLine(named.GetLabel());
         }
     }
 }
