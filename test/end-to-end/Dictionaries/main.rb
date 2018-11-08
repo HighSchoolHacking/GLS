@@ -26,9 +26,4 @@ end
 if aaa.key?("bbb")
     puts "contains bbb"
 end
-
-# Pair Iteration
-aaa.each { |key, value|
-    puts "%s has %d" % [key, value]
-}
 #

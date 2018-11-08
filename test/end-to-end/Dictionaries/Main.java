@@ -32,13 +32,6 @@ class Index {
         if (aaa.containsKey("bbb")) {
             System.out.println("contains bbb");
         }
-
-        // Pair Iteration
-        for (Map.Entry<String, int> pair : aaa.entrySet()) {
-            String key = pair.getKey();
-            int value = pair.getValue();
-            System.out.println(String.format("%0$s has %1$d", key, value));
-        }
     }
 }
 //
