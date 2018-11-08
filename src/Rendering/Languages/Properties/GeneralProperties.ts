@@ -5,6 +5,11 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class GeneralProperties {
     /**
+     * What case style directory paths should be saved as.
+     */
+    public directoryCase: CaseStyle;
+
+    /**
      * The language's file extension.
      */
     public extension: string;
@@ -12,7 +17,7 @@ export class GeneralProperties {
     /**
      * What case style files should be saved as.
      */
-    public fileCasing: CaseStyle;
+    public fileCase: CaseStyle;
 
     /**
      * The common name of the language.

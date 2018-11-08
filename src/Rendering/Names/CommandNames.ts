@@ -623,11 +623,6 @@ export class CommandNames {
     public static StringTrim = "string trim";
 
     /**
-     * Name key for the SuperConstructor command.
-     */
-    public static SuperConstructor = "super constructor";
-
-    /**
      * Name key for the This command.
      */
     public static This = "this";

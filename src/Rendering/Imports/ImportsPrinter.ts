@@ -1,4 +1,5 @@
 import { ICaseStyleConverter } from "../Casing/CaseStyleConverter";
+import { NameSplitter } from "../Casing/NameSplitter";
 import { CommandResult } from "../Commands/CommandResult";
 import { Import } from "../Languages/Imports/Import";
 import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
@@ -10,7 +11,7 @@ import { LineResults } from "../LineResults";
  */
 export class ImportsPrinter {
     /**
-     * Converts series of words to a case.
+     * Converts import paths to a case.
      */
     private caseStyleConverter: ICaseStyleConverter;
 
@@ -20,14 +21,21 @@ export class ImportsPrinter {
     private language: Language;
 
     /**
+     * Splits name strings into words.
+     */
+    private nameSplitter: NameSplitter;
+
+    /**
      * Initializes a new instance of the ImportsPrinter class.
      *
-     * @param caseStyleConverter   Converts series of words to a case.
+     * @param caseStyleConverter   Converts directory path components to a case.
      * @param language   Language to output line results in.
+     * @param nameSplitter   Splits name strings into words.
      */
-    public constructor(language: Language, caseStyleConverter: ICaseStyleConverter) {
+    public constructor(language: Language, caseStyleConverter: ICaseStyleConverter, nameSplitter: NameSplitter) {
         this.caseStyleConverter = caseStyleConverter;
         this.language = language;
+        this.nameSplitter = nameSplitter;
     }
 
     /**
@@ -125,8 +133,10 @@ export class ImportsPrinter {
     private renderPackagePath(addedImport: Import): string {
         let line = this.caseStyleConverter.convert(addedImport.packagePath);
 
-        if (addedImport.relativity === ImportRelativity.Local && this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
-            line = "./" + line;
+        if (this.language.syntax.imports.useLocalRelativePaths) {
+            if (addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {
+                line = "./" + line;
+            }
         }
 
         return line;

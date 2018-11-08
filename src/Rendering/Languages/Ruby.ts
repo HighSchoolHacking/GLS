@@ -51,8 +51,9 @@ export class Ruby extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
+        general.directoryCase = CaseStyle.LowerCase;
         general.extension = ".rb";
-        general.fileCasing = CaseStyle.LowerCase;
+        general.fileCase = CaseStyle.LowerCase;
         general.name = "Ruby";
     }
 

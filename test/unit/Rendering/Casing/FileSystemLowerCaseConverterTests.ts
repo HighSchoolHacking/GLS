@@ -6,8 +6,8 @@ import { itConvertsFromTo } from "./ConverterTests";
 
 describe("FileSystemLowerCaseConverter", () => {
     describe("convert", () => {
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc"], "./abc");
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc", "def"], "./abc/def");
-        itConvertsFromTo(FileSystemLowerCaseConverter, ["abc", "def", "ghi"], "./abc/def/ghi");
+        itConvertsFromTo(FileSystemLowerCaseConverter, ["Abc"], "./abc");
+        itConvertsFromTo(FileSystemLowerCaseConverter, ["Abc", "Def"], "./abc/def");
+        itConvertsFromTo(FileSystemLowerCaseConverter, ["Abc", "Def", "Ghi"], "./abc/def/ghi");
     });
 });

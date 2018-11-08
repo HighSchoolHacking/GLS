@@ -51,8 +51,9 @@ export class JavaScript extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
+        general.directoryCase = CaseStyle.PascalCase;
         general.extension = ".js";
-        general.fileCasing = CaseStyle.PascalCase;
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "JavaScript";
     }
 

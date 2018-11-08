@@ -31,10 +31,10 @@ const caseStyleConverterBag = new CaseStyleConverterBag();
 const nameSplitter = new NameSplitter();
 
 const createLanguageFilePath = (filePath: string, language: Language): string => {
-    const { extension, fileCasing } = language.general;
+    const { extension, fileCase } = language.general;
     const basename = path.basename(filePath);
     const nameSplit = nameSplitter.split(basename);
-    const fileName = caseStyleConverterBag.convertToCase(fileCasing, nameSplit) + extension;
+    const fileName = caseStyleConverterBag.convertToCase(fileCase, nameSplit) + extension;
 
     return filePath.substring(0, filePath.length - basename.length) + fileName;
 };

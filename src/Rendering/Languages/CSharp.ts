@@ -54,7 +54,7 @@ export class CSharp extends Language {
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.extension = ".cs";
-        general.fileCasing = CaseStyle.PascalCase;
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "C#";
     }
 

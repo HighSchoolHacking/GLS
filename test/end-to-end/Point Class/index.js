@@ -1,5 +1,5 @@
 //
-const { NamedPoint } = require("./Namedpoint");
+const { NamedPoint } = require("./NamedPoint");
 const { Point } = require("./Point");
 
 let point = new Point(1, 2);

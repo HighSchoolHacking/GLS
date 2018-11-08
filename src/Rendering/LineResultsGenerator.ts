@@ -21,21 +21,15 @@ export class LineResultsGenerator {
     private importsPrinter: ImportsPrinter;
 
     /**
-     * Transform raw GLS syntax into line results.
-     */
-    private nodeRenderer: GlsNodeRenderer;
-
-    /**
      * Initializes a new instance of the LineResultsGenerator class.
      *
      * @param fileSyntax   Metadata on a language's file content syntax.
      * @param importsPrinter   Renders imports to output line results.
      * @param nodeRenderer   Parses raw GLS syntax into line results.
      */
-    public constructor(fileSyntax: FileSyntax, importsPrinter: ImportsPrinter, nodeRenderer: GlsNodeRenderer) {
+    public constructor(fileSyntax: FileSyntax, importsPrinter: ImportsPrinter) {
         this.fileSyntax = fileSyntax;
         this.importsPrinter = importsPrinter;
-        this.nodeRenderer = nodeRenderer;
     }
 
     /**

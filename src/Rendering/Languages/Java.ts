@@ -53,8 +53,9 @@ export class Java extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
+        general.directoryCase = CaseStyle.PascalCase;
         general.extension = ".java";
-        general.fileCasing = CaseStyle.PascalCase;
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "Java";
     }
 
