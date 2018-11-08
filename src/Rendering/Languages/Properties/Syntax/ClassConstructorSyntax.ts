@@ -3,6 +3,16 @@
  */
 export class ClassConstructorSyntax {
     /**
+     * Keyword for calling a parent class constructor.
+     */
+    public baseConstructor: string;
+
+    /**
+     * Whether parent constructors are called as pre-constructor shorthand.
+     */
+    public baseShorthand: boolean;
+
+    /**
      * The keyword used for constructors, if not the class name.
      */
     public keyword: string;

@@ -158,6 +158,7 @@ export class Python extends Language {
             number: "double",
         };
 
+        classes.constructors.baseConstructor = "super().__init__";
         classes.constructors.keyword = "def __init__";
         classes.constructors.takeThis = true;
 
@@ -170,8 +171,6 @@ export class Python extends Language {
         classes.instanceOf = new NativeCallSyntax("isinstance", NativeCallScope.Static, NativeCallType.Function);
 
         classes.statics.labelBeforePublicity = true;
-
-        classes.superConstructor = "super().__init__";
     }
 
     /**

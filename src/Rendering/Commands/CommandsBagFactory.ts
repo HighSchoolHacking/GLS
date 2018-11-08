@@ -124,7 +124,6 @@ import { StringLengthCommand } from "./StringLengthCommand";
 import { StringSubstringIndexCommand } from "./StringSubstringIndexCommand";
 import { StringSubstringLengthCommand } from "./StringSubstringLengthCommand";
 import { StringTrimCommand } from "./StringTrimCommand";
-import { SuperConstructorCommand } from "./SuperConstructorCommand";
 import { ThisCommand } from "./ThisCommand";
 import { ThrowCommand } from "./ThrowCommand";
 import { TryEndCommand } from "./TryEndCommand";
@@ -274,7 +273,6 @@ export class CommandsBagFactory {
             new StringSubstringIndexCommand(context),
             new StringSubstringLengthCommand(context),
             new StringTrimCommand(context),
-            new SuperConstructorCommand(context),
             new ThisCommand(context),
             new ThrowCommand(context),
             new TryEndCommand(context),
