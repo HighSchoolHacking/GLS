@@ -1,5 +1,5 @@
 #
-require_relative "./namedpoint"
+require_relative "./named_point"
 require_relative "./point"
 
 point = Point.new(1, 2)

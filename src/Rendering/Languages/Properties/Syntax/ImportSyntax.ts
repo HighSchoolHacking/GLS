@@ -45,6 +45,11 @@ export class ImportSyntax {
     public right: string;
 
     /**
+     * Whether file names should be individually transformed in import paths.
+     */
+    public transformFileNames: boolean;
+
+    /**
      * Whether local file imports should be treated differently from absolute imports.
      */
     public useLocalRelativeImports: boolean;

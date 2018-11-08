@@ -1,5 +1,5 @@
 #
-from namedpoint import NamedPoint
+from named_point import NamedPoint
 from point import Point
 
 if __name__ == "__main__":

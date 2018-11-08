@@ -11,9 +11,14 @@ import { LineResults } from "../LineResults";
  */
 export class ImportsPrinter {
     /**
-     * Converts import paths to a case.
+     * Converts directory path components to a case.
      */
-    private caseStyleConverter: ICaseStyleConverter;
+    private directoryCaseStyleConverter: ICaseStyleConverter;
+
+    /**
+     * Converts file names to a case.
+     */
+    private fileCaseStyleConverter: ICaseStyleConverter;
 
     /**
      * Language to output line results in.
@@ -28,12 +33,19 @@ export class ImportsPrinter {
     /**
      * Initializes a new instance of the ImportsPrinter class.
      *
-     * @param caseStyleConverter   Converts directory path components to a case.
+     * @param directoryCaseStyleConverter   Converts directory path components to a case.
+     * @param fileCaseStyleConverter   Converts file names to a case.
      * @param language   Language to output line results in.
      * @param nameSplitter   Splits name strings into words.
      */
-    public constructor(language: Language, caseStyleConverter: ICaseStyleConverter, nameSplitter: NameSplitter) {
-        this.caseStyleConverter = caseStyleConverter;
+    public constructor(
+        language: Language,
+        directoryCaseStyleConverter: ICaseStyleConverter,
+        fileCaseStyleConverter: ICaseStyleConverter,
+        nameSplitter: NameSplitter,
+    ) {
+        this.directoryCaseStyleConverter = directoryCaseStyleConverter;
+        this.fileCaseStyleConverter = fileCaseStyleConverter;
         this.language = language;
         this.nameSplitter = nameSplitter;
     }
@@ -131,7 +143,18 @@ export class ImportsPrinter {
      * @returns The import's rendered package path.
      */
     private renderPackagePath(addedImport: Import): string {
-        let line = this.caseStyleConverter.convert(addedImport.packagePath);
+        const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 2);
+        const lastComponent = addedImport.packagePath[addedImport.packagePath.length - 1];
+
+        if (this.language.syntax.imports.transformFileNames) {
+            const lastComponentSplit = this.nameSplitter.split(lastComponent);
+            const fileName = this.fileCaseStyleConverter.convert(lastComponentSplit);
+            pathComponents.push(fileName);
+        } else {
+            pathComponents.push(lastComponent);
+        }
+
+        let line = this.directoryCaseStyleConverter.convert(pathComponents);
 
         if (this.language.syntax.imports.useLocalRelativePaths) {
             if (addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {

@@ -53,10 +53,12 @@ const acceptCommandComparisonBaseline = async (filePath: string, languageName: s
 const runCommandComparisonTest = async (filePath: string, languageName: string): Promise<void> => {
     // Arrange
     const gls = new Gls(languageName);
-    const extension = gls.getLanguage().general.extension;
+    const language = gls.getLanguage();
+    const extension = language.general.extension;
+    const languagePath = createLanguageFilePath(filePath, language);
 
     // Act
-    const [expected, source] = await Promise.all([readCommandFile(filePath + extension), readCommandFile(filePath + ".gls")]);
+    const [expected, source] = await Promise.all([readCommandFile(languagePath), readCommandFile(filePath + ".gls")]);
 
     // Assert
     expect(gls.convert(source)).to.be.deep.equal(expected, `${filePath}${extension}`);
