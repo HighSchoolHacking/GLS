@@ -183,7 +183,7 @@ export class JavaScript extends Language {
 
         classes.abstractDeclaration = "";
         classes.aliases = {
-            dictionary: "object",
+            char: "string",
             double: "number",
             float: "number",
             int: "number",

@@ -18,7 +18,7 @@
         "docs:gls": "node util/docs/compileGls.js",
         "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
-        "prepublishOnly": "npm run util:refresh-docs",
+        "prepublishOnly": "npm run docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
         "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
         "src": "npm run src:tsc && npm run src:tslint",
@@ -39,7 +39,7 @@
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",
-    "version": "0.3.24",
+    "version": "0.3.25",
     "devDependencies": {
         "@types/chai": "^4.1.7",
         "@types/minimatch": "^3.0.3",

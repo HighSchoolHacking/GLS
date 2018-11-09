@@ -181,6 +181,7 @@ export class Ruby extends Language {
 
         classes.abstractDeclaration = "";
         classes.aliases = {
+            char: "string",
             dictionary: "Hash",
             number: "Double",
         };
@@ -615,6 +616,7 @@ export class Ruby extends Language {
         formatting.useInterpolation = false;
 
         formatting.typeCodes = {
+            char: "%c",
             double: "%f",
             int: "%d",
             string: "%s",

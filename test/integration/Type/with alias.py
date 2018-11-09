@@ -1,3 +1,3 @@
 #
-dict
+string
 #

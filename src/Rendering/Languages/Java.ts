@@ -638,6 +638,7 @@ export class Java extends Language {
         formatting.useInterpolation = false;
 
         formatting.typeCodes = {
+            char: "$c",
             double: "$f",
             int: "$d",
             string: "$s",

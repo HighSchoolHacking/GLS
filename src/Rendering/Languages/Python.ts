@@ -157,6 +157,7 @@ export class Python extends Language {
 
         classes.abstractDeclaration = "";
         classes.aliases = {
+            char: "string",
             dictionary: "dict",
             number: "double",
         };

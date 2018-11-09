@@ -1,6 +1,16 @@
 //
 // Initialization
 let haystack = "Hello, GLS!";
+console.log(haystack);
+
+// Concatenation
+let joined = "It is -> " + haystack + " <- It was";
+console.log(joined);
+
+// Characters
+let text = "abc";
+let first = text[0];
+console.log(`${text}'s first character is ${first}.`);
 
 // Searching
 let needle = "GLS";
