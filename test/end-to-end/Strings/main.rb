@@ -1,6 +1,16 @@
 #
 # Initialization
 haystack = "Hello, GLS!"
+puts haystack
+
+# Concatenation
+joined = "It is -> " + haystack + " <- It was"
+puts joined
+
+# Characters
+text = "abc"
+first = text[0]
+puts "%s's first character is %c." % [text, first]
 
 # Searching
 needle = "GLS"

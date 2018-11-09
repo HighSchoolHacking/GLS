@@ -1,3 +1,3 @@
 #
-Hash
+string
 #

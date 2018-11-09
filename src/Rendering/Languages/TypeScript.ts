@@ -185,7 +185,7 @@ export class TypeScript extends Language {
         classes.abstractDeclaration = "abstract ";
         classes.abstractsSupported = true;
         classes.aliases = {
-            dictionary: "object",
+            char: "string",
             double: "number",
             float: "number",
             int: "number",

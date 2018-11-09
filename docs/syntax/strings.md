@@ -16,6 +16,42 @@ concatenate : "abc" def "ghi"
 * In C#: `"abc" + def + "ghi"`
 * In Python: `"abc" + def + "ghi"`
 
+## Characters
+
+Some languages, such as JavaScript and Ruby, do not recognize a difference between a one-length string, or `char`, and an arbitrary-length `string`.
+Less high-level languages, such as C# and Java, consider them to be a `char`.
+
+```gls
+variable : a char 'a'
+```
+
+* In C#: `char a = 'a';`
+* In Python: `a = "a"`
+
+### Indexing
+
+Individual characters in a string may be indexed with the `string index` command.
+It takes in a string and a character index int, and returns a `char`.
+
+```gls
+variable : text string "abc"
+variable : first char { string index : text 0 }
+```
+
+In C#:
+
+```csharp
+string text = "abc";
+char first = text[0];
+```
+
+In Python:
+
+```python
+text = "abc"
+first = text[0]
+```
+
 ## Formatting
 
 The `string format` command allows inserting primitives into a format string.

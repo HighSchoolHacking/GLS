@@ -192,4 +192,6 @@ These languages are capable of being compiled from their native source code to G
 In order for a language to be fully supported, it must:
 
 * Completely support static typings via a programmable AST.
-* Recognize differences between all GLS types, including `int` vs. `double`.
+* Recognize differences between all GLS types, including:
+  * `char` vs. `string`
+  * `int` vs. `double`

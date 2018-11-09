@@ -1,16 +1,32 @@
 -
-comment line : Initialization
-variable : haystack string ("Hello, GLS!")
+file start : STrings index
+    main context start
+        main start
+            comment line : Initialization
+            variable : haystack string ("Hello, GLS!")
+            print : haystack
 
-comment line : Searching
-variable : needle string "GLS"
-variable : firstIndexOf int { string index of : haystack needle }
-variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
+            comment line : Concatenation
+            variable : joined string { concatenate : ("It is -> ") haystack (" <- It was") }
+            print : joined
 
-comment line : Results
-print : { string format : ("Found a first result at: {0}.") firstIndexOf int }
+            comment line : Characters
+            variable: text string "abc"
+            variable : first char { string index : text 0 }
+            print : { string format : ("{0}'s first character is {1}.") text string first char }
 
-if start : { operation : secondIndexOf (not equal to) { string index not found } }
-    print : { string format : ("Found a second result at: {0}.") secondIndexOf int }
-if end
+            comment line : Searching
+            variable : needle string "GLS"
+            variable : firstIndexOf int { string index of : haystack needle }
+            variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
+
+            comment line : Results
+            print : { string format : ("Found a first result at: {0}.") firstIndexOf int }
+
+            if start : { operation : secondIndexOf (not equal to) { string index not found } }
+                print : { string format : ("Found a second result at: {0}.") secondIndexOf int }
+            if end
+        main end
+    main context end
+file end
 -
