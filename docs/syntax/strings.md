@@ -22,7 +22,7 @@ Some languages, such as JavaScript and Ruby, do not recognize a difference betwe
 Less high-level languages, such as C# and Java, consider them to be a `char`.
 
 ```gls
-variable declare : a char 'a'
+variable : a char 'a'
 ```
 
 * In C#: `char a = 'a';`
@@ -34,8 +34,8 @@ Individual characters in a string may be indexed with the `string index` command
 It takes in a string and a character index int, and returns a `char`.
 
 ```gls
-variable declare: text string "abc"
-variable declare : first char { string index : text 0 }
+variable : text string "abc"
+variable : first char { string index : text 0 }
 ```
 
 In C#:
