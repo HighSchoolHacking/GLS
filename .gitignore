@@ -7,7 +7,7 @@ src/**/*.map
 test/*.js
 test/*.map
 test/**/*.map
-test/end-to-end/*/__pycache_/
+test/end-to-end/*/__pycache__/
 test/end-to-end/*/bin/
 test/end-to-end/*/obj/
 test/end-to-end/*/*.class
