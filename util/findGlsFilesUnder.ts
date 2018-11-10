@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as glob from "glob";
 import * as path from "path";
 
 /**
@@ -12,13 +13,12 @@ export const findGlsFilesUnder = (rootPath: string, directoryNames: string[]) =>
     const tests = new Map<string, string[]>();
 
     for (const childName of directoryNames) {
-        tests.set(
-            childName,
-            fs
-                .readdirSync(path.resolve(rootPath, childName))
-                .filter((testFileName) => testFileName.indexOf(".gls") !== -1)
-                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))),
-        );
+        const directoryPath = path.resolve(rootPath, childName);
+        const testFiles = glob
+            .sync(`${directoryPath}/**/*.gls`)
+            .map((testFileName) => testFileName.substring(directoryPath.length, testFileName.indexOf(".gls")));
+
+        tests.set(childName, testFiles);
     }
 
     return tests;

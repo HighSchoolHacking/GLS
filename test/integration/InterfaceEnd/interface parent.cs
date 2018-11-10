@@ -1,5 +1,5 @@
 //
-interface aaa : bbb, ccc
+interface aaa : ccc
 {
 }
 //

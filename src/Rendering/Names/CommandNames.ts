@@ -120,17 +120,17 @@ export class CommandNames {
     /**
      * Name key for the DictionaryNew command.
      */
-    public static DictionaryNew = "dictionary initialize";
+    public static DictionaryNew = "dictionary new";
 
     /**
      * Name key for the DictionaryNewEnd command.
      */
-    public static DictionaryNewEnd = "dictionary initialize end";
+    public static DictionaryNewEnd = "dictionary new end";
 
     /**
      * Name key for the DictionaryNewStart command.
      */
-    public static DictionaryNewStart = "dictionary initialize start";
+    public static DictionaryNewStart = "dictionary new start";
 
     /**
      * Name key for the DictionaryPair command.
@@ -141,6 +141,11 @@ export class CommandNames {
      * Name key for the DictionaryType command.
      */
     public static DictionaryType = "dictionary type";
+
+    /**
+     * Name key for the DictionarySet command.
+     */
+    public static DictionarySet = "dictionary set";
 
     /**
      * Name key for the ElseIfStart command.

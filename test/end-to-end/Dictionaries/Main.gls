@@ -3,8 +3,8 @@ file start : Dictionaries index
     main context start
         main start
             comment line : Types
-            variable : foo { dictionary type : string int } { dictionary initialize : string int }
-            variable : bar { dictionary type : string { dictionary type : string int } } { dictionary initialize : string { dictionary type : string int } }
+            variable : foo { dictionary type : string int } { dictionary new : string int }
+            variable : bar { dictionary type : string { dictionary type : string int } } { dictionary new : string { dictionary type : string int } }
 
             comment line : Indices
             operation : { dictionary index : foo "baz" } equals 7
@@ -13,11 +13,11 @@ file start : Dictionaries index
             print : { string format : ("qux is {0}") qux int }
 
             comment line : Initialization
-            variable start : aaa { dictionary type : string int } { dictionary initialize start : string int }
+            variable start : aaa { dictionary type : string int } { dictionary new start : string int }
                 dictionary pair : "bbb" 1 ,
                 dictionary pair : "ccc" 2 ,
                 dictionary pair : "ddd" 3
-            dictionary initialize end
+            dictionary new end
 
             comment line : Contains Key
             variable : containsFalse boolean { dictionary contains key : aaa "aaa" }

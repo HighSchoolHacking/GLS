@@ -1,8 +1,10 @@
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
+import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { addLineEnder } from "./Utilities";
@@ -18,7 +20,8 @@ export class InterfaceStartCommand extends Command {
         .withDescription("Starts an interface declaration")
         .withIndentation([1])
         .withParameters([
-            new SingleParameter("InterfaceName", "The Interface name.", true),
+            new KeywordParameter([KeywordNames.Export], "Keyword to export this class publicly.", false),
+            new SingleParameter("InterfaceName", "The interface name.", true),
             new RepeatingParameters("Parent interfaces", [new SingleParameter("parentInterfaceName", "Names of parent interfaces.", true)]),
         ]);
 
@@ -36,21 +39,23 @@ export class InterfaceStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line = "";
-
         if (!this.language.syntax.interfaces.supported) {
-            return LineResults.newSingleLine(line);
+            return LineResults.newSingleLine("");
         }
 
-        line += this.language.syntax.interfaces.declareStartLeft;
-        line += parameters[1];
+        const remainingParameters = parameters.slice(1);
+        let line = "";
 
-        if (parameters.length > 2) {
+        line += this.getForExport(remainingParameters);
+        line += this.language.syntax.interfaces.declareStartLeft;
+        line += remainingParameters[0];
+
+        if (remainingParameters.length > 1) {
             line += this.language.syntax.interfaces.declareExtendsLeft;
 
-            for (let i = 2; i < parameters.length; i++) {
-                line += parameters[i];
-                if (i !== parameters.length - 1) {
+            for (let i = 2; i < remainingParameters.length; i++) {
+                line += remainingParameters[i];
+                if (i !== remainingParameters.length - 1) {
                     line += this.language.syntax.interfaces.declareExtendsRight;
                 }
             }
@@ -60,5 +65,27 @@ export class InterfaceStartCommand extends Command {
         addLineEnder(output, this.language.syntax.interfaces.declareStartRight, 1);
 
         return new LineResults(output);
+    }
+
+    /**
+     * Removes any parameters for exporting the interface.
+     *
+     * @param remainingParameters   Remaining input parameters.
+     * @returns Language output equivalent for the removed parameters.
+     */
+    private getForExport(remainingParameters: string[]): string {
+        if (remainingParameters[0] !== KeywordNames.Export) {
+            return this.language.syntax.classes.exports.internal;
+        }
+
+        remainingParameters.shift();
+        let exported = this.language.syntax.classes.exports.exportedLeft;
+
+        if (this.language.syntax.classes.exports.exportedIncludesName) {
+            exported += remainingParameters[0];
+            exported += this.language.syntax.classes.exports.exportedMiddle;
+        }
+
+        return exported;
     }
 }

@@ -1,3 +1,3 @@
 //
-interface aaa extends bbb, ccc {
+interface aaa extends ccc {
 //

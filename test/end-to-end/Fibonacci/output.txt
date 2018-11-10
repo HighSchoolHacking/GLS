@@ -1,0 +1,22 @@
+The 0th Fibonacci number is 0
+The 1st Fibonacci number is 1
+The 2nd Fibonacci number is 1
+The 3rd Fibonacci number is 2
+The 4th Fibonacci number is 3
+The 5th Fibonacci number is 5
+The 6th Fibonacci number is 8
+The 7th Fibonacci number is 13
+The 8th Fibonacci number is 21
+The 9th Fibonacci number is 34
+The 0th Fibonacci number is 0
+The 1st Fibonacci number is 1
+The 2nd Fibonacci number is 1
+The 3rd Fibonacci number is 2
+The 4th Fibonacci number is 3
+The 5th Fibonacci number is 5
+The 6th Fibonacci number is 8
+The 7th Fibonacci number is 13
+The 8th Fibonacci number is 21
+The 9th Fibonacci number is 34
+7 is cached.
+14 is not cached.

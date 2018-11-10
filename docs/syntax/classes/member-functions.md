@@ -50,3 +50,5 @@ class Announcer:
     def __init__(self, Announcer, string):
         self.__greeting = greeting
 ```
+
+TODO: CALLING THESE
