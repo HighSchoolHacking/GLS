@@ -6,37 +6,47 @@ import { IOutputGenerator } from "../util/OutputGenerators";
 import { runCommandComparison } from "./ComparisonTests";
 
 export interface IProjectOutputTestSettings {
-    accept: boolean;
     files: string[];
     languageName: string;
     outputGenerator: IOutputGenerator;
-    projectPath: string;
+    projectDirectory: string;
 }
 
 export interface IFileComparisonSettings {
     accept: boolean;
     files: string[];
     languageName: string;
-    projectPath: string;
+    projectDirectory: string;
 }
 
-export const ensureSameFileComparisons = async ({ accept, files, languageName, projectPath }: IFileComparisonSettings) => {
+export const ensureSameFileComparisons = async ({ accept, files, languageName, projectDirectory }: IFileComparisonSettings) => {
     for (const file of files) {
         await runCommandComparison({
             accept,
-            filePath: path.join(projectPath, file),
             languageName,
+            outputDirectory: path.join(projectDirectory, languageName),
+            projectDirectory,
+            sourceDirectory: path.join(projectDirectory, "Gls"),
+            sourceFileName: file,
             transformFilePath: true,
         });
     }
 };
 
-export const runProjectOutputTest = async ({ files, outputGenerator, projectPath }: IProjectOutputTestSettings): Promise<void> => {
+export const runProjectOutputTest = async ({
+    files,
+    languageName,
+    outputGenerator,
+    projectDirectory,
+}: IProjectOutputTestSettings): Promise<void> => {
     // Arrange
-    const expected = (await fs.readFile(path.join(projectPath, "output.txt"))).toString().split(/\r\n|\r|\n/g);
+    const expected = (await fs.readFile(path.join(projectDirectory, "output.txt"))).toString().split(/\r\n|\r|\n/g);
 
     // Act
-    const actual = await outputGenerator({ files, projectPath });
+    const actual = await outputGenerator({
+        files,
+        projectDirectory: path.join(projectDirectory, languageName),
+    });
 
     // Assert
     expect(actual).to.be.deep.equal(expected);
