@@ -1,3 +1,3 @@
 //
-aaa(bbb: string, ccc: string): string;
+abc(def: boolean, ghi: number): string;
 //

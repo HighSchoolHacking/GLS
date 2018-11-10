@@ -46,8 +46,10 @@ export class InterfaceMethodCommand extends Command {
         const typeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
         const imports = typeLine.addedImports;
 
+        const methodName = this.context.convertStringToCase(parameters[1], this.language.syntax.classes.members.functions.publicCase);
+
         if (this.language.syntax.interfaces.methodTypeAfter) {
-            line += parameters[1];
+            line += methodName;
             line += this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length; i++) {
@@ -68,7 +70,7 @@ export class InterfaceMethodCommand extends Command {
         } else {
             line += this.language.syntax.interfaces.declareMethodLeft;
             line += typeLine.commandResults[0].text + " ";
-            line += parameters[1] + this.language.syntax.interfaces.declareMethodMiddle;
+            line += methodName + this.language.syntax.interfaces.declareMethodMiddle;
 
             for (let i = 3; i < parameters.length - 1; i += 2) {
                 const nextTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
