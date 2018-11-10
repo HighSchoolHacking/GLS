@@ -1,3 +1,3 @@
 //
-public interface aaa extends ccc {
+public interface aaa extends bbb, ccc {
 //

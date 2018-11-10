@@ -53,7 +53,7 @@ export class InterfaceStartCommand extends Command {
         if (remainingParameters.length > 1) {
             line += this.language.syntax.interfaces.declareExtendsLeft;
 
-            for (let i = 2; i < remainingParameters.length; i++) {
+            for (let i = 1; i < remainingParameters.length; i++) {
                 line += remainingParameters[i];
                 if (i !== remainingParameters.length - 1) {
                     line += this.language.syntax.interfaces.declareExtendsRight;

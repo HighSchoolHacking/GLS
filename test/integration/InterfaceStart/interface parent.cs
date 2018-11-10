@@ -1,4 +1,4 @@
 //
-interface aaa : ccc
+interface aaa : bbb, ccc
 {
 //

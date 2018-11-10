@@ -1,3 +1,3 @@
 //
-export interface aaa extends ccc {
+export interface aaa extends bbb, ccc {
 //

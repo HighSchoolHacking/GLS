@@ -453,6 +453,11 @@ export class CommandNames {
     public static MemberVariableDeclare = "member variable declare";
 
     /**
+     * Name key for the MemberVariable command.
+     */
+    public static MemberVariableSet = "member variable set";
+
+    /**
      * Name key for the New command.
      */
     public static New = "new";

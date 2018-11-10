@@ -1,4 +1,4 @@
 -
-interface start : aaa bbb ccc
+interface start : IAbc IDef IGhi
 interface end
 -

@@ -1,3 +1,3 @@
 //
-string aaa(string bbb, string ccc);
+string Abc(bool def, int ghi);
 //

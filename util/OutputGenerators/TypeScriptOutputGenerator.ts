@@ -6,6 +6,6 @@ import { spawnAndCaptureOutput } from "./Spawning";
 /**
  * Runs an output comparison test for a single GLS project in TypeScript.
  */
-export const testTypeScriptGenerator: IOutputGenerator = async ({ projectPath }): Promise<string[]> => {
-    return spawnAndCaptureOutput("node", "./node_modules/ts-node/dist/bin.js", path.join(projectPath, "index.ts"));
+export const testTypeScriptGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
+    return spawnAndCaptureOutput("node", "./node_modules/ts-node/dist/bin.js", path.join(projectDirectory, "index.ts"));
 };

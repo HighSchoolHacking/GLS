@@ -1,4 +1,4 @@
 //
-interface aaa extends ccc {
+interface IAbc extends IDef, IGhi {
 }
 //

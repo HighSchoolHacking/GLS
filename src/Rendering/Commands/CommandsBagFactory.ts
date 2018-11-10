@@ -90,6 +90,7 @@ import { MemberFunctionDeclareEndCommand } from "./MemberFunctionDeclareEndComma
 import { MemberFunctionDeclareStartCommand } from "./MemberFunctionDeclareStartCommand";
 import { MemberVariableCommand } from "./MemberVariableCommand";
 import { MemberVariableDeclareCommand } from "./MemberVariableDeclareCommand";
+import { MemberVariableSetCommand } from "./MemberVariableSetCommand";
 import { NewCommand } from "./NewCommand";
 import { NotCommand } from "./NotCommand";
 import { OperationCommand } from "./OperationCommand";
@@ -240,6 +241,7 @@ export class CommandsBagFactory {
             new MemberFunctionDeclareStartCommand(context),
             new MemberVariableCommand(context),
             new MemberVariableDeclareCommand(context),
+            new MemberVariableSetCommand(context),
             new NewCommand(context),
             new NotCommand(context),
             new OperationCommand(context),

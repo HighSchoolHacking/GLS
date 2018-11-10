@@ -1,4 +1,4 @@
 //
-public interface aaa : ccc
+public interface aaa : bbb, ccc
 {
 //
