@@ -1,5 +1,5 @@
 //
-interface aaa : bbb, ccc
+interface IAbc : IDef, IGhi
 {
 }
 //
