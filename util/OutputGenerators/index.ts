@@ -6,6 +6,7 @@ import { testTypeScriptGenerator } from "./TypeScriptOutputGenerator";
 
 export interface IOutputGeneratorArgs {
     files: string[];
+    languageDirectories: boolean;
     projectPath: string;
 }
 

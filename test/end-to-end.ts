@@ -22,12 +22,25 @@ const projectTests = findGlsFilesUnder(rootPath, testNames);
  */
 const runProjectLanguageTests = (languageName: string, projectPath: string, files: string[]) => {
     it(languageName, async () => {
-        await ensureSameFileComparisons({ accept, files, languageName, projectPath });
+        await ensureSameFileComparisons({
+            accept,
+            files,
+            languageDirectories: true,
+            languageName,
+            projectPath,
+        });
 
         const outputGenerator = outputGenerators.get(languageName);
 
         if (outputGenerator !== undefined && fs.existsSync(path.join(projectPath, "output.txt"))) {
-            await runProjectOutputTest({ accept, projectPath, files, languageName, outputGenerator });
+            await runProjectOutputTest({
+                accept,
+                files,
+                languageDirectories: true,
+                languageName,
+                outputGenerator,
+                projectPath,
+            });
         }
     });
 };

@@ -24,6 +24,7 @@ const runFileComparisonTests = (directory: string, testFile: string) => {
                 await runCommandComparison({
                     accept,
                     filePath: path.join(directory, testFile),
+                    languageDirectories: false,
                     languageName,
                 });
             });
