@@ -42,6 +42,7 @@
     "version": "0.3.25",
     "devDependencies": {
         "@types/chai": "^4.1.7",
+        "@types/glob": "^7.1.1",
         "@types/minimatch": "^3.0.3",
         "@types/mocha": "^5.2.5",
         "@types/mz": "0.0.32",
