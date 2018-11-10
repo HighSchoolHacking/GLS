@@ -6,8 +6,7 @@ import { testTypeScriptGenerator } from "./TypeScriptOutputGenerator";
 
 export interface IOutputGeneratorArgs {
     files: string[];
-    languageDirectories: boolean;
-    projectPath: string;
+    projectDirectory: string;
 }
 
 export type IOutputGenerator = (args: IOutputGeneratorArgs) => Promise<string[]>;

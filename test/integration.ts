@@ -15,17 +15,19 @@ const commandTests = findGlsFilesUnder(rootPath, testNames);
  * Runs comparison test on a single file within a command.
  *
  * @param directory   Directory containing the file.
- * @param testFile   Test file name, excluding extension.
+ * @param filePath   Test file name, excluding extension.
  */
-const runFileComparisonTests = (directory: string, testFile: string) => {
+const runFileComparisonTests = (directory: string, sourceFileName: string) => {
     for (const languageName of testLanguagesBag.getLanguageNames()) {
         if (languages === undefined || languages.has(languageName)) {
             it(languageName, async () => {
                 await runCommandComparison({
                     accept,
-                    filePath: path.join(directory, testFile),
-                    languageDirectories: false,
                     languageName,
+                    outputDirectory: directory,
+                    projectDirectory: directory,
+                    sourceDirectory: directory,
+                    sourceFileName,
                 });
             });
         }

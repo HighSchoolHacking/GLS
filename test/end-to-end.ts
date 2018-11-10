@@ -11,35 +11,32 @@ import { ensureSameFileComparisons, runProjectOutputTest } from "./OutputTests";
 const rootPath = path.resolve("test/end-to-end");
 const { accept, inclusions, languages } = parseTestArguments(process.argv);
 const testNames = filterFoldersUnder(rootPath, inclusions);
-const projectTests = findGlsFilesUnder(rootPath, testNames);
+const projectTests = findGlsFilesUnder(rootPath, testNames, "Gls");
 
 /**
  * Runs the comparison and (if available) output tests for each language on a project.
  *
  * @param languageName   Name of the language to test.
- * @param projectPath   Path to the project's directory.
+ * @param projectDirectory   Path to the project's directory.
  * @param files   File names within the project.
  */
-const runProjectLanguageTests = (languageName: string, projectPath: string, files: string[]) => {
+const runProjectLanguageTests = (languageName: string, projectDirectory: string, files: string[]) => {
     it(languageName, async () => {
         await ensureSameFileComparisons({
             accept,
             files,
-            languageDirectories: true,
             languageName,
-            projectPath,
+            projectDirectory,
         });
 
         const outputGenerator = outputGenerators.get(languageName);
 
-        if (outputGenerator !== undefined && fs.existsSync(path.join(projectPath, "output.txt"))) {
+        if (outputGenerator !== undefined && fs.existsSync(path.join(projectDirectory, "output.txt"))) {
             await runProjectOutputTest({
-                accept,
                 files,
-                languageDirectories: true,
                 languageName,
                 outputGenerator,
-                projectPath,
+                projectDirectory,
             });
         }
     });
@@ -48,12 +45,12 @@ const runProjectLanguageTests = (languageName: string, projectPath: string, file
 describe("test/end-to-end", () => {
     projectTests.forEach(
         (files: string[], project: string): void => {
-            const projectPath = path.join(rootPath, project);
+            const projectDirectory = path.join(rootPath, project);
 
             describe(project, () => {
                 for (const languageName of testLanguagesBag.getLanguageNames()) {
                     if (languages === undefined || languages.has(languageName)) {
-                        runProjectLanguageTests(languageName, projectPath, files);
+                        runProjectLanguageTests(languageName, projectDirectory, files);
                     }
                 }
             });

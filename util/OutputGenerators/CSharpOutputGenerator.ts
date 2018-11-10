@@ -5,23 +5,24 @@ import { IOutputGenerator } from "./index";
 import { spawnAndCaptureOutput } from "./Spawning";
 
 const template = `<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <NoWarn>0162,0414</NoWarn>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <NoWarn>0162,0414</NoWarn>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    </PropertyGroup>
 </Project>
 `;
 
 /**
  * Runs an output comparison test for a single GLS project in C#.
  */
-export const testCSharpGenerator: IOutputGenerator = async ({ projectPath }): Promise<string[]> => {
-    const basename = path.basename(projectPath);
+export const testCSharpGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
+    const basename = path.basename(projectDirectory);
+    const csprojPath = path.join(projectDirectory, basename + ".csproj");
 
-    await fs.writeFile(path.join(projectPath, basename + ".csproj"), template, {
+    await fs.writeFile(csprojPath, template, {
         flag: "w",
     });
 
-    return spawnAndCaptureOutput("dotnet", "run", "--project", path.join(projectPath, basename + ".csproj"));
+    return spawnAndCaptureOutput("dotnet", "run", "--project", csprojPath);
 };

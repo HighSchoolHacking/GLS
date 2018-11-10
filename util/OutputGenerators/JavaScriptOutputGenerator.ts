@@ -6,6 +6,6 @@ import { spawnAndCaptureOutput } from "./Spawning";
 /**
  * Runs an output comparison test for a single GLS project in JavaScript.
  */
-export const testJavaScriptGenerator: IOutputGenerator = async ({ projectPath }): Promise<string[]> => {
-    return spawnAndCaptureOutput("node", path.join(projectPath, "index.js"));
+export const testJavaScriptGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
+    return spawnAndCaptureOutput("node", path.join(projectDirectory, "index.js"));
 };
