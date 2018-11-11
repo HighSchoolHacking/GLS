@@ -25,10 +25,10 @@ export class ImportLocalCommand extends ImportCommand {
      * @returns Whether this is from an absolute package or local file.
      */
     protected getRelativity(): ImportRelativity {
-        if (!this.language.syntax.imports.useLocalRelativeImports) {
-            return ImportRelativity.Absolute;
+        if (this.language.syntax.imports.useLocalRelativeImports) {
+            return ImportRelativity.Local;
         }
 
-        return ImportRelativity.Local;
+        return ImportRelativity.Absolute;
     }
 }

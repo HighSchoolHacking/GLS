@@ -1,7 +1,9 @@
-// tslint:disable-next-line:no-require-imports
-import mkdirpPromise = require("mkdirp-promise");
 import * as fs from "mz/fs";
 import * as path from "path";
+
+// https://github.com/ahmadnassri/mkdirp-promise/issues/84
+// tslint:disable-next-line:no-require-imports
+import mkdirpPromise = require("mkdirp-promise");
 
 import { LanguagesBag } from "../lib/Rendering/Languages/LanguagesBag";
 
