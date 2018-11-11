@@ -50,3 +50,15 @@ class Announcer:
     def __init__(self, Announcer, string):
         self.__greeting = greeting
 ```
+
+## Calling
+
+Call member functions with the `member function` command.
+It takes in the same function privacy, , caller's name, and any number of parameters.
+
+```gls
+member function : public announcer Greet ("Sample")
+```
+
+* In C#: `announcer.Greet("Sample");`
+* In Python: `announcer.greet("sample")`
