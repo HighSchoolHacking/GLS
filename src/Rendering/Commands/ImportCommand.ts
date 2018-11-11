@@ -43,22 +43,13 @@ export abstract class ImportCommand extends Command {
         const relativity: ImportRelativity = this.getRelativity();
         let packagePath: string[] = parameters.slice(1, usingSplit);
 
-        const lineResults = new LineResults([]);
-        const contextPackagePath = this.context.getFileMetadata().getPackagePath();
-        const relativePackagePath = ImportCommand.pathResolver.resolve(contextPackagePath, packagePath);
-
-        if (relativity === ImportRelativity.Local) {
-            packagePath = relativePackagePath;
-        } else if (!this.language.syntax.imports.useLocalRelativePaths && !this.language.syntax.imports.explicit) {
-            if (
-                this.isPackagePathOnlyParents(relativePackagePath.slice(0, relativePackagePath.length - 1)) ||
-                this.isPackagePathSubset(packagePath.slice(0, packagePath.length - 1), contextPackagePath)
-            ) {
-                return lineResults;
-            }
+        if (this.language.syntax.imports.useLocalRelativeImports) {
+            packagePath = this.makePackagePathRelative(packagePath);
+        } else {
+            packagePath.pop();
         }
 
-        return lineResults.withImports([new Import(packagePath, items, this.getRelativity())]);
+        return new LineResults([]).withImports([new Import(packagePath, items, relativity)]);
     }
 
     /**
@@ -66,31 +57,10 @@ export abstract class ImportCommand extends Command {
      */
     protected abstract getRelativity(): ImportRelativity;
 
-    private isPackagePathOnlyParents(relativePackagePath: string[]): boolean {
-        for (const component of relativePackagePath) {
-            if (component !== "..") {
-                return false;
-            }
-        }
+    private makePackagePathRelative(packagePath: string[]): string[] {
+        const contextPackagePath = this.context.getFileMetadata().getPackagePath();
+        const relativePackagePath = ImportCommand.pathResolver.resolve(contextPackagePath, packagePath);
 
-        return true;
-    }
-
-    private isPackagePathSubset(packagePath: string[], contextPackagePath: string[]): boolean {
-        if (packagePath.length > contextPackagePath.length) {
-            return false;
-        }
-
-        if (packagePath[0] === "..") {
-            return false;
-        }
-
-        for (let i = 0; i < packagePath.length; i += 1) {
-            if (packagePath[i] !== contextPackagePath[i]) {
-                return false;
-            }
-        }
-
-        return true;
+        return relativePackagePath;
     }
 }

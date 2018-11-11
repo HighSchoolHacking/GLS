@@ -1,7 +1,7 @@
 //
 package fibonacci.generation;
 
-import fibonacci.generation.generator.IGenerator;
+import fibonacci.generation.IGenerator;
 
 public class NonCachingGenerator implements IGenerator {
     public int generate(int index) {

@@ -60,11 +60,13 @@ const createLanguageFilePath = (settings: ICommandComparisonTestSettings, langua
         return path.join(settings.outputDirectory, language.projects.mainFile);
     }
 
-    const { extension, fileCase } = language.general;
-    const nameSplit = nameSplitter.split(basename);
-    const fileName = caseStyleConverterBag.convertToCase(fileCase, nameSplit) + extension;
+    const { directoryCase, extension, fileCase } = language.general;
+    const fileName = caseStyleConverterBag.convertToCase(fileCase, nameSplitter.split(basename)) + extension;
 
-    return path.join(settings.outputDirectory, fileName);
+    const subDirectoryRaw = settings.sourceFileName.substring(0, settings.sourceFileName.length - basename.length - 1);
+    const subDirectory = caseStyleConverterBag.convertToCase(directoryCase, nameSplitter.split(subDirectoryRaw));
+
+    return path.join(settings.outputDirectory, subDirectory, fileName);
 };
 
 const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestSettings): Promise<void> => {

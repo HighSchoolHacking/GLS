@@ -1,7 +1,7 @@
 //
 package fibonacci.generation;
 
-import fibonacci.generation.generator.IGenerator;
+import fibonacci.generation.IGenerator;
 import java.util.HashMap;
 
 public class CachingGenerator implements IGenerator {
@@ -20,7 +20,7 @@ public class CachingGenerator implements IGenerator {
         int two = this.generate(index - 2);
         int result = one + two;
 
-        this.cache[index] = result
+        this.cache[index] = result;
 
         return result;
     }

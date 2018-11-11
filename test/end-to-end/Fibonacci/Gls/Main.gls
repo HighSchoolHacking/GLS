@@ -1,0 +1,47 @@
+-
+file start : Fibonacci Main
+    import local : Fibonacci Generation CachingGenerator use CachingGenerator
+    import local : Fibonacci Generation Generator use IGenerator
+    import local : Fibonacci Generation NonCachingGenerator use NonCachingGenerator
+
+    main context start
+        standalone function declare start : private GetLabel string index number
+            if start : { operation : index (equal to) 1 }
+                return : "st"
+            else if start : { operation : index (equal to) 2 }
+                return : "nd"
+            else if start : { operation : index (equal to) 3 }
+                return : "rd"
+            if end
+
+            return : "th"
+        standalone function declare end
+
+        standalone function declare start : private UseGenerator void generator IGenerator
+            for numbers start : i int 0 10
+                variable : label string { standalone function : private { main group } GetLabel i }
+                print : { string format : ("The {0}{1} Fibonacci number is {2}") i int label string { member function : public generator Generate i } int }
+            for numbers end
+        standalone function declare end
+
+        standalone function declare start : private CheckCache void generator CachingGenerator index int
+            if start : { member function : public generator IsCached index }
+                print : { string format : ("{0} is cached.") index int }
+            else start
+                print : { string format : ("{0} is not cached.") index int }
+            if end
+        standalone function declare end
+
+        main start
+            variable : cached CachingGenerator { new : CachingGenerator }
+            variable : uncached IGenerator { new : NonCachingGenerator }
+
+            standalone function : private { main group } UseGenerator cached
+            standalone function : private { main group } UseGenerator uncached
+
+            standalone function : private { main group } CheckCache cached 7
+            standalone function : private { main group } CheckCache cached 14
+        main end
+    main context end
+file end
+-

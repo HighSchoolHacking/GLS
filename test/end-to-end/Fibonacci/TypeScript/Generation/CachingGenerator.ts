@@ -17,7 +17,7 @@ export class CachingGenerator implements IGenerator {
         let two: number = this.generate(index - 2);
         let result: number = one + two;
 
-        this.cache[index] = result
+        this.cache[index] = result;
 
         return result;
     }

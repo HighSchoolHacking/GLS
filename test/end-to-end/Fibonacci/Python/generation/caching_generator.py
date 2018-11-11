@@ -1,5 +1,5 @@
 #
-from generator import IGenerator
+from .generator import IGenerator
 
 class CachingGenerator:
 

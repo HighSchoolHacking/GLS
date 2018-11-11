@@ -2,6 +2,6 @@
 file start : Fibonacci Generation Generator
     interface start : export IGenerator
         interface method : Generate int index int
-    class end
+    interface end
 file end
 -

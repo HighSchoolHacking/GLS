@@ -1,4 +1,5 @@
 //
+using Fibonacci.Generation;
 using System.Collections.Generic;
 
 namespace Fibonacci.Generation
@@ -24,7 +25,7 @@ namespace Fibonacci.Generation
             int two = this.Generate(index - 2);
             int result = one + two;
 
-            this.cache[index] = result
+            this.cache[index] = result;
 
             return result;
         }

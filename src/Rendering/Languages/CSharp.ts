@@ -53,6 +53,7 @@ export class CSharp extends Language {
      * @param general   A property container for general metadata.
      */
     protected generateGeneralProperties(general: GeneralProperties): void {
+        general.directoryCase = CaseStyle.DirectoryUpperCase;
         general.extension = ".cs";
         general.fileCase = CaseStyle.PascalCase;
         general.name = "C#";
@@ -305,7 +306,7 @@ export class CSharp extends Language {
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = " }";
         dictionaries.initializeStart = "\n{";
-        dictionaries.requiredImports = [new Import(["system", "collections", "generic"], ["Dictionary"], ImportRelativity.Absolute)];
+        dictionaries.requiredImports = [new Import(["System", "Collections", "Generic"], ["Dictionary"], ImportRelativity.Absolute)];
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -450,7 +451,7 @@ export class CSharp extends Language {
         lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
         lists.sort = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
 
-        lists.requiredImports = [new Import(["system", "collections", "generic"], ["List"], ImportRelativity.Absolute)];
+        lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Absolute)];
     }
 
     /**
@@ -497,8 +498,8 @@ export class CSharp extends Language {
     protected generateMainSyntax(main: MainSyntax): void {
         main.contextEndLines = ["}"];
         main.contextIndentation = 1;
-        main.contextStartLines = ["class {0}", "{"];
-        main.group = "{0}";
+        main.contextStartLines = ["class Program", "{"];
+        main.group = "Program";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
         main.mainStartLines = ["public static void Main()", "{"];
@@ -510,7 +511,7 @@ export class CSharp extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathSyntax(math: MathSyntax): void {
-        const requiredImports = [new Import(["system"], ["Math"], ImportRelativity.Absolute)];
+        const requiredImports = [new Import(["System"], ["Math"], ImportRelativity.Absolute)];
 
         math.absolute = new NativeCallSyntax("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
         math.ceiling = new NativeCallSyntax("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
@@ -579,7 +580,7 @@ export class CSharp extends Language {
      */
     protected generatePrintingSyntax(printing: PrintingSyntax): void {
         printing.end = ")";
-        printing.requiredImports = [new Import(["system"], ["Dictionary"], ImportRelativity.Absolute)];
+        printing.requiredImports = [new Import(["System"], ["Dictionary"], ImportRelativity.Absolute)];
         printing.start = "Console.WriteLine(";
     }
 
@@ -589,7 +590,7 @@ export class CSharp extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetSyntax(sets: SetSyntax): void {
-        const requiredImports: Import[] = [new Import(["system", "collections", "generic"], ["Dictionary"], ImportRelativity.Absolute)];
+        const requiredImports: Import[] = [new Import(["System", "Collections", "Generic"], ["Dictionary"], ImportRelativity.Absolute)];
 
         sets.add = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
 
@@ -682,7 +683,7 @@ export class CSharp extends Language {
     protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
         toDouble.conversionType = StringToDoubleStartConversionType.ValidateDirectly;
 
-        toDouble.requiredImports = [new Import(["system"], ["Double"], ImportRelativity.Absolute)];
+        toDouble.requiredImports = [new Import(["System"], ["Double"], ImportRelativity.Absolute)];
 
         toDouble.validationBlockComparison = "double.TryParse({0}, out var {1})";
         toDouble.validationBlockLeft = "if (";

@@ -68,5 +68,9 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged --write"
         }
+    },
+    "dependencies": {
+        "@types/mkdirp-promise": "^5.0.0",
+        "mkdirp-promise": "^5.0.1"
     }
 }

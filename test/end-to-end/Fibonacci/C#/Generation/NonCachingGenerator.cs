@@ -1,4 +1,6 @@
 //
+using Fibonacci.Generation;
+
 namespace Fibonacci.Generation
 {
 

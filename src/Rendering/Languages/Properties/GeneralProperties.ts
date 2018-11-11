@@ -5,6 +5,11 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class GeneralProperties {
     /**
+     * What case style directories should be created as.
+     */
+    public directoryCase: CaseStyle;
+
+    /**
      * The language's file extension.
      */
     public extension: string;

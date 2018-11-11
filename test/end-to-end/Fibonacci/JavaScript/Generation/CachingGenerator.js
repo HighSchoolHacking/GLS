@@ -16,7 +16,7 @@ exports.CachingGenerator = class CachingGenerator {
         let two = this.generate(index - 2);
         let result = one + two;
 
-        this.cache[index] = result
+        this.cache[index] = result;
 
         return result;
     }

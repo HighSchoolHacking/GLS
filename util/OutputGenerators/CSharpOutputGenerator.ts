@@ -16,9 +16,8 @@ const template = `<Project Sdk="Microsoft.NET.Sdk">
 /**
  * Runs an output comparison test for a single GLS project in C#.
  */
-export const testCSharpGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
-    const basename = path.basename(projectDirectory);
-    const csprojPath = path.join(projectDirectory, basename + ".csproj");
+export const testCSharpGenerator: IOutputGenerator = async ({ projectDirectory, projectName }): Promise<string[]> => {
+    const csprojPath = path.join(projectDirectory, projectName + ".csproj");
 
     await fs.writeFile(csprojPath, template, {
         flag: "w",
