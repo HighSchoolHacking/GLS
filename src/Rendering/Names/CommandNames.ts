@@ -138,6 +138,11 @@ export class CommandNames {
     public static DictionaryPair = "dictionary pair";
 
     /**
+     * Name key for the DictionarySet command.
+     */
+    public static DictionarySet = "dictionary set";
+
+    /**
      * Name key for the DictionaryType command.
      */
     public static DictionaryType = "dictionary type";

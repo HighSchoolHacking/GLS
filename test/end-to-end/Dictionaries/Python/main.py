@@ -11,18 +11,22 @@ if __name__ == "__main__":
     print("qux is {0}".format(qux))
 
     # Initialization
-    aaa = {
+    container = {
         "bbb": 1,
         "ccc": 2,
         "ddd": 3
     }
 
     # Contains Key
-    containsFalse = "aaa" in aaa
+    containsFalse = "aaa" in container
 
     if containsFalse:
         print("wrong")
 
-    if "bbb" in aaa:
+    if "bbb" in container:
         print("contains bbb")
+
+    # Setting
+    container["aaa"] = 7
+    print(container["aaa"])
 #

@@ -16,22 +16,26 @@ class Index {
         System.out.println(String.format("qux is %0$d", qux));
 
         // Initialization
-        HashMap<String, int> aaa = new HashMap<String, int>() {{
+        HashMap<String, int> container = new HashMap<String, int>() {{
             put("bbb", 1);
             put("ccc", 2);
             put("ddd", 3);
         }};
 
         // Contains Key
-        boolean containsFalse = aaa.containsKey("aaa");
+        boolean containsFalse = container.containsKey("aaa");
 
         if (containsFalse) {
             System.out.println("wrong");
         }
 
-        if (aaa.containsKey("bbb")) {
+        if (container.containsKey("bbb")) {
             System.out.println("contains bbb");
         }
+
+        // Setting
+        container["aaa"] = 7;
+        System.out.println(container["aaa"]);
     }
 }
 //

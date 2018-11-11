@@ -27,6 +27,7 @@ import { DictionaryNewCommand } from "./DictionaryNewCommand";
 import { DictionaryNewEndCommand } from "./DictionaryNewEndCommand";
 import { DictionaryNewStartCommand } from "./DictionaryNewStartCommand";
 import { DictionaryPairCommand } from "./DictionaryPairCommand";
+import { DictionarySetCommand } from "./DictionarySetCommand";
 import { DictionaryTypeCommand } from "./DictionaryTypeCommand";
 import { ElseIfStartCommand } from "./ElseIfStartCommand";
 import { ElseStartCommand } from "./ElseStartCommand";
@@ -177,6 +178,7 @@ export class CommandsBagFactory {
             new DictionaryNewEndCommand(context),
             new DictionaryNewStartCommand(context),
             new DictionaryPairCommand(context),
+            new DictionarySetCommand(context),
             new DictionaryTypeCommand(context),
             new ElseIfStartCommand(context),
             new ElseStartCommand(context),

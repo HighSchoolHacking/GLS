@@ -10,20 +10,24 @@ console.log(`baz is ${foo["baz"]}`);
 console.log(`qux is ${qux}`);
 
 // Initialization
-let aaa: { [i: string]: number } = {
+let container: { [i: string]: number } = {
     "bbb": 1,
     "ccc": 2,
     "ddd": 3
 };
 
 // Contains Key
-let containsFalse: boolean = {}.hasOwnProperty.call(aaa, "aaa");
+let containsFalse: boolean = {}.hasOwnProperty.call(container, "aaa");
 
 if (containsFalse) {
     console.log("wrong");
 }
 
-if ({}.hasOwnProperty.call(aaa, "bbb")) {
+if ({}.hasOwnProperty.call(container, "bbb")) {
     console.log("contains bbb");
 }
+
+// Setting
+container["aaa"] = 7;
+console.log(container["aaa"]);
 //
