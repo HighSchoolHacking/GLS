@@ -57,7 +57,7 @@ Call member functions with the `member function` command.
 It takes in the same function privacy, , caller's name, and any number of parameters.
 
 ```gls
-member function : announcer Greet ("Sample")
+member function : public announcer Greet ("Sample")
 ```
 
 * In C#: `announcer.Greet("Sample");`
