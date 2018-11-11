@@ -1,8 +1,8 @@
 //
 package pointclass;
 
-import pointclass.namedpoint.NamedPoint;
-import pointclass.point.Point;
+import pointclass.NamedPoint;
+import pointclass.Point;
 
 class Index {
     public static void main(String[] args) {

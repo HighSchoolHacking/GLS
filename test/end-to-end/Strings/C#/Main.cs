@@ -1,9 +1,9 @@
 //
 using System;
 
-namespace Strings
+namespace STrings
 {
-    class Index
+    class Program
     {
         public static void Main()
         {

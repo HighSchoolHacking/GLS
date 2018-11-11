@@ -10,7 +10,7 @@ namespace Enums
         Vertical = 2
     }
 
-    class Index
+    class Program
     {
         public static void Main()
         {

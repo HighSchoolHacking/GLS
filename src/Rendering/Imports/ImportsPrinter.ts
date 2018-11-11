@@ -143,23 +143,33 @@ export class ImportsPrinter {
      * @returns The import's rendered package path.
      */
     private renderPackagePath(addedImport: Import): string {
-        const pathComponents: string[] = addedImport.packagePath.slice(0, addedImport.packagePath.length - 1);
-        const lastComponent = addedImport.packagePath[addedImport.packagePath.length - 1];
-
-        if (this.language.syntax.imports.transformFileNames && lastComponent[0] !== ".") {
-            const lastComponentSplit = this.nameSplitter.split(lastComponent);
-            const fileName = this.fileCaseStyleConverter.convert(lastComponentSplit);
-            pathComponents.push(fileName);
-        } else {
-            pathComponents.push(lastComponent);
+        if (addedImport.relativity === ImportRelativity.Absolute) {
+            return this.directoryCaseStyleConverter.convert(addedImport.packagePath);
         }
 
-        let line = this.directoryCaseStyleConverter.convert(pathComponents);
+        const individualPackagePaths = this.individualizePackagePaths(addedImport.packagePath);
+        let line = this.directoryCaseStyleConverter.convert(individualPackagePaths);
 
-        if (this.language.syntax.imports.useLocalRelativePaths && addedImport.relativity === ImportRelativity.Local && line[0] !== ".") {
+        if (this.language.syntax.imports.useLocalRelativePaths) {
             line = "./" + line;
         }
 
         return line;
+    }
+
+    /**
+     * Converts individual components in a directory path to the language's file casing.
+     *
+     * @param packagePath   Components in a package path.
+     * @returns File case transformed equivalent of the package path.
+     */
+    private individualizePackagePaths(packagePath: string[]): string[] {
+        const paths: string[] = [];
+
+        for (const component of packagePath) {
+            paths.push(this.fileCaseStyleConverter.convert(this.nameSplitter.split(component)));
+        }
+
+        return paths;
     }
 }

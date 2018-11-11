@@ -18,8 +18,10 @@ export abstract class ImportCommand extends Command {
      */
     protected static parameters: IParameter[] = [
         new RepeatingParameters("Path for the package to import from", [new SingleParameter("path", "Part of the package path.", false)]),
-        new KeywordParameter([KeywordNames.Use], "Keyword to import items.", true),
+        new KeywordParameter([KeywordNames.Use], "Keyword to import items.", false),
         new RepeatingParameters("items", [new SingleParameter("item", "An item to import from the package.", true)]),
+        new KeywordParameter([KeywordNames.Types], "Keyword to import interface types.", false),
+        new RepeatingParameters("types", [new SingleParameter("type", "A type to import from the package.", true)]),
     ];
 
     /**
@@ -34,31 +36,37 @@ export abstract class ImportCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const usingSplit = parameters.indexOf(KeywordNames.Use);
-        if (usingSplit === -1) {
-            throw new Error(`A "${KeywordNames.Use}" parameter must be in import commands.`);
+        const useIndex = parameters.indexOf(KeywordNames.Use);
+        const typesIndex = parameters.indexOf(KeywordNames.Types);
+
+        if (useIndex === -1 && typesIndex === -1) {
+            throw new Error(`One of the "${KeywordNames.Use}" or "${KeywordNames.Types}" parameters must be in import commands.`);
         }
 
-        const items: string[] = parameters.slice(usingSplit + 1);
+        if (useIndex !== -1 && typesIndex !== -1 && useIndex > typesIndex) {
+            throw new Error(`A "${KeywordNames.Use}" parameter must come before a "${KeywordNames.Types}" parameter.`);
+        }
+
+        if (useIndex === -1 && !this.language.syntax.interfaces.supported) {
+            return new LineResults([]);
+        }
+
+        const items: string[] = this.collectUseItems(parameters, useIndex, typesIndex);
+
+        if (this.language.syntax.interfaces.supported && typesIndex !== -1) {
+            items.push(...parameters.slice(typesIndex + 1));
+        }
+
         const relativity: ImportRelativity = this.getRelativity();
-        let packagePath: string[] = parameters.slice(1, usingSplit);
+        let packagePath: string[] = parameters.slice(1, useIndex);
 
-        const lineResults = new LineResults([]);
-        const contextPackagePath = this.context.getFileMetadata().getPackagePath();
-        const relativePackagePath = ImportCommand.pathResolver.resolve(contextPackagePath, packagePath);
-
-        if (relativity === ImportRelativity.Local) {
-            packagePath = relativePackagePath;
-        } else if (!this.language.syntax.imports.useLocalRelativePaths && !this.language.syntax.imports.explicit) {
-            if (
-                this.isPackagePathOnlyParents(relativePackagePath.slice(0, relativePackagePath.length - 1)) ||
-                this.isPackagePathSubset(packagePath.slice(0, packagePath.length - 1), contextPackagePath)
-            ) {
-                return lineResults;
-            }
+        if (this.language.syntax.imports.useLocalRelativeImports) {
+            packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
+        } else {
+            packagePath.pop();
         }
 
-        return lineResults.withImports([new Import(packagePath, items, this.getRelativity())]);
+        return new LineResults([]).withImports([new Import(packagePath, items, relativity)]);
     }
 
     /**
@@ -66,31 +74,23 @@ export abstract class ImportCommand extends Command {
      */
     protected abstract getRelativity(): ImportRelativity;
 
-    private isPackagePathOnlyParents(relativePackagePath: string[]): boolean {
-        for (const component of relativePackagePath) {
-            if (component !== "..") {
-                return false;
-            }
+    /**
+     * Collects items to be imported after a "use" keyword.
+     *
+     * @param parameters   The command's name, followed by any parameters.
+     * @param useIndex   Index of the "use" keyword in parameters.
+     * @param typesIndex   Index of the "types" keyword in parameters.
+     * @returns Array of "use" items from parameters.
+     */
+    private collectUseItems(parameters: string[], useIndex: number, typesIndex: number): string[] {
+        if (useIndex === -1) {
+            return [];
         }
 
-        return true;
-    }
-
-    private isPackagePathSubset(packagePath: string[], contextPackagePath: string[]): boolean {
-        if (packagePath.length > contextPackagePath.length) {
-            return false;
+        if (typesIndex === -1) {
+            return parameters.slice(useIndex + 1);
         }
 
-        if (packagePath[0] === "..") {
-            return false;
-        }
-
-        for (let i = 0; i < packagePath.length; i += 1) {
-            if (packagePath[i] !== contextPackagePath[i]) {
-                return false;
-            }
-        }
-
-        return true;
+        return parameters.slice(useIndex + 1, typesIndex);
     }
 }

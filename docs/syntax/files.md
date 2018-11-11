@@ -34,3 +34,10 @@ In Python:
 class Word:
     # ...
 ```
+
+Note that because of [Java](https://docs.oracle.com/javase/specs/jls/se8/html/jls-7.html#jls-7.6), each file must export a construct with the same file's name.
+You can use any of:
+
+* `class start : export` to export a [class](./classes.md)
+* `interface start : export` to export an [interface](./interfaces.md)
+* `standalone functions declare start : export` to export a [standalone function group](./standalone-functions.md)

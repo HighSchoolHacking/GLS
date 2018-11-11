@@ -1,5 +1,7 @@
 //
-namespace Pointclass
+using PointClass;
+
+namespace PointClass
 {
 
     public class NamedPoint : Point

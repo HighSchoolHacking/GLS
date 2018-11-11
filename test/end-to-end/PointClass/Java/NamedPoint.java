@@ -1,7 +1,7 @@
 //
 package pointclass;
 
-import pointclass.point.Point;
+import pointclass.Point;
 
 public class NamedPoint extends Point {
     private String name;
