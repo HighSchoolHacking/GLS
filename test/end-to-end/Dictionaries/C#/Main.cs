@@ -4,7 +4,7 @@ using System;
 
 namespace Dictionaries
 {
-    class Index
+    class Program
     {
         public static void Main()
         {

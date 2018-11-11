@@ -1,9 +1,9 @@
 //
 using System;
 
-namespace Fornumbers
+namespace ForNumbers
 {
-    class Index
+    class Program
     {
         public static void Main()
         {

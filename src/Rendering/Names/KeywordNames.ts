@@ -78,6 +78,11 @@ export class KeywordNames {
     public static Throws = "throws";
 
     /**
+     * Name key for the "ty;es" keyword.
+     */
+    public static Types = "types";
+
+    /**
      * Name key for the "use" keyword.
      */
     public static Use = "use";

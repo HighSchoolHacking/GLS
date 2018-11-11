@@ -1,10 +1,11 @@
 //
+using PointClass;
 using System;
 
-namespace Pointclass
+namespace PointClass
 {
 
-    class Index
+    class Program
     {
         public static void Main()
         {

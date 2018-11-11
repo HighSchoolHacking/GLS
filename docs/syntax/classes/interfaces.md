@@ -31,3 +31,22 @@ interface IPolygon : IShape
     double GetPerimeter();
 }
 ```
+
+## Exports
+
+You can export interfaces from the current file by including the `export` keyword before the interface's name.
+
+```gls
+interface start : export IShape
+    interface method : GetArea double
+interface end
+```
+
+In C#:
+
+```csharp
+public interface IShape
+{
+    double GetArea();
+}
+```

@@ -144,19 +144,9 @@ export class ImportsPrinter {
      */
     private renderPackagePath(addedImport: Import): string {
         if (addedImport.relativity === ImportRelativity.Absolute) {
-            return this.renderAbsolutePackagePath(addedImport);
+            return this.directoryCaseStyleConverter.convert(addedImport.packagePath);
         }
 
-        return this.renderLocalPackagePath(addedImport);
-    }
-
-    private renderAbsolutePackagePath(addedImport: Import): string {
-        const packagePath = addedImport.packagePath.slice();
-
-        return this.directoryCaseStyleConverter.convert(packagePath);
-    }
-
-    private renderLocalPackagePath(addedImport: Import) {
         const individualPackagePaths = this.individualizePackagePaths(addedImport.packagePath);
         let line = this.directoryCaseStyleConverter.convert(individualPackagePaths);
 
@@ -167,6 +157,12 @@ export class ImportsPrinter {
         return line;
     }
 
+    /**
+     * Converts individual components in a directory path to the language's file casing.
+     *
+     * @param packagePath   Components in a package path.
+     * @returns File case transformed equivalent of the package path.
+     */
     private individualizePackagePaths(packagePath: string[]): string[] {
         const paths: string[] = [];
 
