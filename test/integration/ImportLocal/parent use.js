@@ -1,0 +1,3 @@
+//
+const { Eee, Fff } = require("./..");
+//

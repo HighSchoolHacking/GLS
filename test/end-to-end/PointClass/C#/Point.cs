@@ -1,5 +1,5 @@
 //
-namespace Pointclass
+namespace PointClass
 {
     public class Point
     {

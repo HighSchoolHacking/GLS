@@ -101,3 +101,29 @@ variable : fruit Noun { new : Noun "apple" }
 
 * In C#: `Noun fruit = new Noun("apple");`
 * In Python: `fruit = Noun("apple")`
+
+## Exports
+
+You can export classes from the current file by including the `export` keyword before the class' name.
+
+```gls
+class start : export Word
+    comment line : ...
+class end
+```
+
+In C#:
+
+```csharp
+public class Word
+{
+    // ...
+}
+```
+
+In Python:
+
+```python
+class Word:
+    // ...
+```
