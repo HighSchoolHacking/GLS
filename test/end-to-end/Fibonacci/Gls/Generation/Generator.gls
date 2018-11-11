@@ -1,7 +1,0 @@
--
-file start : Fibonacci Generation Generator
-    interface start : export IGenerator
-        interface method : Generate int index int
-    interface end
-file end
--
