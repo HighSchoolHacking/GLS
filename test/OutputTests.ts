@@ -10,6 +10,7 @@ export interface IProjectOutputTestSettings {
     languageName: string;
     outputGenerator: IOutputGenerator;
     projectDirectory: string;
+    projectName: string;
 }
 
 export interface IFileComparisonSettings {
@@ -38,6 +39,7 @@ export const runProjectOutputTest = async ({
     languageName,
     outputGenerator,
     projectDirectory,
+    projectName,
 }: IProjectOutputTestSettings): Promise<void> => {
     // Arrange
     const expected = (await fs.readFile(path.join(projectDirectory, "output.txt"))).toString().split(/\r\n|\r|\n/g);
@@ -46,6 +48,7 @@ export const runProjectOutputTest = async ({
     const actual = await outputGenerator({
         files,
         projectDirectory: path.join(projectDirectory, languageName),
+        projectName,
     });
 
     // Assert
