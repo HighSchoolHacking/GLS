@@ -4,7 +4,7 @@ using System;
 
 namespace Lists
 {
-    class Index
+    class Program
     {
         public static void Main()
         {

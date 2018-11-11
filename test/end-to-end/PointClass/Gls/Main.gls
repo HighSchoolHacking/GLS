@@ -1,5 +1,19 @@
 -
-file start : MyProject Samples Sample
-    import local : MyProject Utilities Strings use { import standalone functions : Strings IsPalindrome Repeat }
+file start : PointClass index
+    import local : PointClass NamedPoint use NamedPoint
+    import local : PointClass Point use Point
+
+    main context start
+        main start
+            variable : point Point { new : Point 1 2 }
+
+            print : { member variable : public point X }
+            print : { member variable : public point Y }
+
+            variable : named NamedPoint { new : NamedPoint 3 4 ("My Point") }
+
+            print : { member function : public named GetLabel }
+        main end
+    main context end
 file end
 -

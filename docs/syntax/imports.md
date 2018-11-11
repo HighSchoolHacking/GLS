@@ -10,7 +10,7 @@ So far, only importing specific items from relative files is supported.
 
 ## Relative Imports
 
-You can specific constructs from other files using `import local`.
+You can import specific constructs from other files using `import local`.
 It takes in three sections:
 
 * Absolute directory path from the project root to file to import from, including the file's name

@@ -61,7 +61,7 @@ export abstract class ImportCommand extends Command {
         let packagePath: string[] = parameters.slice(1, useIndex);
 
         if (this.language.syntax.imports.useLocalRelativeImports) {
-            packagePath = this.makePackagePathRelative(packagePath);
+            packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
         } else {
             packagePath.pop();
         }
@@ -74,6 +74,14 @@ export abstract class ImportCommand extends Command {
      */
     protected abstract getRelativity(): ImportRelativity;
 
+    /**
+     * Collects items to be imported after a "use" keyword.
+     *
+     * @param parameters   The command's name, followed by any parameters.
+     * @param useIndex   Index of the "use" keyword in parameters.
+     * @param typesIndex   Index of the "types" keyword in parameters.
+     * @returns Array of "use" items from parameters.
+     */
     private collectUseItems(parameters: string[], useIndex: number, typesIndex: number): string[] {
         if (useIndex === -1) {
             return [];
@@ -84,11 +92,5 @@ export abstract class ImportCommand extends Command {
         }
 
         return parameters.slice(useIndex + 1, typesIndex);
-    }
-
-    private makePackagePathRelative(packagePath: string[]): string[] {
-        const contextPackagePath = this.context.getFileMetadata().getPackagePath();
-
-        return ImportCommand.pathResolver.resolve(contextPackagePath, packagePath);
     }
 }
