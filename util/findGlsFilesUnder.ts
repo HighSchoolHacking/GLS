@@ -1,8 +1,6 @@
 import * as glob from "glob";
 import * as path from "path";
 
-// todo: move to {} settings obj
-
 /**
  * Retrieves child .gls files within directories.
  *
