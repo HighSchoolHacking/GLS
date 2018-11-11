@@ -13,22 +13,26 @@ file start : Dictionaries index
             print : { string format : ("qux is {0}") qux int }
 
             comment line : Initialization
-            variable start : aaa { dictionary type : string int } { dictionary new start : string int }
+            variable start : container { dictionary type : string int } { dictionary new start : string int }
                 dictionary pair : "bbb" 1 ,
                 dictionary pair : "ccc" 2 ,
                 dictionary pair : "ddd" 3
             dictionary new end
 
             comment line : Contains Key
-            variable : containsFalse boolean { dictionary contains key : aaa "aaa" }
+            variable : containsFalse boolean { dictionary contains key : container "aaa" }
 
             if start : containsFalse
                 print : "wrong"
             if end
 
-            if start : { dictionary contains key : aaa "bbb" }
+            if start : { dictionary contains key : container "bbb" }
                 print : ("contains bbb")
             if end
+
+            comment line : Setting
+            dictionary set : container "aaa" 7
+            print : { dictionary index : container "aaa" }
         main end
     main context end
 file end
