@@ -1,6 +1,10 @@
 import * as fs from "mz/fs";
 import * as path from "path";
 
+// https://github.com/ahmadnassri/mkdirp-promise/issues/84
+// tslint:disable-next-line:no-require-imports
+import mkdirpPromise = require("mkdirp-promise");
+
 import { LanguagesBag } from "../lib/Rendering/Languages/LanguagesBag";
 
 export const testLanguagesBag = new LanguagesBag();
@@ -62,10 +66,6 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
 export const writeBaselineFile = async (filePath: string, commentMarker: string, contents: string[]): Promise<void> => {
     const lines = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
 
-    const dir = path.dirname(filePath);
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
-    }
-
+    await mkdirpPromise(path.dirname(filePath));
     await fs.writeFile(filePath, lines.join("\n"));
 };
