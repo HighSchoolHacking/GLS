@@ -19,7 +19,7 @@ namespace Dictionaries
             Console.WriteLine(string.Format("qux is {0}", qux));
 
             // Initialization
-            Dictionary<string, int> aaa = new Dictionary<string, int>
+            Dictionary<string, int> container = new Dictionary<string, int>
             {
                 { "bbb", 1 },
                 { "ccc", 2 },
@@ -27,17 +27,21 @@ namespace Dictionaries
             };
 
             // Contains Key
-            bool containsFalse = aaa.ContainsKey("aaa");
+            bool containsFalse = container.ContainsKey("aaa");
 
             if (containsFalse)
             {
                 Console.WriteLine("wrong");
             }
 
-            if (aaa.ContainsKey("bbb"))
+            if (container.ContainsKey("bbb"))
             {
                 Console.WriteLine("contains bbb");
             }
+
+            // Setting
+            container["aaa"] = 7;
+            Console.WriteLine(container["aaa"]);
         }
     }
 }
