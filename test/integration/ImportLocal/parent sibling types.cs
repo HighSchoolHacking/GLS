@@ -1,5 +1,5 @@
 //
-using Aaa.Eee.Types;
+using Aaa;
 
 namespace Aaa.Bbb.Ccc
 {
