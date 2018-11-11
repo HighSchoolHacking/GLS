@@ -1,5 +1,3 @@
-// tslint:disable-next-line:no-require-imports
-import mkdirpPromise = require("mkdirp-promise");
 import * as fs from "mz/fs";
 import * as path from "path";
 
@@ -64,6 +62,10 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
 export const writeBaselineFile = async (filePath: string, commentMarker: string, contents: string[]): Promise<void> => {
     const lines = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
 
-    await mkdirpPromise(path.dirname(filePath));
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+
     await fs.writeFile(filePath, lines.join("\n"));
 };
