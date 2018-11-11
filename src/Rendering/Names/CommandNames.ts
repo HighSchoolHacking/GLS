@@ -148,11 +148,6 @@ export class CommandNames {
     public static DictionaryType = "dictionary type";
 
     /**
-     * Name key for the DictionarySet command.
-     */
-    public static DictionarySet = "dictionary set";
-
-    /**
      * Name key for the ElseIfStart command.
      */
     public static ElseIfStart = "else if start";
