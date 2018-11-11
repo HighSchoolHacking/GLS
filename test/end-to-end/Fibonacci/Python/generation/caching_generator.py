@@ -1,5 +1,4 @@
 #
-from .generator import IGenerator
 
 class CachingGenerator:
 

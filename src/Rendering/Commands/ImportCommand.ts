@@ -58,7 +58,7 @@ export abstract class ImportCommand extends Command {
         }
 
         const relativity: ImportRelativity = this.getRelativity();
-        let packagePath: string[] = parameters.slice(1, useIndex);
+        let packagePath: string[] = this.collectPackagePath(parameters, useIndex, typesIndex);
 
         if (this.language.syntax.imports.useLocalRelativeImports) {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
@@ -92,5 +92,21 @@ export abstract class ImportCommand extends Command {
         }
 
         return parameters.slice(useIndex + 1, typesIndex);
+    }
+
+    /**
+     * Collects a package path before either "use" or "types".
+     *
+     * @param parameters   The command's name, followed by any parameters.
+     * @param useIndex   Index of the "use" keyword in parameters.
+     * @param typesIndex   Index of the "types" keyword in parameters.
+     * @returns Array of package path components from parameters.
+     */
+    private collectPackagePath(parameters: string[], useIndex: number, typesIndex: number): string[] {
+        if (useIndex === -1) {
+            return parameters.slice(1, typesIndex);
+        }
+
+        return parameters.slice(1, useIndex);
     }
 }

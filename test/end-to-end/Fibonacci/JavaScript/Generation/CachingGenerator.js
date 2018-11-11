@@ -1,5 +1,4 @@
 //
-const { IGenerator } = require("./Generator");
 
 exports.CachingGenerator = class CachingGenerator {
 

@@ -1,6 +1,5 @@
 #
 require_relative "./generation/caching_generator"
-require_relative "./generation/generator"
 require_relative "./generation/non_caching_generator"
 
 def get_label(index)

@@ -1,7 +1,7 @@
 -
 file start : Fibonacci Main
     import local : Fibonacci Generation CachingGenerator use CachingGenerator
-    import local : Fibonacci Generation Generator use IGenerator
+    import local : Fibonacci Generation Generator types IGenerator
     import local : Fibonacci Generation NonCachingGenerator use NonCachingGenerator
 
     main context start

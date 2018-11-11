@@ -1,5 +1,4 @@
 #
-require_relative "./generator"
 
 class NonCachingGenerator
     def generate(index)

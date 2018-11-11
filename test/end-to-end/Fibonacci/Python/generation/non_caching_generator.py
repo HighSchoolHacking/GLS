@@ -1,5 +1,4 @@
 #
-from .generator import IGenerator
 
 class NonCachingGenerator:
     def generate(self, index):

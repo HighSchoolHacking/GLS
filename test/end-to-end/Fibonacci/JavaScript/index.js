@@ -1,6 +1,5 @@
 //
 const { CachingGenerator } = require("./Generation/CachingGenerator");
-const { IGenerator } = require("./Generation/Generator");
 const { NonCachingGenerator } = require("./Generation/NonCachingGenerator");
 
 function getLabel(index) {

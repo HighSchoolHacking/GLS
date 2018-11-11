@@ -1,6 +1,5 @@
 #
 from generation.caching_generator import CachingGenerator
-from generation.generator import IGenerator
 from generation.non_caching_generator import NonCachingGenerator
 
 def get_label(index):

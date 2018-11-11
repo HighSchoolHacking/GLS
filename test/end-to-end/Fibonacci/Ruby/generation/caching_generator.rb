@@ -1,5 +1,4 @@
 #
-require_relative "./generator"
 
 class CachingGenerator
     attr_accessor :cache
