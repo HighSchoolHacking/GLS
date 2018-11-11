@@ -37,6 +37,7 @@ const runProjectLanguageTests = (languageName: string, projectDirectory: string,
                 languageName,
                 outputGenerator,
                 projectDirectory,
+                projectName: path.basename(projectDirectory),
             });
         }
     });
