@@ -1,4 +1,4 @@
 -
-dictionary initialize start : string int
-dictionary initialize end
+dictionary new start : string int
+dictionary new end
 -
