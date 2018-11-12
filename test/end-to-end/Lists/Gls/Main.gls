@@ -32,7 +32,7 @@ file start : Lists index
             print : { string format : ("The last flavor is {0}.") { list index : flavors { operation : { list length : flavors } minus 1 } } string }
 
             comment line : Looping
-            for each start : flavors string flavor
+            for each start : flavors flavor string
                 print : { string format : ("Flavor: {0}.") flavor string }
             for each end
 

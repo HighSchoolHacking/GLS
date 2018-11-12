@@ -19,8 +19,8 @@ export class ForEachStartCommand extends Command {
         .withIndentation([1])
         .withParameters([
             new SingleParameter("container", "A container to iterate over.", true),
+            new SingleParameter("valueName", "The iteration variable.", true),
             new SingleParameter("valueType", "The type of the container's values.", true),
-            new SingleParameter("value", "The iteration variable.", true),
         ]);
 
     /**
@@ -47,14 +47,13 @@ export class ForEachStartCommand extends Command {
             line += this.language.syntax.variables.declaration;
         }
         if (this.language.syntax.variables.explicitTypes && !this.language.syntax.variables.typesAfterName) {
-            const typeLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
+            const typeLine = this.context.convertParsed([CommandNames.Type, parameters[3]]);
 
             line += typeLine.commandResults[0].text + " ";
             imports.push(...typeLine.addedImports);
         }
 
-        line += parameters[3];
-
+        line += parameters[2];
         line += this.language.syntax.loops.forEachStartSeparator;
         line += parameters[1];
 

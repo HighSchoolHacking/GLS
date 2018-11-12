@@ -3,7 +3,7 @@ class start : Utilities
     static function declare start : public GetLongest string words { array type : string }
         variable : longest string ""
 
-        for each start : words string word
+        for each start : words word string
             if start : { operation : { string length : word } (greater than) { string length : longest } }
                 operation : longest equals word
             if end
