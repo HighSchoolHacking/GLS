@@ -1,7 +1,7 @@
 import { NativeCallSyntax } from "./NativeCallSyntax";
 import { StringFormatSyntax } from "./StringFormatSyntax";
 import { StringSubstringSyntax } from "./StringSubstringSyntax";
-import { StringToDoubleSyntax } from "./StringToDoubleSyntax";
+import { StringToNumberSyntax } from "./StringToNumberSyntax";
 
 /**
  * Metadata on a language's string syntax.
@@ -10,7 +10,12 @@ export class StringSyntax {
     /**
      * How to make a block to be executed if a string can be converted to a double.
      */
-    public toDouble: StringToDoubleSyntax = new StringToDoubleSyntax();
+    public toDouble: StringToNumberSyntax = new StringToNumberSyntax();
+
+    /**
+     * How to make a block to be executed if a string can be converted to an int.
+     */
+    public toInt: StringToNumberSyntax = new StringToNumberSyntax();
 
     /**
      * How to create a lower-case copy of a string.

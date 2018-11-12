@@ -10,25 +10,25 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { addLineEnder } from "./Utilities";
 
 /**
- * Starts a block to be executed if a string can be converted to a double.
+ * Starts a block to be executed if a string can be converted to a int.
  */
-export class IfStringToDoubleStartCommand extends Command {
+export class IfStringToIntStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToDoubleStart)
-        .withDescription("Starts a block to be executed if a string can be converted to a double")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.IfStringToIntStart)
+        .withDescription("Starts a block to be executed if a string can be converted to a int")
         .withIndentation([1])
         .withParameters([
             new SingleParameter("stringName", "Name of a string to try converting.", true),
-            new SingleParameter("doubleName", "What to call the string in double form.", true),
+            new SingleParameter("intName", "What to call the string in int form.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return IfStringToDoubleStartCommand.metadata;
+        return IfStringToIntStartCommand.metadata;
     }
 
     /**
@@ -38,7 +38,7 @@ export class IfStringToDoubleStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const conversionType: StringToNumberStartConversionType = this.language.syntax.strings.toDouble.conversionType;
+        const conversionType: StringToNumberStartConversionType = this.language.syntax.strings.toInt.conversionType;
         const lines: CommandResult[] = [];
 
         if (conversionType === StringToNumberStartConversionType.PredeclareConvertAndValidate) {
@@ -49,11 +49,11 @@ export class IfStringToDoubleStartCommand extends Command {
             this.convertStrings(parameters, lines);
         }
 
-        this.validateDoubles(parameters, lines);
+        this.validateInts(parameters, lines);
 
         const results: LineResults = new LineResults(lines);
 
-        results.withImports(this.language.syntax.strings.toDouble.requiredImports);
+        results.withImports(this.language.syntax.strings.toInt.requiredImports);
         results.commandResults[results.commandResults.length - 1].indentation = 1;
 
         return results;
@@ -66,10 +66,10 @@ export class IfStringToDoubleStartCommand extends Command {
      * @param lines   Output lines of rendered language code.
      */
     private predeclareVariables(parameters: string[], lines: CommandResult[]): void {
-        const initialValue = this.language.syntax.strings.toDouble.initialVariableValues;
+        const initialValue = this.language.syntax.strings.toInt.initialVariableValues;
 
         for (let i = 1; i < parameters.length; i += 2) {
-            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Double];
+            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Int];
 
             if (initialValue !== "") {
                 declarationParameters.push(initialValue);
@@ -80,11 +80,11 @@ export class IfStringToDoubleStartCommand extends Command {
             lines.push(declaration);
         }
 
-        addLineEnder(lines, this.language.syntax.strings.toDouble.initializeVariablesEnd, 0);
+        addLineEnder(lines, this.language.syntax.strings.toInt.initializeVariablesEnd, 0);
     }
 
     /**
-     * Adds string-to-double conversions to the output lines.
+     * Adds string-to-int conversions to the output lines.
      *
      * @param parameters   The command's name, followed by any parameters.
      * @param lines   Output lines of rendered language code.
@@ -96,45 +96,45 @@ export class IfStringToDoubleStartCommand extends Command {
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
-            const doubleName = parameters[i + 1];
+            const intName = parameters[i + 1];
 
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartLeft, 0);
-            addLineEnder(lines, doubleName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartMiddle, 0);
+            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartLeft, 0);
+            addLineEnder(lines, intName, 0);
+            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartMiddle, 0);
             addLineEnder(lines, stringName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartRight, 0);
+            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartRight, 0);
         }
     }
 
     /**
-     * Adds double validation checks to the output lines.
+     * Adds int validation checks to the output lines.
      *
      * @param parameters   The command's name, followed by any parameters.
      * @param lines   Output lines of rendered language code.
      */
-    private validateDoubles(parameters: string[], lines: CommandResult[]): void {
+    private validateInts(parameters: string[], lines: CommandResult[]): void {
         if (lines.length === 0) {
             lines.push(new CommandResult("", 0));
         }
 
-        addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockLeft, 0);
+        addLineEnder(lines, this.language.syntax.strings.toInt.validationBlockLeft, 0);
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
-            const doubleName = parameters[i + 1];
+            const intName = parameters[i + 1];
 
-            let comparison = this.language.syntax.strings.toDouble.validationBlockComparison;
+            let comparison = this.language.syntax.strings.toInt.validationBlockComparison;
 
             comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
-            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", doubleName);
+            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", intName);
 
             addLineEnder(lines, comparison, 0);
 
             if (i < parameters.length - 2) {
-                addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockMiddle, 0);
+                addLineEnder(lines, this.language.syntax.strings.toInt.validationBlockMiddle, 0);
             }
         }
 
-        addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockRight, 0);
+        addLineEnder(lines, this.language.syntax.strings.toInt.validationBlockRight, 0);
     }
 }

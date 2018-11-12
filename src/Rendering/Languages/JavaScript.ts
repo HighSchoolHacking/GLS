@@ -1,4 +1,3 @@
-import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
@@ -38,7 +37,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
+import { StringToNumberStartConversionType, StringToNumberSyntax } from "./Properties/Syntax/StringToNumberSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -668,8 +667,8 @@ export class JavaScript extends Language {
      *
      * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
-        toDouble.conversionType = StringToDoubleStartConversionType.ConvertAndValidate;
+    protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
+        toDouble.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
         toDouble.perVariableConversionStartLeft = "let ";
         toDouble.perVariableConversionStartMiddle = " = parseFloat(";
         toDouble.perVariableConversionStartRight = ");\n";
@@ -677,6 +676,22 @@ export class JavaScript extends Language {
         toDouble.validationBlockLeft = "\nif (";
         toDouble.validationBlockMiddle = " && ";
         toDouble.validationBlockRight = ") {";
+    }
+
+    /**
+     * Generates metadata on string-to-int conversions.
+     *
+     * @param toInt   A property container for metadata on string-to-int conversions.
+     */
+    protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
+        toInt.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
+        toInt.perVariableConversionStartLeft = "let ";
+        toInt.perVariableConversionStartMiddle = " = parseInt(";
+        toInt.perVariableConversionStartRight = ");\n";
+        toInt.validationBlockComparison = "!isNaN({1})";
+        toInt.validationBlockLeft = "\nif (";
+        toInt.validationBlockMiddle = " && ";
+        toInt.validationBlockRight = ") {";
     }
 
     /**

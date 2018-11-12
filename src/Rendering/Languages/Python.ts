@@ -1,4 +1,3 @@
-import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -40,7 +39,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
+import { StringToNumberStartConversionType, StringToNumberSyntax } from "./Properties/Syntax/StringToNumberSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -660,8 +659,8 @@ export class Python extends Language {
      *
      * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
-        toDouble.conversionType = StringToDoubleStartConversionType.PredeclareConvertAndValidate;
+    protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
+        toDouble.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
         toDouble.initialVariableValues = "None";
         toDouble.initializeVariablesEnd = "\n\ntry:\n";
         toDouble.perVariableConversionStartLeft = "    ";
@@ -671,6 +670,24 @@ export class Python extends Language {
         toDouble.validationBlockLeft = "except:\n    pass\n\nif ";
         toDouble.validationBlockMiddle = " and ";
         toDouble.validationBlockRight = ":";
+    }
+
+    /**
+     * Generates metadata on string-to-int conversions.
+     *
+     * @param toInt   A property container for metadata on string-to-int conversions.
+     */
+    protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
+        toInt.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
+        toInt.initialVariableValues = "None";
+        toInt.initializeVariablesEnd = "\n\ntry:\n";
+        toInt.perVariableConversionStartLeft = "    ";
+        toInt.perVariableConversionStartMiddle = " = int(";
+        toInt.perVariableConversionStartRight = ")\n";
+        toInt.validationBlockComparison = "{1} is not None";
+        toInt.validationBlockLeft = "except:\n    pass\n\nif ";
+        toInt.validationBlockMiddle = " and ";
+        toInt.validationBlockRight = ":";
     }
 
     /**

@@ -1,0 +1,17 @@
+-
+file start : Lists Converters
+    standalone functions declare start : export Converters
+        standalone function declare start : public TryAsDouble void doubleLike string
+            if string to double start : doubleLike asDouble
+                print : { string format : ("It's a double: {0}") { math as int : asDouble } int }
+            if string to double end
+        standalone function declare end
+
+        standalone function declare start : public TryAsInt void firstIntLike string secondIntLike string
+            if string to int start : firstIntLike firstInt secondIntLike secondInt
+                print : { string format : ("Both are ints: {0} {1}") firstInt int secondInt int }
+            if string to double end
+        standalone function declare end
+    standalone functions declare end
+file end
+-

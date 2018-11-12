@@ -1,4 +1,3 @@
-import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -40,7 +39,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
+import { StringToNumberStartConversionType, StringToNumberSyntax } from "./Properties/Syntax/StringToNumberSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -689,15 +688,31 @@ export class Ruby extends Language {
      *
      * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
-        toDouble.conversionType = StringToDoubleStartConversionType.ConvertAndValidate;
+    protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
+        toDouble.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
         toDouble.perVariableConversionStartLeft = "";
-        toDouble.perVariableConversionStartMiddle = " = ";
-        toDouble.perVariableConversionStartRight = ".to_f\n";
+        toDouble.perVariableConversionStartMiddle = " = Float(";
+        toDouble.perVariableConversionStartRight = ") rescue nil\n";
         toDouble.validationBlockComparison = "{1} != nil";
         toDouble.validationBlockLeft = "\nif (";
         toDouble.validationBlockMiddle = " && ";
         toDouble.validationBlockRight = ")";
+    }
+
+    /**
+     * Generates metadata on string-to-int conversions.
+     *
+     * @param toInt   A property container for metadata on string-to-int conversions.
+     */
+    protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
+        toInt.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
+        toInt.perVariableConversionStartLeft = "";
+        toInt.perVariableConversionStartMiddle = " = Float(";
+        toInt.perVariableConversionStartRight = ") rescue nil\n";
+        toInt.validationBlockComparison = "{1} != nil";
+        toInt.validationBlockLeft = "\nif (";
+        toInt.validationBlockMiddle = " && ";
+        toInt.validationBlockRight = ")";
     }
 
     /**
