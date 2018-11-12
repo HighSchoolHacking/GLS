@@ -1,4 +1,4 @@
 -
-class start : Aaa<bbb>
+class start : { generic type : Aaa Bbb }
 class end
 -

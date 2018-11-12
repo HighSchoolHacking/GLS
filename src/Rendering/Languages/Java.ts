@@ -5,6 +5,7 @@ import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -24,6 +25,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -110,6 +112,18 @@ export class Java extends Language {
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         arrays.requiredImports = [new Import(["java", "util"], ["Arrays"], ImportRelativity.Absolute)];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = true;
+        newSized.left = "new ";
+        newSized.middle = "[";
+        newSized.right = "]";
     }
 
     /**
@@ -352,6 +366,7 @@ export class Java extends Language {
         exceptions.className = "Exception";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -463,6 +478,16 @@ export class Java extends Language {
     }
 
     /**
+     * Fills out metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = true;
+        newSized.left = "new ArrayList<";
+        newSized.middle = ">(";
+        newSized.right = ")";
+    }
+
+    /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
@@ -518,6 +543,7 @@ export class Java extends Language {
      */
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.asInt = new NativeCallSyntax("(int)", NativeCallScope.Static, NativeCallType.FloatingLeft);
         math.ceiling = new NativeCallSyntax("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
         math.floor = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
         math.max = new NativeCallSyntax("Math.max", NativeCallScope.Static, NativeCallType.Function);
@@ -594,21 +620,15 @@ export class Java extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "HashSet";
-
         sets.contains = new NativeCallSyntax("contains", NativeCallScope.Member, NativeCallType.Function);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
+        sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
         sets.typeLeft = "<";
         sets.typeRight = ">";
     }
@@ -658,7 +678,7 @@ export class Java extends Language {
 
         strings.caseUpper = new NativeCallSyntax("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.className = "string";
+        strings.className = "String";
 
         strings.indexOf = new NativeCallSyntax("indexOf", NativeCallScope.Member, NativeCallType.Function);
 

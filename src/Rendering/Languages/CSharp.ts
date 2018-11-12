@@ -5,6 +5,7 @@ import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -24,6 +25,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -108,6 +110,18 @@ export class CSharp extends Language {
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
         arrays.requiredImports = [];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = true;
+        newSized.left = "new ";
+        newSized.middle = "[";
+        newSized.right = "]";
     }
 
     /**
@@ -348,6 +362,7 @@ export class CSharp extends Language {
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
         exceptions.finallyStartRight = "\n{";
+        exceptions.requiredImports = [new Import(["System"], ["Exception"], ImportRelativity.Absolute)];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -455,6 +470,16 @@ export class CSharp extends Language {
     }
 
     /**
+     * Fills out metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = true;
+        newSized.left = "new List<";
+        newSized.middle = ">(";
+        newSized.right = ")";
+    }
+
+    /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
@@ -514,6 +539,7 @@ export class CSharp extends Language {
         const requiredImports = [new Import(["System"], ["Math"], ImportRelativity.Absolute)];
 
         math.absolute = new NativeCallSyntax("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.asInt = new NativeCallSyntax("(int)", NativeCallScope.Static, NativeCallType.FloatingLeft);
         math.ceiling = new NativeCallSyntax("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
         math.floor = new NativeCallSyntax("Math.Floor", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
         math.max = new NativeCallSyntax("Math.Max", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
@@ -593,21 +619,18 @@ export class CSharp extends Language {
         const requiredImports: Import[] = [new Import(["System", "Collections", "Generic"], ["Dictionary"], ImportRelativity.Absolute)];
 
         sets.add = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "HashSet";
-
         sets.contains = new NativeCallSyntax("Contains", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
-        sets.toList = new NativeCallSyntax("ToList", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
         sets.requiredImports = requiredImports;
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
+        sets.toList = new NativeCallSyntax("ToList", NativeCallScope.Member, NativeCallType.Function)
+            .withImports(requiredImports)
+            .withImports([new Import(["System", "Linq"], ["ToLinq"], ImportRelativity.Absolute)]);
         sets.typeLeft = "<";
         sets.typeRight = ">";
     }

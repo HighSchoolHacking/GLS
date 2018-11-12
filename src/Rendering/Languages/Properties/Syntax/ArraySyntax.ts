@@ -1,4 +1,5 @@
 import { Import } from "../../Imports/Import";
+import { ArrayNewSizedSyntax } from "./ArrayNewSizedSyntax";
 import { NativeCallSyntax } from "./NativeCallSyntax";
 
 /**
@@ -29,6 +30,11 @@ export class ArraySyntax {
      * How to retrieve an array's length.
      */
     public length: NativeCallSyntax;
+
+    /**
+     * Metadata on fixed size array creation.
+     */
+    public newSized: ArrayNewSizedSyntax = new ArrayNewSizedSyntax();
 
     /**
      * Required imports to be able to use arrays.

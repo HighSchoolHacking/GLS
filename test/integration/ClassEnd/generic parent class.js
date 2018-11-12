@@ -1,4 +1,4 @@
 //
-class Aaa extends bbb {
+class Aaa extends Bbb {
 }
 //

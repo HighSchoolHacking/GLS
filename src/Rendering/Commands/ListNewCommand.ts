@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -8,11 +9,11 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 /**
  * Initializes a new list.
  */
-export class ListInitializeCommand extends Command {
+export class ListNewCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListInitialize)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListNew)
         .withDescription("Initializes a new list")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
@@ -23,7 +24,7 @@ export class ListInitializeCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListInitializeCommand.metadata;
+        return ListNewCommand.metadata;
     }
 
     /**
@@ -35,20 +36,22 @@ export class ListInitializeCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.syntax.lists.asArray) {
-            parameters[0] = CommandNames.ArrayInitialize;
+            parameters[0] = CommandNames.ArrayNew;
             return this.context.convertParsed(parameters);
         }
 
-        const typeNameRaw: string = "list<" + parameters[1] + ">";
-        const typeNameLine = this.context.convertParsed([CommandNames.Type, typeNameRaw]);
-        let output: string = "new " + typeNameLine.commandResults[0].text;
+        const imports: Import[] = [];
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+        const typeName = typeNameLine.commandResults[0].text;
 
-        if (parameters.length > 2) {
-            output += " { ";
-            output += parameters.slice(2).join(", ");
-            output += " }";
-        } else {
+        imports.push(...typeNameLine.addedImports);
+
+        let output: string = "new " + this.language.syntax.lists.className + "<" + typeName + ">";
+
+        if (parameters.length === 2) {
             output += "()";
+        } else {
+            output += " { " + parameters.slice(2).join(", ") + " }";
         }
 
         return LineResults.newSingleLine(output).withImports(typeNameLine.addedImports);

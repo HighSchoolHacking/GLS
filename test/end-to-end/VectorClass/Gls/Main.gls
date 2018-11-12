@@ -1,0 +1,47 @@
+-
+file start : VectorClass Index
+    import local : VectorClass Vector use Vector
+
+    main context start
+        main start
+            variable : vector { generic type : Vector string } { new : { generic type : Vector string } }
+            variable : words { array type : string } { array new : string "hello" "my" "baby" "hello" "my" "darling" "hello" "my" "ragtime" "gal" }
+
+            comment line : Adding
+            for each start : words string word
+                member function : public vector Push word
+                print : { string format : ("First: {0}") { member function : public vector GetFirst } string }
+                print : { string format : ("Last: {0}") { member function : public vector GetLast } string }
+                print : { string format : ("Capacity: {0}") { member function : public vector GetCapacity } int }
+                print : { string format : ("Length: {0}") { member function : public vector GetLength } int }
+            for each end
+
+            for numbers start : i int 0 2
+                comment line : Retrieving
+                for numbers start : j int 0 { member function : public vector GetLength }
+                    print : { string format : ("At {0}: {1}") j int { member function : public vector At j } string }
+                for numbers end
+
+                comment line : Capacity
+                member function : public vector EnsureCapacity 10
+                print : { string format : ("Capacity: {0}") { member function : public vector GetCapacity } int }
+                print : { string format : ("Length: {0}") { member function : public vector GetLength } int }
+
+                comment line : Resizing
+                member function : public vector Resize 7
+                print : { string format : ("Capacity: {0}") { member function : public vector GetCapacity } int }
+                print : { string format : ("Length: {0}") { member function : public vector GetLength } int }
+            for numbers end
+
+            comment line : Sorting
+            variable : individuals { set type : string } { member function : public vector ToSet }
+            variable : sorted { list type : string } { set to list : individuals }
+            list sort : sorted
+
+            for each start : sorted string word
+                print : { string format : ("Set word: {0}") word string }
+            for each end
+        main end
+    main context end
+file end
+-

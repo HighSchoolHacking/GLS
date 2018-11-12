@@ -1,4 +1,4 @@
 -
-class start : Aaa extends bbb implements ccc ddd eee
+class start : Aaa extends Bbb implements Ccc Ddd Eee
 class end
 -

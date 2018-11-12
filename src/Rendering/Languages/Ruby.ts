@@ -1,8 +1,11 @@
 import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -22,6 +25,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -108,6 +112,17 @@ export class Ruby extends Language {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         arrays.requiredImports = [];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "Array.new(";
+        newSized.right = ")";
     }
 
     /**
@@ -343,6 +358,7 @@ export class Ruby extends Language {
         exceptions.className = "Exception";
         exceptions.finally = "ensure";
         exceptions.finallyStartRight = "";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "raise";
         exceptions.throwMiddle = ".new(";
@@ -433,6 +449,17 @@ export class Ruby extends Language {
     }
 
     /**
+     * Generates metadata on fixed size list creation.
+     *
+     * @param arrays   A property container for metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "Array.new(";
+        newSized.right = ")";
+    }
+
+    /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
@@ -498,6 +525,7 @@ export class Ruby extends Language {
      */
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("abs", NativeCallScope.Member, NativeCallType.Property);
+        math.asInt = new NativeCallSyntax("floor", NativeCallScope.Member, NativeCallType.Property);
         math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Member, NativeCallType.Property);
         math.floor = new NativeCallSyntax("floor", NativeCallScope.Member, NativeCallType.Property);
         math.max = new NativeCallSyntax("max", NativeCallScope.Array, NativeCallType.Function);
@@ -574,21 +602,16 @@ export class Ruby extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "Set";
-
         sets.contains = new NativeCallSyntax("include?", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.initializeAsNew = true;
+        sets.initializeAsNew = false;
         sets.initializeStart = "";
-
+        sets.requiredImports = [new Import(["set"], ["set"], ImportRelativity.Absolute)];
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = ".new";
         sets.toArray = new NativeCallSyntax("to_a", NativeCallScope.Member, NativeCallType.Function);
-
         sets.toList = sets.toArray;
-
-        sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
     }
 
     /**

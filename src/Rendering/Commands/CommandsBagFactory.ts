@@ -1,7 +1,8 @@
 import { RenderContext } from "../RenderContext";
 import { ArrayIndexCommand } from "./ArrayIndexCommand";
-import { ArrayInitializeCommand } from "./ArrayInitializeCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
+import { ArrayNewCommand } from "./ArrayNewCommand";
+import { ArrayNewSizedCommand } from "./ArrayNewSizedCommand";
 import { ArrayTypeCommand } from "./ArrayTypeCommand";
 import { BreakCommand } from "./BreakCommand";
 import { CatchEndCommand } from "./CatchEndCommand";
@@ -65,8 +66,9 @@ import { IsNullCommand } from "./IsNullCommand";
 import { LambdaBodyCommand } from "./LambdaBodyCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
 import { ListIndexCommand } from "./ListIndexCommand";
-import { ListInitializeCommand } from "./ListInitializeCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
+import { ListNewCommand } from "./ListNewCommand";
+import { ListNewSizedCommand } from "./ListNewSizedCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
@@ -79,11 +81,13 @@ import { MainEndCommand } from "./MainEndCommand";
 import { MainGroupCommand } from "./MainGroupCommand";
 import { MainStartCommand } from "./MainStartCommand";
 import { MathAbsoluteCommand } from "./MathAbsoluteCommand";
+import { MathAsIntCommand } from "./MathAsIntCommand";
 import { MathCeilingCommand } from "./MathCeilingCommand";
 import { MathFloorCommand } from "./MathFloorCommand";
 import { MathMaxCommand } from "./MathMaxCommand";
 import { MathMinCommand } from "./MathMinCommand";
 import { MathPowerCommand } from "./MathPowerCommand";
+import { MathSquareRootCommand } from "./MathSquareRootCommand";
 import { MemberFunctionCommand } from "./MemberFunctionCommand";
 import { MemberFunctionDeclareAbstractCommand } from "./MemberFunctionDeclareAbstractCommand";
 import { MemberFunctionDeclareEndCommand } from "./MemberFunctionDeclareEndCommand";
@@ -152,7 +156,8 @@ export class CommandsBagFactory {
     public static forContext(context: RenderContext): CommandsBag {
         return new CommandsBag([
             new ArrayIndexCommand(context),
-            new ArrayInitializeCommand(context),
+            new ArrayNewCommand(context),
+            new ArrayNewSizedCommand(context),
             new ArrayLengthCommand(context),
             new ArrayTypeCommand(context),
             new BreakCommand(context),
@@ -216,8 +221,9 @@ export class CommandsBagFactory {
             new LambdaBodyCommand(context),
             new ListAddListCommand(context),
             new ListIndexCommand(context),
-            new ListInitializeCommand(context),
             new ListLengthCommand(context),
+            new ListNewCommand(context),
+            new ListNewSizedCommand(context),
             new ListPopCommand(context),
             new ListPopFrontCommand(context),
             new ListPushCommand(context),
@@ -230,11 +236,13 @@ export class CommandsBagFactory {
             new MainGroupCommand(context),
             new MainStartCommand(context),
             new MathAbsoluteCommand(context),
+            new MathAsIntCommand(context),
             new MathCeilingCommand(context),
             new MathFloorCommand(context),
             new MathMaxCommand(context),
             new MathMinCommand(context),
             new MathPowerCommand(context),
+            new MathSquareRootCommand(context),
             new MemberFunctionCommand(context),
             new MemberFunctionDeclareAbstractCommand(context),
             new MemberFunctionDeclareEndCommand(context),

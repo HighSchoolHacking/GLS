@@ -5,6 +5,7 @@ import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -24,6 +25,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -88,6 +90,17 @@ export class Python extends Language {
         arrays.className = "list";
         arrays.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
         arrays.requiredImports = [];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "[None] * ";
+        newSized.right = "";
     }
 
     /**
@@ -318,6 +331,7 @@ export class Python extends Language {
         exceptions.catchStartRight = ":";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = ":";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "raise";
         exceptions.throwMiddle = "(";
@@ -413,6 +427,17 @@ export class Python extends Language {
     }
 
     /**
+     * Generates metadata on fixed size list creation.
+     *
+     * @param arrays   A property container for metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "[None] * ";
+        newSized.right = "";
+    }
+
+    /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
@@ -470,6 +495,9 @@ export class Python extends Language {
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("fabs", NativeCallScope.Static, NativeCallType.Function).withImports([
             new Import(["math"], ["fabs"], ImportRelativity.Absolute),
+        ]);
+        math.asInt = new NativeCallSyntax("floor", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["floor"], ImportRelativity.Absolute),
         ]);
         math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Static, NativeCallType.Function).withImports([
             new Import(["math"], ["ceil"], ImportRelativity.Absolute),
@@ -552,21 +580,16 @@ export class Python extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.className = "Set";
-
+        sets.className = "set";
         sets.contains = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
-
         sets.initializeAsNew = false;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("list", NativeCallScope.Static, NativeCallType.Function);
-
-        sets.toList = sets.toArray;
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "{";
-        sets.startItemsRight = "}";
+        sets.startItemsLeft = "({";
+        sets.startItemsRight = "})";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("list", NativeCallScope.Static, NativeCallType.Function);
+        sets.toList = sets.toArray;
     }
 
     /**

@@ -1,3 +1,4 @@
+import { setServers } from "dns";
 import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
@@ -39,8 +40,9 @@ export class SetNewCommand extends Command {
 
         if (this.language.syntax.sets.initializeAsNew) {
             output += "new ";
-            output += this.language.syntax.sets.className;
         }
+
+        output += this.language.syntax.sets.className;
 
         if (this.language.syntax.classes.generics.used) {
             const typeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
@@ -51,15 +53,13 @@ export class SetNewCommand extends Command {
             output += this.language.syntax.classes.generics.right;
         }
 
-        output += "(";
-
         if (parameters.length > 3) {
             output += this.language.syntax.sets.startItemsLeft;
             output += parameters.slice(3).join(", ");
             output += this.language.syntax.sets.startItemsRight;
+        } else {
+            output += this.language.syntax.sets.startNoItems;
         }
-
-        output += ")";
 
         return LineResults.newSingleLine(output).withImports(imports);
     }

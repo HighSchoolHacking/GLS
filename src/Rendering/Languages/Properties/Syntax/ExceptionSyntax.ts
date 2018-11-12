@@ -1,3 +1,5 @@
+import { Import } from "../../Imports/Import";
+
 /**
  * Metadata on a language's exception syntax.
  */
@@ -41,6 +43,11 @@ export class ExceptionSyntax {
      * End of finallystart statement.
      */
     public finallyStartRight: string;
+
+    /**
+     * Required imports to be able to use exceptions.
+     */
+    public requiredImports: Import[];
 
     /**
      * Whether a langauge requires exception type.

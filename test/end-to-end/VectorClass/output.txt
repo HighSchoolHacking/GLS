@@ -1,0 +1,69 @@
+First: hello
+Last: hello
+Capacity: 3
+Length: 1
+First: hello
+Last: my
+Capacity: 3
+Length: 2
+First: hello
+Last: baby
+Capacity: 3
+Length: 3
+First: hello
+Last: hello
+Capacity: 6
+Length: 4
+First: hello
+Last: my
+Capacity: 6
+Length: 5
+First: hello
+Last: darling
+Capacity: 6
+Length: 6
+First: hello
+Last: hello
+Capacity: 12
+Length: 7
+First: hello
+Last: my
+Capacity: 12
+Length: 8
+First: hello
+Last: ragtime
+Capacity: 12
+Length: 9
+First: hello
+Last: gal
+Capacity: 12
+Length: 10
+At 0: hello
+At 1: my
+At 2: baby
+At 3: hello
+At 4: my
+At 5: darling
+At 6: hello
+At 7: my
+At 8: ragtime
+At 9: gal
+Capacity: 12
+Length: 10
+Capacity: 12
+Length: 7
+At 0: hello
+At 1: my
+At 2: baby
+At 3: hello
+At 4: my
+At 5: darling
+At 6: hello
+Capacity: 12
+Length: 7
+Capacity: 12
+Length: 7
+Set word: baby
+Set word: darling
+Set word: hello
+Set word: my

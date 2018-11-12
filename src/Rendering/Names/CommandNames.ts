@@ -8,14 +8,19 @@ export class CommandNames {
     public static ArrayIndex = "array index";
 
     /**
-     * Name key for the ArrayInitialize command.
-     */
-    public static ArrayInitialize = "array initialize";
-
-    /**
      * Name key for the ArrayLength command.
      */
     public static ArrayLength = "array length";
+
+    /**
+     * Name key for the ArrayNew command.
+     */
+    public static ArrayNew = "array new";
+
+    /**
+     * Name key for the ArrayNewSized command.
+     */
+    public static ArrayNewSized = "array new sized";
 
     /**
      * Name key for the ArrayType command.
@@ -328,14 +333,19 @@ export class CommandNames {
     public static ListIndex = "list index";
 
     /**
-     * Name key for the ListInitialize command.
-     */
-    public static ListInitialize = "list initialize";
-
-    /**
      * Name key for the ListLength command.
      */
     public static ListLength = "list length";
+
+    /**
+     * Name key for the ListNew command.
+     */
+    public static ListNew = "list new";
+
+    /**
+     * Name key for the ListNewSized command.
+     */
+    public static ListNewSized = "list new sized";
 
     /**
      * Name key for the ListPop command.
@@ -398,6 +408,11 @@ export class CommandNames {
     public static MathAbsolute = "math absolute";
 
     /**
+     * Name key for the MathAsInt command.
+     */
+    public static MathAsInt = "math as int";
+
+    /**
      * Name key for the MathCeiling command.
      */
     public static MathCeiling = "math ceiling";
@@ -421,6 +436,11 @@ export class CommandNames {
      * Name key for the MathPower command.
      */
     public static MathPower = "math power";
+
+    /**
+     * Name key for the MathSquareRoot command.
+     */
+    public static MathSquareRoot = "math square root";
 
     /**
      * Name key for the MemberFunction command.

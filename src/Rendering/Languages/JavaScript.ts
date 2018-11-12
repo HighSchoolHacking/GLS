@@ -3,6 +3,7 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -22,6 +23,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -111,6 +113,17 @@ export class JavaScript extends Language {
         arrays.initializeViaStatic = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         arrays.requiredImports = [];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "new Array(";
+        newSized.right = ")";
     }
 
     /**
@@ -347,6 +360,7 @@ export class JavaScript extends Language {
         exceptions.className = "Error";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = false;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -439,6 +453,15 @@ export class JavaScript extends Language {
     }
 
     /**
+     * Fills out metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "new Array(";
+        newSized.right = ")";
+    }
+
+    /**
      * Generates metadata on loops.
      *
      * @param loops   A property container for metadata on loops.
@@ -490,6 +513,7 @@ export class JavaScript extends Language {
      */
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.asInt = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
         math.ceiling = new NativeCallSyntax("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
         math.floor = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
         math.max = new NativeCallSyntax("Math.max", NativeCallScope.Static, NativeCallType.Function);
@@ -567,21 +591,16 @@ export class JavaScript extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "Set";
-
         sets.contains = new NativeCallSyntax("has", NativeCallScope.Member, NativeCallType.Function);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("Array.from", NativeCallScope.Static, NativeCallType.Function);
-
-        sets.toList = sets.toArray;
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("Array.from", NativeCallScope.Static, NativeCallType.Function);
+        sets.toList = sets.toArray;
     }
 
     /**
