@@ -1,0 +1,20 @@
+-
+file start : Lists Index
+    import local : Lists Converters use { import standalone functions : Converters TryAsDouble TryAsInt }
+
+    main context start
+        main start
+            comment line : Strings to numbers
+            variable : doubleLike string "3.5"
+            variable : doubleNotLike string "a3.5"
+            variable : intLike string "7"
+            variable : intNotLike string "a"
+
+            standalone function : public Converters TryAsDouble doubleLike
+            standalone function : public Converters TryAsDouble doubleNotLike
+            standalone function : public Converters TryAsInt intLike "10"
+            standalone function : public Converters TryAsInt intNotLike "fish"
+        main end
+    main context end
+file end
+-

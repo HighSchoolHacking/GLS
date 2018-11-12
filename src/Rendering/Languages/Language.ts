@@ -34,7 +34,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
+import { StringToNumberSyntax } from "./Properties/Syntax/StringToNumberSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -105,6 +105,7 @@ export abstract class Language {
         this.generateStringSyntax(this.syntax.strings);
         this.generateStringSubstringSyntax(this.syntax.strings.substrings);
         this.generateStringToDoubleSyntax(this.syntax.strings.toDouble);
+        this.generateStringToIntSyntax(this.syntax.strings.toInt);
         this.generateStyleSyntax(this.syntax.style);
         this.generateUnsupportedSyntax(this.syntax.unsupported);
         this.generateVariableSyntax(this.syntax.variables);
@@ -370,7 +371,14 @@ export abstract class Language {
      *
      * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected abstract generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void;
+    protected abstract generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void;
+
+    /**
+     * Generates metadata on string-to-int conversions.
+     *
+     * @param toDouble   A property container for metadata on string-to-int conversions.
+     */
+    protected abstract generateStringToIntSyntax(toInt: StringToNumberSyntax): void;
 
     /**
      * Generates metadata on style.

@@ -1,5 +1,5 @@
 #
-bbb = aaa.to_f
+bbb = Float(aaa) rescue nil
 
 if (bbb != nil)
     # ...

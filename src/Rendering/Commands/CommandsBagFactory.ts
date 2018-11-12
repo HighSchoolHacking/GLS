@@ -54,6 +54,8 @@ import { IfEndCommand } from "./IfEndCommand";
 import { IfStartCommand } from "./IfStartCommand";
 import { IfStringToDoubleEndCommand } from "./IfStringToDoubleEndCommand";
 import { IfStringToDoubleStartCommand } from "./IfStringToDoubleStartCommand";
+import { IfStringToIntEndCommand } from "./IfStringToIntEndCommand";
+import { IfStringToIntStartCommand } from "./IfStringToIntStartCommand";
 import { ImportLocalCommand } from "./ImportLocalCommand";
 import { ImportPackageCommand } from "./ImportPackageCommand";
 import { ImportStandaloneFunctionsCommand } from "./ImportStandaloneFunctionsCommand";
@@ -209,6 +211,8 @@ export class CommandsBagFactory {
             new IfStartCommand(context),
             new IfStringToDoubleEndCommand(context),
             new IfStringToDoubleStartCommand(context),
+            new IfStringToIntEndCommand(context),
+            new IfStringToIntStartCommand(context),
             new ImportLocalCommand(context),
             new ImportPackageCommand(context),
             new ImportStandaloneFunctionsCommand(context),

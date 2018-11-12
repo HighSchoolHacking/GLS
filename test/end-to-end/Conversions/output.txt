@@ -1,0 +1,2 @@
+It's a double: 3
+Both are ints: 7 10

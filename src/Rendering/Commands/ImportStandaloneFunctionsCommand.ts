@@ -35,7 +35,7 @@ export class ImportStandaloneFunctionsCommand extends Command {
     public render(parameters: string[]): LineResults {
         const importParameters: string[] = this.getImportParameters(parameters);
 
-        return LineResults.newSingleLine(importParameters.join(" "));
+        return LineResults.newSingleLine(importParameters.join(", "));
     }
 
     private getImportParameters(parameters: string[]): string[] {

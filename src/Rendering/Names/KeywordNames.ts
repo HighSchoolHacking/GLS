@@ -33,6 +33,11 @@ export class KeywordNames {
     public static Implements = "implements";
 
     /**
+     * Name key for the "int" keyword.
+     */
+    public static Int = "int";
+
+    /**
      * Name key for the "private" keyword.
      */
     public static Private = "private";

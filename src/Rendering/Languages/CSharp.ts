@@ -1,4 +1,3 @@
-import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
 import { Import } from "./Imports/Import";
 import { ImportRelativity } from "./Imports/ImportRelativity";
@@ -40,7 +39,7 @@ import { StandaloneFunctionSyntax } from "./Properties/Syntax/StandaloneFunction
 import { StringFormatSyntax } from "./Properties/Syntax/StringFormatSyntax";
 import { StringSubstringSupport, StringSubstringSyntax } from "./Properties/Syntax/StringSubstringSyntax";
 import { StringSyntax } from "./Properties/Syntax/StringSyntax";
-import { StringToDoubleSyntax } from "./Properties/Syntax/StringToDoubleSyntax";
+import { StringToNumberStartConversionType, StringToNumberSyntax } from "./Properties/Syntax/StringToNumberSyntax";
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
@@ -703,15 +702,27 @@ export class CSharp extends Language {
      *
      * @param toDouble   A property container for metadata on string-to-double conversions.
      */
-    protected generateStringToDoubleSyntax(toDouble: StringToDoubleSyntax): void {
-        toDouble.conversionType = StringToDoubleStartConversionType.ValidateDirectly;
-
+    protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
+        toDouble.conversionType = StringToNumberStartConversionType.ValidateDirectly;
         toDouble.requiredImports = [new Import(["System"], ["Double"], ImportRelativity.Absolute)];
-
         toDouble.validationBlockComparison = "double.TryParse({0}, out var {1})";
         toDouble.validationBlockLeft = "if (";
         toDouble.validationBlockMiddle = " && ";
         toDouble.validationBlockRight = ")\n{";
+    }
+
+    /**
+     * Generates metadata on string-to-double conversions.
+     *
+     * @param toInt   A property container for metadata on string-to-double conversions.
+     */
+    protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
+        toInt.conversionType = StringToNumberStartConversionType.ValidateDirectly;
+        toInt.requiredImports = [new Import(["System"], ["Int"], ImportRelativity.Absolute)];
+        toInt.validationBlockComparison = "int.TryParse({0}, out var {1})";
+        toInt.validationBlockLeft = "if (";
+        toInt.validationBlockMiddle = " && ";
+        toInt.validationBlockRight = ")\n{";
     }
 
     /**

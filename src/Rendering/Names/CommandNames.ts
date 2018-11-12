@@ -265,12 +265,22 @@ export class CommandNames {
     /**
      * Name key for the IfStringToDoubleEnd command.
      */
-    public static IfStringToDoubleEnd = "if string to float end";
+    public static IfStringToDoubleEnd = "if string to double end";
 
     /**
      * Name key for the IfStringToDoubleStart command.
      */
-    public static IfStringToDoubleStart = "if string to float start";
+    public static IfStringToDoubleStart = "if string to double start";
+
+    /**
+     * Name key for the IfStringToIntEnd command.
+     */
+    public static IfStringToIntEnd = "if string to int end";
+
+    /**
+     * Name key for the IfStringToIntStart command.
+     */
+    public static IfStringToIntStart = "if string to int start";
 
     /**
      * Name key for the ImportLocal command.

@@ -6,6 +6,7 @@
   * [Strings](docs/syntax/strings.md)
   * [Variables](docs/syntax/variables.md)
   * [Math](docs/syntax/math.md)
+    * [String Conversions](docs/syntax/math/string-conversions.md)
   * [Arrays and Lists](docs/syntax/arrays-and-lists.md)
   * [Dictionaries](docs/syntax/dictionaries.md)
   * [Classes](docs/syntax/classes.md)
