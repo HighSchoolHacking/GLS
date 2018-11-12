@@ -1,4 +1,5 @@
 import { Import } from "../../Imports/Import";
+import { ListNewSizedSyntax } from "./ListNewSizedSyntax";
 import { NativeCallSyntax } from "./NativeCallSyntax";
 
 /**
@@ -24,6 +25,11 @@ export class ListSyntax {
      * How to retrieve the length of a list.
      */
     public length: NativeCallSyntax;
+
+    /**
+     * Metadata on fixed size list creation.
+     */
+    public newSized: ListNewSizedSyntax = new ListNewSizedSyntax();
 
     /**
      * How to remove an element from the end of a list.

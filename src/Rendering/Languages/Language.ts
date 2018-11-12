@@ -1,5 +1,6 @@
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -19,6 +20,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -69,6 +71,7 @@ export abstract class Language {
 
         this.syntax = new SyntaxProperties();
         this.generateArraySyntax(this.syntax.arrays);
+        this.generateArrayNewSizedSyntax(this.syntax.arrays.newSized);
         this.generateBooleanSyntax(this.syntax.booleans);
         this.generateClassSyntax(this.syntax.classes);
         this.generateClassExportSyntax(this.syntax.classes.exports);
@@ -88,6 +91,7 @@ export abstract class Language {
         this.generateInterfaceSyntax(this.syntax.interfaces);
         this.generateLambdaSyntax(this.syntax.lambdas);
         this.generateListSyntax(this.syntax.lists);
+        this.generateListNewSizedSyntax(this.syntax.lists.newSized);
         this.generateLoopSyntax(this.syntax.loops);
         this.generateMainSyntax(this.syntax.main);
         this.generateMathSyntax(this.syntax.math);
@@ -126,6 +130,13 @@ export abstract class Language {
      * @param arrays   A property container for metadata on arrays.
      */
     protected abstract generateArraySyntax(arrays: ArraySyntax): void;
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected abstract generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void;
 
     /**
      * Generates metadata on booleans.
@@ -257,6 +268,11 @@ export abstract class Language {
      * Fills out metadata on lists.
      */
     protected abstract generateListSyntax(lists: ListSyntax): void;
+
+    /**
+     * Fills out metadata on fixed size list creation.
+     */
+    protected abstract generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void;
 
     /**
      * Generates metadata on loops.
