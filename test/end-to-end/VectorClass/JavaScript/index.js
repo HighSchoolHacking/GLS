@@ -5,7 +5,7 @@ let vector = new Vector();
 let words = ["hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal"];
 
 // Adding
-for (let word of words) {
+for (let string of words) {
     vector.push(word);
     console.log(`First: ${vector.getFirst()}`);
     console.log(`Last: ${vector.getLast()}`);
