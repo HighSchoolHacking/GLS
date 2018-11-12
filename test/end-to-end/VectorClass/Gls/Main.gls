@@ -38,7 +38,7 @@ file start : VectorClass Index
             variable : sorted { list type : string } { set to list : individuals }
             list sort : sorted
 
-            for each start : sorted string word
+            for each start : sorted word string
                 print : { string format : ("Set word: {0}") word string }
             for each end
         main end
