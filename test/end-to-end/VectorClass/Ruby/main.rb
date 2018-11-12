@@ -6,7 +6,7 @@ vector = Vector.new()
 words = ["hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal"]
 
 # Adding
-for string in words
+for word in words
     vector.push(word)
     puts "First: %s" % [vector.get_first()]
     puts "Last: %s" % [vector.get_last()]

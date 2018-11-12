@@ -11,7 +11,7 @@ class Index {
         String[] words = new String[] { "hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal" };
 
         // Adding
-        for (word string : words) {
+        for (String word : words) {
             vector.push(word);
             System.out.println(String.format("First: %0$s", vector.getFirst()));
             System.out.println(String.format("Last: %0$s", vector.getLast()));

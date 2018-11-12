@@ -6,7 +6,7 @@ if __name__ == "__main__":
     words = ["hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal"]
 
     # Adding
-    for string in words:
+    for word in words:
         vector.push(word)
         print("First: {0}".format(vector.get_first()))
         print("Last: {0}".format(vector.get_last()))

@@ -15,7 +15,7 @@ namespace VectorClass
             string[] words = new string[] { "hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal" };
 
             // Adding
-            foreach (word string in words)
+            foreach (string word in words)
             {
                 vector.Push(word);
                 Console.WriteLine(string.Format("First: {0}", vector.GetFirst()));
