@@ -127,7 +127,7 @@ For feature parity between other languages, GLS recognizes only `int` and `doubl
 ### Number Conversions
 
 When you have a `double` and need an `int`, use the `math as int` command to truncate and convert to an `int`.
-It behaves similarly to `math floor`, but returns an `int` instead of a `double`.
+It behaves similarly to `math floor` but returns an `int` instead of a `double`.
 
 ```gls
 variable : rounded int { math as int : 3.5 }

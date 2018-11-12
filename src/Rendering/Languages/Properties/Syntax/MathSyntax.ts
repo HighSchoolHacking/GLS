@@ -15,7 +15,7 @@ export class MathSyntax {
     public asInt: NativeCallSyntax;
 
     /**
-     * How to retrieve the largest integer >= a number.
+     * How to retrieve the largest integer >= a number
      */
     public ceiling: NativeCallSyntax;
 
