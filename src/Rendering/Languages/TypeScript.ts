@@ -536,6 +536,7 @@ export class TypeScript extends Language {
      */
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("Math.abs", NativeCallScope.Static, NativeCallType.Function);
+        math.asInt = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
         math.ceiling = new NativeCallSyntax("Math.ceil", NativeCallScope.Static, NativeCallType.Function);
         math.floor = new NativeCallSyntax("Math.floor", NativeCallScope.Static, NativeCallType.Function);
         math.max = new NativeCallSyntax("Math.max", NativeCallScope.Static, NativeCallType.Function);

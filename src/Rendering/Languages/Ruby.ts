@@ -522,6 +522,7 @@ export class Ruby extends Language {
      */
     protected generateMathSyntax(math: MathSyntax): void {
         math.absolute = new NativeCallSyntax("abs", NativeCallScope.Member, NativeCallType.Property);
+        math.asInt = new NativeCallSyntax("floor", NativeCallScope.Member, NativeCallType.Property);
         math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Member, NativeCallType.Property);
         math.floor = new NativeCallSyntax("floor", NativeCallScope.Member, NativeCallType.Property);
         math.max = new NativeCallSyntax("max", NativeCallScope.Array, NativeCallType.Function);

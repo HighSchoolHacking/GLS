@@ -408,6 +408,11 @@ export class CommandNames {
     public static MathAbsolute = "math absolute";
 
     /**
+     * Name key for the MathAsInt command.
+     */
+    public static MathAsInt = "math as int";
+
+    /**
      * Name key for the MathCeiling command.
      */
     public static MathCeiling = "math ceiling";
