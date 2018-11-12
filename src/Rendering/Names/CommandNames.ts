@@ -8,14 +8,14 @@ export class CommandNames {
     public static ArrayIndex = "array index";
 
     /**
-     * Name key for the ArrayInitialize command.
-     */
-    public static ArrayInitialize = "array initialize";
-
-    /**
      * Name key for the ArrayLength command.
      */
     public static ArrayLength = "array length";
+
+    /**
+     * Name key for the ArrayNew command.
+     */
+    public static ArrayNew = "array new";
 
     /**
      * Name key for the ArrayType command.
@@ -328,14 +328,14 @@ export class CommandNames {
     public static ListIndex = "list index";
 
     /**
-     * Name key for the ListInitialize command.
-     */
-    public static ListInitialize = "list initialize";
-
-    /**
      * Name key for the ListLength command.
      */
     public static ListLength = "list length";
+
+    /**
+     * Name key for the ListNew command.
+     */
+    public static ListNew = "list new";
 
     /**
      * Name key for the ListPop command.

@@ -11,7 +11,7 @@ GLS considers the two to be two different data structures and has mostly separat
 
 Because arrays are fixed-length, there are very few operations available on them.
 
-Create new arrays with `array initialize`, which takes in the type of array and any number of initial items in the array.
+Create new arrays with `array new`, which takes in the type of array and any number of initial items in the array.
 For variables, declare the type of the array with `array type`, which takes in the type of the array.
 
 Retrieve a single member of an array with `array index`, which takes in a name of a container and an integer index.
@@ -26,7 +26,7 @@ array index : container 1
 Get the length of an array with `array length`, which takes in a name of an array.
 
 ```gls
-variable : fruits { array type : string } { array initialize : string "apple" "banana" "cherry" }
+variable : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
 
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
 print : { string format : ("The first fruit is {0}.") { array index : fruits 0 } string }
@@ -64,14 +64,14 @@ list index : container 1
 * In C#: `container[1]`
 * In Python: `container[1]`
 
-Similar to arrays, create a new list with `list initialize`, declare a list type with `list type`, and get a list's length with `list length`.
+Similar to arrays, create a new list with `list new`, declare a list type with `list type`, and get a list's length with `list length`.
 Add a single item to a list with `list pop`, which takes in a name of a list and a new item, or add a full list to another list with `list add list`, which takes in the name of an existing list and a second list to add to the existing list.
 
 ```gls
-variable : fruits { list type : string } { list initialize : string "apple" "banana" "cherry" }
+variable : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
 
 list push : fruits "dragonberry"
-list add list : fruits { list initialize : string "elderberry" "fig" }
+list add list : fruits { list new : string "elderberry" "fig" }
 
 print : { string format : ("There are {0} fruits.") { list length : fruits } int }
 print : { string format : ("The first fruit is {0}.") { list index : fruits 0 } string }

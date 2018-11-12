@@ -9,11 +9,11 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 /**
  * Initializes a new array.
  */
-export class ArrayInitializeCommand extends Command {
+export class ArrayNewCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayInitialize)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayNew)
         .withDescription("Initializes a new array")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
@@ -26,7 +26,7 @@ export class ArrayInitializeCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ArrayInitializeCommand.metadata;
+        return ArrayNewCommand.metadata;
     }
 
     /**
