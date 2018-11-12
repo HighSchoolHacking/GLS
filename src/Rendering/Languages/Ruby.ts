@@ -3,6 +3,7 @@ import { CaseStyle } from "./Casing/CaseStyle";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
+import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
 import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
@@ -22,6 +23,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -108,6 +110,17 @@ export class Ruby extends Language {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         arrays.requiredImports = [];
+    }
+
+    /**
+     * Generates metadata on fixed size array creation.
+     *
+     * @param arrays   A property container for metadata on fixed size array creation.
+     */
+    protected generateArrayNewSizedSyntax(newSized: ArrayNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "Array.new(";
+        newSized.right = ")";
     }
 
     /**
@@ -430,6 +443,17 @@ export class Ruby extends Language {
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
         lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
         lists.sort = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
+    }
+
+    /**
+     * Generates metadata on fixed size list creation.
+     *
+     * @param arrays   A property container for metadata on fixed size list creation.
+     */
+    protected generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void {
+        newSized.includeType = false;
+        newSized.left = "Array.new(";
+        newSized.right = ")";
     }
 
     /**

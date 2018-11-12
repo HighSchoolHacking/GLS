@@ -2,6 +2,7 @@ import { RenderContext } from "../RenderContext";
 import { ArrayIndexCommand } from "./ArrayIndexCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
 import { ArrayNewCommand } from "./ArrayNewCommand";
+import { ArrayNewSizedCommand } from "./ArrayNewSizedCommand";
 import { ArrayTypeCommand } from "./ArrayTypeCommand";
 import { BreakCommand } from "./BreakCommand";
 import { CatchEndCommand } from "./CatchEndCommand";
@@ -67,6 +68,7 @@ import { ListAddListCommand } from "./ListAddListCommand";
 import { ListIndexCommand } from "./ListIndexCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListNewCommand } from "./ListNewCommand";
+import { ListNewSizedCommand } from "./ListNewSizedCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
@@ -153,6 +155,7 @@ export class CommandsBagFactory {
         return new CommandsBag([
             new ArrayIndexCommand(context),
             new ArrayNewCommand(context),
+            new ArrayNewSizedCommand(context),
             new ArrayLengthCommand(context),
             new ArrayTypeCommand(context),
             new BreakCommand(context),
@@ -218,6 +221,7 @@ export class CommandsBagFactory {
             new ListIndexCommand(context),
             new ListLengthCommand(context),
             new ListNewCommand(context),
+            new ListNewSizedCommand(context),
             new ListPopCommand(context),
             new ListPopFrontCommand(context),
             new ListPushCommand(context),

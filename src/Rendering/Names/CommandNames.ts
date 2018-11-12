@@ -18,6 +18,11 @@ export class CommandNames {
     public static ArrayNew = "array new";
 
     /**
+     * Name key for the ArrayNewSized command.
+     */
+    public static ArrayNewSized = "array new sized";
+
+    /**
      * Name key for the ArrayType command.
      */
     public static ArrayType = "array type";
@@ -336,6 +341,11 @@ export class CommandNames {
      * Name key for the ListNew command.
      */
     public static ListNew = "list new";
+
+    /**
+     * Name key for the ListNewSized command.
+     */
+    public static ListNewSized = "list new sized";
 
     /**
      * Name key for the ListPop command.
