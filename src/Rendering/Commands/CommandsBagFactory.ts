@@ -235,7 +235,6 @@ export class CommandsBagFactory {
             new MainEndCommand(context),
             new MainGroupCommand(context),
             new MainStartCommand(context),
-            new MathAsIntCommand(context),
             new MathAbsoluteCommand(context),
             new MathAsIntCommand(context),
             new MathCeilingCommand(context),
