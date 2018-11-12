@@ -81,6 +81,7 @@ import { MainEndCommand } from "./MainEndCommand";
 import { MainGroupCommand } from "./MainGroupCommand";
 import { MainStartCommand } from "./MainStartCommand";
 import { MathAbsoluteCommand } from "./MathAbsoluteCommand";
+import { MathAsIntCommand } from "./MathAsIntCommand";
 import { MathCeilingCommand } from "./MathCeilingCommand";
 import { MathFloorCommand } from "./MathFloorCommand";
 import { MathMaxCommand } from "./MathMaxCommand";
@@ -233,6 +234,7 @@ export class CommandsBagFactory {
             new MainEndCommand(context),
             new MainGroupCommand(context),
             new MainStartCommand(context),
+            new MathAsIntCommand(context),
             new MathAbsoluteCommand(context),
             new MathCeilingCommand(context),
             new MathFloorCommand(context),

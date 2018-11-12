@@ -538,6 +538,7 @@ export class CSharp extends Language {
         const requiredImports = [new Import(["System"], ["Math"], ImportRelativity.Absolute)];
 
         math.absolute = new NativeCallSyntax("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.asInt = new NativeCallSyntax("(int)", NativeCallScope.Static, NativeCallType.FloatingLeft);
         math.ceiling = new NativeCallSyntax("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
         math.floor = new NativeCallSyntax("Math.Floor", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
         math.max = new NativeCallSyntax("Math.Max", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);

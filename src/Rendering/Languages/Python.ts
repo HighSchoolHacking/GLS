@@ -495,6 +495,9 @@ export class Python extends Language {
         math.absolute = new NativeCallSyntax("fabs", NativeCallScope.Static, NativeCallType.Function).withImports([
             new Import(["math"], ["fabs"], ImportRelativity.Absolute),
         ]);
+        math.asInt = new NativeCallSyntax("floor", NativeCallScope.Static, NativeCallType.Function).withImports([
+            new Import(["math"], ["floor"], ImportRelativity.Absolute),
+        ]);
         math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Static, NativeCallType.Function).withImports([
             new Import(["math"], ["ceil"], ImportRelativity.Absolute),
         ]);

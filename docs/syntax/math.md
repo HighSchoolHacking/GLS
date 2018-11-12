@@ -124,6 +124,18 @@ Some do not.
 For feature parity between other languages, GLS recognizes only `int` and `double` as valid number types.
 `float`, `long`, `ushort`, and so on are not supported.
 
+### Number Conversions
+
+When you have a `double` and need an `int`, use the `math as int` command to truncate and convert to an `int`.
+It behaves similarly to `math floor` but returns an `int` instead of a `double`.
+
+```gls
+variable : rounded int { math as int : 3.5 }
+```
+
+* In C#: `int rounded = (int)3.5;`
+* In Python: `rounded = math.floor(3.5)`
+
 ## Native Commands
 
 All supported languages provide some amount of built-in math operations beyond the simple arithmetic operators.

@@ -10,6 +10,11 @@ export class MathSyntax {
     public absolute: NativeCallSyntax;
 
     /**
+     * How to convert a double to an int.
+     */
+    public asInt: NativeCallSyntax;
+
+    /**
      * How to retrieve the largest integer >= a number
      */
     public ceiling: NativeCallSyntax;
