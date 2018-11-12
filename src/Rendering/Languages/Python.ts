@@ -331,6 +331,7 @@ export class Python extends Language {
         exceptions.catchStartRight = ":";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = ":";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "raise";
         exceptions.throwMiddle = "(";
@@ -579,21 +580,16 @@ export class Python extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.className = "Set";
-
+        sets.className = "set";
         sets.contains = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
-
         sets.initializeAsNew = false;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("list", NativeCallScope.Static, NativeCallType.Function);
-
-        sets.toList = sets.toArray;
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "{";
-        sets.startItemsRight = "}";
+        sets.startItemsLeft = "({";
+        sets.startItemsRight = "})";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("list", NativeCallScope.Static, NativeCallType.Function);
+        sets.toList = sets.toArray;
     }
 
     /**

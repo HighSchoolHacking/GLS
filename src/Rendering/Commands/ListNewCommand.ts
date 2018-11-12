@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -39,16 +40,18 @@ export class ListNewCommand extends Command {
             return this.context.convertParsed(parameters);
         }
 
-        const typeNameRaw: string = "list<" + parameters[1] + ">";
-        const typeNameLine = this.context.convertParsed([CommandNames.Type, typeNameRaw]);
-        let output: string = "new " + typeNameLine.commandResults[0].text;
+        const imports: Import[] = [];
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+        const typeName = typeNameLine.commandResults[0].text;
 
-        if (parameters.length > 2) {
-            output += " { ";
-            output += parameters.slice(2).join(", ");
-            output += " }";
-        } else {
+        imports.push(...typeNameLine.addedImports);
+
+        let output: string = "new " + this.language.syntax.lists.className + "<" + typeName + ">";
+
+        if (parameters.length === 2) {
             output += "()";
+        } else {
+            output += " { " + parameters.slice(2).join(", ") + " }";
         }
 
         return LineResults.newSingleLine(output).withImports(typeNameLine.addedImports);

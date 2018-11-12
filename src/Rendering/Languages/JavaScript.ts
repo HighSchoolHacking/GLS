@@ -360,6 +360,7 @@ export class JavaScript extends Language {
         exceptions.className = "Error";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = false;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -590,21 +591,16 @@ export class JavaScript extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "Set";
-
         sets.contains = new NativeCallSyntax("has", NativeCallScope.Member, NativeCallType.Function);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("Array.from", NativeCallScope.Static, NativeCallType.Function);
-
-        sets.toList = sets.toArray;
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("Array.from", NativeCallScope.Static, NativeCallType.Function);
+        sets.toList = sets.toArray;
     }
 
     /**

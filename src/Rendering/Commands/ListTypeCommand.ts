@@ -29,20 +29,18 @@ export class ListTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let typeNameRaw: string;
+        const typeNameLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+        const typeNameRaw: string = typeNameLine.commandResults[0].text;
+        let typeName: string;
 
         if (this.language.syntax.lists.asArray) {
-            typeNameRaw = parameters[1] + "[]";
+            typeName = typeNameRaw + "[]";
         } else {
-            typeNameRaw = "list<" + parameters[1] + ">";
+            typeName = this.language.syntax.lists.className + "<" + typeNameRaw + ">";
         }
 
-        const typeNameLine = this.context.convertParsed([CommandNames.Type, typeNameRaw]);
-        const results = LineResults.newSingleLine(typeNameLine.commandResults[0].text);
-
-        results.withImports(this.language.syntax.lists.requiredImports);
-        results.withImports(typeNameLine.addedImports);
-
-        return results;
+        return LineResults.newSingleLine(typeName)
+            .withImports(this.language.syntax.lists.requiredImports)
+            .withImports(typeNameLine.addedImports);
     }
 }

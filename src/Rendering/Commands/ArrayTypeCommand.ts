@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -29,6 +30,12 @@ export class ArrayTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[]").withImports(this.language.syntax.arrays.requiredImports);
+        const imports: Import[] = [];
+        const typeLine = this.context.convertParsed([CommandNames.Type, parameters[1]]);
+
+        imports.push(...this.language.syntax.arrays.requiredImports);
+        imports.push(...typeLine.addedImports);
+
+        return LineResults.newSingleLine(typeLine.commandResults[0].text + "[]").withImports(imports);
     }
 }

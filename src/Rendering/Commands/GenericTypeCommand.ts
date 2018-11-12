@@ -6,7 +6,7 @@ import { RepeatingParameters } from "./Metadata/Parameters/RepeatingParameters";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Declares an array type.
+ * Declares a generic type.
  */
 export class GenericTypeCommand extends Command {
     /**

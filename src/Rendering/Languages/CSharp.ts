@@ -362,6 +362,7 @@ export class CSharp extends Language {
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
         exceptions.finallyStartRight = "\n{";
+        exceptions.requiredImports = [new Import(["System"], ["Exception"], ImportRelativity.Absolute)];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -618,21 +619,18 @@ export class CSharp extends Language {
         const requiredImports: Import[] = [new Import(["System", "Collections", "Generic"], ["Dictionary"], ImportRelativity.Absolute)];
 
         sets.add = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "HashSet";
-
         sets.contains = new NativeCallSyntax("Contains", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
-        sets.toList = new NativeCallSyntax("ToList", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
-
         sets.requiredImports = requiredImports;
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = "()";
+        sets.toArray = new NativeCallSyntax("ToArray", NativeCallScope.Member, NativeCallType.Function).withImports(requiredImports);
+        sets.toList = new NativeCallSyntax("ToList", NativeCallScope.Member, NativeCallType.Function)
+            .withImports(requiredImports)
+            .withImports([new Import(["System", "Linq"], ["ToLinq"], ImportRelativity.Absolute)]);
         sets.typeLeft = "<";
         sets.typeRight = ">";
     }

@@ -366,6 +366,7 @@ export class Java extends Language {
         exceptions.className = "Exception";
         exceptions.finally = "finally";
         exceptions.finallyStartRight = " {";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
@@ -619,21 +620,15 @@ export class Java extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "HashSet";
-
         sets.contains = new NativeCallSyntax("contains", NativeCallScope.Member, NativeCallType.Function);
-
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-
-        sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
-
         sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
+        sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
         sets.typeLeft = "<";
         sets.typeRight = ">";
     }
@@ -683,7 +678,7 @@ export class Java extends Language {
 
         strings.caseUpper = new NativeCallSyntax("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
 
-        strings.className = "string";
+        strings.className = "String";
 
         strings.indexOf = new NativeCallSyntax("indexOf", NativeCallScope.Member, NativeCallType.Function);
 

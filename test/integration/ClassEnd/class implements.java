@@ -1,4 +1,4 @@
 //
-class Aaa implements bbb {
+class Aaa implements Bbb {
 }
 //

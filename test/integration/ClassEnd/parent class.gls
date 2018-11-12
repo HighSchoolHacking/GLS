@@ -1,4 +1,4 @@
 -
-class start : Aaa extends bbb
+class start : Aaa extends Bbb
 class end
 -

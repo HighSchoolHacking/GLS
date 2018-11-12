@@ -46,6 +46,11 @@ export class SetSyntax {
     public startItemsRight: string;
 
     /**
+     * How to declare a set without any items.
+     */
+    public startNoItems: string;
+
+    /**
      * How to retrieve the items in a set as an array.
      */
     public toArray: NativeCallSyntax;

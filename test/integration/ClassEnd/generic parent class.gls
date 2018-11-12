@@ -1,4 +1,4 @@
 -
-class start : Aaa extends bbb<ccc>
+class start : Aaa extends { generic type : Bbb Ccc }
 class end
 -

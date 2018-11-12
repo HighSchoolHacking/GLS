@@ -1,4 +1,4 @@
 #
-class Aaa < bbb
+class Aaa < Bbb
 end
 #

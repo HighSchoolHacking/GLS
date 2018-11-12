@@ -438,6 +438,11 @@ export class CommandNames {
     public static MathPower = "math power";
 
     /**
+     * Name key for the MathSquareRoot command.
+     */
+    public static MathSquareRoot = "math square root";
+
+    /**
      * Name key for the MemberFunction command.
      */
     public static MemberFunction = "member function";

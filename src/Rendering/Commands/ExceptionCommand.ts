@@ -30,6 +30,6 @@ export class ExceptionCommand extends Command {
     public render(parameters: string[]): LineResults {
         const output: string = this.language.syntax.exceptions.className;
 
-        return LineResults.newSingleLine(output);
+        return LineResults.newSingleLine(output).withImports(this.language.syntax.exceptions.requiredImports);
     }
 }

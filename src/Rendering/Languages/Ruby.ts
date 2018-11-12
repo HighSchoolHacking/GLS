@@ -1,5 +1,7 @@
 import { StringToDoubleStartConversionType } from "../Commands/IfStringToDoubleStartCommand";
 import { CaseStyle } from "./Casing/CaseStyle";
+import { Import } from "./Imports/Import";
+import { ImportRelativity } from "./Imports/ImportRelativity";
 import { Language } from "./Language";
 import { GeneralProperties } from "./Properties/GeneralProperties";
 import { ProjectProperties } from "./Properties/ProjectProperties";
@@ -356,6 +358,7 @@ export class Ruby extends Language {
         exceptions.className = "Exception";
         exceptions.finally = "ensure";
         exceptions.finallyStartRight = "";
+        exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
         exceptions.throw = "raise";
         exceptions.throwMiddle = ".new(";
@@ -599,21 +602,16 @@ export class Ruby extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-
         sets.className = "Set";
-
         sets.contains = new NativeCallSyntax("include?", NativeCallScope.Member, NativeCallType.Function);
-
-        sets.initializeAsNew = true;
+        sets.initializeAsNew = false;
         sets.initializeStart = "";
-
+        sets.requiredImports = [new Import(["set"], ["set"], ImportRelativity.Absolute)];
+        sets.startItemsLeft = "([";
+        sets.startItemsRight = "])";
+        sets.startNoItems = ".new";
         sets.toArray = new NativeCallSyntax("to_a", NativeCallScope.Member, NativeCallType.Function);
-
         sets.toList = sets.toArray;
-
-        sets.requiredImports = [];
-        sets.startItemsLeft = "[";
-        sets.startItemsRight = "]";
     }
 
     /**

@@ -1,0 +1,109 @@
+-
+file start : VectorClass Vector
+    class start : export { generic type : Vector T }
+        member variable declare : private Data { array type : T }
+        member variable declare : private Capacity int
+        member variable declare : private Length int
+
+        constructor start : public Vector
+            member variable set : private { this } Capacity 0
+            member variable set : private { this } Data { array new : T }
+            member variable set : private { this } Length 0
+        constructor end
+
+        member function declare start : public At T index int
+            if start : { operation : index (greater than or equal to) { member variable : private { this } Length } }
+                throw : { exception } { string format : ("Index out of bounds: {0} is greater than {1}.") index int { member variable : private { this } Length } int }
+            if end
+
+            return : { array index : { member variable : private { this } Data } index }
+        member function declare end
+
+        member function declare start : public GetCapacity int
+            return : { member variable : private { this } Capacity }
+        member function declare end
+
+        member function declare start : public GetLength int
+            return : { member variable : private { this } Length }
+        member function declare end
+
+        member function declare start : public GetFirst T
+            if start : { operation : { member variable : private { this } Capacity } (equal to) 0 }
+                throw : { exception } ("Cannot get first from empty vector.")
+            if end
+
+            return : { array index : { member variable : private { this } Data } 0 }
+        member function declare end
+
+        member function declare start : public GetLast T
+            if start : { operation : { member variable : private { this } Capacity } (equal to) 0 }
+                throw : { exception } ("Cannot get last from empty vector.")
+            if end
+
+            return : { array index : { member variable : private { this } Data } { operation : { member variable : private { this } Length } minus 1 } }
+        member function declare end
+
+        member function declare start : public EnsureCapacity void capacity int
+            if start : { operation : capacity (less than or equal to) { member variable : private { this } Capacity } }
+                return
+            if end
+
+            variable : newCapacity int { math as int : { operation : { math ceiling : { parenthesis : { operation : capacity (divide) 2.0 } } } times 3 } }
+            variable : oldData { array type : T } { member variable : private { this } Data }
+            member variable set : private { this } Capacity newCapacity
+            member variable set : private { this } Data { array new sized : T newCapacity }
+
+            for numbers start : i int 0 { array length : oldData }
+                operation : { { array index : { member variable : private { this } Data } i } equals { array index : oldData i } }
+            for numbers end
+        member function declare end
+
+        member function declare start : public Push void item T
+            member function : public { this } EnsureCapacity { operation : { member variable : private { this } Length } plus 1 }
+
+            operation : { array index : { member variable : private { this } Data } { member variable : private { this } Length } } equals item
+            operation : { member variable : private { this } Length } (increase by) 1
+        member function declare end
+
+        member function declare start : public Resize void length int
+            if start : { operation : length (less than or equal to) { member variable : private { this } Length } }
+                member variable set : private { this } Length length
+                return
+            if end
+
+            member function : public { this } EnsureCapacity length
+            member variable set : private { this } Length length
+        member function declare end
+
+        member function declare start : public ToArray { array type : T }
+            variable : array { array type : T } { array new sized : T { member variable : private { this } Length } }
+
+            for numbers start : i int 0 { member variable : private { this } Length }
+                operation : { { array index : array i } equals { array index : { member variable : private { this } Data } i } }
+            for numbers end
+
+            return : array
+        member function declare end
+
+        member function declare start : public ToList { list type : T }
+            variable : list { list type : T } { list new sized : T { member variable : private { this } Length } }
+
+            for numbers start : i int 0 { member variable : private { this } Length }
+                operation : { { list index : list i } equals { array index : { member variable : private { this } Data } i } }
+            for numbers end
+
+            return : list
+        member function declare end
+
+        member function declare start : public ToSet { set type : T }
+            variable : individuals { set type : T } { set new : T }
+
+            for numbers start : i int 0 { member variable : private { this } Length }
+                set add : individuals { array index : { member variable : private { this } Data } i }
+            for numbers end
+
+            return : individuals
+        member function declare end
+    class end
+file end
+-
