@@ -8,11 +8,11 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 /**
  * Initializes a new list.
  */
-export class ListInitializeCommand extends Command {
+export class ListNewCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListInitialize)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListNew)
         .withDescription("Initializes a new list")
         .withParameters([
             new SingleParameter("type", "The type of object.", true),
@@ -23,7 +23,7 @@ export class ListInitializeCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListInitializeCommand.metadata;
+        return ListNewCommand.metadata;
     }
 
     /**
@@ -35,7 +35,7 @@ export class ListInitializeCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (this.language.syntax.lists.asArray) {
-            parameters[0] = CommandNames.ArrayInitialize;
+            parameters[0] = CommandNames.ArrayNew;
             return this.context.convertParsed(parameters);
         }
 

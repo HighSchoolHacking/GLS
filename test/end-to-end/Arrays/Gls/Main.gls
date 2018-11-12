@@ -3,12 +3,12 @@ file start : Arrays index
     main context start
         main start
             comment line : Initialization
-            variable : aaa { array type : string } { array initialize : string }
-            variable : bbb { array type : int } { array initialize : int 1 2 3 }
-            variable : ccc { array type : { array type : string } } { array initialize : { array type : string } aaa { array initialize : string "eee" "fff" "ggg" } }
+            variable : aaa { array type : string } { array new : string }
+            variable : bbb { array type : int } { array new : int 1 2 3 }
+            variable : ccc { array type : { array type : string } } { array new : { array type : string } aaa { array new : string "eee" "fff" "ggg" } }
 
             comment line : Members
-            variable : fruits { array type : string } { array initialize : string "apple" "banana" "cherry" }
+            variable : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
             print : { string format : ("The first fruit is {0}.") { array index : fruits 0 } string }
 
             comment line : Length
