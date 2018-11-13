@@ -1,0 +1,10 @@
+root borders apple
+root borders banana
+apple borders red
+apple borders yellow
+banana borders yellow
+root
+apple
+red
+yellow
+banana

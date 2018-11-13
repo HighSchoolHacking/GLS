@@ -1,0 +1,13 @@
+-
+file start : Graphs Data UnweightedNode
+    class start : export { generic type : UnweightedNode T }
+        member variable declare : public Data T
+        member variable declare : public Neighbors { list type : { generic type : UnweightedNode T } }
+
+        constructor start : public UnweightedNode data T
+            member variable set : public { this } Data data
+            member variable set : public { this } Neighbors { list new : { generic type : UnweightedNode T } }
+        constructor end
+    class end
+file end
+-

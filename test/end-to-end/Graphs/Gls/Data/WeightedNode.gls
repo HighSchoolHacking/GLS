@@ -1,0 +1,13 @@
+-
+file start : Graphs Data WeightedNode
+    class start : export { generic type : WeightedNode T }
+        member variable declare : public Data T
+        member variable declare : public Edges { list type : { generic type : Edge T } }
+
+        constructor start : public WeightedNode data T
+            member variable set : public { this } Data data
+            member variable set : public { this } Edges { list new : { generic type : Edge T } }
+        constructor end
+    class end
+file end
+-

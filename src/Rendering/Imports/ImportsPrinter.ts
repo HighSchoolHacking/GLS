@@ -150,7 +150,7 @@ export class ImportsPrinter {
         const individualPackagePaths = this.individualizePackagePaths(addedImport.packagePath);
         let line = this.directoryCaseStyleConverter.convert(individualPackagePaths);
 
-        if (this.language.syntax.imports.useLocalRelativePaths) {
+        if (this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
             line = "./" + line;
         }
 

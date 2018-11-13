@@ -81,7 +81,7 @@ export class RenderContext {
         const allLineResults: LineResults[] = [];
         const importsStore = new ImportsStore();
 
-        // 1. Add line results in order, recording any added imports they need.
+        // Add line results in order, recording any added imports they need.
         for (const node of glsFile.getNodes()) {
             const lineResults: LineResults = this.nodeRenderer.renderNode(node);
 
