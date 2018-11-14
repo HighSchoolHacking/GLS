@@ -1,4 +1,3 @@
-//
 try {
     throw new Exception("Oh no!");
 } catch (Exception error) {
@@ -6,4 +5,3 @@ try {
 } finally {
     // ...
 }
-//

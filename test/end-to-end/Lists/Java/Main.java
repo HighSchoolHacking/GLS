@@ -1,4 +1,3 @@
-//
 package lists;
 
 import java.util.ArrayList;
@@ -44,4 +43,3 @@ class Index {
         }
     }
 }
-//

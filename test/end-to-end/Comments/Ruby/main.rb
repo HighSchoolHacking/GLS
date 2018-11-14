@@ -1,4 +1,3 @@
-#
 =begin
 
 aaa bbb ccc
@@ -6,4 +5,3 @@ aaa bbb ccc
 
 # puts "Hello, world!"
 puts "Hello, world!"
-#

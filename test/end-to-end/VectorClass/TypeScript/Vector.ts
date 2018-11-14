@@ -1,4 +1,3 @@
-//
 export class Vector<T> {
     private data: T[];
     private capacity: number;
@@ -104,4 +103,3 @@ export class Vector<T> {
         return individuals;
     }
 }
-//

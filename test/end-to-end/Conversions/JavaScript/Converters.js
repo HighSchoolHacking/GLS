@@ -1,4 +1,3 @@
-//
 exports.tryAsDouble = function tryAsDouble(doubleLike) {
     let asDouble = parseFloat(doubleLike);
 
@@ -15,4 +14,3 @@ exports.tryAsInt = function tryAsInt(firstIntLike, secondIntLike) {
         console.log(`Both are ints: ${firstInt} ${secondInt}`);
     }
 }
-//

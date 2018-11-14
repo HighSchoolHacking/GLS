@@ -1,4 +1,3 @@
-#
 def try_as_double(doubleLike)
     asDouble = Float(doubleLike) rescue nil
 
@@ -15,4 +14,3 @@ def try_as_int(firstIntLike, secondIntLike)
         puts "Both are ints: %d %d" % [firstInt, secondInt]
     end
 end
-#

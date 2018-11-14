@@ -1,4 +1,3 @@
-#
 
 class NonCachingGenerator
     def generate(index)
@@ -12,4 +11,3 @@ class NonCachingGenerator
         return one + two
     end
 end
-#

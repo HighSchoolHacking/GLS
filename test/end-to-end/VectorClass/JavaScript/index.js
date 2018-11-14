@@ -1,4 +1,3 @@
-//
 const { Vector } = require("./Vector");
 
 let vector = new Vector();
@@ -38,4 +37,3 @@ sorted.sort();
 for (let word of sorted) {
     console.log(`Set word: ${word}`);
 }
-//

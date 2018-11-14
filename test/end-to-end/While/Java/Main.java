@@ -1,4 +1,3 @@
-//
 package while;
 
 class Index {
@@ -21,4 +20,3 @@ class Index {
         }
     }
 }
-//

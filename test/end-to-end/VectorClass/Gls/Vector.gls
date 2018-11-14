@@ -1,4 +1,3 @@
--
 file start : VectorClass Vector
     class start : export { generic type : Vector T }
         member variable declare : private Data { array type : T }
@@ -106,4 +105,3 @@ file start : VectorClass Vector
         member function declare end
     class end
 file end
--

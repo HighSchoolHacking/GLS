@@ -1,4 +1,3 @@
--
 file start : Enums Index
     enum start : Direction
         enum member : Unknown 0 ,
@@ -19,4 +18,3 @@ file start : Enums Index
         main end
     main context end
 file end
--

@@ -1,4 +1,3 @@
-#
 
 class CachingGenerator
     attr_accessor :cache
@@ -25,4 +24,3 @@ class CachingGenerator
         return self.cache.key?(index)
     end
 end
-#

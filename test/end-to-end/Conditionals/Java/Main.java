@@ -1,4 +1,3 @@
-//
 package conditionals;
 
 class Index {
@@ -23,4 +22,3 @@ class Index {
         }
     }
 }
-//

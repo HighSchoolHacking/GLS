@@ -1,4 +1,3 @@
-//
 using PointClass;
 using System;
 
@@ -20,4 +19,3 @@ namespace PointClass
         }
     }
 }
-//

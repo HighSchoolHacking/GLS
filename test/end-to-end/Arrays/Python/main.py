@@ -1,4 +1,3 @@
-#
 if __name__ == "__main__":
     # Initialization
     aaa = []
@@ -11,4 +10,3 @@ if __name__ == "__main__":
 
     # Length
     print("There are {0} fruits.".format(len(fruits)))
-#

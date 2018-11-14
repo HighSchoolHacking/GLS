@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace STrings
@@ -35,4 +34,3 @@ namespace STrings
         }
     }
 }
-//

@@ -1,4 +1,3 @@
-//
 // Initialization
 let haystack: string = "Hello, GLS!";
 console.log(haystack);
@@ -23,4 +22,3 @@ console.log(`Found a first result at: ${firstIndexOf}.`);
 if (secondIndexOf !== -1) {
     console.log(`Found a second result at: ${secondIndexOf}.`);
 }
-//

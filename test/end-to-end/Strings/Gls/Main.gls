@@ -1,4 +1,3 @@
--
 file start : STrings index
     main context start
         main start
@@ -29,4 +28,3 @@ file start : STrings index
         main end
     main context end
 file end
--

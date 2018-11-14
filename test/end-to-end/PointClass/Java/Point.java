@@ -1,4 +1,3 @@
-//
 package pointclass;
 
 public class Point {
@@ -12,4 +11,3 @@ public class Point {
         this.vector = x * y;
     }
 }
-//

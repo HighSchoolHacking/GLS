@@ -1,4 +1,3 @@
-//
 package lists;
 
 import lists.Converters;
@@ -17,4 +16,3 @@ class Index {
         Converters.tryAsInt(intNotLike, "fish");
     }
 }
-//

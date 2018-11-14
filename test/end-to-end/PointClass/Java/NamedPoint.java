@@ -1,4 +1,3 @@
-//
 package pointclass;
 
 import pointclass.Point;
@@ -15,4 +14,3 @@ public class NamedPoint extends Point {
         return String.format("%0$s at [%1$d, %2$d] with vector %3$d", this.name, this.x, this.y, this.vector);
     }
 }
-//

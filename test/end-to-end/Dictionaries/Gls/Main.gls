@@ -1,4 +1,3 @@
--
 file start : Dictionaries index
     main context start
         main start
@@ -36,4 +35,3 @@ file start : Dictionaries index
         main end
     main context end
 file end
--

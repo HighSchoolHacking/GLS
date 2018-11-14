@@ -1,4 +1,3 @@
--
 file start : PointClass NamedPoint
     import local : PointClass Point use Point
 
@@ -14,4 +13,3 @@ file start : PointClass NamedPoint
         member function declare end
     class end
 file end
--

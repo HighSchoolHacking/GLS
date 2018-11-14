@@ -1,4 +1,3 @@
-//
 import java.util.Arrays;
 
 class Utilities {
@@ -20,4 +19,3 @@ class Utilities {
         System.out.println("Logging: " + word);
     }
 }
-//

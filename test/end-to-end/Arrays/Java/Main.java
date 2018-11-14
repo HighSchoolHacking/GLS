@@ -1,4 +1,3 @@
-//
 package arrays;
 
 import java.util.Arrays;
@@ -18,4 +17,3 @@ class Index {
         System.out.println(String.format("There are %0$d fruits.", fruits.length));
     }
 }
-//

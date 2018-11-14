@@ -1,4 +1,3 @@
-//
 using System;
 
 try
@@ -13,4 +12,3 @@ finally
 {
     // ...
 }
-//

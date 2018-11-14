@@ -1,4 +1,3 @@
-//
 namespace PointClass
 {
     public class Point
@@ -15,4 +14,3 @@ namespace PointClass
         }
     }
 }
-//

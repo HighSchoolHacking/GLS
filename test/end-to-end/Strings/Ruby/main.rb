@@ -1,4 +1,3 @@
-#
 # Initialization
 haystack = "Hello, GLS!"
 puts haystack
@@ -23,4 +22,3 @@ puts "Found a first result at: %d." % [firstIndexOf]
 if secondIndexOf != nil
     puts "Found a second result at: %d." % [secondIndexOf]
 end
-#
