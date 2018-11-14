@@ -33,6 +33,6 @@ export class NameSplitter {
      * @returns Whether the letter is uppercase.
      */
     private isUpperCase(letter: string): boolean {
-        return letter === letter.toUpperCase();
+        return letter !== letter.toLowerCase();
     }
 }

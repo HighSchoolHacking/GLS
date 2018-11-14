@@ -1,3 +1,3 @@
 //
-const { Fff, Ggg } = require("./../../Eee");
+const { Fff, Ggg } = require("../../Eee");
 //

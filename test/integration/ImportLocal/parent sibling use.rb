@@ -1,3 +1,3 @@
 #
-require_relative "./._./._./eee"
+require_relative "../../eee"
 #

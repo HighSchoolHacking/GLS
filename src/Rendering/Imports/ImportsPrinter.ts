@@ -101,7 +101,7 @@ export class ImportsPrinter {
         let line: string = this.renderImportLeft(addedImport.relativity);
 
         if (this.language.syntax.imports.itemsBeforePackage) {
-            if (this.language.syntax.imports.explicit) {
+            if (this.language.syntax.imports.explicitItems) {
                 line += item;
                 line += this.language.syntax.imports.middle;
             }
@@ -110,7 +110,7 @@ export class ImportsPrinter {
         } else {
             line += this.renderPackagePath(addedImport);
 
-            if (this.language.syntax.imports.explicit) {
+            if (this.language.syntax.imports.explicitItems) {
                 line += this.language.syntax.imports.middle;
                 line += item;
             }
@@ -143,14 +143,15 @@ export class ImportsPrinter {
      * @returns The import's rendered package path.
      */
     private renderPackagePath(addedImport: Import): string {
-        if (addedImport.relativity === ImportRelativity.Absolute) {
-            return this.directoryCaseStyleConverter.convert(addedImport.packagePath);
+        let packagePath = addedImport.packagePath;
+
+        if (addedImport.relativity !== ImportRelativity.Absolute || this.language.syntax.imports.explicitAbsoluteFileName) {
+            packagePath = this.individualizePackagePaths(packagePath);
         }
 
-        const individualPackagePaths = this.individualizePackagePaths(addedImport.packagePath);
-        let line = this.directoryCaseStyleConverter.convert(individualPackagePaths);
+        let line = this.directoryCaseStyleConverter.convert(packagePath);
 
-        if (this.language.syntax.imports.useLocalRelativePaths) {
+        if (addedImport.relativity !== ImportRelativity.Absolute && this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
             line = "./" + line;
         }
 
