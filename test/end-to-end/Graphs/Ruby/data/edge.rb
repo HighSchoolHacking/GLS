@@ -9,4 +9,3 @@ class Edge
         self.to = to
     end
 end
-

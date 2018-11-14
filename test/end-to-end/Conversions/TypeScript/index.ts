@@ -10,4 +10,3 @@ tryAsDouble(doubleLike);
 tryAsDouble(doubleNotLike);
 tryAsInt(intLike, "10");
 tryAsInt(intNotLike, "fish");
-

@@ -41,4 +41,3 @@ def traverse_weighted_depth_first_search(start, nodes, visited)
         end
     end
 end
-

@@ -5,4 +5,3 @@ end
 (3...15).step(2) do |bbb|
     puts "bbb is %d" % [bbb]
 end
-

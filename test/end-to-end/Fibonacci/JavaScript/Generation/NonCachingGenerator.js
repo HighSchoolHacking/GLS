@@ -11,4 +11,3 @@ exports.NonCachingGenerator = class NonCachingGenerator {
         return one + two;
     }
 }
-

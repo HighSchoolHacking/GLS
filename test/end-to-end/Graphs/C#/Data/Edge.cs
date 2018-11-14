@@ -14,4 +14,3 @@ namespace Graphs.Data
         }
     }
 }
-

@@ -5,4 +5,3 @@ try {
 } finally {
     // ...
 }
-

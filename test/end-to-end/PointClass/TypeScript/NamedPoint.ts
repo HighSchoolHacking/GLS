@@ -12,4 +12,3 @@ export class NamedPoint extends Point {
         return `${this.name} at [${this.x}, ${this.y}] with vector ${this.vector}`;
     }
 }
-

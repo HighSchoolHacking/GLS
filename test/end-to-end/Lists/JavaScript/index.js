@@ -35,4 +35,3 @@ for (let flavor of flavors) {
 for (let i = 0; i < flavors.length; i += 1) {
     console.log(`Flavor ${i}: ${flavors[i]}.`);
 }
-

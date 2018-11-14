@@ -9,4 +9,3 @@ puts "The first fruit is %s." % [fruits[0]]
 
 # Length
 puts "There are %d fruits." % [fruits.length]
-

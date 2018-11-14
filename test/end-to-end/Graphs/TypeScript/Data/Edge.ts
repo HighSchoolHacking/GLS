@@ -9,4 +9,3 @@ export class Edge<T> {
         this.to = to;
     }
 }
-

@@ -12,4 +12,3 @@ export class NonCachingGenerator implements IGenerator {
         return one + two;
     }
 }
-

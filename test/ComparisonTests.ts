@@ -49,7 +49,7 @@ export interface ICommandComparisonTestSettings {
     /**
      * Whether the first and last line should be the language's comment marker.
      */
-    useOutsideComments?: boolean;
+    useWrappingComments?: boolean;
 }
 
 const caseStyleConverterBag = new CaseStyleConverterBag();
@@ -78,8 +78,8 @@ const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestS
     const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".gls");
     const gls = new Gls(settings.languageName);
     const language = gls.getLanguage();
-    const commentMarker = settings.useOutsideComments ? language.syntax.comments.lineLeft : undefined;
-    const source = await readCommandFile(sourceFilePath, settings.useOutsideComments);
+    const commentMarker = settings.useWrappingComments ? language.syntax.comments.lineLeft : undefined;
+    const source = await readCommandFile(sourceFilePath, settings.useWrappingComments);
 
     const baseline = gls.convert(source);
     const languagePath = createLanguageFilePath(settings, language);
@@ -96,8 +96,8 @@ const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings
 
     // Act
     const [expected, source] = await Promise.all([
-        readCommandFile(languagePath, settings.useOutsideComments),
-        readCommandFile(sourceFilePath, settings.useOutsideComments),
+        readCommandFile(languagePath, settings.useWrappingComments),
+        readCommandFile(sourceFilePath, settings.useWrappingComments),
     ]);
 
     // Assert

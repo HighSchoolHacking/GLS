@@ -51,4 +51,3 @@ namespace Graphs.Testing
         }
     }
 }
-

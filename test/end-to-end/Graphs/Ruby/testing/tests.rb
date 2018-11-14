@@ -34,4 +34,3 @@ end
 def test_weighted()
     puts "Hello, world!"
 end
-

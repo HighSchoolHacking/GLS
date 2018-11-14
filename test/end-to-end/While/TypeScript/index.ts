@@ -14,4 +14,3 @@ while (count < 5) {
 
     console.log(`count is ${count}`);
 }
-

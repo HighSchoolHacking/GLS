@@ -19,4 +19,3 @@ class UnweightedNode
         return self.neighborNodes
     end
 end
-

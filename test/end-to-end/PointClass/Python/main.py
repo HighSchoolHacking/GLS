@@ -10,4 +10,3 @@ if __name__ == "__main__":
     named = NamedPoint(3, 4, "My Point")
 
     print(named.get_label())
-

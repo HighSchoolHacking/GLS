@@ -6,4 +6,3 @@ exports.Edge = class Edge {
         this.to = to;
     }
 }
-

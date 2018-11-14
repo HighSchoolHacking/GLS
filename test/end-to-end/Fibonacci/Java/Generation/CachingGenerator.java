@@ -28,4 +28,3 @@ public class CachingGenerator implements IGenerator {
         return this.cache.containsKey(index);
     }
 }
-

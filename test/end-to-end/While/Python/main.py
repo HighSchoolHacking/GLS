@@ -12,4 +12,3 @@ if __name__ == "__main__":
             continue
 
         print("count is {0}".format(count))
-

@@ -22,4 +22,3 @@ def try_as_int(firstIntLike, secondIntLike):
 
     if firstInt is not None and secondInt is not None:
         print("Both are ints: {0} {1}".format(firstInt, secondInt))
-

@@ -5,4 +5,3 @@ namespace Fibonacci.Generation
         int Generate(int index);
     }
 }
-

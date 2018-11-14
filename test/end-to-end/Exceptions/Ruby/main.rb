@@ -5,4 +5,3 @@ rescue Exception => error
 ensure
     # ...
 end
-

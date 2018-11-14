@@ -36,4 +36,3 @@ use_generator(uncached)
 
 check_cache(cached, 7)
 check_cache(cached, 14)
-

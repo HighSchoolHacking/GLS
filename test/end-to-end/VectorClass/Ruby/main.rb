@@ -38,4 +38,3 @@ sorted.sort!()
 for word in sorted
     puts "Set word: %s" % [word]
 end
-

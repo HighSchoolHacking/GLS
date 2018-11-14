@@ -14,4 +14,3 @@ public class NonCachingGenerator implements IGenerator {
         return one + two;
     }
 }
-

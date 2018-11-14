@@ -24,4 +24,3 @@ class CachingGenerator
         return self.cache.key?(index)
     end
 end
-

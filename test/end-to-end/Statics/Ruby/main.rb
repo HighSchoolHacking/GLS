@@ -17,4 +17,3 @@ class Utilities
         puts "Logging: " + word
     end
 end
-

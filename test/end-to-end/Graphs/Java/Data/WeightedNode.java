@@ -27,4 +27,3 @@ public class WeightedNode<T> implements INode<WeightedNode<T>> {
         return nodes;
     }
 }
-

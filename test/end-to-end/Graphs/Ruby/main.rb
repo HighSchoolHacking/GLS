@@ -4,4 +4,3 @@ require_relative "./testing/tests"
 
 test_unweighted()
 test_weighted()
-

@@ -10,4 +10,3 @@ class Main {
         Tests.testWeighted();
     }
 }
-

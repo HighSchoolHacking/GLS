@@ -42,4 +42,3 @@ public static class Tests {
         System.out.println("Hello, world!");
     }
 }
-

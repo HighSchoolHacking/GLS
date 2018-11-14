@@ -9,4 +9,3 @@ console.log(`The first fruit is ${fruits[0]}.`);
 
 // Length
 console.log(`There are ${fruits.length} fruits.`);
-

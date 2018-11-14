@@ -35,4 +35,3 @@ export function testUnweighted(): void {
 export function testWeighted(): void {
     console.log("Hello, world!");
 }
-

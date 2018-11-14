@@ -28,7 +28,7 @@ const runFileComparisonTests = (directory: string, sourceFileName: string) => {
                     projectDirectory: directory,
                     sourceDirectory: directory,
                     sourceFileName,
-                    useOutsideComments: true,
+                    useWrappingComments: true,
                 });
             });
         }

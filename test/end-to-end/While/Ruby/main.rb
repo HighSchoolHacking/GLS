@@ -14,4 +14,3 @@ while count < 5
 
     puts "count is %d" % [count]
 end
-

@@ -25,4 +25,3 @@ export class CachingGenerator implements IGenerator {
         return {}.hasOwnProperty.call(this.cache, index);
     }
 }
-

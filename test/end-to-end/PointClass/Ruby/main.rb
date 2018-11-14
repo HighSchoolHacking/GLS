@@ -9,4 +9,3 @@ puts point.y
 named = NamedPoint.new(3, 4, "My Point")
 
 puts named.get_label()
-

@@ -9,4 +9,3 @@ class Point
         self.vector = x * y
     end
 end
-

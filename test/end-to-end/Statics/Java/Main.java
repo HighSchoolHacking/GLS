@@ -19,4 +19,3 @@ class Utilities {
         System.out.println("Logging: " + word);
     }
 }
-

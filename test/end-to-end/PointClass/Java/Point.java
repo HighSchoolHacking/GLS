@@ -11,4 +11,3 @@ public class Point {
         this.vector = x * y;
     }
 }
-

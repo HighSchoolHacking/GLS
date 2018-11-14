@@ -79,4 +79,3 @@ class Vector:
             individuals.add(self.__data[i])
 
         return individuals
-

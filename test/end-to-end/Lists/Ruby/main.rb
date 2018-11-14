@@ -35,4 +35,3 @@ end
 for i in 0...flavors.length
     puts "Flavor %d: %s." % [i, flavors[i]]
 end
-

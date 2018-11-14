@@ -100,4 +100,3 @@ exports.Vector = class Vector {
         return individuals;
     }
 }
-

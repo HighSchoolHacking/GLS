@@ -11,4 +11,3 @@ if __name__ == "__main__":
     try_as_double(doubleNotLike)
     try_as_int(intLike, "10")
     try_as_int(intNotLike, "fish")
-

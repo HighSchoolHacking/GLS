@@ -40,4 +40,3 @@ function traverseWeightedDepthFirstSearch<T>(start: WeightedNode<T>, nodes: Weig
         }
     }
 }
-

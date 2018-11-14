@@ -21,4 +21,3 @@ exports.WeightedNode = class WeightedNode {
         return nodes;
     }
 }
-

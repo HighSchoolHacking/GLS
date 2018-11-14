@@ -14,4 +14,3 @@ class Utilities:
     @staticmethod
     def log(word):
         print("Logging: " + word)
-

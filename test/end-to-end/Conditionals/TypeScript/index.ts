@@ -16,4 +16,3 @@ if (1 + 1 === 3) {
 } else {
     console.log("else if else");
 }
-

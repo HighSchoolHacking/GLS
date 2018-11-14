@@ -108,4 +108,3 @@ public class Vector<T> {
         return individuals;
     }
 }
-

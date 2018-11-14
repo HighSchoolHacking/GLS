@@ -23,4 +23,3 @@ class WeightedNode
         return nodes
     end
 end
-

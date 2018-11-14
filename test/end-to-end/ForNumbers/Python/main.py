@@ -4,4 +4,3 @@ if __name__ == "__main__":
 
     for bbb in range(3, 15, 2):
         print("bbb is {0}".format(bbb))
-

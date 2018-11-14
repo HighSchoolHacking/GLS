@@ -24,4 +24,3 @@ class Utilities
         Console.WriteLine("Logging: " + word);
     }
 }
-

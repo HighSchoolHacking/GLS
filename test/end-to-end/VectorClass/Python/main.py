@@ -34,4 +34,3 @@ if __name__ == "__main__":
 
     for word in sorted:
         print("Set word: {0}".format(word))
-

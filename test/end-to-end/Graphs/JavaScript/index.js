@@ -4,4 +4,3 @@ const { testUnweighted, testWeighted } = require("./Testing/Tests");
 
 testUnweighted();
 testWeighted();
-

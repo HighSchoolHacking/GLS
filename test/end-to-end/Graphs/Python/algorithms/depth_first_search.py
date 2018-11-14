@@ -32,4 +32,3 @@ def traverse_weighted_depth_first_search(start, nodes, visited):
     for node in start.get_neighbors_in_order():
         if not node in visited:
             traverse_weighted_depth_first_search(node, nodes, visited)
-

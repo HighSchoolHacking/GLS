@@ -17,4 +17,3 @@ class Utilities {
         console.log("Logging: " + word);
     }
 }
-

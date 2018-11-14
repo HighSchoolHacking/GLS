@@ -18,7 +18,7 @@ export interface IFileComparisonSettings {
     files: string[];
     languageName: string;
     projectDirectory: string;
-    useOutsideComments?: boolean;
+    useWrappingComments?: boolean;
 }
 
 export const ensureSameFileComparisons = async (settings: IFileComparisonSettings) => {
@@ -31,7 +31,7 @@ export const ensureSameFileComparisons = async (settings: IFileComparisonSetting
             sourceDirectory: path.join(settings.projectDirectory, "Gls"),
             sourceFileName: file,
             transformFilePath: true,
-            useOutsideComments: settings.useOutsideComments,
+            useWrappingComments: settings.useWrappingComments,
         });
     }
 };

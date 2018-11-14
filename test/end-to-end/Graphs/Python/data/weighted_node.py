@@ -18,4 +18,3 @@ class WeightedNode:
         self.__edges.sort(lambda a, b: floor(a.distance - b.distance))
 
         return nodes
-

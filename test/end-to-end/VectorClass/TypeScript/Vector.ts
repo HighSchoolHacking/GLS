@@ -103,4 +103,3 @@ export class Vector<T> {
         return individuals;
     }
 }
-

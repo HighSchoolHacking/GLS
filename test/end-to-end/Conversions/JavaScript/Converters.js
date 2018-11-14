@@ -14,4 +14,3 @@ exports.tryAsInt = function tryAsInt(firstIntLike, secondIntLike) {
         console.log(`Both are ints: ${firstInt} ${secondInt}`);
     }
 }
-

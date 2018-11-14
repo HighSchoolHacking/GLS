@@ -24,4 +24,3 @@ export class WeightedNode<T> implements INode<WeightedNode<T>> {
         return nodes;
     }
 }
-

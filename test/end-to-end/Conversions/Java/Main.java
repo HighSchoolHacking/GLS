@@ -16,4 +16,3 @@ class Index {
         Converters.tryAsInt(intNotLike, "fish");
     }
 }
-

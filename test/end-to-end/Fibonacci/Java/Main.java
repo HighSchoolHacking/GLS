@@ -43,4 +43,3 @@ class Main {
         Main.checkCache(cached, 14);
     }
 }
-

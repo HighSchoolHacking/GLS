@@ -7,4 +7,3 @@ namespace Graphs.Data
         List<TNode> GetNeighborsInOrder();
     }
 }
-

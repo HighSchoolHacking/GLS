@@ -31,4 +31,3 @@ if __name__ == "__main__":
 
     check_cache(cached, 7)
     check_cache(cached, 14)
-

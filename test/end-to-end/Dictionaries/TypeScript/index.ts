@@ -29,4 +29,3 @@ if ({}.hasOwnProperty.call(container, "bbb")) {
 // Setting
 container["aaa"] = 7;
 console.log(container["aaa"]);
-

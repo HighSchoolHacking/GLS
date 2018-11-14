@@ -104,4 +104,3 @@ class Vector
         return individuals
     end
 end
-

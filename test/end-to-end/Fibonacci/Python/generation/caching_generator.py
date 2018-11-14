@@ -18,4 +18,3 @@ class CachingGenerator:
 
     def is_cached(self, index):
         return index in self.__cache
-

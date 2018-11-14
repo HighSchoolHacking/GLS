@@ -19,4 +19,3 @@ namespace Fibonacci.Generation
         }
     }
 }
-

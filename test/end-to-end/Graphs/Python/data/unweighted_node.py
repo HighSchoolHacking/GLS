@@ -13,4 +13,3 @@ class UnweightedNode:
 
     def get_neighbors_in_order(self):
         return self.__neighbor_nodes
-

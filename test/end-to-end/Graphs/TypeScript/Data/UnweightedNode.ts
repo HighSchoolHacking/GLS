@@ -20,4 +20,3 @@ export class UnweightedNode<T> implements INode<UnweightedNode<T>> {
         return this.neighborNodes;
     }
 }
-

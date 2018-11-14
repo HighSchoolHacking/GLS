@@ -30,10 +30,10 @@ const getCommentMarker = (extension: string): string => {
  * Extracts the test case contents of a command file.
  *
  * @param filePath   Path to the file.
- * @param useOutsideComments   Whether the first and last line should be the language's comment marker.
+ * @param useWrappingComments   Whether the first and last line should be the language's comment marker.
  * @returns Promise for lines of text for the file's test case.
  */
-export const readCommandFile = async (filePath: string, useOutsideComments: boolean = false): Promise<string[]> => {
+export const readCommandFile = async (filePath: string, useWrappingComments?: boolean): Promise<string[]> => {
     const extension = filePath.substring(filePath.lastIndexOf("."));
     let lines = (await fs.readFile(filePath))
         .toString()
@@ -41,10 +41,10 @@ export const readCommandFile = async (filePath: string, useOutsideComments: bool
         .split("\n");
 
     if (lines[lines.length - 1] !== "") {
-        throw new Error(`The last line in a '${filePath}' case should be blank.`);
+        throw new Error(`The last line of the a '${filePath}' case should be blank.`);
     }
 
-    if (useOutsideComments) {
+    if (useWrappingComments) {
         const comment = getCommentMarker(extension);
 
         if (lines[0] !== comment) {
@@ -56,6 +56,8 @@ export const readCommandFile = async (filePath: string, useOutsideComments: bool
         }
 
         lines = lines.slice(1, lines.length - 2);
+    } else {
+        lines = lines.slice(0, lines.length - 1);
     }
 
     return lines;
@@ -65,8 +67,8 @@ export const readCommandFile = async (filePath: string, useOutsideComments: bool
  * Writes acceptance of a baseline file, borded by comment markers.
  *
  * @param filePath   Path to the file.
- * @param commentMarker   Comment marker for the test language.
  * @param contents   Lines of content to add between comment markers.
+ * @param commentMarker   Comment marker for the test language.
  * @returns Promise for writing to the file.
  */
 export const writeBaselineFile = async (filePath: string, contents: string[], commentMarker: string | undefined): Promise<void> => {

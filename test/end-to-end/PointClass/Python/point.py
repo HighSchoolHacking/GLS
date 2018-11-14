@@ -4,4 +4,3 @@ class Point:
         self.x = x
         self.y = y
         self._vector = x * y
-

@@ -23,4 +23,3 @@ exports.CachingGenerator = class CachingGenerator {
         return {}.hasOwnProperty.call(this.cache, index);
     }
 }
-

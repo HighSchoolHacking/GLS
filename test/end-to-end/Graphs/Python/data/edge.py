@@ -4,4 +4,3 @@ class Edge:
         self.distance = distance
         self.from = from
         self.to = to
-

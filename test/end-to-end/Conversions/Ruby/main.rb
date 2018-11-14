@@ -10,4 +10,3 @@ try_as_double(doubleLike)
 try_as_double(doubleNotLike)
 try_as_int(intLike, "10")
 try_as_int(intNotLike, "fish")
-

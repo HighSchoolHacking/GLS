@@ -17,4 +17,3 @@ exports.UnweightedNode = class UnweightedNode {
         return this.neighborNodes;
     }
 }
-

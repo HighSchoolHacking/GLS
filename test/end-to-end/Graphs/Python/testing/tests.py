@@ -28,4 +28,3 @@ def test_unweighted():
 
 def test_weighted():
     print("Hello, world!")
-

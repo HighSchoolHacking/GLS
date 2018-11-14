@@ -35,4 +35,3 @@ exports.testUnweighted = function testUnweighted() {
 exports.testWeighted = function testWeighted() {
     console.log("Hello, world!");
 }
-

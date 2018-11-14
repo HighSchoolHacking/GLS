@@ -11,4 +11,3 @@ if __name__ == "__main__":
     unknown = Direction.Unknown
 
     print("unknown variable is {0}".format(unknown))
-

@@ -15,4 +15,3 @@ class Index {
         System.out.println(named.getLabel());
     }
 }
-
