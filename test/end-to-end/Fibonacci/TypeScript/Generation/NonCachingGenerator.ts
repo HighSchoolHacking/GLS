@@ -1,4 +1,3 @@
-//
 import { IGenerator } from "./Generator";
 
 export class NonCachingGenerator implements IGenerator {
@@ -13,4 +12,3 @@ export class NonCachingGenerator implements IGenerator {
         return one + two;
     }
 }
-//

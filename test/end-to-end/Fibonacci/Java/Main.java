@@ -1,4 +1,3 @@
-//
 package fibonacci;
 
 import fibonacci.generation.CachingGenerator;
@@ -44,4 +43,3 @@ class Main {
         Main.checkCache(cached, 14);
     }
 }
-//

@@ -1,4 +1,3 @@
-#
 require_relative "./converters"
 
 # Strings to numbers
@@ -11,4 +10,3 @@ try_as_double(doubleLike)
 try_as_double(doubleNotLike)
 try_as_int(intLike, "10")
 try_as_int(intNotLike, "fish")
-#

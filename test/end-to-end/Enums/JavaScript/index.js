@@ -1,4 +1,3 @@
-//
 const Direction = {
     Unknown: 0,
     Horizontal: 1,
@@ -13,4 +12,3 @@ let direction;
 let unknown = Direction.Unknown;
 
 console.log(`unknown variable is ${unknown}`);
-//

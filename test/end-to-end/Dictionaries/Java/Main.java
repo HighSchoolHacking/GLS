@@ -1,4 +1,3 @@
-//
 package dictionaries;
 
 import java.util.HashMap;
@@ -38,4 +37,3 @@ class Index {
         System.out.println(container["aaa"]);
     }
 }
-//

@@ -1,4 +1,3 @@
-#
 
 class NonCachingGenerator:
     def generate(self, index):
@@ -9,4 +8,3 @@ class NonCachingGenerator:
         two = self.generate(index - 2)
 
         return one + two
-#

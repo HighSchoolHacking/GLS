@@ -1,4 +1,3 @@
-//
 package enums;
 
 enum Direction {
@@ -19,4 +18,3 @@ class Index {
         System.out.println(String.format("unknown variable is %0$d", unknown));
     }
 }
-//

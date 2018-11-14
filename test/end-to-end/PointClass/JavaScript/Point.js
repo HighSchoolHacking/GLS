@@ -1,4 +1,3 @@
-//
 exports.Point = class Point {
 
     constructor(x, y) {
@@ -7,4 +6,3 @@ exports.Point = class Point {
         this.vector = x * y;
     }
 }
-//

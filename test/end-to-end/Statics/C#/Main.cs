@@ -1,4 +1,3 @@
-//
 using System;
 
 class Utilities
@@ -25,4 +24,3 @@ class Utilities
         Console.WriteLine("Logging: " + word);
     }
 }
-//

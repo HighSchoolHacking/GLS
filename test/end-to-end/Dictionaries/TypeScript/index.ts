@@ -1,4 +1,3 @@
-//
 // Types
 let foo: { [i: string]: number } = {};
 let bar: { [i: string]: { [i: string]: number } } = {};
@@ -30,4 +29,3 @@ if ({}.hasOwnProperty.call(container, "bbb")) {
 // Setting
 container["aaa"] = 7;
 console.log(container["aaa"]);
-//

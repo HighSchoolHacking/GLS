@@ -1,4 +1,3 @@
--
 file start : Lists Converters
     standalone functions declare start : export Converters
         standalone function declare start : public TryAsDouble void doubleLike string
@@ -14,4 +13,3 @@ file start : Lists Converters
         standalone function declare end
     standalone functions declare end
 file end
--

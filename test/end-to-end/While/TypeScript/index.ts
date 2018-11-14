@@ -1,4 +1,3 @@
-//
 while (true) {
     console.log("Near-infinite");
     break;
@@ -15,4 +14,3 @@ while (count < 5) {
 
     console.log(`count is ${count}`);
 }
-//

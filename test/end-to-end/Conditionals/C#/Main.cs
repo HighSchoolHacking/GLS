@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace Conditionals
@@ -37,4 +36,3 @@ namespace Conditionals
         }
     }
 }
-//

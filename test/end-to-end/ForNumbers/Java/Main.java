@@ -1,4 +1,3 @@
-//
 package fornumbers;
 
 class Index {
@@ -12,4 +11,3 @@ class Index {
         }
     }
 }
-//

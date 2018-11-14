@@ -1,4 +1,3 @@
-#
 class Direction(Enum):
     Unknown = 0
     Horizontal = 1
@@ -12,4 +11,3 @@ if __name__ == "__main__":
     unknown = Direction.Unknown
 
     print("unknown variable is {0}".format(unknown))
-#

@@ -45,6 +45,11 @@ export interface ICommandComparisonTestSettings {
      * Whether to transform output file paths to language-style names.
      */
     transformFilePath?: boolean;
+
+    /**
+     * Whether the first and last line should be the language's comment marker.
+     */
+    useWrappingComments?: boolean;
 }
 
 const caseStyleConverterBag = new CaseStyleConverterBag();
@@ -73,13 +78,13 @@ const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestS
     const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".gls");
     const gls = new Gls(settings.languageName);
     const language = gls.getLanguage();
-    const commentMarker = language.syntax.comments.lineLeft;
-    const source = await readCommandFile(sourceFilePath);
+    const commentMarker = settings.useWrappingComments ? language.syntax.comments.lineLeft : undefined;
+    const source = await readCommandFile(sourceFilePath, settings.useWrappingComments);
 
     const baseline = gls.convert(source);
     const languagePath = createLanguageFilePath(settings, language);
 
-    await writeBaselineFile(languagePath, commentMarker, baseline);
+    await writeBaselineFile(languagePath, baseline, commentMarker);
 };
 
 const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings): Promise<void> => {
@@ -90,7 +95,10 @@ const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings
     const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".gls");
 
     // Act
-    const [expected, source] = await Promise.all([readCommandFile(languagePath), readCommandFile(sourceFilePath)]);
+    const [expected, source] = await Promise.all([
+        readCommandFile(languagePath, settings.useWrappingComments),
+        readCommandFile(sourceFilePath, settings.useWrappingComments),
+    ]);
 
     // Assert
     expect(gls.convert(source)).to.be.deep.equal(expected, languagePath);

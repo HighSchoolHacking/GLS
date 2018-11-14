@@ -1,4 +1,3 @@
-#
 from point import Point
 
 class NamedPoint(Point):
@@ -9,4 +8,3 @@ class NamedPoint(Point):
 
     def get_label(self):
         return "{0} at [{1}, {2}] with vector {3}".format(self.__name, self.x, self.y, self._vector)
-#

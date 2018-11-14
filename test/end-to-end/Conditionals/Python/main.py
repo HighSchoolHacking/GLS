@@ -1,4 +1,3 @@
-#
 if __name__ == "__main__":
     if True:
         print("if true")
@@ -15,4 +14,3 @@ if __name__ == "__main__":
         print("wrong else if")
     else:
         print("else if else")
-#

@@ -1,4 +1,3 @@
-//
 using PointClass;
 
 namespace PointClass
@@ -20,4 +19,3 @@ namespace PointClass
         }
     }
 }
-//

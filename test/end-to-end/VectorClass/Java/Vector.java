@@ -1,4 +1,3 @@
-//
 package vectorclass;
 
 import java.util.Arrays;
@@ -109,4 +108,3 @@ public class Vector<T> {
         return individuals;
     }
 }
-//

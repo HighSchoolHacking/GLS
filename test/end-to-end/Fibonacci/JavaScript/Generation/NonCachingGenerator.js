@@ -1,4 +1,3 @@
-//
 
 exports.NonCachingGenerator = class NonCachingGenerator {
     generate(index) {
@@ -12,4 +11,3 @@ exports.NonCachingGenerator = class NonCachingGenerator {
         return one + two;
     }
 }
-//

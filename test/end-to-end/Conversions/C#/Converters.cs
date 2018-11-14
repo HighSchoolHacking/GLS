@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace Lists
@@ -22,4 +21,3 @@ namespace Lists
         }
     }
 }
-//

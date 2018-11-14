@@ -1,4 +1,3 @@
-//
 package vectorclass;
 
 import vectorclass.Vector;
@@ -46,4 +45,3 @@ class Index {
         }
     }
 }
-//

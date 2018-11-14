@@ -1,4 +1,3 @@
-//
 package comments;
 
 class Index {
@@ -12,4 +11,3 @@ class Index {
         System.out.println("Hello, world!");
     }
 }
-//
