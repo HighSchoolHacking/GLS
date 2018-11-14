@@ -30,10 +30,10 @@ const getCommentMarker = (extension: string): string => {
  * Extracts the test case contents of a command file.
  *
  * @param filePath   Path to the file.
- * @param useOutsideComments   Whether the first and last line should be the language's comment marker.
+ * @param useWrappingComments   Whether the first and last line should be the language's comment marker.
  * @returns Promise for lines of text for the file's test case.
  */
-export const readCommandFile = async (filePath: string, useOutsideComments?: boolean): Promise<string[]> => {
+export const readCommandFile = async (filePath: string, useWrappingComments?: boolean): Promise<string[]> => {
     const extension = filePath.substring(filePath.lastIndexOf("."));
     let lines = (await fs.readFile(filePath))
         .toString()
@@ -44,7 +44,7 @@ export const readCommandFile = async (filePath: string, useOutsideComments?: boo
         throw new Error(`The last line of the a '${filePath}' case should be blank.`);
     }
 
-    if (useOutsideComments) {
+    if (useWrappingComments) {
         const comment = getCommentMarker(extension);
 
         if (lines[0] !== comment) {
