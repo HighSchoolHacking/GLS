@@ -1,3 +1,3 @@
 #
-from ._. import Eee, Fff
+from bbb import Eee, Fff
 #

@@ -10,9 +10,14 @@ export class ImportSyntax {
     public case: CaseStyle;
 
     /**
+     * Whether file names should be included from absolute imports.
+     */
+    public explicitAbsoluteFileName: boolean;
+
+    /**
      * Whether individual items should be named.
      */
-    public explicit: boolean;
+    public explicitItems: boolean;
 
     /**
      * Whether individual items should be on separate lines.
@@ -38,6 +43,11 @@ export class ImportSyntax {
      * Middle of an import line, between items and package.
      */
     public middle: string;
+
+    /**
+     * Whether the first part of paths should be removed for printing.
+     */
+    public removeFirstPathComponent: boolean;
 
     /**
      * End of an import line.

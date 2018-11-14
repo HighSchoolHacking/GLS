@@ -62,8 +62,12 @@ export abstract class ImportCommand extends Command {
 
         if (this.language.syntax.imports.useLocalRelativeImports) {
             packagePath = ImportCommand.pathResolver.resolve(this.context.getFileMetadata().getPackagePath(), packagePath);
-        } else {
+        } else if (!this.language.syntax.imports.explicitAbsoluteFileName) {
             packagePath.pop();
+        }
+
+        if (relativity === ImportRelativity.Absolute && this.language.syntax.imports.removeFirstPathComponent) {
+            packagePath.shift();
         }
 
         return new LineResults([]).withImports([new Import(packagePath, items, relativity)]);

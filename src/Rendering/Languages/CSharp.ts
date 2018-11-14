@@ -407,7 +407,7 @@ export class CSharp extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PackageUpperCase;
-        imports.explicit = false;
+        imports.explicitItems = false;
         imports.leftAbsolute = "using ";
         imports.leftLocal = "using ";
         imports.right = ";";

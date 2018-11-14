@@ -413,7 +413,7 @@ export class Java extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PackageLowerCase;
-        imports.explicit = true;
+        imports.explicitItems = true;
         imports.explicitLines = true;
         imports.leftAbsolute = "import ";
         imports.leftLocal = "import ";

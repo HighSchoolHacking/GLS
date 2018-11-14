@@ -374,14 +374,15 @@ export class Python extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PythonImportCase;
-        imports.explicit = true;
+        imports.explicitAbsoluteFileName = true;
+        imports.explicitItems = true;
         imports.leftAbsolute = "from ";
         imports.leftLocal = "from ";
         imports.middle = " import ";
         imports.right = "";
         imports.transformFileNames = true;
-        imports.useLocalRelativeImports = true;
-        imports.useLocalRelativePaths = false;
+        imports.removeFirstPathComponent = true;
+        imports.useLocalRelativeImports = false;
     }
 
     /**
