@@ -1,6 +1,5 @@
-#
-require_relative "._./data/unweighted_node"
-require_relative "._./data/weighted_node"
+require_relative "../data/unweighted_node"
+require_relative "../data/weighted_node"
 require "set"
 
 def unweighted_depth_first_search(start)
@@ -16,7 +15,7 @@ def traverse_unweighted_depth_first_search(start, nodes, visited)
     nodes.push(start)
     visited.add(start)
 
-    for neighbor in start.neighbors
+    for neighbor in start.get_neighbors_in_order()
         if !visited.include?(neighbor)
             traverse_unweighted_depth_first_search(neighbor, nodes, visited)
         end
@@ -36,14 +35,10 @@ def traverse_weighted_depth_first_search(start, nodes, visited)
     nodes.push(start)
     visited.add(start)
 
-    for edge in start.edges
-        if !visited.include?(edge.from)
-            traverse_weighted_depth_first_search(edge.from, nodes, visited)
-        end
-
-        if !visited.include?(edge.to)
-            traverse_weighted_depth_first_search(edge.to, nodes, visited)
+    for node in start.get_neighbors_in_order()
+        if !visited.include?(node)
+            traverse_weighted_depth_first_search(node, nodes, visited)
         end
     end
 end
-#
+

@@ -374,14 +374,15 @@ export class Python extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.PythonImportCase;
-        imports.explicit = true;
+        imports.explicitAbsoluteFileName = true;
+        imports.explicitItems = true;
         imports.leftAbsolute = "from ";
         imports.leftLocal = "from ";
         imports.middle = " import ";
         imports.right = "";
         imports.transformFileNames = true;
-        imports.useLocalRelativeImports = true;
-        imports.useLocalRelativePaths = false;
+        imports.removeFirstPathComponent = true;
+        imports.useLocalRelativeImports = false;
     }
 
     /**
@@ -541,7 +542,7 @@ export class Python extends Language {
         operators.minus = "-";
         operators.mod = "%";
         operators.multiplyBy = "*=";
-        operators.not = "!";
+        operators.not = "not ";
         operators.notEqualTo = "!=";
         operators.or = "||";
         operators.plus = "+";

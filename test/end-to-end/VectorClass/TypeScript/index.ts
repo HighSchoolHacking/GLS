@@ -1,4 +1,3 @@
-//
 import { Vector } from "./Vector";
 
 let vector: Vector<string> = new Vector<string>();
@@ -38,4 +37,4 @@ sorted.sort();
 for (let word of sorted) {
     console.log(`Set word: ${word}`);
 }
-//
+

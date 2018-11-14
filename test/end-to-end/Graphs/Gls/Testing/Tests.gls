@@ -1,5 +1,4 @@
--
-file start : Graphs Tests Tests
+file start : Graphs Testing Tests
     import local : Graphs Algorithms DepthFirstSearch use { import standalone functions : DepthFirstSearch UnweightedDepthFirstSearch WeightedDepthFirstSearch }
     import local : Graphs Data UnweightedNode use UnweightedNode
     import local : Graphs Data WeightedNode use WeightedNode
@@ -13,7 +12,7 @@ file start : Graphs Tests Tests
                 dictionary pair : "red" { array new : string } comma
                 dictionary pair : "yellow" { array new : string }
             dictionary new end
-            variable : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UneightedNode string } }
+            variable : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
 
             for each key start : adjacencies key string
                 variable : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } key }
@@ -24,7 +23,7 @@ file start : Graphs Tests Tests
                 variable : node { generic type : UnweightedNode string } { dictionary index : nodes key }
 
                 for each start : neighborKeys neighborKey string
-                    list push : { member variable : public node Neighbors } { dictionary index : nodes neighborKey }
+                    member function : public node AddNeighbor { dictionary index : nodes neighborKey }
                     print : { string format : ("{0} borders {1}") key string neighborKey string }
                 for each end
             for each pair end
@@ -35,7 +34,7 @@ file start : Graphs Tests Tests
         standalone function declare end
 
         standalone function declare start : public TestWeighted void
+            print : ("Hello, world!")
         standalone function declare end
     standalone functions declare end
 file end
--

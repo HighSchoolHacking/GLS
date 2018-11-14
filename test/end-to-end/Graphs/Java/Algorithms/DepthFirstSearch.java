@@ -1,4 +1,3 @@
-//
 package graphs.algorithms;
 
 import graphs.data.UnweightedNode;
@@ -19,7 +18,7 @@ public static class DepthFirstSearch {
         nodes.add(start);
         visited.add(start);
 
-        for (UnweightedNode<T> neighbor : start.neighbors) {
+        for (UnweightedNode<T> neighbor : start.getNeighborsInOrder()) {
             if (!visited.contains(neighbor)) {
                 DepthFirstSearch.traverseUnweightedDepthFirstSearch(neighbor, nodes, visited);
             }
@@ -39,15 +38,11 @@ public static class DepthFirstSearch {
         nodes.add(start);
         visited.add(start);
 
-        for (Edge<T> edge : start.edges) {
-            if (!visited.contains(edge.from)) {
-                DepthFirstSearch.traverseWeightedDepthFirstSearch(edge.from, nodes, visited);
-            }
-
-            if (!visited.contains(edge.to)) {
-                DepthFirstSearch.traverseWeightedDepthFirstSearch(edge.to, nodes, visited);
+        for (WeightedNode<T> node : start.getNeighborsInOrder()) {
+            if (!visited.contains(node)) {
+                DepthFirstSearch.traverseWeightedDepthFirstSearch(node, nodes, visited);
             }
         }
     }
 }
-//
+

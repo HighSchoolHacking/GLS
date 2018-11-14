@@ -1,4 +1,3 @@
--
 file start : PointClass Point
     class start : export Point
         member variable declare : public X int
@@ -12,4 +11,3 @@ file start : PointClass Point
         constructor end
     class end
 file end
--

@@ -1,4 +1,3 @@
-//
 // Initialization
 let aaa: string[] = [];
 let bbb: number[] = [1, 2, 3];
@@ -36,4 +35,4 @@ for (let flavor of flavors) {
 for (let i: number = 0; i < flavors.length; i += 1) {
     console.log(`Flavor ${i}: ${flavors[i]}.`);
 }
-//
+

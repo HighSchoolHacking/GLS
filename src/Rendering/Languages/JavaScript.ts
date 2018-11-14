@@ -403,7 +403,7 @@ export class JavaScript extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.DirectoryUpperCase;
-        imports.explicit = true;
+        imports.explicitItems = true;
         imports.itemsBeforePackage = true;
         imports.leftAbsolute = "const { ";
         imports.leftLocal = "const { ";

@@ -1,4 +1,3 @@
-#
 if __name__ == "__main__":
     # Initialization
     aaa = []
@@ -35,4 +34,4 @@ if __name__ == "__main__":
 
     for i in range(0, len(flavors)):
         print("Flavor {0}: {1}.".format(i, flavors[i]))
-#
+

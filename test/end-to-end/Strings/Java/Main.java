@@ -1,4 +1,3 @@
-//
 package strings;
 
 class Index {
@@ -29,4 +28,4 @@ class Index {
         }
     }
 }
-//
+

@@ -1,4 +1,3 @@
--
 try start
     throw : { exception } ("Oh no!")
 try end
@@ -8,4 +7,3 @@ catch end
 finally start
     comment line : ...
 finally end
--

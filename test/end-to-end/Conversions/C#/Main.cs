@@ -1,4 +1,3 @@
-//
 using Lists;
 
 namespace Lists
@@ -21,4 +20,4 @@ namespace Lists
         }
     }
 }
-//
+

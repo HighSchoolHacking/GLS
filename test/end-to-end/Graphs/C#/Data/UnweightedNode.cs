@@ -1,18 +1,32 @@
-//
+using Graphs.Data;
 using System.Collections.Generic;
 
 namespace Graphs.Data
 {
-    public class UnweightedNode<T>
+
+    /// <summary>
+    /// An unweighted, undirected node in a graph.
+    /// </summary>
+    public class UnweightedNode<T> : INode<UnweightedNode<T>>
     {
         public T Data;
-        public List<UnweightedNode<T>> Neighbors;
+        private List<UnweightedNode<T>> neighborNodes;
 
         public UnweightedNode(T data)
         {
             this.Data = data;
-            this.Neighbors = new List<UnweightedNode<T>>();
+            this.neighborNodes = new List<UnweightedNode<T>>();
+        }
+
+        public void AddNeighbor(UnweightedNode<T> node)
+        {
+            this.neighborNodes.Add(node);
+        }
+
+        public List<UnweightedNode<T>> GetNeighborsInOrder()
+        {
+            return this.neighborNodes;
         }
     }
 }
-//
+

@@ -1,4 +1,3 @@
-//
 exports.Vector = class Vector {
 
     constructor() {
@@ -101,4 +100,4 @@ exports.Vector = class Vector {
         return individuals;
     }
 }
-//
+

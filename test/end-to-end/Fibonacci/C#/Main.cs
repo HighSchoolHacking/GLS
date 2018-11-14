@@ -1,4 +1,3 @@
-//
 using Fibonacci.Generation;
 using System;
 
@@ -59,4 +58,4 @@ namespace Fibonacci
         }
     }
 }
-//
+

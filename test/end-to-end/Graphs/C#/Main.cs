@@ -1,6 +1,5 @@
-//
 using Graphs.Data;
-using Graphs.Tests;
+using Graphs.Testing;
 
 namespace Graphs
 {
@@ -14,4 +13,4 @@ namespace Graphs
         }
     }
 }
-//
+

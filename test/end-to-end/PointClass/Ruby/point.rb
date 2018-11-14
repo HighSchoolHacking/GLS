@@ -1,4 +1,3 @@
-#
 class Point
     attr_accessor :x
     attr_accessor :y
@@ -10,4 +9,4 @@ class Point
         self.vector = x * y
     end
 end
-#
+

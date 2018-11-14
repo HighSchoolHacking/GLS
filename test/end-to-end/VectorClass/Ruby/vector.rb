@@ -1,4 +1,3 @@
-#
 require "set"
 class Vector
     attr_accessor :data
@@ -105,4 +104,4 @@ class Vector
         return individuals
     end
 end
-#
+

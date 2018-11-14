@@ -1,4 +1,3 @@
-#
 from converters import try_as_double, try_as_int
 
 if __name__ == "__main__":
@@ -12,4 +11,4 @@ if __name__ == "__main__":
     try_as_double(doubleNotLike)
     try_as_int(intLike, "10")
     try_as_int(intNotLike, "fish")
-#
+

@@ -1,4 +1,3 @@
-//
 const { tryAsDouble, tryAsInt } = require("./Converters");
 
 // Strings to numbers
@@ -11,4 +10,4 @@ tryAsDouble(doubleLike);
 tryAsDouble(doubleNotLike);
 tryAsInt(intLike, "10");
 tryAsInt(intNotLike, "fish");
-//
+

@@ -1,3 +1,3 @@
 //
-import { Fff, Ggg } from "./../Eee";
+import { Fff, Ggg } from "../Eee";
 //

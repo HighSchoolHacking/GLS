@@ -1,4 +1,3 @@
-#
 class Utilities
     def self.get_longest(words)
         longest = ""
@@ -18,4 +17,4 @@ class Utilities
         puts "Logging: " + word
     end
 end
-#
+

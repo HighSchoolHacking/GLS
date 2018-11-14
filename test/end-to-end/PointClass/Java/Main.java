@@ -1,4 +1,3 @@
-//
 package pointclass;
 
 import pointclass.NamedPoint;
@@ -16,4 +15,4 @@ class Index {
         System.out.println(named.getLabel());
     }
 }
-//
+

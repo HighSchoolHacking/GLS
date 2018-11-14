@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace Arrays
@@ -21,4 +20,4 @@ namespace Arrays
         }
     }
 }
-//
+

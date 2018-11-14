@@ -1,4 +1,3 @@
-#
 begin
     raise Exception.new("Oh no!")
 rescue Exception => error
@@ -6,4 +5,4 @@ rescue Exception => error
 ensure
     # ...
 end
-#
+

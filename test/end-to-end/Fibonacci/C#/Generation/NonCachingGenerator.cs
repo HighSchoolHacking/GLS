@@ -1,4 +1,3 @@
-//
 using Fibonacci.Generation;
 
 namespace Fibonacci.Generation
@@ -20,4 +19,4 @@ namespace Fibonacci.Generation
         }
     }
 }
-//
+

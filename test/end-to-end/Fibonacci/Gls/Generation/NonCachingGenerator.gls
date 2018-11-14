@@ -1,4 +1,3 @@
--
 file start : Fibonacci Generation NonCachingGenerator
     import local : Fibonacci Generation Generator types IGenerator
 
@@ -15,4 +14,3 @@ file start : Fibonacci Generation NonCachingGenerator
         member function declare end
     class end
 file end
--

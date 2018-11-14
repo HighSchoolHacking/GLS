@@ -1,4 +1,3 @@
-//
 package fibonacci.generation;
 
 import fibonacci.generation.IGenerator;
@@ -15,4 +14,4 @@ public class NonCachingGenerator implements IGenerator {
         return one + two;
     }
 }
-//
+

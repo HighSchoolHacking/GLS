@@ -1,10 +1,9 @@
-//
 using Graphs.Algorithms;
 using Graphs.Data;
 using System.Collections.Generic;
 using System;
 
-namespace Graphs.Tests
+namespace Graphs.Testing
 {
 
     public static class Tests
@@ -19,7 +18,7 @@ namespace Graphs.Tests
                 { "red", new string[0] },
                 { "yellow", new string[0] }
             };
-            Dictionary<string, UnweightedNode<string>> nodes = new Dictionary<string, UneightedNode<string>>();
+            Dictionary<string, UnweightedNode<string>> nodes = new Dictionary<string, UnweightedNode<string>>();
 
             foreach (string key in adjacencies.Keys)
             {
@@ -35,7 +34,7 @@ namespace Graphs.Tests
 
                 foreach (string neighborKey in neighborKeys)
                 {
-                    node.Neighbors.Add(nodes[neighborKey]);
+                    node.AddNeighbor(nodes[neighborKey]);
                     Console.WriteLine(string.Format("{0} borders {1}", key, neighborKey));
                 }
             }
@@ -48,7 +47,8 @@ namespace Graphs.Tests
 
         public static void TestWeighted()
         {
+            Console.WriteLine("Hello, world!");
         }
     }
 }
-//
+

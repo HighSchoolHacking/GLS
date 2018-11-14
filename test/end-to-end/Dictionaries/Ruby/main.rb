@@ -1,4 +1,3 @@
-#
 # Types
 foo = {}
 bar = {}
@@ -30,4 +29,4 @@ end
 # Setting
 container["aaa"] = 7
 puts container["aaa"]
-#
+

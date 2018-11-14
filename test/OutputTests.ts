@@ -18,18 +18,20 @@ export interface IFileComparisonSettings {
     files: string[];
     languageName: string;
     projectDirectory: string;
+    useOutsideComments?: boolean;
 }
 
-export const ensureSameFileComparisons = async ({ accept, files, languageName, projectDirectory }: IFileComparisonSettings) => {
-    for (const file of files) {
+export const ensureSameFileComparisons = async (settings: IFileComparisonSettings) => {
+    for (const file of settings.files) {
         await runCommandComparison({
-            accept,
-            languageName,
-            outputDirectory: path.join(projectDirectory, languageName),
-            projectDirectory,
-            sourceDirectory: path.join(projectDirectory, "Gls"),
+            accept: settings.accept,
+            languageName: settings.languageName,
+            outputDirectory: path.join(settings.projectDirectory, settings.languageName),
+            projectDirectory: settings.projectDirectory,
+            sourceDirectory: path.join(settings.projectDirectory, "Gls"),
             sourceFileName: file,
             transformFilePath: true,
+            useOutsideComments: settings.useOutsideComments,
         });
     }
 };

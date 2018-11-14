@@ -1,4 +1,3 @@
--
 file start : PointClass index
     import local : PointClass NamedPoint use NamedPoint
     import local : PointClass Point use Point
@@ -16,4 +15,3 @@ file start : PointClass index
         main end
     main context end
 file end
--

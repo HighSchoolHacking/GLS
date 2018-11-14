@@ -1,4 +1,3 @@
-#
 from generation.caching_generator import CachingGenerator
 from generation.non_caching_generator import NonCachingGenerator
 
@@ -32,4 +31,4 @@ if __name__ == "__main__":
 
     check_cache(cached, 7)
     check_cache(cached, 14)
-#
+

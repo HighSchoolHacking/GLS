@@ -1,4 +1,3 @@
-#
 class Direction
     Unknown = 0
     Horizontal = 1
@@ -12,4 +11,4 @@ puts "Vertical by lookup is %d" % [Direction::Vertical]
 unknown = Direction::Unknown
 
 puts "unknown variable is %d" % [unknown]
-#
+

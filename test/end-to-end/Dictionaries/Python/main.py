@@ -1,4 +1,3 @@
-#
 if __name__ == "__main__":
     # Types
     foo = {}
@@ -29,4 +28,4 @@ if __name__ == "__main__":
     # Setting
     container["aaa"] = 7
     print(container["aaa"])
-#
+

@@ -1,4 +1,3 @@
--
 file start : Graphs Algorithms DepthFirstSearch
     import local : Graphs Data UnweightedNode use UnweightedNode
     import local : Graphs Data WeightedNode use WeightedNode
@@ -17,7 +16,7 @@ file start : Graphs Algorithms DepthFirstSearch
             list push : nodes start
             set add : visited start
 
-            for each start : { member variable : public start Neighbors } neighbor { generic type : UnweightedNode T }
+            for each start : { member function : public start GetNeighborsInOrder } neighbor { generic type : UnweightedNode T }
                 if start : { not : { set contains : visited neighbor } }
                     standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch neighbor nodes visited
                 if end
@@ -37,16 +36,11 @@ file start : Graphs Algorithms DepthFirstSearch
             list push : nodes start
             set add : visited start
 
-            for each start : { member variable : public start Edges } edge { generic type : Edge T }
-                if start : { not : { set contains : visited { member variable : public edge From } } }
-                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { member variable : public edge From } nodes visited
-                if end
-
-                if start : { not : { set contains : visited { member variable : public edge To } } }
-                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { member variable : public edge To } nodes visited
+            for each start : { member function : public start GetNeighborsInOrder } node { generic type : WeightedNode T }
+                if start : { not : { set contains : visited node } }
+                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch node nodes visited
                 if end
             for each end
         standalone function declare end
     standalone functions declare end
 file end
--

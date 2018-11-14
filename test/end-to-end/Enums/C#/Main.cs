@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace Enums
@@ -25,4 +24,4 @@ namespace Enums
         }
     }
 }
-//
+

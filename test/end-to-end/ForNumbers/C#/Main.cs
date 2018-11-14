@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace ForNumbers
@@ -19,4 +18,4 @@ namespace ForNumbers
         }
     }
 }
-//
+

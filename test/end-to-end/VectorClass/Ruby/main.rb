@@ -1,4 +1,3 @@
-#
 require_relative "./vector"
 require "set"
 
@@ -39,4 +38,4 @@ sorted.sort!()
 for word in sorted
     puts "Set word: %s" % [word]
 end
-#
+

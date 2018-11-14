@@ -1,4 +1,3 @@
-//
 // Initialization
 let aaa = [];
 let bbb = [1, 2, 3];
@@ -10,4 +9,4 @@ console.log(`The first fruit is ${fruits[0]}.`);
 
 // Length
 console.log(`There are ${fruits.length} fruits.`);
-//
+

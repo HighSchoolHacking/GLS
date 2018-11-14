@@ -1,4 +1,3 @@
-//
 using Graphs.Data;
 using System.Collections.Generic;
 
@@ -22,7 +21,7 @@ namespace Graphs.Algorithms
             nodes.Add(start);
             visited.Add(start);
 
-            foreach (UnweightedNode<T> neighbor in start.Neighbors)
+            foreach (UnweightedNode<T> neighbor in start.GetNeighborsInOrder())
             {
                 if (!visited.Contains(neighbor))
                 {
@@ -46,19 +45,14 @@ namespace Graphs.Algorithms
             nodes.Add(start);
             visited.Add(start);
 
-            foreach (Edge<T> edge in start.Edges)
+            foreach (WeightedNode<T> node in start.GetNeighborsInOrder())
             {
-                if (!visited.Contains(edge.From))
+                if (!visited.Contains(node))
                 {
-                    DepthFirstSearch.TraverseWeightedDepthFirstSearch(edge.From, nodes, visited);
-                }
-
-                if (!visited.Contains(edge.To))
-                {
-                    DepthFirstSearch.TraverseWeightedDepthFirstSearch(edge.To, nodes, visited);
+                    DepthFirstSearch.TraverseWeightedDepthFirstSearch(node, nodes, visited);
                 }
             }
         }
     }
 }
-//
+

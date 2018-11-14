@@ -1,3 +1,3 @@
 #
-from eee import Fff, Ggg
+from bbb.ccc.eee import Fff, Ggg
 #

@@ -1,4 +1,3 @@
-#
 class Utilities:
     @staticmethod
     def get_longest(words):
@@ -15,4 +14,4 @@ class Utilities:
     @staticmethod
     def log(word):
         print("Logging: " + word)
-#
+

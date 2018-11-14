@@ -1,13 +1,24 @@
--
 file start : Graphs Data UnweightedNode
-    class start : export { generic type : UnweightedNode T }
+    import local : Graphs Data INode types INode
+    
+    comment doc start
+    comment doc tag : summary An unweighted, undirected node in a graph.
+    comment doc end
+    class start : export { generic type : UnweightedNode T } implements { generic type : INode { generic type : UnweightedNode T } }
         member variable declare : public Data T
-        member variable declare : public Neighbors { list type : { generic type : UnweightedNode T } }
+        member variable declare : private NeighborNodes { list type : { generic type : UnweightedNode T } }
 
         constructor start : public UnweightedNode data T
             member variable set : public { this } Data data
-            member variable set : public { this } Neighbors { list new : { generic type : UnweightedNode T } }
+            member variable set : private { this } NeighborNodes { list new : { generic type : UnweightedNode T } }
         constructor end
+
+        member function declare start : public AddNeighbor void node { generic type : UnweightedNode T }
+            list push : { member variable : private { this } NeighborNodes } node
+        member function declare end
+
+        member function declare start : public GetNeighborsInOrder { list type : { generic type : UnweightedNode T } }
+            return : { member variable : private { this } NeighborNodes }
+        member function declare end
     class end
 file end
--

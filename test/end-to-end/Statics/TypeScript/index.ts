@@ -1,4 +1,3 @@
-//
 class Utilities {
     public static getLongest(words: string[]): string {
         let longest: string = "";
@@ -18,4 +17,4 @@ class Utilities {
         console.log("Logging: " + word);
     }
 }
-//
+

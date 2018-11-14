@@ -1,4 +1,3 @@
-//
 import { IGenerator } from "./Generator";
 
 export class CachingGenerator implements IGenerator {
@@ -26,4 +25,4 @@ export class CachingGenerator implements IGenerator {
         return {}.hasOwnProperty.call(this.cache, index);
     }
 }
-//
+

@@ -1,5 +1,4 @@
-//
-package graphs.tests;
+package graphs.testing;
 
 import graphs.algorithms.DepthFirstSearch;
 import graphs.data.UnweightedNode;
@@ -16,7 +15,7 @@ public static class Tests {
             put("red", new String[0]);
             put("yellow", new String[0]);
         }};
-        HashMap<String, UnweightedNode<string>> nodes = new HashMap<String, UneightedNode<string>>();
+        HashMap<String, UnweightedNode<string>> nodes = new HashMap<String, UnweightedNode<string>>();
 
         for (String key : adjacencies.keySet()) {
             UnweightedNode<string> node = new UnweightedNode<string>(key);
@@ -29,7 +28,7 @@ public static class Tests {
             UnweightedNode<string> node = nodes[key];
 
             for (String neighborKey : neighborKeys) {
-                node.neighbors.add(nodes[neighborKey]);
+                node.addNeighbor(nodes[neighborKey]);
                 System.out.println(String.format("%0$s borders %1$s", key, neighborKey));
             }
         }
@@ -40,6 +39,7 @@ public static class Tests {
     }
 
     public static void testWeighted() {
+        System.out.println("Hello, world!");
     }
 }
-//
+

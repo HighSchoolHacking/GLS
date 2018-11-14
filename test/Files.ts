@@ -30,29 +30,35 @@ const getCommentMarker = (extension: string): string => {
  * Extracts the test case contents of a command file.
  *
  * @param filePath   Path to the file.
+ * @param useOutsideComments   Whether the first and last line should be the language's comment marker.
  * @returns Promise for lines of text for the file's test case.
  */
-export const readCommandFile = async (filePath: string): Promise<string[]> => {
-    const lines = (await fs.readFile(filePath))
+export const readCommandFile = async (filePath: string, useOutsideComments: boolean = false): Promise<string[]> => {
+    const extension = filePath.substring(filePath.lastIndexOf("."));
+    let lines = (await fs.readFile(filePath))
         .toString()
         .replace(/\r/g, "")
         .split("\n");
-    const extension = filePath.substring(filePath.lastIndexOf("."));
-    const comment = getCommentMarker(extension);
-
-    if (lines[0] !== comment) {
-        throw new Error(`The first line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
-    }
 
     if (lines[lines.length - 1] !== "") {
         throw new Error(`The last line in a '${filePath}' case should be blank.`);
     }
 
-    if (lines[lines.length - 2] !== comment) {
-        throw new Error(`The last line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
+    if (useOutsideComments) {
+        const comment = getCommentMarker(extension);
+
+        if (lines[0] !== comment) {
+            throw new Error(`The first line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
+        }
+
+        if (lines[lines.length - 2] !== comment) {
+            throw new Error(`The last line in '${filePath}' should be a '${comment}' comment, not '${lines[0]}'.`);
+        }
+
+        lines = lines.slice(1, lines.length - 2);
     }
 
-    return lines.slice(1, lines.length - 2);
+    return lines;
 };
 
 /**
@@ -63,9 +69,13 @@ export const readCommandFile = async (filePath: string): Promise<string[]> => {
  * @param contents   Lines of content to add between comment markers.
  * @returns Promise for writing to the file.
  */
-export const writeBaselineFile = async (filePath: string, commentMarker: string, contents: string[]): Promise<void> => {
-    const lines = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
+export const writeBaselineFile = async (filePath: string, contents: string[], commentMarker: string | undefined): Promise<void> => {
+    if (commentMarker !== undefined) {
+        contents = [commentMarker.trim(), ...contents, commentMarker.trim(), ""];
+    } else {
+        contents = [...contents, ""];
+    }
 
     await mkdirpPromise(path.dirname(filePath));
-    await fs.writeFile(filePath, lines.join("\n"));
+    await fs.writeFile(filePath, contents.join("\n"));
 };

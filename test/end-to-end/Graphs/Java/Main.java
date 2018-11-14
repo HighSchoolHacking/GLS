@@ -1,9 +1,8 @@
-//
 package graphs;
 
 import graphs.data.UnweightedNode;
 import graphs.data.WeightedNode;
-import graphs.tests.Tests;
+import graphs.testing.Tests;
 
 class Main {
     public static void main(String[] args) {
@@ -11,4 +10,4 @@ class Main {
         Tests.testWeighted();
     }
 }
-//
+

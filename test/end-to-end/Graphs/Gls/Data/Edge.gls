@@ -1,13 +1,13 @@
--
 file start : Graphs Data Edge
     class start : export { generic type : Edge T }
+        member variable declare : public Distance double
         member variable declare : public From { generic type : WeightedNode T }
         member variable declare : public To { generic type : WeightedNode T }
 
-        constructor start : public Edge from { generic type : WeightedNode T } to { generic type : WeightedNode T }
+        constructor start : public Edge distance double from { generic type : WeightedNode T } to { generic type : WeightedNode T }
+            member variable set : public { this } Distance distance
             member variable set : public { this } From from
             member variable set : public { this } To to
         constructor end
     class end
 file end
--

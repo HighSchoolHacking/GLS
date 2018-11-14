@@ -1,4 +1,3 @@
-//
 import { CachingGenerator } from "./Generation/CachingGenerator";
 import { IGenerator } from "./Generation/Generator";
 import { NonCachingGenerator } from "./Generation/NonCachingGenerator";
@@ -38,4 +37,4 @@ useGenerator(uncached);
 
 checkCache(cached, 7);
 checkCache(cached, 14);
-//
+

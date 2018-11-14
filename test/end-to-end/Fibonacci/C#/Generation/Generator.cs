@@ -1,4 +1,3 @@
-//
 namespace Fibonacci.Generation
 {
     public interface IGenerator
@@ -6,4 +5,4 @@ namespace Fibonacci.Generation
         int Generate(int index);
     }
 }
-//
+

@@ -1,4 +1,3 @@
-#
 require_relative "./generation/caching_generator"
 require_relative "./generation/non_caching_generator"
 
@@ -37,4 +36,4 @@ use_generator(uncached)
 
 check_cache(cached, 7)
 check_cache(cached, 14)
-#
+

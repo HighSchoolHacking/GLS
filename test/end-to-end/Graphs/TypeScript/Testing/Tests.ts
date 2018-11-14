@@ -1,4 +1,3 @@
-//
 import { unweightedDepthFirstSearch, weightedDepthFirstSearch } from "../Algorithms/DepthFirstSearch";
 import { UnweightedNode } from "../Data/UnweightedNode";
 import { WeightedNode } from "../Data/WeightedNode";
@@ -23,7 +22,7 @@ export function testUnweighted(): void {
         let node: UnweightedNode<string> = nodes[key];
 
         for (let neighborKey of neighborKeys) {
-            node.neighbors.push(nodes[neighborKey]);
+            node.addNeighbor(nodes[neighborKey]);
             console.log(`${key} borders ${neighborKey}`);
         }
     }
@@ -34,5 +33,6 @@ export function testUnweighted(): void {
 }
 
 export function testWeighted(): void {
+    console.log("Hello, world!");
 }
-//
+

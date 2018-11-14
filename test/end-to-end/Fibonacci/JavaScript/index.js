@@ -1,4 +1,3 @@
-//
 const { CachingGenerator } = require("./Generation/CachingGenerator");
 const { NonCachingGenerator } = require("./Generation/NonCachingGenerator");
 
@@ -37,4 +36,4 @@ useGenerator(uncached);
 
 checkCache(cached, 7);
 checkCache(cached, 14);
-//
+

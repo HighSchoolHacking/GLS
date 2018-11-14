@@ -1,4 +1,3 @@
-//
 import { UnweightedNode } from "../Data/UnweightedNode";
 import { WeightedNode } from "../Data/WeightedNode";
 
@@ -15,7 +14,7 @@ function traverseUnweightedDepthFirstSearch<T>(start: UnweightedNode<T>, nodes: 
     nodes.push(start);
     visited.add(start);
 
-    for (let neighbor of start.neighbors) {
+    for (let neighbor of start.getNeighborsInOrder()) {
         if (!visited.has(neighbor)) {
             traverseUnweightedDepthFirstSearch(neighbor, nodes, visited);
         }
@@ -35,14 +34,10 @@ function traverseWeightedDepthFirstSearch<T>(start: WeightedNode<T>, nodes: Weig
     nodes.push(start);
     visited.add(start);
 
-    for (let edge of start.edges) {
-        if (!visited.has(edge.from)) {
-            traverseWeightedDepthFirstSearch(edge.from, nodes, visited);
-        }
-
-        if (!visited.has(edge.to)) {
-            traverseWeightedDepthFirstSearch(edge.to, nodes, visited);
+    for (let node of start.getNeighborsInOrder()) {
+        if (!visited.has(node)) {
+            traverseWeightedDepthFirstSearch(node, nodes, visited);
         }
     }
 }
-//
+

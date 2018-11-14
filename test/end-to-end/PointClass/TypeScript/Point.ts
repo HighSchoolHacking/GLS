@@ -1,4 +1,3 @@
-//
 export class Point {
     public x: number;
     public y: number;
@@ -10,4 +9,4 @@ export class Point {
         this.vector = x * y;
     }
 }
-//
+

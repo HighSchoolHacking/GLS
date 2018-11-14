@@ -378,6 +378,11 @@ export class CommandNames {
     public static ListSort = "list sort";
 
     /**
+     * Name key for the ListSortCompare command.
+     */
+    public static ListSortCompare = "list sort compare";
+
+    /**
      * Name key for the ListType command.
      */
     public static ListType = "list type";

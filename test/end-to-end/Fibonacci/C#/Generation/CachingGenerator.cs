@@ -1,4 +1,3 @@
-//
 using Fibonacci.Generation;
 using System.Collections.Generic;
 
@@ -36,4 +35,4 @@ namespace Fibonacci.Generation
         }
     }
 }
-//
+

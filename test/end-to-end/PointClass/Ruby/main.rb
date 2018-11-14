@@ -1,4 +1,3 @@
-#
 require_relative "./named_point"
 require_relative "./point"
 
@@ -10,4 +9,4 @@ puts point.y
 named = NamedPoint.new(3, 4, "My Point")
 
 puts named.get_label()
-#
+

@@ -1,4 +1,3 @@
-#
 require_relative "./point"
 
 class NamedPoint < Point
@@ -13,4 +12,4 @@ class NamedPoint < Point
         return "%s at [%d, %d] with vector %d" % [self.name, self.x, self.y, self.vector]
     end
 end
-#
+

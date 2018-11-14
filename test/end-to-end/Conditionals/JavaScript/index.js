@@ -1,4 +1,3 @@
-//
 if (true) {
     console.log("if true");
 }
@@ -17,4 +16,4 @@ if (1 + 1 === 3) {
 } else {
     console.log("else if else");
 }
-//
+

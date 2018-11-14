@@ -1,3 +1,3 @@
 //
-const { Eee, Fff } = require("./..");
+const { Eee, Fff } = require("..");
 //

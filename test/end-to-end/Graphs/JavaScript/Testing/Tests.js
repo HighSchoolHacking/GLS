@@ -1,4 +1,3 @@
-//
 const { unweightedDepthFirstSearch, weightedDepthFirstSearch } = require("../Algorithms/DepthFirstSearch");
 const { UnweightedNode } = require("../Data/UnweightedNode");
 const { WeightedNode } = require("../Data/WeightedNode");
@@ -23,7 +22,7 @@ exports.testUnweighted = function testUnweighted() {
         let node = nodes[key];
 
         for (let neighborKey of neighborKeys) {
-            node.neighbors.push(nodes[neighborKey]);
+            node.addNeighbor(nodes[neighborKey]);
             console.log(`${key} borders ${neighborKey}`);
         }
     }
@@ -34,5 +33,6 @@ exports.testUnweighted = function testUnweighted() {
 }
 
 exports.testWeighted = function testWeighted() {
+    console.log("Hello, world!");
 }
-//
+

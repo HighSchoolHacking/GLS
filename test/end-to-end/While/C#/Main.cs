@@ -1,4 +1,3 @@
-//
 using System;
 
 namespace While
@@ -29,4 +28,4 @@ namespace While
         }
     }
 }
-//
+

@@ -1,4 +1,3 @@
-#
 if __name__ == "__main__":
     # Initialization
     haystack = "Hello, GLS!"
@@ -23,4 +22,4 @@ if __name__ == "__main__":
 
     if secondIndexOf != -1:
         print("Found a second result at: {0}.".format(secondIndexOf))
-#
+
