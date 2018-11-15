@@ -1,0 +1,12 @@
+file start : Graphs Main
+    import local : Graphs Data UnweightedNode use UnweightedNode
+    import local : Graphs Data WeightedNode use WeightedNode
+    import local : Graphs Testing Tests use { import standalone functions : Tests TestUnweighted TestWeighted }
+
+    main context start
+        main start
+            standalone function : public Tests TestUnweighted
+            standalone function : public Tests TestWeighted
+        main end
+    main context end
+file end

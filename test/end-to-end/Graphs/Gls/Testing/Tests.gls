@@ -1,0 +1,43 @@
+file start : Graphs Testing Tests
+    import local : Graphs Algorithms DepthFirstSearch use { import standalone functions : DepthFirstSearch UnweightedDepthFirstSearch WeightedDepthFirstSearch }
+    import local : Graphs Data UnweightedNode use UnweightedNode
+    import local : Graphs Data WeightedNode use WeightedNode
+
+    standalone functions declare start : export Tests
+        standalone function declare start : public TestUnweighted void
+            variable : order { array type : string } { array new : string "root" "apple" "banana" "red" "yellow" }
+            variable : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
+
+            for each start : order key string
+                variable : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } key }
+                dictionary set : nodes key node
+            for each end
+
+            variable start : adjacencies { dictionary type : string { array type : string } } { dictionary new start : string { array type : string } }
+                dictionary pair : "root" { array new : string "apple" "banana" } comma
+                dictionary pair : "apple" { array new : string "red" "yellow" } comma
+                dictionary pair : "banana" { array new : string "yellow" } comma
+                dictionary pair : "red" { array new : string } comma
+                dictionary pair : "yellow" { array new : string }
+            dictionary new end
+
+            for each start : order key string
+                variable : node { generic type : UnweightedNode string } { dictionary index : nodes key }
+                variable : neighborKeys { array type : string } { dictionary index : adjacencies key }
+
+                for each start : neighborKeys neighborKey string
+                    member function : public node AddNeighbor { dictionary index : nodes neighborKey }
+                    print : { string format : ("{0} borders {1}") key string neighborKey string }
+                for each end
+            for each end
+
+            for each start : { standalone function : public DepthFirstSearch UnweightedDepthFirstSearch { dictionary index : nodes "root" } } node { generic type : UnweightedNode string }
+                print : { member variable : public node Data }
+            for each end
+        standalone function declare end
+
+        standalone function declare start : public TestWeighted void
+            print : ("Hello, world!")
+        standalone function declare end
+    standalone functions declare end
+file end

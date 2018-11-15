@@ -1,0 +1,5 @@
+file start : Graphs Data INode
+    interface start : export { generic type : INode TNode }
+        interface method : GetNeighborsInOrder { list type : TNode }
+    interface end
+file end

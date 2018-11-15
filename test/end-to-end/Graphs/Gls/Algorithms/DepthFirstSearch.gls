@@ -1,0 +1,46 @@
+file start : Graphs Algorithms DepthFirstSearch
+    import local : Graphs Data UnweightedNode use UnweightedNode
+    import local : Graphs Data WeightedNode use WeightedNode
+
+    standalone functions declare start : export DepthFirstSearch
+        standalone function declare start : public { generic type : UnweightedDepthFirstSearch T } { list type : { generic type : UnweightedNode T } } start { generic type : UnweightedNode T }
+            variable : nodes { list type : { generic type : UnweightedNode T } } { list new : { generic type : UnweightedNode T } }
+            variable : visited { set type : { generic type : UnweightedNode T } } { set new : { generic type : UnweightedNode T } }
+
+            standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch start nodes visited
+
+            return : nodes
+        standalone function declare end
+
+        standalone function declare start : private { generic type : TraverseUnweightedDepthFirstSearch T } void start { generic type : UnweightedNode T } nodes { list type : { generic type : UnweightedNode T } } visited { set type : { generic type : UnweightedNode T } }
+            list push : nodes start
+            set add : visited start
+
+            for each start : { member function : public start GetNeighborsInOrder } neighbor { generic type : UnweightedNode T }
+                if start : { not : { set contains : visited neighbor } }
+                    standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch neighbor nodes visited
+                if end
+            for each end
+        standalone function declare end
+
+        standalone function declare start : public { generic type : WeightedDepthFirstSearch T } { list type : { generic type : WeightedNode T } } start { generic type : WeightedNode T }
+            variable : nodes { list type : { generic type : WeightedNode T } } { list new : { generic type : WeightedNode T } }
+            variable : visited { set type : { generic type : WeightedNode T } } { set new : { generic type : WeightedNode T } }
+
+            standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch start nodes visited
+
+            return : nodes
+        standalone function declare end
+
+        standalone function declare start : private { generic type : TraverseWeightedDepthFirstSearch T } void start { generic type : WeightedNode T } nodes { list type : { generic type : WeightedNode T } } visited { set type : { generic type : WeightedNode T } }
+            list push : nodes start
+            set add : visited start
+
+            for each start : { member function : public start GetNeighborsInOrder } node { generic type : WeightedNode T }
+                if start : { not : { set contains : visited node } }
+                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch node nodes visited
+                if end
+            for each end
+        standalone function declare end
+    standalone functions declare end
+file end
