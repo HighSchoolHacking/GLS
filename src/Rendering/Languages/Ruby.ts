@@ -267,7 +267,7 @@ export class Ruby extends Language {
 
         comments.docEnd = "##";
         comments.docLineEnd = "";
-        comments.docLineStart = "";
+        comments.docLineStart = "# ";
         comments.docStart = "##";
         comments.docTagAliases = {
             note: "remarks",
