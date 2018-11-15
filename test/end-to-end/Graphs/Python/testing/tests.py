@@ -3,6 +3,13 @@ from data.unweighted_node import UnweightedNode
 from data.weighted_node import WeightedNode
 
 def test_unweighted():
+    order = ["root", "apple", "banana", "red", "yellow"]
+    nodes = {}
+
+    for key in order:
+        node = UnweightedNode(key)
+        nodes[key] = node
+
     adjacencies = {
         "root": ["apple", "banana"],
         "apple": ["red", "yellow"],
@@ -10,14 +17,10 @@ def test_unweighted():
         "red": [],
         "yellow": []
     }
-    nodes = {}
 
-    for key in adjacencies:
-        node = UnweightedNode(key)
-        nodes[key] = node
-
-    for key, neighborKeys in adjacencies.items():
+    for key in order:
         node = nodes[key]
+        neighborKeys = adjacencies[key]
 
         for neighborKey in neighborKeys:
             node.add_neighbor(nodes[neighborKey])

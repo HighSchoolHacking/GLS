@@ -3,6 +3,14 @@ require_relative "../data/unweighted_node"
 require_relative "../data/weighted_node"
 
 def test_unweighted()
+    order = ["root", "apple", "banana", "red", "yellow"]
+    nodes = {}
+
+    for key in order
+        node = UnweightedNode.new(key)
+        nodes[key] = node
+    end
+
     adjacencies = {
         "root" => ["apple", "banana"],
         "apple" => ["red", "yellow"],
@@ -10,21 +18,16 @@ def test_unweighted()
         "red" => [],
         "yellow" => []
     }
-    nodes = {}
 
-    adjacencies.each_key { |key|
-        node = UnweightedNode.new(key)
-        nodes[key] = node
-    }
-
-    adjacencies.each { |key, neighborKeys|
+    for key in order
         node = nodes[key]
+        neighborKeys = adjacencies[key]
 
         for neighborKey in neighborKeys
             node.add_neighbor(nodes[neighborKey])
             puts "%s borders %s" % [key, neighborKey]
         end
-    }
+    end
 
     for node in unweighted_depth_first_search(nodes["root"])
         puts node.data

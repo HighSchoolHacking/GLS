@@ -3,6 +3,14 @@ const { UnweightedNode } = require("../Data/UnweightedNode");
 const { WeightedNode } = require("../Data/WeightedNode");
 
 exports.testUnweighted = function testUnweighted() {
+    let order = ["root", "apple", "banana", "red", "yellow"];
+    let nodes = {};
+
+    for (let key of order) {
+        let node = new UnweightedNode(key);
+        nodes[key] = node;
+    }
+
     let adjacencies = {
         "root": ["apple", "banana"],
         "apple": ["red", "yellow"],
@@ -10,16 +18,10 @@ exports.testUnweighted = function testUnweighted() {
         "red": [],
         "yellow": []
     };
-    let nodes = {};
 
-    for (let key in adjacencies) {
-        let node = new UnweightedNode(key);
-        nodes[key] = node;
-    }
-
-    for (let key in adjacencies) {
-        let neighborKeys = adjacencies[key];
+    for (let key of order) {
         let node = nodes[key];
+        let neighborKeys = adjacencies[key];
 
         for (let neighborKey of neighborKeys) {
             node.addNeighbor(nodes[neighborKey]);

@@ -3,6 +3,14 @@ import { UnweightedNode } from "../Data/UnweightedNode";
 import { WeightedNode } from "../Data/WeightedNode";
 
 export function testUnweighted(): void {
+    let order: string[] = ["root", "apple", "banana", "red", "yellow"];
+    let nodes: { [i: string]: UnweightedNode<string> } = {};
+
+    for (let key of order) {
+        let node: UnweightedNode<string> = new UnweightedNode<string>(key);
+        nodes[key] = node;
+    }
+
     let adjacencies: { [i: string]: string[] } = {
         "root": ["apple", "banana"],
         "apple": ["red", "yellow"],
@@ -10,16 +18,10 @@ export function testUnweighted(): void {
         "red": [],
         "yellow": []
     };
-    let nodes: { [i: string]: UnweightedNode<string> } = {};
 
-    for (let key in adjacencies) {
-        let node: UnweightedNode<string> = new UnweightedNode<string>(key);
-        nodes[key] = node;
-    }
-
-    for (let key in adjacencies) {
-        let neighborKeys: string[] = adjacencies[key];
+    for (let key of order) {
         let node: UnweightedNode<string> = nodes[key];
+        let neighborKeys: string[] = adjacencies[key];
 
         for (let neighborKey of neighborKeys) {
             node.addNeighbor(nodes[neighborKey]);

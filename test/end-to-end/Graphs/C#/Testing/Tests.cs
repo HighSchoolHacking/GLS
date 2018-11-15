@@ -10,6 +10,15 @@ namespace Graphs.Testing
     {
         public static void TestUnweighted()
         {
+            string[] order = new string[] { "root", "apple", "banana", "red", "yellow" };
+            Dictionary<string, UnweightedNode<string>> nodes = new Dictionary<string, UnweightedNode<string>>();
+
+            foreach (string key in order)
+            {
+                UnweightedNode<string> node = new UnweightedNode<string>(key);
+                nodes[key] = node;
+            }
+
             Dictionary<string, string[]> adjacencies = new Dictionary<string, string[]>
             {
                 { "root", new string[] { "apple", "banana" } },
@@ -18,19 +27,11 @@ namespace Graphs.Testing
                 { "red", new string[0] },
                 { "yellow", new string[0] }
             };
-            Dictionary<string, UnweightedNode<string>> nodes = new Dictionary<string, UnweightedNode<string>>();
 
-            foreach (string key in adjacencies.Keys)
+            foreach (string key in order)
             {
-                UnweightedNode<string> node = new UnweightedNode<string>(key);
-                nodes[key] = node;
-            }
-
-            foreach (KeyValuePair<string, string[]> pair in adjacencies)
-            {
-                string key = pair.Key;
-                string[] neighborKeys = pair.Value;
                 UnweightedNode<string> node = nodes[key];
+                string[] neighborKeys = adjacencies[key];
 
                 foreach (string neighborKey in neighborKeys)
                 {

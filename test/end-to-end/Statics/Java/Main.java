@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 class Utilities {
     public static String getLongest(String[] words) {
