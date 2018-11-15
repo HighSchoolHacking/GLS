@@ -26,7 +26,7 @@ file start : Lists index
 
             comment line : Sorting
             variable : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }
-            list sort : flavors
+            list sort strings : flavors
             print : { string format : ("The first flavor is {0}.") { list index : flavors 0 } string }
             print : { string format : ("The last flavor is {0}.") { list index : flavors { operation : { list length : flavors } minus 1 } } string }
 

@@ -452,20 +452,16 @@ export class CSharp extends Language {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListSyntax(lists: ListSyntax): void {
-        lists.className = "List";
-
         lists.addList = new NativeCallSyntax("AddRange", NativeCallScope.Member, NativeCallType.Function);
-
+        lists.className = "List";
         lists.length = new NativeCallSyntax("Count", NativeCallScope.Member, NativeCallType.Property);
-
         lists.pop = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
-
         lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
-
         lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
-
         lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Absolute)];
+        lists.sortCompare = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortNumbers = lists.sortCompare;
+        lists.sortStrings = lists.sortNumbers;
     }
 
     /**
