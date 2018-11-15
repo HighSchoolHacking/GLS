@@ -373,14 +373,19 @@ export class CommandNames {
     public static ListPush = "list push";
 
     /**
-     * Name key for the ListSort command.
-     */
-    public static ListSort = "list sort";
-
-    /**
      * Name key for the ListSortCompare command.
      */
     public static ListSortCompare = "list sort compare";
+
+    /**
+     * Name key for the ListSortNumbers command.
+     */
+    public static ListSortNumbers = "list sort numbers";
+
+    /**
+     * Name key for the ListSortStrings command.
+     */
+    public static ListSortStrings = "list sort strings";
 
     /**
      * Name key for the ListType command.

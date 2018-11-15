@@ -469,7 +469,11 @@ export class TypeScript extends Language {
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
         lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortCompare = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function).withArguments([
+            "(a: number, b: number): number => b - a",
+        ]);
+        lists.sortStrings = lists.sortCompare;
     }
 
     /**

@@ -5,30 +5,27 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * Sorts a list in-place using a comparator function.
+ * Sorts a list in-place as numbers.
  */
-export class ListSortCompareCommand extends NativeCallCommand {
+export class ListSortNumbersCommand extends NativeCallCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSortCompare)
-        .withDescription("Sorts a list in-place using a comparator function")
-        .withParameters([
-            new SingleParameter("name", "The name of the list.", true),
-            new SingleParameter("comparator", "Lambda to compare two elements and return their int sorting difference.", true),
-        ]);
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSortNumbers)
+        .withDescription("Sorts a list in-place as numbers")
+        .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListSortCompareCommand.metadata;
+        return ListSortNumbersCommand.metadata;
     }
 
     /**
      * @returns Metadata on how to perform the native call.
      */
     protected retrieveNativeCallSyntax(): NativeCallSyntax {
-        return this.language.syntax.lists.sortCompare;
+        return this.language.syntax.lists.sortNumbers;
     }
 }

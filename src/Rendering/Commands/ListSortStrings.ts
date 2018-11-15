@@ -5,27 +5,27 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { NativeCallCommand } from "./NativeCallCommand";
 
 /**
- * Sorts a list in-place.
+ * Sorts a list in-place as strings.
  */
-export class ListSortCommand extends NativeCallCommand {
+export class ListSortStringsCommand extends NativeCallCommand {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSort)
-        .withDescription("Sorts a list in-place")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSortStrings)
+        .withDescription("Sorts a list in-place as strings")
         .withParameters([new SingleParameter("name", "The name of the list.", true)]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListSortCommand.metadata;
+        return ListSortStringsCommand.metadata;
     }
 
     /**
      * @returns Metadata on how to perform the native call.
      */
     protected retrieveNativeCallSyntax(): NativeCallSyntax {
-        return this.language.syntax.lists.sort;
+        return this.language.syntax.lists.sortStrings;
     }
 }

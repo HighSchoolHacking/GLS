@@ -437,14 +437,15 @@ export class Ruby extends Language {
      * @param lists   A property container for metadata on loops.
      */
     protected generateListSyntax(lists: ListSyntax): void {
+        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
-
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
-        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortCompare = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortNumbers = lists.sortCompare;
+        lists.sortStrings = lists.sortNumbers;
     }
 
     /**

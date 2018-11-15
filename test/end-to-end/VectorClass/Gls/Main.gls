@@ -35,7 +35,7 @@ file start : VectorClass Index
             comment line : Sorting
             variable : individuals { set type : string } { member function : public vector ToSet }
             variable : sorted { list type : string } { set to list : individuals }
-            list sort : sorted
+            list sort strings : sorted
 
             for each start : sorted word string
                 print : { string format : ("Set word: {0}") word string }

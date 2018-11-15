@@ -460,20 +460,16 @@ export class Java extends Language {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListSyntax(lists: ListSyntax): void {
-        lists.className = "ArrayList";
-
         lists.addList = new NativeCallSyntax("addAll", NativeCallScope.Member, NativeCallType.Function);
-
+        lists.className = "ArrayList";
         lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
-
         lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
-
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
-
         lists.push = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-        lists.sort = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
-
         lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
+        lists.sortCompare = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortNumbers = lists.sortCompare;
+        lists.sortStrings = lists.sortNumbers;
     }
 
     /**
