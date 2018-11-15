@@ -74,7 +74,7 @@ import { ListNewSizedCommand } from "./ListNewSizedCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
-import { ListSortCommand } from "./ListSortCommand";
+import { ListSortCompareCommand } from "./ListSortCompareCommand";
 import { ListTypeCommand } from "./ListTypeCommand";
 import { LiteralCommand } from "./LiteralCommand";
 import { MainContextEndCommand } from "./MainContextEndCommand";
@@ -231,7 +231,7 @@ export class CommandsBagFactory {
             new ListPopCommand(context),
             new ListPopFrontCommand(context),
             new ListPushCommand(context),
-            new ListSortCommand(context),
+            new ListSortCompareCommand(context),
             new ListTypeCommand(context),
             new LiteralCommand(context),
             new MainContextEndCommand(context),

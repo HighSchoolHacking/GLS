@@ -52,7 +52,17 @@ export class ListSyntax {
     public requiredImports: Import[];
 
     /**
-     * How to sort a list in-place.
+     * How to sort a list in-place with a comparator function.
      */
-    public sort: NativeCallSyntax;
+    public sortCompare: NativeCallSyntax;
+
+    /**
+     * How to sort a list in-place as numbers.
+     */
+    public sortNumbers: NativeCallSyntax;
+
+    /**
+     * How to sort a list in-place as strings.
+     */
+    public sortStrings: NativeCallSyntax;
 }
