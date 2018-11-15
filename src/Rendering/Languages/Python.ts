@@ -542,7 +542,7 @@ export class Python extends Language {
         operators.minus = "-";
         operators.mod = "%";
         operators.multiplyBy = "*=";
-        operators.not = "!";
+        operators.not = "not ";
         operators.notEqualTo = "!=";
         operators.or = "||";
         operators.plus = "+";
