@@ -7,7 +7,7 @@ import { NativeCallCommand } from "./NativeCallCommand";
 /**
  * Sorts a list in-place as strings.
  */
-export class ListSortCompareCommand extends NativeCallCommand {
+export class ListSortStringsCommand extends NativeCallCommand {
     /**
      * Metadata on the command.
      */
@@ -19,7 +19,7 @@ export class ListSortCompareCommand extends NativeCallCommand {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListSortCompareCommand.metadata;
+        return ListSortStringsCommand.metadata;
     }
 
     /**
