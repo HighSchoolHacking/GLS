@@ -20,6 +20,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -90,6 +91,7 @@ export abstract class Language {
         this.generateImportSyntax(this.syntax.imports);
         this.generateInterfaceSyntax(this.syntax.interfaces);
         this.generateLambdaSyntax(this.syntax.lambdas);
+        this.generateLambdaTypeInlineSyntax(this.syntax.lambdas.typeInline);
         this.generateListSyntax(this.syntax.lists);
         this.generateListNewSizedSyntax(this.syntax.lists.newSized);
         this.generateLoopSyntax(this.syntax.loops);
@@ -264,6 +266,13 @@ export abstract class Language {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected abstract generateLambdaSyntax(lambdas: LambdaSyntax): void;
+
+    /**
+     * Generates metadata on inline lambda types.
+     *
+     * @param typeInline   A property container for metadata on inline lambda types.
+     */
+    protected abstract generateLambdaTypeInlineSyntax(typeInline: LambdaTypeInlineSyntax): void;
 
     /**
      * Fills out metadata on lists.

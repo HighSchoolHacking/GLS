@@ -1,0 +1,3 @@
+//
+BiFunction<String, boolean, int>
+//

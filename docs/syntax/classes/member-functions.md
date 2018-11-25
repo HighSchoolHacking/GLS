@@ -3,18 +3,18 @@
 Classes may declare member functions that each instance of the class may call.
 
 Declaring a member function is done with `member function declare start`.
-It takes in the function's privacy (as`public`,`protected`, or`private`), name in PascalCase, return type, and any number of (name, type) pairs of parameters.
+It takes in the function's privacy (as  `public`,`protected`, or`private`), name in PascalCase, return type, and any number of (name, type) pairs of parameters.
 
 ```gls
 class start : Announcer
-    member variable declare : private greeting string
+    member variable declare : private Greeting string
 
     member function declare start : public Greet void name string
-        print : { concatenate : { member variable : private { this } greeting } ", " name "!" }
+        print : { concatenate : { member variable : private { this } Greeting } (", ") name "!" }
     member function declare end
 
     constructor start : public Announcer greeting string
-        operation : { member variable : private { this } greeting } equals greeting
+        operation : { member variable : private { this } Greeting } equals greeting
     constructor end
 class end
 ```
@@ -47,7 +47,7 @@ class Announcer:
     def greet(self, name):
         print(self.__greeting + ", + " + name + "!")
 
-    def __init__(self, Announcer, string):
+    def __init__(self, string):
         self.__greeting = greeting
 ```
 

@@ -54,6 +54,15 @@ If any target language doesn't reasonably support a feature, GLS cannot support 
             <td></td>
         </tr>
         <tr>
+            <th>Inline Lambda Types with &gt;2 Parameters</th>
+            <td></td>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <th>Multiline Lambdas</th>
             <td></td>
             <td></td>
@@ -72,22 +81,13 @@ If any target language doesn't reasonably support a feature, GLS cannot support 
             <td></td>
         </tr>
         <tr>
-            <th>Optional Parameters</th>
+            <th>Sort Comparators</th>
+            <td></td>
             <td></td>
             <td></td>
             <td><em>Missing</em></td>
-            <td><em>Missing</em></td>
-            <td><em>Missing</em></td>
-            <td><em>Missing</em></td>
-        </tr>
-        <tr>
-            <th>Optional Parameters</th>
             <td></td>
             <td></td>
-            <td><em>Abnormal</em></td>
-            <td></td>
-            <td></td>
-            <td><em>Abnormal</em></td>
         </tr>
         <tr>
             <th>Switch Statements</th>
