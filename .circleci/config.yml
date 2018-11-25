@@ -48,6 +48,23 @@ jobs:
 
             - run: npm run test:end-to-end -- --language=JavaScript
 
+    end-to-end/ruby:
+        docker:
+            - image: circleci/ruby:2.5-node-browsers
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run test:end-to-end -- --language=Ruby
+
     end-to-end/typescript:
         docker:
             - image: circleci/node:latest
@@ -88,6 +105,9 @@ workflows:
         jobs:
             - build
             - end-to-end/javascript:
+                  requires:
+                      - build
+            - end-to-end/ruby:
                   requires:
                       - build
             - end-to-end/typescript:
