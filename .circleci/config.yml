@@ -63,7 +63,7 @@ jobs:
             - restore_cache:
                   key: dependency-cache-{{ checksum "package-lock.json" }}
 
-            - run: npm run test:end-to-end -- --language=typescript
+            - run: npm run test:end-to-end -- --language=TypeScript
 
     verify:
         docker:
