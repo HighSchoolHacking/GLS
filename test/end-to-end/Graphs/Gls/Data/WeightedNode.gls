@@ -20,7 +20,11 @@ file start : Graphs Data WeightedNode
                 list push : nodes { member variable : public edge To }
             for each end
 
+<<<<<<< HEAD
             list sort member numbers : { member variable : private { this } Edges } public edge Distance
+=======
+            list sort compare : { member variable : private { this } Edges } { lambda declare : int a { generic type : Edge T } b { generic type : Edge T } { math as int : { operation : { member variable : public a Distance } minus { member variable : public b Distance } } } }
+>>>>>>> master
 
             return : nodes
         member function declare end

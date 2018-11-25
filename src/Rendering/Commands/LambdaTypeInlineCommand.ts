@@ -44,7 +44,7 @@ export class LambdaTypeInlineCommand extends Command {
         const imports: Import[] = [];
         const parameterCount = (parameters.length - 2) / 2;
         if (parameterCount > 2) {
-            throw new Error("todo: file github issue for this");
+            throw new Error("Inline type lambdas may not have more than two parameters.");
         }
 
         // (
