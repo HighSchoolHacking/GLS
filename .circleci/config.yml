@@ -71,7 +71,7 @@ workflows:
     build_and_end_to_end:
         jobs:
             - build
-            - javascript:
+            - end-to-end/javascript:
                   requires:
                       - build
             - verify:
