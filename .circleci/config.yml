@@ -30,7 +30,7 @@ jobs:
                       - test/*.js
                       - util
 
-    end-to-end/javascript:
+    javascript:
         docker:
             - image: circleci/node:latest
 
