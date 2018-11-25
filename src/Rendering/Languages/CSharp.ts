@@ -25,6 +25,7 @@ import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
+import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
@@ -483,6 +484,16 @@ export class CSharp extends Language {
         lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Absolute)];
         lists.sortNumbers = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
+    }
+
+    /**
+     * Fills out metadata on list creation with items.
+     */
+    protected generateListNewItemsSyntax(newItems: ListNewItemsSyntax): void {
+        newItems.itemLeft = "";
+        newItems.itemRight = ", ";
+        newItems.left = " { ";
+        newItems.right = "}";
     }
 
     /**

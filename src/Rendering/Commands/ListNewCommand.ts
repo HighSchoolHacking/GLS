@@ -51,7 +51,15 @@ export class ListNewCommand extends Command {
         if (parameters.length === 2) {
             output += "()";
         } else {
-            output += " { " + parameters.slice(2).join(", ") + " }";
+            output += this.language.syntax.lists.newItems.left;
+
+            for (let i = 2; i < parameters.length; i += 1) {
+                output += this.language.syntax.lists.newItems.itemLeft;
+                output += parameters[i];
+                output += this.language.syntax.lists.newItems.itemRight;
+            }
+
+            output += this.language.syntax.lists.newItems.right;
         }
 
         return LineResults.newSingleLine(output).withImports(typeNameLine.addedImports);

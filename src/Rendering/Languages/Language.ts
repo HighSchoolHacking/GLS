@@ -21,6 +21,7 @@ import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
+import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSortMembersSyntax } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
@@ -94,6 +95,7 @@ export abstract class Language {
         this.generateLambdaSyntax(this.syntax.lambdas);
         this.generateLambdaTypeInlineSyntax(this.syntax.lambdas.typeInline);
         this.generateListSyntax(this.syntax.lists);
+        this.generateListNewItemsSyntax(this.syntax.lists.newItems);
         this.generateListNewSizedSyntax(this.syntax.lists.newSized);
         this.generateListSortMemberNumbersSyntax(this.syntax.lists.sortMemberNumbers);
         this.generateListSortMemberStringsSyntax(this.syntax.lists.sortMemberStrings);
@@ -281,6 +283,11 @@ export abstract class Language {
      * Fills out metadata on lists.
      */
     protected abstract generateListSyntax(lists: ListSyntax): void;
+
+    /**
+     * Fills out metadata on list with items creation.
+     */
+    protected abstract generateListNewItemsSyntax(newItems: ListNewItemsSyntax): void;
 
     /**
      * Fills out metadata on fixed size list creation.

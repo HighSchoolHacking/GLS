@@ -1,4 +1,5 @@
 import { Import } from "../../Imports/Import";
+import { ListNewItemsSyntax } from "./ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./ListNewSizedSyntax";
 import { ListSortMembersSyntax } from "./ListSortMembersSyntax";
 import { NativeCallSyntax } from "./NativeCallSyntax";
@@ -26,6 +27,11 @@ export class ListSyntax {
      * How to retrieve the length of a list.
      */
     public length: NativeCallSyntax;
+
+    /**
+     * Metadata on list with items creation.
+     */
+    public newItems: ListNewItemsSyntax = new ListNewItemsSyntax();
 
     /**
      * Metadata on fixed size list creation.

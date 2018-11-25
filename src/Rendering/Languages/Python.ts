@@ -25,6 +25,7 @@ import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
+import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
@@ -440,6 +441,13 @@ export class Python extends Language {
         lists.push = new NativeCallSyntax("append", NativeCallScope.Member, NativeCallType.Function);
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
+    }
+
+    /**
+     * Fills out metadata on list creation with items.
+     */
+    protected generateListNewItemsSyntax(newItems: ListNewItemsSyntax): void {
+        // Unused
     }
 
     /**
