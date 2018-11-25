@@ -13,7 +13,7 @@ public class Vector<T> {
 
     public Vector() {
         this.capacity = 0;
-        this.data = new T[0];
+        this.data = (T[]) new Object[0];
         this.length = 0;
     }
 
@@ -57,7 +57,7 @@ public class Vector<T> {
         Integer newCapacity = (int)Math.floor(Math.ceil((capacity / 2.0)) * 3);
         T[] oldData = this.data;
         this.capacity = newCapacity;
-        this.data = new T[newCapacity];
+        this.data = (T[]) new Object[] { newCapacity };
 
         for (Integer i = 0; i < oldData.length; i += 1) {
             this.data[i] = oldData[i];
@@ -82,7 +82,7 @@ public class Vector<T> {
     }
 
     public T[] toArray() {
-        T[] array = new T[this.length];
+        T[] array = (T[]) new Object[] { this.length };
 
         for (Integer i = 0; i < this.length; i += 1) {
             array[i] = this.data[i];

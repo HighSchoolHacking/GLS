@@ -113,6 +113,7 @@ export class Java extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = true;
         arrays.requiredImports = [new Import(["java", "util"], ["Arrays"], ImportRelativity.Absolute)];
     }
 
