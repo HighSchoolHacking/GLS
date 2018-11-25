@@ -1,3 +1,5 @@
 //
-abc.sort();
+import java.util.Comparator;
+
+abc.sort(Comparator.naturalOrder());
 //

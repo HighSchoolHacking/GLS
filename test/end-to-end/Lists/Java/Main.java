@@ -2,6 +2,8 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Comparator;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -69,19 +71,19 @@ class Main {
 
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};
-        flavors.sort();
+        flavors.sort(Comparator.naturalOrder());
         Main.printStrings("flavor", flavors);
 
         // Sorting ints
         ArrayList<Integer> ints = new ArrayList<Integer>() {{ add(1); add(10); add(2); add(-3); add(8); add(4); add(5); }};
-        ints.sort();
+        ints.sort(Comparator.naturalOrder());
         Main.printInts("int", ints);
 
         // Sorting members
         ArrayList<Album> albums = new ArrayList<Album>() {{ add(new Album("Thriller", 1982)); add(new Album("Back in Black", 1980)); add(new Album("The Dark Side of the Moon", 1973)); }};
-        albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name ? 1 : -1));
+        albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name));
         Main.printListFancy("album by name", albums, (album) -> album.name);
-        albums.sort((albumA, albumB) -> albumA.year.compareTo(albumB.year ? 1 : -1));
+        albums.sort((albumA, albumB) -> albumA.year.compareTo(albumB.year));
         Main.printListFancy("album by year", albums, (album) -> album.getLabel());
     }
 }

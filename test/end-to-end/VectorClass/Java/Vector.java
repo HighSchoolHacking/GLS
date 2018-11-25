@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Vector<T> {
     private T[] data;
@@ -94,7 +95,7 @@ public class Vector<T> {
         ArrayList<T> list = new ArrayList<T>(this.length);
 
         for (Integer i = 0; i < this.length; i += 1) {
-            list[i] = this.data[i];
+            list.get(i) = this.data[i];
         }
 
         return list;

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 class Main {
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ class Main {
         // Sorting
         HashSet<String> individuals = vector.toSet();
         ArrayList<String> sorted = new ArrayList<>(individuals);
-        sorted.sort();
+        sorted.sort(Comparator.naturalOrder());
 
         for (String word : sorted) {
             System.out.println(String.format("Set word: %s", word));
