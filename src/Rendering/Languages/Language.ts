@@ -20,7 +20,9 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -90,8 +92,11 @@ export abstract class Language {
         this.generateImportSyntax(this.syntax.imports);
         this.generateInterfaceSyntax(this.syntax.interfaces);
         this.generateLambdaSyntax(this.syntax.lambdas);
+        this.generateLambdaTypeInlineSyntax(this.syntax.lambdas.typeInline);
         this.generateListSyntax(this.syntax.lists);
         this.generateListNewSizedSyntax(this.syntax.lists.newSized);
+        this.generateListSortMemberNumbersSyntax(this.syntax.lists.sortMemberNumbers);
+        this.generateListSortMemberStringsSyntax(this.syntax.lists.sortMemberStrings);
         this.generateLoopSyntax(this.syntax.loops);
         this.generateMainSyntax(this.syntax.main);
         this.generateMathSyntax(this.syntax.math);
@@ -266,6 +271,13 @@ export abstract class Language {
     protected abstract generateLambdaSyntax(lambdas: LambdaSyntax): void;
 
     /**
+     * Generates metadata on inline lambda types.
+     *
+     * @param typeInline   A property container for metadata on inline lambda types.
+     */
+    protected abstract generateLambdaTypeInlineSyntax(typeInline: LambdaTypeInlineSyntax): void;
+
+    /**
      * Fills out metadata on lists.
      */
     protected abstract generateListSyntax(lists: ListSyntax): void;
@@ -274,6 +286,16 @@ export abstract class Language {
      * Fills out metadata on fixed size list creation.
      */
     protected abstract generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void;
+
+    /**
+     * Fills out metadata on list sorting by keyed member numbers.
+     */
+    protected abstract generateListSortMemberNumbersSyntax(members: ListSortMembersSyntax): void;
+
+    /**
+     * Fills out metadata on list sorting by keyed member stringss.
+     */
+    protected abstract generateListSortMemberStringsSyntax(members: ListSortMembersSyntax): void;
 
     /**
      * Generates metadata on loops.

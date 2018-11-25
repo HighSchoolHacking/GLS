@@ -1,0 +1,43 @@
+There are 3 fruits.
+The first fruit is apple.
+The last color is yellow.
+The first color is orange.
+The last pet is dog.
+The first flavor is chocolate.
+The last flavor is vanilla.
+flavor: chocolate
+flavor: plain
+flavor: strawberry
+flavor: vanilla
+flavor 0: chocolate
+flavor 1: plain
+flavor 2: strawberry
+flavor 3: vanilla
+The first int is -3.
+The last int is 10.
+int: -3
+int: 1
+int: 2
+int: 4
+int: 5
+int: 8
+int: 10
+int 0: -3
+int 1: 1
+int 2: 2
+int 3: 4
+int 4: 5
+int 5: 8
+int 6: 10
+Back in Black
+The Dark Side of the Moon
+Thriller
+album by name 0: Back in Black
+album by name 1: The Dark Side of the Moon
+album by name 2: Thriller
+The Dark Side of the Moon: 1973
+Back in Black: 1980
+Thriller: 1982
+album by year 0: The Dark Side of the Moon: 1973
+album by year 1: Back in Black: 1980
+album by year 2: Thriller: 1982

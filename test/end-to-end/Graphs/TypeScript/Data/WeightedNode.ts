@@ -19,7 +19,7 @@ export class WeightedNode<T> implements INode<WeightedNode<T>> {
             nodes.push(edge.to);
         }
 
-        this.edges.sort((a, b) => Math.floor(a.distance - b.distance));
+        this.edges.sort((edgeA, edgeB) => edgeA.distance < edgeB.distance ? -1 : 1);
 
         return nodes;
     }

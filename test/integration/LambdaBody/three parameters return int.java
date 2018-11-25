@@ -1,3 +1,3 @@
 //
-(abc, def, ghi) -> abc + def + ghi
+int(abc, int, def, string, ghi, boolean, abc + def + ghi);
 //

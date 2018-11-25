@@ -24,7 +24,9 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -438,12 +440,26 @@ export class CSharp extends Language {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
+        lambdas.callLeft = "(";
+        lambdas.callRight = ")";
         lambdas.functionLeft = "(";
+        lambdas.functionMiddle = ") => ";
         lambdas.functionRight = "";
         lambdas.parameterTypeRequired = false;
         lambdas.returnTypeRequired = false;
+    }
 
-        lambdas.functionMiddle = ") => ";
+    /**
+     * Generates metadata on inline lambda types.
+     *
+     * @param typeInline   A property container for metadata on inline lambda types.
+     */
+    protected generateLambdaTypeInlineSyntax(typeInline: LambdaTypeInlineSyntax): void {
+        typeInline.includeParameterNames = false;
+        typeInline.leftByParameterCount = ["Func<", "Func<", "Func<"];
+        typeInline.middleWithoutParameters = "";
+        typeInline.middleWithParameters = ", ";
+        typeInline.right = ">";
     }
 
     /**
@@ -459,8 +475,7 @@ export class CSharp extends Language {
         lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Absolute)];
-        lists.sortCompare = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortNumbers = lists.sortCompare;
+        lists.sortNumbers = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }
 
@@ -472,6 +487,30 @@ export class CSharp extends Language {
         newSized.left = "new List<";
         newSized.middle = ">(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member numbers.
+     */
+    protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".Sort((";
+        sortMembers.lambdaMiddleLeft = ") => ";
+        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaRight = " ? -1 : 1)";
+        sortMembers.requiredImports = [new Import(["System"], ["List"], ImportRelativity.Absolute)];
+        sortMembers.type = ListSortMemberType.KeyComparator;
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member strings.
+     */
+    protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".Sort((";
+        sortMembers.lambdaMiddleLeft = ") => ";
+        sortMembers.lambdaMiddleRight = ".CompareTo(";
+        sortMembers.lambdaRight = "))";
+        sortMembers.requiredImports = [new Import(["System"], ["List"], ImportRelativity.Absolute)];
+        sortMembers.type = ListSortMemberType.KeyComparator;
     }
 
     /**

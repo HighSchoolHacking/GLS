@@ -1,3 +1,41 @@
+require_relative "./album"
+
+def print_ints(label, items)
+    puts "The first %s is %d." % [label, items[0]]
+    puts "The last %s is %d." % [label, items[items.length - 1]]
+
+    for item in items
+        puts "%s: %d" % [label, item]
+    end
+
+    for i in 0...items.length
+        puts "%s %d: %d" % [label, i, items[i]]
+    end
+end
+
+def print_strings(label, items)
+    puts "The first %s is %s." % [label, items[0]]
+    puts "The last %s is %s." % [label, items[items.length - 1]]
+
+    for item in items
+        puts "%s: %s" % [label, item]
+    end
+
+    for i in 0...items.length
+        puts "%s %d: %s" % [label, i, items[i]]
+    end
+end
+
+def print_list_fancy(label, items, getLabel)
+    for item in items
+        puts getLabel.call(item)
+    end
+
+    for i in 0...items.length
+        puts "%s %d: %s" % [label, i, getLabel.call(items[i])]
+    end
+end
+
 # Initialization
 aaa = []
 bbb = [1, 2, 3]
@@ -21,17 +59,19 @@ pets = ["bird", "cat"]
 pets.push("dog")
 puts "The last pet is %s." % [pets[pets.length - 1]]
 
-# Sorting
+# Sorting strings
 flavors = ["plain", "chocolate", "vanilla", "strawberry"]
 flavors.sort!()
-puts "The first flavor is %s." % [flavors[0]]
-puts "The last flavor is %s." % [flavors[flavors.length - 1]]
+print_strings("flavor", flavors)
 
-# Looping
-for flavor in flavors
-    puts "Flavor: %s." % [flavor]
-end
+# Sorting ints
+ints = [1, 10, 2, -3, 8, 4, 5]
+ints.sort!()
+print_ints("int", ints)
 
-for i in 0...flavors.length
-    puts "Flavor %d: %s." % [i, flavors[i]]
-end
+# Sorting members
+albums = [Album.new("Thriller", 1982), Album.new("Back in Black", 1980), Album.new("The Dark Side of the Moon", 1973)]
+albums.sort_by! {|album| album.name}
+print_list_fancy("album by name", albums, lambda { |album| album.name })
+albums.sort_by! {|album| album.year}
+print_list_fancy("album by year", albums, lambda { |album| album.get_label() })

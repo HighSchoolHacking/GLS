@@ -65,7 +65,9 @@ import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
-import { LambdaBodyCommand } from "./LambdaBodyCommand";
+import { LambdaCommand } from "./LambdaCommand";
+import { LambdaDeclareCommand } from "./LambdaDeclareCommand";
+import { LambdaTypeInlineCommand } from "./LambdaTypeInlineCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
 import { ListIndexCommand } from "./ListIndexCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
@@ -74,7 +76,8 @@ import { ListNewSizedCommand } from "./ListNewSizedCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
-import { ListSortCompareCommand } from "./ListSortCompareCommand";
+import { ListSortMemberNumbersCommand } from "./ListSortMemberNumbersCommand";
+import { ListSortMemberStringsCommand } from "./ListSortMemberStringsCommand";
 import { ListSortNumbersCommand } from "./ListSortNumbers";
 import { ListSortStringsCommand } from "./ListSortStrings";
 import { ListTypeCommand } from "./ListTypeCommand";
@@ -224,7 +227,9 @@ export class CommandsBagFactory {
             new InterfaceStartCommand(context),
             new IsNotNullCommand(context),
             new IsNullCommand(context),
-            new LambdaBodyCommand(context),
+            new LambdaCommand(context),
+            new LambdaDeclareCommand(context),
+            new LambdaTypeInlineCommand(context),
             new ListAddListCommand(context),
             new ListIndexCommand(context),
             new ListLengthCommand(context),
@@ -233,7 +238,8 @@ export class CommandsBagFactory {
             new ListPopCommand(context),
             new ListPopFrontCommand(context),
             new ListPushCommand(context),
-            new ListSortCompareCommand(context),
+            new ListSortMemberNumbersCommand(context),
+            new ListSortMemberStringsCommand(context),
             new ListSortNumbersCommand(context),
             new ListSortStringsCommand(context),
             new ListTypeCommand(context),

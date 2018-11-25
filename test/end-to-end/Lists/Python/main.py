@@ -1,3 +1,32 @@
+from album import Album
+
+def print_ints(label, items):
+    print("The first {0} is {1}.".format(label, items[0]))
+    print("The last {0} is {1}.".format(label, items[len(items) - 1]))
+
+    for item in items:
+        print("{0}: {1}".format(label, item))
+
+    for i in range(0, len(items)):
+        print("{0} {1}: {2}".format(label, i, items[i]))
+
+def print_strings(label, items):
+    print("The first {0} is {1}.".format(label, items[0]))
+    print("The last {0} is {1}.".format(label, items[len(items) - 1]))
+
+    for item in items:
+        print("{0}: {1}".format(label, item))
+
+    for i in range(0, len(items)):
+        print("{0} {1}: {2}".format(label, i, items[i]))
+
+def print_list_fancy(label, items, getLabel):
+    for item in items:
+        print(getLabel(item))
+
+    for i in range(0, len(items)):
+        print("{0} {1}: {2}".format(label, i, getLabel(items[i])))
+
 if __name__ == "__main__":
     # Initialization
     aaa = []
@@ -22,15 +51,19 @@ if __name__ == "__main__":
     pets.append("dog")
     print("The last pet is {0}.".format(pets[len(pets) - 1]))
 
-    # Sorting
+    # Sorting strings
     flavors = ["plain", "chocolate", "vanilla", "strawberry"]
     flavors.sort()
-    print("The first flavor is {0}.".format(flavors[0]))
-    print("The last flavor is {0}.".format(flavors[len(flavors) - 1]))
+    print_strings("flavor", flavors)
 
-    # Looping
-    for flavor in flavors:
-        print("Flavor: {0}.".format(flavor))
+    # Sorting ints
+    ints = [1, 10, 2, -3, 8, 4, 5]
+    ints.sort()
+    print_ints("int", ints)
 
-    for i in range(0, len(flavors)):
-        print("Flavor {0}: {1}.".format(i, flavors[i]))
+    # Sorting members
+    albums = [Album("Thriller", 1982), Album("Back in Black", 1980), Album("The Dark Side of the Moon", 1973)]
+    albums.sort(key = lambda album: album.name)
+    print_list_fancy("album by name", albums, lambda album: album.name)
+    albums.sort(key = lambda album: album.year)
+    print_list_fancy("album by year", albums, lambda album: album.get_label())

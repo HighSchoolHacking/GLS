@@ -1,3 +1,41 @@
+const { Album } = require("./Album");
+
+function printInts(label, items) {
+    console.log(`The first ${label} is ${items[0]}.`);
+    console.log(`The last ${label} is ${items[items.length - 1]}.`);
+
+    for (let item of items) {
+        console.log(`${label}: ${item}`);
+    }
+
+    for (let i = 0; i < items.length; i += 1) {
+        console.log(`${label} ${i}: ${items[i]}`);
+    }
+}
+
+function printStrings(label, items) {
+    console.log(`The first ${label} is ${items[0]}.`);
+    console.log(`The last ${label} is ${items[items.length - 1]}.`);
+
+    for (let item of items) {
+        console.log(`${label}: ${item}`);
+    }
+
+    for (let i = 0; i < items.length; i += 1) {
+        console.log(`${label} ${i}: ${items[i]}`);
+    }
+}
+
+function printListFancy(label, items, getLabel) {
+    for (let item of items) {
+        console.log(getLabel(item));
+    }
+
+    for (let i = 0; i < items.length; i += 1) {
+        console.log(`${label} ${i}: ${getLabel(items[i])}`);
+    }
+}
+
 // Initialization
 let aaa = [];
 let bbb = [1, 2, 3];
@@ -21,17 +59,19 @@ let pets = ["bird", "cat"];
 pets.push("dog");
 console.log(`The last pet is ${pets[pets.length - 1]}.`);
 
-// Sorting
+// Sorting strings
 let flavors = ["plain", "chocolate", "vanilla", "strawberry"];
 flavors.sort();
-console.log(`The first flavor is ${flavors[0]}.`);
-console.log(`The last flavor is ${flavors[flavors.length - 1]}.`);
+printStrings("flavor", flavors);
 
-// Looping
-for (let flavor of flavors) {
-    console.log(`Flavor: ${flavor}.`);
-}
+// Sorting ints
+let ints = [1, 10, 2, -3, 8, 4, 5];
+ints.sort((a, b) => a - b);
+printInts("int", ints);
 
-for (let i = 0; i < flavors.length; i += 1) {
-    console.log(`Flavor ${i}: ${flavors[i]}.`);
-}
+// Sorting members
+let albums = [new Album("Thriller", 1982), new Album("Back in Black", 1980), new Album("The Dark Side of the Moon", 1973)];
+albums.sort((albumA, albumB) => albumA.name < albumB.name ? -1 : 1);
+printListFancy("album by name", albums, (album) => album.name);
+albums.sort((albumA, albumB) => albumA.year < albumB.year ? -1 : 1);
+printListFancy("album by year", albums, (album) => album.getLabel());

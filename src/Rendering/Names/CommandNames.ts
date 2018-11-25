@@ -328,9 +328,19 @@ export class CommandNames {
     public static IsNull = "is null";
 
     /**
-     * Name key for the LambdaBody command.
+     * Name key for the Lambda command.
      */
-    public static LambdaBody = "lambda";
+    public static Lambda = "lambda";
+
+    /**
+     * Name key for the LambdaDeclare command.
+     */
+    public static LambdaDeclare = "lambda declare";
+
+    /**
+     * Name key for the LambdaTypeInline command.
+     */
+    public static LambdaTypeInline = "lambda type inline";
 
     /**
      * Name key for the LambdaBody command.
@@ -373,9 +383,14 @@ export class CommandNames {
     public static ListPush = "list push";
 
     /**
-     * Name key for the ListSortCompare command.
+     * Name key for the ListSortMemberNumbers command.
      */
-    public static ListSortCompare = "list sort compare";
+    public static ListSortMemberNumbers = "list sort member numbers";
+
+    /**
+     * Name key for the ListSortMemberStrings command.
+     */
+    public static ListSortMemberStrings = "list sort member strings";
 
     /**
      * Name key for the ListSortNumbers command.

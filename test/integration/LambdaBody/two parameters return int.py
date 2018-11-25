@@ -1,3 +1,3 @@
 #
-lambda abc, def: abc + def
+int(abc, int, def, int, abc + def)
 #
