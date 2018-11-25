@@ -8,7 +8,7 @@ import { spawnAndCaptureOutput } from "./Spawning";
  */
 export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, projectName }): Promise<string[]> => {
     await spawnAndCaptureOutput("javac", {
-        args: ["-d", path.join(projectDirectory), path.join(projectDirectory, "*.java")],
+        args: ["-d", path.join(projectDirectory), "-nowarn", path.join(projectDirectory, "*.java")],
     });
 
     return spawnAndCaptureOutput("java", {
