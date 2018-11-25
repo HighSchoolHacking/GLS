@@ -24,6 +24,16 @@ export class ListSyntax {
     public className: string;
 
     /**
+     * Characters before retrieving an item by index.
+     */
+    public indexLeft: string;
+
+    /**
+     * Characters after retrieving an item by index.
+     */
+    public indexRight: string;
+
+    /**
      * How to retrieve the length of a list.
      */
     public length: NativeCallSyntax;

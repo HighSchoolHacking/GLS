@@ -32,6 +32,11 @@ export class ListIndexCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "]");
+        let output = parameters[1];
+        output += this.language.syntax.lists.indexLeft;
+        output += parameters[2];
+        output += this.language.syntax.lists.indexRight;
+
+        return LineResults.newSingleLine(output);
     }
 }

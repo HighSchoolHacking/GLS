@@ -488,6 +488,8 @@ export class TypeScript extends Language {
      */
     protected generateListSyntax(lists: ListSyntax): void {
         lists.asArray = true;
+        lists.indexLeft = "[";
+        lists.indexRight = "]";
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);

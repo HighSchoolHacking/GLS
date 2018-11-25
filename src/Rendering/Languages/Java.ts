@@ -489,6 +489,8 @@ export class Java extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("addAll", NativeCallScope.Member, NativeCallType.Function);
         lists.className = "ArrayList";
+        lists.indexLeft = ".get(";
+        lists.indexRight = ")";
         lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
@@ -524,7 +526,7 @@ export class Java extends Language {
     protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
         sortMembers.lambdaLeft = ".sort((";
         sortMembers.lambdaMiddleLeft = ") -> ";
-        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaMiddleRight = ".compareTo(";
         sortMembers.lambdaRight = " ? 1 : -1))";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.KeyComparator;
@@ -537,7 +539,7 @@ export class Java extends Language {
         sortMembers.lambdaLeft = ".sort((";
         sortMembers.lambdaMiddleLeft = ") -> ";
         sortMembers.lambdaMiddleRight = ".compareTo(";
-        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.lambdaRight = " ? 1 : -1))";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.KeyComparator;
     }

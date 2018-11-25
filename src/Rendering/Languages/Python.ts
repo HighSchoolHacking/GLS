@@ -434,6 +434,8 @@ export class Python extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("extend", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
+        lists.indexLeft = "[";
+        lists.indexRight = "]";
         lists.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);

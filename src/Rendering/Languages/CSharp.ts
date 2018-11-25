@@ -477,6 +477,8 @@ export class CSharp extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("AddRange", NativeCallScope.Member, NativeCallType.Function);
         lists.className = "List";
+        lists.indexLeft = "[";
+        lists.indexRight = "]";
         lists.length = new NativeCallSyntax("Count", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
         lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
