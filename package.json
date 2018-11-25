@@ -14,18 +14,20 @@
         "url": "ssh://git@github.com:general-language-syntax/GLS.git"
     },
     "scripts": {
+        "ci:build": "npm run src:tsc && npm run util:tsc && npm run test:tsc",
         "docs": "npm run docs:refresh-docs && npm run docs:gls && npm run docs:markdownlint",
         "docs:gls": "node util/docs/compileGls.js",
         "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
         "prepublishOnly": "npm run docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
-        "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
+        "prettier:write:all": "npm run prettier:write ./{.circleci,src,test,util}/**/*.{json,ts,yml}",
         "src": "npm run src:tsc && npm run src:tslint",
+        "src:ci": "npm run src:tslint",
         "src:tsc": "tsc -p .",
         "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
         "test": "npm run test:tsc && npm run test:tslint && npm run test:run",
-        "test:ci": "npm run test:tsc && npm run test:tslint && npm run test:run:ci",
+        "test:ci": "npm run test:tslint && npm run test:run:ci",
         "test:tsc": "tsc -p test",
         "test:tslint": "tslint -c test/tslint.json -p test/tsconfig.json -t stylish",
         "test:run": "npm run test:unit && npm run test:integration && npm run test:end-to-end",
@@ -38,7 +40,7 @@
         "util:tsc": "tsc -p util",
         "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
         "verify": "npm run src && npm run util && npm run test && npm run docs",
-        "verify:ci": "npm run src && npm run util && npm run test:ci && npm run docs"
+        "verify:ci": "npm run src:ci && npm run util && npm run test:ci && npm run docs"
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",

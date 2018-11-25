@@ -1,24 +1,80 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:latest
+    build:
+        docker:
+            - image: circleci/node:latest
 
-    working_directory: ~/repo
+        working_directory: ~/repo
 
-    steps:
-      - checkout
+        steps:
+            - checkout
 
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - restore_cache:
+                  keys:
+                      - dependency-cache-{{ checksum "package-lock.json" }}
+                      - dependency-cache-
 
-      - run: npm install
+            - run: npm install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
 
-      - run: npm run verify:ci
+            - run: npm run ci:build
+            - persist_to_workspace:
+                  root: "."
+                  paths:
+                      - lib
+                      - package-lock.json
+                      - test/*.js
+                      - test/unit
+                      - util
+
+    end-to-end/javascript:
+        docker:
+            - image: circleci/node:latest
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run src:tsc
+            - run: npm run test:tsc
+            - run: npm run test:end-to-end -- --language=JavaScript
+
+    verify:
+        docker:
+            - image: circleci/node:latest
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run verify:ci
+
+workflows:
+    version: 2
+    build_and_end_to_end:
+        jobs:
+            - build
+            - end-to-end/javascript:
+                  requires:
+                      - build
+            - verify:
+                  requires:
+                      - build
