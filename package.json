@@ -20,7 +20,7 @@
         "docs:refresh-docs": "node util/docs/refresh.js",
         "prepublishOnly": "npm run docs",
         "prettier:write": "prettier --config .prettierrc.json --write",
-        "prettier:write:all": "npm run prettier:write ./{src,test,util}/**/*.{json,ts}",
+        "prettier:write:all": "npm run prettier:write ./{.circleci,src,test,util}/**/*.{json,ts,yml}",
         "src": "npm run src:tsc && npm run src:tslint",
         "src:tsc": "tsc -p .",
         "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
