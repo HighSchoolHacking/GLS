@@ -28,6 +28,7 @@ jobs:
                       - lib
                       - package-lock.json
                       - test/*.js
+                      - test/unit
                       - util
 
     end-to-end/javascript:

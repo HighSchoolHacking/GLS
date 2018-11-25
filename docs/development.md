@@ -19,6 +19,8 @@ The recommended development setup is [Visual Studio Code](https://code.visualstu
 * [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 * [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
 
+## Build Steps
+
 To run a full build+lint+test, run `npm run verify`.
 
 Use `npm run watch` to run the TypeScript compiler in watch mode on both source and test files.
@@ -30,6 +32,17 @@ Alternately, you can build+lint individual sections of code:
 * `npm run util`: Miscellaneous utilities.
 
 The full list of tasks is in `package.json`.
+
+### CI Builds
+
+CI builds, or Continuous Integration builds, are run by [CircleCI](https://circleci.com) on each pull request.
+The `build` job installs npm dependencies and runs the `src:ts`, `util:tsc`, and `test:tsc` tasks.
+All other job rely on the installed and built artifacts from that task.
+
+* The `end-to-end/*` jobs each run end-to-end tests for a single language.
+* The `verify`: runs the `verify:ci` task, which runs linting, unit tests, and integration tests.
+
+See [/.circleci/config.yml](/.circleci/config.yml).
 
 ## Style Guidelines
 
