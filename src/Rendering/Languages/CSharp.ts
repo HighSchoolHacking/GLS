@@ -464,6 +464,7 @@ export class CSharp extends Language {
         typeInline.leftByParameterCount = ["Func<", "Func<", "Func<"];
         typeInline.middleWithoutParameters = "";
         typeInline.middleWithParameters = ", ";
+        typeInline.requiredImports = [];
         typeInline.right = ">";
     }
 

@@ -476,6 +476,7 @@ export class TypeScript extends Language {
         typeInline.leftByParameterCount = ["(", "(", "("];
         typeInline.middleWithoutParameters = ") => ";
         typeInline.middleWithParameters = ") => ";
+        typeInline.requiredImports = [];
         typeInline.right = "";
     }
 

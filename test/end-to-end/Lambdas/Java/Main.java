@@ -1,9 +1,13 @@
-package lists;
+package lambdas;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 class Main {
     private static void runOnInts(Function<Integer, String> format) {
         for (Integer i = 0; i < 10; i += 1) {
-            System.out.println(format(i));
+            System.out.println(format.apply(i));
         }
     }
 
