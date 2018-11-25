@@ -74,7 +74,7 @@ Members will be compared using the built-in `<` operator.
 class start : Size
     member variable declare : public Count int
 
-    constructor start : public Size count
+    constructor start : public Size count int
         operation : { member variable : public { this } Count } equals count
     constructor end
 class end
@@ -84,7 +84,7 @@ comment line : ...
 variable : sizes { list type : Size } { list new : Size { new : Size 3 } { new : Size 1 } { new : Size 2 } }
 
 comment line : 1, 2, 3
-list sort member numbers : sizes size public Count
+list sort member numbers : sizes public size Count
 ```
 
 In C#:
@@ -142,7 +142,7 @@ comment line : ...
 variable : fruits { list type : Fruit } { list new : Fruit { new : Person "banana" } { new : Person "cherry" } { new : Person "apple" } }
 
 comment line : "apple", "banana", "cherry"
-list sort member strings : fruits fruit public Name
+list sort member strings : fruits public fruit Name
 ```
 
 In C#:
