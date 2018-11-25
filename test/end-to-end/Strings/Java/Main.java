@@ -13,7 +13,7 @@ class Main {
         // Characters
         String text = "abc";
         char first = text[0];
-        System.out.println(String.format("%0$s's first character is %1$c.", text, first));
+        System.out.println(String.format("%s's first character is %c.", text, first));
 
         // Searching
         String needle = "GLS";
@@ -21,10 +21,10 @@ class Main {
         Integer secondIndexOf = haystack.indexOf(needle, firstIndexOf + needle.length());
 
         // Results
-        System.out.println(String.format("Found a first result at: %0$d.", firstIndexOf));
+        System.out.println(String.format("Found a first result at: %d.", firstIndexOf));
 
         if (secondIndexOf != -1) {
-            System.out.println(String.format("Found a second result at: %0$d.", secondIndexOf));
+            System.out.println(String.format("Found a second result at: %d.", secondIndexOf));
         }
     }
 }

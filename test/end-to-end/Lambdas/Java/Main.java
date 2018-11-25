@@ -12,6 +12,6 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Main.runOnInts((i) -> String.format("Int: %0$d", i));
+        Main.runOnInts((i) -> String.format("Int: %d", i));
     }
 }

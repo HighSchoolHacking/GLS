@@ -1,3 +1,3 @@
 //
-String.format("Foo: %0$s; Bar: %1$d", foo, bar);
+String.format("Foo: %s; Bar: %d", foo, bar);
 //

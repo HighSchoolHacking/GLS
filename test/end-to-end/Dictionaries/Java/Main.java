@@ -11,8 +11,8 @@ class Main {
         // Indices
         foo.put("baz", 7);
         Integer qux = foo.get("baz");
-        System.out.println(String.format("baz is %0$d", foo.get("baz")));
-        System.out.println(String.format("qux is %0$d", qux));
+        System.out.println(String.format("baz is %d", foo.get("baz")));
+        System.out.println(String.format("qux is %d", qux));
 
         // Initialization
         HashMap<String, Integer> container = new HashMap<String, Integer>() {{

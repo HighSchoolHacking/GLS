@@ -14,27 +14,27 @@ class Main {
         // Adding
         for (String word : words) {
             vector.push(word);
-            System.out.println(String.format("First: %0$s", vector.getFirst()));
-            System.out.println(String.format("Last: %0$s", vector.getLast()));
-            System.out.println(String.format("Capacity: %0$d", vector.getCapacity()));
-            System.out.println(String.format("Length: %0$d", vector.getLength()));
+            System.out.println(String.format("First: %s", vector.getFirst()));
+            System.out.println(String.format("Last: %s", vector.getLast()));
+            System.out.println(String.format("Capacity: %d", vector.getCapacity()));
+            System.out.println(String.format("Length: %d", vector.getLength()));
         }
 
         for (Integer i = 0; i < 2; i += 1) {
             // Retrieving
             for (Integer j = 0; j < vector.getLength(); j += 1) {
-                System.out.println(String.format("At %0$d: %1$s", j, vector.at(j)));
+                System.out.println(String.format("At %d: %s", j, vector.at(j)));
             }
 
             // Capacity
             vector.ensureCapacity(10);
-            System.out.println(String.format("Capacity: %0$d", vector.getCapacity()));
-            System.out.println(String.format("Length: %0$d", vector.getLength()));
+            System.out.println(String.format("Capacity: %d", vector.getCapacity()));
+            System.out.println(String.format("Length: %d", vector.getLength()));
 
             // Resizing
             vector.resize(7);
-            System.out.println(String.format("Capacity: %0$d", vector.getCapacity()));
-            System.out.println(String.format("Length: %0$d", vector.getLength()));
+            System.out.println(String.format("Capacity: %d", vector.getCapacity()));
+            System.out.println(String.format("Length: %d", vector.getLength()));
         }
 
         // Sorting
@@ -43,7 +43,7 @@ class Main {
         sorted.sort();
 
         for (String word : sorted) {
-            System.out.println(String.format("Set word: %0$s", word));
+            System.out.println(String.format("Set word: %s", word));
         }
     }
 }

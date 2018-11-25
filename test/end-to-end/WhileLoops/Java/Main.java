@@ -16,7 +16,7 @@ class Main {
                 continue;
             }
 
-            System.out.println(String.format("count is %0$d", count));
+            System.out.println(String.format("count is %d", count));
         }
     }
 }
