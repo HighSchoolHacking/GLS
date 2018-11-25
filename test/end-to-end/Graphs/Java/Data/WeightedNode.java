@@ -2,6 +2,7 @@ package graphs.data;
 
 import graphs.data.INode;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * A weighted, directed node in a graph.
@@ -22,7 +23,7 @@ public class WeightedNode<T> implements INode<WeightedNode<T>> {
             nodes.add(edge.to);
         }
 
-        this.edges.sort((edgeA, edgeB) -> edgeA.distance < edgeB.distance ? 1 : -1);
+        this.edges.sort((edgeA, edgeB) -> edgeA.distance < edgeB.distance ? 1 : -1));
 
         return nodes;
     }

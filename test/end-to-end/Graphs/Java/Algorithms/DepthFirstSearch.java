@@ -3,6 +3,7 @@ package graphs.algorithms;
 import graphs.data.UnweightedNode;
 import graphs.data.WeightedNode;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DepthFirstSearch {
     public static ArrayList<UnweightedNode<T>> unweightedDepthFirstSearch<T>(UnweightedNode<T> start) {

@@ -2,6 +2,7 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 class Main {
     private static void printInts(String label, ArrayList<Integer> items) {
@@ -78,7 +79,7 @@ class Main {
         ArrayList<Album> albums = new ArrayList<Album> { new Album("Thriller", 1982), new Album("Back in Black", 1980), new Album("The Dark Side of the Moon", 1973) };
         albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name ? 1 : -1);
         Main.printListFancy("album by name", albums, (album) -> album.name);
-        albums.sort((albumA, albumB) -> albumA.year < albumB.year ? 1 : -1);
+        albums.sort((albumA, albumB) -> albumA.year < albumB.year ? 1 : -1));
         Main.printListFancy("album by year", albums, (album) -> album.getLabel());
     }
 }

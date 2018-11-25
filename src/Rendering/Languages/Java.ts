@@ -664,7 +664,7 @@ export class Java extends Language {
         sets.contains = new NativeCallSyntax("contains", NativeCallScope.Member, NativeCallType.Function);
         sets.initializeAsNew = true;
         sets.initializeStart = "";
-        sets.requiredImports = [];
+        sets.requiredImports = [new Import(["java", "util"], ["HashSet"], ImportRelativity.Absolute)];
         sets.startItemsLeft = "([";
         sets.startItemsRight = "])";
         sets.startNoItems = "()";

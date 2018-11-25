@@ -2,6 +2,7 @@ package graphs.data;
 
 import graphs.data.INode;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * An unweighted, undirected node in a graph.
