@@ -405,6 +405,7 @@ export class Java extends Language {
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.defineEnd = "}";
         functions.explicitReturns = true;
+        functions.explicitNewStaticGenericType = true;
 
         functions.case = CaseStyle.CamelCase;
 

@@ -25,6 +25,11 @@ export class FunctionSyntax {
     public defineStartRight: string;
 
     /**
+     * Whether generic static functions should move the generic type to before the return type.
+     */
+    public explicitNewStaticGenericType: boolean;
+
+    /**
      * Whether return types should be explicitly stated.
      */
     public explicitReturns: boolean;
