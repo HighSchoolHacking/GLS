@@ -48,3 +48,12 @@ jobs:
             - run: npm run src:tsc
             - run: npm run test:tsc
             - run: npm run test:end-to-end -- --language=JavaScript
+
+workflows:
+    version: 2
+    build_and_end_to_end:
+        jobs:
+            - build
+            - javascript:
+                  requires:
+                      - build
