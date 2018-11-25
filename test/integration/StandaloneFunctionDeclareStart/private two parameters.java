@@ -1,3 +1,3 @@
 //
-private static String abc(int def, boolean ghi) {
+private static String abc(Integer def, Boolean ghi) {
 //

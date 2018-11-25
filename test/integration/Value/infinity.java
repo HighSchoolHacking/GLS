@@ -1,3 +1,3 @@
 //
-double.POSITIVE_INFINITY
+Double.POSITIVE_INFINITY
 //

@@ -667,6 +667,7 @@ export class Java extends Language {
         sets.requiredImports = [];
         sets.startItemsLeft = "([";
         sets.startItemsRight = "])";
+        sets.startNoItems = "()";
         sets.toArray = new NativeCallSyntax("toArray", NativeCallScope.Member, NativeCallType.Function);
         sets.toList = new NativeCallSyntax("new ArrayList<>", NativeCallScope.Static, NativeCallType.Function);
         sets.typeLeft = "<";

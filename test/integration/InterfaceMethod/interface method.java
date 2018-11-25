@@ -1,3 +1,3 @@
 //
-public String abc(boolean def, int ghi);
+public String abc(Boolean def, Integer ghi);
 //

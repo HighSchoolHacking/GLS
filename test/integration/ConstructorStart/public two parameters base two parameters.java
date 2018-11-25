@@ -1,4 +1,4 @@
 //
-public Foo(String name, int age) {
+public Foo(String name, Integer age) {
     super(abc, def);
 //

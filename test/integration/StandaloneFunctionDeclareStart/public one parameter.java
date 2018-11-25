@@ -1,3 +1,3 @@
 //
-public static String abc(int def) {
+public static String abc(Integer def) {
 //

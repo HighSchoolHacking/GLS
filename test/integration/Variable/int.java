@@ -1,3 +1,3 @@
 //
-int aaa;
+Integer aaa;
 //

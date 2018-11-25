@@ -1,6 +1,6 @@
 //
-double bbb = null;
-double ddd = null;
+Double bbb = null;
+Double ddd = null;
 
 try {
     bbb = Double.parseDouble(aaa);
