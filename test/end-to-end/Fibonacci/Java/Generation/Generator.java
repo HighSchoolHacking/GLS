@@ -1,5 +1,5 @@
 package fibonacci.generation;
 
 public interface IGenerator {
-    public int generate(int index);
+    public Integer generate(Integer index);
 }

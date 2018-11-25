@@ -54,7 +54,9 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
 
         const results = this.context.convertParsed(nextParameters);
 
-        results.commandResults[0].text = KeywordNames.Static + " " + results.commandResults[0].text;
+        if (this.language.syntax.standaloneFunctions.includeStaticKeyword) {
+            results.commandResults[0].text = KeywordNames.Static + " " + results.commandResults[0].text;
+        }
 
         if (parameters[1] === KeywordNames.Export) {
             let declaration: string = this.language.syntax.classes.exports.exportedLeft;

@@ -1,6 +1,6 @@
 package comments;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         /*
 

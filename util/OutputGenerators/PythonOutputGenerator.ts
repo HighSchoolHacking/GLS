@@ -7,5 +7,7 @@ import { spawnAndCaptureOutput } from "./Spawning";
  * Runs an output comparison test for a single GLS project in Python.
  */
 export const testPythonGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
-    return spawnAndCaptureOutput("python3", path.join(projectDirectory, "main.py"));
+    return spawnAndCaptureOutput("python3", {
+        args: [path.join(projectDirectory, "main.py")],
+    });
 };

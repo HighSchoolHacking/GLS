@@ -1,4 +1,4 @@
-file start : Lists index
+file start : Lists Main
     import local : Lists Album use Album
 
     main context start

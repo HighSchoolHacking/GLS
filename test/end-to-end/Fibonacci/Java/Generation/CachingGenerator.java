@@ -4,27 +4,27 @@ import fibonacci.generation.IGenerator;
 import java.util.HashMap;
 
 public class CachingGenerator implements IGenerator {
-    private HashMap<int, int> cache;
+    private HashMap<Integer, Integer> cache;
 
     public CachingGenerator() {
-        this.cache = new HashMap<int, int>();
+        this.cache = new HashMap<Integer, Integer>();
     }
 
-    public int generate(int index) {
+    public Integer generate(Integer index) {
         if (index < 2) {
             return index;
         }
 
-        int one = this.generate(index - 1);
-        int two = this.generate(index - 2);
-        int result = one + two;
+        Integer one = this.generate(index - 1);
+        Integer two = this.generate(index - 2);
+        Integer result = one + two;
 
         this.cache[index] = result;
 
         return result;
     }
 
-    public boolean isCached(int index) {
+    public Boolean isCached(Integer index) {
         return this.cache.containsKey(index);
     }
 }

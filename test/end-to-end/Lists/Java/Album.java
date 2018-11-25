@@ -2,9 +2,9 @@ package lists;
 
 public class Album {
     public String name;
-    public int year;
+    public Integer year;
 
-    public Album(String name, int year) {
+    public Album(String name, Integer year) {
         this.name = name;
         this.year = year;
     }

@@ -6,7 +6,7 @@ enum Direction {
     Vertical(2)
 }
 
-class Index {
+class Main {
     public static void main(String[] args) {
         System.out.println(String.format("Unknown by lookup is %0$d", Direction.Unknown));
         System.out.println(String.format("Horizontal by lookup is %0$d", Direction.Horizontal));

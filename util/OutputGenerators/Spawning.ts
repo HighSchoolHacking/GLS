@@ -1,11 +1,17 @@
 import { spawn } from "child_process";
 
-export const spawnAndCaptureOutput = async (command: string, ...args: string[]): Promise<string[]> => {
+export interface ISpawnOptions {
+    args?: string[];
+    cwd?: string;
+}
+
+export const spawnAndCaptureOutput = async (command: string, { args, cwd }: ISpawnOptions = {}): Promise<string[]> => {
     return new Promise<string[]>((resolve, reject) => {
         let outData = "";
         let errorData = "";
 
         const child = spawn(command, args, {
+            cwd,
             stdio: "pipe",
         });
 

@@ -3,16 +3,16 @@ package lists;
 import lists.Album;
 import java.util.ArrayList;
 
-class Index {
-    private static void printInts(String label, ArrayList<int> items) {
+class Main {
+    private static void printInts(String label, ArrayList<Integer> items) {
         System.out.println(String.format("The first %0$s is %1$d.", label, items[0]));
         System.out.println(String.format("The last %0$s is %1$d.", label, items[items.size() - 1]));
 
-        for (int item : items) {
+        for (Integer item : items) {
             System.out.println(String.format("%0$s: %1$d", label, item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$d", label, i, items[i]));
         }
     }
@@ -25,7 +25,7 @@ class Index {
             System.out.println(String.format("%0$s: %1$s", label, item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$s", label, i, items[i]));
         }
     }
@@ -35,7 +35,7 @@ class Index {
             System.out.println(getLabel(item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel(items[i])));
         }
     }
@@ -43,7 +43,7 @@ class Index {
     public static void main(String[] args) {
         // Initialization
         ArrayList<String> aaa = new ArrayList<String>();
-        ArrayList<int> bbb = new ArrayList<int> { 1, 2, 3 };
+        ArrayList<Integer> bbb = new ArrayList<Integer> { 1, 2, 3 };
         ArrayList<ArrayList<String>> ccc = new ArrayList<ArrayList<String>> { aaa, new ArrayList<String> { "eee", "fff", "ggg" } };
 
         // Members
@@ -67,18 +67,18 @@ class Index {
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String> { "plain", "chocolate", "vanilla", "strawberry" };
         flavors.sort();
-        Index.printStrings("flavor", flavors);
+        Main.printStrings("flavor", flavors);
 
         // Sorting ints
-        ArrayList<int> ints = new ArrayList<int> { 1, 10, 2, -3, 8, 4, 5 };
+        ArrayList<Integer> ints = new ArrayList<Integer> { 1, 10, 2, -3, 8, 4, 5 };
         ints.sort();
-        Index.printInts("int", ints);
+        Main.printInts("int", ints);
 
         // Sorting members
         ArrayList<Album> albums = new ArrayList<Album> { new Album("Thriller", 1982), new Album("Back in Black", 1980), new Album("The Dark Side of the Moon", 1973) };
         albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name ? 1 : -1);
-        Index.printListFancy("album by name", albums, (album) -> album.name);
+        Main.printListFancy("album by name", albums, (album) -> album.name);
         albums.sort((albumA, albumB) -> albumA.year < albumB.year ? 1 : -1);
-        Index.printListFancy("album by year", albums, (album) -> album.getLabel());
+        Main.printListFancy("album by year", albums, (album) -> album.getLabel());
     }
 }

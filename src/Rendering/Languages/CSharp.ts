@@ -675,6 +675,7 @@ export class CSharp extends Language {
      * @param parameters   A property container for metadata on standalone functions.
      */
     protected generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void {
+        standaloneFunctions.includeStaticKeyword = true;
         standaloneFunctions.withinStaticClass = true;
     }
 

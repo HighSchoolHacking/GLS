@@ -6,7 +6,7 @@ import graphs.data.WeightedNode;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public static class Tests {
+public class Tests {
     public static void testUnweighted() {
         String[] order = new String[] { "root", "apple", "banana", "red", "yellow" };
         HashMap<String, UnweightedNode<string>> nodes = new HashMap<String, UnweightedNode<string>>();

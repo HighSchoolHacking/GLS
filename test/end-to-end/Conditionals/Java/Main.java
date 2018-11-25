@@ -1,12 +1,12 @@
 package conditionals;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         if (true) {
             System.out.println("if true");
         }
 
-        boolean second = false;
+        Boolean second = false;
         if (second) {
             System.out.println("wrong if variable");
         } else {

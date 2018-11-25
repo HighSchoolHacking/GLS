@@ -2,11 +2,11 @@ package arrays;
 
 import java.util.Arrays;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         // Initialization
         String[] aaa = new String[0];
-        int[] bbb = new int[] { 1, 2, 3 };
+        Integer[] bbb = new Integer[] { 1, 2, 3 };
         String[][] ccc = new String[][] { aaa, new String[] { "eee", "fff", "ggg" } };
 
         // Members

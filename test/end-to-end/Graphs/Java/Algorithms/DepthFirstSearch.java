@@ -4,7 +4,7 @@ import graphs.data.UnweightedNode;
 import graphs.data.WeightedNode;
 import java.util.ArrayList;
 
-public static class DepthFirstSearch {
+public class DepthFirstSearch {
     public static ArrayList<UnweightedNode<T>> unweightedDepthFirstSearch<T>(UnweightedNode<T> start) {
         ArrayList<UnweightedNode<T>> nodes = new ArrayList<UnweightedNode<T>>();
         HashSet<UnweightedNode<T>> visited = new HashSet<UnweightedNode<T>>undefined;
