@@ -53,7 +53,7 @@ print("The first fruit is {0}.".format(fruits[0]))
 ## Lists
 
 GLS lists are much more flexible than arrays.
-They can be dynamically resized, added onto one another, and sort _\(for primitive types\)_.
+They can be dynamically resized, added onto one another, and sorted.
 
 Retrieve a single member of a list with `list index`, which takes in a name of a container and an integer index.
 

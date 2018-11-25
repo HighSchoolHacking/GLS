@@ -1,5 +1,43 @@
 file start : Lists index
+    import local : Lists Album use Album
+
     main context start
+        standalone function declare start : private PrintInts void label string items { list type : int }
+            print : { string format : ("The first {0} is {1}.") label string { list index : items 0 } int }
+            print : { string format : ("The last {0} is {1}.") label string { list index : items { operation : { list length : items } minus 1 } } int }
+
+            for each start : items item int
+                print : { string format : ("{0}: {1}") label string item int }
+            for each end
+
+            for numbers start : i int 0 { list length : items }
+                print : { string format : ("{0} {1}: {2}") label string i int { list index : items i } int }
+            for each end
+        standalone function declare end
+
+        standalone function declare start : private PrintStrings void label string items { list type : string }
+            print : { string format : ("The first {0} is {1}.") label string { list index : items 0 } string }
+            print : { string format : ("The last {0} is {1}.") label string { list index : items { operation : { list length : items } minus 1 } } string }
+
+            for each start : items item string
+                print : { string format : ("{0}: {1}") label string item string }
+            for each end
+
+            for numbers start : i int 0 { list length : items }
+                print : { string format : ("{0} {1}: {2}") label string i int { list index : items i } string }
+            for each end
+        standalone function declare end
+
+        standalone function declare start : private { generic type : PrintListFancy T } void label string items { list type : T } getLabel { lambda type inline : string item T }
+            for each start : items item T
+                print : { lambda : getLabel item }
+            for each end
+
+            for numbers start : i int 0 { list length : items }
+                print : { string format : ("{0} {1}: {2}") label string i int { lambda : getLabel { list index : items i } } string }
+            for each end
+        standalone function declare end
+
         main start
             comment line : Initialization
             variable : aaa { list type : string } { list new : string }
@@ -24,20 +62,22 @@ file start : Lists index
             list push : pets "dog"
             print : { string format : ("The last pet is {0}.") { list index : pets { operation : { list length : pets } minus 1 } } string }
 
-            comment line : Sorting
+            comment line : Sorting (strings)
             variable : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }
             list sort strings : flavors
-            print : { string format : ("The first flavor is {0}.") { list index : flavors 0 } string }
-            print : { string format : ("The last flavor is {0}.") { list index : flavors { operation : { list length : flavors } minus 1 } } string }
+            standalone function : private { main group } PrintStrings "flavor" flavors
 
-            comment line : Looping
-            for each start : flavors flavor string
-                print : { string format : ("Flavor: {0}.") flavor string }
-            for each end
+            comment line : Sorting (ints)
+            variable : ints { list type : int } { list new : int 1 10 2 -3 8 4 5 }
+            list sort numbers : ints
+            standalone function : private { main group } PrintInts "int" ints
 
-            for numbers start : i int 0 { list length : flavors }
-                print : { string format : ("Flavor {0}: {1}.") i int { list index : flavors i } string }
-            for each end
+            comment line : Sorting (members)
+            variable : albums { list type : Album } { list new : Album { new : Album "Thriller" 1982 } { new : Album ("Back in Black") 1980 } { new : Album ("The Dark Side of the Moon") 1973 } }
+            list sort member strings: albums public album Name
+            standalone function : private { main group } PrintListFancy ("album by name") albums { lambda declare : string album Album { member variable : public album Name } }
+            list sort member numbers: albums public album Year
+            standalone function : private { main group } PrintListFancy ("album by year") albums { lambda declare : string album Album { member function : public album GetLabel } }
         main end
     main context end
 file end

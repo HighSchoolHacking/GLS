@@ -1,3 +1,3 @@
 //
-abc.sort((a, b) => b - a);
+abc.sort((a, b) => a - b);
 //

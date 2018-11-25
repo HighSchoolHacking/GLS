@@ -1,5 +1,6 @@
 using Graphs.Data;
 using System.Collections.Generic;
+using System;
 
 namespace Graphs.Data
 {
@@ -27,7 +28,7 @@ namespace Graphs.Data
                 nodes.Add(edge.To);
             }
 
-            this.edges.Sort((a, b) => (int)(a.Distance - b.Distance));
+            this.edges.Sort((edgeA, edgeB) => edgeA.Distance < edgeB.Distance ? -1 : 1);
 
             return nodes;
         }

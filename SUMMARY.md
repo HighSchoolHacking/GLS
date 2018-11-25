@@ -8,6 +8,7 @@
   * [Math](docs/syntax/math.md)
     * [String Conversions](docs/syntax/math/string-conversions.md)
   * [Arrays and Lists](docs/syntax/arrays-and-lists.md)
+    * [Sorting](docs/syntax/lists/sorting.md)
   * [Dictionaries](docs/syntax/dictionaries.md)
   * [Classes](docs/syntax/classes.md)
     * [Member Variables](docs/syntax/classes/member-variables.md)

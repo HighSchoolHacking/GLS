@@ -26,6 +26,7 @@ import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -432,8 +433,7 @@ export class Python extends Language {
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront.withArguments(["0"]);
         lists.push = new NativeCallSyntax("append", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortCompare = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortNumbers = lists.sortCompare;
+        lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }
 
@@ -446,6 +446,29 @@ export class Python extends Language {
         newSized.includeType = false;
         newSized.left = "[None] * ";
         newSized.right = "";
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member numbers.
+     */
+    protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort(key = lambda ";
+        sortMembers.lambdaMiddleLeft = ": ";
+        sortMembers.lambdaRight = ")";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.ShorthandLambda;
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed members.
+     */
+    protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort(key = lambda ";
+        sortMembers.lambdaMiddleLeft = ": ";
+        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaRight = ")";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.ShorthandLambda;
     }
 
     /**

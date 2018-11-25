@@ -26,6 +26,7 @@ import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -482,8 +483,7 @@ export class Java extends Language {
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
-        lists.sortCompare = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortNumbers = lists.sortCompare;
+        lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }
 
@@ -495,6 +495,30 @@ export class Java extends Language {
         newSized.left = "new ArrayList<";
         newSized.middle = ">(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member numbers.
+     */
+    protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort((";
+        sortMembers.lambdaMiddleLeft = ") -> ";
+        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.KeyComparator;
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member strings.
+     */
+    protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort((";
+        sortMembers.lambdaMiddleLeft = ") -> ";
+        sortMembers.lambdaMiddleRight = ".compareTo(";
+        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.KeyComparator;
     }
 
     /**

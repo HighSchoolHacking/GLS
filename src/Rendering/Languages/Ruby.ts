@@ -26,6 +26,7 @@ import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -454,8 +455,7 @@ export class Ruby extends Language {
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortCompare = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortNumbers = lists.sortCompare;
+        lists.sortNumbers = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }
 
@@ -468,6 +468,28 @@ export class Ruby extends Language {
         newSized.includeType = false;
         newSized.left = "Array.new(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed members.
+     */
+    protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort_by! {|";
+        sortMembers.lambdaMiddleLeft = "| ";
+        sortMembers.lambdaRight = "}";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.ShorthandLambda;
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed members.
+     */
+    protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort_by! {|";
+        sortMembers.lambdaMiddleLeft = "| ";
+        sortMembers.lambdaRight = "}";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.ShorthandLambda;
     }
 
     /**

@@ -24,6 +24,7 @@ import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
 import { MainSyntax } from "./Properties/Syntax/MainSyntax";
@@ -459,11 +460,10 @@ export class JavaScript extends Language {
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
         lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
-        lists.sortCompare = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function).withArguments([
-            "(a, b) => b - a",
+            "(a, b) => a - b",
         ]);
-        lists.sortStrings = lists.sortCompare;
+        lists.sortStrings = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
     }
 
     /**
@@ -473,6 +473,30 @@ export class JavaScript extends Language {
         newSized.includeType = false;
         newSized.left = "new Array(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member numbers.
+     */
+    protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort((";
+        sortMembers.lambdaMiddleLeft = ") => ";
+        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaRight = " ? -1 : 1)";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.KeyComparator;
+    }
+
+    /**
+     * Fills out metadata on list sorting by keyed member strings.
+     */
+    protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
+        sortMembers.lambdaLeft = ".sort((";
+        sortMembers.lambdaMiddleLeft = ") => ";
+        sortMembers.lambdaMiddleRight = " < ";
+        sortMembers.lambdaRight = " ? -1 : 1)";
+        sortMembers.requiredImports = [];
+        sortMembers.type = ListSortMemberType.KeyComparator;
     }
 
     /**

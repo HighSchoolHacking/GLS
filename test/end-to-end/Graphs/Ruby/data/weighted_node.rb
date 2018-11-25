@@ -18,7 +18,7 @@ class WeightedNode
             nodes.push(edge.to)
         end
 
-        self.edges.sort!(lambda { |a, b| a.distance - b.distance.floor })
+        self.edges.sort_by! {|edge| edge.distance}
 
         return nodes
     end

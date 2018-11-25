@@ -1,4 +1,3 @@
-from math import floor
 
 """
 A weighted, directed node in a graph.
@@ -15,6 +14,6 @@ class WeightedNode:
         for edge in self.__edges:
             nodes.append(edge.to)
 
-        self.__edges.sort(lambda a, b: floor(a.distance - b.distance))
+        self.__edges.sort(key = lambda edge: edge.distance)
 
         return nodes

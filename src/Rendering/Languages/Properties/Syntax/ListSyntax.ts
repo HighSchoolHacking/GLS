@@ -1,5 +1,6 @@
 import { Import } from "../../Imports/Import";
 import { ListNewSizedSyntax } from "./ListNewSizedSyntax";
+import { ListSortMembersSyntax } from "./ListSortMembersSyntax";
 import { NativeCallSyntax } from "./NativeCallSyntax";
 
 /**
@@ -52,9 +53,14 @@ export class ListSyntax {
     public requiredImports: Import[];
 
     /**
-     * How to sort a list in-place with a comparator function.
+     * How to sort a list in-place by keyed member numbers.
      */
-    public sortCompare: NativeCallSyntax;
+    public sortMemberNumbers: ListSortMembersSyntax = new ListSortMembersSyntax();
+
+    /**
+     * How to sort a list in-place by keyed member strings.
+     */
+    public sortMemberStrings: ListSortMembersSyntax = new ListSortMembersSyntax();
 
     /**
      * How to sort a list in-place as numbers.
