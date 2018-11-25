@@ -1,8 +1,8 @@
 # GLS - General Language Syntax
 
-[![Build Status](https://travis-ci.org/general-language-syntax/GLS.svg?)](https://travis-ci.org/general-language-syntax/GLS)
 [![NPM version](https://badge.fury.io/js/general-language-syntax.svg)](http://badge.fury.io/js/general-language-syntax)
 [![Greenkeeper badge](https://badges.greenkeeper.io/general-language-syntax/GLS.svg)](https://greenkeeper.io/)
+[![Circle CI](https://circleci.com/gh/palantir/tslint.svg?style=svg)](https://circleci.com/gh/palantir/tslint)
 
 A unified syntax that compiles into a number of OOP languages.
 
