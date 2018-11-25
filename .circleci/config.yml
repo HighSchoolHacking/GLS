@@ -11,15 +11,15 @@ jobs:
 
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "package.json" }}
-                      - v1-dependencies-
+                      - dependency-cache-{{ checksum "package-lock.json" }}
+                      - dependency-cache-
 
             - run: npm install
 
             - save_cache:
                   paths:
                       - node_modules
-                  key: v1-dependencies-{{ checksum "package.json" }}
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
 
             - run: npm run verify:ci
             - persist_to_workspace:
