@@ -510,7 +510,7 @@ export class Java extends Language {
         sortMembers.lambdaLeft = ".sort((";
         sortMembers.lambdaMiddleLeft = ") -> ";
         sortMembers.lambdaMiddleRight = " < ";
-        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.lambdaRight = " ? 1 : -1))";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.KeyComparator;
     }
