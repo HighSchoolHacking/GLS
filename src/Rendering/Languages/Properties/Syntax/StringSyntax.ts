@@ -43,6 +43,11 @@ export class StringSyntax {
     public formatting: StringFormatSyntax = new StringFormatSyntax();
 
     /**
+     * How to start getting a character by index.
+     */
+    public indexLeft: string;
+
+    /**
      * How to find a substring within a string.
      */
     public indexOf: NativeCallSyntax;
@@ -51,6 +56,11 @@ export class StringSyntax {
      * The value returned by string searching when a substring isn't found.
      */
     public indexOfNotFound: string;
+
+    /**
+     * How to end getting a character by index.
+     */
+    public indexRight: string;
 
     /**
      * How to retrieve a string's length.

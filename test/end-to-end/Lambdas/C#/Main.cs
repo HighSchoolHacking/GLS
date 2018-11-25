@@ -1,6 +1,6 @@
 using System;
 
-namespace Lists
+namespace Lambdas
 {
     class Program
     {

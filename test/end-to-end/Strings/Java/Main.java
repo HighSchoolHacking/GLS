@@ -12,7 +12,7 @@ class Main {
 
         // Characters
         String text = "abc";
-        char first = text[0];
+        char first = text.charAt(0);
         System.out.println(String.format("%s's first character is %c.", text, first));
 
         // Searching

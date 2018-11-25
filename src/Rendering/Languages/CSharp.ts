@@ -708,20 +708,15 @@ export class CSharp extends Language {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringSyntax(strings: StringSyntax): void {
-        strings.concatenate = " + ";
-
         strings.caseLower = new NativeCallSyntax("ToLower", NativeCallScope.Member, NativeCallType.Function);
-
         strings.caseUpper = new NativeCallSyntax("ToUpper", NativeCallScope.Member, NativeCallType.Function);
-
         strings.className = "string";
-
+        strings.concatenate = " + ";
+        strings.indexLeft = "[";
         strings.indexOf = new NativeCallSyntax("IndexOf", NativeCallScope.Member, NativeCallType.Function);
-
         strings.indexOfNotFound = "-1";
-
+        strings.indexRight = "]";
         strings.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
-
         strings.trim = new NativeCallSyntax("Trim", NativeCallScope.Member, NativeCallType.Function);
     }
 

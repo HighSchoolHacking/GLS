@@ -676,20 +676,15 @@ export class JavaScript extends Language {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringSyntax(strings: StringSyntax): void {
-        strings.concatenate = " + ";
-
         strings.caseLower = new NativeCallSyntax("toLowerCase", NativeCallScope.Member, NativeCallType.Function);
-
         strings.caseUpper = new NativeCallSyntax("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
-
         strings.className = "String";
-
+        strings.concatenate = " + ";
+        strings.indexLeft = "[";
         strings.indexOf = new NativeCallSyntax("indexOf", NativeCallScope.Member, NativeCallType.Function);
-
         strings.indexOfNotFound = "-1";
-
+        strings.indexRight = "]";
         strings.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
-
         strings.trim = new NativeCallSyntax("trim", NativeCallScope.Member, NativeCallType.Function);
     }
 
