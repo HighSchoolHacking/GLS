@@ -22,6 +22,7 @@ import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
+import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -428,12 +429,22 @@ export class JavaScript extends Language {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
+        lambdas.callLeft = "(";
+        lambdas.callRight = ")";
         lambdas.functionLeft = "(";
+        lambdas.functionMiddle = ") => ";
         lambdas.functionRight = "";
         lambdas.parameterTypeRequired = false;
         lambdas.returnTypeRequired = false;
+    }
 
-        lambdas.functionMiddle = ") => ";
+    /**
+     * Generates metadata on inline lambda types.
+     *
+     * @param typeInline   A property container for metadata on inline lambda types.
+     */
+    protected generateLambdaTypeInlineSyntax(typeInline: LambdaTypeInlineSyntax): void {
+        // Unused
     }
 
     /**

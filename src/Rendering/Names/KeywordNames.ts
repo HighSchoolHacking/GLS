@@ -91,4 +91,9 @@ export class KeywordNames {
      * Name key for the "use" keyword.
      */
     public static Use = "use";
+
+    /**
+     * Name key for the "void" keyword.
+     */
+    public static Void = "void";
 }

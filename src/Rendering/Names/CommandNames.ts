@@ -328,9 +328,19 @@ export class CommandNames {
     public static IsNull = "is null";
 
     /**
-     * Name key for the LambdaBody command.
+     * Name key for the Lambda command.
      */
-    public static LambdaBody = "lambda";
+    public static Lambda = "lambda";
+
+    /**
+     * Name key for the LambdaDeclare command.
+     */
+    public static LambdaDeclare = "lambda declare";
+
+    /**
+     * Name key for the LambdaTypeInline command.
+     */
+    public static LambdaTypeInline = "lambda type inline";
 
     /**
      * Name key for the LambdaBody command.

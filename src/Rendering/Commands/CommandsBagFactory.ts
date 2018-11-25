@@ -65,7 +65,9 @@ import { InterfaceMethodCommand } from "./InterfaceMethodCommand";
 import { InterfaceStartCommand } from "./InterfaceStartCommand";
 import { IsNotNullCommand } from "./IsNotNullCommand";
 import { IsNullCommand } from "./IsNullCommand";
-import { LambdaBodyCommand } from "./LambdaBodyCommand";
+import { LambdaCommand } from "./LambdaCommand";
+import { LambdaDeclareCommand } from "./LambdaDeclareCommand";
+import { LambdaTypeInlineCommand } from "./LambdaTypeInlineCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
 import { ListIndexCommand } from "./ListIndexCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
@@ -224,7 +226,9 @@ export class CommandsBagFactory {
             new InterfaceStartCommand(context),
             new IsNotNullCommand(context),
             new IsNullCommand(context),
-            new LambdaBodyCommand(context),
+            new LambdaCommand(context),
+            new LambdaDeclareCommand(context),
+            new LambdaTypeInlineCommand(context),
             new ListAddListCommand(context),
             new ListIndexCommand(context),
             new ListLengthCommand(context),
