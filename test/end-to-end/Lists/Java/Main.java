@@ -3,6 +3,9 @@ package lists;
 import lists.Album;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 class Main {
     private static void printInts(String label, ArrayList<Integer> items) {
@@ -33,11 +36,11 @@ class Main {
 
     private static void printListFancy<T>(String label, ArrayList<T> items, Function<T, String> getLabel) {
         for (T item : items) {
-            System.out.println(getLabel(item));
+            System.out.println(getLabel.apply(item));
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-            System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel(items[i])));
+            System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel.apply(items[i])));
         }
     }
 

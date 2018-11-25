@@ -1,3 +1,3 @@
 //
-abc(def, ghi, jkl);
+abc.apply(def, ghi, jkl);
 //
