@@ -383,6 +383,11 @@ export class CommandNames {
     public static ListPush = "list push";
 
     /**
+     * Name key for the ListSet command.
+     */
+    public static ListSet = "list set";
+
+    /**
      * Name key for the ListSortMemberNumbers command.
      */
     public static ListSortMemberNumbers = "list sort member numbers";

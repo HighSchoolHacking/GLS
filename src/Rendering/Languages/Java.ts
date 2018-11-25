@@ -496,6 +496,9 @@ export class Java extends Language {
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
+        lists.setLeft = ".set(";
+        lists.setMiddle = ", ";
+        lists.setRight = ")";
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function)
             .withArguments(["Comparator.naturalOrder()"])
             .withImports([new Import(["java", "util"], ["Comparator"], ImportRelativity.Absolute)]);

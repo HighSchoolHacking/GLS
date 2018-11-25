@@ -463,6 +463,10 @@ export class Ruby extends Language {
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.requiredImports = [];
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }

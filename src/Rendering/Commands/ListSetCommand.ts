@@ -5,25 +5,25 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Sets an item in a dictionary.
+ * Sets an item in a list.
  */
-export class DictionarySetCommand extends Command {
+export class ListSetCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionarySet)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSet)
         .withDescription("Sets an item in a list")
         .withParameters([
-            new SingleParameter("dictionary", "A dictionary to look within.", true),
-            new SingleParameter("key", "Key within the dictionary.", true),
-            new SingleParameter("value", "Value to store under the key.", true),
+            new SingleParameter("list", "List to look within.", true),
+            new SingleParameter("index", "Index within the list.", true),
+            new SingleParameter("value", "Value to store under the index.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return DictionarySetCommand.metadata;
+        return ListSetCommand.metadata;
     }
 
     /**
@@ -34,11 +34,11 @@ export class DictionarySetCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let output = parameters[1];
-        output += this.language.syntax.dictionaries.setLeft;
+        output += this.language.syntax.lists.setLeft;
         output += parameters[2];
-        output += this.language.syntax.dictionaries.setMiddle;
+        output += this.language.syntax.lists.setMiddle;
         output += parameters[3];
-        output += this.language.syntax.dictionaries.setRight;
+        output += this.language.syntax.lists.setRight;
 
         return LineResults.newSingleLine(output).withAddSemicolon(true);
     }

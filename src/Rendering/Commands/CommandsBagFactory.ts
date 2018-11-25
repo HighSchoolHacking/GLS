@@ -76,6 +76,7 @@ import { ListNewSizedCommand } from "./ListNewSizedCommand";
 import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
+import { ListSetCommand } from "./ListSetCommand";
 import { ListSortMemberNumbersCommand } from "./ListSortMemberNumbersCommand";
 import { ListSortMemberStringsCommand } from "./ListSortMemberStringsCommand";
 import { ListSortNumbersCommand } from "./ListSortNumbers";
@@ -238,6 +239,7 @@ export class CommandsBagFactory {
             new ListPopCommand(context),
             new ListPopFrontCommand(context),
             new ListPushCommand(context),
+            new ListSetCommand(context),
             new ListSortMemberNumbersCommand(context),
             new ListSortMemberStringsCommand(context),
             new ListSortNumbersCommand(context),

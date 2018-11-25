@@ -88,7 +88,7 @@ file start : VectorClass Vector
             variable : list { list type : T } { list new sized : T { member variable : private { this } Length } }
 
             for numbers start : i int 0 { member variable : private { this } Length }
-                operation : { { list index : list i } equals { array index : { member variable : private { this } Data } i } }
+                list set : list i { array index : { member variable : private { this } Data } i }
             for numbers end
 
             return : list

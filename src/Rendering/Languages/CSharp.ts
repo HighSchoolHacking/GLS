@@ -484,6 +484,9 @@ export class CSharp extends Language {
         lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Absolute)];
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }

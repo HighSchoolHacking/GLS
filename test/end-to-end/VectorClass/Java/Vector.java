@@ -95,7 +95,7 @@ public class Vector<T> {
         ArrayList<T> list = new ArrayList<T>(this.length);
 
         for (Integer i = 0; i < this.length; i += 1) {
-            list.get(i) = this.data[i];
+            list.set(i, this.data[i]);
         }
 
         return list;

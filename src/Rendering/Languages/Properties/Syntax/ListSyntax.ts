@@ -69,6 +69,21 @@ export class ListSyntax {
     public requiredImports: Import[];
 
     /**
+     * How to start setting an indexed value.
+     */
+    public setLeft: string;
+
+    /**
+     * Characters in the middle of setting an indexed value.
+     */
+    public setMiddle: string;
+
+    /**
+     * How to end setting an indexed value.
+     */
+    public setRight: string;
+
+    /**
      * How to sort a list in-place by keyed member numbers.
      */
     public sortMemberNumbers: ListSortMembersSyntax = new ListSortMembersSyntax();

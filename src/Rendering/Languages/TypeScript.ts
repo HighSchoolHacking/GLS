@@ -487,6 +487,7 @@ export class TypeScript extends Language {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListSyntax(lists: ListSyntax): void {
+        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
         lists.indexLeft = "[";
         lists.indexRight = "]";
@@ -494,7 +495,10 @@ export class TypeScript extends Language {
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
-        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
+        lists.requiredImports = [];
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function).withArguments([
             "(a: number, b: number): number => a - b",
         ]);
