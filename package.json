@@ -25,9 +25,11 @@
         "src:tsc": "tsc -p .",
         "src:tslint": "tslint -c tslint.json -p tsconfig.json -t stylish",
         "test": "npm run test:tsc && npm run test:tslint && npm run test:run",
+        "test:ci": "npm run test:tsc && npm run test:tslint && npm run test:run:ci",
         "test:tsc": "tsc -p test",
         "test:tslint": "tslint -c test/tslint.json -p test/tsconfig.json -t stylish",
         "test:run": "npm run test:unit && npm run test:integration && npm run test:end-to-end",
+        "test:run:ci": "npm run test:unit && npm run test:integration",
         "test:unit": "mocha test/unit/**/*.js",
         "test:integration": "mocha test/integration.js",
         "test:end-to-end": "mocha test/end-to-end.js --timeout 10000",
@@ -35,7 +37,8 @@
         "util:new-language": "node util/createNewLanguage.js",
         "util:tsc": "tsc -p util",
         "util:tslint": "tslint -c util/tslint.json -p util/tsconfig.json -t stylish",
-        "verify": "npm run src && npm run util && npm run test && npm run docs"
+        "verify": "npm run src && npm run util && npm run test && npm run docs",
+        "verify:ci": "npm run src && npm run util && npm run test:ci && npm run docs"
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",
