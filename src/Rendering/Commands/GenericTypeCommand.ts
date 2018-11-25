@@ -1,3 +1,4 @@
+import { Import } from "../Languages/Imports/Import";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -14,7 +15,10 @@ export class GenericTypeCommand extends Command {
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.GenericType)
         .withDescription("Declares generic types")
-        .withParameters([new RepeatingParameters("Generic types", [new SingleParameter("type", "A type of object.", true)])]);
+        .withParameters([
+            new SingleParameter("containerType", "Type containing the generics.", true),
+            new RepeatingParameters("Generic types", [new SingleParameter("type", "A type of object.", true)]),
+        ]);
 
     /**
      * @returns Metadata on the command.
@@ -30,12 +34,24 @@ export class GenericTypeCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output = parameters[1];
-
-        if (this.language.syntax.variables.explicitTypes) {
-            output += "<" + parameters.slice(2).join(", ") + ">";
+        if (!this.language.syntax.variables.explicitTypes) {
+            return this.context.convertParsed([CommandNames.Type, parameters[1]]);
         }
 
-        return LineResults.newSingleLine(output);
+        const imports: Import[] = [];
+        let output = parameters[1] + "<";
+
+        for (let i = 2; i < parameters.length; i += 1) {
+            const typeLine = this.context.convertParsed([CommandNames.Type, parameters[i]]);
+            output += typeLine.commandResults[0].text;
+            imports.push(...typeLine.addedImports);
+
+            if (i !== parameters.length - 1) {
+                output += ", ";
+            }
+        }
+
+        output += ">";
+        return LineResults.newSingleLine(output).withImports(imports);
     }
 }

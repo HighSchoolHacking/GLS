@@ -9,10 +9,10 @@ import java.util.HashMap;
 public class Tests {
     public static void testUnweighted() {
         String[] order = new String[] { "root", "apple", "banana", "red", "yellow" };
-        HashMap<String, UnweightedNode<string>> nodes = new HashMap<String, UnweightedNode<string>>();
+        HashMap<String, UnweightedNode<String>> nodes = new HashMap<String, UnweightedNode<String>>();
 
         for (String key : order) {
-            UnweightedNode<string> node = new UnweightedNode<string>(key);
+            UnweightedNode<String> node = new UnweightedNode<String>(key);
             nodes.put(key, node);
         }
 
@@ -25,7 +25,7 @@ public class Tests {
         }};
 
         for (String key : order) {
-            UnweightedNode<string> node = nodes.get(key);
+            UnweightedNode<String> node = nodes.get(key);
             String[] neighborKeys = adjacencies.get(key);
 
             for (String neighborKey : neighborKeys) {
@@ -34,7 +34,7 @@ public class Tests {
             }
         }
 
-        for (UnweightedNode<string> node : DepthFirstSearch.unweightedDepthFirstSearch(nodes.get("root"))) {
+        for (UnweightedNode<String> node : DepthFirstSearch.unweightedDepthFirstSearch(nodes.get("root"))) {
             System.out.println(node.data);
         }
     }

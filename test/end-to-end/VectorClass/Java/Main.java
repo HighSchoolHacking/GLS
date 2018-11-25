@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 class Main {
     public static void main(String[] args) {
-        Vector<string> vector = new Vector<string>();
+        Vector<String> vector = new Vector<String>();
         String[] words = new String[] { "hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal" };
 
         // Adding
