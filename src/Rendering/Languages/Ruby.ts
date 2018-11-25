@@ -313,7 +313,10 @@ export class Ruby extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
+        dictionaries.className = "hash";
         dictionaries.containsKey = new NativeCallSyntax("key?", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -321,9 +324,11 @@ export class Ruby extends Language {
         dictionaries.initializePairMiddle = " => ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
-
-        dictionaries.className = "hash";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Property);
+        dictionaries.requiredImports = [];
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**

@@ -22,7 +22,7 @@ import { ConstructorEndCommand } from "./ConstructorEndCommand";
 import { ConstructorStartCommand } from "./ConstructorStartCommand";
 import { ContinueCommand } from "./ContinueCommand";
 import { DictionaryContainsKeyCommand } from "./DictionaryContainsKeyCommand";
-import { DictionaryIndexCommand } from "./DictionaryIndexCommand";
+import { DictionaryGetCommand } from "./DictionaryGetCommand";
 import { DictionaryKeysCommand } from "./DictionaryKeysCommand";
 import { DictionaryNewCommand } from "./DictionaryNewCommand";
 import { DictionaryNewEndCommand } from "./DictionaryNewEndCommand";
@@ -184,7 +184,7 @@ export class CommandsBagFactory {
             new ConstructorStartCommand(context),
             new ContinueCommand(context),
             new DictionaryContainsKeyCommand(context),
-            new DictionaryIndexCommand(context),
+            new DictionaryGetCommand(context),
             new DictionaryKeysCommand(context),
             new DictionaryNewCommand(context),
             new DictionaryNewEndCommand(context),

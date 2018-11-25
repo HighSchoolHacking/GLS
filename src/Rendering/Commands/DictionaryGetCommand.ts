@@ -5,24 +5,24 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * An indexed dictionary lookup.
+ * Retrieves a keyed value from a dictionary.
  */
-export class DictionaryIndexCommand extends Command {
+export class DictionaryGetCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryIndex)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryGet)
         .withDescription("An indexed dictionary lookup")
         .withParameters([
-            new SingleParameter("dictionary", "A dictionary to look within.", true),
-            new SingleParameter("index", "The index within the dictionary.", true),
+            new SingleParameter("dictionary", "Dictionary to look within.", true),
+            new SingleParameter("index", "Key within the dictionary.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return DictionaryIndexCommand.metadata;
+        return DictionaryGetCommand.metadata;
     }
 
     /**
@@ -32,6 +32,11 @@ export class DictionaryIndexCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "]");
+        let output = parameters[1];
+        output += this.language.syntax.dictionaries.getLeft;
+        output += parameters[2];
+        output += this.language.syntax.dictionaries.getRight;
+
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

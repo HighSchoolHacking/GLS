@@ -33,6 +33,13 @@ export class DictionarySetCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "] = " + parameters[3]).withAddSemicolon(true);
+        let output = parameters[1];
+        output += this.language.syntax.dictionaries.setLeft;
+        output += parameters[2];
+        output += this.language.syntax.dictionaries.setMiddle;
+        output += parameters[3];
+        output += this.language.syntax.dictionaries.setRight;
+
+        return LineResults.newSingleLine(output).withAddSemicolon(true);
     }
 }

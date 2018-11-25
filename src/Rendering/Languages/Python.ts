@@ -286,7 +286,10 @@ export class Python extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
+        dictionaries.className = "dict";
         dictionaries.containsKey = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -294,9 +297,11 @@ export class Python extends Language {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
-
-        dictionaries.className = "dict";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.requiredImports = [];
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**

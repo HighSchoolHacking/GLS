@@ -313,6 +313,8 @@ export class CSharp extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "Dictionary";
         dictionaries.containsKey = new NativeCallSyntax("ContainsKey", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.keys = new NativeCallSyntax("Keys", NativeCallScope.Member, NativeCallType.Property);
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}";
@@ -322,6 +324,9 @@ export class CSharp extends Language {
         dictionaries.initializePairRight = " }";
         dictionaries.initializeStart = "\n{";
         dictionaries.requiredImports = [new Import(["System", "Collections", "Generic"], ["Dictionary"], ImportRelativity.Absolute)];
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";

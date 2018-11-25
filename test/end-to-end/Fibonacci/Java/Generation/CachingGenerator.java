@@ -19,7 +19,7 @@ public class CachingGenerator implements IGenerator {
         Integer two = this.generate(index - 2);
         Integer result = one + two;
 
-        this.cache[index] = result;
+        this.cache.put(index, result);
 
         return result;
     }

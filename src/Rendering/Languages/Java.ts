@@ -319,15 +319,20 @@ export class Java extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.getLeft = ".get(";
+        dictionaries.getRight = ")";
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
-        dictionaries.initializeStart = "() {{";
         dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
+        dictionaries.initializeStart = "() {{";
+        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.requiredImports = [new Import(["java", "util"], ["HashMap"], ImportRelativity.Absolute)];
+        dictionaries.setLeft = ".put(";
+        dictionaries.setMiddle = ", ";
+        dictionaries.setRight = ")";
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";

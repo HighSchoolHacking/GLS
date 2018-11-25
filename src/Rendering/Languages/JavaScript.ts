@@ -318,6 +318,8 @@ export class JavaScript extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "Object";
         dictionaries.containsKey = new NativeCallSyntax("{}.hasOwnProperty.call", NativeCallScope.Static, NativeCallType.Function);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.keys = new NativeCallSyntax("Object.keys", NativeCallScope.Static, NativeCallType.Function);
         dictionaries.initializeEnd = "}";
@@ -326,6 +328,10 @@ export class JavaScript extends Language {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
+        dictionaries.requiredImports = [];
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**

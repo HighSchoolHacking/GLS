@@ -13,7 +13,7 @@ public class Tests {
 
         for (String key : order) {
             UnweightedNode<string> node = new UnweightedNode<string>(key);
-            nodes[key] = node;
+            nodes.put(key, node);
         }
 
         HashMap<String, String[]> adjacencies = new HashMap<String, String[]>() {{
@@ -25,16 +25,16 @@ public class Tests {
         }};
 
         for (String key : order) {
-            UnweightedNode<string> node = nodes[key];
-            String[] neighborKeys = adjacencies[key];
+            UnweightedNode<string> node = nodes.get(key);
+            String[] neighborKeys = adjacencies.get(key);
 
             for (String neighborKey : neighborKeys) {
-                node.addNeighbor(nodes[neighborKey]);
+                node.addNeighbor(nodes.get(neighborKey));
                 System.out.println(String.format("%0$s borders %1$s", key, neighborKey));
             }
         }
 
-        for (UnweightedNode<string> node : DepthFirstSearch.unweightedDepthFirstSearch(nodes["root"])) {
+        for (UnweightedNode<string> node : DepthFirstSearch.unweightedDepthFirstSearch(nodes.get("root"))) {
             System.out.println(node.data);
         }
     }

@@ -113,9 +113,9 @@ export class CommandNames {
     public static DictionaryContainsKey = "dictionary contains key";
 
     /**
-     * Name key for the DictionaryIndex command.
+     * Name key for the DictionaryGet command.
      */
-    public static DictionaryIndex = "dictionary index";
+    public static DictionaryGet = "dictionary get";
 
     /**
      * Name key for the DictionaryKeys command.
