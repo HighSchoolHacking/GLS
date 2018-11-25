@@ -21,7 +21,7 @@ jobs:
                       - node_modules
                   key: dependency-cache-{{ checksum "package-lock.json" }}
 
-            - run: npm run verify:ci
+            - run: npm run ci:build
             - persist_to_workspace:
                   root: "."
                   paths:
@@ -30,7 +30,7 @@ jobs:
                       - test/*.js
                       - util
 
-    javascript:
+    end-to-end/javascript:
         docker:
             - image: circleci/node:latest
 
@@ -49,11 +49,31 @@ jobs:
             - run: npm run test:tsc
             - run: npm run test:end-to-end -- --language=JavaScript
 
+    verify:
+        docker:
+            - image: circleci/node:latest
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run verify:ci
+
 workflows:
     version: 2
     build_and_end_to_end:
         jobs:
             - build
             - javascript:
+                  requires:
+                      - build
+            - verify:
                   requires:
                       - build
