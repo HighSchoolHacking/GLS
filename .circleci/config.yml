@@ -46,9 +46,24 @@ jobs:
             - restore_cache:
                   key: dependency-cache-{{ checksum "package-lock.json" }}
 
-            - run: npm run src:tsc
-            - run: npm run test:tsc
             - run: npm run test:end-to-end -- --language=JavaScript
+
+    end-to-end/typescript:
+        docker:
+            - image: circleci/node:latest
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run test:end-to-end -- --language=TypeScript
 
     verify:
         docker:
@@ -73,6 +88,9 @@ workflows:
         jobs:
             - build
             - end-to-end/javascript:
+                  requires:
+                      - build
+            - end-to-end/typescript:
                   requires:
                       - build
             - verify:
