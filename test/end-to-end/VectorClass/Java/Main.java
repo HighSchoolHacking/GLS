@@ -21,9 +21,9 @@ class Index {
             System.out.println(String.format("Length: %0$d", vector.getLength()));
         }
 
-        for (int i = 0; i < 2; i += 1) {
+        for (Integer i = 0; i < 2; i += 1) {
             // Retrieving
-            for (int j = 0; j < vector.getLength(); j += 1) {
+            for (Integer j = 0; j < vector.getLength(); j += 1) {
                 System.out.println(String.format("At %0$d: %1$s", j, vector.at(j)));
             }
 

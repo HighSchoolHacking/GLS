@@ -1,7 +1,7 @@
 //
-for (Map.Entry<String, int> pair : container.entrySet()) {
+for (Map.Entry<String, Integer> pair : container.entrySet()) {
     String key = pair.getKey();
-    int value = pair.getValue();
+    Integer value = pair.getValue();
     // ...
 }
 //

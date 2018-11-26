@@ -1,3 +1,3 @@
 //
-int aaa = 0
+Integer aaa = 0
 //

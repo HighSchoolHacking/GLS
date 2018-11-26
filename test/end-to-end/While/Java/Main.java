@@ -7,7 +7,7 @@ class Index {
             break;
         }
 
-        int count = 0;
+        Integer count = 0;
 
         while (count < 5) {
             count += 1;

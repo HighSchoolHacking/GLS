@@ -8,8 +8,8 @@ import java.util.Comparator;
 
 public class Vector<T> {
     private T[] data;
-    private int capacity;
-    private int length;
+    private Integer capacity;
+    private Integer length;
 
     public Vector() {
         this.capacity = 0;
@@ -17,7 +17,7 @@ public class Vector<T> {
         this.length = 0;
     }
 
-    public T at(int index) throws Exception {
+    public T at(Integer index) throws Exception {
         if (index >= this.length) {
             throw new Exception(String.format("Index out of bounds: %0$d is greater than %1$d.", index, this.length));
         }
@@ -25,11 +25,11 @@ public class Vector<T> {
         return this.data[index];
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return this.capacity;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return this.length;
     }
 
@@ -49,17 +49,17 @@ public class Vector<T> {
         return this.data[this.length - 1];
     }
 
-    public void ensureCapacity(int capacity) {
+    public void ensureCapacity(Integer capacity) {
         if (capacity <= this.capacity) {
             return;
         }
 
-        int newCapacity = (int)Math.floor(Math.ceil((capacity / 2.0)) * 3);
+        Integer newCapacity = (int)Math.floor(Math.ceil((capacity / 2.0)) * 3);
         T[] oldData = this.data;
         this.capacity = newCapacity;
         this.data = new T[newCapacity];
 
-        for (int i = 0; i < oldData.length; i += 1) {
+        for (Integer i = 0; i < oldData.length; i += 1) {
             this.data[i] = oldData[i];
         }
     }
@@ -71,7 +71,7 @@ public class Vector<T> {
         this.length += 1;
     }
 
-    public void resize(int length) {
+    public void resize(Integer length) {
         if (length <= this.length) {
             this.length = length;
             return;
@@ -84,7 +84,7 @@ public class Vector<T> {
     public T[] toArray() {
         T[] array = new T[this.length];
 
-        for (int i = 0; i < this.length; i += 1) {
+        for (Integer i = 0; i < this.length; i += 1) {
             array[i] = this.data[i];
         }
 
@@ -94,7 +94,7 @@ public class Vector<T> {
     public ArrayList<T> toList() {
         ArrayList<T> list = new ArrayList<T>(this.length);
 
-        for (int i = 0; i < this.length; i += 1) {
+        for (Integer i = 0; i < this.length; i += 1) {
             list[i] = this.data[i];
         }
 
@@ -104,7 +104,7 @@ public class Vector<T> {
     public HashSet<T> toSet() {
         HashSet<T> individuals = new HashSet<T>();
 
-        for (int i = 0; i < this.length; i += 1) {
+        for (Integer i = 0; i < this.length; i += 1) {
             individuals.add(this.data[i]);
         }
 

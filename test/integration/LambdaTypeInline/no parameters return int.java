@@ -1,3 +1,3 @@
 //
-Supplier<int>
+Supplier<Integer>
 //

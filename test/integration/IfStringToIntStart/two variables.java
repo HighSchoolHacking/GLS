@@ -1,10 +1,10 @@
 //
-int bbb = null;
-int ddd = null;
+Integer bbb = null;
+Integer ddd = null;
 
 try {
-    bbb = Int.parseInt(aaa);
-    ddd = Int.parseInt(ccc);
+    bbb = Integer.parseInt(aaa);
+    ddd = Integer.parseInt(ccc);
 } catch (NumberFormatException e) { }
 
 if (bbb != null && ddd != null) {
