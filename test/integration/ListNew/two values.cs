@@ -1,3 +1,3 @@
 //
-new List<string> { "aaa", bbb }
+new List<string> { "aaa", bbb, }
 //

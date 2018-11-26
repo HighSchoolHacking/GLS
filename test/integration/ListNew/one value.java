@@ -1,3 +1,3 @@
 //
-new ArrayList<String> { "aaa" }
+new ArrayList<String>() {{ add("aaa"); }}
 //

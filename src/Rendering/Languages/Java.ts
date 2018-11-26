@@ -25,6 +25,7 @@ import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
 import { InterfaceSyntax } from "./Properties/Syntax/InterfaceSyntax";
 import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
+import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
@@ -485,6 +486,16 @@ export class Java extends Language {
             .withArguments(["Comparator.naturalOrder()"])
             .withImports([new Import(["java", "util"], ["Comparator"], ImportRelativity.Absolute)]);
         lists.sortStrings = lists.sortNumbers;
+    }
+
+    /**
+     * Fills out metadata on list creation with items.
+     */
+    protected generateListNewItemsSyntax(newItems: ListNewItemsSyntax): void {
+        newItems.itemLeft = "add(";
+        newItems.itemRight = "); ";
+        newItems.left = "() {{ ";
+        newItems.right = "}}";
     }
 
     /**
