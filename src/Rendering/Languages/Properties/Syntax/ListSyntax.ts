@@ -24,6 +24,16 @@ export class ListSyntax {
     public className: string;
 
     /**
+     * Characters before retrieving an item by index.
+     */
+    public getLeft: string;
+
+    /**
+     * Characters after retrieving an item by index.
+     */
+    public getRight: string;
+
+    /**
      * How to retrieve the length of a list.
      */
     public length: NativeCallSyntax;
@@ -57,6 +67,21 @@ export class ListSyntax {
      * Required imports to be able to use lists.
      */
     public requiredImports: Import[];
+
+    /**
+     * How to start setting an indexed value.
+     */
+    public setLeft: string;
+
+    /**
+     * Characters in the middle of setting an indexed value.
+     */
+    public setMiddle: string;
+
+    /**
+     * How to end setting an indexed value.
+     */
+    public setRight: string;
 
     /**
      * How to sort a list in-place by keyed member numbers.

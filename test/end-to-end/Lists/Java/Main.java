@@ -7,28 +7,28 @@ import java.util.Comparator;
 
 class Index {
     private static void printInts(String label, ArrayList<Integer> items) {
-        System.out.println(String.format("The first %0$s is %1$d.", label, items[0]));
-        System.out.println(String.format("The last %0$s is %1$d.", label, items[items.size() - 1]));
+        System.out.println(String.format("The first %0$s is %1$d.", label, items.get(0)));
+        System.out.println(String.format("The last %0$s is %1$d.", label, items.get(items.size() - 1)));
 
         for (Integer item : items) {
             System.out.println(String.format("%0$s: %1$d", label, item));
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-            System.out.println(String.format("%0$s %1$d: %2$d", label, i, items[i]));
+            System.out.println(String.format("%0$s %1$d: %2$d", label, i, items.get(i)));
         }
     }
 
     private static void printStrings(String label, ArrayList<String> items) {
-        System.out.println(String.format("The first %0$s is %1$s.", label, items[0]));
-        System.out.println(String.format("The last %0$s is %1$s.", label, items[items.size() - 1]));
+        System.out.println(String.format("The first %0$s is %1$s.", label, items.get(0)));
+        System.out.println(String.format("The last %0$s is %1$s.", label, items.get(items.size() - 1)));
 
         for (String item : items) {
             System.out.println(String.format("%0$s: %1$s", label, item));
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-            System.out.println(String.format("%0$s %1$d: %2$s", label, i, items[i]));
+            System.out.println(String.format("%0$s %1$d: %2$s", label, i, items.get(i)));
         }
     }
 
@@ -38,7 +38,7 @@ class Index {
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-            System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel(items[i])));
+            System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel(items.get(i))));
         }
     }
 
@@ -51,20 +51,20 @@ class Index {
         // Members
         ArrayList<String> fruits = new ArrayList<String>() {{ add("apple"); add("banana"); add("cherry"); }};
         System.out.println(String.format("There are %0$d fruits.", fruits.size()));
-        System.out.println(String.format("The first fruit is %0$s.", fruits[0]));
+        System.out.println(String.format("The first fruit is %0$s.", fruits.get(0)));
 
         // Popping
         ArrayList<String> colors = new ArrayList<String>() {{ add("red"); add("orange"); add("yellow"); add("green"); }};
         colors.remove(colors.size() - 1);
-        System.out.println(String.format("The last color is %0$s.", colors[colors.size() - 1]));
+        System.out.println(String.format("The last color is %0$s.", colors.get(colors.size() - 1)));
 
         colors.remove(0);
-        System.out.println(String.format("The first color is %0$s.", colors[0]));
+        System.out.println(String.format("The first color is %0$s.", colors.get(0)));
 
         // Pushing
         ArrayList<String> pets = new ArrayList<String>() {{ add("bird"); add("cat"); }};
         pets.add("dog");
-        System.out.println(String.format("The last pet is %0$s.", pets[pets.size() - 1]));
+        System.out.println(String.format("The last pet is %0$s.", pets.get(pets.size() - 1)));
 
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};

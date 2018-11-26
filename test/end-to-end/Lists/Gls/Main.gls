@@ -3,28 +3,28 @@ file start : Lists index
 
     main context start
         standalone function declare start : private PrintInts void label string items { list type : int }
-            print : { string format : ("The first {0} is {1}.") label string { list index : items 0 } int }
-            print : { string format : ("The last {0} is {1}.") label string { list index : items { operation : { list length : items } minus 1 } } int }
+            print : { string format : ("The first {0} is {1}.") label string { list get : items 0 } int }
+            print : { string format : ("The last {0} is {1}.") label string { list get : items { operation : { list length : items } minus 1 } } int }
 
             for each start : items item int
                 print : { string format : ("{0}: {1}") label string item int }
             for each end
 
             for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { list index : items i } int }
+                print : { string format : ("{0} {1}: {2}") label string i int { list get : items i } int }
             for each end
         standalone function declare end
 
         standalone function declare start : private PrintStrings void label string items { list type : string }
-            print : { string format : ("The first {0} is {1}.") label string { list index : items 0 } string }
-            print : { string format : ("The last {0} is {1}.") label string { list index : items { operation : { list length : items } minus 1 } } string }
+            print : { string format : ("The first {0} is {1}.") label string { list get : items 0 } string }
+            print : { string format : ("The last {0} is {1}.") label string { list get : items { operation : { list length : items } minus 1 } } string }
 
             for each start : items item string
                 print : { string format : ("{0}: {1}") label string item string }
             for each end
 
             for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { list index : items i } string }
+                print : { string format : ("{0} {1}: {2}") label string i int { list get : items i } string }
             for each end
         standalone function declare end
 
@@ -34,7 +34,7 @@ file start : Lists index
             for each end
 
             for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { lambda : getLabel { list index : items i } } string }
+                print : { string format : ("{0} {1}: {2}") label string i int { lambda : getLabel { list get : items i } } string }
             for each end
         standalone function declare end
 
@@ -47,20 +47,20 @@ file start : Lists index
             comment line : Members
             variable : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
             print : { string format : ("There are {0} fruits.") { list length : fruits } int }
-            print : { string format : ("The first fruit is {0}.") { list index : fruits 0 } string }
+            print : { string format : ("The first fruit is {0}.") { list get : fruits 0 } string }
 
             comment line : Popping
             variable : colors { list type : string } { list new : string "red" "orange" "yellow" "green" }
             list pop : colors
-            print : { string format : ("The last color is {0}.") { list index : colors { operation : { list length : colors } minus 1 } } string }
+            print : { string format : ("The last color is {0}.") { list get : colors { operation : { list length : colors } minus 1 } } string }
 
             list pop front : colors
-            print : { string format : ("The first color is {0}.") { list index : colors 0 } string }
+            print : { string format : ("The first color is {0}.") { list get : colors 0 } string }
 
             comment line : Pushing
             variable : pets { list type : string } { list new : string "bird" "cat" }
             list push : pets "dog"
-            print : { string format : ("The last pet is {0}.") { list index : pets { operation : { list length : pets } minus 1 } } string }
+            print : { string format : ("The last pet is {0}.") { list get : pets { operation : { list length : pets } minus 1 } } string }
 
             comment line : Sorting (strings)
             variable : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }

@@ -9,9 +9,9 @@ class Index {
         HashMap<String, HashMap<String, Integer>> bar = new HashMap<String, HashMap<String, Integer>>();
 
         // Indices
-        foo["baz"] = 7;
-        Integer qux = foo["baz"];
-        System.out.println(String.format("baz is %0$d", foo["baz"]));
+        foo.put("baz", 7);
+        Integer qux = foo.get("baz");
+        System.out.println(String.format("baz is %0$d", foo.get("baz")));
         System.out.println(String.format("qux is %0$d", qux));
 
         // Initialization
@@ -33,7 +33,7 @@ class Index {
         }
 
         // Setting
-        container["aaa"] = 7;
-        System.out.println(container["aaa"]);
+        container.put("aaa", 7);
+        System.out.println(container.get("aaa"));
     }
 }

@@ -113,9 +113,9 @@ export class CommandNames {
     public static DictionaryContainsKey = "dictionary contains key";
 
     /**
-     * Name key for the DictionaryIndex command.
+     * Name key for the DictionaryGet command.
      */
-    public static DictionaryIndex = "dictionary index";
+    public static DictionaryGet = "dictionary get";
 
     /**
      * Name key for the DictionaryKeys command.
@@ -348,9 +348,14 @@ export class CommandNames {
     public static ListAddList = "list add list";
 
     /**
-     * Name key for the ListIndex command.
+     * Name key for the ListGet command.
      */
-    public static ListIndex = "list index";
+    public static ListGet = "list get";
+
+    /**
+     * Name key for the ListSet command.
+     */
+    public static ListSet = "list set";
 
     /**
      * Name key for the ListLength command.

@@ -321,6 +321,8 @@ export class Java extends Language {
         dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.getLeft = ".get(";
+        dictionaries.getRight = ")";
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
@@ -329,6 +331,9 @@ export class Java extends Language {
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
         dictionaries.requiredImports = [new Import(["java", "util"], ["HashMap"], ImportRelativity.Absolute)];
+        dictionaries.setLeft = ".put(";
+        dictionaries.setMiddle = ", ";
+        dictionaries.setRight = ")";
         dictionaries.typeLeft = "<";
         dictionaries.typeMiddle = ", ";
         dictionaries.typeRight = ">";
@@ -478,11 +483,16 @@ export class Java extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("addAll", NativeCallScope.Member, NativeCallType.Function);
         lists.className = "ArrayList";
+        lists.getLeft = ".get(";
+        lists.getRight = ")";
         lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [new Import(["java", "util"], ["ArrayList"], ImportRelativity.Absolute)];
+        lists.setLeft = ".set(";
+        lists.setMiddle = ", ";
+        lists.setRight = ")";
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function)
             .withArguments(["Comparator.naturalOrder()"])
             .withImports([new Import(["java", "util"], ["Comparator"], ImportRelativity.Absolute)]);

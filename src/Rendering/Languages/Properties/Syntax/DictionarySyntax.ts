@@ -16,6 +16,16 @@ export class DictionarySyntax {
     public containsKey: NativeCallSyntax;
 
     /**
+     * How to start getting a keyed value.
+     */
+    public getLeft: string;
+
+    /**
+     * How to end getting a keyed value.
+     */
+    public getRight: string;
+
+    /**
      * Whether dictionaries are initialized as class instances using "new".
      */
     public initializeAsNew: boolean;
@@ -64,6 +74,21 @@ export class DictionarySyntax {
      * Required imports to be able to use dictionaries.
      */
     public requiredImports: Import[];
+
+    /**
+     * How to start setting a keyed value.
+     */
+    public setLeft: string;
+
+    /**
+     * Characters in the middle of setting a keyed value.
+     */
+    public setMiddle: string;
+
+    /**
+     * How to end setting a keyed value.
+     */
+    public setRight: string;
 
     /**
      * How to start displaying types in a dictionary type.

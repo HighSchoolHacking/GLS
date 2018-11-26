@@ -319,6 +319,8 @@ export class JavaScript extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "Object";
         dictionaries.containsKey = new NativeCallSyntax("{}.hasOwnProperty.call", NativeCallScope.Static, NativeCallType.Function);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.keys = new NativeCallSyntax("Object.keys", NativeCallScope.Static, NativeCallType.Function);
         dictionaries.initializeEnd = "}";
@@ -327,6 +329,9 @@ export class JavaScript extends Language {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**
@@ -455,12 +460,17 @@ export class JavaScript extends Language {
      * @param lists   A property container for metadata on lists.
      */
     protected generateListSyntax(lists: ListSyntax): void {
+        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
+        lists.getLeft = "[";
+        lists.getRight = "]";
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
-        lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function).withArguments([
             "(a, b) => a - b",
         ]);

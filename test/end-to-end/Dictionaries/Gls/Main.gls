@@ -6,9 +6,9 @@ file start : Dictionaries index
             variable : bar { dictionary type : string { dictionary type : string int } } { dictionary new : string { dictionary type : string int } }
 
             comment line : Indices
-            operation : { dictionary index : foo "baz" } equals 7
-            variable : qux int { dictionary index : foo "baz" }
-            print : { string format : ("baz is {0}") { dictionary index : foo "baz" } int }
+            dictionary set : foo "baz" 7
+            variable : qux int { dictionary get : foo "baz" }
+            print : { string format : ("baz is {0}") { dictionary get : foo "baz" } int }
             print : { string format : ("qux is {0}") qux int }
 
             comment line : Initialization
@@ -31,7 +31,7 @@ file start : Dictionaries index
 
             comment line : Setting
             dictionary set : container "aaa" 7
-            print : { dictionary index : container "aaa" }
+            print : { dictionary get : container "aaa" }
         main end
     main context end
 file end
