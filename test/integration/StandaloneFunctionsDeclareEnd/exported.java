@@ -1,4 +1,4 @@
 //
-public static class Abc {
+public class Abc {
 }
 //

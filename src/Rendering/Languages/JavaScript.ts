@@ -396,13 +396,13 @@ export class JavaScript extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.requiresExceptions = false;
         functions.case = CaseStyle.CamelCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = "function ";
         functions.defineStartRight = " {";
+        functions.explicitNewStaticGenericType = true;
         functions.explicitReturns = false;
+        functions.requiresExceptions = false;
     }
 
     /**
