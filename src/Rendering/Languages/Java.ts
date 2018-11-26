@@ -321,6 +321,7 @@ export class Java extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.getLeft = ".get(";
         dictionaries.getRight = ")";
         dictionaries.initializeAsNew = true;
@@ -488,8 +489,8 @@ export class Java extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("addAll", NativeCallScope.Member, NativeCallType.Function);
         lists.className = "ArrayList";
-        lists.indexLeft = ".get(";
-        lists.indexRight = ")";
+        lists.getLeft = ".get(";
+        lists.getRight = ")";
         lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);

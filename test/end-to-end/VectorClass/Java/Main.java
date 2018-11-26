@@ -2,7 +2,6 @@ package vectorclass;
 
 import vectorclass.Vector;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Comparator;

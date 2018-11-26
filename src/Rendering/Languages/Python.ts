@@ -299,7 +299,6 @@ export class Python extends Language {
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.requiredImports = [];
         dictionaries.setLeft = "[";
         dictionaries.setMiddle = "] = ";
         dictionaries.setRight = "";
@@ -434,8 +433,8 @@ export class Python extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("extend", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
-        lists.indexLeft = "[";
-        lists.indexRight = "]";
+        lists.getLeft = "[";
+        lists.getRight = "]";
         lists.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);

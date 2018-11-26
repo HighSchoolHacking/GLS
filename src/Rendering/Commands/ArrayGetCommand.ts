@@ -5,24 +5,24 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Gets an item from a dictionary by index.
+ * Gets an item in an array by index.
  */
-export class DictionaryGetCommand extends Command {
+export class ArrayGetCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionaryGet)
-        .withDescription("Gets an item from a dictionary by key")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArrayGet)
+        .withDescription("Gets an item in an array by index")
         .withParameters([
-            new SingleParameter("dictionary", "Dictionary to look within.", true),
-            new SingleParameter("key", "Key within the dictionary.", true),
+            new SingleParameter("array", "An array to look within.", true),
+            new SingleParameter("index", "The index within the array.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return DictionaryGetCommand.metadata;
+        return ArrayGetCommand.metadata;
     }
 
     /**
@@ -32,11 +32,6 @@ export class DictionaryGetCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output = parameters[1];
-        output += this.language.syntax.dictionaries.getLeft;
-        output += parameters[2];
-        output += this.language.syntax.dictionaries.getRight;
-
-        return LineResults.newSingleLine(output).withAddSemicolon(true);
+        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "]").withAddSemicolon(true);
     }
 }

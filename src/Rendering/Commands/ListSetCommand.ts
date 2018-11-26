@@ -5,14 +5,14 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Sets an item in a list.
+ * Sets an item in a list by index.
  */
 export class ListSetCommand extends Command {
     /**
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSet)
-        .withDescription("Sets an item in a list")
+        .withDescription("Sets an item from a list by index")
         .withParameters([
             new SingleParameter("list", "List to look within.", true),
             new SingleParameter("index", "Index within the list.", true),

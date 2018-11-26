@@ -26,12 +26,12 @@ export class ListSyntax {
     /**
      * Characters before retrieving an item by index.
      */
-    public indexLeft: string;
+    public getLeft: string;
 
     /**
      * Characters after retrieving an item by index.
      */
-    public indexRight: string;
+    public getRight: string;
 
     /**
      * How to retrieve the length of a list.

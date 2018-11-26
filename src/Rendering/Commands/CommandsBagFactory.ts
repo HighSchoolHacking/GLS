@@ -1,10 +1,11 @@
 import { RenderContext } from "../RenderContext";
-import { ArrayIndexCommand } from "./ArrayIndexCommand";
+import { ArrayGetCommand } from "./ArrayGetCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
 import { ArrayNewCommand } from "./ArrayNewCommand";
 import { ArrayNewGenericCommand } from "./ArrayNewGenericCommand";
 import { ArrayNewSizedCommand } from "./ArrayNewSizedCommand";
 import { ArrayNewSizedGenericCommand } from "./ArrayNewSizedGenericCommand";
+import { ArraySetCommand } from "./ArraySetCommand";
 import { ArrayTypeCommand } from "./ArrayTypeCommand";
 import { BreakCommand } from "./BreakCommand";
 import { CatchEndCommand } from "./CatchEndCommand";
@@ -71,7 +72,7 @@ import { LambdaCommand } from "./LambdaCommand";
 import { LambdaDeclareCommand } from "./LambdaDeclareCommand";
 import { LambdaTypeInlineCommand } from "./LambdaTypeInlineCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
-import { ListIndexCommand } from "./ListIndexCommand";
+import { ListGetCommand } from "./ListGetCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListNewCommand } from "./ListNewCommand";
 import { ListNewSizedCommand } from "./ListNewSizedCommand";
@@ -165,12 +166,13 @@ export class CommandsBagFactory {
      */
     public static forContext(context: RenderContext): CommandsBag {
         return new CommandsBag([
-            new ArrayIndexCommand(context),
+            new ArrayGetCommand(context),
             new ArrayNewCommand(context),
             new ArrayNewGenericCommand(context),
             new ArrayNewSizedCommand(context),
             new ArrayNewSizedGenericCommand(context),
             new ArrayLengthCommand(context),
+            new ArraySetCommand(context),
             new ArrayTypeCommand(context),
             new BreakCommand(context),
             new CatchEndCommand(context),
@@ -236,7 +238,7 @@ export class CommandsBagFactory {
             new LambdaDeclareCommand(context),
             new LambdaTypeInlineCommand(context),
             new ListAddListCommand(context),
-            new ListIndexCommand(context),
+            new ListGetCommand(context),
             new ListLengthCommand(context),
             new ListNewCommand(context),
             new ListNewSizedCommand(context),
