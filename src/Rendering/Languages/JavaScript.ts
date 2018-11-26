@@ -114,6 +114,7 @@ export class JavaScript extends Language {
         arrays.initializeAsNew = false;
         arrays.initializeViaStatic = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = false;
         arrays.requiredImports = [];
     }
 

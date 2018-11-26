@@ -114,6 +114,7 @@ export class TypeScript extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = false;
         arrays.requiredImports = [];
     }
 

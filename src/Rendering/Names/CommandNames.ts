@@ -18,9 +18,19 @@ export class CommandNames {
     public static ArrayNew = "array new";
 
     /**
+     * Name key for the ArrayNewGeneric command.
+     */
+    public static ArrayNewGeneric = "array new generic";
+
+    /**
      * Name key for the ArrayNewSized command.
      */
     public static ArrayNewSized = "array new sized";
+
+    /**
+     * Name key for the ArrayNewSizedGeneric command.
+     */
+    public static ArrayNewSizedGeneric = "array new sized generic";
 
     /**
      * Name key for the ArraySet command.

@@ -2,7 +2,9 @@ import { RenderContext } from "../RenderContext";
 import { ArrayGetCommand } from "./ArrayGetCommand";
 import { ArrayLengthCommand } from "./ArrayLengthCommand";
 import { ArrayNewCommand } from "./ArrayNewCommand";
+import { ArrayNewGenericCommand } from "./ArrayNewGenericCommand";
 import { ArrayNewSizedCommand } from "./ArrayNewSizedCommand";
+import { ArrayNewSizedGenericCommand } from "./ArrayNewSizedGenericCommand";
 import { ArraySetCommand } from "./ArraySetCommand";
 import { ArrayTypeCommand } from "./ArrayTypeCommand";
 import { BreakCommand } from "./BreakCommand";
@@ -166,7 +168,9 @@ export class CommandsBagFactory {
         return new CommandsBag([
             new ArrayGetCommand(context),
             new ArrayNewCommand(context),
+            new ArrayNewGenericCommand(context),
             new ArrayNewSizedCommand(context),
+            new ArrayNewSizedGenericCommand(context),
             new ArrayLengthCommand(context),
             new ArraySetCommand(context),
             new ArrayTypeCommand(context),

@@ -6,7 +6,7 @@ file start : VectorClass Vector
 
         constructor start : public Vector
             member variable set : private { this } Capacity 0
-            member variable set : private { this } Data { array new : T }
+            member variable set : private { this } Data { array new generic : T }
             member variable set : private { this } Length 0
         constructor end
 
@@ -50,7 +50,7 @@ file start : VectorClass Vector
             variable : newCapacity int { math as int : { operation : { math ceiling : { parenthesis : { operation : capacity (divide) 2.0 } } } times 3 } }
             variable : oldData { array type : T } { member variable : private { this } Data }
             member variable set : private { this } Capacity newCapacity
-            member variable set : private { this } Data { array new sized : T newCapacity }
+            member variable set : private { this } Data { array new sized generic : T newCapacity }
 
             for numbers start : i int 0 { array length : oldData }
                 array set : { member variable : private { this } Data } i { array get : oldData i }
@@ -75,7 +75,7 @@ file start : VectorClass Vector
         member function declare end
 
         member function declare start : public ToArray { array type : T }
-            variable : array { array type : T } { array new sized : T { member variable : private { this } Length } }
+            variable : array { array type : T } { array new sized generic : T { member variable : private { this } Length } }
 
             for numbers start : i int 0 { member variable : private { this } Length }
                 array set : array i { array get : { member variable : private { this } Data } i }
