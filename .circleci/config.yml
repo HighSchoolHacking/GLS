@@ -155,6 +155,9 @@ workflows:
     build_and_end_to_end:
         jobs:
             - build
+            - end-to-end/csharp:
+                  requires:
+                      - build
             - end-to-end/java:
                   requires:
                       - build
