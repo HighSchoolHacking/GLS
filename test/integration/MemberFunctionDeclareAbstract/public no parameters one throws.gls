@@ -1,0 +1,4 @@
+-
+class start : Abc
+    member function declare abstract : public DefGhi string throws { exception }
+-

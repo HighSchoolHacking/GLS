@@ -42,7 +42,7 @@ export class ArrayNewSizedGenericCommand extends Command {
 
     private renderCastingObject(parameters: string[]): LineResults {
         const newParameters = parameters.slice();
-        newParameters[0] = CommandNames.ArrayNew;
+        newParameters[0] = CommandNames.ArrayNewSized;
         newParameters[1] = "Object";
 
         const arrayNewLine = this.context.convertParsed(newParameters);

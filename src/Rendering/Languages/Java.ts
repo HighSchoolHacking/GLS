@@ -404,17 +404,15 @@ export class Java extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.explicitReturns = true;
-        functions.explicitNewStaticGenericType = true;
-
         functions.case = CaseStyle.CamelCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = " ";
         functions.defineStartRight = " {";
-
+        functions.explicitNewStaticGenericType = true;
+        functions.explicitReturns = true;
+        functions.explicitThrows = true;
         functions.requiresExceptions = true;
-        functions.functionThrows = " throws ";
+        functions.throwsMarker = " throws ";
     }
 
     /**
@@ -596,7 +594,7 @@ export class Java extends Language {
         main.group = "{0}";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
-        main.mainStartLines = ["public static void main(String[] args) {"];
+        main.mainStartLines = ["public static void main(String[] args){1} {"];
     }
 
     /**

@@ -16,7 +16,7 @@ public class Vector<T> {
         this.length = 0;
     }
 
-    public T at(Integer index) {
+    public T at(Integer index) throws Exception {
         if (index >= this.length) {
             throw new Exception(String.format("Index out of bounds: %d is greater than %d.", index, this.length));
         }
@@ -32,7 +32,7 @@ public class Vector<T> {
         return this.length;
     }
 
-    public T getFirst() {
+    public T getFirst() throws Exception {
         if (this.capacity == 0) {
             throw new Exception("Cannot get first from empty vector.");
         }
@@ -40,7 +40,7 @@ public class Vector<T> {
         return this.data[0];
     }
 
-    public T getLast() {
+    public T getLast() throws Exception {
         if (this.capacity == 0) {
             throw new Exception("Cannot get last from empty vector.");
         }
@@ -56,7 +56,7 @@ public class Vector<T> {
         Integer newCapacity = (int)Math.floor(Math.ceil((capacity / 2.0)) * 3);
         T[] oldData = this.data;
         this.capacity = newCapacity;
-        this.data = (T[]) new Object[] { newCapacity };
+        this.data = (T[]) new Object[newCapacity];
 
         for (Integer i = 0; i < oldData.length; i += 1) {
             this.data[i] = oldData[i];
@@ -81,7 +81,7 @@ public class Vector<T> {
     }
 
     public T[] toArray() {
-        T[] array = (T[]) new Object[] { this.length };
+        T[] array = (T[]) new Object[this.length];
 
         for (Integer i = 0; i < this.length; i += 1) {
             array[i] = this.data[i];
