@@ -5,7 +5,7 @@ import fibonacci.generation.IGenerator;
 import fibonacci.generation.NonCachingGenerator;
 
 class Main {
-    private static String getLabel(number index) {
+    private static String getLabel(Integer index) {
         if (index == 1) {
             return "st";
         } else if (index == 2) {

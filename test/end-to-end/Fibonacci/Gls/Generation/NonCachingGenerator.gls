@@ -1,5 +1,5 @@
 file start : Fibonacci Generation NonCachingGenerator
-    import local : Fibonacci Generation Generator types IGenerator
+    import local : Fibonacci Generation IGenerator types IGenerator
 
     class start : export NonCachingGenerator implements IGenerator
         member function declare start : public Generate int index int
