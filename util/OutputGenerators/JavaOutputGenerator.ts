@@ -25,11 +25,7 @@ export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, pr
             args: ["-d", path.join(projectDirectory), "-nowarn", ...glob.sync(path.join(projectDirectory, "**/*.java"))],
         });
     } catch (error) {
-        if (!(error instanceof Error)) {
-            throw error;
-        }
-
-        if (filterIgnoredMessages(error.message) !== "") {
+        if (!(error instanceof Error) || filterIgnoredMessages(error.message) !== "") {
             throw error;
         }
     }
