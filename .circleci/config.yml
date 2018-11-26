@@ -26,6 +26,7 @@ jobs:
                   root: "."
                   paths:
                       - lib
+                      - node_modules
                       - package-lock.json
                       - test/*.js
                       - test/unit
@@ -46,7 +47,7 @@ jobs:
             - restore_cache:
                   key: dependency-cache-{{ checksum "package-lock.json" }}
 
-            - run: pwd & ls -l & ls .. -l & ls node_modules /l & node ./node_modules/mocha/bin/mocha test/end-to-end.js --timeout 10000 "--language=C#"
+            - run: node ./node_modules/mocha/bin/mocha test/end-to-end.js --timeout 10000 "--language=C#"
 
     end-to-end/java:
         docker:
