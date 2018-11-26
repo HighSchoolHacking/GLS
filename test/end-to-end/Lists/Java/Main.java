@@ -3,6 +3,7 @@ package lists;
 import lists.Album;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Comparator;
 
 class Index {
     private static void printInts(String label, ArrayList<int> items) {
@@ -67,12 +68,12 @@ class Index {
 
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String> { "plain", "chocolate", "vanilla", "strawberry" };
-        flavors.sort();
+        flavors.sort(Comparator.naturalOrder());
         Index.printStrings("flavor", flavors);
 
         // Sorting ints
         ArrayList<int> ints = new ArrayList<int> { 1, 10, 2, -3, 8, 4, 5 };
-        ints.sort();
+        ints.sort(Comparator.naturalOrder());
         Index.printInts("int", ints);
 
         // Sorting members
