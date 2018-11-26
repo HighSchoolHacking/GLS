@@ -3,11 +3,12 @@ package graphs.algorithms;
 import graphs.data.UnweightedNode;
 import graphs.data.WeightedNode;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public static class DepthFirstSearch {
     public static ArrayList<UnweightedNode<T>> unweightedDepthFirstSearch<T>(UnweightedNode<T> start) {
         ArrayList<UnweightedNode<T>> nodes = new ArrayList<UnweightedNode<T>>();
-        HashSet<UnweightedNode<T>> visited = new HashSet<UnweightedNode<T>>undefined;
+        HashSet<UnweightedNode<T>> visited = new HashSet<UnweightedNode<T>>();
 
         DepthFirstSearch.traverseUnweightedDepthFirstSearch(start, nodes, visited);
 
@@ -27,7 +28,7 @@ public static class DepthFirstSearch {
 
     public static ArrayList<WeightedNode<T>> weightedDepthFirstSearch<T>(WeightedNode<T> start) {
         ArrayList<WeightedNode<T>> nodes = new ArrayList<WeightedNode<T>>();
-        HashSet<WeightedNode<T>> visited = new HashSet<WeightedNode<T>>undefined;
+        HashSet<WeightedNode<T>> visited = new HashSet<WeightedNode<T>>();
 
         DepthFirstSearch.traverseWeightedDepthFirstSearch(start, nodes, visited);
 

@@ -2,6 +2,7 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 class Index {
     private static void printInts(String label, ArrayList<int> items) {
