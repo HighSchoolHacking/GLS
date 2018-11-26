@@ -19,7 +19,7 @@ public class Vector<T> {
 
     public T at(Integer index) throws Exception {
         if (index >= this.length) {
-            throw new Exception(String.format("Index out of bounds: %0$d is greater than %1$d.", index, this.length));
+            throw new Exception(String.format("Index out of bounds: $d is greater than $d.", index, this.length));
         }
 
         return this.data[index];

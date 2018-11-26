@@ -20,15 +20,15 @@ class Main {
     private static void useGenerator(IGenerator generator) {
         for (Integer i = 0; i < 10; i += 1) {
             String label = Main.getLabel(i);
-            System.out.println(String.format("The %0$d%1$s Fibonacci number is %2$d", i, label, generator.generate(i)));
+            System.out.println(String.format("The $d$s Fibonacci number is $d", i, label, generator.generate(i)));
         }
     }
 
     private static void checkCache(CachingGenerator generator, Integer index) {
         if (generator.isCached(index)) {
-            System.out.println(String.format("%0$d is cached.", index));
+            System.out.println(String.format("$d is cached.", index));
         } else {
-            System.out.println(String.format("%0$d is not cached.", index));
+            System.out.println(String.format("$d is not cached.", index));
         }
     }
 

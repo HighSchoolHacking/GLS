@@ -30,7 +30,7 @@ public static class Tests {
 
             for (String neighborKey : neighborKeys) {
                 node.addNeighbor(nodes.get(neighborKey));
-                System.out.println(String.format("%0$s borders %1$s", key, neighborKey));
+                System.out.println(String.format("$s borders $s", key, neighborKey));
             }
         }
 
