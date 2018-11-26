@@ -41,11 +41,7 @@ class Main {
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-<<<<<<< HEAD
             System.out.println(String.format("%s %d: %s", label, i, getLabel.apply(items.get(i))));
-=======
-            System.out.println(String.format("$s $d: $s", label, i, getLabel.apply(items.get(i))));
->>>>>>> master
         }
     }
 
@@ -85,15 +81,9 @@ class Main {
 
         // Sorting members
         ArrayList<Album> albums = new ArrayList<Album>() {{ add(new Album("Thriller", 1982)); add(new Album("Back in Black", 1980)); add(new Album("The Dark Side of the Moon", 1973)); }};
-<<<<<<< HEAD
         albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name));
         Main.printListFancy("album by name", albums, (album) -> album.name);
         albums.sort((albumA, albumB) -> albumA.year.compareTo(albumB.year));
-=======
-        albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name ? 1 : -1);
-        Main.printListFancy("album by name", albums, (album) -> album.name);
-        albums.sort((albumA, albumB) -> albumA.year < albumB.year ? 1 : -1);
->>>>>>> master
         Main.printListFancy("album by year", albums, (album) -> album.getLabel());
     }
 }

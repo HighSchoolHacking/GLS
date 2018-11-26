@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 class Main {
-<<<<<<< HEAD
     public static void main(String[] args) throws Exception {
-=======
-    public static void main(String[] args) {
->>>>>>> master
         Vector<String> vector = new Vector<String>();
         String[] words = new String[] { "hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal" };
 

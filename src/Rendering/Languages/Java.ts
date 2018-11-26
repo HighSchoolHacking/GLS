@@ -321,7 +321,6 @@ export class Java extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.getLeft = ".get(";
         dictionaries.getRight = ")";
         dictionaries.initializeAsNew = true;

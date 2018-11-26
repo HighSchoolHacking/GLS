@@ -6,6 +6,16 @@ import { spawnAndCaptureOutput } from "./Spawning";
 
 const ignoredMessages = [/Note: (.+) uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n/];
 
+const filterIgnoredMessages = (message: string): string => {
+    message = message.replace(/\r/g, "");
+
+    for (const ignoredMessage of ignoredMessages) {
+        message = message.replace(ignoredMessage, "").trim();
+    }
+
+    return message;
+};
+
 /**
  * Runs an output comparison test for a single GLS project in Java.
  */
@@ -19,11 +29,7 @@ export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, pr
             throw error;
         }
 
-        let message = error.message.replace(/\r/g, "");
-
-        for (const ignoredMessage of ignoredMessages) {
-            message = message.replace(ignoredMessage, "").trim();
-        }
+        const message = filterIgnoredMessages(error.message);
 
         if (message !== "") {
             throw error;
