@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         Vector<string> vector = new Vector<string>();
         String[] words = new String[] { "hello", "my", "baby", "hello", "my", "darling", "hello", "my", "ragtime", "gal" };

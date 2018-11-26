@@ -3,7 +3,7 @@ package pointclass;
 import pointclass.NamedPoint;
 import pointclass.Point;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         Point point = new Point(1, 2);
 

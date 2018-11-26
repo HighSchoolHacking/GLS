@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Comparator;
 
-class Index {
+class Main {
     private static void printInts(String label, ArrayList<Integer> items) {
         System.out.println(String.format("The first $s is $d.", label, items.get(0)));
         System.out.println(String.format("The last $s is $d.", label, items.get(items.size() - 1)));
@@ -69,18 +69,18 @@ class Index {
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};
         flavors.sort(Comparator.naturalOrder());
-        Index.printStrings("flavor", flavors);
+        Main.printStrings("flavor", flavors);
 
         // Sorting ints
         ArrayList<Integer> ints = new ArrayList<Integer>() {{ add(1); add(10); add(2); add(-3); add(8); add(4); add(5); }};
         ints.sort(Comparator.naturalOrder());
-        Index.printInts("int", ints);
+        Main.printInts("int", ints);
 
         // Sorting members
         ArrayList<Album> albums = new ArrayList<Album>() {{ add(new Album("Thriller", 1982)); add(new Album("Back in Black", 1980)); add(new Album("The Dark Side of the Moon", 1973)); }};
         albums.sort((albumA, albumB) -> albumA.name.compareTo(albumB.name ? 1 : -1);
-        Index.printListFancy("album by name", albums, (album) -> album.name);
+        Main.printListFancy("album by name", albums, (album) -> album.name);
         albums.sort((albumA, albumB) -> albumA.year < albumB.year ? 1 : -1);
-        Index.printListFancy("album by year", albums, (album) -> album.getLabel());
+        Main.printListFancy("album by year", albums, (album) -> album.getLabel());
     }
 }

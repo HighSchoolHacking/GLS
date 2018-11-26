@@ -2,7 +2,7 @@ package lists;
 
 import lists.Converters;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         // Strings to numbers
         String doubleLike = "3.5";
