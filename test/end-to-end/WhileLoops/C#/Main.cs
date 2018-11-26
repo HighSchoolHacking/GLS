@@ -1,6 +1,6 @@
 using System;
 
-namespace While
+namespace WhileLoops
 {
     class Program
     {

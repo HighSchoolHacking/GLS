@@ -1,5 +1,5 @@
 file start : Fibonacci Generation CachingGenerator
-    import local : Fibonacci Generation Generator types IGenerator
+    import local : Fibonacci Generation IGenerator types IGenerator
 
     class start : export CachingGenerator implements IGenerator
         member variable declare : private Cache { dictionary type : int int }

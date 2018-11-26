@@ -23,5 +23,7 @@ export const testCSharpGenerator: IOutputGenerator = async ({ projectDirectory, 
         flag: "w",
     });
 
-    return spawnAndCaptureOutput("dotnet", "run", "--project", csprojPath);
+    return spawnAndCaptureOutput("dotnet", {
+        args: ["run", "--project", csprojPath],
+    });
 };

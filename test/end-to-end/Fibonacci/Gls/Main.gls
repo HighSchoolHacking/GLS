@@ -1,10 +1,10 @@
 file start : Fibonacci Main
     import local : Fibonacci Generation CachingGenerator use CachingGenerator
-    import local : Fibonacci Generation Generator types IGenerator
+    import local : Fibonacci Generation IGenerator types IGenerator
     import local : Fibonacci Generation NonCachingGenerator use NonCachingGenerator
 
     main context start
-        standalone function declare start : private GetLabel string index number
+        standalone function declare start : private GetLabel string index int
             if start : { operation : index (equal to) 1 }
                 return : "st"
             else if start : { operation : index (equal to) 2 }

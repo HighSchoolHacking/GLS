@@ -327,6 +327,7 @@ export class Ruby extends Language {
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Property);
+        dictionaries.requiredImports = [];
         dictionaries.setLeft = "[";
         dictionaries.setMiddle = "] = ";
         dictionaries.setRight = "";
@@ -463,6 +464,7 @@ export class Ruby extends Language {
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.requiredImports = [];
         lists.setLeft = "[";
         lists.setMiddle = "] = ";
         lists.setRight = "";

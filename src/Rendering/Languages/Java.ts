@@ -113,7 +113,7 @@ export class Java extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
-        arrays.newGenericCastRequired = false;
+        arrays.newGenericCastRequired = true;
         arrays.requiredImports = [new Import(["java", "util"], ["Arrays"], ImportRelativity.Absolute)];
     }
 
@@ -321,16 +321,16 @@ export class Java extends Language {
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "HashMap";
         dictionaries.containsKey = new NativeCallSyntax("containsKey", NativeCallScope.Member, NativeCallType.Function);
-        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.getLeft = ".get(";
         dictionaries.getRight = ")";
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}}";
         dictionaries.initializePairComma = "";
-        dictionaries.initializeStart = "() {{";
         dictionaries.initializePairLeft = "put(";
         dictionaries.initializePairMiddle = ", ";
         dictionaries.initializePairRight = ");";
+        dictionaries.initializeStart = "() {{";
+        dictionaries.keys = new NativeCallSyntax("keySet", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.requiredImports = [new Import(["java", "util"], ["HashMap"], ImportRelativity.Absolute)];
         dictionaries.setLeft = ".put(";
         dictionaries.setMiddle = ", ";
@@ -530,8 +530,8 @@ export class Java extends Language {
     protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
         sortMembers.lambdaLeft = ".sort((";
         sortMembers.lambdaMiddleLeft = ") -> ";
-        sortMembers.lambdaMiddleRight = " < ";
-        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.lambdaMiddleRight = ".compareTo(";
+        sortMembers.lambdaRight = "))";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.KeyComparator;
     }
@@ -543,7 +543,7 @@ export class Java extends Language {
         sortMembers.lambdaLeft = ".sort((";
         sortMembers.lambdaMiddleLeft = ") -> ";
         sortMembers.lambdaMiddleRight = ".compareTo(";
-        sortMembers.lambdaRight = " ? 1 : -1)";
+        sortMembers.lambdaRight = "))";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.KeyComparator;
     }
@@ -594,7 +594,7 @@ export class Java extends Language {
         main.group = "{0}";
         main.mainEndLines = ["}"];
         main.mainIndentation = 1;
-        main.mainStartLines = ["public static void main(String[] args) {"];
+        main.mainStartLines = ["public static void main(String[] args){1} {"];
     }
 
     /**
@@ -722,10 +722,10 @@ export class Java extends Language {
         formatting.useInterpolation = false;
 
         formatting.typeCodes = {
-            char: "$c",
-            double: "$f",
-            int: "$d",
-            string: "$s",
+            char: "%c",
+            double: "%f",
+            int: "%d",
+            string: "%s",
         };
     }
 
@@ -739,7 +739,7 @@ export class Java extends Language {
         strings.caseUpper = new NativeCallSyntax("toUpperCase", NativeCallScope.Member, NativeCallType.Function);
         strings.className = "String";
         strings.concatenate = " + ";
-        strings.indexLeft = ".get(";
+        strings.indexLeft = ".charAt(";
         strings.indexOf = new NativeCallSyntax("indexOf", NativeCallScope.Member, NativeCallType.Function);
         strings.indexOfNotFound = "-1";
         strings.indexRight = ")";
@@ -825,7 +825,7 @@ export class Java extends Language {
         variables.declarationRequired = true;
 
         variables.aliases = {
-            infinity: "double.POSITIVE_INFINITY",
+            infinity: "Double.POSITIVE_INFINITY",
         };
         variables.castLeft = "(";
         variables.castRight = ")";

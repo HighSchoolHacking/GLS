@@ -441,6 +441,7 @@ export class Python extends Language {
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront.withArguments(["0"]);
         lists.push = new NativeCallSyntax("append", NativeCallScope.Member, NativeCallType.Function);
+        lists.requiredImports = [];
         lists.setLeft = "[";
         lists.setMiddle = "] = ";
         lists.setRight = "";

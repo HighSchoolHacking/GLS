@@ -1,4 +1,4 @@
-package while;
+package whileloops;
 
 class Main {
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ class Main {
                 continue;
             }
 
-            System.out.println(String.format("count is $d", count));
+            System.out.println(String.format("count is %d", count));
         }
     }
 }

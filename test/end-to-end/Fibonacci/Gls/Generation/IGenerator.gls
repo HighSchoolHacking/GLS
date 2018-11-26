@@ -1,4 +1,4 @@
-file start : Fibonacci Generation Generator
+file start : Fibonacci Generation IGenerator
     interface start : export IGenerator
         interface method : Generate int index int
     interface end

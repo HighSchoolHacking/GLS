@@ -1,5 +1,5 @@
 import { CachingGenerator } from "./Generation/CachingGenerator";
-import { IGenerator } from "./Generation/Generator";
+import { IGenerator } from "./Generation/IGenerator";
 import { NonCachingGenerator } from "./Generation/NonCachingGenerator";
 
 function getLabel(index: number): string {

@@ -55,7 +55,7 @@ export class FunctionSyntax {
     public returnTypeMarker: string;
 
     /**
-     * Precedes exceptions that the funtion throws.
+     * Precedes exceptions that the function throws.
      */
     public throwsMarker: string;
 }

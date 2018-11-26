@@ -368,11 +368,6 @@ export class CommandNames {
     public static ListGet = "list get";
 
     /**
-     * Name key for the ListSet command.
-     */
-    public static ListSet = "list set";
-
-    /**
      * Name key for the ListLength command.
      */
     public static ListLength = "list length";
@@ -401,6 +396,11 @@ export class CommandNames {
      * Name key for the ListPush command.
      */
     public static ListPush = "list push";
+
+    /**
+     * Name key for the ListSet command.
+     */
+    public static ListSet = "list set";
 
     /**
      * Name key for the ListSortMemberNumbers command.

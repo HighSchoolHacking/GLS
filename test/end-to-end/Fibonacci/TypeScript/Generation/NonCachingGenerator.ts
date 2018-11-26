@@ -1,4 +1,4 @@
-import { IGenerator } from "./Generator";
+import { IGenerator } from "./IGenerator";
 
 export class NonCachingGenerator implements IGenerator {
     public generate(index: number): number {

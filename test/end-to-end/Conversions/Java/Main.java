@@ -1,6 +1,6 @@
-package lists;
+package conversions;
 
-import lists.Converters;
+import conversions.Converters;
 
 class Main {
     public static void main(String[] args) {

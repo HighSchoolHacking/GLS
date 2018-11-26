@@ -41,13 +41,13 @@ export class LambdaTypeInlineCommand extends Command {
             return LineResults.newSingleLine("\0");
         }
 
-        const imports: Import[] = [];
-        imports.push(...this.language.syntax.lambdas.typeInline.requiredImports);
-
         const parameterCount = (parameters.length - 2) / 2;
         if (parameterCount > 2) {
             throw new Error("Inline lambda types may not have more than two parameters.");
         }
+
+        const imports: Import[] = [];
+        imports.push(...this.language.syntax.lambdas.typeInline.requiredImports);
 
         // (
         // Func<

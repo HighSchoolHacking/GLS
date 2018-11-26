@@ -1,3 +1,3 @@
 //
-aaa.get(bbb);
+aaa.charAt(bbb);
 //

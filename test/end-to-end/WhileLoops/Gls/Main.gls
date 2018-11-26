@@ -1,4 +1,4 @@
-file start : While Main
+file start : WhileLoops Main
     main context start
         main start
             while start : true

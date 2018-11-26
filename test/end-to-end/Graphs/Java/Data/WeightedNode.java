@@ -23,7 +23,7 @@ public class WeightedNode<T> implements INode<WeightedNode<T>> {
             nodes.add(edge.to);
         }
 
-        this.edges.sort((edgeA, edgeB) -> edgeA.distance < edgeB.distance ? 1 : -1);
+        this.edges.sort((edgeA, edgeB) -> edgeA.distance.compareTo(edgeB.distance));
 
         return nodes;
     }

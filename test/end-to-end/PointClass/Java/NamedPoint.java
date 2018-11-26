@@ -11,6 +11,6 @@ public class NamedPoint extends Point {
     }
 
     public String getLabel() {
-        return String.format("$s at [$d, $d] with vector $d", this.name, this.x, this.y, this.vector);
+        return String.format("%s at [%d, %d] with vector %d", this.name, this.x, this.y, this.vector);
     }
 }

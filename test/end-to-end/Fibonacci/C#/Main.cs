@@ -6,7 +6,7 @@ namespace Fibonacci
 
     class Program
     {
-        private static string GetLabel(double index)
+        private static string GetLabel(int index)
         {
             if (index == 1)
             {

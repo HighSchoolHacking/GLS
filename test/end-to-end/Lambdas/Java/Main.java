@@ -1,4 +1,4 @@
-package lists;
+package lambdas;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -12,6 +12,6 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Main.runOnInts((i) -> String.format("Int: $d", i));
+        Main.runOnInts((i) -> String.format("Int: %d", i));
     }
 }

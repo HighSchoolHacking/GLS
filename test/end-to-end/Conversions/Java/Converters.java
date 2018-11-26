@@ -1,4 +1,4 @@
-package lists;
+package conversions;
 
 public class Converters {
     public static void tryAsDouble(String doubleLike) {
@@ -9,7 +9,7 @@ public class Converters {
         } catch (NumberFormatException e) { }
 
         if (asDouble != null) {
-            System.out.println(String.format("It's a double: $d", (int)Math.floor(asDouble)));
+            System.out.println(String.format("It's a double: %d", (int)Math.floor(asDouble)));
         }
     }
 
@@ -23,7 +23,7 @@ public class Converters {
         } catch (NumberFormatException e) { }
 
         if (firstInt != null && secondInt != null) {
-            System.out.println(String.format("Both are ints: $d $d", firstInt, secondInt));
+            System.out.println(String.format("Both are ints: %d %d", firstInt, secondInt));
         }
     }
 }

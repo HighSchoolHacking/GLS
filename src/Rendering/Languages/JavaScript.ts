@@ -330,6 +330,7 @@ export class JavaScript extends Language {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
+        dictionaries.requiredImports = [];
         dictionaries.setLeft = "[";
         dictionaries.setMiddle = "] = ";
         dictionaries.setRight = "";
@@ -469,6 +470,7 @@ export class JavaScript extends Language {
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.requiredImports = [];
         lists.setLeft = "[";
         lists.setMiddle = "] = ";
         lists.setRight = "";
