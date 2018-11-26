@@ -1,3 +1,4 @@
+import * as glob from "glob";
 import * as path from "path";
 
 import { IOutputGenerator } from "./index";
@@ -11,7 +12,7 @@ const ignoredMessages = [/Note: (.+) uses unchecked or unsafe operations.\nNote:
 export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, projectName }): Promise<string[]> => {
     try {
         await spawnAndCaptureOutput("javac", {
-            args: ["-d", path.join(projectDirectory), "-nowarn", path.join(projectDirectory, "*.java")],
+            args: ["-d", path.join(projectDirectory), "-nowarn", ...glob.sync(path.join(projectDirectory, "**/*.java"))],
         });
     } catch (error) {
         if (!(error instanceof Error)) {
