@@ -12,7 +12,7 @@ class Index {
 
         // Characters
         String text = "abc";
-        char first = text[0];
+        char first = text.get(0);
         System.out.println(String.format("%0$s's first character is %1$c.", text, first));
 
         // Searching

@@ -703,20 +703,15 @@ export class Ruby extends Language {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringSyntax(strings: StringSyntax): void {
-        strings.concatenate = " + ";
-
         strings.caseLower = new NativeCallSyntax("downcase", NativeCallScope.Member, NativeCallType.Property);
-
         strings.caseUpper = new NativeCallSyntax("upcase", NativeCallScope.Member, NativeCallType.Property);
-
         strings.className = "string";
-
+        strings.concatenate = " + ";
+        strings.indexLeft = "[";
         strings.indexOf = new NativeCallSyntax("index", NativeCallScope.Member, NativeCallType.Function);
-
         strings.indexOfNotFound = "nil";
-
+        strings.indexRight = "]";
         strings.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
-
         strings.trim = new NativeCallSyntax("strip", NativeCallScope.Member, NativeCallType.Property);
     }
 
