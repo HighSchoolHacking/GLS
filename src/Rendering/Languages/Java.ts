@@ -455,7 +455,7 @@ export class Java extends Language {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
-        lambdas.callLeft = "(";
+        lambdas.callLeft = ".apply(";
         lambdas.callRight = ")";
         lambdas.functionLeft = "(";
         lambdas.functionMiddle = ") -> ";
@@ -474,6 +474,9 @@ export class Java extends Language {
         typeInline.leftByParameterCount = ["Supplier<", "Function<", "BiFunction<"];
         typeInline.middleWithoutParameters = "";
         typeInline.middleWithParameters = ", ";
+        typeInline.requiredImports = [
+            new Import(["java", "util", "function"], ["BiFunction", "Function", "Supplier"], ImportRelativity.Absolute),
+        ];
         typeInline.right = ">";
     }
 

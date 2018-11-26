@@ -4,6 +4,9 @@ import lists.Album;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Comparator;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 class Index {
     private static void printInts(String label, ArrayList<Integer> items) {
@@ -34,11 +37,11 @@ class Index {
 
     private static <T> void printListFancy(String label, ArrayList<T> items, Function<T, String> getLabel) {
         for (T item : items) {
-            System.out.println(getLabel(item));
+            System.out.println(getLabel.apply(item));
         }
 
         for (Integer i = 0; i < items.size(); i += 1) {
-            System.out.println(String.format("$s $d: $s", label, i, getLabel(items.get(i))));
+            System.out.println(String.format("$s $d: $s", label, i, getLabel.apply(items.get(i))));
         }
     }
 

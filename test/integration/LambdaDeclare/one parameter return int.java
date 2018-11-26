@@ -1,3 +1,3 @@
 //
-int(abc, int, abc);
+int.apply(abc, int, abc);
 //
