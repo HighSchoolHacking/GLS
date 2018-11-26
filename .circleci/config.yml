@@ -31,6 +31,23 @@ jobs:
                       - test/unit
                       - util
 
+    end-to-end/csharp:
+        docker:
+            - image: microsoft/aspnetcore-build:2.0
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: node node_modules\mocha\bin\mocha test/end-to-end.js --timeout 10000 "--language=C#"
+
     end-to-end/java:
         docker:
             - image: circleci/openjdk:latest-node-browsers
