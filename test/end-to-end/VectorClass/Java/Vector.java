@@ -52,7 +52,7 @@ public class Vector<T> {
             return;
         }
 
-        int newCapacity = (int)(Math.ceil((capacity / 2.0)) * 3);
+        int newCapacity = (int)Math.floor(Math.ceil((capacity / 2.0)) * 3);
         T[] oldData = this.data;
         this.capacity = newCapacity;
         this.data = new T[newCapacity];

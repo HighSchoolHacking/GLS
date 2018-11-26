@@ -1,3 +1,3 @@
 //
-(int)(abc);
+(int)Math.floor(abc);
 //
