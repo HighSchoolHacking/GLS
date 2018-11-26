@@ -2,7 +2,6 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Comparator;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -68,6 +67,14 @@ class Main {
         ArrayList<String> pets = new ArrayList<String>() {{ add("bird"); add("cat"); }};
         pets.add("dog");
         System.out.println(String.format("The last pet is %s.", pets.get(pets.size() - 1)));
+
+        // Splicing
+        pets.add(0, "aardvark");
+        Main.printStrings("pets", pets);
+        pets.add(2, "canary");
+        Main.printStrings("pets", pets);
+        pets.add(5, "emu");
+        Main.printStrings("pets", pets);
 
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};

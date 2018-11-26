@@ -77,6 +77,14 @@ namespace Lists
             pets.Add("dog");
             Console.WriteLine(string.Format("The last pet is {0}.", pets[pets.Count - 1]));
 
+            // Splicing
+            pets.Insert(0, "aardvark");
+            Program.PrintStrings("pets", pets);
+            pets.Insert(2, "canary");
+            Program.PrintStrings("pets", pets);
+            pets.Insert(5, "emu");
+            Program.PrintStrings("pets", pets);
+
             // Sorting strings
             List<string> flavors = new List<string> { "plain", "chocolate", "vanilla", "strawberry", };
             flavors.Sort();

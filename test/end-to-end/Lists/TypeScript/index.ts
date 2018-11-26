@@ -59,6 +59,14 @@ let pets: string[] = ["bird", "cat"];
 pets.push("dog");
 console.log(`The last pet is ${pets[pets.length - 1]}.`);
 
+// Splicing
+pets.splice(0, 0, "aardvark");
+printStrings("pets", pets);
+pets.splice(2, 0, "canary");
+printStrings("pets", pets);
+pets.splice(5, 0, "emu");
+printStrings("pets", pets);
+
 // Sorting strings
 let flavors: string[] = ["plain", "chocolate", "vanilla", "strawberry"];
 flavors.sort();

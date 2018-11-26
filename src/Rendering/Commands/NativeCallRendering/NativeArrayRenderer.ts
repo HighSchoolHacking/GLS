@@ -16,7 +16,7 @@ export class NativeArrayRenderer extends NativeCallRenderer {
 
         output += "[" + parameters[1];
         for (let i = 2; i < parameters.length; i += 1) {
-            output += ", " + parameters[i];
+            output += this.nativeCallSyntax.separator + parameters[i];
         }
 
         output += "]." + this.nativeCallSyntax.name;

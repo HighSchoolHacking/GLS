@@ -34,6 +34,11 @@ export class ListSyntax {
     public getRight: string;
 
     /**
+     * Inserts an item at an index.
+     */
+    public insert: NativeCallSyntax;
+
+    /**
      * How to retrieve the length of a list.
      */
     public length: NativeCallSyntax;

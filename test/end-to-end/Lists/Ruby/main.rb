@@ -59,6 +59,14 @@ pets = ["bird", "cat"]
 pets.push("dog")
 puts "The last pet is %s." % [pets[pets.length - 1]]
 
+# Splicing
+pets.insert(0, "aardvark")
+print_strings("pets", pets)
+pets.insert(2, "canary")
+print_strings("pets", pets)
+pets.insert(5, "emu")
+print_strings("pets", pets)
+
 # Sorting strings
 flavors = ["plain", "chocolate", "vanilla", "strawberry"]
 flavors.sort!()

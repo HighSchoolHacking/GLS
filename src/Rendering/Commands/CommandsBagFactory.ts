@@ -153,6 +153,7 @@ import { VariableInlineCommand } from "./VariableInlineCommand";
 import { VariableStartCommand } from "./VariableStartCommand";
 import { WhileEndCommand } from "./WhileEndCommand";
 import { WhileStartCommand } from "./WhileStartCommand";
+import { ListInsertCommand } from "./ListInsertCommand";
 
 /**
  * Initializes new instances of the CommandsBag class.
@@ -239,6 +240,7 @@ export class CommandsBagFactory {
             new LambdaTypeInlineCommand(context),
             new ListAddListCommand(context),
             new ListGetCommand(context),
+            new ListInsertCommand(context),
             new ListLengthCommand(context),
             new ListNewCommand(context),
             new ListNewSizedCommand(context),

@@ -62,6 +62,14 @@ file start : Lists Main
             list push : pets "dog"
             print : { string format : ("The last pet is {0}.") { list get : pets { operation : { list length : pets } minus 1 } } string }
 
+            comment line : Splicing
+            list insert : pets 0 "aardvark"
+            standalone function : private { main group } PrintStrings "pets" pets
+            list insert : pets 2 "canary"
+            standalone function : private { main group } PrintStrings "pets" pets
+            list insert : pets 5 "emu"
+            standalone function : private { main group } PrintStrings "pets" pets
+
             comment line : Sorting (strings)
             variable : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }
             list sort strings : flavors

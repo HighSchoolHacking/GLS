@@ -461,6 +461,7 @@ export class Ruby extends Language {
         lists.asArray = true;
         lists.getLeft = "[";
         lists.getRight = "]";
+        lists.insert = new NativeCallSyntax("insert", NativeCallScope.Member, NativeCallType.Function);
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);

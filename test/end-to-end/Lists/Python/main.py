@@ -51,6 +51,14 @@ if __name__ == "__main__":
     pets.append("dog")
     print("The last pet is {0}.".format(pets[len(pets) - 1]))
 
+    # Splicing
+    pets.insert(0, "aardvark")
+    print_strings("pets", pets)
+    pets.insert(2, "canary")
+    print_strings("pets", pets)
+    pets.insert(5, "emu")
+    print_strings("pets", pets)
+
     # Sorting strings
     flavors = ["plain", "chocolate", "vanilla", "strawberry"]
     flavors.sort()

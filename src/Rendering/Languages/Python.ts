@@ -437,6 +437,7 @@ export class Python extends Language {
         lists.asArray = true;
         lists.getLeft = "[";
         lists.getRight = "]";
+        lists.insert = new NativeCallSyntax("insert", NativeCallScope.Member, NativeCallType.Function);
         lists.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);

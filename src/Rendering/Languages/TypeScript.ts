@@ -491,6 +491,7 @@ export class TypeScript extends Language {
         lists.asArray = true;
         lists.getLeft = "[";
         lists.getRight = "]";
+        lists.insert = new NativeCallSyntax("splice", NativeCallScope.Member, NativeCallType.Function).withSeparator(", 0, ");
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Function);

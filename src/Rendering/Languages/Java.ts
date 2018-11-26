@@ -487,6 +487,7 @@ export class Java extends Language {
         lists.className = "ArrayList";
         lists.getLeft = ".get(";
         lists.getRight = ")";
+        lists.insert = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
         lists.length = new NativeCallSyntax("size", NativeCallScope.Member, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.size() - 1"]);
         lists.popFront = new NativeCallSyntax("remove", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);

@@ -18,11 +18,11 @@ export class NativeStaticRenderer extends NativeCallRenderer {
         output += "(" + parameters[1];
 
         for (const arg of this.nativeCallSyntax.arguments) {
-            output += ", " + this.formatArgument(arg, parameters[1]);
+            output += this.nativeCallSyntax.separator + this.formatArgument(arg, parameters[1]);
         }
 
         for (let i = 2; i < parameters.length; i += 1) {
-            output += ", " + parameters[i];
+            output += this.nativeCallSyntax.separator + parameters[i];
         }
 
         output += ")";

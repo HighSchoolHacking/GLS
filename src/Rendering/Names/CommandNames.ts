@@ -368,6 +368,11 @@ export class CommandNames {
     public static ListGet = "list get";
 
     /**
+     * Name key for the ListInsert command.
+     */
+    public static ListInsert = "list insert";
+
+    /**
      * Name key for the ListLength command.
      */
     public static ListLength = "list length";
