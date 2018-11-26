@@ -17,7 +17,7 @@ For variables, declare the type of the array with `array type`, which takes in t
 Retrieve a single member of an array with `array get`, which takes in a name of a container and an integer index.
 
 ```gls
-array index : container 1
+array get : container 1
 ```
 
 * In C#: `container[1]`
@@ -38,7 +38,7 @@ Get the length of an array with `array length`, which takes in a name of an arra
 variable : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
 
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
-print : { string format : ("The first fruit is {0}.") { array index : fruits 0 } string }
+print : { string format : ("The first fruit is {0}.") { array get : fruits 0 } string }
 ```
 
 In C#:
