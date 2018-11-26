@@ -1,4 +1,4 @@
-file start : PointClass index
+file start : PointClass Main
     import local : PointClass NamedPoint use NamedPoint
     import local : PointClass Point use Point
 

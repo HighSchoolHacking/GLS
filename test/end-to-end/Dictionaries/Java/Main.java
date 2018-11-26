@@ -2,7 +2,7 @@ package dictionaries;
 
 import java.util.HashMap;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         // Types
         HashMap<String, Integer> foo = new HashMap<String, Integer>();

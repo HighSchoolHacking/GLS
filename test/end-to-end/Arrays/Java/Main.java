@@ -2,7 +2,7 @@ package arrays;
 
 import java.util.Arrays;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         // Initialization
         String[] aaa = new String[0];

@@ -1,4 +1,4 @@
-class start : Utilities
+class start : Utilities Main
     static function declare start : public GetLongest string words { array type : string }
         variable : longest string ""
 
