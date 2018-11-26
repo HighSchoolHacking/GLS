@@ -29,9 +29,7 @@ export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, pr
             throw error;
         }
 
-        const message = filterIgnoredMessages(error.message);
-
-        if (message !== "") {
+        if (filterIgnoredMessages(error.message) !== "") {
             throw error;
         }
     }
