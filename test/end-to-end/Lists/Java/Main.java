@@ -2,6 +2,7 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Comparator;
 import java.util.function.BiFunction;
 import java.util.function.Function;
