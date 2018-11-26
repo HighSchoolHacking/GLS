@@ -1,3 +1,3 @@
 //
-BiFunction<String, boolean, int>
+BiFunction<String, Boolean, Integer>
 //

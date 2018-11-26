@@ -1,3 +1,3 @@
 //
-private static String abc(int def) {
+private static String abc(Integer def) {
 //

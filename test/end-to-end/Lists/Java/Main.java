@@ -6,15 +6,15 @@ import java.util.HashSet;
 import java.util.Comparator;
 
 class Index {
-    private static void printInts(String label, ArrayList<int> items) {
+    private static void printInts(String label, ArrayList<Integer> items) {
         System.out.println(String.format("The first %0$s is %1$d.", label, items[0]));
         System.out.println(String.format("The last %0$s is %1$d.", label, items[items.size() - 1]));
 
-        for (int item : items) {
+        for (Integer item : items) {
             System.out.println(String.format("%0$s: %1$d", label, item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$d", label, i, items[i]));
         }
     }
@@ -27,7 +27,7 @@ class Index {
             System.out.println(String.format("%0$s: %1$s", label, item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$s", label, i, items[i]));
         }
     }
@@ -37,7 +37,7 @@ class Index {
             System.out.println(getLabel(item));
         }
 
-        for (int i = 0; i < items.size(); i += 1) {
+        for (Integer i = 0; i < items.size(); i += 1) {
             System.out.println(String.format("%0$s %1$d: %2$s", label, i, getLabel(items[i])));
         }
     }
@@ -45,7 +45,7 @@ class Index {
     public static void main(String[] args) {
         // Initialization
         ArrayList<String> aaa = new ArrayList<String>();
-        ArrayList<int> bbb = new ArrayList<int>() {{ add(1); add(2); add(3); }};
+        ArrayList<Integer> bbb = new ArrayList<Integer>() {{ add(1); add(2); add(3); }};
         ArrayList<ArrayList<String>> ccc = new ArrayList<ArrayList<String>>() {{ add(aaa); add(new ArrayList<String>() {{ add("eee"); add("fff"); add("ggg"); }}); }};
 
         // Members
@@ -72,7 +72,7 @@ class Index {
         Index.printStrings("flavor", flavors);
 
         // Sorting ints
-        ArrayList<int> ints = new ArrayList<int>() {{ add(1); add(10); add(2); add(-3); add(8); add(4); add(5); }};
+        ArrayList<Integer> ints = new ArrayList<Integer>() {{ add(1); add(10); add(2); add(-3); add(8); add(4); add(5); }};
         ints.sort(Comparator.naturalOrder());
         Index.printInts("int", ints);
 

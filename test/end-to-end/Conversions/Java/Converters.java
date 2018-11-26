@@ -2,7 +2,7 @@ package lists;
 
 public static class Converters {
     public static void tryAsDouble(String doubleLike) {
-        double asDouble = null;
+        Double asDouble = null;
 
         try {
             asDouble = Double.parseDouble(doubleLike);
@@ -14,12 +14,12 @@ public static class Converters {
     }
 
     public static void tryAsInt(String firstIntLike, String secondIntLike) {
-        int firstInt = null;
-        int secondInt = null;
+        Integer firstInt = null;
+        Integer secondInt = null;
 
         try {
-            firstInt = Int.parseInt(firstIntLike);
-            secondInt = Int.parseInt(secondIntLike);
+            firstInt = Integer.parseInt(firstIntLike);
+            secondInt = Integer.parseInt(secondIntLike);
         } catch (NumberFormatException e) { }
 
         if (firstInt != null && secondInt != null) {

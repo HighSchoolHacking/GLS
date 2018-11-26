@@ -1,8 +1,8 @@
 package lists;
 
 class Index {
-    private static void runOnInts(Function<int, String> format) {
-        for (int i = 0; i < 10; i += 1) {
+    private static void runOnInts(Function<Integer, String> format) {
+        for (Integer i = 0; i < 10; i += 1) {
             System.out.println(format(i));
         }
     }

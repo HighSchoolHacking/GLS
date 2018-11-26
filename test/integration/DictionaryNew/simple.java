@@ -1,5 +1,5 @@
 //
 import java.util.HashMap;
 
-new HashMap<String, int>()
+new HashMap<String, Integer>()
 //

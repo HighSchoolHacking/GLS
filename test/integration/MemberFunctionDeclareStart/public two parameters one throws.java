@@ -1,4 +1,4 @@
 //
 class Abc {
-    public String defGhi(float jkl, boolean mno) throws Exception {
+    public String defGhi(float jkl, Boolean mno) throws Exception {
 //

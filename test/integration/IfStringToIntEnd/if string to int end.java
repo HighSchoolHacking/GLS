@@ -1,8 +1,8 @@
 //
-int bbb = null;
+Integer bbb = null;
 
 try {
-    bbb = Int.parseInt(aaa);
+    bbb = Integer.parseInt(aaa);
 } catch (NumberFormatException e) { }
 
 if (bbb != null) {

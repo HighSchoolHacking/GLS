@@ -1,5 +1,5 @@
 //
-double bbb = null;
+Double bbb = null;
 
 try {
     bbb = Double.parseDouble(aaa);

@@ -6,7 +6,7 @@ class Index {
             System.out.println("if true");
         }
 
-        boolean second = false;
+        Boolean second = false;
         if (second) {
             System.out.println("wrong if variable");
         } else {

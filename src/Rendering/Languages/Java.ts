@@ -201,10 +201,11 @@ export class Java extends Language {
         classes.abstractDeclaration = "abstract ";
         classes.abstractsSupported = true;
         classes.aliases = {
-            boolean: "boolean",
+            boolean: "Boolean",
             dictionary: "HashMap",
+            double: "Double",
+            int: "Integer",
             list: "ArrayList",
-            number: "double",
             string: "String",
         };
 
@@ -777,7 +778,7 @@ export class Java extends Language {
         toInt.initialVariableValues = "null";
         toInt.initializeVariablesEnd = "\n\ntry {\n";
         toInt.perVariableConversionStartLeft = "    ";
-        toInt.perVariableConversionStartMiddle = " = Int.parseInt(";
+        toInt.perVariableConversionStartMiddle = " = Integer.parseInt(";
         toInt.perVariableConversionStartRight = ");\n";
         toInt.validationBlockComparison = "{1} != null";
         toInt.validationBlockLeft = "} catch (NumberFormatException e) { }\n\nif (";

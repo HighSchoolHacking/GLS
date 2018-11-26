@@ -1,3 +1,3 @@
 //
-Function<String, int>
+Function<String, Integer>
 //

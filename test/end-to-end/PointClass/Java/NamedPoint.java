@@ -5,7 +5,7 @@ import pointclass.Point;
 public class NamedPoint extends Point {
     private String name;
 
-    public NamedPoint(int x, int y, String name) {
+    public NamedPoint(Integer x, Integer y, String name) {
         super(x, y);
         this.name = name;
     }

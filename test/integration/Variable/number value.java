@@ -1,3 +1,3 @@
 //
-double aaa = 0.0;
+number aaa = 0.0;
 //
