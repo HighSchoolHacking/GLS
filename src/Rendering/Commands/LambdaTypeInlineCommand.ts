@@ -42,9 +42,11 @@ export class LambdaTypeInlineCommand extends Command {
         }
 
         const imports: Import[] = [];
+        imports.push(...this.language.syntax.lambdas.typeInline.requiredImports);
+
         const parameterCount = (parameters.length - 2) / 2;
         if (parameterCount > 2) {
-            throw new Error("Inline type lambdas may not have more than two parameters.");
+            throw new Error("Inline lambda types may not have more than two parameters.");
         }
 
         // (
