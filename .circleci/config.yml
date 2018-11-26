@@ -46,7 +46,7 @@ jobs:
             - restore_cache:
                   key: dependency-cache-{{ checksum "package-lock.json" }}
 
-            - run: node node_modules\mocha\bin\mocha test/end-to-end.js --timeout 10000 "--language=C#"
+            - run: npm run test:end-to-end -- --language=C#
 
     end-to-end/java:
         docker:
