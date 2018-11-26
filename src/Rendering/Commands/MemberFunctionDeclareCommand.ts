@@ -26,6 +26,8 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         const imports: Import[] = [];
         const publicity: string = parameters[1];
         const functionName: string = parameters[2];
+        const throwsIndex = parameters.indexOf(KeywordNames.Throws);
+        const functionParameters = this.collectFunctionParameters(parameters, throwsIndex);
         const returnTypeLine = this.context.convertParsed([CommandNames.Type, parameters[3]]);
         const returnType: string = returnTypeLine.commandResults[0].text;
         let output: CommandResult[];
@@ -46,21 +48,20 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         if (this.language.syntax.classes.members.functions.includeThisReference) {
             declaration += this.language.syntax.classes.this;
 
-            if (parameters.length > 4) {
+            if (functionParameters.length !== 0) {
                 declaration += ", ";
             }
         }
 
-        if (parameters.length > 4) {
-            const typeLine = this.generateParameterVariable(parameters, 4);
-            declaration += typeLine.commandResults[0].text;
-            imports.push(...typeLine.addedImports);
+        for (let i = 0; i < functionParameters.length; i += 2) {
+            const nextTypeLine = this.generateParameterVariable(functionParameters, i);
+            imports.push(...nextTypeLine.addedImports);
 
-            for (let i = 6; i < parameters.length; i += 2) {
-                const nextTypeLine = this.generateParameterVariable(parameters, i);
-                declaration += ", " + nextTypeLine.commandResults[0].text;
-                imports.push(...nextTypeLine.addedImports);
+            if (i !== 0) {
+                declaration += ", ";
             }
+
+            declaration += nextTypeLine.commandResults[0].text;
         }
 
         declaration += ")";
@@ -68,6 +69,18 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         if (this.language.syntax.functions.explicitReturns && this.language.syntax.functions.returnTypeAfterName) {
             declaration += this.language.syntax.functions.returnTypeMarker;
             declaration += returnType;
+        }
+
+        if (this.language.syntax.functions.explicitThrows && throwsIndex !== -1) {
+            declaration += this.language.syntax.functions.throwsMarker;
+
+            for (let i = throwsIndex + 1; i < parameters.length; i += 1) {
+                declaration += parameters[i];
+
+                if (i !== parameters.length - 1) {
+                    declaration += ", ";
+                }
+            }
         }
 
         output = [new CommandResult(declaration, 0)];
@@ -95,6 +108,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      * @returns How much indentation to add after the last command line.
      */
     protected abstract getIndentation(): number;
+
+    private collectFunctionParameters(parameters: string[], throwsIndex: number): string[] {
+        if (throwsIndex === -1) {
+            return parameters.slice(4);
+        }
+
+        return parameters.slice(4, throwsIndex);
+    }
 
     /**
      * Generates line results for a parameter.

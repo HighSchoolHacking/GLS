@@ -30,9 +30,9 @@ export class FunctionSyntax {
     public explicitReturns: boolean;
 
     /**
-     * Precedes exceptions that the funtion throws.
+     * Whether functions should explicitly mark which exceptions they may throw.
      */
-    public functionThrows: string;
+    public explicitThrows: boolean;
 
     /**
      * Whether langauge requires functin to declare possible exceptions.
@@ -48,4 +48,9 @@ export class FunctionSyntax {
      * A label between function name and its type, if type is after the name.
      */
     public returnTypeMarker: string;
+
+    /**
+     * Precedes exceptions that the funtion throws.
+     */
+    public throwsMarker: string;
 }

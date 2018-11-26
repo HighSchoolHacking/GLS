@@ -396,16 +396,14 @@ export class Java extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.explicitReturns = true;
-
         functions.case = CaseStyle.CamelCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = " ";
         functions.defineStartRight = " {";
-
+        functions.explicitReturns = true;
+        functions.explicitThrows = true;
         functions.requiresExceptions = true;
-        functions.functionThrows = " throws ";
+        functions.throwsMarker = " throws ";
     }
 
     /**

@@ -33,7 +33,7 @@ export class MainSyntax {
     public mainIndentation: number;
 
     /**
-     * Lines at the start of a main function.
+     * Lines at the start of a main function, with {0} for file name and {1} for "throws" markers.
      */
     public mainStartLines: string[];
 }
