@@ -1,4 +1,4 @@
-file start : ForNumbers Index
+file start : ForNumbers Main
     main context start
         main start
             for numbers start : aaa int 0 10

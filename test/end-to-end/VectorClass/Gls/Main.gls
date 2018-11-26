@@ -1,4 +1,4 @@
-file start : VectorClass Index
+file start : VectorClass Main
     import local : VectorClass Vector use Vector
 
     main context start

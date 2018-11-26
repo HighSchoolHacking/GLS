@@ -1,6 +1,6 @@
 package strings;
 
-class Index {
+class Main {
     public static void main(String[] args) {
         // Initialization
         String haystack = "Hello, GLS!";

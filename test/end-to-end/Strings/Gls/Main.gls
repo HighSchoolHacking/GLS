@@ -1,4 +1,4 @@
-file start : STrings index
+file start : Strings Main
     main context start
         main start
             comment line : Initialization
