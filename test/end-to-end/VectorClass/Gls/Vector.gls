@@ -10,7 +10,7 @@ file start : VectorClass Vector
             member variable set : private { this } Length 0
         constructor end
 
-        member function declare start : public At T index int
+        member function declare start : public At T index int throws { exception }
             if start : { operation : index (greater than or equal to) { member variable : private { this } Length } }
                 throw : { exception } { string format : ("Index out of bounds: {0} is greater than {1}.") index int { member variable : private { this } Length } int }
             if end
@@ -26,7 +26,7 @@ file start : VectorClass Vector
             return : { member variable : private { this } Length }
         member function declare end
 
-        member function declare start : public GetFirst T
+        member function declare start : public GetFirst T throws { exception }
             if start : { operation : { member variable : private { this } Capacity } (equal to) 0 }
                 throw : { exception } ("Cannot get first from empty vector.")
             if end
@@ -34,7 +34,7 @@ file start : VectorClass Vector
             return : { array index : { member variable : private { this } Data } 0 }
         member function declare end
 
-        member function declare start : public GetLast T
+        member function declare start : public GetLast T throws { exception }
             if start : { operation : { member variable : private { this } Capacity } (equal to) 0 }
                 throw : { exception } ("Cannot get last from empty vector.")
             if end

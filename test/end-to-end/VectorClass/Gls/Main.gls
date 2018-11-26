@@ -2,7 +2,7 @@ file start : VectorClass Index
     import local : VectorClass Vector use Vector
 
     main context start
-        main start
+        main start : throws { exception }
             variable : vector { generic type : Vector string } { new : { generic type : Vector string } }
             variable : words { array type : string } { array new : string "hello" "my" "baby" "hello" "my" "darling" "hello" "my" "ragtime" "gal" }
 
