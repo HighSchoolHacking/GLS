@@ -1,4 +1,4 @@
-import { IGenerator } from "./Generator";
+import { IGenerator } from "./IGenerator";
 
 export class CachingGenerator implements IGenerator {
     private cache: { [i: number]: number };
