@@ -1,5 +1,5 @@
 //
 import java.util.Arrays;
 
-(T[]) new Object[] { 7 }
+(T[]) new Object[7]
 //
