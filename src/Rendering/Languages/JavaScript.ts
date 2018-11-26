@@ -114,6 +114,7 @@ export class JavaScript extends Language {
         arrays.initializeAsNew = false;
         arrays.initializeViaStatic = true;
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = false;
         arrays.requiredImports = [];
     }
 
@@ -396,13 +397,13 @@ export class JavaScript extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.requiresExceptions = false;
         functions.case = CaseStyle.CamelCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = "function ";
         functions.defineStartRight = " {";
+        functions.explicitNewStaticGenericType = true;
         functions.explicitReturns = false;
+        functions.requiresExceptions = false;
     }
 
     /**

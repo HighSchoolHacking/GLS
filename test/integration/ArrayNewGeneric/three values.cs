@@ -1,3 +1,3 @@
 //
-new T[] { "aaa", bbb, "ccc" }
+new T[] { abc, def, ghi }
 //

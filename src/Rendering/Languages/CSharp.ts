@@ -111,6 +111,7 @@ export class CSharp extends Language {
         arrays.initializeAsNew = true;
         arrays.initializeByType = true;
         arrays.length = new NativeCallSyntax("Length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = false;
         arrays.requiredImports = [];
     }
 
@@ -398,14 +399,13 @@ export class CSharp extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.explicitReturns = true;
-        functions.requiresExceptions = false;
-
         functions.case = CaseStyle.PascalCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = " ";
         functions.defineStartRight = "\n{";
+        functions.explicitNewStaticGenericType = false;
+        functions.explicitReturns = true;
+        functions.requiresExceptions = false;
     }
 
     /**

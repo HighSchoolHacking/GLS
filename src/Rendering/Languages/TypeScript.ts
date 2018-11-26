@@ -114,6 +114,7 @@ export class TypeScript extends Language {
     protected generateArraySyntax(arrays: ArraySyntax): void {
         arrays.className = "Array";
         arrays.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
+        arrays.newGenericCastRequired = false;
         arrays.requiredImports = [];
     }
 
@@ -403,15 +404,13 @@ export class TypeScript extends Language {
      * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.defineEnd = "}";
-        functions.explicitReturns = true;
-        functions.requiresExceptions = false;
-
         functions.case = CaseStyle.CamelCase;
-
+        functions.defineEnd = "}";
         functions.defineStartLeft = "function ";
         functions.defineStartRight = " {";
-
+        functions.explicitNewStaticGenericType = true;
+        functions.explicitReturns = true;
+        functions.requiresExceptions = false;
         functions.returnTypeAfterName = true;
         functions.returnTypeMarker = ": ";
     }

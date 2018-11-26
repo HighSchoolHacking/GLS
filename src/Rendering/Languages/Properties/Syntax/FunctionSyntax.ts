@@ -40,7 +40,7 @@ export class FunctionSyntax {
     public explicitThrows: boolean;
 
     /**
-     * Whether langauge requires functin to declare possible exceptions.
+     * Whether langauge requires function to declare possible exceptions.
      */
     public requiresExceptions: boolean;
 
