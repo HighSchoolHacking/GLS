@@ -25,19 +25,19 @@ export class NativeMemberRenderer extends NativeCallRenderer {
                 output += this.formatArgument(this.nativeCallSyntax.arguments[0], parameters[1]);
 
                 for (let i = 1; i < this.nativeCallSyntax.arguments.length; i += 1) {
-                    output += ", " + this.formatArgument(this.nativeCallSyntax.arguments[i], parameters[1]);
+                    output += this.nativeCallSyntax.separator + this.formatArgument(this.nativeCallSyntax.arguments[i], parameters[1]);
                 }
             }
 
             if (parameters.length > 2) {
                 if (this.nativeCallSyntax.arguments.length > 0) {
-                    output += ", ";
+                    output += this.nativeCallSyntax.separator;
                 }
 
                 output += parameters[2];
 
                 for (let i = 3; i < parameters.length; i += 1) {
-                    output += ", " + parameters[i];
+                    output += this.nativeCallSyntax.separator + parameters[i];
                 }
             }
 

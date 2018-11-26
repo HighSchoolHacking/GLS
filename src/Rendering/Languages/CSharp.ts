@@ -480,6 +480,7 @@ export class CSharp extends Language {
         lists.className = "List";
         lists.getLeft = "[";
         lists.getRight = "]";
+        lists.insert = new NativeCallSyntax("Insert", NativeCallScope.Member, NativeCallType.Function);
         lists.length = new NativeCallSyntax("Count", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
         lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);

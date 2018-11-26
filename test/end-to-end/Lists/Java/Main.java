@@ -69,6 +69,14 @@ class Main {
         pets.add("dog");
         System.out.println(String.format("The last pet is %s.", pets.get(pets.size() - 1)));
 
+        // Splicing
+        pets.add(0, "aardvark");
+        Main.printStrings("pets", pets);
+        pets.add(2, "canary");
+        Main.printStrings("pets", pets);
+        pets.add(5, "emu");
+        Main.printStrings("pets", pets);
+
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};
         flavors.sort(Comparator.naturalOrder());

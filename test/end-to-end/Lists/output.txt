@@ -3,6 +3,42 @@ The first fruit is apple.
 The last color is yellow.
 The first color is orange.
 The last pet is dog.
+The first pets is aardvark.
+The last pets is dog.
+pets: aardvark
+pets: bird
+pets: cat
+pets: dog
+pets 0: aardvark
+pets 1: bird
+pets 2: cat
+pets 3: dog
+The first pets is aardvark.
+The last pets is dog.
+pets: aardvark
+pets: bird
+pets: canary
+pets: cat
+pets: dog
+pets 0: aardvark
+pets 1: bird
+pets 2: canary
+pets 3: cat
+pets 4: dog
+The first pets is aardvark.
+The last pets is emu.
+pets: aardvark
+pets: bird
+pets: canary
+pets: cat
+pets: dog
+pets: emu
+pets 0: aardvark
+pets 1: bird
+pets 2: canary
+pets 3: cat
+pets 4: dog
+pets 5: emu
 The first flavor is chocolate.
 The last flavor is vanilla.
 flavor: chocolate

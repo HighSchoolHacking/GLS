@@ -73,6 +73,7 @@ import { LambdaDeclareCommand } from "./LambdaDeclareCommand";
 import { LambdaTypeInlineCommand } from "./LambdaTypeInlineCommand";
 import { ListAddListCommand } from "./ListAddListCommand";
 import { ListGetCommand } from "./ListGetCommand";
+import { ListInsertCommand } from "./ListInsertCommand";
 import { ListLengthCommand } from "./ListLengthCommand";
 import { ListNewCommand } from "./ListNewCommand";
 import { ListNewSizedCommand } from "./ListNewSizedCommand";
@@ -239,6 +240,7 @@ export class CommandsBagFactory {
             new LambdaTypeInlineCommand(context),
             new ListAddListCommand(context),
             new ListGetCommand(context),
+            new ListInsertCommand(context),
             new ListLengthCommand(context),
             new ListNewCommand(context),
             new ListNewSizedCommand(context),

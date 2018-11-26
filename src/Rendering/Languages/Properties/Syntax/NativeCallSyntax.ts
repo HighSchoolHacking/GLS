@@ -65,6 +65,11 @@ export class NativeCallSyntax {
     private static defaultImports: Import[] = [];
 
     /**
+     * Default characters between items in the native call.
+     */
+    private static defaultSeparator: string = ", ";
+
+    /**
      * Any arguments this may add as a function or static.
      */
     public arguments: string[];
@@ -85,6 +90,11 @@ export class NativeCallSyntax {
     public scope: NativeCallScope;
 
     /**
+     * Characters between items in the native call.
+     */
+    public separator: string;
+
+    /**
      * How this is called.
      */
     public type: NativeCallType;
@@ -99,6 +109,7 @@ export class NativeCallSyntax {
     public constructor(name: string, scope: NativeCallScope, type: NativeCallType) {
         this.arguments = NativeCallSyntax.defaultArguments;
         this.imports = NativeCallSyntax.defaultImports;
+        this.separator = NativeCallSyntax.defaultSeparator;
         this.name = name;
         this.scope = scope;
         this.type = type;
@@ -123,6 +134,17 @@ export class NativeCallSyntax {
      */
     public withImports(imports: Import[]): NativeCallSyntax {
         this.imports = imports;
+        return this;
+    }
+
+    /**
+     * Sets the characters between items in the native call.
+     *
+     * @param separator   Characters between items in the native call.
+     * @returns this
+     */
+    public withSeparator(separator: string): NativeCallSyntax {
+        this.separator = separator;
         return this;
     }
 }
