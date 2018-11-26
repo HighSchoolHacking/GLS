@@ -1,13 +1,17 @@
-class Direction(Enum):
-    Unknown = 0
-    Horizontal = 1
-    Vertical = 2
+from direction import Direction
+
+def print_value(direction):
+    if direction == Direction.Horizontal:
+        print("Horizontal.")
+    elif direction == Direction.Vertical:
+        print("Vertical.")
+    else:
+        print("Unknown...")
 
 if __name__ == "__main__":
-    print("Unknown by lookup is {0}".format(Direction.Unknown))
-    print("Horizontal by lookup is {0}".format(Direction.Horizontal))
-    print("Vertical by lookup is {0}".format(Direction.Vertical))
+    print_value(Direction.Unknown)
+    print_value(Direction.Horizontal)
+    print_value(Direction.Vertical)
 
-    unknown = Direction.Unknown
-
-    print("unknown variable is {0}".format(unknown))
+    direction = Direction.Unknown
+    print_value(direction)

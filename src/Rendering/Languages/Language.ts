@@ -3,7 +3,6 @@ import { ProjectProperties } from "./Properties/ProjectProperties";
 import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
-import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
 import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
 import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
 import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
@@ -15,6 +14,7 @@ import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
 import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
 import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
 import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { ExportSyntax } from "./Properties/Syntax/ExportSyntax";
 import { FileSyntax } from "./Properties/Syntax/FileSyntax";
 import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
@@ -77,7 +77,6 @@ export abstract class Language {
         this.generateArrayNewSizedSyntax(this.syntax.arrays.newSized);
         this.generateBooleanSyntax(this.syntax.booleans);
         this.generateClassSyntax(this.syntax.classes);
-        this.generateClassExportSyntax(this.syntax.classes.exports);
         this.generateClassGenericSyntax(this.syntax.classes.generics);
         this.generateClassMemberFunctionSyntax(this.syntax.classes.members.functions);
         this.generateClassMemberVariableSyntax(this.syntax.classes.members.variables);
@@ -88,6 +87,7 @@ export abstract class Language {
         this.generateDictionarySyntax(this.syntax.dictionaries);
         this.generateEnumSyntax(this.syntax.enums);
         this.generateExceptionSyntax(this.syntax.exceptions);
+        this.generateExportSyntax(this.syntax.exports);
         this.generateFileSyntax(this.syntax.files);
         this.generateFunctionSyntax(this.syntax.functions);
         this.generateImportSyntax(this.syntax.imports);
@@ -154,16 +154,16 @@ export abstract class Language {
     protected abstract generateBooleanSyntax(booleans: BooleanSyntax): void;
 
     /**
-     * Generates metadata on exported classes.
+     * Generates metadata on exported constructs.
      *
-     * @param members   A property container for metadata on exported classes.
+     * @param exports   A property container for metadata on exported constructs.
      */
-    protected abstract generateClassExportSyntax(exports: ClassExportSyntax): void;
+    protected abstract generateExportSyntax(exports: ExportSyntax): void;
 
     /**
      * Generates metadata on class generics.
      *
-     * @param members   A property container for metadata on class generics.
+     * @param generics   A property container for metadata on class generics.
      */
     protected abstract generateClassGenericSyntax(generics: ClassGenericSyntax): void;
 

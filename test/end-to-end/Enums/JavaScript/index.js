@@ -1,14 +1,19 @@
-const Direction = {
-    Unknown: 0,
-    Horizontal: 1,
-    Vertical: 2
-};
+const { Direction } = require("./Direction");
 
-console.log(`Unknown by lookup is ${Direction.Unknown}`);
-console.log(`Horizontal by lookup is ${Direction.Horizontal}`);
-console.log(`Vertical by lookup is ${Direction.Vertical}`);
+function printValue(direction) {
+    if (direction === Direction.Horizontal) {
+        console.log("Horizontal.");
+    } else if (direction === Direction.Vertical) {
+        console.log("Vertical.");
+    } else {
+        console.log("Unknown...");
+    }
+}
+
+printValue(Direction.Unknown);
+printValue(Direction.Horizontal);
+printValue(Direction.Vertical);
 
 let direction;
-let unknown = Direction.Unknown;
-
-console.log(`unknown variable is ${unknown}`);
+direction = Direction.Unknown;
+printValue(direction);

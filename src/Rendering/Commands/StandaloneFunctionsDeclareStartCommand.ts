@@ -59,11 +59,11 @@ export class StandaloneFunctionsDeclareStartCommand extends Command {
         }
 
         if (parameters[1] === KeywordNames.Export) {
-            let declaration: string = this.language.syntax.classes.exports.exportedLeft;
+            let declaration: string = this.language.syntax.exports.exportedLeft;
             declaration += results.commandResults[0].text;
 
-            if (this.language.syntax.classes.exports.exportedIncludesName) {
-                declaration += this.language.syntax.classes.exports.exportedMiddle;
+            if (this.language.syntax.exports.exportedIncludesName) {
+                declaration += this.language.syntax.exports.exportedMiddle;
                 declaration += results.commandResults[0].text;
             }
 

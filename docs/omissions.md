@@ -45,6 +45,24 @@ If any target language doesn't reasonably support a feature, GLS cannot support 
             <td></td>
         </tr>
         <tr>
+            <th>Enum Values as Numbers</th>
+            <td></td>
+            <td><em>Abnormal</em></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Enum Values as Strings</th>
+            <td><em>Missing</em></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <th>Enums Without Values</th>
             <td></td>
             <td></td>

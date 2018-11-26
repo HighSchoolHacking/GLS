@@ -1,7 +1,9 @@
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
+import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
@@ -16,7 +18,7 @@ export class EnumMemberCommand extends Command {
         .withParameters([
             new SingleParameter("memberName", "A member of the container enum.", true),
             new SingleParameter("memberValue", "A value for the enum member.", true),
-            new SingleParameter("comma", "Whether a comma is needed.", false),
+            new KeywordParameter([KeywordNames.CommaSymbol], "Whether a comma is needed.", false),
         ]);
 
     /**
@@ -36,9 +38,12 @@ export class EnumMemberCommand extends Command {
         let output = "";
 
         output += parameters[1];
-        output += this.language.syntax.enums.declareValueLeft;
-        output += parameters[2];
-        output += this.language.syntax.enums.declareValueRight;
+
+        if (this.language.syntax.enums.declareValues) {
+            output += this.language.syntax.enums.declareValueLeft;
+            output += parameters[2];
+            output += this.language.syntax.enums.declareValueRight;
+        }
 
         if (parameters.length === 4) {
             output += this.language.syntax.enums.declareCommaRight;

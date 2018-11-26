@@ -10,6 +10,7 @@
   * [Arrays and Lists](docs/syntax/arrays-and-lists.md)
     * [Sorting](docs/syntax/lists/sorting.md)
   * [Dictionaries](docs/syntax/dictionaries.md)
+  * [Enums](docs/syntax/enums.md)
   * [Classes](docs/syntax/classes.md)
     * [Member Variables](docs/syntax/classes/member-variables.md)
     * [Member Functions](docs/syntax/classes/member-functions.md)

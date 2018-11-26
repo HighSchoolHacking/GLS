@@ -13,6 +13,11 @@ export class KeywordNames {
     public static Base = "base";
 
     /**
+     * Name key for the "," symbol.
+     */
+    public static CommaSymbol = ",";
+
+    /**
      * Name key for the "double" keyword.
      */
     public static Double = "double";

@@ -1,26 +1,36 @@
+using Enums;
 using System;
 
 namespace Enums
 {
-    enum Direction
-    {
-        Unknown = 0,
-        Horizontal = 1,
-        Vertical = 2
-    }
 
     class Program
     {
+        private static void PrintValue(Direction direction)
+        {
+            if (direction == Direction.Horizontal)
+            {
+                Console.WriteLine("Horizontal.");
+            }
+            else if (direction == Direction.Vertical)
+            {
+                Console.WriteLine("Vertical.");
+            }
+            else
+            {
+                Console.WriteLine("Unknown...");
+            }
+        }
+
         public static void Main()
         {
-            Console.WriteLine(string.Format("Unknown by lookup is {0}", Direction.Unknown));
-            Console.WriteLine(string.Format("Horizontal by lookup is {0}", Direction.Horizontal));
-            Console.WriteLine(string.Format("Vertical by lookup is {0}", Direction.Vertical));
+            Program.PrintValue(Direction.Unknown);
+            Program.PrintValue(Direction.Horizontal);
+            Program.PrintValue(Direction.Vertical);
 
             Direction direction;
-            Direction unknown = Direction.Unknown;
-
-            Console.WriteLine(string.Format("unknown variable is {0}", unknown));
+            direction = Direction.Unknown;
+            Program.PrintValue(direction);
         }
     }
 }

@@ -1,14 +1,19 @@
-enum Direction {
-    Unknown = 0,
-    Horizontal = 1,
-    Vertical = 2
+import { Direction } from "./Direction";
+
+function printValue(direction: Direction): void {
+    if (direction === Direction.Horizontal) {
+        console.log("Horizontal.");
+    } else if (direction === Direction.Vertical) {
+        console.log("Vertical.");
+    } else {
+        console.log("Unknown...");
+    }
 }
 
-console.log(`Unknown by lookup is ${Direction.Unknown}`);
-console.log(`Horizontal by lookup is ${Direction.Horizontal}`);
-console.log(`Vertical by lookup is ${Direction.Vertical}`);
+printValue(Direction.Unknown);
+printValue(Direction.Horizontal);
+printValue(Direction.Vertical);
 
 let direction: Direction;
-let unknown: Direction = Direction.Unknown;
-
-console.log(`unknown variable is ${unknown}`);
+direction = Direction.Unknown;
+printValue(direction);

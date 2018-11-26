@@ -1,20 +1,25 @@
 package enums;
 
-enum Direction {
-    Unknown(0),
-    Horizontal(1),
-    Vertical(2)
-}
+import enums.Direction;
 
 class Main {
+    private static void printValue(Direction direction) {
+        if (direction == Direction.Horizontal) {
+            System.out.println("Horizontal.");
+        } else if (direction == Direction.Vertical) {
+            System.out.println("Vertical.");
+        } else {
+            System.out.println("Unknown...");
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(String.format("Unknown by lookup is %d", Direction.Unknown));
-        System.out.println(String.format("Horizontal by lookup is %d", Direction.Horizontal));
-        System.out.println(String.format("Vertical by lookup is %d", Direction.Vertical));
+        Main.printValue(Direction.Unknown);
+        Main.printValue(Direction.Horizontal);
+        Main.printValue(Direction.Vertical);
 
         Direction direction;
-        Direction unknown = Direction.Unknown;
-
-        System.out.println(String.format("unknown variable is %d", unknown));
+        direction = Direction.Unknown;
+        Main.printValue(direction);
     }
 }

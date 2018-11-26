@@ -5,7 +5,6 @@ import { ProjectProperties } from "./Properties/ProjectProperties";
 import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
-import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
 import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
 import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
 import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
@@ -17,6 +16,7 @@ import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
 import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
 import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
 import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { ExportSyntax } from "./Properties/Syntax/ExportSyntax";
 import { FileSyntax } from "./Properties/Syntax/FileSyntax";
 import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
@@ -137,16 +137,6 @@ export class TypeScript extends Language {
      */
     protected generateBooleanSyntax(booleans: BooleanSyntax): void {
         booleans.className = "boolean";
-    }
-
-    /**
-     * Generates metadata on exported classes.
-     *
-     * @param members   A property container for metadata on exported classes.
-     */
-    protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exportedLeft = "export ";
-        exports.internal = "";
     }
 
     /**
@@ -347,17 +337,18 @@ export class TypeScript extends Language {
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumSyntax(enums: EnumSyntax): void {
-        enums.declareStartLeft = "enum ";
+        enums.declareCommaRight = ",";
+        enums.declareLastRight = "";
+        enums.declareExternal = "export enum {0} {";
+        enums.declareInternal = "enum {0} {";
         enums.declareValueLeft = " = ";
         enums.declareValueRight = "";
-        enums.declareCommaRight = ",";
+        enums.declareValues = true;
+        enums.isObject = false;
+        enums.requiredImports = [];
         enums.valueLeft = "";
         enums.valueMiddle = ".";
         enums.valueRight = "";
-
-        enums.declareStartRight = " {";
-        enums.declareLastRight = "";
-        enums.isObject = false;
     }
 
     /**
@@ -384,6 +375,16 @@ export class TypeScript extends Language {
 
         exceptions.requiredImports = [];
         exceptions.requiresExceptionType = false;
+    }
+
+    /**
+     * Generates metadata on exported constructs.
+     *
+     * @param members   A property container for metadata on exported constructs.
+     */
+    protected generateExportSyntax(exports: ExportSyntax): void {
+        exports.exportedLeft = "export ";
+        exports.internal = "";
     }
 
     /**

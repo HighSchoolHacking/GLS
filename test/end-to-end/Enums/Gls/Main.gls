@@ -1,20 +1,25 @@
 file start : Enums Main
-    enum start : Direction
-        enum member : Unknown 0 ,
-        enum member : Horizontal 1 ,
-        enum member : Vertical 2
-    enum end
+    import local : Enums Direction use Direction
 
     main context start
+        standalone function declare start : private PrintValue void direction Direction
+            if start : { operation : direction (equal to) { enum : Direction Horizontal } }
+                print : "Horizontal."
+            else if start : { operation : direction (equal to) { enum : Direction Vertical } }
+                print : "Vertical."
+            else start
+                print : "Unknown..."
+            if end
+        standalone function declare end
+
         main start
-            print : { string format : ("Unknown by lookup is {0}") { enum : Direction Unknown } int }
-            print : { string format : ("Horizontal by lookup is {0}") { enum : Direction Horizontal } int }
-            print : { string format : ("Vertical by lookup is {0}") { enum : Direction Vertical } int }
+            standalone function : private { main group } PrintValue { enum : Direction Unknown }
+            standalone function : private { main group } PrintValue { enum : Direction Horizontal }
+            standalone function : private { main group } PrintValue { enum : Direction Vertical }
 
             variable : direction Direction
-            variable : unknown Direction { enum : Direction Unknown }
-
-            print : { string format : ("unknown variable is {0}") unknown int }
+            operation : direction equals { enum : Direction Unknown }
+            standalone function : private { main group } PrintValue direction
         main end
     main context end
 file end

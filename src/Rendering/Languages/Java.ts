@@ -7,7 +7,6 @@ import { ProjectProperties } from "./Properties/ProjectProperties";
 import { ArrayNewSizedSyntax } from "./Properties/Syntax/ArrayNewSizedSyntax";
 import { ArraySyntax } from "./Properties/Syntax/ArraySyntax";
 import { BooleanSyntax } from "./Properties/Syntax/BooleanSyntax";
-import { ClassExportSyntax } from "./Properties/Syntax/ClassExportSyntax";
 import { ClassGenericSyntax } from "./Properties/Syntax/ClassGenericSyntax";
 import { ClassMemberFunctionSyntax } from "./Properties/Syntax/ClassMemberFunctionSyntax";
 import { ClassMemberVariableSyntax } from "./Properties/Syntax/ClassMemberVariableSyntax";
@@ -19,6 +18,7 @@ import { ConditionalSyntax } from "./Properties/Syntax/ConditionalSyntax";
 import { DictionarySyntax } from "./Properties/Syntax/DictionarySyntax";
 import { EnumSyntax } from "./Properties/Syntax/EnumSyntax";
 import { ExceptionSyntax } from "./Properties/Syntax/ExceptionSyntax";
+import { ExportSyntax } from "./Properties/Syntax/ExportSyntax";
 import { FileSyntax } from "./Properties/Syntax/FileSyntax";
 import { FunctionSyntax } from "./Properties/Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Properties/Syntax/ImportSyntax";
@@ -136,16 +136,6 @@ export class Java extends Language {
      */
     protected generateBooleanSyntax(booleans: BooleanSyntax): void {
         booleans.className = "boolean";
-    }
-
-    /**
-     * Generates metadata on exported classes.
-     *
-     * @param members   A property container for metadata on exported classes.
-     */
-    protected generateClassExportSyntax(exports: ClassExportSyntax): void {
-        exports.exportedLeft = "public ";
-        exports.internal = "";
     }
 
     /**
@@ -346,19 +336,16 @@ export class Java extends Language {
      * @param enums   A property container for metadata on enums.
      */
     protected generateEnumSyntax(enums: EnumSyntax): void {
-        enums.declareStartLeft = "enum ";
-        enums.declareValueLeft = " = ";
-        enums.declareValueRight = "";
         enums.declareCommaRight = ",";
+        enums.declareLastRight = "";
+        enums.declareExternal = "enum {0} {";
+        enums.declareInternal = "enum {0} {";
+        enums.declareValues = false;
+        enums.isObject = false;
+        enums.requiredImports = [];
         enums.valueLeft = "";
         enums.valueMiddle = ".";
         enums.valueRight = "";
-
-        enums.declareStartRight = " {";
-        enums.declareValueLeft = "(";
-        enums.declareValueRight = ")";
-        enums.declareLastRight = "";
-        enums.isObject = false;
     }
 
     /**
@@ -383,6 +370,16 @@ export class Java extends Language {
         exceptions.try = "try";
         exceptions.tryStartRight = " {";
         exceptions.variablePrefix = "";
+    }
+
+    /**
+     * Generates metadata on exported constructs.
+     *
+     * @param members   A property container for metadata on exported constructs.
+     */
+    protected generateExportSyntax(exports: ExportSyntax): void {
+        exports.exportedLeft = "public ";
+        exports.internal = "";
     }
 
     /**

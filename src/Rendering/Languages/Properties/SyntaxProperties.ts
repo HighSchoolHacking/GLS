@@ -6,6 +6,7 @@ import { ConditionalSyntax } from "./Syntax/ConditionalSyntax";
 import { DictionarySyntax } from "./Syntax/DictionarySyntax";
 import { EnumSyntax } from "./Syntax/EnumSyntax";
 import { ExceptionSyntax } from "./Syntax/ExceptionSyntax";
+import { ExportSyntax } from "./Syntax/ExportSyntax";
 import { FileSyntax } from "./Syntax/FileSyntax";
 import { FunctionSyntax } from "./Syntax/FunctionSyntax";
 import { ImportSyntax } from "./Syntax/ImportSyntax";
@@ -69,6 +70,11 @@ export class SyntaxProperties {
      * Metadata on exceptions.
      */
     public exceptions: ExceptionSyntax;
+
+    /**
+     * Metadata on exported constructs.
+     */
+    public exports: ExportSyntax;
 
     /**
      * Metadata on file contents.
@@ -177,6 +183,7 @@ export class SyntaxProperties {
         this.dictionaries = new DictionarySyntax();
         this.enums = new EnumSyntax();
         this.exceptions = new ExceptionSyntax();
+        this.exports = new ExportSyntax();
         this.files = new FileSyntax();
         this.functions = new FunctionSyntax();
         this.imports = new ImportSyntax();
