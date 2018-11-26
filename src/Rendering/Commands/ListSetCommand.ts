@@ -5,17 +5,17 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Sets an item in a dictionary by index.
+ * Sets an item in a list by index.
  */
-export class DictionarySetCommand extends Command {
+export class ListSetCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.DictionarySet)
-        .withDescription("Sets an item from a dictionary by index")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListSet)
+        .withDescription("Sets an item from a list by index")
         .withParameters([
-            new SingleParameter("dictionary", "Dictionary to look within.", true),
-            new SingleParameter("index", "Index within the dictionary.", true),
+            new SingleParameter("list", "List to look within.", true),
+            new SingleParameter("index", "Index within the list.", true),
             new SingleParameter("value", "Value to store under the index.", true),
         ]);
 
@@ -23,7 +23,7 @@ export class DictionarySetCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return DictionarySetCommand.metadata;
+        return ListSetCommand.metadata;
     }
 
     /**
@@ -34,11 +34,11 @@ export class DictionarySetCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         let output = parameters[1];
-        output += this.language.syntax.dictionaries.setLeft;
+        output += this.language.syntax.lists.setLeft;
         output += parameters[2];
-        output += this.language.syntax.dictionaries.setMiddle;
+        output += this.language.syntax.lists.setMiddle;
         output += parameters[3];
-        output += this.language.syntax.dictionaries.setRight;
+        output += this.language.syntax.lists.setRight;
 
         return LineResults.newSingleLine(output).withAddSemicolon(true);
     }

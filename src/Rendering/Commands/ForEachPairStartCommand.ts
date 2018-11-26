@@ -154,8 +154,8 @@ export class ForEachPairStartCommand extends Command {
         const valueNameLine = this.context.convertParsed([CommandNames.Type, parameters[5]]);
         const valueName: string = valueNameLine.commandResults[0].text;
         const valueType: string = parameters[6];
-        const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryIndex, parameters[1], parameters[3]])
-            .commandResults[0].text;
+        const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryGet, parameters[1], parameters[3]]).commandResults[0]
+            .text;
         let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
             .text;
 

@@ -314,7 +314,10 @@ export class Ruby extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
+        dictionaries.className = "hash";
         dictionaries.containsKey = new NativeCallSyntax("key?", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -322,9 +325,10 @@ export class Ruby extends Language {
         dictionaries.initializePairMiddle = " => ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
-
-        dictionaries.className = "hash";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Property);
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**
@@ -452,10 +456,15 @@ export class Ruby extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("concat", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
+        lists.getLeft = "[";
+        lists.getRight = "]";
         lists.length = new NativeCallSyntax("length", NativeCallScope.Member, NativeCallType.Property);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Property);
         lists.popFront = new NativeCallSyntax("shift", NativeCallScope.Member, NativeCallType.Property);
         lists.push = new NativeCallSyntax("push", NativeCallScope.Member, NativeCallType.Function);
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("sort!", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }

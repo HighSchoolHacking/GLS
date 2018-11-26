@@ -3,9 +3,9 @@
  */
 export class CommandNames {
     /**
-     * Name key for the ArrayIndex command.
+     * Name key for the ArrayGet command.
      */
-    public static ArrayIndex = "array index";
+    public static ArrayGet = "array get";
 
     /**
      * Name key for the ArrayLength command.
@@ -21,6 +21,11 @@ export class CommandNames {
      * Name key for the ArrayNewSized command.
      */
     public static ArrayNewSized = "array new sized";
+
+    /**
+     * Name key for the ArraySet command.
+     */
+    public static ArraySet = "array set";
 
     /**
      * Name key for the ArrayType command.
@@ -113,9 +118,9 @@ export class CommandNames {
     public static DictionaryContainsKey = "dictionary contains key";
 
     /**
-     * Name key for the DictionaryIndex command.
+     * Name key for the DictionaryGet command.
      */
-    public static DictionaryIndex = "dictionary index";
+    public static DictionaryGet = "dictionary get";
 
     /**
      * Name key for the DictionaryKeys command.
@@ -348,9 +353,14 @@ export class CommandNames {
     public static ListAddList = "list add list";
 
     /**
-     * Name key for the ListIndex command.
+     * Name key for the ListGet command.
      */
-    public static ListIndex = "list index";
+    public static ListGet = "list get";
+
+    /**
+     * Name key for the ListSet command.
+     */
+    public static ListSet = "list set";
 
     /**
      * Name key for the ListLength command.

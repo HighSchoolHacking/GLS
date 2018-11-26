@@ -4,12 +4,13 @@ The concept of a data structure with mapped keys to values changes drastically a
 All support some form of creating a dictionary and getting or setting values in it.
 
 Create a new dictionary with `dictionary new`, which takes in the key and value types of the dictionary.
-Accessing members is done with `dictionary index` and setting is still done with with `operation`.
+Accessing members is done with `dictionary get` and setting is done with with `dictionary set`.
 
 ```gls
 variable : counts { dictionary type : string int } { dictionary new : string int }
-operation : { dictionary index : counts "apple" } equals 3
-operation : { dictionary index : counts "banana" } equals 2
+dictionary set : counts "apple" 3
+
+variable : apple string { dictionary get : counts "apple" }
 ```
 
 In C#:
@@ -17,7 +18,8 @@ In C#:
 ```csharp
 Dictionary<string, int> counts = new Dictionary<string, int>();
 counts["apple"] = 3;
-counts["banana"] = 2;
+
+string apple = counts["apple"];
 ```
 
 In Python:
@@ -25,7 +27,8 @@ In Python:
 ```python
 counts = {}
 counts["apple"] = 3
-counts["banana"] = 2
+
+apple = counts["apple"]
 ```
 
 Alternately, create a multi-line initialization with `dictionary new start`, which is otherwise identical, and `dictionary new end`.

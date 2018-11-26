@@ -287,7 +287,10 @@ export class Python extends Language {
      * @param dictionaries   The property container for metadata on dictionaries.
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
+        dictionaries.className = "dict";
         dictionaries.containsKey = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
+        dictionaries.getLeft = "[";
+        dictionaries.getRight = "]";
         dictionaries.initializeAsLiteral = "{}";
         dictionaries.initializeEnd = "}";
         dictionaries.initializePairComma = ",";
@@ -295,9 +298,10 @@ export class Python extends Language {
         dictionaries.initializePairMiddle = ": ";
         dictionaries.initializePairRight = "";
         dictionaries.initializeStart = "{";
-
-        dictionaries.className = "dict";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Function);
+        dictionaries.setLeft = "[";
+        dictionaries.setMiddle = "] = ";
+        dictionaries.setRight = "";
     }
 
     /**
@@ -429,11 +433,16 @@ export class Python extends Language {
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("extend", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = true;
+        lists.getLeft = "[";
+        lists.getRight = "]";
         lists.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
         lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront.withArguments(["0"]);
         lists.push = new NativeCallSyntax("append", NativeCallScope.Member, NativeCallType.Function);
+        lists.setLeft = "[";
+        lists.setMiddle = "] = ";
+        lists.setRight = "";
         lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }

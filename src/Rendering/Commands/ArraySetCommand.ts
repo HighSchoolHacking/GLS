@@ -5,24 +5,25 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * An indexed list lookup.
+ * Sets an item in an array by index.
  */
-export class ListIndexCommand extends Command {
+export class ArraySetCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ListIndex)
-        .withDescription("An indexed list lookup")
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.ArraySet)
+        .withDescription("Sets an item in an array by index")
         .withParameters([
-            new SingleParameter("list", "A list to look within.", true),
-            new SingleParameter("index", "The list within the container.", true),
+            new SingleParameter("array", "Array to look within.", true),
+            new SingleParameter("index", "Index within the array.", true),
+            new SingleParameter("value", "Value to store under the index.", true),
         ]);
 
     /**
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return ListIndexCommand.metadata;
+        return ArraySetCommand.metadata;
     }
 
     /**
@@ -32,6 +33,6 @@ export class ListIndexCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "]");
+        return LineResults.newSingleLine(parameters[1] + "[" + parameters[2] + "] = " + parameters[3]).withAddSemicolon(true);
     }
 }

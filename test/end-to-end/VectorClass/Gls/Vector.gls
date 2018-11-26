@@ -15,7 +15,7 @@ file start : VectorClass Vector
                 throw : { exception } { string format : ("Index out of bounds: {0} is greater than {1}.") index int { member variable : private { this } Length } int }
             if end
 
-            return : { array index : { member variable : private { this } Data } index }
+            return : { array get : { member variable : private { this } Data } index }
         member function declare end
 
         member function declare start : public GetCapacity int
@@ -31,7 +31,7 @@ file start : VectorClass Vector
                 throw : { exception } ("Cannot get first from empty vector.")
             if end
 
-            return : { array index : { member variable : private { this } Data } 0 }
+            return : { array get : { member variable : private { this } Data } 0 }
         member function declare end
 
         member function declare start : public GetLast T throws { exception }
@@ -39,7 +39,7 @@ file start : VectorClass Vector
                 throw : { exception } ("Cannot get last from empty vector.")
             if end
 
-            return : { array index : { member variable : private { this } Data } { operation : { member variable : private { this } Length } minus 1 } }
+            return : { array get : { member variable : private { this } Data } { operation : { member variable : private { this } Length } minus 1 } }
         member function declare end
 
         member function declare start : public EnsureCapacity void capacity int
@@ -53,14 +53,14 @@ file start : VectorClass Vector
             member variable set : private { this } Data { array new sized : T newCapacity }
 
             for numbers start : i int 0 { array length : oldData }
-                operation : { { array index : { member variable : private { this } Data } i } equals { array index : oldData i } }
+                array set : { member variable : private { this } Data } i { array get : oldData i }
             for numbers end
         member function declare end
 
         member function declare start : public Push void item T
             member function : public { this } EnsureCapacity { operation : { member variable : private { this } Length } plus 1 }
 
-            operation : { array index : { member variable : private { this } Data } { member variable : private { this } Length } } equals item
+            array set : { member variable : private { this } Data } { member variable : private { this } Length } item
             operation : { member variable : private { this } Length } (increase by) 1
         member function declare end
 
@@ -78,7 +78,7 @@ file start : VectorClass Vector
             variable : array { array type : T } { array new sized : T { member variable : private { this } Length } }
 
             for numbers start : i int 0 { member variable : private { this } Length }
-                operation : { { array index : array i } equals { array index : { member variable : private { this } Data } i } }
+                array set : array i { array get : { member variable : private { this } Data } i }
             for numbers end
 
             return : array
@@ -88,7 +88,7 @@ file start : VectorClass Vector
             variable : list { list type : T } { list new sized : T { member variable : private { this } Length } }
 
             for numbers start : i int 0 { member variable : private { this } Length }
-                operation : { { list index : list i } equals { array index : { member variable : private { this } Data } i } }
+                operation : { { list get : list i } equals { array get : { member variable : private { this } Data } i } }
             for numbers end
 
             return : list
@@ -98,7 +98,7 @@ file start : VectorClass Vector
             variable : individuals { set type : T } { set new : T }
 
             for numbers start : i int 0 { member variable : private { this } Length }
-                set add : individuals { array index : { member variable : private { this } Data } i }
+                set add : individuals { array get : { member variable : private { this } Data } i }
             for numbers end
 
             return : individuals
