@@ -42,7 +42,7 @@ gls.convert([`print : ("Hello world!")`]);
 
 ## Status
 
-GLS is just shy of **0.4**.
+GLS is within the **0.4** range, working towards 0.5.
 
 <table>
     <thead>
@@ -64,17 +64,26 @@ GLS is just shy of **0.4**.
         <tr>
             <th>TypeScript Compiler + C# Output</th>
             <td>0.3</td>
-            <td>GLS compiler re-written in TypeScript. Near-working C#, Java, JavaScript, Python, Ruby, and TypeScript output.</td>
+            <td>
+                GLS compiler re-written in TypeScript.
+                Near-working C#, Java, JavaScript, Python, Ruby, and TypeScript output.
+            </td>
         </tr>
         <tr>
             <th>Roundtripping Feature Complete</th>
             <td>0.4</td>
-            <td>All features required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output.</td>
+            <td>
+                Features expected to required for roundtripping implemented.
+                Working Java, C#, JavaScript, Python, Ruby, and TypeScript output.
+            </td>
         </tr>
         <tr>
             <th>Full Language Outputs</th>
             <td>0.5</td>
-            <td>Working C#, Java, JavaScript, Ruby, Python, and TypeScript output.</td>
+            <td>
+                Roundtripping implemented.
+                GLS is checked in as GLS but written in C#.
+            </td>
         </tr>
         <tr>
             <th>Powershell, PHP, Misc.</th>
