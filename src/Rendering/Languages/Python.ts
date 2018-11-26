@@ -689,20 +689,15 @@ export class Python extends Language {
      * @param strings   A property container for metadata on strings.
      */
     protected generateStringSyntax(strings: StringSyntax): void {
-        strings.concatenate = " + ";
-
         strings.caseLower = new NativeCallSyntax("lower", NativeCallScope.Member, NativeCallType.Function);
-
         strings.caseUpper = new NativeCallSyntax("upper", NativeCallScope.Member, NativeCallType.Function);
-
         strings.className = "string";
-
+        strings.concatenate = " + ";
+        strings.indexLeft = "[";
         strings.indexOf = new NativeCallSyntax("find", NativeCallScope.Member, NativeCallType.Function);
-
         strings.indexOfNotFound = "-1";
-
+        strings.indexRight = "]";
         strings.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
-
         strings.trim = new NativeCallSyntax("strip", NativeCallScope.Member, NativeCallType.Function);
     }
 
