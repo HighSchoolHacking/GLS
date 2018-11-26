@@ -59,6 +59,30 @@ print("There are {0} fruits.".format(len(fruits)))
 print("The first fruit is {0}.".format(fruits[0]))
 ```
 
+### Generic Arrays
+
+Creating arrays of generic types with the `array new generic` and `array new generic sized` commands.
+They're used the same as their non-generic counterparts.
+
+```gls
+variable : items { array type : T } { array new generic : T one two three }
+variable : storage { array type : T } { array new sized generic : T 10 }
+```
+
+In C#:
+
+```csharp
+T[] items = new T[] { one, two, three };
+T[] storage = new T[10];
+```
+
+In Python:
+
+```python
+items = [one, two three]
+storage = [None] * 10
+```
+
 ## Lists
 
 GLS lists are much more flexible than arrays.

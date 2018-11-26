@@ -32,6 +32,11 @@ export class ArraySyntax {
     public length: NativeCallSyntax;
 
     /**
+     * Whether initializing a new generic array requires a cast over an Object.
+     */
+    public newGenericCastRequired: boolean;
+
+    /**
      * Metadata on fixed size array creation.
      */
     public newSized: ArrayNewSizedSyntax = new ArrayNewSizedSyntax();
