@@ -77,11 +77,11 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
         }
 
         if (parameters[1] === KeywordNames.Public) {
-            declaration += this.language.syntax.classes.exports.exportedLeft;
+            declaration += this.language.syntax.exports.exportedLeft;
 
-            if (this.language.syntax.classes.exports.exportedIncludesName) {
+            if (this.language.syntax.exports.exportedIncludesName) {
                 declaration += functionName;
-                declaration += this.language.syntax.classes.exports.exportedMiddle;
+                declaration += this.language.syntax.exports.exportedMiddle;
             }
         }
 

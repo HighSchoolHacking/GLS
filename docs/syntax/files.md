@@ -39,5 +39,6 @@ Note that because of [Java](https://docs.oracle.com/javase/specs/jls/se8/html/jl
 You can use any of:
 
 * `class start : export` to export a [class](./classes.md)
+* `enum start : export` to export an [enum](./enums.md)
 * `interface start : export` to export an [interface](./interfaces.md)
 * `standalone functions declare start : export` to export a [standalone function group](./standalone-functions.md)

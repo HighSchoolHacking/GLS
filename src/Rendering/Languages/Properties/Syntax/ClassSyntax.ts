@@ -1,5 +1,4 @@
 import { ClassConstructorSyntax } from "./ClassConstructorSyntax";
-import { ClassExportSyntax } from "./ClassExportSyntax";
 import { ClassGenericSyntax } from "./ClassGenericSyntax";
 import { ClassMemberSyntax } from "./ClassMemberSyntax";
 import { ClassStaticSyntax } from "./ClassStaticSyntax";
@@ -58,11 +57,6 @@ export class ClassSyntax {
      * How to end the first line of a class declaration.
      */
     public declareStartRight: string;
-
-    /**
-     * Metadata on exported classes.
-     */
-    public exports: ClassExportSyntax = new ClassExportSyntax();
 
     /**
      * Metadata on generic (templated) types.

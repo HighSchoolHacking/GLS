@@ -20,7 +20,7 @@ export class InterfaceStartCommand extends Command {
         .withDescription("Starts an interface declaration")
         .withIndentation([1])
         .withParameters([
-            new KeywordParameter([KeywordNames.Export], "Keyword to export this class publicly.", false),
+            new KeywordParameter([KeywordNames.Export], "Keyword to export this interface publicly.", false),
             new SingleParameter("InterfaceName", "The interface name.", true),
             new RepeatingParameters("Parent interfaces", [new SingleParameter("parentInterfaceName", "Names of parent interfaces.", true)]),
         ]);
@@ -75,15 +75,15 @@ export class InterfaceStartCommand extends Command {
      */
     private getForExport(remainingParameters: string[]): string {
         if (remainingParameters[0] !== KeywordNames.Export) {
-            return this.language.syntax.classes.exports.internal;
+            return this.language.syntax.exports.internal;
         }
 
         remainingParameters.shift();
-        let exported = this.language.syntax.classes.exports.exportedLeft;
+        let exported = this.language.syntax.exports.exportedLeft;
 
-        if (this.language.syntax.classes.exports.exportedIncludesName) {
+        if (this.language.syntax.exports.exportedIncludesName) {
             exported += remainingParameters[0];
-            exported += this.language.syntax.classes.exports.exportedMiddle;
+            exported += this.language.syntax.exports.exportedMiddle;
         }
 
         return exported;

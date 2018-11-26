@@ -1,8 +1,11 @@
+import { GlsUtilities } from "../../GlsUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
+import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
+import { KeywordParameter } from "./Metadata/Parameters/KeywordParameter";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { addLineEnder } from "./Utilities";
 
@@ -16,7 +19,10 @@ export class EnumStartCommand extends Command {
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.EnumStart)
         .withDescription("Starts an enum declaration")
         .withIndentation([1])
-        .withParameters([new SingleParameter("name", "The name of the enum.", true)]);
+        .withParameters([
+            new KeywordParameter([KeywordNames.Export], "Keyword to export this enum publicly.", false),
+            new SingleParameter("name", "Name of the enum.", true),
+        ]);
 
     /**
      * @returns Metadata on the command.
@@ -32,14 +38,34 @@ export class EnumStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let line = "";
+        const remainingParameters = parameters.slice(1);
+        const isExported = this.getForExport(remainingParameters);
+        const lines: CommandResult[] = [new CommandResult("", 0)];
+        let lineStart = "";
 
-        line += this.language.syntax.enums.declareStartLeft;
-        line += parameters[1];
+        if (isExported) {
+            lineStart += GlsUtilities.stringReplaceAll(this.language.syntax.enums.declareExternal, "{0}", remainingParameters[0]);
+        } else {
+            lineStart += GlsUtilities.stringReplaceAll(this.language.syntax.enums.declareInternal, "{0}", remainingParameters[0]);
+        }
 
-        const lines: CommandResult[] = [new CommandResult(line, 0)];
-        addLineEnder(lines, this.language.syntax.enums.declareStartRight, 1);
+        addLineEnder(lines, lineStart, 1);
 
-        return new LineResults(lines);
+        return new LineResults(lines).withImports(this.language.syntax.enums.requiredImports);
+    }
+
+    /**
+     * Removes any parameters for exporting the enum.
+     *
+     * @param remainingParameters   Remaining input parameters.
+     * @returns Whether the enum is exported.
+     */
+    private getForExport(remainingParameters: string[]): boolean {
+        if (remainingParameters[0] !== KeywordNames.Export) {
+            return false;
+        }
+
+        remainingParameters.shift();
+        return true;
     }
 }

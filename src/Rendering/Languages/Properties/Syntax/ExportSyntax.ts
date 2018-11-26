@@ -1,7 +1,7 @@
 /**
  * Metadata on a language's class export syntax.
  */
-export class ClassExportSyntax {
+export class ExportSyntax {
     /**
      * Whether exports exports include the name of exported items.
      */
