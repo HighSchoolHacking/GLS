@@ -2,6 +2,7 @@ package vectorclass;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 
 public class Vector<T> {
@@ -100,7 +101,7 @@ public class Vector<T> {
     }
 
     public HashSet<T> toSet() {
-        HashSet<T> individuals = new HashSet<T>undefined;
+        HashSet<T> individuals = new HashSet<T>();
 
         for (int i = 0; i < this.length; i += 1) {
             individuals.add(this.data[i]);
