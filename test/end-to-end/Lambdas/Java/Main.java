@@ -8,6 +8,6 @@ class Index {
     }
 
     public static void main(String[] args) {
-        Index.runOnInts((i) -> String.format("Int: %0$d", i));
+        Index.runOnInts((i) -> String.format("Int: $d", i));
     }
 }

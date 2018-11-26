@@ -10,6 +10,6 @@ public class Album {
     }
 
     public String getLabel() {
-        return String.format("%0$s: %1$d", this.name, this.year);
+        return String.format("$s: $d", this.name, this.year);
     }
 }

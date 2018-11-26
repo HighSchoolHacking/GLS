@@ -710,9 +710,9 @@ export class Java extends Language {
         formatting.formatMiddle = '", ';
         formatting.formatAbbreviated = '"';
         formatting.formatRight = ")";
-        formatting.formatInputLeft = "%";
+        formatting.formatInputLeft = "";
         formatting.formatInputRight = "";
-        formatting.includeIndexInFormatting = true;
+        formatting.includeIndexInFormatting = false;
         formatting.inputTypes = true;
         formatting.useInterpolation = false;
 
