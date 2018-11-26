@@ -1,4 +1,4 @@
 //
-static class Abc {
+class Abc {
 }
 //

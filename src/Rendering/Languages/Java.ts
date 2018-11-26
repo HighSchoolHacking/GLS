@@ -408,6 +408,7 @@ export class Java extends Language {
         functions.defineEnd = "}";
         functions.defineStartLeft = " ";
         functions.defineStartRight = " {";
+        functions.explicitNewStaticGenericType = true;
         functions.explicitReturns = true;
         functions.explicitThrows = true;
         functions.requiresExceptions = true;
@@ -697,6 +698,7 @@ export class Java extends Language {
      * @param parameters   A property container for metadata on standalone functions.
      */
     protected generateStandaloneFunctionSyntax(standaloneFunctions: StandaloneFunctionSyntax): void {
+        standaloneFunctions.includeStaticKeyword = false;
         standaloneFunctions.withinStaticClass = true;
     }
 

@@ -1,6 +1,6 @@
 package lists;
 
-public static class Converters {
+public class Converters {
     public static void tryAsDouble(String doubleLike) {
         Double asDouble = null;
 

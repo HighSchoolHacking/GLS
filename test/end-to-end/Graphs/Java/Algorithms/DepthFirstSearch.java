@@ -5,8 +5,8 @@ import graphs.data.WeightedNode;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public static class DepthFirstSearch {
-    public static ArrayList<UnweightedNode<T>> unweightedDepthFirstSearch<T>(UnweightedNode<T> start) {
+public class DepthFirstSearch {
+    public static <T> ArrayList<UnweightedNode<T>> unweightedDepthFirstSearch(UnweightedNode<T> start) {
         ArrayList<UnweightedNode<T>> nodes = new ArrayList<UnweightedNode<T>>();
         HashSet<UnweightedNode<T>> visited = new HashSet<UnweightedNode<T>>();
 
@@ -15,7 +15,7 @@ public static class DepthFirstSearch {
         return nodes;
     }
 
-    private static void traverseUnweightedDepthFirstSearch<T>(UnweightedNode<T> start, ArrayList<UnweightedNode<T>> nodes, HashSet<UnweightedNode<T>> visited) {
+    private static <T> void traverseUnweightedDepthFirstSearch(UnweightedNode<T> start, ArrayList<UnweightedNode<T>> nodes, HashSet<UnweightedNode<T>> visited) {
         nodes.add(start);
         visited.add(start);
 
@@ -26,7 +26,7 @@ public static class DepthFirstSearch {
         }
     }
 
-    public static ArrayList<WeightedNode<T>> weightedDepthFirstSearch<T>(WeightedNode<T> start) {
+    public static <T> ArrayList<WeightedNode<T>> weightedDepthFirstSearch(WeightedNode<T> start) {
         ArrayList<WeightedNode<T>> nodes = new ArrayList<WeightedNode<T>>();
         HashSet<WeightedNode<T>> visited = new HashSet<WeightedNode<T>>();
 
@@ -35,7 +35,7 @@ public static class DepthFirstSearch {
         return nodes;
     }
 
-    private static void traverseWeightedDepthFirstSearch<T>(WeightedNode<T> start, ArrayList<WeightedNode<T>> nodes, HashSet<WeightedNode<T>> visited) {
+    private static <T> void traverseWeightedDepthFirstSearch(WeightedNode<T> start, ArrayList<WeightedNode<T>> nodes, HashSet<WeightedNode<T>> visited) {
         nodes.add(start);
         visited.add(start);
 

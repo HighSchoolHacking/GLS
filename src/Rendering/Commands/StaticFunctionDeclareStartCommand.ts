@@ -50,9 +50,13 @@ export class StaticFunctionDeclareStartCommand extends Command {
     public render(parameters: string[]): LineResults {
         const imports: Import[] = [];
         const publicity: string = parameters[1];
-        const functionName: string = parameters[2];
         const returnTypeLine = this.context.convertParsed([CommandNames.Type, parameters[3]]);
         const returnType: string = returnTypeLine.commandResults[0].text;
+
+        const functionNameRaw: string = parameters[2];
+        const functionGeneric: string = this.extractFunctionGeneric(functionNameRaw);
+        const functionName: string = this.extractFunctionNameWithoutGeneric(functionNameRaw, functionGeneric);
+
         let declaration = "";
         let output: CommandResult[];
 
@@ -69,6 +73,10 @@ export class StaticFunctionDeclareStartCommand extends Command {
         }
 
         if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
+            if (this.language.syntax.functions.explicitNewStaticGenericType && functionGeneric !== "") {
+                declaration += "<" + functionGeneric + "> ";
+            }
+
             declaration += returnType + " ";
         }
 
@@ -175,5 +183,39 @@ export class StaticFunctionDeclareStartCommand extends Command {
         }
 
         return this.language.syntax.classes.statics.functions.publicPrefix;
+    }
+
+    /**
+     * Returns a <T> generic component from a function name, if it exists.
+     *
+     * @param functionName   Function name to find the component from.
+     * @returns T Generic component from the functino name, if it exists.
+     */
+    private extractFunctionGeneric(functionName: string): string {
+        if (!this.language.syntax.functions.explicitNewStaticGenericType || functionName[functionName.length - 1] !== ">") {
+            return "";
+        }
+
+        const bracketStartIndex = functionName.lastIndexOf("<");
+        if (bracketStartIndex === -1) {
+            throw new Error("Ending '>' bracket not matched by a starting '<'.");
+        }
+
+        return functionName.substring(bracketStartIndex + 1, functionName.length - 1);
+    }
+
+    /**
+     * Converts a function name to its non-generic type.
+     *
+     * @param functionNameRaw   Function name as either Name or Name<T>.
+     * @param functionGeneric   Generic T portion of the name, if it exists.
+     * @returns Non-generic equivalent of the function name.
+     */
+    private extractFunctionNameWithoutGeneric(functionNameRaw: string, functionGeneric: string): string {
+        if (functionGeneric === "") {
+            return functionNameRaw;
+        }
+
+        return functionNameRaw.substring(0, functionNameRaw.length - functionGeneric.length - 2);
     }
 }

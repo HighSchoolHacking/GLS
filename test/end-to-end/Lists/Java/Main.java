@@ -32,7 +32,7 @@ class Index {
         }
     }
 
-    private static void printListFancy<T>(String label, ArrayList<T> items, Function<T, String> getLabel) {
+    private static <T> void printListFancy(String label, ArrayList<T> items, Function<T, String> getLabel) {
         for (T item : items) {
             System.out.println(getLabel(item));
         }
