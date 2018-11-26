@@ -1,4 +1,4 @@
-file start : Dictionaries index
+file start : Dictionaries Main
     main context start
         main start
             comment line : Types
