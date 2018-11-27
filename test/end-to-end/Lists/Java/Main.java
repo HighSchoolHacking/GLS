@@ -2,7 +2,6 @@ package lists;
 
 import lists.Album;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Comparator;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -76,6 +75,24 @@ class Main {
         Main.printStrings("pets", pets);
         pets.add(5, "emu");
         Main.printStrings("pets", pets);
+
+        // Ranges
+        ArrayList<String> all = new ArrayList<>(pets.subList(0, pets.size()));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> lastFew = new ArrayList<>(pets.subList(3, pets.size()));
+        Main.printStrings("last few pets", pets);
+
+        // Ranges by index
+        ArrayList<String> indexAll = new ArrayList<>(pets.subList(0, 3));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> indexLastFew = new ArrayList<>(pets.subList(1, 3));
+        Main.printStrings("last few pets", pets);
+
+        // Ranges by length
+        ArrayList<String> lengthAll = new ArrayList<>(pets.subList(0, 3));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> lengthLastFew = new ArrayList<>(pets.subList(1, 4));
+        Main.printStrings("last few pets", pets);
 
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};

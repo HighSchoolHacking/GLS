@@ -23,6 +23,7 @@ import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSliceSyntax } from "./Properties/Syntax/ListSliceSyntax";
 import { ListSortMembersSyntax } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -97,6 +98,7 @@ export abstract class Language {
         this.generateListSyntax(this.syntax.lists);
         this.generateListNewItemsSyntax(this.syntax.lists.newItems);
         this.generateListNewSizedSyntax(this.syntax.lists.newSized);
+        this.generateListSliceSyntax(this.syntax.lists.slices);
         this.generateListSortMemberNumbersSyntax(this.syntax.lists.sortMemberNumbers);
         this.generateListSortMemberStringsSyntax(this.syntax.lists.sortMemberStrings);
         this.generateLoopSyntax(this.syntax.loops);
@@ -293,6 +295,11 @@ export abstract class Language {
      * Fills out metadata on fixed size list creation.
      */
     protected abstract generateListNewSizedSyntax(newSized: ListNewSizedSyntax): void;
+
+    /**
+     * Fills out metadata on list slicing.
+     */
+    protected abstract generateListSliceSyntax(slices: ListSliceSyntax): void;
 
     /**
      * Fills out metadata on list sorting by keyed member numbers.

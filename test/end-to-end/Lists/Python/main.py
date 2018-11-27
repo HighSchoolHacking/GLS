@@ -59,6 +59,24 @@ if __name__ == "__main__":
     pets.insert(5, "emu")
     print_strings("pets", pets)
 
+    # Ranges
+    all = pets[:]
+    print_strings("all pets", pets)
+    lastFew = pets[3:]
+    print_strings("last few pets", pets)
+
+    # Ranges by index
+    indexAll = pets[0:3]
+    print_strings("all pets", pets)
+    indexLastFew = pets[1:3]
+    print_strings("last few pets", pets)
+
+    # Ranges by length
+    lengthAll = pets[0:3]
+    print_strings("all pets", pets)
+    lengthLastFew = pets[1:4]
+    print_strings("last few pets", pets)
+
     # Sorting strings
     flavors = ["plain", "chocolate", "vanilla", "strawberry"]
     flavors.sort()

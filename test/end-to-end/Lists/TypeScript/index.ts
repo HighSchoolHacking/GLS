@@ -67,6 +67,24 @@ printStrings("pets", pets);
 pets.splice(5, 0, "emu");
 printStrings("pets", pets);
 
+// Ranges
+let all: string[] = pets.slice();
+printStrings("all pets", pets);
+let lastFew: string[] = pets.slice(3);
+printStrings("last few pets", pets);
+
+// Ranges by index
+let indexAll: string[] = pets.slice(0, 3);
+printStrings("all pets", pets);
+let indexLastFew: string[] = pets.slice(1, 3);
+printStrings("last few pets", pets);
+
+// Ranges by length
+let lengthAll: string[] = pets.slice(0, 3);
+printStrings("all pets", pets);
+let lengthLastFew: string[] = pets.slice(1, 4);
+printStrings("last few pets", pets);
+
 // Sorting strings
 let flavors: string[] = ["plain", "chocolate", "vanilla", "strawberry"];
 flavors.sort();

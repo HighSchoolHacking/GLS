@@ -85,6 +85,24 @@ namespace Lists
             pets.Insert(5, "emu");
             Program.PrintStrings("pets", pets);
 
+            // Ranges
+            List<string> all = pets.GetRange(0, pets.Count);
+            Program.PrintStrings("all pets", pets);
+            List<string> lastFew = pets.GetRange(3, pets.Count - 3);
+            Program.PrintStrings("last few pets", pets);
+
+            // Ranges by index
+            List<string> indexAll = pets.GetRange(0, 3);
+            Program.PrintStrings("all pets", pets);
+            List<string> indexLastFew = pets.GetRange(1, 2);
+            Program.PrintStrings("last few pets", pets);
+
+            // Ranges by length
+            List<string> lengthAll = pets.GetRange(0, 3);
+            Program.PrintStrings("all pets", pets);
+            List<string> lengthLastFew = pets.GetRange(1, 3);
+            Program.PrintStrings("last few pets", pets);
+
             // Sorting strings
             List<string> flavors = new List<string> { "plain", "chocolate", "vanilla", "strawberry", };
             flavors.Sort();
