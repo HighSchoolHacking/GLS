@@ -39,6 +39,90 @@ pets 2: canary
 pets 3: cat
 pets 4: dog
 pets 5: emu
+The first all pets is aardvark.
+The last all pets is emu.
+all pets: aardvark
+all pets: bird
+all pets: canary
+all pets: cat
+all pets: dog
+all pets: emu
+all pets 0: aardvark
+all pets 1: bird
+all pets 2: canary
+all pets 3: cat
+all pets 4: dog
+all pets 5: emu
+The first last few pets is aardvark.
+The last last few pets is emu.
+last few pets: aardvark
+last few pets: bird
+last few pets: canary
+last few pets: cat
+last few pets: dog
+last few pets: emu
+last few pets 0: aardvark
+last few pets 1: bird
+last few pets 2: canary
+last few pets 3: cat
+last few pets 4: dog
+last few pets 5: emu
+The first all pets is aardvark.
+The last all pets is emu.
+all pets: aardvark
+all pets: bird
+all pets: canary
+all pets: cat
+all pets: dog
+all pets: emu
+all pets 0: aardvark
+all pets 1: bird
+all pets 2: canary
+all pets 3: cat
+all pets 4: dog
+all pets 5: emu
+The first last few pets is aardvark.
+The last last few pets is emu.
+last few pets: aardvark
+last few pets: bird
+last few pets: canary
+last few pets: cat
+last few pets: dog
+last few pets: emu
+last few pets 0: aardvark
+last few pets 1: bird
+last few pets 2: canary
+last few pets 3: cat
+last few pets 4: dog
+last few pets 5: emu
+The first all pets is aardvark.
+The last all pets is emu.
+all pets: aardvark
+all pets: bird
+all pets: canary
+all pets: cat
+all pets: dog
+all pets: emu
+all pets 0: aardvark
+all pets 1: bird
+all pets 2: canary
+all pets 3: cat
+all pets 4: dog
+all pets 5: emu
+The first last few pets is aardvark.
+The last last few pets is emu.
+last few pets: aardvark
+last few pets: bird
+last few pets: canary
+last few pets: cat
+last few pets: dog
+last few pets: emu
+last few pets 0: aardvark
+last few pets 1: bird
+last few pets 2: canary
+last few pets 3: cat
+last few pets 4: dog
+last few pets 5: emu
 The first flavor is chocolate.
 The last flavor is vanilla.
 flavor: chocolate

@@ -1,6 +1,7 @@
 import { Import } from "../../Imports/Import";
 import { ListNewItemsSyntax } from "./ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./ListNewSizedSyntax";
+import { ListSliceSyntax } from "./ListSliceSyntax";
 import { ListSortMembersSyntax } from "./ListSortMembersSyntax";
 import { NativeCallSyntax } from "./NativeCallSyntax";
 
@@ -87,6 +88,11 @@ export class ListSyntax {
      * How to end setting an indexed value.
      */
     public setRight: string;
+
+    /**
+     * Metadata on the language's list slices.
+     */
+    public slices: ListSliceSyntax = new ListSliceSyntax();
 
     /**
      * How to sort a list in-place by keyed member numbers.

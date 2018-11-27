@@ -70,6 +70,24 @@ file start : Lists Main
             list insert : pets 5 "emu"
             standalone function : private { main group } PrintStrings "pets" pets
 
+            comment line : Ranges
+            variable : all { list type : string } { list slice : pets }
+            standalone function : private { main group } PrintStrings ("all pets") pets
+            variable : lastFew { list type : string } { list slice : pets 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") pets
+
+            comment line : Ranges by index
+            variable : indexAll { list type : string } { list slice index : pets 0 3 }
+            standalone function : private { main group } PrintStrings ("all pets") pets
+            variable : indexLastFew { list type : string } { list slice index : pets 1 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") pets
+
+            comment line : Ranges by length
+            variable : lengthAll { list type : string } { list slice length : pets 0 3 }
+            standalone function : private { main group } PrintStrings ("all pets") pets
+            variable : lengthLastFew { list type : string } { list slice length : pets 1 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") pets
+
             comment line : Sorting (strings)
             variable : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }
             list sort strings : flavors

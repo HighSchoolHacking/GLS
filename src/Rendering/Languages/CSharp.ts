@@ -27,6 +27,7 @@ import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSliceSupport, ListSliceSyntax } from "./Properties/Syntax/ListSliceSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -511,6 +512,22 @@ export class CSharp extends Language {
         newSized.left = "new List<";
         newSized.middle = ">(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list slicing.
+     */
+    protected generateListSliceSyntax(slices: ListSliceSyntax): void {
+        slices.before = "";
+        slices.left = ".GetRange(";
+        slices.middle = ", ";
+        slices.right = ")";
+        slices.support = ListSliceSupport.Length;
+        slices.untilEndDefaultStart = "0";
+        slices.untilEndLeft = ".GetRange(";
+        slices.untilEndMiddle = ", ";
+        slices.untilEndRightFromIndex = "{0}.Count - {1})";
+        slices.untilEndRightFromStart = "{0}.Count)";
     }
 
     /**

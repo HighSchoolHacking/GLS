@@ -27,6 +27,7 @@ import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSliceSupport, ListSliceSyntax } from "./Properties/Syntax/ListSliceSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -467,6 +468,22 @@ export class Python extends Language {
         newSized.includeType = false;
         newSized.left = "[None] * ";
         newSized.right = "";
+    }
+
+    /**
+     * Fills out metadata on list slicing.
+     */
+    protected generateListSliceSyntax(slices: ListSliceSyntax): void {
+        slices.before = "";
+        slices.left = "[";
+        slices.middle = ":";
+        slices.right = "]";
+        slices.support = ListSliceSupport.Index;
+        slices.untilEndDefaultStart = "";
+        slices.untilEndLeft = "[";
+        slices.untilEndMiddle = ":";
+        slices.untilEndRightFromIndex = "]";
+        slices.untilEndRightFromStart = "]";
     }
 
     /**

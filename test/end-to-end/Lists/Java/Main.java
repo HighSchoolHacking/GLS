@@ -77,6 +77,24 @@ class Main {
         pets.add(5, "emu");
         Main.printStrings("pets", pets);
 
+        // Ranges
+        ArrayList<String> all = new ArrayList<>(pets.subList(0, pets.size()));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> lastFew = new ArrayList<>(pets.subList(3, pets.size()));
+        Main.printStrings("last few pets", pets);
+
+        // Ranges by index
+        ArrayList<String> indexAll = new ArrayList<>(pets.subList(0, 3));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> indexLastFew = new ArrayList<>(pets.subList(1, 3));
+        Main.printStrings("last few pets", pets);
+
+        // Ranges by length
+        ArrayList<String> lengthAll = new ArrayList<>(pets.subList(0, 3));
+        Main.printStrings("all pets", pets);
+        ArrayList<String> lengthLastFew = new ArrayList<>(pets.subList(1, 4));
+        Main.printStrings("last few pets", pets);
+
         // Sorting strings
         ArrayList<String> flavors = new ArrayList<String>() {{ add("plain"); add("chocolate"); add("vanilla"); add("strawberry"); }};
         flavors.sort(Comparator.naturalOrder());

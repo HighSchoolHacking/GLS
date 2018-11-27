@@ -27,6 +27,7 @@ import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSliceSupport, ListSliceSyntax } from "./Properties/Syntax/ListSliceSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -520,6 +521,22 @@ export class Java extends Language {
         newSized.left = "new ArrayList<";
         newSized.middle = ">(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list slicing.
+     */
+    protected generateListSliceSyntax(slices: ListSliceSyntax): void {
+        slices.before = "new ArrayList<>(";
+        slices.left = ".subList(";
+        slices.middle = ", ";
+        slices.right = "))";
+        slices.support = ListSliceSupport.Index;
+        slices.untilEndDefaultStart = "0";
+        slices.untilEndLeft = ".subList(";
+        slices.untilEndMiddle = ", ";
+        slices.untilEndRightFromIndex = "{0}.size()))";
+        slices.untilEndRightFromStart = "{0}.size()))";
     }
 
     /**

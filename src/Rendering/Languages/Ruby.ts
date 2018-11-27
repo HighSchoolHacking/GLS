@@ -27,6 +27,7 @@ import { LambdaSyntax } from "./Properties/Syntax/LambdaSyntax";
 import { LambdaTypeInlineSyntax } from "./Properties/Syntax/LambdaTypeInlineSyntax";
 import { ListNewItemsSyntax } from "./Properties/Syntax/ListNewItemsSyntax";
 import { ListNewSizedSyntax } from "./Properties/Syntax/ListNewSizedSyntax";
+import { ListSliceSupport, ListSliceSyntax } from "./Properties/Syntax/ListSliceSyntax";
 import { ListSortMembersSyntax, ListSortMemberType } from "./Properties/Syntax/ListSortMembersSyntax";
 import { ListSyntax } from "./Properties/Syntax/ListSyntax";
 import { LoopSyntax } from "./Properties/Syntax/LoopSyntax";
@@ -490,6 +491,22 @@ export class Ruby extends Language {
         newSized.includeType = false;
         newSized.left = "Array.new(";
         newSized.right = ")";
+    }
+
+    /**
+     * Fills out metadata on list slicing.
+     */
+    protected generateListSliceSyntax(slices: ListSliceSyntax): void {
+        slices.before = "";
+        slices.left = ".slice(";
+        slices.middle = ", ";
+        slices.right = ")";
+        slices.support = ListSliceSupport.Length;
+        slices.untilEndDefaultStart = "0";
+        slices.untilEndLeft = ".slice(";
+        slices.untilEndMiddle = "";
+        slices.untilEndRightFromIndex = ")";
+        slices.untilEndRightFromStart = ")";
     }
 
     /**

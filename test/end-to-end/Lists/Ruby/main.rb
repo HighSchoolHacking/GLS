@@ -67,6 +67,24 @@ print_strings("pets", pets)
 pets.insert(5, "emu")
 print_strings("pets", pets)
 
+# Ranges
+all = pets.slice(0)
+print_strings("all pets", pets)
+lastFew = pets.slice(3)
+print_strings("last few pets", pets)
+
+# Ranges by index
+indexAll = pets.slice(0, 3)
+print_strings("all pets", pets)
+indexLastFew = pets.slice(1, 2)
+print_strings("last few pets", pets)
+
+# Ranges by length
+lengthAll = pets.slice(0, 3)
+print_strings("all pets", pets)
+lengthLastFew = pets.slice(1, 3)
+print_strings("last few pets", pets)
+
 # Sorting strings
 flavors = ["plain", "chocolate", "vanilla", "strawberry"]
 flavors.sort!()

@@ -408,6 +408,21 @@ export class CommandNames {
     public static ListSet = "list set";
 
     /**
+     * Name key for the ListSlice command.
+     */
+    public static ListSlice = "list slice";
+
+    /**
+     * Name key for the ListSliceIndex command.
+     */
+    public static ListSliceIndex = "list slice index";
+
+    /**
+     * Name key for the ListSliceLength command.
+     */
+    public static ListSliceLength = "list slice length";
+
+    /**
      * Name key for the ListSortMemberNumbers command.
      */
     public static ListSortMemberNumbers = "list sort member numbers";
