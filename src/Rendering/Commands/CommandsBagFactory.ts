@@ -81,6 +81,9 @@ import { ListPopCommand } from "./ListPopCommand";
 import { ListPopFrontCommand } from "./ListPopFrontCommand";
 import { ListPushCommand } from "./ListPushCommand";
 import { ListSetCommand } from "./ListSetCommand";
+import { ListSliceCommand } from "./ListSliceCommand";
+import { ListSliceIndexCommand } from "./ListSliceIndexCommand";
+import { ListSliceLengthCommand } from "./ListSliceLengthCommand";
 import { ListSortMemberNumbersCommand } from "./ListSortMemberNumbersCommand";
 import { ListSortMemberStringsCommand } from "./ListSortMemberStringsCommand";
 import { ListSortNumbersCommand } from "./ListSortNumbers";
@@ -154,9 +157,6 @@ import { VariableInlineCommand } from "./VariableInlineCommand";
 import { VariableStartCommand } from "./VariableStartCommand";
 import { WhileEndCommand } from "./WhileEndCommand";
 import { WhileStartCommand } from "./WhileStartCommand";
-import { ListSliceIndexCommand } from "./ListSliceIndexCommand";
-import { ListSliceCommand } from "./ListSliceCommand";
-import { ListSliceLengthCommand } from "./ListSliceLengthCommand";
 
 /**
  * Initializes new instances of the CommandsBag class.
