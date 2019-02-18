@@ -60,7 +60,7 @@
         "markdownlint-cli": "^0.13.0",
         "minimatch": "^3.0.4",
         "mkdirp-promise": "^5.0.1",
-        "mocha": "^5.2.0",
+        "mocha": "^6.0.0",
         "mz": "^2.7.0",
         "prettier": "^1.15.1",
         "pretty-quick": "^1.8.0",
