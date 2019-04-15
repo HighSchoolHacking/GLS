@@ -52,7 +52,7 @@
         "@types/mkdirp-promise": "^5.0.0",
         "@types/mocha": "^5.2.5",
         "@types/mz": "0.0.32",
-        "@types/node": "^10.12.9",
+        "@types/node": "^11.9.0",
         "@types/yargs": "^12.0.1",
         "chai": "^4.2.0",
         "husky": "^1.1.3",
