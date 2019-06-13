@@ -57,7 +57,7 @@
         "chai": "^4.2.0",
         "husky": "^2.0.0",
         "markdownlint": "^0.15.0",
-        "markdownlint-cli": "^0.14.0",
+        "markdownlint-cli": "^0.17.0",
         "minimatch": "^3.0.4",
         "mkdirp-promise": "^5.0.1",
         "mocha": "^5.2.0",
