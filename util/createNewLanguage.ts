@@ -97,7 +97,7 @@ const extensionFormatCheck = (extension: string): string => {
 const main = () => {
     const program = yargs
         .usage(
-            "Usage: gulp util:new-language --language-name <language-name> " +
+            "Usage: npm run util:new-language --language-name <language-name> " +
                 "--language-extension <language-extension> --base-name <base-name>",
         )
         .option(
@@ -121,7 +121,7 @@ const main = () => {
                 alias: "b",
                 describe: "pre-existing language to use as a base",
             }),
-        ).argv;
+        ).argv as { [i: string]: string };
 
     const name = program.languageName;
     const extension = program.languageExtension;
