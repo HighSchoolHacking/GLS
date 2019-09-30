@@ -1,5 +1,4 @@
 import * as fs from "fs";
-// @ts-ignore
 import * as glob from "glob";
 
 import { Gls } from "../../lib/Gls";

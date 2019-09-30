@@ -52,7 +52,7 @@ export class InterfaceMethodCommand extends Command {
             line += methodName;
             line += this.language.syntax.interfaces.declareMethodMiddle;
 
-            for (let i = 3; i < parameters.length; i++) {
+            for (let i = 3; i < parameters.length; i += 1) {
                 if (i % 2 !== 0) {
                     line += parameters[i] + ": ";
                 } else {
