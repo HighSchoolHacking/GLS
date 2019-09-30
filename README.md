@@ -6,7 +6,8 @@
 
 A unified syntax that compiles into a number of OOP languages.
 
-* Try it at **[bit.ly/gls-demo](https://bit.ly/gls-demo)**.
+* 🎭 Try it at **[glslang.org](https://glslang.org)** 🎭
+* 📚 Read the docs on **[docs.glslang.org](https://docs.glslang.org)** 📚
 
 > **GLS is still under development. Don't expect everything to work!**
 
