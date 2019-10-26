@@ -1,4 +1,4 @@
-# Budgie
+# Budgie 🦜
 
 [![NPM version](https://badge.fury.io/js/budgielang.svg)](http://badge.fury.io/js/budgielang)
 [![Greenkeeper badge](https://badges.greenkeeper.io/budgielang/budgie.svg)](https://greenkeeper.io/)
@@ -100,3 +100,5 @@ Budgie is just shy of **0.4**.
 If you'd like to contribute to Budgie, see [Development.md](https://github.com/budgielang/budgie/blob/master/docs/development.md).
 
 > Requires Node >=12
+
+💖 Many thanks to [@matthojo](https://github.com/matthojo) for allowing use of the `nudgie` npm package name!
