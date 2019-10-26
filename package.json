@@ -44,7 +44,7 @@
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",
-    "version": "0.3.26",
+    "version": "0.3.27",
     "devDependencies": {
         "@types/chai": "^4.2.4",
         "@types/glob": "^7.1.1",
