@@ -5,7 +5,7 @@ import { CaseStyle } from "../Casing/CaseStyle";
  */
 export class ProjectProperties {
     /**
-     * Output name to transform from Main.gls.
+     * Output name to transform from Main.bg.
      */
     public mainFile: string;
 

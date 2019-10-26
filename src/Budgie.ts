@@ -4,15 +4,15 @@ import { Language } from "./Rendering/Languages/Language";
 import { LanguagesBag } from "./Rendering/Languages/LanguagesBag";
 import { LineResults } from "./Rendering/LineResults";
 import { RenderContext } from "./Rendering/RenderContext";
-import { GlsFile } from "./Tokenization/GlsFile";
+import { BudgieFile } from "./Tokenization/BudgieFile";
 import { SourceFileParser } from "./Tokenization/Parsers/SourceFileParser";
 
 /**
- * Driving object to convert GLS syntax into real language code.
+ * Driving object to convert Budgie syntax into real language code.
  */
-export class Gls {
+export class Budgie {
     /**
-     * Backing command context for converting GLS nodes to text.
+     * Backing command context for converting Budgie nodes to text.
      */
     private renderContext: RenderContext;
 
@@ -27,7 +27,7 @@ export class Gls {
     private languagesBag: LanguagesBag;
 
     /**
-     * Parses lines of raw source syntax into GLS files.
+     * Parses lines of raw source syntax into Budgie files.
      */
     private sourceFileParser: SourceFileParser;
 
@@ -37,7 +37,7 @@ export class Gls {
     private outputMerger: OutputMerger;
 
     /**
-     * Initializes a new instance of the Gls class.
+     * Initializes a new instance of the Budgie class.
      */
     public constructor(language: string) {
         this.languagesBag = new LanguagesBag();
@@ -47,19 +47,19 @@ export class Gls {
     }
 
     /**
-     * Converts raw GLS syntax into language code.
+     * Converts raw Budgie syntax into language code.
      *
-     * @param input   GLS syntax to be converted.
+     * @param input   Budgie syntax to be converted.
      * @returns Language code from the input.
      * @remarks See docs/internals for full documentation!
      */
     public convert(input: string[]): string[] {
         // 1. Tokenization
-        const glsFile: GlsFile = this.sourceFileParser.parseLines(input);
+        const budgieFile: BudgieFile = this.sourceFileParser.parseLines(input);
 
         // 2. Rendering
         this.renderContext.setFileMetadata(FileMetadata.defaultFileMetadata);
-        const fileLineResults: LineResults[] = this.renderContext.convert(glsFile);
+        const fileLineResults: LineResults[] = this.renderContext.convert(budgieFile);
 
         // 3. Merging
         return this.outputMerger.mergeFileLineResults(fileLineResults);
@@ -78,7 +78,7 @@ export class Gls {
      * @param name   The name of the language.
      * @returns this
      */
-    public setLanguage(name: string): Gls {
+    public setLanguage(name: string): Budgie {
         this.language = this.languagesBag.getLanguageByName(name);
         this.renderContext = new RenderContext(this.language);
         this.outputMerger = new OutputMerger(this.language.syntax.style.semicolon);

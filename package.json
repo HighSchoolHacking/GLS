@@ -1,22 +1,22 @@
 {
-    "name": "general-language-syntax",
+    "name": "budgie",
     "author": {
         "name": "Josh Goldberg",
         "email": "jogol@microsoft.com"
     },
     "bugs": {
-        "url": "https://github.com/general-language-syntax/GLS/issues"
+        "url": "https://github.com/budgielang/budgie/issues"
     },
     "description": "A unified syntax that compiles into your favorite OOP languages.",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com:general-language-syntax/GLS.git"
+        "url": "ssh://git@github.com:budgielang/budgie.git"
     },
     "scripts": {
         "ci:build": "npm run src:tsc && npm run util:tsc && npm run test:tsc",
-        "docs": "npm run docs:refresh-docs && npm run docs:gls && npm run docs:markdownlint",
-        "docs:gls": "node util/docs/compileGls.js",
+        "docs": "npm run docs:refresh-docs && npm run docs:budgie && npm run docs:markdownlint",
+        "docs:budgie": "node util/docs/compileBudgie.js",
         "docs:markdownlint": "markdownlint --config .markdownlint.json --ignore docs/commands/**/*.md --rules ./node_modules/sentences-per-line/index.js docs/**/*.md",
         "docs:refresh-docs": "node util/docs/refresh.js",
         "prepublishOnly": "npm run docs",
@@ -44,7 +44,7 @@
     },
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",
-    "version": "0.3.25",
+    "version": "0.3.26",
     "devDependencies": {
         "@types/chai": "^4.2.4",
         "@types/glob": "^7.1.1",

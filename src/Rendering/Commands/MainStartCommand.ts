@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
@@ -45,8 +45,8 @@ export class MainStartCommand extends Command {
         const throwsMarker = this.collectThrowsMarker(parameters);
 
         for (const startLine of startLines) {
-            let line = GlsUtilities.stringReplaceAll(startLine, "{0}", fileName);
-            line = GlsUtilities.stringReplaceAll(startLine, "{1}", throwsMarker);
+            let line = BudgieUtilities.stringReplaceAll(startLine, "{0}", fileName);
+            line = BudgieUtilities.stringReplaceAll(startLine, "{1}", throwsMarker);
 
             output.push(new CommandResult(line, 0));
         }

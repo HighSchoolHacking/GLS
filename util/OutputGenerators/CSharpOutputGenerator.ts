@@ -14,7 +14,7 @@ const template = `<Project Sdk="Microsoft.NET.Sdk">
 `;
 
 /**
- * Runs an output comparison test for a single GLS project in C#.
+ * Runs an output comparison test for a single Budgie project in C#.
  */
 export const testCSharpGenerator: IOutputGenerator = async ({ projectDirectory, projectName }): Promise<string[]> => {
     const csprojPath = path.join(projectDirectory, projectName + ".csproj");

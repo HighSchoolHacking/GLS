@@ -1,6 +1,6 @@
 # Internal Structure
 
-The driving class to convert GLS syntax into real language code is `Gls`.
+The driving class to convert Budgie syntax into real language code is `Budgie`.
 Its internal conversion process consists of three steps:
 
 1. **Tokenization**
@@ -9,8 +9,8 @@ Its internal conversion process consists of three steps:
 
 ## 1. Tokenization
 
-Given raw syntax as string(s), it must be "tokenized" (parsed) into GLS nodes.
-GLS nodes come in three varieties, each of which implement the exported `IGlsNode` interface:
+Given raw syntax as string(s), it must be "tokenized" (parsed) into Budgie nodes.
+Budgie nodes come in three varieties, each of which implement the exported `IBudgieNode` interface:
 
 * `BlankNode`: Blank line with no non-whitespace characters.
 * `CommandNode`: Command name followed by any number of arguments.
@@ -18,11 +18,11 @@ GLS nodes come in three varieties, each of which implement the exported `IGlsNod
 
 For example, given the following line:
 
-```gls
+```budgie
 variable : foo number { operation : 1 plus 2 }
 ```
 
-The corresponding GLS file's node structure in JSON would look like:
+The corresponding Budgie file's node structure in JSON would look like:
 
 ```json
 {
@@ -50,11 +50,11 @@ The corresponding GLS file's node structure in JSON would look like:
 
 ### `SourceFileParser`
 
-Parsing raw GLS strings is done by `SourceFileParser`, which uses a `SourceLineParser` to convert each line of the input file.
-You can directly create a `GlsFile` containing `IGlsNode`s using one without a driving `Gls` context:
+Parsing raw Budgie strings is done by `SourceFileParser`, which uses a `SourceLineParser` to convert each line of the input file.
+You can directly create a `BudgieFile` containing `IBudgieNode`s using one without a driving `Budgie` context:
 
 ```javascript
-import { SourceFileParser } from "general-language-syntax";
+import { SourceFileParser } from "budgielang";
 
 const parser = new SourceFileParser();
 
@@ -65,7 +65,7 @@ parser.parseLines([
 
 ## 2. Rendering
 
-Given a `GlsFile`, each "line" (root-level node) is converted to an intermediate `LineResults` instance.
+Given a `BudgieFile`, each "line" (root-level node) is converted to an intermediate `LineResults` instance.
 The `LineResults` class contains an array of `CommandResult` instances, which store the generated language-specific code and desired indentation, and whether the line should have a semicolon.
 
 > Semicolons and indentation levels are separate from the `CommandResult` text because nested commands need to ignore them.
@@ -78,30 +78,30 @@ Rendering is managed by a `RenderContext` instance containing a plethora of publ
 It has references to the output `Language`, `Command` classes that can render nodes to the language, and current directory path of the parsed file.
 The `RenderContext` instance is exposed to each `Command` for recursion.
 
-The most notable method is also `convert`, and is directly called by the parent `Gls`.
-This `convert` takes in a `GlsFile` and returns an array of `LineResults`.
+The most notable method is also `convert`, and is directly called by the parent `Budgie`.
+This `convert` takes in a `BudgieFile` and returns an array of `LineResults`.
 
 ```javascript
-import { CSharp, RenderContext, SourceFileParser } from "general-language-syntax";
+import { CSharp, RenderContext, SourceFileParser } from "budgielang";
 
 const parser = new SourceFileParser();
 const context = new RenderContext(new CSharp());
 
-const glsFile = parser.parseLines([
+const BudgieFile = parser.parseLines([
     `print: ("Hello world!")`
 ]);
 
 // System.Console.WriteLine("Hello world!");
-context.convert(glsFile);
+context.convert(BudgieFile);
 ```
 
-The recursive step to convert `IGlsNode`s into `LineResults` is done by an internal `GlsNodeRenderer`.
+The recursive step to convert `IBudgieNode`s into `LineResults` is done by an internal `BudgieNodeRenderer`.
 
 ### `Command`
 
-Each available GLS command is keyed to a `Command` sub-class by name.
-They're retrieved by name by the `GlsNodeRenderer` using a `CommandsBag`.
-Raw GLS describes the commands in `lower case`; `Command` sub-classes have the corresponding name in `PascalCase`.
+Each available Budgie command is keyed to a `Command` sub-class by name.
+They're retrieved by name by the `BudgieNodeRenderer` using a `CommandsBag`.
+Raw Budgie describes the commands in `lower case`; `Command` sub-classes have the corresponding name in `PascalCase`.
 For example, `list push` corresponds to `ListPushCommand` in `src/Rendering/Commands/ListPushCommand.ts`.
 
 Commands render `LineResults` through their `render` function.
@@ -110,7 +110,7 @@ Commands render `LineResults` through their `render` function.
 
 Each `Command` stores a `CommandMetadata` member with some basic information on the command, such as its name and description.
 The metadata also includes the expected parameters the command takes in as an. `IParameter` array.
-These are validated by the `GlsNodeRenderer` against what the command is passed before commands are rendered.
+These are validated by the `BudgieNodeRenderer` against what the command is passed before commands are rendered.
 
 ## 3. Merging
 

@@ -16,7 +16,7 @@ export const testLanguagesBag = new LanguagesBag();
  * @returns Comment marker for the language.
  */
 const getCommentMarker = (extension: string): string => {
-    if (extension === ".gls") {
+    if (extension === ".bg") {
         return "-";
     }
 

@@ -1,48 +1,49 @@
-# GLS - General Language Syntax
+# Budgie
 
-[![NPM version](https://badge.fury.io/js/general-language-syntax.svg)](http://badge.fury.io/js/general-language-syntax)
-[![Greenkeeper badge](https://badges.greenkeeper.io/general-language-syntax/GLS.svg)](https://greenkeeper.io/)
-[![Circle CI](https://circleci.com/gh/general-language-syntax/GLS.svg?style=svg)](https://circleci.com/gh/general-language-syntax/GLS)
+[![NPM version](https://badge.fury.io/js/budgielang.svg)](http://badge.fury.io/js/budgielang)
+[![Greenkeeper badge](https://badges.greenkeeper.io/budgielang/budgie.svg)](https://greenkeeper.io/)
+[![Circle CI](https://circleci.com/gh/budgielang/budgie.svg?style=svg)](https://circleci.com/gh/budgielang/budgie)
 
 A unified syntax that compiles into a number of OOP languages.
+_Formerly known as General Language Syntax (GLS)._
 
-* 🎭 Try it at **[glslang.org](https://glslang.org)** 🎭
-* 📚 Read the docs on **[docs.glslang.org](https://docs.glslang.org)** 📚
+* 🎭 Try it at **[budgielang.org](https://budgielang.org)** 🎭
+* 📚 Read the docs on **[docs.budgielang.org](https://docs.budgielang.org)** 📚
 
-> **GLS is still under development. Don't expect everything to work!**
+> **Budgie is still under development. Don't expect everything to work!**
 
 ## Usage
 
-GLS can be used as a command-line app or via `import`/`require`.
+Budgie can be used as a command-line app or via `import`/`require`.
 
 ### CLI
 
-To convert `file.gls` to `file.py`:
+To convert `file.bg` to `file.py`:
 
 ```shell
-npm install general-language-syntax gls-cli --global
+npm install budgie budgie-cli --global
 
-gls --language Python file.gls
+budgie --language Python file.bg
 ```
 
-See [gls-cli](https://github.com/HighSchoolHacking/gls-cli).
+See [budgie-cli](https://github.com/budgielang/budgie-cli).
 
 ### Code
 
-`npm install general-language-syntax`
+`npm install budgielang`
 
 ```javascript
-import { Gls } from "general-language-syntax";
+import { Budgie } from "budgielang";
 
-const gls = new Gls("C#");
+const budgie = new Budgie("C#");
 
 // System.Console.WriteLine("Hello world!");
-gls.convert([`print : ("Hello world!")`]);
+budgie.convert([`print : ("Hello world!")`]);
 ```
 
 ## Status
 
-GLS is just shy of **0.4**.
+Budgie is just shy of **0.4**.
 
 <table>
     <thead>
@@ -54,22 +55,22 @@ GLS is just shy of **0.4**.
         <tr>
             <th>C++ Compiler</th>
             <td>0.1</td>
-            <td>Command-line GLS prototype, written in C++.</td>
+            <td>Command-line Budgie prototype, written in C++.</td>
         </tr>
         <tr>
             <th>TypeScript Compiler draft</th>
             <td>0.2</td>
-            <td>GLS compiler as a website, written in TypeScript.</td>
+            <td>Budgie compiler as a website, written in TypeScript.</td>
         </tr>
         <tr>
             <th>TypeScript Compiler + C# Output</th>
             <td>0.3</td>
-            <td>GLS compiler re-written in TypeScript. Near-working C#, Java, JavaScript, Python, Ruby, and TypeScript output.</td>
+            <td>Budgie compiler re-written in TypeScript. Near-working C#, Java, JavaScript, Python, Ruby, and TypeScript output.</td>
         </tr>
         <tr>
             <th>Roundtripping Feature Complete</th>
             <td>0.4</td>
-            <td>All features required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output.</td>
+            <td>All features required for roundtripping implemented. Working C# and TypeScript output. Near-working Java, JavaScript, Python, and Ruby output. Switched to a better name.</td>
         </tr>
         <tr>
             <th>Full Language Outputs</th>
@@ -89,13 +90,13 @@ GLS is just shy of **0.4**.
         <tr>
             <th>General Release</th>
             <td>1.0</td>
-            <td>Public announcement, glory to everyone. Switched to a better name.</td>
+            <td>Public announcement, glory to everyone.</td>
         </tr>
     </tbody>
 </table>
 
 ## Development
 
-If you'd like to contribute to GLS, see [Development.md](https://github.com/general-language-syntax/GLS/blob/master/docs/development.md).
+If you'd like to contribute to Budgie, see [Development.md](https://github.com/budgielang/budgie/blob/master/docs/development.md).
 
-> Requires Node >=8
+> Requires Node >=12

@@ -10,7 +10,7 @@ Member variables can then be accessed with `member variable`, which takes in the
 
 > Privacy is needed for accessing variables because some languages, such as Python, have different naming conventions per member variable privacy.
 
-```gls
+```budgie
 class start : Person
     member variable declare : private name string
     member variable declare : private age double

@@ -1,5 +1,5 @@
 // Initialization
-let haystack = "Hello, GLS!";
+let haystack = "Hello, Budgie!";
 console.log(haystack);
 
 // Concatenation
@@ -12,7 +12,7 @@ let first = text[0];
 console.log(`${text}'s first character is ${first}.`);
 
 // Searching
-let needle = "GLS";
+let needle = "Budgie";
 let firstIndexOf = haystack.indexOf(needle);
 let secondIndexOf = haystack.indexOf(needle, firstIndexOf + needle.length);
 

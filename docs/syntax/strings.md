@@ -1,6 +1,6 @@
 # Strings
 
-Strings in GLS are denoted with _double_ apostrophes (`"`).
+Strings in Budgie are denoted with _double_ apostrophes (`"`).
 Do not use single apostrophes or back-ticks.
 
 > Some languages, such as C#, use single apostrophes to denote single characters and not strings.
@@ -9,7 +9,7 @@ Do not use single apostrophes or back-ticks.
 
 The `concatenate` command appends two or more strings together.
 
-```gls
+```budgie
 concatenate : "abc" def "ghi"
 ```
 
@@ -21,7 +21,7 @@ concatenate : "abc" def "ghi"
 Some languages, such as JavaScript and Ruby, do not recognize a difference between a one-length string, or `char`, and an arbitrary-length `string`.
 Less high-level languages, such as C# and Java, consider them to be a `char`.
 
-```gls
+```budgie
 variable : a char 'a'
 ```
 
@@ -33,7 +33,7 @@ variable : a char 'a'
 Individual characters in a string may be indexed with the `string index` command.
 It takes in a string and a character index int, and returns a `char`.
 
-```gls
+```budgie
 variable : text string "abc"
 variable : first char { string index : text 0 }
 ```
@@ -58,7 +58,7 @@ The `string format` command allows inserting primitives into a format string.
 It takes in a single format string, then any number of input name & type pairs.
 Format strings are string literals with any number of bracket-surrounded numbers inside, with the format `{#}`.
 
-```gls
+```budgie
 variable : foo string "foo"
 variable : bar int 7
 
@@ -96,9 +96,9 @@ The `string index of` command can be used to determine whether a substring exist
 It returns the index of the substring if found, or the equivalent of the `string index not found` command if not found.
 It may also take in an optional third parameter as an integer position within the string to start searching at, if not `0`.
 
-```gls
-variable : haystack string ("Hello, GLS!")
-variable : needle string "GLS"
+```budgie
+variable : haystack string ("Hello, Budgie!")
+variable : needle string "Budgie"
 variable : firstIndexOf int { string index of : haystack needle }
 variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
 
@@ -114,8 +114,8 @@ In C#:
 ```csharp
 using System;
 
-string haystack = "Hello, GLS!";
-string needle = "GLS";
+string haystack = "Hello, Budgie!";
+string needle = "Budgie";
 int firstIndexOf = haystack.IndexOf(needle);
 int secondIndexOf = haystack.IndexOf(needle, firstIndexOf + needle.Length);
 
@@ -130,8 +130,8 @@ if (secondIndexOf != -1)
 In Python:
 
 ```python
-haystack = "Hello, GLS!"
-needle = "GLS"
+haystack = "Hello, Budgie!"
+needle = "Budgie"
 firstIndexOf = haystack.find(needle)
 secondIndexOf = haystack.find(needle, firstIndexOf + len(needle))
 

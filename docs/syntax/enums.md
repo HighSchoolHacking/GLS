@@ -8,7 +8,7 @@ Ed an enum with `enum end`.
 
 Each enum value is declared with `enum member`, which takes in a PascalCase name of a member value, an integer value, and if not the last in the enum, a `,` comma.
 
-```gls
+```budgie
 enum start : Direction
     enum member : Unknown 0 ,
     enum member : Horizontal 1 ,
@@ -39,7 +39,7 @@ class Direction(Enum):
 Enum types can be treated as their own type in type declarations.
 Later on, you can reference these enum values using the `enum` command, which takes in a name of an enum and a name of one of its values.
 
-```gls
+```budgie
 variable : direction Direction { enum : Direction Horizontal }
 ```
 
@@ -50,7 +50,7 @@ variable : direction Direction { enum : Direction Horizontal }
 
 You can export enums from the current file by including the `export` keyword before the enum's name.
 
-```gls
+```budgie
 enum start : export Direction
     enum member : Unknown 0 ,
     enum member : Horizontal 1 ,

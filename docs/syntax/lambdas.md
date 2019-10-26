@@ -2,7 +2,7 @@
 
 Lambdas, or anonymous functions, are small functions created inside of another function.
 They have access to variables inside and parameters passed to that function.
-GLS allows one-line lambdas to be passed in place of variables to other functions.
+Budgie allows one-line lambdas to be passed in place of variables to other functions.
 
 ## Lambda Types
 
@@ -11,7 +11,7 @@ It takes in the lambda's return type and zero to two (parameterName, parameterTy
 
 You can then use the `lambda` command to call that lambda, which takes in the name of the lambda and any parameters to pass to it.
 
-```gls
+```budgie
 standalone function declare start : private RunOnInts void format { lambda type inline : string i int }
     for numbers start : i int 0 10
         print : { lambda : format i }
@@ -45,7 +45,7 @@ New lambdas can be declared as parameters to called functions or other lambdas.
 Declare them with `lambda declare`, which takes in the return type of the lambda, zero to two (parameterName, parameterType) pairs,
 and the (single line) body of the lambda.
 
-```gls
+```budgie
 standalone function : private { main group } RunOnInts { lambda declare : string i int { string format : ("Int: {0}") i int } }
 ```
 

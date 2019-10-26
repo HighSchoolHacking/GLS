@@ -1,7 +1,7 @@
 # Development
 
 To build from scratch, install [Node.js](http://node.js.org) and run `npm install` to install development dependencies.
-GLS is written in [TypeScript](http://typescriptlang.org).
+Budgie is written in [TypeScript](http://typescriptlang.org).
 
 To run end-to-end tests, you'll need the following installed globally:
 
@@ -27,7 +27,7 @@ Use `npm run watch` to run the TypeScript compiler in watch mode on both source 
 
 Alternately, you can build+lint individual sections of code:
 
-* `npm run src`: GLS source code.
+* `npm run src`: Budgie source code.
 * `npm run test`: Test file infrastructure.
 * `npm run util`: Miscellaneous utilities.
 
@@ -65,10 +65,10 @@ mocha test/unit/Tokenization/Parsers/SourceLineParserTests.js -g "nested Command
 
 ### Integration Tests
 
-Test for compiled GLS output are located under [test/integration](https://github.com/general-language-syntax/GLS/tree/master/test/integration).
-These integration tests each take in a `.gls` file, compile it to each supported language, and validate the output is the same as the expected outputs contained in the folder.
+Test for compiled Budgie output are located under [test/integration](https://github.com/budgielang/budgie/tree/master/test/integration).
+These integration tests each take in a `.bg` file, compile it to each supported language, and validate the output is the same as the expected outputs contained in the folder.
 
-Tests are represented by a folder of files, where one file is GLS source code and each other file is how that code should look when compiled to each other language.
+Tests are represented by a folder of files, where one file is Budgie source code and each other file is how that code should look when compiled to each other language.
 
 Run integration tests with `npm run test:integration`.
 You can run a subset of commands by passing `-- --include=` with a case-insensitive glob to include test names:
@@ -102,9 +102,9 @@ When adding a new command under `src/Commands`, also add a line for it under `sr
 
 When adding a new command class, you'll need to override the abstract `getMetadata` and `render` commands.
 
-To directly see which files you should add or edit to add a new command, run a full-text search on both the PascalCase command name (e.g. `MemberFunction`) and the GLS style name (e.g. `member function`).
+To directly see which files you should add or edit to add a new command, run a full-text search on both the PascalCase command name (e.g. `MemberFunction`) and the Budgie style name (e.g. `member function`).
 
-_([#375](https://github.com/general-language-syntax/GLS/issues/375) tracks adding a utility to automate adding this!)_
+_([#375](https://github.com/budgielang/budgie/issues/375) tracks adding a utility to automate adding this!)_
 
 ### "Native" Commands
 

@@ -28,7 +28,7 @@ export const ensureSameFileComparisons = async (settings: IFileComparisonSetting
             languageName: settings.languageName,
             outputDirectory: path.join(settings.projectDirectory, settings.languageName),
             projectDirectory: settings.projectDirectory,
-            sourceDirectory: path.join(settings.projectDirectory, "Gls"),
+            sourceDirectory: path.join(settings.projectDirectory, "Budgie"),
             sourceFileName: file,
             transformFilePath: true,
             useWrappingComments: settings.useWrappingComments,

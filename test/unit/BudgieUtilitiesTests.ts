@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import "mocha";
 
-import { GlsUtilities } from "../../lib/GlsUtilities";
+import { BudgieUtilities } from "../../lib/BudgieUtilities";
 
-describe("GlsUtilities", () => {
+describe("BudgieUtilities", () => {
     describe("stringReplaceAll", () => {
         interface ITestCase {
             description: string;
@@ -54,7 +54,7 @@ describe("GlsUtilities", () => {
         for (const test of testCases) {
             it(test.description, () => {
                 // Act
-                const actual = GlsUtilities.stringReplaceAll(test.haystack, test.needle, test.replacement);
+                const actual = BudgieUtilities.stringReplaceAll(test.haystack, test.needle, test.replacement);
 
                 // Act
                 expect(actual).to.be.equal(test.expected);

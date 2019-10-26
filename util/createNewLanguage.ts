@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import * as yargs from "yargs";
-import { findGlsTestSourcesUnder } from "./findGlsTestSourcesUnder";
+import { findBudgieTestSourcesUnder } from "./findBudgieTestSourcesUnder";
 
 export interface ILanguageTemplate {
     extension: string;
@@ -55,13 +55,13 @@ const createLanguageFile = (newLanguage: ILanguageTemplate, oldLanguage: ILangua
 
 const createLanguageTestsUnder = (newLanguage: ILanguageTemplate, oldLanguage: ILanguageTemplate, category: string) => {
     const filesRoot = path.join(__dirname, `../test/${category}`);
-    const glsTests = findGlsTestSourcesUnder(filesRoot);
+    const budgieTests = findBudgieTestSourcesUnder(filesRoot);
 
-    glsTests.forEach((glsCases, glsTest) => {
-        const casesRoot = path.join(filesRoot, glsTest);
-        for (const glsCase of glsCases) {
-            const source = path.join(casesRoot, glsCase + oldLanguage.extension);
-            const sink = path.join(casesRoot, glsCase + newLanguage.extension);
+    budgieTests.forEach((budgieCases, budgieTest) => {
+        const casesRoot = path.join(filesRoot, budgieTest);
+        for (const budgieCase of budgieCases) {
+            const source = path.join(casesRoot, budgieCase + oldLanguage.extension);
+            const sink = path.join(casesRoot, budgieCase + newLanguage.extension);
 
             fs.writeFileSync(sink, fs.readFileSync(source).toString());
         }

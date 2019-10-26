@@ -3,7 +3,7 @@ package strings;
 class Main {
     public static void main(String[] args) {
         // Initialization
-        String haystack = "Hello, GLS!";
+        String haystack = "Hello, Budgie!";
         System.out.println(haystack);
 
         // Concatenation
@@ -16,7 +16,7 @@ class Main {
         System.out.println(String.format("%s's first character is %c.", text, first));
 
         // Searching
-        String needle = "GLS";
+        String needle = "Budgie";
         Integer firstIndexOf = haystack.indexOf(needle);
         Integer secondIndexOf = haystack.indexOf(needle, firstIndexOf + needle.length());
 

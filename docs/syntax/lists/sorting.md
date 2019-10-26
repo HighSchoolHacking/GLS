@@ -1,6 +1,6 @@
 # Sorting
 
-GLS supports four forms of sorting lists, all in-place.
+Budgie supports four forms of sorting lists, all in-place.
 
 ## As Numbers
 
@@ -9,7 +9,7 @@ It takes in the name of the list and sorts it with numeric comparisons.
 
 JavaScript runtimes default to sorting values as strings, so this will pass in a lambda to compare them as numbers as needed.
 
-```gls
+```budgie
 variable : numbers { list type : int } { list new : int 20 5 15 10 }
 
 comment line : 5, 10, 15, 20
@@ -39,7 +39,7 @@ numbers.sort()
 For lists of type `string`, you can sort the list with `list sort strings`.
 It takes in the name of the list and sorts it with string comparisons.
 
-```gls
+```budgie
 variable : fruits { list type : string } { list new : string "date", "apple" "cherry", "banana" }
 
 comment line : "apple", "banana", "cherry", "date"
@@ -70,7 +70,7 @@ Lists of complex objects, namely class or interface instances, can be sorted by 
 
 Members will be compared using the built-in `<` operator.
 
-```gls
+```budgie
 class start : Size
     member variable declare : public Count int
 
@@ -128,7 +128,7 @@ sizes.sort(key = lambda size: size.count)
 `list sort member strings` takes in the name of a list, the privacy type of members, a name for instances inside a comparison lambda, and the PascalCase key to look up under the instances.
 It's equivalent to `list sort member numbers` but compares members using built-in string comparisons.
 
-```gls
+```budgie
 class start : Fruit
     member variable declare : public Name string
 

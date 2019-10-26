@@ -6,8 +6,8 @@ Static languages with class-based files such as C# and Java typically declare th
 
 ## Declaring Standalone Functions
 
-GLS unifies the two with the concept of a `standalone function`.
-These functions, similar to static functions, are referenced in GLS code as members of some standalone container, which becomes a static class in static languages but goes away in dynamic languages.
+Budgie unifies the two with the concept of a `standalone function`.
+These functions, similar to static functions, are referenced in Budgie code as members of some standalone container, which becomes a static class in static languages but goes away in dynamic languages.
 
 Declaring a standalone function requires placing it within a group of them, similar to a static class declaration.
 
@@ -19,7 +19,7 @@ Declaring a standalone function requires placing it within a group of them, simi
 
 Calling standalone functions with `standalone function` takes in the name of the group in PascalCase, the privacy of the command, the name of the method in PascalCase, then any parameters.
 
-```gls
+```budgie
 standalone functions declare start : export TextUtilities
     standalone function declare start : public SquareText string text string
         return : { standalone function : private TextUtilities RepeatText text { string length : text } }
@@ -82,7 +82,7 @@ The `import standalone functions` command must be used after the `use` in import
 Different languages will import either the container group (static class) or individual functions.
 It takes in the name of the group in PascalCase followed by any number of standalone function names in PascalCase to import.
 
-```gls
+```budgie
 import local : Utilities Text use { import standalone functions : TextUtilities RepeatText }
 
 variable : repeated string { standalone function : public TextUtilities RepeatText "foo" 7 }

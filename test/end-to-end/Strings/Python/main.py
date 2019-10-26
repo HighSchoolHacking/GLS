@@ -1,6 +1,6 @@
 if __name__ == "__main__":
     # Initialization
-    haystack = "Hello, GLS!"
+    haystack = "Hello, Budgie!"
     print(haystack)
 
     # Concatenation
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     print("{0}'s first character is {1}.".format(text, first))
 
     # Searching
-    needle = "GLS"
+    needle = "Budgie"
     firstIndexOf = haystack.find(needle)
     secondIndexOf = haystack.find(needle, firstIndexOf + len(needle))
 

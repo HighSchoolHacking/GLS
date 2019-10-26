@@ -7,7 +7,7 @@ namespace Strings
         public static void Main()
         {
             // Initialization
-            string haystack = "Hello, GLS!";
+            string haystack = "Hello, Budgie!";
             Console.WriteLine(haystack);
 
             // Concatenation
@@ -20,7 +20,7 @@ namespace Strings
             Console.WriteLine(string.Format("{0}'s first character is {1}.", text, first));
 
             // Searching
-            string needle = "GLS";
+            string needle = "Budgie";
             int firstIndexOf = haystack.IndexOf(needle);
             int secondIndexOf = haystack.IndexOf(needle, firstIndexOf + needle.Length);
 

@@ -17,7 +17,7 @@ const filterIgnoredMessages = (message: string): string => {
 };
 
 /**
- * Runs an output comparison test for a single GLS project in Java.
+ * Runs an output comparison test for a single Budgie project in Java.
  */
 export const testJavaGenerator: IOutputGenerator = async ({ projectDirectory, projectName }): Promise<string[]> => {
     try {

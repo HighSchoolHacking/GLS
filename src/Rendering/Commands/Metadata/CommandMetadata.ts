@@ -5,7 +5,7 @@ import { IParameter } from "./Parameters/Parameter";
  */
 export class CommandMetadata {
     /**
-     * How this affects GLS source code indentation levels by default (no effect).
+     * How this affects Budgie source code indentation levels by default (no effect).
      */
     private static defaultIndentation: number[] = [];
 
@@ -20,7 +20,7 @@ export class CommandMetadata {
     public description: string;
 
     /**
-     * How this affects GLS source code indentation levels.
+     * How this affects Budgie source code indentation levels.
      */
     public indentation: number[];
 
@@ -60,7 +60,7 @@ export class CommandMetadata {
     /**
      * Adds an indentation setting.
      *
-     * @param indentation   How this affects GLS source code indentation levels.
+     * @param indentation   How this affects Budgie source code indentation levels.
      * @returns this
      */
     public withIndentation(indentation: number[]): CommandMetadata {

@@ -5,10 +5,10 @@ All languages provide some way to execute code immediately.
 Scripting languages such as Python and Ruby will execute all code in order immediately,
 whereas class-based languages such as C# and Java require a class wrapping a static method akin to C/C++'s "main" function.
 
-GLS resolves the differences by declaring an area as a "main context" with `main context start` and `main context end`.
+Budgie resolves the differences by declaring an area as a "main context" with `main context start` and `main context end`.
 A main function may be declared within that context with `main start` and `main end`.
 
-```gls
+```budgie
 main context start
     main start
         print : ("Hello world!")
@@ -42,14 +42,14 @@ if __name__ == "__main__":
 Main contexts, other than the way they're declared, are functionally identically to standalone function groups.
 That means you can still declare standalone functions within them.
 
-```gls
+```budgie
 main context start
     standalone function declare start : private SayHello void name string
         print : { concatenate : ("Hello, ") name "!" }
     standalone function declare end
 
     main start
-        standalone function : private { main group } SayHello "GLS"
+        standalone function : private { main group } SayHello "Budgie"
     main end
 main context end
 ```
@@ -68,7 +68,7 @@ class Program
 
     public static void Main()
     {
-        SayHello("GLS");
+        SayHello("Budgie");
     }
 }
 ```
@@ -80,8 +80,8 @@ def say_hello(name):
     print("Hello, " + name + "!")
 
 if __name__ == "__main__":
-    say_hello("GLS")
+    say_hello("Budgie")
 ```
 
-> Function names must be given in PascalCase so that GLS can transform them into the appropriate case for the output language.
+> Function names must be given in PascalCase so that Budgie can transform them into the appropriate case for the output language.
 > JavaScript, for example, prefers camelCase, while Python prefers snake\_case.

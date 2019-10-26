@@ -1,10 +1,10 @@
 ---
 name: Command request
-about: You'd like a command or set of commands to be added to GLS.
+about: You'd like a command or set of commands to be added to Budgie.
 ---
 
-> 👋 Hi friend, thanks for filing an issue on GLS!
-See [this issue](https://github.com/general-language-syntax/GLS/issues/629) for an example of the fields all filled out.
+> 👋 Hi friend, thanks for filing an issue on Budgie!
+See [this issue](https://github.com/budgielang/budgie/issues/629) for an example of the fields all filled out.
 
 ## Command: `proposed command`
 
@@ -12,10 +12,10 @@ See [this issue](https://github.com/general-language-syntax/GLS/issues/629) for 
 
 ### Usage
 
-<!-- Using a GLS code snippet or three, how would the command be used? -->
+<!-- Using a Budgie code snippet or three, how would the command be used? -->
 <!-- Which parameter(s) you believe the command should take, if any? -->
 
-```gls
+```budgie
 comment line : ..?
 ```
 

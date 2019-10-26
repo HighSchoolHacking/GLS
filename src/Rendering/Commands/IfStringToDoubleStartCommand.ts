@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { StringToNumberStartConversionType } from "../Languages/Properties/Syntax/StringToNumberSyntax";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
@@ -125,8 +125,8 @@ export class IfStringToDoubleStartCommand extends Command {
 
             let comparison = this.language.syntax.strings.toDouble.validationBlockComparison;
 
-            comparison = GlsUtilities.stringReplaceAll(comparison, "{0}", stringName);
-            comparison = GlsUtilities.stringReplaceAll(comparison, "{1}", doubleName);
+            comparison = BudgieUtilities.stringReplaceAll(comparison, "{0}", stringName);
+            comparison = BudgieUtilities.stringReplaceAll(comparison, "{1}", doubleName);
 
             addLineEnder(lines, comparison, 0);
 

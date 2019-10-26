@@ -2,7 +2,7 @@ import { CommandResult } from "./Commands/CommandResult";
 import { Import } from "./Languages/Imports/Import";
 
 /**
- * A cluster of code converted from a line of GLS syntax.
+ * A cluster of code converted from a line of Budgie syntax.
  */
 export class LineResults {
     /**
@@ -44,7 +44,7 @@ export class LineResults {
     /**
      * Initializes a new instance of the LineResults class.
      *
-     * @param commandResults   Lines of code converted from GLS syntax.
+     * @param commandResults   Lines of code converted from Budgie syntax.
      * @param addsSemicolon   Whether this should end with a semicolon.
      */
     public constructor(commandResults: CommandResult[]) {

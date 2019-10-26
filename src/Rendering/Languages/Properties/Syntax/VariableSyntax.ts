@@ -3,7 +3,7 @@
  */
 export class VariableSyntax {
     /**
-     * Aliases of values, from raw GLS syntax to this language's equivalents.
+     * Aliases of values, from raw Budgie syntax to this language's equivalents.
      */
     public aliases: { [i: string]: string };
 

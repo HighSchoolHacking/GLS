@@ -2,7 +2,7 @@ file start : Strings Main
     main context start
         main start
             comment line : Initialization
-            variable : haystack string ("Hello, GLS!")
+            variable : haystack string ("Hello, Budgie!")
             print : haystack
 
             comment line : Concatenation
@@ -15,7 +15,7 @@ file start : Strings Main
             print : { string format : ("{0}'s first character is {1}.") text string first char }
 
             comment line : Searching
-            variable : needle string "GLS"
+            variable : needle string "Budgie"
             variable : firstIndexOf int { string index of : haystack needle }
             variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
 

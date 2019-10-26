@@ -1,6 +1,6 @@
 import { BlankNode } from "../Tokenization/Nodes/BlankNode";
 import { CommandNode } from "../Tokenization/Nodes/CommandNode";
-import { IGlsNode } from "../Tokenization/Nodes/IGlsNode";
+import { IBudgieNode } from "../Tokenization/Nodes/IBudgieNode";
 import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { Command } from "./Commands/Command";
 import { CommandsBag } from "./Commands/CommandsBag";
@@ -9,11 +9,11 @@ import { LineResults } from "./LineResults";
 import { ParametersValidator } from "./ParametersValidator";
 
 /**
- * Renders GLS nodes into line results.
+ * Renders Budgie nodes into line results.
  */
-export class GlsNodeRenderer {
+export class BudgieNodeRenderer {
     /**
-     * GLS commands indexed by name.
+     * Budgie commands indexed by name.
      */
     private commandsBag: CommandsBag;
 
@@ -23,7 +23,7 @@ export class GlsNodeRenderer {
     private parametersValidator: ParametersValidator;
 
     /**
-     * Initializes a new instance of the GlsNodeRenderer class.
+     * Initializes a new instance of the BudgieNodeRenderer class.
      *
      * @param commandsBag   Holds commands indexed by name.
      */
@@ -35,10 +35,10 @@ export class GlsNodeRenderer {
     /**
      * Renders a parsed node into line results.
      *
-     * @param node   Parsed node from a line of raw GLS syntax.
+     * @param node   Parsed node from a line of raw Budgie syntax.
      * @returns Equivalent line results for the node.
      */
-    public renderNode(node: IGlsNode): LineResults {
+    public renderNode(node: IBudgieNode): LineResults {
         if (node instanceof BlankNode) {
             return LineResults.newSingleLine("");
         }
@@ -57,7 +57,7 @@ export class GlsNodeRenderer {
     /**
      * Renders a command node into line results.
      *
-     * @param node   Parsed command node from raw GLS syntax.
+     * @param node   Parsed command node from raw Budgie syntax.
      * @returns Equivalent line results for the node.
      */
     private renderCommandNode(node: CommandNode): LineResults {

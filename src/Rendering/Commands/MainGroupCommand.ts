@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -30,7 +30,7 @@ export class MainGroupCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         const fileName = this.context.getFileMetadata().getFileName();
-        const group = GlsUtilities.stringReplaceAll(this.language.syntax.main.group, "{0}", fileName);
+        const group = BudgieUtilities.stringReplaceAll(this.language.syntax.main.group, "{0}", fileName);
 
         return LineResults.newSingleLine(group);
     }
