@@ -1,6 +1,6 @@
 # Budgie 🦜
 
-[![NPM version](https://badge.fury.io/js/budgielang.svg)](http://badge.fury.io/js/budgielang)
+[![NPM version](https://badge.fury.io/js/budgie.svg)](http://badge.fury.io/js/budgie)
 [![Greenkeeper badge](https://badges.greenkeeper.io/budgielang/budgie.svg)](https://greenkeeper.io/)
 [![Circle CI](https://circleci.com/gh/budgielang/budgie.svg?style=svg)](https://circleci.com/gh/budgielang/budgie)
 
