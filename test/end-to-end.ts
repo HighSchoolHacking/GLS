@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 import { filterFoldersUnder } from "../util/filterFoldersUnder";
-import { findGlsFilesUnder } from "../util/findGlsFilesUnder";
+import { findBudgieFilesUnder } from "../util/findBudgieFilesUnder";
 import { outputGenerators } from "../util/OutputGenerators";
 import { parseTestArguments } from "./ArgvParsing";
 import { testLanguagesBag } from "./Files";
@@ -11,7 +11,7 @@ import { ensureSameFileComparisons, runProjectOutputTest } from "./OutputTests";
 const rootPath = path.resolve("test/end-to-end");
 const { accept, inclusions, languages } = parseTestArguments(process.argv);
 const testNames = filterFoldersUnder(rootPath, inclusions);
-const projectTests = findGlsFilesUnder(rootPath, testNames, "Gls");
+const projectTests = findBudgieFilesUnder(rootPath, testNames, "Budgie");
 
 /**
  * Runs the comparison and (if available) output tests for each language on a project.
@@ -44,17 +44,15 @@ const runProjectLanguageTests = (languageName: string, projectDirectory: string,
 };
 
 describe("test/end-to-end", () => {
-    projectTests.forEach(
-        (files: string[], project: string): void => {
-            const projectDirectory = path.join(rootPath, project);
+    projectTests.forEach((files: string[], project: string): void => {
+        const projectDirectory = path.join(rootPath, project);
 
-            describe(project, () => {
-                for (const languageName of testLanguagesBag.getLanguageNames()) {
-                    if (languages === undefined || languages.has(languageName)) {
-                        runProjectLanguageTests(languageName, projectDirectory, files);
-                    }
+        describe(project, () => {
+            for (const languageName of testLanguagesBag.getLanguageNames()) {
+                if (languages === undefined || languages.has(languageName)) {
+                    runProjectLanguageTests(languageName, projectDirectory, files);
                 }
-            });
-        },
-    );
+            }
+        });
+    });
 });

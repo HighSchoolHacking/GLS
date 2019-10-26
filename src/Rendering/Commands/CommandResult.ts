@@ -1,5 +1,5 @@
 /**
- * A single line of code converted from raw GLS syntax.
+ * A single line of code converted from raw Budgie syntax.
  */
 export class CommandResult {
     /**

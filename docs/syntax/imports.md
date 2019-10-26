@@ -19,7 +19,7 @@ It takes in three sections:
 
 Languages that do not recognize interfaces, such as JavaScript, will ignore any `types` imports.
 
-```gls
+```budgie
 file start : MyProject Samples Sample
     import local : MyProject Actors Actor use Actor
     import local : MyProject Collections Storage use Storage types IStorage
@@ -52,7 +52,7 @@ from ..collections.storage import Storage
 so they must imported using a specialized `import standalone functions` command within an `import local` command's `use` section.
 It takes in the group name to import from and any number of items from the group.
 
-```gls
+```budgie
 file start : MyProject Samples Sample
     import local : MyProject Utilities Strings use { import standalone functions : Strings IsPalindrome Repeat }
 file end
@@ -82,4 +82,4 @@ These are not supported yet.
 
 You may have seen in previous examples that some languages prepend imports before their code.
 C#, for example, has `using System;` before any instance of `Console.WriteLine`.
-GLS will keep track of system imports required for each native command.
+Budgie will keep track of system imports required for each native command.

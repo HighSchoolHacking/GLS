@@ -1,5 +1,5 @@
 import { CommandNode } from "../../../../Tokenization/Nodes/CommandNode";
-import { IGlsNode } from "../../../../Tokenization/Nodes/IGlsNode";
+import { IBudgieNode } from "../../../../Tokenization/Nodes/IBudgieNode";
 import { TextNode } from "../../../../Tokenization/Nodes/TextNode";
 import { IParameter } from "./Parameter";
 

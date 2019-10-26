@@ -4,7 +4,7 @@ import { FileSyntax } from "./Languages/Properties/Syntax/FileSyntax";
 import { LineResults } from "./LineResults";
 
 /**
- * Generates line results from raw GLS.
+ * Generates line results from raw Budgie.
  */
 export class LineResultsGenerator {
     /**
@@ -29,11 +29,12 @@ export class LineResultsGenerator {
     }
 
     /**
-     * Generates line results from raw GLS.
+     * Generates line results from raw Budgie.
      *
-     * @param glsLines   Raw lines of GLS syntax being converted.
-     * @param asFullFile   Whether a `file start` command indicated this is a full GLS file.
-     * @return Clusters of code returned from parsing raw GLS.
+     * @param allLineResults   Raw lines of Budgie syntax being converted.
+     * @param importsStore   Holds accumulated package imports during a conversion.
+     * @param asFullFile   Whether a `file start` command indicated this is a full Budgie file.
+     * @return Clusters of code returned from parsing raw Budgie.
      * @remarks This consists of two steps described inline.
      */
     public generateLineResults(allLineResults: LineResults[], importsStore: ImportsStore, asFullFile: boolean): LineResults[] {

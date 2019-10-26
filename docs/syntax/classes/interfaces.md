@@ -1,14 +1,14 @@
 # Interfaces
 
 Most languages either lack type annotations or recognize some kind of "interface" descriptor of types.
-As with member variable declarations, declaring an interface is allowed in GLS and only creates code in strongly or gradually typed languages.
+As with member variable declarations, declaring an interface is allowed in Budgie and only creates code in strongly or gradually typed languages.
 
 `interface start` takes in a PascalCase name of an interface followed by any number of interfaces to extend from.
 End an interface with `interface end`.
 
 Declare public methods on an interface with `interface method`, which takes the name of the method in PascalCase, the return type, followed by any number of (name, type) parameters.
 
-```gls
+```budgie
 interface start : IShape
     interface method : GetArea double
 interface end
@@ -36,7 +36,7 @@ interface IPolygon : IShape
 
 You can export interfaces from the current file by including the `export` keyword before the interface's name.
 
-```gls
+```budgie
 interface start : export IShape
     interface method : GetArea double
 interface end

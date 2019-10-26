@@ -41,21 +41,21 @@ const createParametersMarkdown = (prefix: string, parameters: IParameter[]): str
 };
 
 const createExample = (examplePath: string, exampleText: string): string => {
-    const exampleName = examplePath.substring(examplePath.lastIndexOf("/") + 1, examplePath.lastIndexOf(".gls"));
+    const exampleName = examplePath.substring(examplePath.lastIndexOf("/") + 1, examplePath.lastIndexOf(".bg"));
     const exampleCode = exampleText
         .replace(/\r\n/g, "\n")
         .replace("-\n", "")
         .replace("\n-", "")
         .trim();
 
-    return [`${exampleName[0].toUpperCase() + exampleName.substring(1)}:`, "", "```gls", exampleCode, "```", ""].join("\n");
+    return [`${exampleName[0].toUpperCase() + exampleName.substring(1)}:`, "", "```budgie", exampleCode, "```", ""].join("\n");
 };
 
 const createExamples = (metadataName: string) => {
     const pascalCaseName = new CaseStyleConverterBag().convertToCase(CaseStyle.PascalCase, metadataName.split(" "));
     const examples: string[] = [];
 
-    for (const exampleName of glob.sync(`./test/integration/${pascalCaseName}/**/*.gls`)) {
+    for (const exampleName of glob.sync(`./test/integration/${pascalCaseName}/**/*.bg`)) {
         examples.push(createExample(exampleName, fs.readFileSync(exampleName).toString()));
     }
 
@@ -90,7 +90,7 @@ const createAllCommandsMarkdown = (commandNamesAndMarkdowns: [string, string][])
 
     return `# All Commands
 
-This is an auto-generated listing of all GLS commands.
+This is an auto-generated listing of all Budgie commands.
 For files per command, see the links under each file.
 
 ${createTableOfContents(commandNamesAndMarkdowns)}

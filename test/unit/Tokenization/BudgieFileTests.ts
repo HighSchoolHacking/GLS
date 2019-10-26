@@ -1,18 +1,18 @@
 import { expect } from "chai";
 import "mocha";
 
-import { GlsFile } from "../../../lib/Tokenization/GlsFile";
+import { BudgieFile } from "../../../lib/Tokenization/BudgieFile";
 import { BlankNode } from "../../../lib/Tokenization/Nodes/BlankNode";
 import { CommandNode } from "../../../lib/Tokenization/Nodes/CommandNode";
-import { IGlsNode } from "../../../lib/Tokenization/Nodes/IGlsNode";
+import { IBudgieNode } from "../../../lib/Tokenization/Nodes/IBudgieNode";
 import { TextNode } from "../../../lib/Tokenization/Nodes/TextNode";
 
-describe("GlsFile", () => {
+describe("BudgieFile", () => {
     describe("getNodes", () => {
         it("gives no nodes when there are none in the file", () => {
             // Arrange
-            const expected: IGlsNode[] = [];
-            const file = new GlsFile(expected);
+            const expected: IBudgieNode[] = [];
+            const file = new BudgieFile(expected);
 
             // Act
             const actual = file.getNodes();
@@ -23,8 +23,8 @@ describe("GlsFile", () => {
 
         it("gives nodes when there are nodes in the file", () => {
             // Arrange
-            const expected: IGlsNode[] = [new BlankNode(), new TextNode("abc"), new CommandNode("def", [new TextNode("ghi")])];
-            const file = new GlsFile(expected);
+            const expected: IBudgieNode[] = [new BlankNode(), new TextNode("abc"), new CommandNode("def", [new TextNode("ghi")])];
+            const file = new BudgieFile(expected);
 
             // Act
             const actual = file.getNodes();

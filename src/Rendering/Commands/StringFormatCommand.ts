@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -49,7 +49,7 @@ export class StringFormatCommand extends Command {
         for (let i = 0; i < inputsLength; i += 1) {
             const replacement: string = this.formatReplacement(i, parameters[i * 2 + 2], parameters[i * 2 + 3]);
 
-            output = GlsUtilities.stringReplaceAll(output, `{${i}}`, replacement);
+            output = BudgieUtilities.stringReplaceAll(output, `{${i}}`, replacement);
         }
 
         if (!this.language.syntax.strings.formatting.useInterpolation) {

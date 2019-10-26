@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import * as path from "path";
 
-import { Gls } from "../lib/Gls";
+import { Budgie } from "../lib/Budgie";
 import { CaseStyleConverterBag } from "../lib/Rendering/Casing/CaseStyleConverterBag";
 import { NameSplitter } from "../lib/Rendering/Casing/NameSplitter";
 import { Language } from "../lib/Rendering/Languages/Language";
@@ -32,7 +32,7 @@ export interface ICommandComparisonTestSettings {
     outputDirectory: string;
 
     /**
-     * Directory path to read GLS files from.
+     * Directory path to read Budgie files from.
      */
     sourceDirectory: string;
 
@@ -75,13 +75,13 @@ const createLanguageFilePath = (settings: ICommandComparisonTestSettings, langua
 };
 
 const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestSettings): Promise<void> => {
-    const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".gls");
-    const gls = new Gls(settings.languageName);
-    const language = gls.getLanguage();
+    const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".bg");
+    const budgie = new Budgie(settings.languageName);
+    const language = budgie.getLanguage();
     const commentMarker = settings.useWrappingComments ? language.syntax.comments.lineLeft : undefined;
     const source = await readCommandFile(sourceFilePath, settings.useWrappingComments);
 
-    const baseline = gls.convert(source);
+    const baseline = budgie.convert(source);
     const languagePath = createLanguageFilePath(settings, language);
 
     await writeBaselineFile(languagePath, baseline, commentMarker);
@@ -89,10 +89,10 @@ const acceptCommandComparisonBaseline = async (settings: ICommandComparisonTestS
 
 const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings): Promise<void> => {
     // Arrange
-    const gls = new Gls(settings.languageName);
-    const language = gls.getLanguage();
+    const budgie = new Budgie(settings.languageName);
+    const language = budgie.getLanguage();
     const languagePath = createLanguageFilePath(settings, language);
-    const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".gls");
+    const sourceFilePath = path.join(settings.sourceDirectory, settings.sourceFileName + ".bg");
 
     // Act
     const [expected, source] = await Promise.all([
@@ -101,7 +101,7 @@ const runCommandComparisonTest = async (settings: ICommandComparisonTestSettings
     ]);
 
     // Assert
-    expect(gls.convert(source)).to.be.deep.equal(expected, languagePath);
+    expect(budgie.convert(source)).to.be.deep.equal(expected, languagePath);
 };
 
 /**

@@ -8,7 +8,7 @@ You can then also provide `extends` and a name of a class to indicate a single c
 
 End it with `class end`.
 
-```gls
+```budgie
 class start : Word
     comment line : ...
 class end
@@ -49,7 +49,7 @@ It's declared with `constructor start`, which takes the publicity of the constru
 
 Inherited classes that define a constructor must provide an additional `base` argument along with any parameters to call to their parent class' constructor.
 
-```gls
+```budgie
 class start : Noun extends Word
     constructor start : public Noun name string base
         print : { concatenate : ("Creating ") name }
@@ -83,7 +83,7 @@ class Noun(Word):
 
 You can pass a reference to the current class using the `this` command.
 
-```gls
+```budgie
 this
 ```
 
@@ -95,7 +95,7 @@ this
 Create new instances of classes with the `new` command.
 It takes in the name of the class and any number of arguments to pass to the parameter.
 
-```gls
+```budgie
 variable : fruit Noun { new : Noun "apple" }
 ```
 
@@ -106,7 +106,7 @@ variable : fruit Noun { new : Noun "apple" }
 
 You can export classes from the current file by including the `export` keyword before the class' name.
 
-```gls
+```budgie
 class start : export Word
     comment line : ...
 class end

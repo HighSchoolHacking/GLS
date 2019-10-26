@@ -25,7 +25,7 @@ Gemfile
 pom.xml
 requirements.txt
 src/**/*.cs
-src/**/*.gls
+src/**/*.budgie
 src/**/*.java
 src/**/*.js
 src/**/*.rb

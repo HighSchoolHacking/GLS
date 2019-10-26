@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { Command } from "./Command";
@@ -59,8 +59,8 @@ export class ListSliceCommand extends Command {
             text = this.language.syntax.lists.slices.untilEndRightFromIndex;
         }
 
-        text = GlsUtilities.stringReplaceAll(text, "{0}", parameters[1]);
-        text = GlsUtilities.stringReplaceAll(text, "{1}", startIndex);
+        text = BudgieUtilities.stringReplaceAll(text, "{0}", parameters[1]);
+        text = BudgieUtilities.stringReplaceAll(text, "{1}", startIndex);
         return text;
     }
 

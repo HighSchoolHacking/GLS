@@ -1,11 +1,11 @@
 # Arrays and Lists
 
-Although some output languages don't consider there to be a difference between arrays and lists, GLS defines them as:
+Although some output languages don't consider there to be a difference between arrays and lists, Budgie defines them as:
 
 * **Array**: A fixed length data structure of a single templated type
 * **List**: A variable length data structure of a single templated type
 
-GLS considers the two to be two different data structures and has mostly separate commands for each.
+Budgie considers the two to be two different data structures and has mostly separate commands for each.
 
 ## Arrays
 
@@ -16,7 +16,7 @@ For variables, declare the type of the array with `array type`, which takes in t
 
 Retrieve a single member of an array with `array get`, which takes in a name of a container and an integer index.
 
-```gls
+```budgie
 array get : container 1
 ```
 
@@ -25,7 +25,7 @@ array get : container 1
 
 Set a single member of an array with `array set`, which takes in a name of an array, an integer index, and a new value.
 
-```gls
+```budgie
 array set : container 1 "apple"
 ```
 
@@ -34,7 +34,7 @@ array set : container 1 "apple"
 
 Get the length of an array with `array length`, which takes in a name of an array.
 
-```gls
+```budgie
 variable : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
 
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
@@ -64,7 +64,7 @@ print("The first fruit is {0}.".format(fruits[0]))
 Creating arrays of generic types with the `array new generic` and `array new generic sized` commands.
 They're used the same as their non-generic counterparts.
 
-```gls
+```budgie
 variable : items { array type : T } { array new generic : T one two three }
 variable : storage { array type : T } { array new sized generic : T 10 }
 ```
@@ -85,12 +85,12 @@ storage = [None] * 10
 
 ## Lists
 
-GLS lists are much more flexible than arrays.
+Budgie lists are much more flexible than arrays.
 They can be dynamically resized, added onto one another, and sorted.
 
 Retrieve a single member of a list with `list get`, which takes in a name of a container and an integer index.
 
-```gls
+```budgie
 list get : container 1
 ```
 
@@ -99,7 +99,7 @@ list get : container 1
 
 Set a single member of a list with `list set`, which takes in a name of a list, an integer index, and a new value.
 
-```gls
+```budgie
 list set : container 1 "apple"
 ```
 
@@ -111,7 +111,7 @@ list set : container 1 "apple"
 Similar to arrays, create a new list with `list new`, declare a list type with `list type`, and get a list's length with `list length`.
 Add a single item to a list with `list pop`, which takes in a name of a list and a new item, or add a full list to another list with `list add list`, which takes in the name of an existing list and a second list to add to the existing list.
 
-```gls
+```budgie
 variable : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
 
 list push : fruits "dragonberry"

@@ -1,9 +1,9 @@
-import { IGlsNode } from "./IGlsNode";
+import { IBudgieNode } from "./IBudgieNode";
 
 /**
- * GLS node for a raw text argument.
+ * Budgie node for a raw text argument.
  */
-export class TextNode implements IGlsNode {
+export class TextNode implements IBudgieNode {
     /**
      * Raw command text.
      */

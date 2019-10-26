@@ -1,7 +1,7 @@
 import * as path from "path";
 
 import { filterFoldersUnder } from "../util/filterFoldersUnder";
-import { findGlsFilesUnder } from "../util/findGlsFilesUnder";
+import { findBudgieFilesUnder } from "../util/findBudgieFilesUnder";
 import { parseTestArguments } from "./ArgvParsing";
 import { runCommandComparison } from "./ComparisonTests";
 import { testLanguagesBag } from "./Files";
@@ -9,7 +9,7 @@ import { testLanguagesBag } from "./Files";
 const rootPath = path.resolve("test/integration");
 const { accept, inclusions, languages } = parseTestArguments(process.argv);
 const testNames = filterFoldersUnder(rootPath, inclusions);
-const commandTests = findGlsFilesUnder(rootPath, testNames);
+const commandTests = findBudgieFilesUnder(rootPath, testNames);
 
 /**
  * Runs comparison test on a single file within a command.
@@ -36,17 +36,15 @@ const runFileComparisonTests = (directory: string, sourceFileName: string) => {
 };
 
 describe("test/integration", () => {
-    commandTests.forEach(
-        (testFiles: string[], command: string): void => {
-            describe(command, () => {
-                const directory = path.join(rootPath, command);
+    commandTests.forEach((testFiles: string[], command: string): void => {
+        describe(command, () => {
+            const directory = path.join(rootPath, command);
 
-                for (const testFile of testFiles) {
-                    describe(testFile, () => {
-                        runFileComparisonTests(directory, testFile);
-                    });
-                }
-            });
-        },
-    );
+            for (const testFile of testFiles) {
+                describe(testFile, () => {
+                    runFileComparisonTests(directory, testFile);
+                });
+            }
+        });
+    });
 });

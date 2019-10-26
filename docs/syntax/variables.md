@@ -1,13 +1,13 @@
 # Variables
 
-GLS allows for creating variables with the `variable` command.
+Budgie allows for creating variables with the `variable` command.
 It requires the variable name, the type of the variable, and an optional default value.
 
 > Untyped languages such as JavaScript will skip printing the variable type.
 >
 > Pythonic languages such as Python and Ruby will skip declaring variables without a default value.
 
-```gls
+```budgie
 comment line : Simple declarations
 variable : foo string
 variable : bar number 7
@@ -56,5 +56,5 @@ corge = True
 
 As you saw from the interesting values above, some types such as infinity or true/false have aliases per language.
 
-Built-in types will always be lower-case in GLS.
+Built-in types will always be lower-case in Budgie.
 Uppercase types will always refer to user-defined classes.

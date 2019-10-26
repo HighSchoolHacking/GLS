@@ -1,9 +1,9 @@
 # Static Functions
 
-As with static variables, GLS syntax for static functions behaves almost identically to the member equivalents.
+As with static variables, Budgie syntax for static functions behaves almost identically to the member equivalents.
 The only difference is that accessing them takes in the class name instead of an instance reference.
 
-```gls
+```budgie
 class start : Utilities
     static function declare start : public GetLongest string words { array type : string }
         variable : longest string

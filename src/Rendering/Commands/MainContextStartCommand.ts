@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
@@ -34,7 +34,7 @@ export class MainContextStartCommand extends Command {
         const fileName = this.context.getFileMetadata().getFileName();
 
         for (const startLine of startLines) {
-            const line = GlsUtilities.stringReplaceAll(startLine, "{0}", fileName);
+            const line = BudgieUtilities.stringReplaceAll(startLine, "{0}", fileName);
             output.push(new CommandResult(line, 0));
         }
 

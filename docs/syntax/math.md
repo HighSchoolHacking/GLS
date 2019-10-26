@@ -7,7 +7,7 @@ The supported operators are:
 
 <table>
     <thead>
-        <th>GLS Syntax</th>
+        <th>Budgie Syntax</th>
         <th>Common Equivalent</th>
     </thead>
     <tbody>
@@ -95,7 +95,7 @@ The supported operators are:
 The `parenthesis` command is also commonly used with math.
 It takes a single argument and wraps it in `()` parentheses.
 
-```gls
+```budgie
 operation : foo times 2
 operation : foo (decrease by) bar times { parenthesis : { operation : bar minus 3 } }
 variable : bar double { operation : foo (divide by) 3 plus 4 times foo }
@@ -121,7 +121,7 @@ bar = foo /= 3 + 4 * foo
 
 Some languages recognize a difference between integers, doubles, floats, and other number types.
 Some do not.
-For feature parity between other languages, GLS recognizes only `int` and `double` as valid number types.
+For feature parity between other languages, Budgie recognizes only `int` and `double` as valid number types.
 `float`, `long`, `ushort`, and so on are not supported.
 
 ### Number Conversions
@@ -129,7 +129,7 @@ For feature parity between other languages, GLS recognizes only `int` and `doubl
 When you have a `double` and need an `int`, use the `math as int` command to truncate and convert to an `int`.
 It behaves similarly to `math floor` but returns an `int` instead of a `double`.
 
-```gls
+```budgie
 variable : rounded int { math as int : 3.5 }
 ```
 
@@ -141,10 +141,10 @@ variable : rounded int { math as int : 3.5 }
 All supported languages provide some amount of built-in math operations beyond the simple arithmetic operators.
 These are typically encapsulated in some kind of global `Math` object and/or system namespace that contains simple functions and constants.
 
-GLS abstracts away the differences in these "native" commands.
+Budgie abstracts away the differences in these "native" commands.
 For example:
 
-```gls
+```budgie
 math max : foo bar
 ```
 
@@ -155,7 +155,7 @@ All possible native math commands are given below.
 
 <table>
     <thead>
-        <th>GLS Syntax</th>
+        <th>Budgie Syntax</th>
         <th>Common Equivalent</th>
     </thead>
     <tbody>

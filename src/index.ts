@@ -1,4 +1,4 @@
-export { Gls } from "./Gls";
+export { Budgie } from "./Budgie";
 export { ICaseStyleConverter } from "./Rendering/Casing/CaseStyleConverter";
 export { CaseStyleConverterBag } from "./Rendering/Casing/CaseStyleConverterBag";
 export { NameSplitter } from "./Rendering/Casing/NameSplitter";
@@ -23,7 +23,7 @@ export { TypeScript } from "./Rendering/Languages/TypeScript";
 export { CommandNames } from "./Rendering/Names/CommandNames";
 export { KeywordNames } from "./Rendering/Names/KeywordNames";
 export { RenderContext } from "./Rendering/RenderContext";
-export { GlsFile } from "./Tokenization/GlsFile";
-export { IGlsNode } from "./Tokenization/Nodes/IGlsNode";
+export { BudgieFile } from "./Tokenization/BudgieFile";
+export { IBudgieNode } from "./Tokenization/Nodes/IBudgieNode";
 export { SourceFileParser } from "./Tokenization/Parsers/SourceFileParser";
 export { SourceLineParser } from "./Tokenization/Parsers/SourceLineParser";

@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as glob from "glob";
 
-import { Gls } from "../../lib/Gls";
+import { Budgie } from "../../lib/Budgie";
 
 interface IFileError {
     error: Error;
@@ -10,9 +10,9 @@ interface IFileError {
 }
 
 const blockEnd = "\n```";
-const blockStart = "```gls";
+const blockStart = "```budgie";
 
-const gls = new Gls("C#");
+const budgie = new Budgie("C#");
 
 const validateFileSection = (filePath: string, fileContents: string, start: number, fileErrors: IFileError[]) => {
     const codeStart = start + blockStart.length;
@@ -23,7 +23,7 @@ const validateFileSection = (filePath: string, fileContents: string, start: numb
         .split(/\r\n|\r|\n/g);
 
     try {
-        gls.convert(codeContents);
+        budgie.convert(codeContents);
     } catch (error) {
         fileErrors.push({
             error,
@@ -67,7 +67,7 @@ const validateAllFiles = () => {
         }
 
         hadError = true;
-        console.error(`Could not compile GLS code block in ${fileError.filePath} at position ${fileError.position}:`);
+        console.error(`Could not compile Budgie code block in ${fileError.filePath} at position ${fileError.position}:`);
         console.error(`${fileError.error.stack}\n`);
     }
 

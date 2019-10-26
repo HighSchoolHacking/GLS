@@ -5,7 +5,7 @@ import { OperatorNames } from "../../../Names/OperatorNames";
  */
 export class OperatorSyntax {
     /**
-     * Aliases of operators, from raw GLS syntax to this language's equivalents.
+     * Aliases of operators, from raw Budgie syntax to this language's equivalents.
      */
     public aliases: { [i: string]: string };
 

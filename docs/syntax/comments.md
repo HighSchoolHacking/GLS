@@ -1,14 +1,14 @@
 # Comments
 
 Most languages have two concepts of comments: single-line and multi-line.
-GLS supports both.
+Budgie supports both.
 
 ## Single Line Comments
 
 Use the `comment line` command.
 It takes in any number of parameters and directly outputs them.
 
-```gls
+```budgie
 comment line : Hello world!
 ```
 
@@ -20,7 +20,7 @@ comment line : Hello world!
 Also known as "block" comments, these are preceded by `comment block start` and ended with `comment block end`.
 Each line of actual block content comes from `comment block`, which, like `comment line`, directly prints all its parameters.
 
-```gls
+```budgie
 comment block start
 comment block : Hello world!
 comment block end

@@ -1,10 +1,10 @@
 # Omissions
 
-GLS intentionally targets a "lowest common denominator" of features for common OOP languages.
+Budgie intentionally targets a "lowest common denominator" of features for common OOP languages.
 
 ## Intentionally Missing Features
 
-If any target language doesn't reasonably support a feature, GLS cannot support that feature.
+If any target language doesn't reasonably support a feature, Budgie cannot support that feature.
 
 <table>
     <thead>

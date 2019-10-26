@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { FileMetadata } from "../FileMetadata";
 import { CaseStyle } from "../Languages/Casing/CaseStyle";
 import { LineResults } from "../LineResults";
@@ -51,8 +51,8 @@ export class FileStartCommand extends Command {
         );
 
         for (let line of source) {
-            line = GlsUtilities.stringReplaceAll(line, "{0}", fileName);
-            line = GlsUtilities.stringReplaceAll(line, "{1}", packagePathJoined);
+            line = BudgieUtilities.stringReplaceAll(line, "{0}", fileName);
+            line = BudgieUtilities.stringReplaceAll(line, "{1}", packagePathJoined);
 
             output.push(new CommandResult(line, 0));
         }

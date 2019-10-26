@@ -3,8 +3,8 @@
     "description": "A unified syntax that compiles into your favorite OOP languages.",
     "email": "me@joshuakgodlberg.com",
     "license": "MIT",
-    "name": "Gls",
+    "name": "Budgie",
     "repositoryType": "git",
-    "url": "https://github.com/general-language-syntax/GLS",
-    "version": "0.3.24"
+    "url": "https://github.com/budgielang/budgie",
+    "version": "0.3.26"
 }

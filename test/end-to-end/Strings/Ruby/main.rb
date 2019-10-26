@@ -1,5 +1,5 @@
 # Initialization
-haystack = "Hello, GLS!"
+haystack = "Hello, Budgie!"
 puts haystack
 
 # Concatenation
@@ -12,7 +12,7 @@ first = text[0]
 puts "%s's first character is %c." % [text, first]
 
 # Searching
-needle = "GLS"
+needle = "Budgie"
 firstIndexOf = haystack.index(needle)
 secondIndexOf = haystack.index(needle, firstIndexOf + needle.length)
 

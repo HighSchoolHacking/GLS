@@ -8,7 +8,7 @@ Use `if string to double start` and `if string to int start` to convert string(s
 Each takes in any number of repeating parameters: a string to convert and the numeric type to try to store it in.
 Code before the next respective `if string to double end` or `if string to int end` will run only if the conversion was successful.
 
-```gls
+```budgie
 if string to double start : "3.5" asDouble
     comment line : ...
 if string to double end

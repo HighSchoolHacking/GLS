@@ -1,13 +1,13 @@
-import { GlsFile } from "../GlsFile";
-import { IGlsNode } from "../Nodes/IGlsNode";
+import { BudgieFile } from "../BudgieFile";
+import { IBudgieNode } from "../Nodes/IBudgieNode";
 import { SourceLineParser } from "./SourceLineParser";
 
 /**
- * Parses lines of raw source syntax into GLS files.
+ * Parses lines of raw source syntax into Budgie files.
  */
 export class SourceFileParser {
     /**
-     * Parses individual lines of raw syntax into GLS nodes.
+     * Parses individual lines of raw syntax into Budgie nodes.
      */
     private readonly sourceLineParser: SourceLineParser;
 
@@ -19,18 +19,18 @@ export class SourceFileParser {
     }
 
     /**
-     * Parses lines of raw source syntax into GLS nodes.
+     * Parses lines of raw source syntax into Budgie nodes.
      *
      * @param rawLines   Lines of raw source syntax.
-     * @returns Parsed file of GLS nodes.
+     * @returns Parsed file of Budgie nodes.
      */
-    public parseLines(rawLines: string[]): GlsFile {
-        const nodes: IGlsNode[] = [];
+    public parseLines(rawLines: string[]): BudgieFile {
+        const nodes: IBudgieNode[] = [];
 
         for (const rawLine of rawLines) {
             nodes.push(this.sourceLineParser.parseLine(rawLine));
         }
 
-        return new GlsFile(nodes);
+        return new BudgieFile(nodes);
     }
 }

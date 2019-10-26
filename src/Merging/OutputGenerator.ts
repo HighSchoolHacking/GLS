@@ -22,7 +22,7 @@ export class OutputMerger {
     /**
      * Generates language output by merging a file's line results.
      *
-     * @param fileLineResults   GLS line results from a file.
+     * @param fileLineResults   Budgie line results from a file.
      * @return Language output from the line results.
      */
     public mergeFileLineResults(fileLineResults: LineResults[]): string[] {

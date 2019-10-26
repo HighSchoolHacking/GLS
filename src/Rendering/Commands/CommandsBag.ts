@@ -5,7 +5,7 @@ import { Command } from "./Command";
  */
 export class CommandsBag {
     /**
-     * Globally known commands, keyed by their GLS alias.
+     * Globally known commands, keyed by their Budgie alias.
      */
     private commands: { [i: string]: Command };
 
@@ -53,7 +53,7 @@ export class CommandsBag {
     }
 
     /**
-     * @returns Commands, keyed by their GLS aliases.
+     * @returns Commands, keyed by their Budgie aliases.
      */
     public getCommands(): { [i: string]: Command } {
         return this.commands;

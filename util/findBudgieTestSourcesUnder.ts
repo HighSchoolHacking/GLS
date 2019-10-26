@@ -1,5 +1,4 @@
 import * as fs from "fs";
-import * as minimatch from "minimatch";
 import * as path from "path";
 
 /**
@@ -9,7 +8,7 @@ import * as path from "path";
  * @param inclusions   Command groups to run, if not all.
  * @returns Tests for each command in a directory.
  */
-export const findGlsTestSourcesUnder = (rootPath: string): Map<string, string[]> => {
+export const findBudgieTestSourcesUnder = (rootPath: string): Map<string, string[]> => {
     const childrenNames = fs.readdirSync(rootPath);
     const tests = new Map<string, string[]>();
 
@@ -18,8 +17,8 @@ export const findGlsTestSourcesUnder = (rootPath: string): Map<string, string[]>
             childName,
             fs
                 .readdirSync(path.resolve(rootPath, childName))
-                .filter((testFileName) => testFileName.indexOf(".gls") !== -1)
-                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".gls"))),
+                .filter((testFileName) => testFileName.indexOf(".bg") !== -1)
+                .map((testFileName) => testFileName.substring(0, testFileName.indexOf(".bg"))),
         );
     }
 

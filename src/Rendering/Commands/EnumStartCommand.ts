@@ -1,4 +1,4 @@
-import { GlsUtilities } from "../../GlsUtilities";
+import { BudgieUtilities } from "../../BudgieUtilities";
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
 import { KeywordNames } from "../Names/KeywordNames";
@@ -44,9 +44,9 @@ export class EnumStartCommand extends Command {
         let lineStart = "";
 
         if (isExported) {
-            lineStart += GlsUtilities.stringReplaceAll(this.language.syntax.enums.declareExternal, "{0}", remainingParameters[0]);
+            lineStart += BudgieUtilities.stringReplaceAll(this.language.syntax.enums.declareExternal, "{0}", remainingParameters[0]);
         } else {
-            lineStart += GlsUtilities.stringReplaceAll(this.language.syntax.enums.declareInternal, "{0}", remainingParameters[0]);
+            lineStart += BudgieUtilities.stringReplaceAll(this.language.syntax.enums.declareInternal, "{0}", remainingParameters[0]);
         }
 
         addLineEnder(lines, lineStart, 1);

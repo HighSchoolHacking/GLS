@@ -1,11 +1,11 @@
 # Static Variables
 
-GLS syntax for static variables behaves almost identically to the member equivalents.
+Budgie syntax for static variables behaves almost identically to the member equivalents.
 Accessing them takes in the class name instead of an instance reference.
 
 Additionally, static members may declare an initial value as a final parameter.
 
-```gls
+```budgie
 class start : AnglePrinter
     static variable declare : private rightAlias string "right"
     static variable declare : private rightAmount int 90

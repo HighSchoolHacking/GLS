@@ -3,16 +3,16 @@ import "mocha";
 
 import { BlankNode } from "../../../../lib/Tokenization/Nodes/BlankNode";
 import { CommandNode } from "../../../../lib/Tokenization/Nodes/CommandNode";
-import { IGlsNode } from "../../../../lib/Tokenization/Nodes/IGlsNode";
+import { IBudgieNode } from "../../../../lib/Tokenization/Nodes/IBudgieNode";
 import { TextNode } from "../../../../lib/Tokenization/Nodes/TextNode";
 import { SourceLineParser } from "../../../../lib/Tokenization/Parsers/SourceLineParser";
 
 class TestCase {
     public descriptor: string;
     public rawLine: string;
-    public expected: IGlsNode;
+    public expected: IBudgieNode;
 
-    public constructor(descriptor: string, rawLine: string, expected: IGlsNode) {
+    public constructor(descriptor: string, rawLine: string, expected: IBudgieNode) {
         this.descriptor = descriptor;
         this.rawLine = rawLine;
         this.expected = expected;

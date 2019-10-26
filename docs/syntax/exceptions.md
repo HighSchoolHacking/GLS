@@ -2,14 +2,14 @@
 
 All languages have some way of representing a breaking error state, or exception, that indicates control flow must be halted.
 Exceptions may be created and thrown, also known as raised, and later caught, also known as rescued, by some calling code.
-GLS refers to these operations as catching and throwing exceptions.
+Budgie refers to these operations as catching and throwing exceptions.
 
 ## Throwing
 
-The built-in exception class for an output language is represented in GLS by the `exception` command, which receives a single string as input.
+The built-in exception class for an output language is represented in Budgie by the `exception` command, which receives a single string as input.
 It can be thrown with the `throw` command.
 
-```gls
+```budgie
 throw : { exception } ("Oh no!")
 ```
 
@@ -33,10 +33,10 @@ All supported languages have some variant of the following three code blocks:
 * Catch: handles any error thrown by the try section
 * Finally: runs regardless of whether an error was thrown
 
-Each of these are considered their own distinct blocks with a `start` and `end` in GLS.
+Each of these are considered their own distinct blocks with a `start` and `end` in Budgie.
 The `catch` section also takes in the name of a general exception.
 
-```gls
+```budgie
 try start
     throw : { exception } ("Oh no!")
 try end

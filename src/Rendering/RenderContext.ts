@@ -1,11 +1,11 @@
-import { GlsFile } from "../Tokenization/GlsFile";
+import { BudgieFile } from "../Tokenization/BudgieFile";
 import { CommandNode } from "../Tokenization/Nodes/CommandNode";
 import { TextNode } from "../Tokenization/Nodes/TextNode";
 import { CaseStyleConverterBag } from "./Casing/CaseStyleConverterBag";
 import { NameSplitter } from "./Casing/NameSplitter";
 import { CommandsBagFactory } from "./Commands/CommandsBagFactory";
 import { FileMetadata } from "./FileMetadata";
-import { GlsNodeRenderer } from "./GlsNodeRenderer";
+import { BudgieNodeRenderer } from "./BudgieNodeRenderer";
 import { ImportsPrinter } from "./Imports/ImportsPrinter";
 import { ImportsStore } from "./Imports/ImportsStore";
 import { CaseStyle } from "./Languages/Casing/CaseStyle";
@@ -14,7 +14,7 @@ import { LineResults } from "./LineResults";
 import { LineResultsGenerator } from "./LineResultsGenerator";
 
 /**
- * Backing command context for converting GLS nodes to text.
+ * Backing command context for converting Budgie nodes to text.
  */
 export class RenderContext {
     /**
@@ -28,12 +28,12 @@ export class RenderContext {
     private fileMetadata: FileMetadata;
 
     /**
-     * The language this context is converting GLS code into.
+     * The language this context is converting Budgie code into.
      */
     private language: Language;
 
     /**
-     * Generates line results from GLS nodes.
+     * Generates line results from Budgie nodes.
      */
     private lineResultsGenerator: LineResultsGenerator;
 
@@ -43,14 +43,14 @@ export class RenderContext {
     private nameSplitter: NameSplitter;
 
     /**
-     * Renders GLS nodes into line results.
+     * Renders Budgie nodes into line results.
      */
-    private nodeRenderer: GlsNodeRenderer;
+    private nodeRenderer: BudgieNodeRenderer;
 
     /**
      * Initializes a new instance of the RenderContext class.
      *
-     * @param language   The language this context is converting GLS code into.
+     * @param language   The language this context is converting Budgie code into.
      */
     public constructor(language: Language) {
         this.language = language;
@@ -58,7 +58,7 @@ export class RenderContext {
         this.caseStyleConverterBag = new CaseStyleConverterBag();
         this.fileMetadata = FileMetadata.defaultFileMetadata;
         this.nameSplitter = new NameSplitter();
-        this.nodeRenderer = new GlsNodeRenderer(CommandsBagFactory.forContext(this));
+        this.nodeRenderer = new BudgieNodeRenderer(CommandsBagFactory.forContext(this));
 
         this.lineResultsGenerator = new LineResultsGenerator(
             this.language.syntax.files,
@@ -72,17 +72,17 @@ export class RenderContext {
     }
 
     /**
-     * Converts a GLS file to its line results.
+     * Converts a Budgie file to its line results.
      *
-     * @param glsFile   GLS file to convert.
+     * @param budgieFile   Budgie file to convert.
      * @returns Equivalent lines of code in the context language.
      */
-    public convert(glsFile: GlsFile): LineResults[] {
+    public convert(budgieFile: BudgieFile): LineResults[] {
         const allLineResults: LineResults[] = [];
         const importsStore = new ImportsStore();
 
         // Add line results in order, recording any added imports they need.
-        for (const node of glsFile.getNodes()) {
+        for (const node of budgieFile.getNodes()) {
             const lineResults: LineResults = this.nodeRenderer.renderNode(node);
 
             allLineResults.push(lineResults);
@@ -95,7 +95,7 @@ export class RenderContext {
     /**
      * Converts a command with pre-parsed arguments.
      *
-     * @param lineParsed   A parsed line from raw GLS syntax.
+     * @param lineParsed   A parsed line from raw Budgie syntax.
      * @returns The equivalent lines of code in the language.
      */
     public convertParsed(parametersRaw: string[]): LineResults {
@@ -139,7 +139,7 @@ export class RenderContext {
     }
 
     /**
-     * @returns The language this context is converting GLS code into.
+     * @returns The language this context is converting Budgie code into.
      */
     public getLanguage(): Language {
         return this.language;

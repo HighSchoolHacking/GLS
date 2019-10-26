@@ -1,19 +1,19 @@
 import { BlankNode } from "../Nodes/BlankNode";
 import { CommandNode } from "../Nodes/CommandNode";
-import { IGlsNode } from "../Nodes/IGlsNode";
+import { IBudgieNode } from "../Nodes/IBudgieNode";
 import { TextNode } from "../Nodes/TextNode";
 import { TextParsing } from "./TextParsing";
 
 /**
- * Parses individual lines of raw syntax into GLS nodes.
+ * Parses individual lines of raw syntax into Budgie nodes.
  */
 export class SourceLineParser {
     /**
-     * Parses a line of raw source syntax into a GLS nodes.
+     * Parses a line of raw source syntax into a Budgie nodes.
      *
      * @param rawLine   Raw line of source syntax.
      */
-    public parseLine(rawLine: string): IGlsNode {
+    public parseLine(rawLine: string): IBudgieNode {
         rawLine = rawLine.trim();
         if (rawLine === "") {
             return new BlankNode();
@@ -25,7 +25,7 @@ export class SourceLineParser {
         }
 
         const command: string = rawLine.substring(0, colonIndex).trim();
-        const args: IGlsNode[] = [];
+        const args: IBudgieNode[] = [];
 
         this.parseCommandArgs(rawLine, colonIndex + 1, args);
 
@@ -41,7 +41,7 @@ export class SourceLineParser {
      * @param withinParenthesis   Whether this is within a ( parenthesis ) section
      * @returns Next starting index after the last added node.
      */
-    private parseCommandArgs(rawLine: string, start: number, nodes: IGlsNode[]): number {
+    private parseCommandArgs(rawLine: string, start: number, nodes: IBudgieNode[]): number {
         for (let i = start; i < rawLine.length; i += 1) {
             // Sub-command start
             if (rawLine[i] === "{") {
@@ -80,7 +80,7 @@ export class SourceLineParser {
      * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseSubCommand(rawLine: string, i: number, nodes: IGlsNode[]): number {
+    private parseSubCommand(rawLine: string, i: number, nodes: IBudgieNode[]): number {
         // Move past the starting "{" or "{ "
         i = TextParsing.getNextStartOfWordIndex(rawLine, i + 1);
 
@@ -99,7 +99,7 @@ export class SourceLineParser {
         }
 
         // ":" (command args start)
-        const commandArgs: IGlsNode[] = [];
+        const commandArgs: IBudgieNode[] = [];
         i = this.parseCommandArgs(rawLine, i + 1, commandArgs);
 
         nodes.push(new CommandNode(commandName, commandArgs));
@@ -115,7 +115,7 @@ export class SourceLineParser {
      * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseParenthesis(rawLine: string, i: number, nodes: IGlsNode[]): number {
+    private parseParenthesis(rawLine: string, i: number, nodes: IBudgieNode[]): number {
         const nextEndOfWordIndex = TextParsing.getNextEndOfParenthesisWordIndex(rawLine, i);
         const textRaw = rawLine.substring(i, nextEndOfWordIndex);
         const text = TextParsing.removeBackslashesFromWord(textRaw);
@@ -133,7 +133,7 @@ export class SourceLineParser {
      * @param nodes   Collection of nodes to add the command to.
      * @returns Next starting index after the last added node.
      */
-    private parseTextCommand(rawArgs: string, i: number, nodes: IGlsNode[]): number {
+    private parseTextCommand(rawArgs: string, i: number, nodes: IBudgieNode[]): number {
         const nextEndOfWordIndex = TextParsing.getNextEndOfWordIndex(rawArgs, i);
         const text = rawArgs.substring(i, nextEndOfWordIndex);
 

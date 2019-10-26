@@ -19,7 +19,7 @@ export class ClassSyntax {
     public abstractsSupported: boolean;
 
     /**
-     * Aliases of types, from raw GLS syntax to this language's equivalents.
+     * Aliases of types, from raw Budgie syntax to this language's equivalents.
      */
     public aliases: { [i: string]: string };
 

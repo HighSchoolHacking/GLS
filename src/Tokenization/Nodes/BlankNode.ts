@@ -1,6 +1,6 @@
-import { IGlsNode } from "./IGlsNode";
+import { IBudgieNode } from "./IBudgieNode";
 
 /**
- * GLS node for a blank line.
+ * Budgie node for a blank line.
  */
-export class BlankNode implements IGlsNode {}
+export class BlankNode implements IBudgieNode {}
