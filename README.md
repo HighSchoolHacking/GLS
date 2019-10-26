@@ -30,10 +30,10 @@ See [budgie-cli](https://github.com/budgielang/budgie-cli).
 
 ### Code
 
-`npm install budgielang`
+`npm install budgie`
 
 ```javascript
-import { Budgie } from "budgielang";
+import { Budgie } from "budgie";
 
 const budgie = new Budgie("C#");
 
@@ -101,4 +101,4 @@ If you'd like to contribute to Budgie, see [Development.md](https://github.com/b
 
 > Requires Node >=12
 
-💖 Many thanks to [@matthojo](https://github.com/matthojo) for allowing use of the `nudgie` npm package name!
+💖 Many thanks to [@matthojo](https://github.com/matthojo) for allowing use of the `budgie` npm package name!
