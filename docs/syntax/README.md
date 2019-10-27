@@ -18,11 +18,11 @@ This will compile to:
 Many commands, including `print`, may take in multiple arguments:
 
 ```budgie
-print : "First" "second"
+print : "Chirp" "chirp!"
 ```
 
 * Function: `print`
-* Arguments: `"First"`, `"second"`
+* Arguments: `"Chirp"`, `"chirp!"`
 
 ## Parenthesis
 
