@@ -21,7 +21,7 @@ Budgie can be used as a command-line app or via `import`/`require`.
 To convert `file.bg` to `file.py`:
 
 ```shell
-npm install budgie budgie-cli --global
+npm install budgie-cli --global
 
 budgie --language Python file.bg
 ```
