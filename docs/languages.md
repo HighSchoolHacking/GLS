@@ -51,10 +51,6 @@ These languages each need to be investigated and assigned a higher tier.
         <td><a href="https://github.com/budgielang/budgie/issues/191">#191</a></td>
     </tr>
     <tr>
-        <th>PHP</th>
-        <td><a href="https://github.com/budgielang/budgie/issues/102">#102</a></td>
-    </tr>
-    <tr>
         <th>Powershell</th>
         <td><a href="https://github.com/budgielang/budgie/issues/103">#103</a></td>
     </tr>
@@ -74,33 +70,44 @@ These languages each need to be investigated and assigned a higher tier.
 
 ## Unsupported
 
+Some languages will never be able to be accurately compiled to by Budgie because of severe structural abnormalities in the language's design.
+They are so different from the norm that any attempt to output them from Budgie would be horrendously overcomplicated and inaccurate.
+
+These languages will never be output by Budgie for the following major reasons _(among others)_:
+
 <table>
     <thead>
         <th>Language</th>
+        <th>Unusual Arrays</th>
         <th>Unusual Classes</th>
         <th>Unusual Returns</th>
     </thead>
     <tr>
         <th>C</th>
+        <td></td>
         <td>✓</td>
         <td></td>
     </tr>
     <tr>
         <th>Go</th>
+        <td></td>
         <td>✓</td>
         <td></td>
     </tr>
     <tr>
         <th>Matlab</th>
         <td></td>
+        <td></td>
         <td>✓</td>
     </tr>
+    <tr>
+        <th>PHP</th>
+        <td><a href="https://github.com/budgielang/budgie/issues/102">✓</a></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tr>
 </table>
-
-Some languages will never be able to be accurately compiled to by Budgie because of severe structural abnormalities in the language's design.
-These languages are so different from the norm that any attempt to output them from Budgie would be horrendously overcomplicated and inaccurate.
-
-These languages will never be output by Budgie for the following common reasons _(among others)_:
 
 ## Best Guess
 

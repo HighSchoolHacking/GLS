@@ -78,7 +78,7 @@ Budgie is just shy of **0.4**.
             <td>Working C#, Java, JavaScript, Ruby, Python, and TypeScript output.</td>
         </tr>
         <tr>
-            <th>Powershell, PHP, Misc.</th>
+            <th>Haxe, Powershell, Misc.</th>
             <td>0.6</td>
             <td>Onboard or reject those languages and other possibilities.</td>
         </tr>
