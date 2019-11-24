@@ -3,6 +3,11 @@
  */
 export class ParameterSyntax {
     /**
+     * Characters to put before all variable names.
+     */
+    public namePrefix: string;
+
+    /**
      * Whether type declaration occurs after the array name.
      */
     public restDeclarationAfter: boolean;

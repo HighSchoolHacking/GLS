@@ -125,7 +125,7 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): LineResults {
-        const parameterName: string = this.language.syntax.variables.namePrefix + parameters[i];
+        const parameterName: string = this.language.syntax.parameters.namePrefix + parameters[i];
         if (!this.language.syntax.variables.declarationRequired) {
             return LineResults.newSingleLine(parameterName);
         }

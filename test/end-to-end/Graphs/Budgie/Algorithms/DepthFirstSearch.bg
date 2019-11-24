@@ -5,40 +5,40 @@ file start : Graphs Algorithms DepthFirstSearch
     standalone functions declare start : export DepthFirstSearch
         standalone function declare start : public { generic type : UnweightedDepthFirstSearch T } { list type : { generic type : UnweightedNode T } } start { generic type : UnweightedNode T }
             variable declare : nodes { list type : { generic type : UnweightedNode T } } { list new : { generic type : UnweightedNode T } }
-            variable declare : visited { set type : { generic type : UnweightedNode T } } { set new : { generic type : UnweightedNode T } }
+            variable declare : visitedIds { set type : { generic type : UnweightedNode T } } { set new : { generic type : UnweightedNode T } }
 
-            standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch { variable : start } { variable : nodes } { variable : visited }
+            standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch { variable : start } { variable : nodes } { variable : visitedIds }
 
             return : { variable : nodes }
         standalone function declare end
 
-        standalone function declare start : private { generic type : TraverseUnweightedDepthFirstSearch T } void start { generic type : UnweightedNode T } nodes { list type : { generic type : UnweightedNode T } } visited { set type : { generic type : UnweightedNode T } }
+        standalone function declare start : private { generic type : TraverseUnweightedDepthFirstSearch T } void start { generic type : UnweightedNode T } nodes { list type : { generic type : UnweightedNode T } } visitedIds { set type : { generic type : UnweightedNode T } }
             list push : { variable : nodes } { variable : start }
-            set add : { variable : visited } { variable : start }
+            set add : { variable : visitedIds } { member variable : public { variable : start } Id }
 
             for each start : { member function : public { variable : start } GetNeighborsInOrder } neighbor { generic type : UnweightedNode T }
-                if start : { not : { set contains : { variable : visited } { variable : neighbor } } }
-                    standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch { variable : neighbor } { variable : nodes } { variable : visited }
+                if start : { not : { set contains : { variable : visitedIds } { { member variable : public { variable : neighbor } Id } } }
+                    standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch { variable : neighbor } { variable : nodes } { variable : visitedIds }
                 if end
             for each end
         standalone function declare end
 
         standalone function declare start : public { generic type : WeightedDepthFirstSearch T } { list type : { generic type : WeightedNode T } } start { generic type : WeightedNode T }
             variable declare : nodes { list type : { generic type : WeightedNode T } } { list new : { generic type : WeightedNode T } }
-            variable declare : visited { set type : { generic type : WeightedNode T } } { set new : { generic type : WeightedNode T } }
+            variable declare : visitedIdsIds { set type : number } { set new : number }
 
-            standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { variable : start } { variable : nodes } { variable : visited }
+            standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { variable : start } { variable : nodes } { variable : visitedIdsIds }
 
             return : { variable : nodes }
         standalone function declare end
 
-        standalone function declare start : private { generic type : TraverseWeightedDepthFirstSearch T } void start { generic type : WeightedNode T } nodes { list type : { generic type : WeightedNode T } } visited { set type : { generic type : WeightedNode T } }
+        standalone function declare start : private { generic type : TraverseWeightedDepthFirstSearch T } void start { generic type : WeightedNode T } nodes { list type : { generic type : WeightedNode T } } visitedIds { set type : { generic type : WeightedNode T } }
             list push : { variable : nodes } { variable : start }
-            set add : { variable : visited } { variable : start }
+            set add : { variable : visitedIds } { member variable : public { variable : start } Id }
 
             for each start : { member function : public { variable : start } GetNeighborsInOrder } node { generic type : WeightedNode T }
-                if start : { not : { set contains : { variable : visited } { variable : node } } }
-                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { variable : node } { variable : nodes } { variable : visited }
+                if start : { not : { set contains : { variable : visitedIds } { variable : node } } }
+                    standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch { variable : node } { variable : nodes } { variable : visitedIds }
                 if end
             for each end
         standalone function declare end

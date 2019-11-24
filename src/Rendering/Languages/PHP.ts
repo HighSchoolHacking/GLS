@@ -160,14 +160,14 @@ export class PHP extends Language {
     protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
         variables.access = "->";
         variables.privateCase = CaseStyle.CamelCase;
-        variables.privatePrefix = "$";
-        variables.protectedPrefix = "$";
-        variables.publicPrefix = "$";
+        variables.privatePrefix = "";
+        variables.protectedPrefix = "";
+        variables.publicPrefix = "";
 
-        variables.private = "private ";
-        variables.protected = "protected ";
+        variables.private = "private $";
+        variables.protected = "protected $";
         variables.protectedCase = CaseStyle.CamelCase;
-        variables.public = "public ";
+        variables.public = "public $";
         variables.publicCase = CaseStyle.CamelCase;
     }
 
@@ -637,6 +637,7 @@ export class PHP extends Language {
      * @param parameters    A property container for metadata on parameters
      */
     protected generateParameterSyntax(parameters: ParameterSyntax): void {
+        parameters.namePrefix = "$";
         parameters.restDeclarationAfter = false;
         parameters.restDeclarationType = false;
         parameters.restKeywordLeft = "*";
@@ -661,14 +662,9 @@ export class PHP extends Language {
      * @param parameters   A property container for metadata on sets.
      */
     protected generateSetSyntax(sets: SetSyntax): void {
-        sets.add = new NativeCallSyntax("[spl_object_hash(", NativeCallScope.Operator, NativeCallType.FloatingRight).withSeparator(
-            ")] = 1",
-        );
+        sets.add = new NativeCallSyntax("[", NativeCallScope.Operator, NativeCallType.FloatingRight).withSeparator("] = 1");
         sets.className = "[";
-        sets.contains = new NativeCallSyntax("array_key_exists", NativeCallScope.Static, NativeCallType.FunctionReverse).withArguments([
-            "spl_object_hash({0})",
-            "{0}",
-        ]);
+        sets.contains = new NativeCallSyntax("array_key_exists", NativeCallScope.Static, NativeCallType.FunctionReverse);
         sets.initializeAsNew = false;
         sets.initializeStart = "";
         sets.requiredImports = [];

@@ -5,8 +5,8 @@ class Edge {
     public $to;
 
     function __construct($distance, $from, $to) {
-        $this->$distance = distance;
-        $this->$from = from;
-        $this->$to = to;
+        $this->distance = distance;
+        $this->from = from;
+        $this->to = to;
     }
 }

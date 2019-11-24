@@ -9,7 +9,7 @@ file start : Graphs Testing Tests
             variable declare : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
 
             for each start : { variable : order } key string
-                variable declare : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } { variable : key } }
+                variable declare : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } { variable : key } { variable : key } }
                 dictionary set : { variable : nodes } { variable : key } { variable : node }
             for each end
 

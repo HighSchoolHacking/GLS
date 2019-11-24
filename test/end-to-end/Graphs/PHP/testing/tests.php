@@ -8,7 +8,7 @@ function testUnweighted() {
     $nodes = [];
 
     foreach ($order as $key) {
-        $node = new UnweightedNode($key);
+        $node = new UnweightedNode($key, $key);
         $nodes[$key] = $node;
     }
 
@@ -31,7 +31,7 @@ function testUnweighted() {
     }
 
     foreach (unweightedDepthFirstSearch($nodes["root"]) as $node) {
-        echo $node->$data . "\n";
+        echo $node->data . "\n";
     }
 }
 

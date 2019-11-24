@@ -4,40 +4,40 @@ require_once __DIR__ . '/../data/weighted_node.php';
 
 function unweightedDepthFirstSearch($start) {
     $nodes = [];
-    $visited = [];
+    $visitedIds = [];
 
-    traverseUnweightedDepthFirstSearch($start, $nodes, $visited);
+    traverseUnweightedDepthFirstSearch($start, $nodes, $visitedIds);
 
     return $nodes;
 }
 
-function traverseUnweightedDepthFirstSearch($start, $nodes, $visited) {
+function traverseUnweightedDepthFirstSearch($start, $nodes, $visitedIds) {
     array_push($nodes, $start);
-    $visited[spl_object_hash($start)] = 1;
+    $visitedIds[$start->id] = 1;
 
     foreach ($start->getNeighborsInOrder() as $neighbor) {
-        if (!array_key_exists(spl_object_hash($neighbor), $visited)) {
-            traverseUnweightedDepthFirstSearch($neighbor, $nodes, $visited);
+        if (!array_key_exists($neighbor->id, $visitedIds)) {
+            traverseUnweightedDepthFirstSearch($neighbor, $nodes, $visitedIds);
         }
     }
 }
 
 function weightedDepthFirstSearch($start) {
     $nodes = [];
-    $visited = [];
+    $visitedIdsIds = [];
 
-    traverseWeightedDepthFirstSearch($start, $nodes, $visited);
+    traverseWeightedDepthFirstSearch($start, $nodes, $visitedIdsIds);
 
     return $nodes;
 }
 
-function traverseWeightedDepthFirstSearch($start, $nodes, $visited) {
+function traverseWeightedDepthFirstSearch($start, $nodes, $visitedIds) {
     array_push($nodes, $start);
-    $visited[spl_object_hash($start)] = 1;
+    $visitedIds[$start->id] = 1;
 
     foreach ($start->getNeighborsInOrder() as $node) {
-        if (!array_key_exists(spl_object_hash($node), $visited)) {
-            traverseWeightedDepthFirstSearch($node, $nodes, $visited);
+        if (!array_key_exists($node, $visitedIds)) {
+            traverseWeightedDepthFirstSearch($node, $nodes, $visitedIds);
         }
     }
 }
