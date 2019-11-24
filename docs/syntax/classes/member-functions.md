@@ -10,11 +10,11 @@ class start : Announcer
     member variable declare : private Greeting string
 
     member function declare start : public Greet void name string
-        print : { concatenate : { member variable : private { this } Greeting } (", ") name "!" }
+        print : { concatenate : { member variable declare : private { this } Greeting } (", ") name "!" }
     member function declare end
 
     constructor start : public Announcer greeting string
-        operation : { member variable : private { this } Greeting } equals greeting
+        operation : { member variable declare : private { this } Greeting } equals greeting
     constructor end
 class end
 ```

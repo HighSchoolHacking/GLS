@@ -26,7 +26,7 @@ standalone functions declare start : export TextUtilities
     standalone function declare end
 
     standalone function declare start : private RepeatText string text string times int
-        variable : combined string ""
+        variable declare : combined string ""
 
         for numbers start : i int 0 times
             operation : combined (increase by) text
@@ -85,7 +85,7 @@ It takes in the name of the group in PascalCase followed by any number of standa
 ```budgie
 import local : Utilities Text use { import standalone functions : TextUtilities RepeatText }
 
-variable : repeated string { standalone function : public TextUtilities RepeatText "foo" 7 }
+variable declare : repeated string { standalone function : public TextUtilities RepeatText "foo" 7 }
 ```
 
 In C#:

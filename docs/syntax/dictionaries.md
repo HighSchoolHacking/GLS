@@ -7,10 +7,10 @@ Create a new dictionary with `dictionary new`, which takes in the key and value 
 Accessing members is done with `dictionary get` and setting is done with with `dictionary set`.
 
 ```budgie
-variable : counts { dictionary type : string int } { dictionary new : string int }
+variable declare : counts { dictionary type : string int } { dictionary new : string int }
 dictionary set : counts "apple" 3
 
-variable : apple string { dictionary get : counts "apple" }
+variable declare : apple string { dictionary get : counts "apple" }
 ```
 
 In C#:

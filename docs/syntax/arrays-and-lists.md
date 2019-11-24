@@ -35,7 +35,7 @@ array set : container 1 "apple"
 Get the length of an array with `array length`, which takes in a name of an array.
 
 ```budgie
-variable : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
+variable declare : fruits { array type : string } { array new : string "apple" "banana" "cherry" }
 
 print : { string format : ("There are {0} fruits.") { array length : fruits } int }
 print : { string format : ("The first fruit is {0}.") { array get : fruits 0 } string }
@@ -65,8 +65,8 @@ Creating arrays of generic types with the `array new generic` and `array new gen
 They're used the same as their non-generic counterparts.
 
 ```budgie
-variable : items { array type : T } { array new generic : T one two three }
-variable : storage { array type : T } { array new sized generic : T 10 }
+variable declare : items { array type : T } { array new generic : T one two three }
+variable declare : storage { array type : T } { array new sized generic : T 10 }
 ```
 
 In C#:
@@ -112,7 +112,7 @@ Similar to arrays, create a new list with `list new`, declare a list type with `
 Add a single item to a list with `list pop`, which takes in a name of a list and a new item, or add a full list to another list with `list add list`, which takes in the name of an existing list and a second list to add to the existing list.
 
 ```budgie
-variable : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
+variable declare : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
 
 list push : fruits "dragonberry"
 list add list : fruits { list new : string "elderberry" "fig" }

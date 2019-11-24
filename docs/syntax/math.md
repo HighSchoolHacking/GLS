@@ -98,7 +98,7 @@ It takes a single argument and wraps it in `()` parentheses.
 ```budgie
 operation : foo times 2
 operation : foo (decrease by) bar times { parenthesis : { operation : bar minus 3 } }
-variable : bar double { operation : foo (divide by) 3 plus 4 times foo }
+variable declare : bar double { operation : foo (divide by) 3 plus 4 times foo }
 ```
 
 In C#:
@@ -130,7 +130,7 @@ When you have a `double` and need an `int`, use the `math as int` command to tru
 It behaves similarly to `math floor` but returns an `int` instead of a `double`.
 
 ```budgie
-variable : rounded int { math as int : 3.5 }
+variable declare : rounded int { math as int : 3.5 }
 ```
 
 * In C#: `int rounded = (int)3.5;`

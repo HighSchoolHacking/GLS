@@ -16,8 +16,8 @@ class start : Person
     member variable declare : private age double
 
     constructor start : public Person name string age double
-        operation : { member variable : private { this } name } equals name
-        operation : { member variable : private { this } age } equals age
+        operation : { member variable declare : private { this } name } equals name
+        operation : { member variable declare : private { this } age } equals age
     constructor end
 class end
 ```

@@ -5,11 +5,11 @@ file start : Graphs Testing Tests
 
     standalone functions declare start : export Tests
         standalone function declare start : public TestUnweighted void
-            variable : order { array type : string } { array new : string "root" "apple" "banana" "red" "yellow" }
-            variable : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
+            variable declare : order { array type : string } { array new : string "root" "apple" "banana" "red" "yellow" }
+            variable declare : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
 
             for each start : order key string
-                variable : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } key }
+                variable declare : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } key }
                 dictionary set : nodes key node
             for each end
 
@@ -22,8 +22,8 @@ file start : Graphs Testing Tests
             dictionary new end
 
             for each start : order key string
-                variable : node { generic type : UnweightedNode string } { dictionary get : nodes key }
-                variable : neighborKeys { array type : string } { dictionary get : adjacencies key }
+                variable declare : node { generic type : UnweightedNode string } { dictionary get : nodes key }
+                variable declare : neighborKeys { array type : string } { dictionary get : adjacencies key }
 
                 for each start : neighborKeys neighborKey string
                     member function : public node AddNeighbor { dictionary get : nodes neighborKey }
@@ -32,7 +32,7 @@ file start : Graphs Testing Tests
             for each end
 
             for each start : { standalone function : public DepthFirstSearch UnweightedDepthFirstSearch { dictionary get : nodes "root" } } node { generic type : UnweightedNode string }
-                print : { member variable : public node Data }
+                print : { member variable declare : public node Data }
             for each end
         standalone function declare end
 

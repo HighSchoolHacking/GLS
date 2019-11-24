@@ -2,22 +2,22 @@ file start : Strings Main
     main context start
         main start
             comment line : Initialization
-            variable : haystack string ("Hello, Budgie!")
+            variable declare : haystack string ("Hello, Budgie!")
             print : haystack
 
             comment line : Concatenation
-            variable : joined string { concatenate : ("It is -> ") haystack (" <- It was") }
+            variable declare : joined string { concatenate : ("It is -> ") haystack (" <- It was") }
             print : joined
 
             comment line : Characters
             variable: text string "abc"
-            variable : first char { string index : text 0 }
+            variable declare : first char { string index : text 0 }
             print : { string format : ("{0}'s first character is {1}.") text string first char }
 
             comment line : Searching
-            variable : needle string "Budgie"
-            variable : firstIndexOf int { string index of : haystack needle }
-            variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
+            variable declare : needle string "Budgie"
+            variable declare : firstIndexOf int { string index of : haystack needle }
+            variable declare : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
 
             comment line : Results
             print : { string format : ("Found a first result at: {0}.") firstIndexOf int }

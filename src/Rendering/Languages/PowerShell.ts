@@ -231,15 +231,15 @@ export class PowerShell extends Language {
      * @param comments   A property container for metadata on comments.
      */
     protected generateCommentSyntax(comments: CommentSyntax): void {
-        comments.blockEnd = '"""';
+        comments.blockEnd = "#>";
         comments.blockLineLeft = "";
         comments.blockLineRight = "";
-        comments.blockStart = '"""';
+        comments.blockStart = "<#";
 
-        comments.docEnd = '"""';
+        comments.docEnd = "#>";
         comments.docLineEnd = "";
         comments.docLineStart = "";
-        comments.docStart = '"""';
+        comments.docStart = "<#";
         comments.docTagAliases = {
             note: "remarks",
             parameter: "param",
@@ -264,15 +264,15 @@ export class PowerShell extends Language {
      * @param conditionals   A property container for metadata on conditionals.
      */
     protected generateConditionalSyntax(conditionals: ConditionalSyntax): void {
-        conditionals.continueLeft = "";
+        conditionals.elif = "elseif";
         conditionals.else = "else";
-        conditionals.end = "\0";
+        conditionals.end = "}";
         conditionals.if = "if";
-        conditionals.startLeft = " ";
+        conditionals.startLeft = " (";
 
-        conditionals.continueRight = ":";
-        conditionals.elif = "elif";
-        conditionals.startRight = ":";
+        conditionals.continueLeft = "} ";
+        conditionals.continueRight = " {";
+        conditionals.startRight = ") {";
     }
 
     /**
@@ -607,7 +607,7 @@ export class PowerShell extends Language {
         operators.divide = "/";
         operators.divideBy = "/=";
         operators.equals = "=";
-        operators.equalTo = "==";
+        operators.equalTo = "-eq";
         operators.greaterThan = ">";
         operators.greaterThanOrEqualTo = ">=";
         operators.increaseBy = "+=";
@@ -617,7 +617,7 @@ export class PowerShell extends Language {
         operators.mod = "%";
         operators.multiplyBy = "*=";
         operators.not = "not ";
-        operators.notEqualTo = "!=";
+        operators.notEqualTo = "-neq";
         operators.or = "||";
         operators.plus = "+";
         operators.times = "*";
@@ -786,9 +786,9 @@ export class PowerShell extends Language {
         variables.declaration = "";
 
         variables.aliases = {
-            false: "False",
-            infinity: "inf",
-            true: "True",
+            false: "$false",
+            infinity: "[double]::PositiveInfinity",
+            true: "$true",
         };
         variables.namePrefix = "$";
         variables.null = "None";

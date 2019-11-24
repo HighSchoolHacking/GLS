@@ -4,8 +4,8 @@ file start : Graphs Algorithms DepthFirstSearch
 
     standalone functions declare start : export DepthFirstSearch
         standalone function declare start : public { generic type : UnweightedDepthFirstSearch T } { list type : { generic type : UnweightedNode T } } start { generic type : UnweightedNode T }
-            variable : nodes { list type : { generic type : UnweightedNode T } } { list new : { generic type : UnweightedNode T } }
-            variable : visited { set type : { generic type : UnweightedNode T } } { set new : { generic type : UnweightedNode T } }
+            variable declare : nodes { list type : { generic type : UnweightedNode T } } { list new : { generic type : UnweightedNode T } }
+            variable declare : visited { set type : { generic type : UnweightedNode T } } { set new : { generic type : UnweightedNode T } }
 
             standalone function : private DepthFirstSearch TraverseUnweightedDepthFirstSearch start nodes visited
 
@@ -24,8 +24,8 @@ file start : Graphs Algorithms DepthFirstSearch
         standalone function declare end
 
         standalone function declare start : public { generic type : WeightedDepthFirstSearch T } { list type : { generic type : WeightedNode T } } start { generic type : WeightedNode T }
-            variable : nodes { list type : { generic type : WeightedNode T } } { list new : { generic type : WeightedNode T } }
-            variable : visited { set type : { generic type : WeightedNode T } } { set new : { generic type : WeightedNode T } }
+            variable declare : nodes { list type : { generic type : WeightedNode T } } { list new : { generic type : WeightedNode T } }
+            variable declare : visited { set type : { generic type : WeightedNode T } } { set new : { generic type : WeightedNode T } }
 
             standalone function : private DepthFirstSearch TraverseWeightedDepthFirstSearch start nodes visited
 

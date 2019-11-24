@@ -5,11 +5,11 @@ file start : PointClass NamedPoint
         member variable declare : private Name string
 
         constructor start : public NamedPoint x int y int name string base x y
-            operation : { member variable : private { this } Name } equals name
+            operation : { member variable declare : private { this } Name } equals name
         constructor end
 
         member function declare start : public GetLabel string
-            return : { string format : ("{0} at [{1}, {2}] with vector {3}") { member variable : private { this } Name } string { member variable : public { this } X } int { member variable : public { this } Y } int { member variable : protected { this } Vector } int }
+            return : { string format : ("{0} at [{1}, {2}] with vector {3}") { member variable declare : private { this } Name } string { member variable declare : public { this } X } int { member variable declare : public { this } Y } int { member variable declare : protected { this } Vector } int }
         member function declare end
     class end
 file end

@@ -13,7 +13,7 @@ if string to double start : "3.5" asDouble
     comment line : ...
 if string to double end
 
-variable : secondIntRaw string "14"
+variable declare : secondIntRaw string "14"
 if string to int start : "7" firstInt secondIntRaw secondInt
     comment line : ...
 if string to int end

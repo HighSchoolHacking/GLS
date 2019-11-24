@@ -22,7 +22,7 @@ Some languages, such as JavaScript and Ruby, do not recognize a difference betwe
 Less high-level languages, such as C# and Java, consider them to be a `char`.
 
 ```budgie
-variable : a char 'a'
+variable declare : a char 'a'
 ```
 
 * In C#: `char a = 'a';`
@@ -34,8 +34,8 @@ Individual characters in a string may be indexed with the `string index` command
 It takes in a string and a character index int, and returns a `char`.
 
 ```budgie
-variable : text string "abc"
-variable : first char { string index : text 0 }
+variable declare : text string "abc"
+variable declare : first char { string index : text 0 }
 ```
 
 In C#:
@@ -59,8 +59,8 @@ It takes in a single format string, then any number of input name & type pairs.
 Format strings are string literals with any number of bracket-surrounded numbers inside, with the format `{#}`.
 
 ```budgie
-variable : foo string "foo"
-variable : bar int 7
+variable declare : foo string "foo"
+variable declare : bar int 7
 
 string format : ("Foo: {0}") foo string
 string format : ("Foo: {0}; Bar: {1}") foo string bar int
@@ -97,10 +97,10 @@ It returns the index of the substring if found, or the equivalent of the `string
 It may also take in an optional third parameter as an integer position within the string to start searching at, if not `0`.
 
 ```budgie
-variable : haystack string ("Hello, Budgie!")
-variable : needle string "Budgie"
-variable : firstIndexOf int { string index of : haystack needle }
-variable : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
+variable declare : haystack string ("Hello, Budgie!")
+variable declare : needle string "Budgie"
+variable declare : firstIndexOf int { string index of : haystack needle }
+variable declare : secondIndexOf int { string index of : haystack needle { operation : firstIndexOf plus { string length : needle } } }
 
 print : { string format : ("Found a first result at: {0}.") firstIndexOf int }
 

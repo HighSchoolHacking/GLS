@@ -2,12 +2,12 @@ file start : Dictionaries Main
     main context start
         main start
             comment line : Types
-            variable : foo { dictionary type : string int } { dictionary new : string int }
-            variable : bar { dictionary type : string { dictionary type : string int } } { dictionary new : string { dictionary type : string int } }
+            variable declare : foo { dictionary type : string int } { dictionary new : string int }
+            variable declare : bar { dictionary type : string { dictionary type : string int } } { dictionary new : string { dictionary type : string int } }
 
             comment line : Indices
             dictionary set : foo "baz" 7
-            variable : qux int { dictionary get : foo "baz" }
+            variable declare : qux int { dictionary get : foo "baz" }
             print : { string format : ("baz is {0}") { dictionary get : foo "baz" } int }
             print : { string format : ("qux is {0}") qux int }
 
@@ -19,7 +19,7 @@ file start : Dictionaries Main
             dictionary new end
 
             comment line : Contains Key
-            variable : containsFalse boolean { dictionary contains key : container "aaa" }
+            variable declare : containsFalse boolean { dictionary contains key : container "aaa" }
 
             if start : containsFalse
                 print : "wrong"

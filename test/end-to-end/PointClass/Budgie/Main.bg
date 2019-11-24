@@ -4,12 +4,12 @@ file start : PointClass Main
 
     main context start
         main start
-            variable : point Point { new : Point 1 2 }
+            variable declare : point Point { new : Point 1 2 }
 
-            print : { member variable : public point X }
-            print : { member variable : public point Y }
+            print : { member variable declare : public point X }
+            print : { member variable declare : public point Y }
 
-            variable : named NamedPoint { new : NamedPoint 3 4 ("My Point") }
+            variable declare : named NamedPoint { new : NamedPoint 3 4 ("My Point") }
 
             print : { member function : public named GetLabel }
         main end

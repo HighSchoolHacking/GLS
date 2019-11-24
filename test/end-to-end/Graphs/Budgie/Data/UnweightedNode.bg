@@ -14,11 +14,11 @@ file start : Graphs Data UnweightedNode
         constructor end
 
         member function declare start : public AddNeighbor void node { generic type : UnweightedNode T }
-            list push : { member variable : private { this } NeighborNodes } node
+            list push : { member variable declare : private { this } NeighborNodes } node
         member function declare end
 
         member function declare start : public GetNeighborsInOrder { list type : { generic type : UnweightedNode T } }
-            return : { member variable : private { this } NeighborNodes }
+            return : { member variable declare : private { this } NeighborNodes }
         member function declare end
     class end
 file end

@@ -1,3 +1,3 @@
 -
-static variable : private Aaa bbb
+static variable declare : private Aaa bbb
 -

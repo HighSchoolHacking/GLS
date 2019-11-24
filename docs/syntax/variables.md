@@ -9,16 +9,16 @@ It requires the variable name, the type of the variable, and an optional default
 
 ```budgie
 comment line : Simple declarations
-variable : foo string
-variable : bar number 7
+variable declare : foo string
+variable declare : bar number 7
 
 comment line : Assignments
-variable : qux string foo
-variable : baz number bar
+variable declare : qux string foo
+variable declare : baz number bar
 
 comment line : Interesting values
-variable : quux number infinity
-variable : corge boolean true
+variable declare : quux number infinity
+variable declare : corge boolean true
 ```
 
 In C#:

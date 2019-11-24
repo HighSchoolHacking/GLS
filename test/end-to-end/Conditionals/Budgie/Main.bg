@@ -5,8 +5,8 @@ file start : Conditionals Main
                 print : ("if true")
             if end
 
-            variable : second boolean false
-            if start : second
+            variable declare : second boolean false
+            if start : { variable : second }
                 print : ("wrong if variable")
             else start
                 print : ("if false else")

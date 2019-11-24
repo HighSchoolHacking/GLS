@@ -11,8 +11,8 @@ class start : AnglePrinter
     static variable declare : private rightAmount int 90
 
     member function declare start : public PrintAngle string angle int
-        if start : { operation : angle (equal to) { static variable : private AnglePrinter rightAmount } }
-            return : { static variable : private AnglePrinter rightAlias }
+        if start : { operation : angle (equal to) { static variable declare : private AnglePrinter rightAmount } }
+            return : { static variable declare : private AnglePrinter rightAlias }
         if end
 
         return : { string format : ("{0} degrees") angle int }

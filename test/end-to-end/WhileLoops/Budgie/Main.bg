@@ -6,7 +6,7 @@ file start : WhileLoops Main
                 break
             while end
 
-            variable : count int 0
+            variable declare : count int 0
 
             while start : { operation : count (less than) 5 }
                 operation : count (increase by) 1

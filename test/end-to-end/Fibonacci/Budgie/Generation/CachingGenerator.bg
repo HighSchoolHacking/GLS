@@ -5,7 +5,7 @@ file start : Fibonacci Generation CachingGenerator
         member variable declare : private Cache { dictionary type : int int }
 
         constructor start : public CachingGenerator
-            operation : { member variable : private { this } Cache } equals { dictionary new : int int }
+            operation : { member variable declare : private { this } Cache } equals { dictionary new : int int }
         constructor end
 
         member function declare start : public Generate int index int
@@ -13,17 +13,17 @@ file start : Fibonacci Generation CachingGenerator
                 return : index
             if end
 
-            variable : one int { member function : public { this } Generate { operation : index minus 1 } }
-            variable : two int { member function : public { this } Generate { operation : index minus 2 } }
-            variable : result int { operation : one plus two }
+            variable declare : one int { member function : public { this } Generate { operation : index minus 1 } }
+            variable declare : two int { member function : public { this } Generate { operation : index minus 2 } }
+            variable declare : result int { operation : one plus two }
 
-            dictionary set : { member variable : private { this } Cache } index result
+            dictionary set : { member variable declare : private { this } Cache } index result
 
             return : result
         member function declare end
 
         member function declare start : public IsCached boolean index int
-            return : { dictionary contains key : { member variable : private { this } Cache } index }
+            return : { dictionary contains key : { member variable declare : private { this } Cache } index }
         member function declare end
     class end
 file end

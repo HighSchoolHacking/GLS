@@ -1,3 +1,3 @@
 -
-variable : aaa number
+variable declare : aaa number
 -

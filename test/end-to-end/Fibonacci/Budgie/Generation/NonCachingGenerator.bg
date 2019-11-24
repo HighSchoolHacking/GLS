@@ -7,8 +7,8 @@ file start : Fibonacci Generation NonCachingGenerator
                 return : index
             if end
 
-            variable : one int { member function : public { this } Generate { operation : index minus 1 } }
-            variable : two int { member function : public { this } Generate { operation : index minus 2 } }
+            variable declare : one int { member function : public { this } Generate { operation : index minus 1 } }
+            variable declare : two int { member function : public { this } Generate { operation : index minus 2 } }
 
             return : { operation : one plus two }
         member function declare end

@@ -17,7 +17,7 @@ file start : Enums Main
             standalone function : private { main group } PrintValue { enum : Direction Horizontal }
             standalone function : private { main group } PrintValue { enum : Direction Vertical }
 
-            variable : direction Direction
+            variable declare : direction Direction
             operation : direction equals { enum : Direction Unknown }
             standalone function : private { main group } PrintValue direction
         main end

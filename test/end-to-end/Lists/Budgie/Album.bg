@@ -4,12 +4,12 @@ file start : Lists Album
         member variable declare : public Year int
 
         constructor start : public Album name string year int
-            operation : { member variable : public { this } Name } equals name
-            operation : { member variable : public { this } Year } equals year
+            operation : { member variable declare : public { this } Name } equals name
+            operation : { member variable declare : public { this } Year } equals year
         constructor end
 
         member function declare start : public GetLabel string
-            return : { string format : ("{0}: {1}") { member variable : public { this } Name } string { member variable : public { this } Year } int }
+            return : { string format : ("{0}: {1}") { member variable declare : public { this } Name } string { member variable declare : public { this } Year } int }
         member function declare end
     class end
 file end

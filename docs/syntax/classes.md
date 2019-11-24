@@ -96,7 +96,7 @@ Create new instances of classes with the `new` command.
 It takes in the name of the class and any number of arguments to pass to the parameter.
 
 ```budgie
-variable : fruit Noun { new : Noun "apple" }
+variable declare : fruit Noun { new : Noun "apple" }
 ```
 
 * In C#: `Noun fruit = new Noun("apple");`

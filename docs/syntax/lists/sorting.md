@@ -10,7 +10,7 @@ It takes in the name of the list and sorts it with numeric comparisons.
 JavaScript runtimes default to sorting values as strings, so this will pass in a lambda to compare them as numbers as needed.
 
 ```budgie
-variable : numbers { list type : int } { list new : int 20 5 15 10 }
+variable declare : numbers { list type : int } { list new : int 20 5 15 10 }
 
 comment line : 5, 10, 15, 20
 list sort numbers : numbers
@@ -40,7 +40,7 @@ For lists of type `string`, you can sort the list with `list sort strings`.
 It takes in the name of the list and sorts it with string comparisons.
 
 ```budgie
-variable : fruits { list type : string } { list new : string "date", "apple" "cherry", "banana" }
+variable declare : fruits { list type : string } { list new : string "date", "apple" "cherry", "banana" }
 
 comment line : "apple", "banana", "cherry", "date"
 ```
@@ -75,13 +75,13 @@ class start : Size
     member variable declare : public Count int
 
     constructor start : public Size count int
-        operation : { member variable : public { this } Count } equals count
+        operation : { member variable declare : public { this } Count } equals count
     constructor end
 class end
 
 comment line : ...
 
-variable : sizes { list type : Size } { list new : Size { new : Size 3 } { new : Size 1 } { new : Size 2 } }
+variable declare : sizes { list type : Size } { list new : Size { new : Size 3 } { new : Size 1 } { new : Size 2 } }
 
 comment line : 1, 2, 3
 list sort member numbers : sizes public size Count
@@ -133,13 +133,13 @@ class start : Fruit
     member variable declare : public Name string
 
     constructor start : public Fruit name string
-        operation : { member variable : public { this } Name } equals name
+        operation : { member variable declare : public { this } Name } equals name
     constructor end
 class end
 
 comment line : ...
 
-variable : fruits { list type : Fruit } { list new : Fruit { new : Person "banana" } { new : Person "cherry" } { new : Person "apple" } }
+variable declare : fruits { list type : Fruit } { list new : Fruit { new : Person "banana" } { new : Person "cherry" } { new : Person "apple" } }
 
 comment line : "apple", "banana", "cherry"
 list sort member strings : fruits public fruit Name

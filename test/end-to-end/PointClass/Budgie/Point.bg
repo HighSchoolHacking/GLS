@@ -5,9 +5,9 @@ file start : PointClass Point
         member variable declare : protected Vector int
 
         constructor start : public Point x int y int
-            operation : { member variable : public { this } X } equals x
-            operation : { member variable : public { this } Y } equals y
-            operation : { member variable : protected { this } Vector } equals { operation : x times y }
+            operation : { member variable declare : public { this } X } equals x
+            operation : { member variable declare : public { this } Y } equals y
+            operation : { member variable declare : protected { this } Vector } equals { operation : x times y }
         constructor end
     class end
 file end

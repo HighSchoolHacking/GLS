@@ -6,7 +6,7 @@ The only difference is that accessing them takes in the class name instead of an
 ```budgie
 class start : Utilities
     static function declare start : public GetLongest string words { array type : string }
-        variable : longest string
+        variable declare : longest string
 
         for each start : words word string
             if start : { operation : { string length : word } (greater than) { string length : longest } }

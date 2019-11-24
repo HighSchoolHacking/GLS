@@ -19,7 +19,7 @@ Budgie nodes come in three varieties, each of which implement the exported `IBud
 For example, given the following line:
 
 ```budgie
-variable : foo number { operation : 1 plus 2 }
+variable declare : foo number { operation : 1 plus 2 }
 ```
 
 The corresponding Budgie file's node structure in JSON would look like:

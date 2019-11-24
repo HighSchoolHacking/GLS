@@ -40,7 +40,7 @@ Enum types can be treated as their own type in type declarations.
 Later on, you can reference these enum values using the `enum` command, which takes in a name of an enum and a name of one of its values.
 
 ```budgie
-variable : direction Direction { enum : Direction Horizontal }
+variable declare : direction Direction { enum : Direction Horizontal }
 ```
 
 * In C#: `Direction direction = Direction.Horizontal;`
