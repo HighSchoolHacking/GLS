@@ -60,19 +60,15 @@ export class ArrayNewCommand extends Command {
             imports.push(...arrayTypeLine.addedImports);
         }
 
-        if (this.language.syntax.arrays.initializeByType) {
-            output += " { ";
-        } else {
-            output += "[";
-        }
+        // output += " { ";
+        // output += "[";
+        output += this.language.syntax.arrays.initializeLeft;
 
         output += parameters.slice(2).join(", ");
 
-        if (this.language.syntax.arrays.initializeByType) {
-            output += " }";
-        } else {
-            output += "]";
-        }
+        // output += " }";
+        // output += "]";
+        output += this.language.syntax.arrays.initializeRight;
 
         return LineResults.newSingleLine(output).withImports(imports);
     }

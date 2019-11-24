@@ -5,19 +5,15 @@ import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 
 /**
- * Declares a variable.
+ * Refers to a variable by name.
  */
 export class VariableCommand extends Command {
     /**
      * Metadata on the command.
      */
     private static metadata: CommandMetadata = new CommandMetadata(CommandNames.Variable)
-        .withDescription("Declares a variable")
-        .withParameters([
-            new SingleParameter("name", "The name of the variable.", true),
-            new SingleParameter("type", "The type of the variable.", true),
-            new SingleParameter("value", "The starting value of the variable.", false),
-        ]);
+        .withDescription("Refers to a variable by name")
+        .withParameters([new SingleParameter("name", "The name of the variable.", true)]);
 
     /**
      * @returns Metadata on the command.
@@ -33,19 +29,7 @@ export class VariableCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        if (parameters.length === 3 && !this.language.syntax.variables.declarationRequired) {
-            return LineResults.newSingleLine("\0");
-        }
-
-        const starter: string = this.language.syntax.variables.declaration;
-        const newParameters: string[] = parameters.slice();
-        newParameters[0] = CommandNames.VariableInline;
-
-        const enderLine = this.context.convertParsed(newParameters);
-        const line = starter + enderLine.commandResults[0].text;
-
-        return LineResults.newSingleLine(line)
-            .withAddSemicolon(true)
-            .withImports(enderLine.addedImports);
+        const name = this.language.syntax.variables.namePrefix + parameters[1];
+        return LineResults.newSingleLine(name);
     }
 }

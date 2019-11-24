@@ -8,11 +8,13 @@ To run end-to-end tests, you'll need the following installed globally:
 * [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads)
   * [_Windows: with `java.exe` on your path_](https://stackoverflow.com/questions/16137713/how-do-i-run-a-java-program-from-the-command-line-on-windows)
 * [.NET Core SDK](https://microsoft.com/net/core)
-* [Python 3](https://www.python.org/downloads)
+* [PowerShell Core (7)](https://docs.microsoft.com/en-us/powershell/?view=powershell-6)<sup>[1]</sup>
+* [Python 3](https://www.python.org/downloads)<sup>[2]</sup><sup>[3]</sup>
 * [Ruby](https://www.ruby-lang.org/en/documentation/installation)
 
-> Python must be available globally as `python3`.
-> On Windows, you may need to copy & paste `python.exe` to create an identical `python3.exe`.
+> <sup>[1]</sup> On WIndows, you may need to [`Set-ExecutionPolicy RemoteSigned`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+> <sup>[2]</sup> Python must be available globally as `python3`.
+> <sup>[3]</sup> On Windows, you may need to copy & paste `python.exe` to create an identical `python3.exe`.
 
 The recommended development setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:
 

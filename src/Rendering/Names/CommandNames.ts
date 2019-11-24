@@ -773,6 +773,11 @@ export class CommandNames {
     public static Variable = "variable";
 
     /**
+     * Name key for the VariableDeclare command.
+     */
+    public static VariableDeclare = "variable declare";
+
+    /**
      * Name key for the VariableInline command.
      */
     public static VariableInline = "variable inline";

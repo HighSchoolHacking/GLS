@@ -83,6 +83,23 @@ jobs:
 
             - run: npm run test:end-to-end -- --language=JavaScript
 
+    end-to-end/powershell:
+        docker:
+            - image: circleci/windows@1.0.0
+
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            - attach_workspace:
+                  at: "."
+
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package-lock.json" }}
+
+            - run: npm run test:end-to-end -- --language=PowerShell
+
     end-to-end/python:
         docker:
             - image: circleci/python:3.6-node-browsers
@@ -163,6 +180,9 @@ workflows:
                   requires:
                       - build
             - end-to-end/javascript:
+                  requires:
+                      - build
+            - end-to-end/powershell:
                   requires:
                       - build
             - end-to-end/python:

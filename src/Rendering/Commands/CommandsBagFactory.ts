@@ -153,6 +153,7 @@ import { TypeCommand } from "./TypeCommand";
 import { UnsupportedCommand } from "./UnsupportedCommand";
 import { ValueCommand } from "./ValueCommand";
 import { VariableCommand } from "./VariableCommand";
+import { VariableDeclareCommand } from "./VariableDeclareCommand";
 import { VariableInlineCommand } from "./VariableInlineCommand";
 import { VariableStartCommand } from "./VariableStartCommand";
 import { WhileEndCommand } from "./WhileEndCommand";
@@ -323,6 +324,7 @@ export class CommandsBagFactory {
             new UnsupportedCommand(context),
             new ValueCommand(context),
             new VariableCommand(context),
+            new VariableDeclareCommand(context),
             new VariableInlineCommand(context),
             new VariableStartCommand(context),
             new WhileEndCommand(context),

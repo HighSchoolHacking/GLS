@@ -30,8 +30,11 @@ const runProjectLanguageTests = (languageName: string, projectDirectory: string,
         });
 
         const outputGenerator = outputGenerators.get(languageName);
+        if (outputGenerator === undefined) {
+            throw new Error(`Missing output generator for '${languageName}.`);
+        }
 
-        if (outputGenerator !== undefined && fs.existsSync(path.join(projectDirectory, "output.txt"))) {
+        if (fs.existsSync(path.join(projectDirectory, "output.txt"))) {
             await runProjectOutputTest({
                 files,
                 languageName,

@@ -45,4 +45,7 @@ export class ArraySyntax {
      * Required imports to be able to use arrays.
      */
     public requiredImports: Import[];
+
+    initializeLeft: string;
+    initializeRight: string;
 }

@@ -3,6 +3,7 @@ import { Java } from "./Java";
 import { JavaScript } from "./JavaScript";
 import { Language } from "./Language";
 import { Python } from "./Python";
+import { PowerShell } from "./PowerShell";
 import { Ruby } from "./Ruby";
 import { TypeScript } from "./TypeScript";
 
@@ -13,7 +14,15 @@ export class LanguagesBag {
     /**
      * Built-in languages.
      */
-    private static languages: Language[] = [new CSharp(), new Java(), new JavaScript(), new Python(), new Ruby(), new TypeScript()];
+    private static languages: Language[] = [
+        new CSharp(),
+        new Java(),
+        new JavaScript(),
+        new PowerShell(),
+        new Python(),
+        new Ruby(),
+        new TypeScript(),
+    ];
 
     /**
      * Known languages, keyed by extension.
