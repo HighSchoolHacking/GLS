@@ -41,6 +41,13 @@ const budgie = new Budgie("C#");
 budgie.convert([`print : ("Hello world!")`]);
 ```
 
+## Why?
+
+No reason in particular!
+
+Budgie is not intended to be a useful language or targeted to any real purpose.
+It's a proof-of-concept exploration for the fun of it.
+
 ## Status
 
 Budgie is just shy of **0.4**.
