@@ -33,10 +33,10 @@ export abstract class NativeCallRenderer {
      * with the first given parameter.
      *
      * @param argument   An argument for a native call.
-     * @param firstParameter   The first given parameter for the call.
+     * @param parameter   A parameter for the call.
      * @returns The argument, with the parameter formatted inside.
      */
-    protected formatArgument(argument: string, firstParameter: string): string {
-        return BudgieUtilities.stringReplaceAll(argument, "{0}", firstParameter);
+    protected formatArgument(argument: string, parameter: string): string {
+        return BudgieUtilities.stringReplaceAll(argument, "{0}", parameter);
     }
 }

@@ -36,9 +36,9 @@ import { DictionaryTypeCommand } from "./DictionaryTypeCommand";
 import { ElseIfStartCommand } from "./ElseIfStartCommand";
 import { ElseStartCommand } from "./ElseStartCommand";
 import { EnumCommand } from "./EnumCommand";
-import { EnumEndCommand } from "./EnumEndCommand";
+import { EnumDeclareEndCommand } from "./EnumDeclareEndCommand";
 import { EnumMemberCommand } from "./EnumMemberCommand";
-import { EnumStartCommand } from "./EnumStartCommand";
+import { EnumDeclareStartCommand } from "./EnumDeclareStartCommand";
 import { ExceptionCommand } from "./ExceptionCommand";
 import { FileEndCommand } from "./FileEndCommand";
 import { FileStartCommand } from "./FileStartCommand";
@@ -153,8 +153,9 @@ import { TypeCommand } from "./TypeCommand";
 import { UnsupportedCommand } from "./UnsupportedCommand";
 import { ValueCommand } from "./ValueCommand";
 import { VariableCommand } from "./VariableCommand";
+import { VariableDeclareCommand } from "./VariableDeclareCommand";
 import { VariableInlineCommand } from "./VariableInlineCommand";
-import { VariableStartCommand } from "./VariableStartCommand";
+import { VariableDeclareStartCommand } from "./VariableDeclareStartCommand";
 import { WhileEndCommand } from "./WhileEndCommand";
 import { WhileStartCommand } from "./WhileStartCommand";
 
@@ -206,9 +207,9 @@ export class CommandsBagFactory {
             new ElseIfStartCommand(context),
             new ElseStartCommand(context),
             new EnumCommand(context),
-            new EnumEndCommand(context),
+            new EnumDeclareEndCommand(context),
             new EnumMemberCommand(context),
-            new EnumStartCommand(context),
+            new EnumDeclareStartCommand(context),
             new ExceptionCommand(context),
             new FileEndCommand(context),
             new FileStartCommand(context),
@@ -323,8 +324,9 @@ export class CommandsBagFactory {
             new UnsupportedCommand(context),
             new ValueCommand(context),
             new VariableCommand(context),
+            new VariableDeclareCommand(context),
             new VariableInlineCommand(context),
-            new VariableStartCommand(context),
+            new VariableDeclareStartCommand(context),
             new WhileEndCommand(context),
             new WhileStartCommand(context),
         ]);

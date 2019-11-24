@@ -21,7 +21,11 @@ export abstract class ListSortMembersCommand extends Command {
             return this.renderAsKeyComparator(sortMembers, parameters);
         }
 
-        return this.renderAsKeyShorthand(sortMembers, parameters);
+        if (sortMembers.type === ListSortMemberType.GlobalLambda) {
+            return this.renderAsGlobalLambda(sortMembers, parameters);
+        }
+
+        return this.renderAsShorthandLambda(sortMembers, parameters);
     }
 
     /**
@@ -73,7 +77,42 @@ export abstract class ListSortMembersCommand extends Command {
      * @param parameters   The command's name, followed by any number of parameters.
      * @returns Line(s) of code in the language.
      */
-    private renderAsKeyShorthand(sortMembers: ListSortMembersSyntax, parameters: string[]): LineResults {
+    private renderAsGlobalLambda(sortMembers: ListSortMembersSyntax, parameters: string[]): LineResults {
+        const imports: Import[] = [];
+
+        const listName = parameters[1];
+        const privacy = parameters[2];
+        const instanceNameA = this.language.syntax.variables.namePrefix + parameters[3] + "A";
+        const instanceNameB = this.language.syntax.variables.namePrefix + parameters[3] + "B";
+        const memberKey = parameters[4];
+
+        const memberVariableALine = this.context.convertParsed([CommandNames.MemberVariable, privacy, instanceNameA, memberKey]);
+        const memberVariableBLine = this.context.convertParsed([CommandNames.MemberVariable, privacy, instanceNameB, memberKey]);
+        imports.push(...memberVariableALine.addedImports);
+
+        // sort(list, (a, b) => b.count - a.count)
+        let output = sortMembers.preLambdaStart + listName;
+        output += sortMembers.lambdaLeft;
+        output += instanceNameA + ", " + instanceNameB;
+        output += sortMembers.lambdaMiddleLeft;
+        output += memberVariableALine.commandResults[0].text;
+        output += sortMembers.lambdaMiddleRight;
+        output += memberVariableBLine.commandResults[0].text;
+        output += sortMembers.lambdaRight;
+
+        return LineResults.newSingleLine(output)
+            .withImports(sortMembers.requiredImports)
+            .withAddSemicolon(true);
+    }
+
+    /**
+     * Renders the command as a Pythonic member shorthand function.
+     *
+     * @param sortMembers   How the list sorts by this kind of members.
+     * @param parameters   The command's name, followed by any number of parameters.
+     * @returns Line(s) of code in the language.
+     */
+    private renderAsShorthandLambda(sortMembers: ListSortMembersSyntax, parameters: string[]): LineResults {
         const imports: Import[] = [];
 
         const listName = parameters[1];

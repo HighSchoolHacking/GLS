@@ -5,6 +5,11 @@ import { CaseStyle } from "../../Casing/CaseStyle";
  */
 export class ClassMemberFunctionSyntax {
     /**
+     * Characters between 'this' and the variable name.
+     */
+    public access: string;
+
+    /**
      * Decorator for abstract function declarations.
      */
     public abstractDeclaration: string;

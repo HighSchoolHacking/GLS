@@ -8,10 +8,11 @@ To run end-to-end tests, you'll need the following installed globally:
 * [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads)
   * [_Windows: with `java.exe` on your path_](https://stackoverflow.com/questions/16137713/how-do-i-run-a-java-program-from-the-command-line-on-windows)
 * [.NET Core SDK](https://microsoft.com/net/core)
+* [PHP 7](https://www.php.net/downloads)
 * [Python 3](https://www.python.org/downloads)
 * [Ruby](https://www.ruby-lang.org/en/documentation/installation)
 
-> Python must be available globally as `python3`.
+> PHP and Python must be available globally as `php` and `python3`.
 > On Windows, you may need to copy & paste `python.exe` to create an identical `python3.exe`.
 
 The recommended development setup is [Visual Studio Code](https://code.visualstudio.com) with the following extensions:

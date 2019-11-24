@@ -53,6 +53,11 @@ export class VariableSyntax {
     public isNullMiddle: string;
 
     /**
+     * Characters to put before all variable names.
+     */
+    public namePrefix: string;
+
+    /**
      * The keyword used for null/undefined.
      */
     public null: string;

@@ -15,6 +15,11 @@ export enum StringToNumberStartConversionType {
     PredeclareConvertAndValidate = "PredeclareConvertAndValidate",
 
     /**
+     * Validate the original string and convert it if possible.
+     */
+    ValidateAndConvert = "ValidateAndConvert",
+
+    /**
      * Directly validate calls to double conversions inline.
      */
     ValidateDirectly = "ValidateDirectly",

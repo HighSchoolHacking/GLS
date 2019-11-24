@@ -5,6 +5,11 @@ import { Import } from "../../Imports/Import";
  */
 export enum ListSortMemberType {
     /**
+     * Use a global function that takes in a shorthand lambda that takes in member instances.
+     */
+    GlobalLambda,
+
+    /**
      * Uses a comparator function that takes in two instances.
      */
     KeyComparator,
@@ -38,6 +43,11 @@ export class ListSortMembersSyntax {
      * How to end declaring a sorting lambda.
      */
     public lambdaRight: string;
+
+    /**
+     * Any characters before the list name before a sorting lambda.
+     */
+    public preLambdaStart: string;
 
     /**
      * Required imports to be able to sort a list by keyed members.

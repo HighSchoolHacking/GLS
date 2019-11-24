@@ -1,0 +1,3 @@
+#
+attr_accessor :aaa
+#

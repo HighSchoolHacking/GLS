@@ -45,11 +45,18 @@ export class IfStringToDoubleStartCommand extends Command {
             this.predeclareVariables(parameters, lines);
         }
 
-        if (conversionType !== StringToNumberStartConversionType.ValidateDirectly) {
+        if (
+            conversionType !== StringToNumberStartConversionType.ValidateDirectly &&
+            conversionType !== StringToNumberStartConversionType.ValidateAndConvert
+        ) {
             this.convertStrings(parameters, lines);
         }
 
-        this.validateDoubles(parameters, lines);
+        this.validateDoubles(parameters, lines, conversionType === StringToNumberStartConversionType.ConvertAndValidate);
+
+        if (conversionType === StringToNumberStartConversionType.ValidateAndConvert) {
+            this.convertStrings(parameters, lines);
+        }
 
         const results: LineResults = new LineResults(lines);
 
@@ -111,13 +118,18 @@ export class IfStringToDoubleStartCommand extends Command {
      *
      * @param parameters   The command's name, followed by any parameters.
      * @param lines   Output lines of rendered language code.
+     * @param afterBlankLine   Whether to insert a blank line before the new lines.
      */
-    private validateDoubles(parameters: string[], lines: CommandResult[]): void {
-        if (lines.length === 0) {
+    private validateDoubles(parameters: string[], lines: CommandResult[], afterBlankLine: boolean): void {
+        if (afterBlankLine && lines.length === 0) {
             lines.push(new CommandResult("", 0));
         }
 
-        addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockLeft, 0);
+        if (lines.length === 0) {
+            lines.push(new CommandResult(this.language.syntax.strings.toDouble.validationBlockLeft, 0));
+        } else {
+            addLineEnder(lines, this.language.syntax.strings.toDouble.validationBlockLeft, 0);
+        }
 
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];

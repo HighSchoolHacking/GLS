@@ -1,5 +1,6 @@
 import { LineResults } from "../LineResults";
 import { CommandNames } from "../Names/CommandNames";
+import { OperatorNames } from "../Names/OperatorNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
@@ -70,7 +71,7 @@ export class ForNumbersStartCommand extends Command {
         output += this.language.syntax.loops.rangedForLoopsFunctionalMiddleMiddle;
         output += parameters[5];
         output += this.language.syntax.loops.rangedForLoopsFunctionalMiddleRight;
-        output += parameters[1];
+        output += this.language.syntax.variables.namePrefix + parameters[1];
         output += this.language.syntax.loops.rangedForLoopsFunctionalRight;
 
         return output;
@@ -83,6 +84,7 @@ export class ForNumbersStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     private renderStartLoop(parameters: string[]): string {
+        const parameterName = this.language.syntax.variables.namePrefix + parameters[1];
         let output: string = this.language.syntax.loops.for;
 
         let incrementor: string;
@@ -93,11 +95,14 @@ export class ForNumbersStartCommand extends Command {
         }
 
         output += this.language.syntax.conditionals.startLeft;
-        output += this.context.convertParsed([CommandNames.Variable, parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.VariableDeclare, parameters[1], parameters[2], parameters[3]]).commandResults[0]
+            .text;
         output += this.language.syntax.style.semicolon + " ";
-        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "less than", parameters[4]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.Operation, parameterName, OperatorNames.LessThan, parameters[4]])
+            .commandResults[0].text;
         output += this.language.syntax.style.semicolon + " ";
-        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "increase by", incrementor]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.Operation, parameterName, OperatorNames.IncreaseBy, incrementor])
+            .commandResults[0].text;
 
         return output;
     }
@@ -112,7 +117,7 @@ export class ForNumbersStartCommand extends Command {
         let output: string = this.language.syntax.loops.for;
 
         output += this.language.syntax.conditionals.startLeft;
-        output += parameters[1];
+        output += this.language.syntax.variables.namePrefix + parameters[1];
         output += this.language.syntax.loops.rangedForLoopsLeft;
         output += parameters[3];
         output += this.language.syntax.loops.rangedForLoopsMiddle;

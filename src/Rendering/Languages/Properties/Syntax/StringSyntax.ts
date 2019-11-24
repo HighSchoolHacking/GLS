@@ -8,16 +8,6 @@ import { StringToNumberSyntax } from "./StringToNumberSyntax";
  */
 export class StringSyntax {
     /**
-     * How to make a block to be executed if a string can be converted to a double.
-     */
-    public toDouble: StringToNumberSyntax = new StringToNumberSyntax();
-
-    /**
-     * How to make a block to be executed if a string can be converted to an int.
-     */
-    public toInt: StringToNumberSyntax = new StringToNumberSyntax();
-
-    /**
      * How to create a lower-case copy of a string.
      */
     public caseLower: NativeCallSyntax;
@@ -71,6 +61,16 @@ export class StringSyntax {
      * Metadata on the language's string substrings.
      */
     public substrings: StringSubstringSyntax = new StringSubstringSyntax();
+
+    /**
+     * How to make a block to be executed if a string can be converted to a double.
+     */
+    public toDouble: StringToNumberSyntax = new StringToNumberSyntax();
+
+    /**
+     * How to make a block to be executed if a string can be converted to an int.
+     */
+    public toInt: StringToNumberSyntax = new StringToNumberSyntax();
 
     /**
      * How to trim strings.

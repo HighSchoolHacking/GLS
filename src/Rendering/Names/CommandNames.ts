@@ -183,19 +183,19 @@ export class CommandNames {
     public static Enum = "enum";
 
     /**
-     * Name key for the EnumEnd command.
+     * Name key for the EnumDeclareEnd command.
      */
-    public static EnumEnd = "enum end";
+    public static EnumDeclareEnd = "enum declare end";
+
+    /**
+     * Name key the EnumDeclareStart command.
+     */
+    public static EnumDeclareStart = "enum declare start";
 
     /**
      * Name key for the EnumMember command.
      */
     public static EnumMember = "enum member";
-
-    /**
-     * Name key the EnumStart command.
-     */
-    public static EnumStart = "enum start";
 
     /**
      * Name key the Exception command.
@@ -773,14 +773,19 @@ export class CommandNames {
     public static Variable = "variable";
 
     /**
+     * Name key for the VariableDeclare command.
+     */
+    public static VariableDeclare = "variable declare";
+
+    /**
+     * Name key for the VariableDeclareStart command.
+     */
+    public static VariableDeclareStart = "variable declare start";
+
+    /**
      * Name key for the VariableInline command.
      */
     public static VariableInline = "variable inline";
-
-    /**
-     * Name key for the VariableStart command.
-     */
-    public static VariableStart = "variable start";
 
     /**
      * Name key the WhileEnd command.

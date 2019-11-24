@@ -9,12 +9,12 @@ file start : Graphs Data UnweightedNode
         member variable declare : private NeighborNodes { list type : { generic type : UnweightedNode T } }
 
         constructor start : public UnweightedNode data T
-            member variable set : public { this } Data data
+            member variable set : public { this } Data { variable : data }
             member variable set : private { this } NeighborNodes { list new : { generic type : UnweightedNode T } }
         constructor end
 
         member function declare start : public AddNeighbor void node { generic type : UnweightedNode T }
-            list push : { member variable : private { this } NeighborNodes } node
+            list push : { member variable : private { this } NeighborNodes } { variable : node }
         member function declare end
 
         member function declare start : public GetNeighborsInOrder { list type : { generic type : UnweightedNode T } }

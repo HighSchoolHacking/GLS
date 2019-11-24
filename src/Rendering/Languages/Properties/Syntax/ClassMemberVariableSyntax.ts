@@ -5,6 +5,11 @@ import { CaseStyle } from "../../Casing/CaseStyle";
  */
 export class ClassMemberVariableSyntax {
     /**
+     * Characters between 'this' and the variable name.
+     */
+    public access: string;
+
+    /**
      * Decorator for private members.
      */
     public private: string;

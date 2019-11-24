@@ -35,7 +35,7 @@ export class EnumMemberCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        let output = "";
+        let output = this.language.syntax.enums.declareMemberStart;
 
         output += parameters[1];
 

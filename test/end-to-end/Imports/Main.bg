@@ -1,3 +1,0 @@
-import local : Utilities Text use { import standalone functions : TextUtilities RepeatText }
-
-variable : repeated string { standalone function : public TextUtilities RepeatText "foo" 7 }

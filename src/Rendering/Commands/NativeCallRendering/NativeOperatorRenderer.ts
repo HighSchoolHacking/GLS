@@ -23,6 +23,7 @@ export class NativeOperatorRenderer extends NativeCallRenderer {
             output += parameters[1];
             output += this.nativeCallSyntax.name;
             output += parameters[2];
+            output += this.nativeCallSyntax.separator;
 
             if (parameters.length === 4) {
                 output += parameters[3];

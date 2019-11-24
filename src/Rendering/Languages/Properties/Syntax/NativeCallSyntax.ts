@@ -45,6 +45,11 @@ export enum NativeCallType {
     Function = "Function",
 
     /**
+     * An operation that exists as a function with reversed arguments.
+     */
+    FunctionReverse = "FunctionReverse",
+
+    /**
      * An operation as a single property.
      */
     Property = "Property",
@@ -138,9 +143,9 @@ export class NativeCallSyntax {
     }
 
     /**
-     * Sets the characters between items in the native call.
+     * Sets the characters between or after items in the native call.
      *
-     * @param separator   Characters between items in the native call.
+     * @param separator   Characters between or after items in the native call.
      * @returns this
      */
     public withSeparator(separator: string): NativeCallSyntax {

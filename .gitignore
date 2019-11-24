@@ -29,4 +29,5 @@ src/**/*.budgie
 src/**/*.java
 src/**/*.js
 src/**/*.rb
+src/**/*.php
 src/**/*.py

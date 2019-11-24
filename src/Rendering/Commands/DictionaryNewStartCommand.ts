@@ -36,7 +36,7 @@ export class DictionaryNewStartCommand extends Command {
      */
     public render(parameters: string[]): LineResults {
         if (!this.language.syntax.dictionaries.initializeAsNew) {
-            return LineResults.newSingleLine("{");
+            return LineResults.newSingleLine(this.language.syntax.dictionaries.initializeStart);
         }
 
         const typeLine = this.context.convertParsed([CommandNames.DictionaryType, parameters[1], parameters[2]]);

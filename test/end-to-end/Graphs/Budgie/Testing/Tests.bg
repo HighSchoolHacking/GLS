@@ -5,15 +5,15 @@ file start : Graphs Testing Tests
 
     standalone functions declare start : export Tests
         standalone function declare start : public TestUnweighted void
-            variable : order { array type : string } { array new : string "root" "apple" "banana" "red" "yellow" }
-            variable : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
+            variable declare : order { array type : string } { array new : string "root" "apple" "banana" "red" "yellow" }
+            variable declare : nodes { dictionary type : string { generic type : UnweightedNode string } } { dictionary new : string { generic type : UnweightedNode string } }
 
-            for each start : order key string
-                variable : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } key }
-                dictionary set : nodes key node
+            for each start : { variable : order } key string
+                variable declare : node { generic type : UnweightedNode string } { new : { generic type : UnweightedNode string } { variable : key } }
+                dictionary set : { variable : nodes } { variable : key } { variable : node }
             for each end
 
-            variable start : adjacencies { dictionary type : string { array type : string } } { dictionary new start : string { array type : string } }
+            variable declare start : adjacencies { dictionary type : string { array type : string } } { dictionary new start : string { array type : string } }
                 dictionary pair : "root" { array new : string "apple" "banana" } comma
                 dictionary pair : "apple" { array new : string "red" "yellow" } comma
                 dictionary pair : "banana" { array new : string "yellow" } comma
@@ -21,18 +21,18 @@ file start : Graphs Testing Tests
                 dictionary pair : "yellow" { array new : string }
             dictionary new end
 
-            for each start : order key string
-                variable : node { generic type : UnweightedNode string } { dictionary get : nodes key }
-                variable : neighborKeys { array type : string } { dictionary get : adjacencies key }
+            for each start : { variable : order } key string
+                variable declare : node { generic type : UnweightedNode string } { dictionary get : { variable : nodes } { variable : key } }
+                variable declare : neighborKeys { array type : string } { dictionary get : { variable : adjacencies } { variable : key } }
 
-                for each start : neighborKeys neighborKey string
-                    member function : public node AddNeighbor { dictionary get : nodes neighborKey }
-                    print : { string format : ("{0} borders {1}") key string neighborKey string }
+                for each start : { variable : neighborKeys } neighborKey string
+                    member function : public { variable : node } AddNeighbor { dictionary get : { variable : nodes } { variable : neighborKey } }
+                    print : { string format : ("{0} borders {1}") { variable : key } string { variable : neighborKey } string }
                 for each end
             for each end
 
-            for each start : { standalone function : public DepthFirstSearch UnweightedDepthFirstSearch { dictionary get : nodes "root" } } node { generic type : UnweightedNode string }
-                print : { member variable : public node Data }
+            for each start : { standalone function : public DepthFirstSearch UnweightedDepthFirstSearch { dictionary get : { variable : nodes } "root" } } node { generic type : UnweightedNode string }
+                print : { member variable : public { variable : node } Data }
             for each end
         standalone function declare end
 

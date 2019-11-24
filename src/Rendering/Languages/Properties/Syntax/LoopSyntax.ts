@@ -28,6 +28,11 @@ export class LoopSyntax {
     public forEachAsMethod: boolean;
 
     /**
+     * Whether to put the collection name first in a foreach loop instead of the item name.
+     */
+    public forEachCollectionFirst: boolean;
+
+    /**
      * How to end a foreach loop.
      */
     public forEachEnd: string;
@@ -178,7 +183,7 @@ export class LoopSyntax {
     public whileStartMiddle: string;
 
     /**
-     * The end of a while start statement".
+     * The end of a while start statement.
      */
     public whileStartRight: string;
 }

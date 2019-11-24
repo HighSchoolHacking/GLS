@@ -59,7 +59,7 @@ export class MemberVariableSetCommand extends Command {
         variableName = this.context.convertStringToCase(variableName, casingStyle);
 
         let output = "";
-        output += instanceName + ".";
+        output += instanceName + this.language.syntax.classes.members.variables.access;
         output += variablePrefix + variableName + " = ";
 
         const valueLine = this.context.convertParsed([CommandNames.Type, parameters[4]]);

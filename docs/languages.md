@@ -141,6 +141,9 @@ For example, when using Budgie for snippets of code as sample answer guidelines 
             <th>Ruby</th>
         </tr>
         <tr>
+            <th>PHP</th>
+        </tr>
+        <tr>
             <th>Python</th>
         </tr>
     </tbody>

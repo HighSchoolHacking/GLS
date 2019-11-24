@@ -1,7 +1,7 @@
 file start : Enums Direction
-    enum start : export Direction
+    enum declare start : export Direction
         enum member : Unknown 0 ,
         enum member : Horizontal 1 ,
         enum member : Vertical 2
-    enum end
+    enum declare end
 file end

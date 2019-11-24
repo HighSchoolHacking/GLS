@@ -56,7 +56,7 @@ export class MemberVariableCommand extends Command {
         variableName = this.context.convertStringToCase(variableName, casingStyle);
 
         let output = "";
-        output += instanceName + ".";
+        output += instanceName + this.language.syntax.classes.members.variables.access;
         output += variablePrefix;
         output += variableName;
 

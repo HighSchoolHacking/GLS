@@ -43,7 +43,7 @@ export class MemberFunctionCommand extends Command {
         const instanceName: string = parameters[2];
         const functionName: string = parameters[3];
 
-        let output: string = instanceName + ".";
+        let output: string = instanceName + this.language.syntax.classes.members.functions.access;
         output += this.getPublicityPrefix(publicity);
         output += this.context.convertStringToCase(functionName, this.getPublicityCase(publicity));
         output += "(";

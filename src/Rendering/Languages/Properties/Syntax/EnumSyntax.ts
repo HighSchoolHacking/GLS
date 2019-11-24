@@ -25,6 +25,11 @@ export class EnumSyntax {
     public declareLastRight: string;
 
     /**
+     * Start of a line declaring a member.
+     */
+    public declareMemberStart: string;
+
+    /**
      * Start of a line declaring an enum member's value.
      */
     public declareValueLeft: string;

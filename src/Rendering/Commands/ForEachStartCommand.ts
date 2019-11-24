@@ -53,9 +53,15 @@ export class ForEachStartCommand extends Command {
             imports.push(...typeLine.addedImports);
         }
 
-        line += parameters[2];
-        line += this.language.syntax.loops.forEachStartSeparator;
-        line += parameters[1];
+        if (this.language.syntax.loops.forEachCollectionFirst) {
+            line += parameters[1];
+            line += this.language.syntax.loops.forEachStartSeparator;
+            line += parameters[2];
+        } else {
+            line += parameters[2];
+            line += this.language.syntax.loops.forEachStartSeparator;
+            line += parameters[1];
+        }
 
         output = [new CommandResult(line, 0)];
         addLineEnder(output, this.language.syntax.loops.forEachStartRight, 1);
