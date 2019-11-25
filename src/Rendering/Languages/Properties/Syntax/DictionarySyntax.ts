@@ -41,6 +41,11 @@ export class DictionarySyntax {
     public initializeEnd: string;
 
     /**
+     * How to start initializing the start of a new dictionary's values.
+     */
+    public initializeNewStart: string;
+
+    /**
      * How to end a new dictionary's in-place value.
      */
     public initializePairComma: string;

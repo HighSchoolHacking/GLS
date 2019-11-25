@@ -6,6 +6,7 @@ import { KeywordNames } from "../Names/KeywordNames";
 import { Command } from "./Command";
 import { CommandResult } from "./CommandResult";
 import { addLineEnder } from "./Utilities";
+import { ReturnTypePosition } from "../Languages/Properties/Syntax/ReturnTypePosition";
 
 /**
  * Starts any kind of member function.
@@ -37,13 +38,18 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         declaration += this.getPublicity(publicity);
         declaration += this.getAfterPublicity();
 
-        if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
-            declaration += returnType + " ";
+        if (this.getReturnTypePosition() === ReturnTypePosition.BeforeName) {
+            declaration += this.getPrivacyDecorator(returnType);
         }
 
+        declaration += this.language.syntax.classes.members.functions.declarationPrefix;
         declaration += this.getPublicityPrefix(publicity);
         declaration += this.context.convertStringToCase(functionName, this.getPublicityCase(publicity));
         declaration += "(";
+
+        if (this.getReturnTypePosition() === ReturnTypePosition.BeforeParameters) {
+            declaration += this.getPrivacyDecorator(returnType);
+        }
 
         if (this.language.syntax.classes.members.functions.includeThisReference) {
             declaration += this.language.syntax.classes.this;
@@ -66,9 +72,8 @@ export abstract class MemberFunctionDeclareCommand extends Command {
 
         declaration += ")";
 
-        if (this.language.syntax.functions.explicitReturns && this.language.syntax.functions.returnTypeAfterName) {
-            declaration += this.language.syntax.functions.returnTypeMarker;
-            declaration += returnType;
+        if (this.getReturnTypePosition() === ReturnTypePosition.AfterParameters) {
+            declaration += this.getPrivacyDecorator(returnType);
         }
 
         if (this.language.syntax.functions.explicitThrows && throwsIndex !== -1) {
@@ -87,6 +92,14 @@ export abstract class MemberFunctionDeclareCommand extends Command {
         addLineEnder(output, this.getEnder(), this.getIndentation());
 
         return new LineResults(output).withImports(imports);
+    }
+
+    private getPrivacyDecorator(returnType: string) {
+        return (
+            this.language.syntax.classes.members.functions.returnTypeLeft +
+            returnType +
+            this.language.syntax.classes.members.functions.returnTypeRight
+        );
     }
 
     /**
@@ -109,6 +122,8 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      */
     protected abstract getIndentation(): number;
 
+    protected abstract getReturnTypePosition(): ReturnTypePosition;
+
     private collectFunctionParameters(parameters: string[], throwsIndex: number): string[] {
         if (throwsIndex === -1) {
             return parameters.slice(4);
@@ -125,11 +140,11 @@ export abstract class MemberFunctionDeclareCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): LineResults {
+        const parameterName = this.language.syntax.variables.namePrefix + parameters[i];
         if (!this.language.syntax.variables.declarationRequired) {
-            return LineResults.newSingleLine(parameters[i]);
+            return LineResults.newSingleLine(parameterName);
         }
 
-        const parameterName: string = parameters[i];
         const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
         const parameterType = parameterTypeLine.commandResults[0].text;
 

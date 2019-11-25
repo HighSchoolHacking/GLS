@@ -404,7 +404,7 @@ export class Java extends Language {
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.CamelCase;
         functions.defineEnd = "}";
-        functions.defineStartLeft = " ";
+        functions.defineStartMiddle = " ";
         functions.defineStartRight = " {";
         functions.explicitNewStaticGenericType = true;
         functions.explicitReturns = true;
@@ -785,7 +785,7 @@ export class Java extends Language {
         toDouble.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
         toDouble.initialVariableValues = "null";
         toDouble.initializeVariablesEnd = "\n\ntry {\n";
-        toDouble.perVariableConversionStartLeft = "    ";
+        toDouble.perVariableConversion = "    ";
         toDouble.perVariableConversionStartMiddle = " = Double.parseDouble(";
         toDouble.perVariableConversionStartRight = ");\n";
         toDouble.validationBlockComparison = "{1} != null";
@@ -803,7 +803,7 @@ export class Java extends Language {
         toInt.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
         toInt.initialVariableValues = "null";
         toInt.initializeVariablesEnd = "\n\ntry {\n";
-        toInt.perVariableConversionStartLeft = "    ";
+        toInt.perVariableConversion = "    ";
         toInt.perVariableConversionStartMiddle = " = Integer.parseInt(";
         toInt.perVariableConversionStartRight = ");\n";
         toInt.validationBlockComparison = "{1} != null";

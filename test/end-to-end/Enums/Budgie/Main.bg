@@ -3,9 +3,9 @@ file start : Enums Main
 
     main context start
         standalone function declare start : private PrintValue void direction Direction
-            if start : { operation : direction (equal to) { enum : Direction Horizontal } }
+            if start : { operation : { variable : direction } (equal to) { enum : Direction Horizontal } }
                 print : "Horizontal."
-            else if start : { operation : direction (equal to) { enum : Direction Vertical } }
+            else if start : { operation : { variable : direction } (equal to) { enum : Direction Vertical } }
                 print : "Vertical."
             else start
                 print : "Unknown..."
@@ -18,8 +18,8 @@ file start : Enums Main
             standalone function : private { main group } PrintValue { enum : Direction Vertical }
 
             variable declare : direction Direction
-            operation : direction equals { enum : Direction Unknown }
-            standalone function : private { main group } PrintValue direction
+            operation : { variable : direction } equals { enum : Direction Unknown }
+            standalone function : private { main group } PrintValue { variable : direction }
         main end
     main context end
 file end

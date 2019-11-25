@@ -54,18 +54,18 @@ export class StandaloneFunctionCommand extends Command {
     private renderFloating(parameters: string[]): LineResults {
         let output = "";
         output += this.context.convertStringToCase(parameters[3], this.language.syntax.functions.case);
-        output += "(";
+        output += this.language.syntax.functions.callLeft;
 
         if (parameters.length > 4) {
             output += parameters[4];
 
             for (let i = 5; i < parameters.length; i += 1) {
-                output += ", ";
+                output += this.language.syntax.functions.callMiddle;
                 output += parameters[i];
             }
         }
 
-        output += ")";
+        output += this.language.syntax.functions.callRight;
 
         return LineResults.newSingleLine(output).withAddSemicolon(true);
     }

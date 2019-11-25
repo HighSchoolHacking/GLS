@@ -5,6 +5,7 @@ import { CommandResult } from "./CommandResult";
 import { CommandMetadata } from "./Metadata/CommandMetadata";
 import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 import { addLineEnder } from "./Utilities";
+import { OperatorNames } from "../Names/OperatorNames";
 
 /**
  * Starts a for loop over numbers.
@@ -93,11 +94,16 @@ export class ForNumbersStartCommand extends Command {
         }
 
         output += this.language.syntax.conditionals.startLeft;
-        output += this.context.convertParsed([CommandNames.Variable, parameters[1], parameters[2], parameters[3]]).commandResults[0].text;
+        output += this.context.convertParsed([CommandNames.VariableDeclare, parameters[1], parameters[2], parameters[3]]).commandResults[0]
+            .text;
         output += this.language.syntax.style.semicolon + " ";
-        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "less than", parameters[4]]).commandResults[0].text;
+        output += this.language.syntax.variables.namePrefix;
+        output += this.context.convertParsed([CommandNames.Operation, parameters[1], OperatorNames.LessThan, parameters[4]])
+            .commandResults[0].text;
         output += this.language.syntax.style.semicolon + " ";
-        output += this.context.convertParsed([CommandNames.Operation, parameters[1], "increase by", incrementor]).commandResults[0].text;
+        output += this.language.syntax.variables.namePrefix;
+        output += this.context.convertParsed([CommandNames.Operation, parameters[1], OperatorNames.IncreaseBy, incrementor])
+            .commandResults[0].text;
 
         return output;
     }

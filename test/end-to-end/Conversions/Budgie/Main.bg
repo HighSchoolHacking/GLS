@@ -4,15 +4,15 @@ file start : Conversions Main
     main context start
         main start
             comment line : Strings to numbers
-            variable declare : doubleLike string "3.5"
-            variable declare : doubleNotLike string "a3.5"
+            variable declare : doubleLike string "3.4"
+            variable declare : doubleNotLike string "a3.4"
             variable declare : intLike string "7"
             variable declare : intNotLike string "a"
 
-            standalone function : public Converters TryAsDouble doubleLike
-            standalone function : public Converters TryAsDouble doubleNotLike
-            standalone function : public Converters TryAsInt intLike "10"
-            standalone function : public Converters TryAsInt intNotLike "fish"
+            standalone function : public Converters TryAsDouble { variable : doubleLike }
+            standalone function : public Converters TryAsDouble { variable : doubleNotLike }
+            standalone function : public Converters TryAsInt { variable : intLike } "10"
+            standalone function : public Converters TryAsInt { variable : intNotLike } "fish"
         main end
     main context end
 file end

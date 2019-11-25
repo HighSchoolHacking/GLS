@@ -8,11 +8,11 @@ import { SingleParameter } from "./Metadata/Parameters/SingleParameter";
 /**
  * Starts a variable declaration.
  */
-export class VariableStartCommand extends Command {
+export class VariableDeclareStartCommand extends Command {
     /**
      * Metadata on the command.
      */
-    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableStart)
+    private static metadata: CommandMetadata = new CommandMetadata(CommandNames.VariableDeclareStart)
         .withDescription("Starts a variable declaration")
         .withIndentation([1])
         .withParameters([
@@ -25,7 +25,7 @@ export class VariableStartCommand extends Command {
      * @returns Metadata on the command.
      */
     public getMetadata(): CommandMetadata {
-        return VariableStartCommand.metadata;
+        return VariableDeclareStartCommand.metadata;
     }
 
     /**
@@ -35,7 +35,7 @@ export class VariableStartCommand extends Command {
      * @returns Line(s) of code in the language.
      */
     public render(parameters: string[]): LineResults {
-        const newParameters: string[] = ["variable"];
+        const newParameters: string[] = [CommandNames.VariableDeclare];
         for (let i = 1; i < parameters.length; i += 1) {
             const parametersSplit: string[] = parameters[i].split("\n");
 

@@ -156,8 +156,8 @@ export class ForEachPairStartCommand extends Command {
         const valueType: string = parameters[6];
         const valueLookup: string = this.context.convertParsed([CommandNames.DictionaryGet, parameters[1], parameters[3]]).commandResults[0]
             .text;
-        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
-            .text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.VariableDeclare, valueName, valueType, valueLookup])
+            .commandResults[0].text;
 
         valueVariable += this.language.syntax.style.semicolon;
 
@@ -178,7 +178,8 @@ export class ForEachPairStartCommand extends Command {
         const keyName = keyNameLine.commandResults[0].text;
         const keyType: string = parameters[4];
         const keyLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveKey;
-        let keyVariable: string = this.context.convertParsed([CommandNames.Variable, keyName, keyType, keyLookup]).commandResults[0].text;
+        let keyVariable: string = this.context.convertParsed([CommandNames.VariableDeclare, keyName, keyType, keyLookup]).commandResults[0]
+            .text;
 
         keyVariable += this.language.syntax.style.semicolon;
 
@@ -199,8 +200,8 @@ export class ForEachPairStartCommand extends Command {
         const valueName: string = valueNameLine.commandResults[0].text;
         const valueType: string = parameters[6];
         const valueLookup: string = parameters[2] + this.language.syntax.loops.forEachPairsRetrieveValue;
-        let valueVariable: string = this.context.convertParsed([CommandNames.Variable, valueName, valueType, valueLookup]).commandResults[0]
-            .text;
+        let valueVariable: string = this.context.convertParsed([CommandNames.VariableDeclare, valueName, valueType, valueLookup])
+            .commandResults[0].text;
 
         valueVariable += this.language.syntax.style.semicolon;
 

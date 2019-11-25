@@ -40,6 +40,7 @@ export class VariableDeclareCommand extends Command {
         const starter: string = this.language.syntax.variables.declaration;
         const newParameters: string[] = parameters.slice();
         newParameters[0] = CommandNames.VariableInline;
+        newParameters[1] = this.language.syntax.variables.namePrefix + parameters[1];
 
         const enderLine = this.context.convertParsed(newParameters);
         const line = starter + enderLine.commandResults[0].text;

@@ -1,4 +1,5 @@
 import { CaseStyle } from "../../Casing/CaseStyle";
+import { ReturnTypePosition } from "./ReturnTypePosition";
 
 /**
  * Metadata on a language's class member function syntax.
@@ -8,6 +9,8 @@ export class ClassMemberFunctionSyntax {
      * Decorator for abstract function declarations.
      */
     public abstractDeclaration: string;
+
+    public declarationPrefix: string;
 
     /**
      * Whether member function implementations take in a 'this' first.
@@ -58,4 +61,8 @@ export class ClassMemberFunctionSyntax {
      * Prefix before public member function names.
      */
     public publicPrefix: string;
+
+    public returnTypeLeft: string;
+    public returnTypeRight: string;
+    public returnTypePosition: ReturnTypePosition;
 }

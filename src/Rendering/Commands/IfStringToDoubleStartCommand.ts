@@ -69,7 +69,7 @@ export class IfStringToDoubleStartCommand extends Command {
         const initialValue = this.language.syntax.strings.toDouble.initialVariableValues;
 
         for (let i = 1; i < parameters.length; i += 2) {
-            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Double];
+            const declarationParameters: string[] = [CommandNames.VariableDeclare, parameters[i + 1], KeywordNames.Double];
 
             if (initialValue !== "") {
                 declarationParameters.push(initialValue);
@@ -97,13 +97,24 @@ export class IfStringToDoubleStartCommand extends Command {
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
             const doubleName = parameters[i + 1];
+            const template = this.language.syntax.strings.toDouble.perVariableConversion;
 
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartLeft, 0);
-            addLineEnder(lines, doubleName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartMiddle, 0);
-            addLineEnder(lines, stringName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toDouble.perVariableConversionStartRight, 0);
+            addLineEnder(lines, this.prepareStringConversion(template, stringName, doubleName), 0);
         }
+    }
+
+    /**
+     * Prepares a string-to-double conversion using the language's template for it.
+     *
+     * @param template   Language template to convert a string to a double.
+     * @param stringName   Name of the input string.
+     * @param doubleName   Raw name of the output double variable.
+     */
+    private prepareStringConversion(template: string, stringName: string, doubleName: string) {
+        template = BudgieUtilities.stringReplaceAll(template, "{0}", stringName);
+        template = BudgieUtilities.stringReplaceAll(template, "{1}", doubleName);
+
+        return template;
     }
 
     /**

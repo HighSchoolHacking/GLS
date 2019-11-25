@@ -64,4 +64,8 @@ export class MemberFunctionDeclareStartCommand extends MemberFunctionDeclareComm
     protected getIndentation(): number {
         return 1;
     }
+
+    protected getReturnTypePosition() {
+        return this.language.syntax.classes.members.functions.returnTypePosition;
+    }
 }

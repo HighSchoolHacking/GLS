@@ -27,8 +27,7 @@ export class NewSyntax {
      */
     public instantiationKind: NewInstantiationSyntaxKind;
 
-    /**
-     * The keyword used to instantiate a new object.
-     */
-    public keyword: string;
+    public methodLeft: string;
+    public methodMiddle: string;
+    public methodRight: string;
 }

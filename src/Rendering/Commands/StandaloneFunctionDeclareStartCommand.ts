@@ -69,7 +69,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
         imports.push(...returnTypeLine.addedImports);
 
         const functionName: string = this.context.convertStringToCase(parameters[2], this.language.syntax.functions.case);
-        let declaration = "";
+        let declaration = this.language.syntax.functions.defineStartLeft;
         let output: CommandResult[];
 
         if (this.language.syntax.functions.explicitReturns && !this.language.syntax.functions.returnTypeAfterName) {
@@ -85,7 +85,7 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
             }
         }
 
-        declaration += this.language.syntax.functions.defineStartLeft;
+        declaration += this.language.syntax.functions.defineStartMiddle;
         declaration += functionName;
         declaration += "(";
 
@@ -122,11 +122,11 @@ export class StandaloneFunctionDeclareStartCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): LineResults {
+        const parameterName = this.language.syntax.variables.namePrefix + parameters[i];
         if (!this.language.syntax.variables.declarationRequired) {
-            return LineResults.newSingleLine(parameters[i]);
+            return LineResults.newSingleLine(parameterName);
         }
 
-        const parameterName: string = parameters[i];
         const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
         const parameterType = parameterTypeLine.commandResults[0].text;
 

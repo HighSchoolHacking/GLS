@@ -14,18 +14,16 @@ export class MemberMethodRenderer extends NewRenderer {
     public render(parameters: string[]): LineResults {
         let output = "";
 
-        const typeName: string = parameters[1];
-        output += typeName;
-        output += ".";
-        output += this.language.syntax.newProp.keyword;
-        output += "(";
+        output += this.language.syntax.newProp.methodLeft;
+        output += parameters[1];
+        output += this.language.syntax.newProp.methodMiddle;
         if (parameters.length > 2) {
             output += parameters[2];
             for (let i = 3; i < parameters.length; i += 1) {
                 output += ", " + parameters[i];
             }
         }
-        output += ")";
+        output += this.language.syntax.newProp.methodRight;
 
         return LineResults.newSingleLine(output);
     }

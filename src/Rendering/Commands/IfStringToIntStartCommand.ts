@@ -69,7 +69,7 @@ export class IfStringToIntStartCommand extends Command {
         const initialValue = this.language.syntax.strings.toInt.initialVariableValues;
 
         for (let i = 1; i < parameters.length; i += 2) {
-            const declarationParameters: string[] = [CommandNames.Variable, parameters[i + 1], KeywordNames.Int];
+            const declarationParameters: string[] = [CommandNames.VariableDeclare, parameters[i + 1], KeywordNames.Int];
 
             if (initialValue !== "") {
                 declarationParameters.push(initialValue);
@@ -97,13 +97,28 @@ export class IfStringToIntStartCommand extends Command {
         for (let i = 1; i < parameters.length; i += 2) {
             const stringName = parameters[i];
             const intName = parameters[i + 1];
+            const template = this.language.syntax.strings.toInt.perVariableConversion;
 
-            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartLeft, 0);
-            addLineEnder(lines, intName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartMiddle, 0);
-            addLineEnder(lines, stringName, 0);
-            addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionStartRight, 0);
+            addLineEnder(lines, this.prepareStringConversion(template, stringName, intName), 0);
+
+            if (i !== parameters.length - 2) {
+                addLineEnder(lines, this.language.syntax.strings.toInt.perVariableConversionBetween, 0);
+            }
         }
+    }
+
+    /**
+     * Prepares a string-to-int conversion using the language's template for it.
+     *
+     * @param template   Language template to convert a string to a int.
+     * @param stringName   Name of the input string.
+     * @param doubleName   Raw name of the output int variable.
+     */
+    private prepareStringConversion(template: string, stringName: string, doubleName: string) {
+        template = BudgieUtilities.stringReplaceAll(template, "{0}", stringName);
+        template = BudgieUtilities.stringReplaceAll(template, "{1}", doubleName);
+
+        return template;
     }
 
     /**

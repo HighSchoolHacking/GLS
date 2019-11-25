@@ -778,14 +778,14 @@ export class CommandNames {
     public static VariableDeclare = "variable declare";
 
     /**
+     * Name key for the VariableDeclareStart command.
+     */
+    public static VariableDeclareStart = "variable declare start";
+
+    /**
      * Name key for the VariableInline command.
      */
     public static VariableInline = "variable inline";
-
-    /**
-     * Name key for the VariableStart command.
-     */
-    public static VariableStart = "variable start";
 
     /**
      * Name key the WhileEnd command.

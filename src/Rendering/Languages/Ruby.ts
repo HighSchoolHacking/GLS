@@ -397,7 +397,7 @@ export class Ruby extends Language {
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.SnakeCase;
-        functions.defineStartLeft = "def ";
+        functions.defineStartMiddle = "def ";
         functions.requiresExceptions = false;
 
         functions.defineStartRight = "";
@@ -758,7 +758,7 @@ export class Ruby extends Language {
      */
     protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
         toDouble.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
-        toDouble.perVariableConversionStartLeft = "";
+        toDouble.perVariableConversion = "";
         toDouble.perVariableConversionStartMiddle = " = Float(";
         toDouble.perVariableConversionStartRight = ") rescue nil\n";
         toDouble.validationBlockComparison = "{1} != nil";
@@ -774,7 +774,7 @@ export class Ruby extends Language {
      */
     protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
         toInt.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
-        toInt.perVariableConversionStartLeft = "";
+        toInt.perVariableConversion = "";
         toInt.perVariableConversionStartMiddle = " = Float(";
         toInt.perVariableConversionStartRight = ") rescue nil\n";
         toInt.validationBlockComparison = "{1} != nil";

@@ -369,7 +369,7 @@ export class Python extends Language {
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.SnakeCase;
-        functions.defineStartLeft = "def ";
+        functions.defineStartMiddle = "def ";
         functions.defineStartRight = ":";
         functions.requiresExceptions = false;
 
@@ -731,7 +731,7 @@ export class Python extends Language {
         toDouble.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
         toDouble.initialVariableValues = "None";
         toDouble.initializeVariablesEnd = "\n\ntry:\n";
-        toDouble.perVariableConversionStartLeft = "    ";
+        toDouble.perVariableConversion = "    ";
         toDouble.perVariableConversionStartMiddle = " = float(";
         toDouble.perVariableConversionStartRight = ")\n";
         toDouble.validationBlockComparison = "{1} is not None";
@@ -749,7 +749,7 @@ export class Python extends Language {
         toInt.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
         toInt.initialVariableValues = "None";
         toInt.initializeVariablesEnd = "\n\ntry:\n";
-        toInt.perVariableConversionStartLeft = "    ";
+        toInt.perVariableConversion = "    ";
         toInt.perVariableConversionStartMiddle = " = int(";
         toInt.perVariableConversionStartRight = ")\n";
         toInt.validationBlockComparison = "{1} is not None";

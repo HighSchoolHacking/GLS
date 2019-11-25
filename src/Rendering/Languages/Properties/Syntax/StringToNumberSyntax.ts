@@ -40,19 +40,14 @@ export class StringToNumberSyntax {
     public initializeVariablesEnd: string;
 
     /**
-     * Text before each variable is attempted to be converted.
+     * Text for each variable's conversion attempt.
      */
-    public perVariableConversionStartLeft: string;
+    public perVariableConversion: string;
 
     /**
-     * Text between variable conversion attempts.
+     * Text between multiple variables' conversion attempts.
      */
-    public perVariableConversionStartMiddle: string;
-
-    /**
-     * Text after each variable is attempted to be converted.
-     */
-    public perVariableConversionStartRight: string;
+    public perVariableConversionBetween: string;
 
     /**
      * Any imports required to convert strings to a number type.

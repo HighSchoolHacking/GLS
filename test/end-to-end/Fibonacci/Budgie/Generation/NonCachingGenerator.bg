@@ -3,14 +3,14 @@ file start : Fibonacci Generation NonCachingGenerator
 
     class start : export NonCachingGenerator implements IGenerator
         member function declare start : public Generate int index int
-            if start : { operation : index (less than) 2 }
-                return : index
+            if start : { operation : { variable : index } (less than) 2 }
+                return : { variable : index }
             if end
 
-            variable declare : one int { member function : public { this } Generate { operation : index minus 1 } }
-            variable declare : two int { member function : public { this } Generate { operation : index minus 2 } }
+            variable declare : one int { member function : public { this } Generate { operation : { variable : index } minus 1 } }
+            variable declare : two int { member function : public { this } Generate { operation : { variable : index } minus 2 } }
 
-            return : { operation : one plus two }
+            return : { operation : { variable : one } plus { variable : two } }
         member function declare end
     class end
 file end

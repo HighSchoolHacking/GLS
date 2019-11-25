@@ -47,6 +47,7 @@ import { StringToNumberStartConversionType, StringToNumberSyntax } from "./Prope
 import { StyleSyntax } from "./Properties/Syntax/StyleSyntax";
 import { UnsupportedSyntax } from "./Properties/Syntax/UnsupportedSyntax";
 import { VariableSyntax } from "./Properties/Syntax/VariableSyntax";
+import { ReturnTypePosition } from "./Properties/Syntax/ReturnTypePosition";
 
 /**
  * A summary of information for the PowerShell language.
@@ -60,7 +61,7 @@ export class PowerShell extends Language {
     protected generateGeneralProperties(general: GeneralProperties): void {
         general.directoryCase = CaseStyle.DirectoryUpperCase;
         general.extension = ".ps1";
-        general.fileCase = CaseStyle.DirectoryUpperCase;
+        general.fileCase = CaseStyle.PascalCase;
         general.name = "PowerShell";
     }
 
@@ -115,25 +116,31 @@ export class PowerShell extends Language {
      * @param booleans   A property container for metadata on booleans.
      */
     protected generateBooleanSyntax(booleans: BooleanSyntax): void {
-        booleans.className = "bool";
+        booleans.className = "boolean";
     }
 
     /**
      * Generates metadata on class member functions.
      *
-     * @param members   A property container for metadata on class member functions.
+     * @param functions   A property container for metadata on class member functions.
      */
     protected generateClassMemberFunctionSyntax(functions: ClassMemberFunctionSyntax): void {
-        functions.includeThisReference = true;
-        functions.private = "def ";
-        functions.privateCase = CaseStyle.CamelCase;
-        functions.privatePrefix = "__";
-        functions.protected = "def ";
-        functions.protectedCase = CaseStyle.CamelCase;
-        functions.protectedPrefix = "_";
-        functions.public = "def ";
-        functions.publicCase = CaseStyle.CamelCase;
+        functions.privatePrefix = "";
+        functions.protectedPrefix = "";
         functions.publicPrefix = "";
+
+        functions.abstractDeclaration = "abstract ";
+        functions.declarationPrefix = "";
+        functions.includeThisReference = false;
+        functions.returnTypeLeft = "[";
+        functions.returnTypePosition = ReturnTypePosition.BeforeName;
+        functions.returnTypeRight = "] ";
+        functions.private = "";
+        functions.privateCase = CaseStyle.CamelCase;
+        functions.protected = "";
+        functions.protectedCase = CaseStyle.CamelCase;
+        functions.public = "";
+        functions.publicCase = CaseStyle.CamelCase;
     }
 
     /**
@@ -142,14 +149,16 @@ export class PowerShell extends Language {
      * @param members   A property container for metadata on class member variables.
      */
     protected generateClassMemberVariableSyntax(variables: ClassMemberVariableSyntax): void {
-        variables.publicPrefix = "";
-        variables.skipMemberVariables = true;
-
         variables.privateCase = CaseStyle.CamelCase;
-        variables.privatePrefix = "__";
-        variables.protectedCase = CaseStyle.CamelCase;
-        variables.protectedPrefix = "_";
-        variables.publicCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protectedPrefix = "";
+        variables.publicPrefix = "";
+
+        variables.private = "$";
+        variables.protected = "$";
+        variables.protectedCase = CaseStyle.PascalCase;
+        variables.public = "$";
+        variables.publicCase = CaseStyle.PascalCase;
     }
 
     /**
@@ -158,33 +167,35 @@ export class PowerShell extends Language {
      * @param classes   A property container for metadata on classes.
      */
     protected generateClassSyntax(classes: ClassSyntax): void {
-        classes.constructors.private = "";
-        classes.constructors.protected = "";
-        classes.constructors.public = "";
-        classes.constructors.useKeyword = true;
+        classes.declareEnd = "}";
+        classes.declareExtendsRight = "";
+        classes.declareStartLeft = "class ";
         classes.newStart = "new ";
-        classes.this = "self";
+        classes.statics.labelBeforePublicity = false;
+        classes.this = "$this";
 
-        classes.abstractDeclaration = "";
+        classes.abstractDeclaration = "abstract ";
+        classes.abstractsSupported = true;
         classes.aliases = {
-            char: "string",
-            dictionary: "dict",
+            boolean: "bool",
+            dictionary: "Dictionary",
+            list: "List",
             number: "double",
         };
 
-        classes.constructors.baseConstructor = "super().__init__";
-        classes.constructors.keyword = "def __init__";
-        classes.constructors.takeThis = true;
+        classes.constructors.baseConstructor = "base";
+        classes.constructors.baseShorthand = true;
+        classes.constructors.private = "";
+        classes.constructors.protected = "";
+        classes.constructors.public = "";
 
-        classes.declareEnd = "\0";
-        classes.declareExtendsLeft = "(";
-        classes.declareExtendsRight = ")";
-        classes.declareStartLeft = "class ";
-        classes.declareStartRight = ":";
+        classes.declareExtendsLeft = " : ";
+        classes.declareImplementsLeft = " : ";
+        classes.declareStartRight = " {";
 
-        classes.instanceOf = new NativeCallSyntax("isinstance", NativeCallScope.Static, NativeCallType.Function);
+        classes.instanceOf = new NativeCallSyntax(" is ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
-        classes.statics.labelBeforePublicity = true;
+        classes.generics.used = true;
     }
 
     /**
@@ -193,16 +204,17 @@ export class PowerShell extends Language {
      * @param functions   A property container for metadata on class static functions.
      */
     protected generateClassStaticFunctionSyntax(functions: ClassStaticFunctionSyntax): void {
-        functions.label = "@staticmethod\n";
-        functions.private = "def ";
-        functions.privateCase = CaseStyle.CamelCase;
-        functions.privatePrefix = "__";
-        functions.protected = "def ";
-        functions.protectedCase = CaseStyle.CamelCase;
-        functions.protectedPrefix = "_";
-        functions.public = "def ";
-        functions.publicCase = CaseStyle.CamelCase;
+        functions.label = "static ";
+        functions.privatePrefix = "";
+        functions.protectedPrefix = "";
         functions.publicPrefix = "";
+
+        functions.private = "private ";
+        functions.privateCase = CaseStyle.PascalCase;
+        functions.protected = "protected ";
+        functions.protectedCase = CaseStyle.PascalCase;
+        functions.public = "public ";
+        functions.publicCase = CaseStyle.PascalCase;
     }
 
     /**
@@ -211,18 +223,18 @@ export class PowerShell extends Language {
      * @param members   A property container for metadata on class static variables.
      */
     protected generateClassStaticVariableSyntax(variables: ClassStaticVariableSyntax): void {
-        variables.private = "";
-        variables.protected = "";
-        variables.public = "";
-        variables.skipStaticVariables = true;
-
-        variables.label = "";
+        variables.label = "static ";
         variables.privateCase = CaseStyle.CamelCase;
-        variables.privatePrefix = "__";
-        variables.protectedCase = CaseStyle.CamelCase;
-        variables.protectedPrefix = "_";
-        variables.publicCase = CaseStyle.CamelCase;
+        variables.privatePrefix = "";
+        variables.protectedPrefix = "";
         variables.publicPrefix = "";
+
+        variables.private = "private ";
+        variables.privateCase = CaseStyle.CamelCase;
+        variables.protected = "protected ";
+        variables.protectedCase = CaseStyle.PascalCase;
+        variables.public = "public ";
+        variables.publicCase = CaseStyle.PascalCase;
     }
 
     /**
@@ -282,16 +294,17 @@ export class PowerShell extends Language {
      */
     protected generateDictionarySyntax(dictionaries: DictionarySyntax): void {
         dictionaries.className = "dict";
-        dictionaries.containsKey = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
+        dictionaries.containsKey = new NativeCallSyntax("ContainsKey", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.getLeft = "[";
         dictionaries.getRight = "]";
-        dictionaries.initializeAsLiteral = "{}";
+        dictionaries.initializeAsLiteral = "@{}";
         dictionaries.initializeEnd = "}";
-        dictionaries.initializePairComma = ",";
+        dictionaries.initializeNewStart = "@{";
+        dictionaries.initializePairComma = "";
         dictionaries.initializePairLeft = "";
-        dictionaries.initializePairMiddle = ": ";
-        dictionaries.initializePairRight = "";
-        dictionaries.initializeStart = "{";
+        dictionaries.initializePairMiddle = " = ";
+        dictionaries.initializePairRight = ";";
+        dictionaries.initializeStart = "@{";
         dictionaries.keys = new NativeCallSyntax("keys", NativeCallScope.Member, NativeCallType.Function);
         dictionaries.setLeft = "[";
         dictionaries.setMiddle = "] = ";
@@ -306,16 +319,16 @@ export class PowerShell extends Language {
     protected generateEnumSyntax(enums: EnumSyntax): void {
         enums.declareCommaRight = "";
         enums.declareLastRight = "";
-        enums.declareExternal = "class {0}(Enum):";
-        enums.declareInternal = "class {0}(Enum):";
+        enums.declareExternal = "Enum {0} {";
+        enums.declareInternal = "Enum {0} {";
         enums.declareValueLeft = " = ";
         enums.declareValueRight = "";
         enums.declareValues = true;
         enums.isObject = false;
-        enums.requiredImports = [new Import(["enum"], ["Enum"], ImportRelativity.Absolute)];
-        enums.valueLeft = "";
-        enums.valueMiddle = ".";
-        enums.valueRight = "";
+        enums.requiredImports = [];
+        enums.valueLeft = "([";
+        enums.valueMiddle = "]::";
+        enums.valueRight = ")";
     }
 
     /**
@@ -324,21 +337,25 @@ export class PowerShell extends Language {
      * @param exceptions   A property container for metadata on exceptions.
      */
     protected generateExceptionSyntax(exceptions: ExceptionSyntax): void {
-        exceptions.blockEnd = "";
-        exceptions.catch = "except";
+        exceptions.blockEnd = "} ";
+        exceptions.blockEnd = "}\n";
+        exceptions.catch = "catch";
+        exceptions.catchStartLink = " ";
+        exceptions.catchStartMiddle = " (";
+        exceptions.catchStartRight = ") {";
+        exceptions.catchStartRight = ") {";
         exceptions.className = "Exception";
-        exceptions.catchStartLink = " as ";
-        exceptions.catchStartMiddle = " ";
-        exceptions.catchStartRight = ":";
         exceptions.finally = "finally";
-        exceptions.finallyStartRight = ":";
+        exceptions.finallyStartRight = " {";
+        exceptions.finallyStartRight = " {";
         exceptions.requiredImports = [];
         exceptions.requiresExceptionType = true;
-        exceptions.throw = "raise";
+        exceptions.throw = "throw new";
         exceptions.throwMiddle = "(";
         exceptions.throwRight = ")";
         exceptions.try = "try";
-        exceptions.tryStartRight = ":";
+        exceptions.tryStartRight = " {";
+        exceptions.tryStartRight = " {";
         exceptions.variablePrefix = "";
     }
 
@@ -367,16 +384,20 @@ export class PowerShell extends Language {
     /**
      * Generates metadata on functions.
      *
-     * @param functions   The property container for metadata on functions.
+     * @param functions   A property container for metadata on functions.
      */
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
-        functions.case = CaseStyle.CamelCase;
-        functions.defineStartLeft = "def ";
-        functions.defineStartRight = ":";
+        functions.callLeft = " ";
+        functions.callMiddle = " ";
+        functions.callRight = "";
+        functions.case = CaseStyle.DashUpperCase;
+        functions.defineEnd = "}";
+        functions.defineStartLeft = "function ";
+        functions.defineStartMiddle = "";
+        functions.defineStartRight = " {";
+        functions.explicitNewStaticGenericType = true;
         functions.requiresExceptions = false;
-
-        functions.defineStartRight = ":";
-        functions.defineEnd = "\0";
+        functions.returnTypePosition = ReturnTypePosition.Hidden;
     }
 
     /**
@@ -386,15 +407,14 @@ export class PowerShell extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.DirectoryUpperCase;
-        imports.explicitAbsoluteFileName = true;
-        imports.explicitItems = true;
-        imports.leftAbsolute = "from ";
-        imports.leftLocal = "from ";
-        imports.middle = " import ";
-        imports.right = "";
+        imports.explicitAbsoluteFileName = false;
+        imports.explicitItems = false;
+        imports.leftAbsolute = '. "';
+        imports.leftLocal = '. "./';
+        imports.right = '.ps1"';
         imports.transformFileNames = true;
-        imports.removeFirstPathComponent = true;
-        imports.useLocalRelativeImports = false;
+        imports.removeFirstPathComponent = false;
+        imports.useLocalRelativeImports = true;
     }
 
     /**
@@ -520,30 +540,31 @@ export class PowerShell extends Language {
         loops.break = "break";
         loops.continue = "continue";
         loops.for = "for";
-        loops.foreach = "for";
-        loops.forEachMiddle = " in ";
-        loops.rangedForLoops = true;
-        loops.forEachStartIteration = " ";
+        loops.forEachEnd = "}";
+        loops.forEachKeyEnd = "}";
+        loops.forEachPairEnd = "}";
+        loops.forNumbersEnd = "}";
         loops.whileStartLeft = "while";
-        loops.whileStartMiddle = " ";
-        loops.whileStartRight = ":";
+        loops.whileStartMiddle = " (";
+        loops.whileStartRight = ") {";
 
-        loops.forEachEnd = "\0";
-        loops.forEachGetKeys = "";
-        loops.forEachGetPairs = ".items()";
-        loops.forEachKeyEnd = "\0";
-        loops.forEachPairEnd = "\0";
+        loops.foreach = "foreach";
+        loops.forEachGetKeys = ".Keys";
+        loops.forEachGetPairs = "";
+        loops.forEachMiddle = " in ";
         loops.forEachPairsAsPair = true;
+        loops.forEachPairsPairClass = "KeyValuePair";
+        loops.forEachPairsRetrieveKey = ".Key";
+        loops.forEachPairsRetrieveValue = ".Value";
+        loops.forEachPairsTypedPair = true;
         loops.forEachRight = "";
-        loops.forNumbersEnd = "\0";
 
-        loops.forEachStartLeft = "for";
+        loops.forEachStartLeft = "foreach";
+        loops.forEachStartIteration = " (";
         loops.forEachStartSeparator = " in ";
-        loops.forEachStartRight = ":";
+        loops.forEachStartRight = ")\n{";
 
-        loops.rangedForLoopsLeft = " in range(";
-        loops.rangedForLoopsMiddle = ", ";
-        loops.rangedForLoopsRight = ")";
+        loops.whileStartRight = ")\n{";
     }
 
     /**
@@ -567,23 +588,16 @@ export class PowerShell extends Language {
      * @param math   A property container for metadata on math.
      */
     protected generateMathSyntax(math: MathSyntax): void {
-        math.absolute = new NativeCallSyntax("fabs", NativeCallScope.Static, NativeCallType.Function).withImports([
-            new Import(["math"], ["fabs"], ImportRelativity.Absolute),
-        ]);
-        math.asInt = new NativeCallSyntax("floor", NativeCallScope.Static, NativeCallType.Function).withImports([
-            new Import(["math"], ["floor"], ImportRelativity.Absolute),
-        ]);
-        math.ceiling = new NativeCallSyntax("ceil", NativeCallScope.Static, NativeCallType.Function).withImports([
-            new Import(["math"], ["ceil"], ImportRelativity.Absolute),
-        ]);
-        math.floor = new NativeCallSyntax("floor", NativeCallScope.Static, NativeCallType.Function).withImports([
-            new Import(["math"], ["floor"], ImportRelativity.Absolute),
-        ]);
-        math.max = new NativeCallSyntax("max", NativeCallScope.Static, NativeCallType.Function);
-        math.min = new NativeCallSyntax("min", NativeCallScope.Static, NativeCallType.Function);
-        math.power = new NativeCallSyntax("pow", NativeCallScope.Static, NativeCallType.Function).withImports([
-            new Import(["math"], ["pow"], ImportRelativity.Absolute),
-        ]);
+        const requiredImports = [new Import(["System"], ["Math"], ImportRelativity.Absolute)];
+
+        math.absolute = new NativeCallSyntax("Math.Abs", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.asInt = new NativeCallSyntax("[convert]::ToInt32", NativeCallScope.Static, NativeCallType.Function);
+        math.ceiling = new NativeCallSyntax("Math.Ceiling", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.floor = new NativeCallSyntax("Math.Floor", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.max = new NativeCallSyntax("Math.Max", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.min = new NativeCallSyntax("Math.Min", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+        math.power = new NativeCallSyntax("Math.Pow", NativeCallScope.Static, NativeCallType.Function).withImports(requiredImports);
+
         math.mathName = "Math";
     }
 
@@ -593,7 +607,10 @@ export class PowerShell extends Language {
      * @param newProp   A property container for metadata on new object instantiation.
      */
     protected generateNewSyntax(newProp: NewSyntax): void {
-        newProp.instantiationKind = NewInstantiationSyntaxKind.MethodCall;
+        newProp.instantiationKind = NewInstantiationSyntaxKind.MemberMethodCall;
+        newProp.methodLeft = "[";
+        newProp.methodMiddle = "]::new(";
+        newProp.methodRight = ")";
     }
 
     /**
@@ -602,17 +619,17 @@ export class PowerShell extends Language {
      * @param operators   The property container for metadata on operators.
      */
     protected generateOperatorSyntax(operators: OperatorSyntax): void {
-        operators.and = "&&";
+        operators.and = "-and";
         operators.decreaseBy = "-=";
         operators.divide = "/";
         operators.divideBy = "/=";
         operators.equals = "=";
         operators.equalTo = "-eq";
-        operators.greaterThan = ">";
-        operators.greaterThanOrEqualTo = ">=";
+        operators.greaterThan = "-gt";
+        operators.greaterThanOrEqualTo = "-gte";
         operators.increaseBy = "+=";
-        operators.lessThan = "<";
-        operators.lessThanOrEqualTo = "<=";
+        operators.lessThan = "-lt";
+        operators.lessThanOrEqualTo = "-lte";
         operators.minus = "-";
         operators.mod = "%";
         operators.multiplyBy = "*=";
@@ -729,33 +746,30 @@ export class PowerShell extends Language {
      */
     protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
         toDouble.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
-        toDouble.initialVariableValues = "None";
-        toDouble.initializeVariablesEnd = "\n\ntry:\n";
-        toDouble.perVariableConversionStartLeft = "    ";
-        toDouble.perVariableConversionStartMiddle = " = float(";
-        toDouble.perVariableConversionStartRight = ")\n";
-        toDouble.validationBlockComparison = "{1} is not None";
-        toDouble.validationBlockLeft = "except:\n    pass\n\nif ";
-        toDouble.validationBlockMiddle = " and ";
-        toDouble.validationBlockRight = ":";
+        toDouble.initialVariableValues = "$null";
+        toDouble.initializeVariablesEnd = "\nif (";
+        toDouble.perVariableConversion = "[Double]::TryParse({0}, [ref] ${1}";
+        toDouble.validationBlockComparison = ")";
+        toDouble.validationBlockLeft = "";
+        toDouble.validationBlockMiddle = " && ";
+        toDouble.validationBlockRight = ") {";
     }
 
     /**
-     * Generates metadata on string-to-int conversions.
+     * Generates metadata on string-to-double conversions.
      *
-     * @param toInt   A property container for metadata on string-to-int conversions.
+     * @param toInt   A property container for metadata on string-to-double conversions.
      */
     protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
         toInt.conversionType = StringToNumberStartConversionType.PredeclareConvertAndValidate;
-        toInt.initialVariableValues = "None";
-        toInt.initializeVariablesEnd = "\n\ntry:\n";
-        toInt.perVariableConversionStartLeft = "    ";
-        toInt.perVariableConversionStartMiddle = " = int(";
-        toInt.perVariableConversionStartRight = ")\n";
-        toInt.validationBlockComparison = "{1} is not None";
-        toInt.validationBlockLeft = "except:\n    pass\n\nif ";
-        toInt.validationBlockMiddle = " and ";
-        toInt.validationBlockRight = ":";
+        toInt.initialVariableValues = "$null";
+        toInt.initializeVariablesEnd = "\nif (";
+        toInt.perVariableConversion = "[Int32]::TryParse({0}, [ref] ${1})";
+        toInt.perVariableConversionBetween = " -and ";
+        toInt.validationBlockComparison = "";
+        toInt.validationBlockLeft = "";
+        toInt.validationBlockMiddle = "";
+        toInt.validationBlockRight = ") {";
     }
 
     /**
@@ -764,7 +778,7 @@ export class PowerShell extends Language {
      * @param style   The property container for metadata on style.
      */
     protected generateStyleSyntax(style: StyleSyntax): void {
-        style.semicolon = "";
+        style.semicolon = ";";
     }
 
     /**

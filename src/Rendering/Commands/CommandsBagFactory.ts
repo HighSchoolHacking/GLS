@@ -155,7 +155,7 @@ import { ValueCommand } from "./ValueCommand";
 import { VariableCommand } from "./VariableCommand";
 import { VariableDeclareCommand } from "./VariableDeclareCommand";
 import { VariableInlineCommand } from "./VariableInlineCommand";
-import { VariableStartCommand } from "./VariableStartCommand";
+import { VariableDeclareStartCommand } from "./VariableDeclareStartCommand";
 import { WhileEndCommand } from "./WhileEndCommand";
 import { WhileStartCommand } from "./WhileStartCommand";
 
@@ -326,7 +326,7 @@ export class CommandsBagFactory {
             new VariableCommand(context),
             new VariableDeclareCommand(context),
             new VariableInlineCommand(context),
-            new VariableStartCommand(context),
+            new VariableDeclareStartCommand(context),
             new WhileEndCommand(context),
             new WhileStartCommand(context),
         ]);

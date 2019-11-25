@@ -408,7 +408,7 @@ export class TypeScript extends Language {
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.CamelCase;
         functions.defineEnd = "}";
-        functions.defineStartLeft = "function ";
+        functions.defineStartMiddle = "function ";
         functions.defineStartRight = " {";
         functions.explicitNewStaticGenericType = true;
         functions.explicitReturns = true;
@@ -773,7 +773,7 @@ export class TypeScript extends Language {
      */
     protected generateStringToDoubleSyntax(toDouble: StringToNumberSyntax): void {
         toDouble.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
-        toDouble.perVariableConversionStartLeft = "let ";
+        toDouble.perVariableConversion = "let ";
         toDouble.perVariableConversionStartMiddle = ": number = parseFloat(";
         toDouble.perVariableConversionStartRight = ");\n";
         toDouble.validationBlockComparison = "!isNaN({1})";
@@ -789,7 +789,7 @@ export class TypeScript extends Language {
      */
     protected generateStringToIntSyntax(toInt: StringToNumberSyntax): void {
         toInt.conversionType = StringToNumberStartConversionType.ConvertAndValidate;
-        toInt.perVariableConversionStartLeft = "let ";
+        toInt.perVariableConversion = "let ";
         toInt.perVariableConversionStartMiddle = ": number = parseInt(";
         toInt.perVariableConversionStartRight = ");\n";
         toInt.validationBlockComparison = "!isNaN({1})";

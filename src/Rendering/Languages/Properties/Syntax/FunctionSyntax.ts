@@ -1,4 +1,5 @@
 import { CaseStyle } from "../../Casing/CaseStyle";
+import { ReturnTypePosition } from "./ReturnTypePosition";
 
 /**
  * Metadata on a language's function syntax.
@@ -14,10 +15,9 @@ export class FunctionSyntax {
      */
     public defineEnd: string;
 
-    /**
-     * A prefix before defining a function, such as "def " or "function ".
-     */
     public defineStartLeft: string;
+
+    public defineStartMiddle: string;
 
     /**
      * A suffix after defining a function, such as " {" or ":".
@@ -30,11 +30,6 @@ export class FunctionSyntax {
     public explicitNewStaticGenericType: boolean;
 
     /**
-     * Whether return types should be explicitly stated.
-     */
-    public explicitReturns: boolean;
-
-    /**
      * Whether functions should explicitly mark which exceptions they may throw.
      */
     public explicitThrows: boolean;
@@ -44,18 +39,25 @@ export class FunctionSyntax {
      */
     public requiresExceptions: boolean;
 
-    /**
-     * Whether return types should be after the name, rather than before.
-     */
-    public returnTypeAfterName: boolean;
-
-    /**
-     * A label between function name and its type, if type is after the name.
-     */
-    public returnTypeMarker: string;
+    public returnTypePosition: ReturnTypePosition;
 
     /**
      * Precedes exceptions that the function throws.
      */
     public throwsMarker: string;
+
+    /**
+     * Characters after a calling function's name.
+     */
+    public callLeft: string;
+
+    /**
+     * Characters between arguments when a calling a function.
+     */
+    public callMiddle: string;
+
+    /**
+     * Characters to finish calling a function
+     */
+    public callRight: string;
 }

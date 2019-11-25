@@ -9,5 +9,6 @@ import { spawnAndCaptureOutput } from "./Spawning";
 export const testPowerShellGenerator: IOutputGenerator = async ({ projectDirectory }): Promise<string[]> => {
     return spawnAndCaptureOutput("powershell", {
         args: [path.join(projectDirectory, "Main.ps1")],
+        cwd: projectDirectory,
     });
 };

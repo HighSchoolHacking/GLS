@@ -311,6 +311,7 @@ export class CSharp extends Language {
         dictionaries.keys = new NativeCallSyntax("Keys", NativeCallScope.Member, NativeCallType.Property);
         dictionaries.initializeAsNew = true;
         dictionaries.initializeEnd = "}";
+        dictionaries.initializeNewStart = "{";
         dictionaries.initializePairComma = ",";
         dictionaries.initializePairLeft = "{ ";
         dictionaries.initializePairMiddle = ", ";
@@ -403,7 +404,7 @@ export class CSharp extends Language {
     protected generateFunctionSyntax(functions: FunctionSyntax): void {
         functions.case = CaseStyle.PascalCase;
         functions.defineEnd = "}";
-        functions.defineStartLeft = " ";
+        functions.defineStartMiddle = " ";
         functions.defineStartRight = "\n{";
         functions.explicitNewStaticGenericType = false;
         functions.explicitReturns = true;

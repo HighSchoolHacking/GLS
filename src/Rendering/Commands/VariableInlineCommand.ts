@@ -39,7 +39,7 @@ export class VariableInlineCommand extends Command {
         }
 
         const imports: Import[] = [];
-        const name: string = this.language.syntax.variables.namePrefix + parameters[1];
+        const name: string = parameters[1];
         const typeNameLine = this.context.convertParsed([CommandNames.Type, parameters[2]]);
         const typeName: string = typeNameLine.commandResults[0].text;
         let output = "";
