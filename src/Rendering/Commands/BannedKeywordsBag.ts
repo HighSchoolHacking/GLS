@@ -45,6 +45,7 @@ export class BannedKeywordsBag {
             "constructor",
             "continue",
             "cos",
+            "data",
             "debugger",
             "decimal",
             "declare",

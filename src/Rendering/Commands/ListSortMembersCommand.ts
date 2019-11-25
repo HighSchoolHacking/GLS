@@ -21,6 +21,10 @@ export abstract class ListSortMembersCommand extends Command {
             return this.renderAsKeyComparator(sortMembers, parameters);
         }
 
+        if (sortMembers.type === ListSortMemberType.OnProperty) {
+            return this.renderAsOnProperty(sortMembers, parameters);
+        }
+
         return this.renderAsKeyShorthand(sortMembers, parameters);
     }
 
@@ -28,6 +32,30 @@ export abstract class ListSortMembersCommand extends Command {
      * @returns How the list sorts by this kind of members.
      */
     protected abstract getSortMembersForm(): ListSortMembersSyntax;
+
+    private renderAsOnProperty(sortMembers: ListSortMembersSyntax, parameters: string[]): LineResults {
+        const imports: Import[] = [];
+
+        const listName = parameters[1];
+        const privacy = parameters[2];
+        const instanceName = parameters[3];
+        const memberKey = parameters[4];
+
+        const memberVariableLine = this.context.convertParsed([CommandNames.MemberVariable, privacy, instanceName, memberKey]);
+        imports.push(...memberVariableLine.addedImports);
+
+        // list = list | Sort-Object -Property memberKey
+        let output = listName;
+        output += sortMembers.lambdaLeft;
+        output += listName;
+        output += sortMembers.lambdaMiddleLeft;
+        output += memberKey;
+        output += sortMembers.lambdaRight;
+
+        return LineResults.newSingleLine(output)
+            .withImports(sortMembers.requiredImports)
+            .withAddSemicolon(true);
+    }
 
     /**
      * Renders the command as a comparator function.

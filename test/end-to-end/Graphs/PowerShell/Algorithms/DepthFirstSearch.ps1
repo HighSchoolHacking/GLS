@@ -1,44 +1,48 @@
-. "./../Data/UnweightedNode.ps1"
-. "./../Data/WeightedNode.ps1"
+. "./../Contents/UnweightedNode.ps1"
+. "./../Contents/WeightedNode.ps1"
+
+# New-Object System.Collections.Generic.HashSet[UnweightedNode]
+# New-Object System.Collections.Generic.HashSet[lolskies]
+# UnweightedNode
 
 function Unweighted-Depth-First-Search($start) {
-    $nodes = @();
-    $visited = setundefinedUnweightedNodeundefined();
+    $nodes = New-Object System.Collections.Generic.List[UnweightedNode];
+    $visited = New-Object System.Collections.Generic.HashSet[UnweightedNode];
 
-    Traverse-Unweighted-Depth-First-Search start nodes visited;
+    Traverse-Unweighted-Depth-First-Search $start $nodes $visited;
 
-    return nodes;
+    return $nodes;
 }
 
 function Traverse-Unweighted-Depth-First-Search($start, $nodes, $visited) {
-    nodes.append(start);
-    visited.add(start);
+    $nodes.Add($start);
+    $visited.add($start);
 
-    foreach (neighbor in start.getNeighborsInOrder())
+    foreach ($neighbor in $start.getNeighborsInOrder())
     {
-        if (not neighbor in visited) {
-            Traverse-Unweighted-Depth-First-Search neighbor nodes visited;
+        if (-not $visited.Contains($neighbor)) {
+            Traverse-Unweighted-Depth-First-Search $neighbor $nodes $visited;
         }
     }
 }
 
 function Weighted-Depth-First-Search($start) {
-    $nodes = @();
-    $visited = setundefinedWeightedNodeundefined();
+    $nodes = New-Object System.Collections.Generic.List[WeightedNode];
+    $visited = New-Object System.Collections.Generic.HashSet[WeightedNode];
 
-    Traverse-Weighted-Depth-First-Search start nodes visited;
+    Traverse-Weighted-Depth-First-Search $start $nodes $visited;
 
-    return nodes;
+    return $nodes;
 }
 
 function Traverse-Weighted-Depth-First-Search($start, $nodes, $visited) {
-    nodes.append(start);
-    visited.add(start);
+    $nodes.Add($start);
+    $visited.add($start);
 
-    foreach (node in start.getNeighborsInOrder())
+    foreach ($node in $start.getNeighborsInOrder())
     {
-        if (not node in visited) {
-            Traverse-Weighted-Depth-First-Search node nodes visited;
+        if (-not $visited.Contains($node)) {
+            Traverse-Weighted-Depth-First-Search $node $nodes $visited;
         }
     }
 }

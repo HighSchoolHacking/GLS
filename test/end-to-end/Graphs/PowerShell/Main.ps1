@@ -1,5 +1,5 @@
-. "./Data/UnweightedNode.ps1"
-. "./Data/WeightedNode.ps1"
+. "./Contents/UnweightedNode.ps1"
+. "./Contents/WeightedNode.ps1"
 . "./Testing/Tests.ps1"
 
 Test-Unweighted ;

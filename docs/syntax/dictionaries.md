@@ -35,7 +35,7 @@ Alternately, create a multi-line initialization with `dictionary new start`, whi
 Describe each pair of initial values inside with `dictionary pair`, which takes in the key type, value type, and a `,` if it isn't the last pair of initialization.
 
 ```budgie
-variable start : counts { dictionary type : string int } { dictionary new start : string int }
+variable declare start : counts { dictionary type : string int } { dictionary new start : string int }
     dictionary pair : "apple" 3 ,
     dictionary pair : "banana" 2
 dictionary new end

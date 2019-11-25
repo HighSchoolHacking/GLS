@@ -1,28 +1,28 @@
-file start : Graphs Data WeightedNode
-    import local : Graphs Data INode types INode
+file start : Graphs Contents WeightedNode
+    import local : Graphs Contents INode types INode
 
     comment doc start
     comment doc tag : summary A weighted, directed node in a graph.
     comment doc end
     class start : export { generic type : WeightedNode T } implements { generic type : INode { generic type : WeightedNode T } }
-        member variable declare : public Data T
+        member variable declare : public Contents T
         member variable declare : private Edges { list type : { generic type : Edge T } }
 
-        constructor start : public WeightedNode data T
-            member variable set : public { this } Data data
+        constructor start : public WeightedNode contents T
+            member variable set : public { this } Contents { variable : contents }
             member variable set : private { this } Edges { list new : { generic type : Edge T } }
         constructor end
 
         member function declare start : public GetNeighborsInOrder { list type : { generic type : WeightedNode T } }
             variable declare : nodes { list type : { generic type : WeightedNode T } } { list new : { generic type : WeightedNode T } }
 
-            for each start : { member variable declare : private { this } Edges } edge { generic type : Edge T }
-                list push : nodes { member variable declare : public edge To }
+            for each start : { member variable : private { this } Edges } edge { generic type : Edge T }
+                list push : { variable : nodes } { member variable : public { variable : edge } To }
             for each end
 
-            list sort member numbers : { member variable declare : private { this } Edges } public edge Distance
+            list sort member numbers : { member variable : private { this } Edges } public edge Distance
 
-            return : nodes
+            return : { variable : nodes }
         member function declare end
     class end
 file end

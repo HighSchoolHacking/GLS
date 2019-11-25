@@ -46,10 +46,15 @@ export class ListNewCommand extends Command {
 
         imports.push(...typeNameLine.addedImports);
 
-        let output: string = "new " + this.language.syntax.lists.className + "<" + typeName + ">";
+        let output: string = "";
+        output += this.language.syntax.lists.initializeStart; // "new ";
+        output += this.language.syntax.lists.className;
+        output += this.language.syntax.classes.generics.left;
+        output += typeName;
+        output += this.language.syntax.classes.generics.right;
 
         if (parameters.length === 2) {
-            output += "()";
+            output += this.language.syntax.lists.initializeEmpty; // "()"
         } else {
             output += this.language.syntax.lists.newItems.left;
 

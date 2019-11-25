@@ -39,7 +39,8 @@ export class GenericTypeCommand extends Command {
         }
 
         const imports: Import[] = [];
-        let output = parameters[1] + "<";
+        let output = parameters[1];
+        output += this.language.syntax.classes.generics.left;
 
         for (let i = 2; i < parameters.length; i += 1) {
             const typeLine = this.context.convertParsed([CommandNames.Type, parameters[i]]);
@@ -51,7 +52,7 @@ export class GenericTypeCommand extends Command {
             }
         }
 
-        output += ">";
+        output += this.language.syntax.classes.generics.right;
         return LineResults.newSingleLine(output).withImports(imports);
     }
 }

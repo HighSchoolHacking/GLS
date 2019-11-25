@@ -3,7 +3,7 @@ class Edge {
     $From;
     $To;
 
-    Edge(distance, from, to) {
+    Edge($distance, $from, $to) {
         $this.Distance = distance;
         $this.From = from;
         $this.To = to;

@@ -9,6 +9,8 @@ export enum ListSortMemberType {
      */
     KeyComparator,
 
+    OnProperty,
+
     /**
      * Use a shorthand lambda to take a member of an instance to compare.
      */

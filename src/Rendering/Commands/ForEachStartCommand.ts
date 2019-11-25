@@ -53,7 +53,7 @@ export class ForEachStartCommand extends Command {
             imports.push(...typeLine.addedImports);
         }
 
-        line += parameters[2];
+        line += this.language.syntax.variables.namePrefix + parameters[2];
         line += this.language.syntax.loops.forEachStartSeparator;
         line += parameters[1];
 

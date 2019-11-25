@@ -36,7 +36,10 @@ export class ListTypeCommand extends Command {
         if (this.language.syntax.lists.asArray) {
             typeName = typeNameRaw + "[]";
         } else {
-            typeName = this.language.syntax.lists.className + "<" + typeNameRaw + ">";
+            typeName = this.language.syntax.lists.className;
+            typeName += this.language.syntax.classes.generics.left;
+            typeName += typeNameRaw;
+            typeName += this.language.syntax.classes.generics.right;
         }
 
         return LineResults.newSingleLine(typeName)

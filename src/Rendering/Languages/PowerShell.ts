@@ -196,6 +196,9 @@ export class PowerShell extends Language {
         classes.instanceOf = new NativeCallSyntax(" is ", NativeCallScope.Operator, NativeCallType.FloatingRight);
 
         classes.generics.used = true;
+        classes.generics.left = "[";
+        classes.generics.middle = ", ";
+        classes.generics.right = "]";
     }
 
     /**
@@ -457,20 +460,23 @@ export class PowerShell extends Language {
      */
     protected generateListSyntax(lists: ListSyntax): void {
         lists.addList = new NativeCallSyntax("extend", NativeCallScope.Member, NativeCallType.Function);
-        lists.asArray = true;
+        lists.asArray = false;
+        lists.className = "System.Collections.Generic.List";
         lists.getLeft = "[";
         lists.getRight = "]";
-        lists.insert = new NativeCallSyntax("insert", NativeCallScope.Member, NativeCallType.Function);
-        lists.length = new NativeCallSyntax("len", NativeCallScope.Static, NativeCallType.Function);
-        lists.pop = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
-        lists.popFront = new NativeCallSyntax("pop", NativeCallScope.Member, NativeCallType.Function);
+        lists.initializeEmpty = "";
+        lists.initializeStart = "New-Object ";
+        lists.insert = new NativeCallSyntax("Insert", NativeCallScope.Member, NativeCallType.Function);
+        lists.length = new NativeCallSyntax("Length", NativeCallScope.Static, NativeCallType.Function);
+        lists.pop = new NativeCallSyntax("Pop", NativeCallScope.Member, NativeCallType.Function);
+        lists.popFront = new NativeCallSyntax("Pop", NativeCallScope.Member, NativeCallType.Function);
         lists.popFront.withArguments(["0"]);
-        lists.push = new NativeCallSyntax("append", NativeCallScope.Member, NativeCallType.Function);
+        lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
         lists.requiredImports = [];
         lists.setLeft = "[";
         lists.setMiddle = "] = ";
         lists.setRight = "";
-        lists.sortNumbers = new NativeCallSyntax("sort", NativeCallScope.Member, NativeCallType.Function);
+        lists.sortNumbers = new NativeCallSyntax("Sort", NativeCallScope.Member, NativeCallType.Function);
         lists.sortStrings = lists.sortNumbers;
     }
 
@@ -512,11 +518,11 @@ export class PowerShell extends Language {
      * Fills out metadata on list sorting by keyed member numbers.
      */
     protected generateListSortMemberNumbersSyntax(sortMembers: ListSortMembersSyntax): void {
-        sortMembers.lambdaLeft = ".sort(key = lambda ";
-        sortMembers.lambdaMiddleLeft = ": ";
-        sortMembers.lambdaRight = ")";
+        sortMembers.lambdaLeft = " = ";
+        sortMembers.lambdaMiddleLeft = " | Sort-Object -Property ";
+        sortMembers.lambdaRight = "";
         sortMembers.requiredImports = [];
-        sortMembers.type = ListSortMemberType.ShorthandLambda;
+        sortMembers.type = ListSortMemberType.OnProperty;
     }
 
     /**
@@ -528,7 +534,7 @@ export class PowerShell extends Language {
         sortMembers.lambdaMiddleRight = " < ";
         sortMembers.lambdaRight = ")";
         sortMembers.requiredImports = [];
-        sortMembers.type = ListSortMemberType.ShorthandLambda;
+        sortMembers.type = ListSortMemberType.OnProperty;
     }
 
     /**
@@ -633,7 +639,7 @@ export class PowerShell extends Language {
         operators.minus = "-";
         operators.mod = "%";
         operators.multiplyBy = "*=";
-        operators.not = "not ";
+        operators.not = "-not ";
         operators.notEqualTo = "-neq";
         operators.or = "||";
         operators.plus = "+";
@@ -671,14 +677,14 @@ export class PowerShell extends Language {
      */
     protected generateSetSyntax(sets: SetSyntax): void {
         sets.add = new NativeCallSyntax("add", NativeCallScope.Member, NativeCallType.Function);
-        sets.className = "set";
-        sets.contains = new NativeCallSyntax(" in ", NativeCallScope.Operator, NativeCallType.FloatingLeft);
-        sets.initializeAsNew = false;
-        sets.initializeStart = "";
+        sets.className = "System.Collections.Generic.HashSet";
+        sets.contains = new NativeCallSyntax("Contains", NativeCallScope.Member, NativeCallType.Function);
+        sets.initializeAsNew = true;
+        sets.initializeStart = "New-Object ";
         sets.requiredImports = [];
         sets.startItemsLeft = "({";
         sets.startItemsRight = "})";
-        sets.startNoItems = "()";
+        sets.startNoItems = "";
         sets.toArray = new NativeCallSyntax("list", NativeCallScope.Static, NativeCallType.Function);
         sets.toList = sets.toArray;
     }

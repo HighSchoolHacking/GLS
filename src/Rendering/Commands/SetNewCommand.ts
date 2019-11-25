@@ -39,7 +39,7 @@ export class SetNewCommand extends Command {
         let output = "";
 
         if (this.language.syntax.sets.initializeAsNew) {
-            output += "new ";
+            output += this.language.syntax.sets.initializeStart; // "new ";
         }
 
         output += this.language.syntax.sets.className;

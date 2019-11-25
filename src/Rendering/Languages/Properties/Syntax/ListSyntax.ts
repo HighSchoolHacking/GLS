@@ -113,4 +113,7 @@ export class ListSyntax {
      * How to sort a list in-place as strings.
      */
     public sortStrings: NativeCallSyntax;
+
+    public initializeStart: string;
+    public initializeEmpty: string;
 }
