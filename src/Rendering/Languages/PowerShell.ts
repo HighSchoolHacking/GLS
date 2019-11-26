@@ -435,11 +435,11 @@ export class PowerShell extends Language {
      * @param lambdas   A property container for metadata on lambdas.
      */
     protected generateLambdaSyntax(lambdas: LambdaSyntax): void {
-        lambdas.callLeft = "(";
+        lambdas.callLeft = ".Invoke(";
         lambdas.callRight = ")";
-        lambdas.functionLeft = "lambda ";
-        lambdas.functionMiddle = ": ";
-        lambdas.functionRight = "";
+        lambdas.functionLeft = "{ param (";
+        lambdas.functionMiddle = ") ";
+        lambdas.functionRight = " }";
         lambdas.parameterTypeRequired = false;
         lambdas.returnTypeRequired = false;
     }

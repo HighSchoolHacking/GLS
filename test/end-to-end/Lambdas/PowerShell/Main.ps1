@@ -1,7 +1,7 @@
 function Run-On-Ints($format) {
     for ($i = 0; $i -lt 10; $i += 1) {
-        Write-Output format(i);
+        Write-Output $format.Invoke($i);
     }
 }
 
-Run-On-Ints lambda i: "Int: $(i)";
+Run-On-Ints { param ($i) "Int: $($i)" };

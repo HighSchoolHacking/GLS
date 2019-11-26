@@ -2,12 +2,12 @@ file start : Lambdas Main
     main context start
         standalone function declare start : private RunOnInts void format { lambda type inline : string i int }
             for numbers start : i int 0 10
-                print : { lambda : format i }
+                print : { lambda : { variable : format } { variable : i } }
             for numbers end
         standalone function declare end
 
         main start
-            standalone function : private { main group } RunOnInts { lambda declare : string i int { string format : ("Int: {0}") i int } }
+            standalone function : private { main group } RunOnInts { lambda declare : string i int { string format : ("Int: {0}") { variable : i } int } }
         main end
     main context end
 file end

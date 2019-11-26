@@ -84,11 +84,11 @@ export class LambdaDeclareCommand extends Command {
      * @remarks This assumes that if a language doesn't declare variables, it doesn't declare types.
      */
     private generateParameterVariable(parameters: string[], i: number): LineResults {
+        const parameterName = this.language.syntax.variables.namePrefix + parameters[i];
         if (!this.language.syntax.lambdas.parameterTypeRequired) {
-            return LineResults.newSingleLine(parameters[i]);
+            return LineResults.newSingleLine(parameterName);
         }
 
-        const parameterName: string = parameters[i];
         const parameterTypeLine = this.context.convertParsed([CommandNames.Type, parameters[i + 1]]);
         const parameterType = parameterTypeLine.commandResults[0].text;
 
