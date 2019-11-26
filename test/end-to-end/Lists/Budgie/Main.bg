@@ -3,38 +3,38 @@ file start : Lists Main
 
     main context start
         standalone function declare start : private PrintInts void label string items { list type : int }
-            print : { string format : ("The first {0} is {1}.") label string { list get : items 0 } int }
-            print : { string format : ("The last {0} is {1}.") label string { list get : items { operation : { list length : items } minus 1 } } int }
+            print : { string format : ("The first {0} is {1}.") { variable : label } string { list get : { variable : items } 0 } int }
+            print : { string format : ("The last {0} is {1}.") { variable : label } string { list get : { variable : items } { operation : { list length : { variable : items } } minus 1 } } int }
 
-            for each start : items item int
-                print : { string format : ("{0}: {1}") label string item int }
+            for each start : { variable : items } item int
+                print : { string format : ("{0}: {1}") { variable : label } string { variable : item } int }
             for each end
 
-            for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { list get : items i } int }
+            for numbers start : i int 0 { list length : { variable : items } }
+                print : { string format : ("{0} {1}: {2}") { variable : label } string { variable : i } int { list get : { variable : items } { variable : i } } int }
             for each end
         standalone function declare end
 
         standalone function declare start : private PrintStrings void label string items { list type : string }
-            print : { string format : ("The first {0} is {1}.") label string { list get : items 0 } string }
-            print : { string format : ("The last {0} is {1}.") label string { list get : items { operation : { list length : items } minus 1 } } string }
+            print : { string format : ("The first {0} is {1}.") { variable : label } string { list get : { variable : items } 0 } string }
+            print : { string format : ("The last {0} is {1}.") { variable : label } string { list get : { variable : items } { operation : { list length : { variable : items } } minus 1 } } string }
 
-            for each start : items item string
-                print : { string format : ("{0}: {1}") label string item string }
+            for each start : { variable : items } item string
+                print : { string format : ("{0}: {1}") { variable : label } string { variable : item } string }
             for each end
 
-            for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { list get : items i } string }
+            for numbers start : i int 0 { list length : { variable : items } }
+                print : { string format : ("{0} {1}: {2}") { variable : label } string { variable : i } int { list get : { variable : items } { variable : i } } string }
             for each end
         standalone function declare end
 
         standalone function declare start : private { generic type : PrintListFancy T } void label string items { list type : T } getLabel { lambda type inline : string item T }
-            for each start : items item T
-                print : { lambda : getLabel item }
+            for each start : { variable : items } item T
+                print : { lambda : { variable : getLabel } { variable : item } }
             for each end
 
-            for numbers start : i int 0 { list length : items }
-                print : { string format : ("{0} {1}: {2}") label string i int { lambda : getLabel { list get : items i } } string }
+            for numbers start : i int 0 { list length : { variable : items } }
+                print : { string format : ("{0} {1}: {2}") { variable : label } string { variable : i } int { lambda : { variable : getLabel } { list get : { variable : items } { variable : i } } } string }
             for each end
         standalone function declare end
 
@@ -42,68 +42,68 @@ file start : Lists Main
             comment line : Initialization
             variable declare : aaa { list type : string } { list new : string }
             variable declare : bbb { list type : int } { list new : int 1 2 3 }
-            variable declare : ccc { list type : { list type : string } } { list new : { list type : string } aaa { list new : string "eee" "fff" "ggg" } }
+            variable declare : ccc { list type : { list type : string } } { list new : { list type : string } { variable : aaa } { list new : string "eee" "fff" "ggg" } }
 
             comment line : Members
             variable declare : fruits { list type : string } { list new : string "apple" "banana" "cherry" }
-            print : { string format : ("There are {0} fruits.") { list length : fruits } int }
-            print : { string format : ("The first fruit is {0}.") { list get : fruits 0 } string }
+            print : { string format : ("There are {0} fruits.") { list length : { variable : fruits } } int }
+            print : { string format : ("The first fruit is {0}.") { list get : { variable : fruits } 0 } string }
 
             comment line : Popping
             variable declare : colors { list type : string } { list new : string "red" "orange" "yellow" "green" }
-            list pop : colors
-            print : { string format : ("The last color is {0}.") { list get : colors { operation : { list length : colors } minus 1 } } string }
+            list pop : { variable : colors }
+            print : { string format : ("The last color is {0}.") { list get : { variable : colors } { operation : { list length : { variable : colors } } minus 1 } } string }
 
-            list pop front : colors
-            print : { string format : ("The first color is {0}.") { list get : colors 0 } string }
+            list pop front : { variable : colors }
+            print : { string format : ("The first color is {0}.") { list get : { variable : colors } 0 } string }
 
             comment line : Pushing
             variable declare : pets { list type : string } { list new : string "bird" "cat" }
-            list push : pets "dog"
-            print : { string format : ("The last pet is {0}.") { list get : pets { operation : { list length : pets } minus 1 } } string }
+            list push : { variable : pets } "dog"
+            print : { string format : ("The last pet is {0}.") { list get : { variable : pets } { operation : { list length : { variable : pets } } minus 1 } } string }
 
             comment line : Splicing
-            list insert : pets 0 "aardvark"
-            standalone function : private { main group } PrintStrings "pets" pets
-            list insert : pets 2 "canary"
-            standalone function : private { main group } PrintStrings "pets" pets
-            list insert : pets 5 "emu"
-            standalone function : private { main group } PrintStrings "pets" pets
+            list insert : { variable : pets } 0 "aardvark"
+            standalone function : private { main group } PrintStrings "pets" { variable : pets }
+            list insert : { variable : pets } 2 "canary"
+            standalone function : private { main group } PrintStrings "pets" { variable : pets }
+            list insert : { variable : pets } 5 "emu"
+            standalone function : private { main group } PrintStrings "pets" { variable : pets }
 
             comment line : Ranges
-            variable declare : all { list type : string } { list slice : pets }
-            standalone function : private { main group } PrintStrings ("all pets") pets
-            variable declare : lastFew { list type : string } { list slice : pets 3 }
-            standalone function : private { main group } PrintStrings ("last few pets") pets
+            variable declare : all { list type : string } { list slice : { variable : pets } }
+            standalone function : private { main group } PrintStrings ("all pets") { variable : pets }
+            variable declare : lastFew { list type : string } { list slice : { variable : pets } 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") { variable : pets }
 
             comment line : Ranges by index
-            variable declare : indexAll { list type : string } { list slice index : pets 0 3 }
-            standalone function : private { main group } PrintStrings ("all pets") pets
-            variable declare : indexLastFew { list type : string } { list slice index : pets 1 3 }
-            standalone function : private { main group } PrintStrings ("last few pets") pets
+            variable declare : indexAll { list type : string } { list slice index : { variable : pets } 0 3 }
+            standalone function : private { main group } PrintStrings ("all pets") { variable : pets }
+            variable declare : indexLastFew { list type : string } { list slice index : { variable : pets } 1 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") { variable : pets }
 
             comment line : Ranges by length
-            variable declare : lengthAll { list type : string } { list slice length : pets 0 3 }
-            standalone function : private { main group } PrintStrings ("all pets") pets
-            variable declare : lengthLastFew { list type : string } { list slice length : pets 1 3 }
-            standalone function : private { main group } PrintStrings ("last few pets") pets
+            variable declare : lengthAll { list type : string } { list slice length : { variable : pets } 0 3 }
+            standalone function : private { main group } PrintStrings ("all pets") { variable : pets }
+            variable declare : lengthLastFew { list type : string } { list slice length : { variable : pets } 1 3 }
+            standalone function : private { main group } PrintStrings ("last few pets") { variable : pets }
 
             comment line : Sorting (strings)
             variable declare : flavors { list type : string } { list new : string "plain" "chocolate" "vanilla" "strawberry" }
-            list sort strings : flavors
-            standalone function : private { main group } PrintStrings "flavor" flavors
+            list sort strings : { variable : flavors }
+            standalone function : private { main group } PrintStrings "flavor" { variable : flavors }
 
             comment line : Sorting (ints)
             variable declare : ints { list type : int } { list new : int 1 10 2 -3 8 4 5 }
-            list sort numbers : ints
-            standalone function : private { main group } PrintInts "int" ints
+            list sort numbers : { variable : ints }
+            standalone function : private { main group } PrintInts "int" { variable : ints }
 
             comment line : Sorting (members)
             variable declare : albums { list type : Album } { list new : Album { new : Album "Thriller" 1982 } { new : Album ("Back in Black") 1980 } { new : Album ("The Dark Side of the Moon") 1973 } }
-            list sort member strings: albums public album Name
-            standalone function : private { main group } PrintListFancy ("album by name") albums { lambda declare : string album Album { member variable declare : public album Name } }
-            list sort member numbers: albums public album Year
-            standalone function : private { main group } PrintListFancy ("album by year") albums { lambda declare : string album Album { member function : public album GetLabel } }
+            list sort member strings: { variable : albums } public album Name
+            standalone function : private { main group } PrintListFancy ("album by name") { variable : albums } { lambda declare : string album Album { member variable : public { variable : album } Name } }
+            list sort member numbers: { variable : albums } public album Year
+            standalone function : private { main group } PrintListFancy ("album by year") { variable : albums } { lambda declare : string album Album { member function : public { variable : album } GetLabel } }
         main end
     main context end
 file end

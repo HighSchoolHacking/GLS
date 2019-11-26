@@ -1,3 +1,6 @@
+using namespace System.Collections.Generic
+. "./Edge.ps1"
+. "./WeightedNode.ps1"
 
 <#
 A weighted, directed node in a graph.
@@ -8,11 +11,11 @@ class WeightedNode {
 
     WeightedNode($contents) {
         $this.Contents = $contents;
-        $this.edges = New-Object System.Collections.Generic.List[Edge];
+        $this.edges = [List[Edge]]::new();
     }
 
-    [System.Collections.Generic.List[WeightedNode]] getNeighborsInOrder() {
-        $nodes = New-Object System.Collections.Generic.List[WeightedNode];
+    [List[WeightedNode]] getNeighborsInOrder() {
+        $nodes = [List[WeightedNode]]::new();
 
         foreach ($edge in $this.edges)
         {

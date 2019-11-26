@@ -3,11 +3,11 @@ class Album {
     $Year;
 
     Album($name, $year) {
-        $$this = name;
-        $$this = year;
+        $this.Name = $name;
+        $this.Year = $year;
     }
 
     [string] getLabel() {
-        return "$($$this): $($$this)";
+        return "$($this.Name): $($this.Year)";
     }
 }

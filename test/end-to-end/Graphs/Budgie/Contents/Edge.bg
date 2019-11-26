@@ -5,9 +5,9 @@ file start : Graphs Data Edge
         member variable declare : public To { generic type : WeightedNode T }
 
         constructor start : public Edge distance double from { generic type : WeightedNode T } to { generic type : WeightedNode T }
-            member variable set : public { this } Distance distance
-            member variable set : public { this } From from
-            member variable set : public { this } To to
+            member variable set : public { this } Distance { variable : distance }
+            member variable set : public { this } From { variable : from }
+            member variable set : public { this } To { variable : to }
         constructor end
     class end
 file end

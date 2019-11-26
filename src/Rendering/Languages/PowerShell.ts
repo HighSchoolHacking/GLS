@@ -410,11 +410,15 @@ export class PowerShell extends Language {
      */
     protected generateImportSyntax(imports: ImportSyntax): void {
         imports.case = CaseStyle.DirectoryUpperCase;
+        imports.caseNamespaces = CaseStyle.PackageUpperCase;
         imports.explicitAbsoluteFileName = false;
         imports.explicitItems = false;
-        imports.leftAbsolute = '. "';
+        imports.leftAbsolute = 'Using-Module "';
         imports.leftLocal = '. "./';
-        imports.right = '.ps1"';
+        imports.leftNamespace = "using namespace ";
+        imports.rightAbsolute = '.ps1"';
+        imports.rightLocal = '.ps1"';
+        imports.rightNamespace = "";
         imports.transformFileNames = true;
         imports.removeFirstPathComponent = false;
         imports.useLocalRelativeImports = true;
@@ -459,20 +463,20 @@ export class PowerShell extends Language {
      * @param lists   A property container for metadata on loops.
      */
     protected generateListSyntax(lists: ListSyntax): void {
-        lists.addList = new NativeCallSyntax("extend", NativeCallScope.Member, NativeCallType.Function);
+        lists.addList = new NativeCallSyntax("AddRange", NativeCallScope.Member, NativeCallType.Function);
         lists.asArray = false;
-        lists.className = "System.Collections.Generic.List";
+        lists.className = "List";
         lists.getLeft = "[";
         lists.getRight = "]";
-        lists.initializeEmpty = "";
-        lists.initializeStart = "New-Object ";
+        lists.initializeEmpty = "::new()";
+        lists.initializeStartLeft = "[";
+        lists.initializeStartRight = "]";
         lists.insert = new NativeCallSyntax("Insert", NativeCallScope.Member, NativeCallType.Function);
-        lists.length = new NativeCallSyntax("Length", NativeCallScope.Static, NativeCallType.Function);
-        lists.pop = new NativeCallSyntax("Pop", NativeCallScope.Member, NativeCallType.Function);
-        lists.popFront = new NativeCallSyntax("Pop", NativeCallScope.Member, NativeCallType.Function);
-        lists.popFront.withArguments(["0"]);
+        lists.length = new NativeCallSyntax("Count", NativeCallScope.Member, NativeCallType.Property);
+        lists.pop = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["{0}.Count - 1"]);
+        lists.popFront = new NativeCallSyntax("RemoveAt", NativeCallScope.Member, NativeCallType.Function).withArguments(["0"]);
         lists.push = new NativeCallSyntax("Add", NativeCallScope.Member, NativeCallType.Function);
-        lists.requiredImports = [];
+        lists.requiredImports = [new Import(["System", "Collections", "Generic"], ["List"], ImportRelativity.Namespace)];
         lists.setLeft = "[";
         lists.setMiddle = "] = ";
         lists.setRight = "";
@@ -484,7 +488,10 @@ export class PowerShell extends Language {
      * Fills out metadata on list creation with items.
      */
     protected generateListNewItemsSyntax(newItems: ListNewItemsSyntax): void {
-        // Unused
+        newItems.itemLeft = "";
+        newItems.itemRight = ", ";
+        newItems.left = "@(";
+        newItems.right = ")";
     }
 
     /**
@@ -503,15 +510,15 @@ export class PowerShell extends Language {
      */
     protected generateListSliceSyntax(slices: ListSliceSyntax): void {
         slices.before = "";
-        slices.left = "[";
-        slices.middle = ":";
-        slices.right = "]";
-        slices.support = ListSliceSupport.Index;
-        slices.untilEndDefaultStart = "";
-        slices.untilEndLeft = "[";
-        slices.untilEndMiddle = ":";
-        slices.untilEndRightFromIndex = "]";
-        slices.untilEndRightFromStart = "]";
+        slices.left = ".GetRange(";
+        slices.middle = ", ";
+        slices.right = ")";
+        slices.support = ListSliceSupport.Length;
+        slices.untilEndDefaultStart = "0";
+        slices.untilEndLeft = ".GetRange(";
+        slices.untilEndMiddle = ", ";
+        slices.untilEndRightFromIndex = "{0}.Count - {1})";
+        slices.untilEndRightFromStart = "{0}.Count)";
     }
 
     /**
@@ -529,10 +536,9 @@ export class PowerShell extends Language {
      * Fills out metadata on list sorting by keyed members.
      */
     protected generateListSortMemberStringsSyntax(sortMembers: ListSortMembersSyntax): void {
-        sortMembers.lambdaLeft = ".sort(key = lambda ";
-        sortMembers.lambdaMiddleLeft = ": ";
-        sortMembers.lambdaMiddleRight = " < ";
-        sortMembers.lambdaRight = ")";
+        sortMembers.lambdaLeft = " = ";
+        sortMembers.lambdaMiddleLeft = " | Sort-Object -Property ";
+        sortMembers.lambdaRight = "";
         sortMembers.requiredImports = [];
         sortMembers.type = ListSortMemberType.OnProperty;
     }

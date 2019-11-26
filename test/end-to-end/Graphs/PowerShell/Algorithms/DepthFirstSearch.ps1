@@ -1,3 +1,4 @@
+using namespace System.Collections.Generic
 . "./../Contents/UnweightedNode.ps1"
 . "./../Contents/WeightedNode.ps1"
 
@@ -6,7 +7,7 @@
 # UnweightedNode
 
 function Unweighted-Depth-First-Search($start) {
-    $nodes = New-Object System.Collections.Generic.List[UnweightedNode];
+    $nodes = [List[UnweightedNode]]::new();
     $visited = New-Object System.Collections.Generic.HashSet[UnweightedNode];
 
     Traverse-Unweighted-Depth-First-Search $start $nodes $visited;
@@ -27,7 +28,7 @@ function Traverse-Unweighted-Depth-First-Search($start, $nodes, $visited) {
 }
 
 function Weighted-Depth-First-Search($start) {
-    $nodes = New-Object System.Collections.Generic.List[WeightedNode];
+    $nodes = [List[WeightedNode]]::new();
     $visited = New-Object System.Collections.Generic.HashSet[WeightedNode];
 
     Traverse-Weighted-Depth-First-Search $start $nodes $visited;

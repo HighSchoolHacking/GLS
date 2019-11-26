@@ -1,6 +1,9 @@
 /**
  * Whether an import is from an absolute package or local file.
  */
+/**
+ * Whether an import is from an absolute package or local file.
+ */
 export enum ImportRelativity {
     /**
      * The import is from an absolute package.
@@ -11,4 +14,6 @@ export enum ImportRelativity {
      * The import is from a local file.
      */
     Local = "Local",
+
+    Namespace = "Namespace",
 }

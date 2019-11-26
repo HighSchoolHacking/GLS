@@ -1,106 +1,107 @@
+using namespace System.Collections.Generic
 . "./Album.ps1"
 
 function Print-Ints($label, $items) {
-    Write-Output "The first $(label) is $(items[0]).";
-    Write-Output "The last $(label) is $(items[Length(items) - 1]).";
+    Write-Output "The first $($label) is $($items[0]).";
+    Write-Output "The last $($label) is $($items[$items.Count - 1]).";
 
-    foreach ($item in items)
+    foreach ($item in $items)
     {
-        Write-Output "$(label): $(item)";
+        Write-Output "$($label): $($item)";
     }
 
-    for ($i = 0; $i -lt Length(items); $i += 1) {
-        Write-Output "$(label) $(i): $(items[i])";
+    for ($i = 0; $i -lt $items.Count; $i += 1) {
+        Write-Output "$($label) $($i): $($items[$i])";
     }
 }
 
 function Print-Strings($label, $items) {
-    Write-Output "The first $(label) is $(items[0]).";
-    Write-Output "The last $(label) is $(items[Length(items) - 1]).";
+    Write-Output "The first $($label) is $($items[0]).";
+    Write-Output "The last $($label) is $($items[$items.Count - 1]).";
 
-    foreach ($item in items)
+    foreach ($item in $items)
     {
-        Write-Output "$(label): $(item)";
+        Write-Output "$($label): $($item)";
     }
 
-    for ($i = 0; $i -lt Length(items); $i += 1) {
-        Write-Output "$(label) $(i): $(items[i])";
+    for ($i = 0; $i -lt $items.Count; $i += 1) {
+        Write-Output "$($label) $($i): $($items[$i])";
     }
 }
 
 function Print-List-Fancy($label, $items, $getLabel) {
-    foreach ($item in items)
+    foreach ($item in $items)
     {
-        Write-Output getLabel(item);
+        Write-Output $getLabel.Invoke($item);
     }
 
-    for ($i = 0; $i -lt Length(items); $i += 1) {
-        Write-Output "$(label) $(i): $(getLabel(items[i]))";
+    for ($i = 0; $i -lt $items.Count; $i += 1) {
+        Write-Output "$($label) $($i): $($getLabel.Invoke($items[$i]))";
     }
 }
 
 # Initialization
-$aaa = New-Object System.Collections.Generic.List[string];
-$bbb = New-Object System.Collections.Generic.List[int]undefinedundefined1undefinedundefined2undefinedundefined3undefinedundefined;
-$ccc = New-Object System.Collections.Generic.List[System.Collections.Generic.List[string]]undefinedundefinedaaaundefinedundefinedNew-Object System.Collections.Generic.List[string]undefinedundefined"eee"undefinedundefined"fff"undefinedundefined"ggg"undefinedundefinedundefinedundefined;
+$aaa = [List[string]]::new();
+$bbb = [List[int]]@(1, 2, 3);
+$ccc = [List[List[string]]]@($aaa, [List[string]]@("eee", "fff", "ggg"));
 
 # Members
-$fruits = New-Object System.Collections.Generic.List[string]undefinedundefined"apple"undefinedundefined"banana"undefinedundefined"cherry"undefinedundefined;
-Write-Output "There are $(Length(fruits)) fruits.";
-Write-Output "The first fruit is $(fruits[0]).";
+$fruits = [List[string]]@("apple", "banana", "cherry");
+Write-Output "There are $($fruits.Count) fruits.";
+Write-Output "The first fruit is $($fruits[0]).";
 
 # Popping
-$colors = New-Object System.Collections.Generic.List[string]undefinedundefined"red"undefinedundefined"orange"undefinedundefined"yellow"undefinedundefined"green"undefinedundefined;
-colors.Pop();
-Write-Output "The last color is $(colors[Length(colors) - 1]).";
+$colors = [List[string]]@("red", "orange", "yellow", "green");
+$colors.RemoveAt($colors.Count - 1);
+Write-Output "The last color is $($colors[$colors.Count - 1]).";
 
-colors.Pop(0);
-Write-Output "The first color is $(colors[0]).";
+$colors.RemoveAt(0);
+Write-Output "The first color is $($colors[0]).";
 
 # Pushing
-$pets = New-Object System.Collections.Generic.List[string]undefinedundefined"bird"undefinedundefined"cat"undefinedundefined;
-pets.Add("dog");
-Write-Output "The last pet is $(pets[Length(pets) - 1]).";
+$pets = [List[string]]@("bird", "cat");
+$pets.Add("dog");
+Write-Output "The last pet is $($pets[$pets.Count - 1]).";
 
 # Splicing
-pets.Insert(0, "aardvark");
-Print-Strings "pets" pets;
-pets.Insert(2, "canary");
-Print-Strings "pets" pets;
-pets.Insert(5, "emu");
-Print-Strings "pets" pets;
+$pets.Insert(0, "aardvark");
+Print-Strings "pets" $pets;
+$pets.Insert(2, "canary");
+Print-Strings "pets" $pets;
+$pets.Insert(5, "emu");
+Print-Strings "pets" $pets;
 
 # Ranges
-$all = pets[:];
-Print-Strings "all pets" pets;
-$lastFew = pets[3:];
-Print-Strings "last few pets" pets;
+$all = $pets.GetRange(0, $pets.Count);
+Print-Strings "all pets" $pets;
+$lastFew = $pets.GetRange(3, $pets.Count - 3);
+Print-Strings "last few pets" $pets;
 
 # Ranges by index
-$indexAll = pets[0:3];
-Print-Strings "all pets" pets;
-$indexLastFew = pets[1:3];
-Print-Strings "last few pets" pets;
+$indexAll = $pets.GetRange(0, 3);
+Print-Strings "all pets" $pets;
+$indexLastFew = $pets.GetRange(1, 2);
+Print-Strings "last few pets" $pets;
 
 # Ranges by length
-$lengthAll = pets[0:3];
-Print-Strings "all pets" pets;
-$lengthLastFew = pets[1:4];
-Print-Strings "last few pets" pets;
+$lengthAll = $pets.GetRange(0, 3);
+Print-Strings "all pets" $pets;
+$lengthLastFew = $pets.GetRange(1, 3);
+Print-Strings "last few pets" $pets;
 
 # Sorting strings
-$flavors = New-Object System.Collections.Generic.List[string]undefinedundefined"plain"undefinedundefined"chocolate"undefinedundefined"vanilla"undefinedundefined"strawberry"undefinedundefined;
-flavors.Sort();
-Print-Strings "flavor" flavors;
+$flavors = [List[string]]@("plain", "chocolate", "vanilla", "strawberry");
+$flavors.Sort();
+Print-Strings "flavor" $flavors;
 
 # Sorting ints
-$ints = New-Object System.Collections.Generic.List[int]undefinedundefined1undefinedundefined10undefinedundefined2undefinedundefined-3undefinedundefined8undefinedundefined4undefinedundefined5undefinedundefined;
-ints.Sort();
-Print-Ints "int" ints;
+$ints = [List[int]]@(1, 10, 2, -3, 8, 4, 5);
+$ints.Sort();
+Print-Ints "int" $ints;
 
 # Sorting members
-$albums = New-Object System.Collections.Generic.List[Album]undefinedundefined[Album]::new("Thriller", 1982)undefinedundefined[Album]::new("Back in Black", 1980)undefinedundefined[Album]::new("The Dark Side of the Moon", 1973)undefinedundefined;
-albums.sort(key = lambda albums: Name);
-Print-List-Fancy "album by name" albums lambda album: $Album;
-albums = albums | Sort-Object -Property Year;
-Print-List-Fancy "album by year" albums lambda album: album.getLabel();
+$albums = [List[Album]]@([Album]::new("Thriller", 1982), [Album]::new("Back in Black", 1980), [Album]::new("The Dark Side of the Moon", 1973));
+$albums = $albums | Sort-Object -Property Name;
+Print-List-Fancy "album by name" $albums { param ($album) $album.Name };
+$albums = $albums | Sort-Object -Property Year;
+Print-List-Fancy "album by year" $albums { param ($album) $album.getLabel() };

@@ -1,4 +1,5 @@
 import { Import } from "../Languages/Imports/Import";
+import { ImportRelativity } from "../Languages/Imports/ImportRelativity";
 
 /**
  * Holds accumulated package imports during a conversion.
@@ -31,15 +32,20 @@ export class ImportsStore {
      * @returns All accumulated package import stores.
      */
     public getAllImportStores(): Import[] {
-        const stores = [];
+        const namespaceStores: Import[] = [];
+        const otherStores: Import[] = [];
 
         for (const i in this.imports) {
             if ({}.hasOwnProperty.call(this.imports, i)) {
-                stores.push(this.imports[i]);
+                if (this.imports[i].relativity === ImportRelativity.Namespace) {
+                    namespaceStores.push(this.imports[i]);
+                } else {
+                    otherStores.push(this.imports[i]);
+                }
             }
         }
 
-        return stores;
+        return namespaceStores.concat(...otherStores);
     }
 
     /**

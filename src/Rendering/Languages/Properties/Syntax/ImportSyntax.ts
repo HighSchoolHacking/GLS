@@ -9,6 +9,8 @@ export class ImportSyntax {
      */
     public case: CaseStyle;
 
+    public caseNamespaces: CaseStyle;
+
     /**
      * Whether file names should be included from absolute imports.
      */
@@ -34,10 +36,17 @@ export class ImportSyntax {
      */
     public leftAbsolute: string;
 
+    public rightAbsolute: string;
+
+    public leftNamespace: string;
+
     /**
      * Start of an import line for a local import.
      */
     public leftLocal: string;
+
+    public rightLocal: string;
+    public rightNamespace: string;
 
     /**
      * Middle of an import line, between items and package.
@@ -48,11 +57,6 @@ export class ImportSyntax {
      * Whether the first part of paths should be removed for printing.
      */
     public removeFirstPathComponent: boolean;
-
-    /**
-     * End of an import line.
-     */
-    public right: string;
 
     /**
      * Whether file names should be individually transformed in import paths.

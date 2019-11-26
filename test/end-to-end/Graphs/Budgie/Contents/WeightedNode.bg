@@ -1,5 +1,7 @@
 file start : Graphs Contents WeightedNode
     import local : Graphs Contents INode types INode
+    import local : Graphs Contents Edge use Edge
+    import local : Graphs Contents WeightedNode use WeightedNode
 
     comment doc start
     comment doc tag : summary A weighted, directed node in a graph.

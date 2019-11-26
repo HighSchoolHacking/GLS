@@ -47,11 +47,12 @@ export class ListNewCommand extends Command {
         imports.push(...typeNameLine.addedImports);
 
         let output: string = "";
-        output += this.language.syntax.lists.initializeStart; // "new ";
+        output += this.language.syntax.lists.initializeStartLeft;
         output += this.language.syntax.lists.className;
         output += this.language.syntax.classes.generics.left;
         output += typeName;
         output += this.language.syntax.classes.generics.right;
+        output += this.language.syntax.lists.initializeStartRight;
 
         if (parameters.length === 2) {
             output += this.language.syntax.lists.initializeEmpty; // "()"
@@ -61,7 +62,10 @@ export class ListNewCommand extends Command {
             for (let i = 2; i < parameters.length; i += 1) {
                 output += this.language.syntax.lists.newItems.itemLeft;
                 output += parameters[i];
-                output += this.language.syntax.lists.newItems.itemRight;
+
+                if (i !== parameters.length - 1) {
+                    output += this.language.syntax.lists.newItems.itemRight;
+                }
             }
 
             output += this.language.syntax.lists.newItems.right;

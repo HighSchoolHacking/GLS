@@ -114,6 +114,9 @@ export class ListSyntax {
      */
     public sortStrings: NativeCallSyntax;
 
-    public initializeStart: string;
+    public initializeStartLeft: string;
+
+    public initializeStartRight: string;
+
     public initializeEmpty: string;
 }

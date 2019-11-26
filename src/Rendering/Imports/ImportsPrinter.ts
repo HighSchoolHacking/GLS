@@ -15,6 +15,8 @@ export class ImportsPrinter {
      */
     private directoryCaseStyleConverter: ICaseStyleConverter;
 
+    private namspaceCaseStyleConverter: ICaseStyleConverter;
+
     /**
      * Converts file names to a case.
      */
@@ -42,10 +44,12 @@ export class ImportsPrinter {
         language: Language,
         directoryCaseStyleConverter: ICaseStyleConverter,
         fileCaseStyleConverter: ICaseStyleConverter,
+        namspaceCaseStyleConverter: ICaseStyleConverter,
         nameSplitter: NameSplitter,
     ) {
         this.directoryCaseStyleConverter = directoryCaseStyleConverter;
         this.fileCaseStyleConverter = fileCaseStyleConverter;
+        this.namspaceCaseStyleConverter = namspaceCaseStyleConverter;
         this.language = language;
         this.nameSplitter = nameSplitter;
     }
@@ -87,7 +91,27 @@ export class ImportsPrinter {
             return this.language.syntax.imports.leftAbsolute;
         }
 
+        if (relativity === ImportRelativity.Namespace) {
+            return this.language.syntax.imports.leftNamespace;
+        }
+
         return this.language.syntax.imports.leftLocal;
+    }
+
+    /**
+     * @param relativity   Relativity for an import.
+     * @returns The right component of the import's rendered line equivalent.
+     */
+    private renderImportRight(relativity: ImportRelativity): string {
+        if (relativity === ImportRelativity.Absolute) {
+            return this.language.syntax.imports.rightAbsolute;
+        }
+
+        if (relativity === ImportRelativity.Namespace) {
+            return this.language.syntax.imports.rightNamespace;
+        }
+
+        return this.language.syntax.imports.rightLocal;
     }
 
     /**
@@ -116,7 +140,7 @@ export class ImportsPrinter {
             }
         }
 
-        line += this.language.syntax.imports.right;
+        line += this.renderImportRight(addedImport.relativity);
         return new CommandResult(line, 0);
     }
 
@@ -149,7 +173,13 @@ export class ImportsPrinter {
             packagePath = this.individualizePackagePaths(packagePath);
         }
 
-        let line = this.directoryCaseStyleConverter.convert(packagePath);
+        let line = "";
+
+        if (addedImport.relativity === ImportRelativity.Namespace) {
+            line += this.namspaceCaseStyleConverter.convert(packagePath);
+        } else {
+            line += this.directoryCaseStyleConverter.convert(packagePath);
+        }
 
         if (addedImport.relativity !== ImportRelativity.Absolute && this.language.syntax.imports.useLocalRelativePaths && line[0] !== ".") {
             line = "./" + line;

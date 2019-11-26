@@ -66,6 +66,7 @@ export class RenderContext {
                 this.language,
                 this.caseStyleConverterBag.getConverter(this.language.syntax.imports.case),
                 this.caseStyleConverterBag.getConverter(this.language.general.fileCase),
+                this.caseStyleConverterBag.getConverter(this.language.syntax.imports.caseNamespaces),
                 this.nameSplitter,
             ),
         );

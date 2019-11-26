@@ -1,3 +1,4 @@
+using namespace System.Collections.Generic
 
 <#
 An unweighted, undirected node in a graph.
@@ -8,14 +9,14 @@ class UnweightedNode {
 
     UnweightedNode($contents) {
         $this.Contents = $contents;
-        $this.neighborNodes = New-Object System.Collections.Generic.List[UnweightedNode];
+        $this.neighborNodes = [List[UnweightedNode]]::new();
     }
 
     [void] addNeighbor($node) {
         $this.neighborNodes.Add($node);
     }
 
-    [System.Collections.Generic.List[UnweightedNode]] getNeighborsInOrder() {
+    [List[UnweightedNode]] getNeighborsInOrder() {
         return $this.neighborNodes;
     }
 }
